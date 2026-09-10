@@ -29,7 +29,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ a
       <div className="landing-shell">
         <section className="landing-story">
           <p className="eyebrow"><Orbit aria-hidden="true" /> From curiosity to capable creation</p>
-          <h1>AI learning built as a journey—not a folder of files.</h1>
+          <h1>Curious minds.<br />Confident creators.</h1>
           <p className="landing-intro">A complete, carefully sequenced academy experience for students and the teachers who guide them.</p>
           <div className="pathway-visual" aria-label="Four connected learning pathways">{["Observe", "Reason", "Create", "Build"].map((label, index) => <div className={`pathway-line pathway-${index + 1}`} key={label}><span>{index + 1}</span><p>{label}</p><i aria-hidden="true" /></div>)}</div>
           <div className="trust-line"><ShieldCheck aria-hidden="true" /><span>Learning materials stay hidden until the correct role passcode is entered.</span></div>

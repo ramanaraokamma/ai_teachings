@@ -343,3 +343,44 @@ svg { stroke-width: 1.8; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
 }
+
+/* The complete illustrated lesson, with quiet space for working. */
+.instruction-visual { margin: 1.5rem auto; max-width: 100%; text-align: center; }
+.instruction-visual img { display: block; max-width: 100%; height: auto; margin: auto; border-radius: .7rem; }
+.instruction-visual figcaption { max-width: 60ch; margin: .65rem auto 0; color: #64748b; font-size: .78rem; line-height: 1.5; }
+.instruction-gallery { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; }
+.gallery-cell { min-width: 0; padding: .8rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .8rem; }
+.gallery-cell:empty { display: none; }
+.gallery-cell .instruction-visual { margin: .5rem auto; }
+.resource-actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.25rem; }
+.resource-action { display: inline-flex; align-items: center; gap: .5rem; padding: .7rem 1rem; border: 1px solid #ffffff35; border-radius: .6rem; color: #fff; font-size: .85rem; background: #ffffff0a; cursor: pointer; }
+.resource-action:hover { background: #ffffff20; }
+.resource-action svg { width: 1rem; height: 1rem; }
+.content-table-wrap td { min-height: 2.5rem; height: 2.5rem; white-space: pre-wrap; }
+.content-paragraph { white-space: pre-line; }
+.print-response-lines { display: none; }
+.interactive-response { display: block; }
+.interactive-response label { display: block; font-weight: 600; margin-bottom: .6rem; }
+.interactive-response textarea { width: 100%; resize: vertical; padding: .85rem; border: 1px solid #b5c8d5; border-radius: .5rem; background: white; color: #162b3d; line-height: 1.7; font: inherit; }
+.interactive-response small { display: block; margin-top: .5rem; color: #52697a; }
+.print-answer { display: none; }
+@media (max-width: 520px) { .instruction-gallery { grid-template-columns: 1fr; } }
+@media print {
+  @page { margin: 16mm; }
+  body, .portal-page, .lesson-section { background: white !important; color: #111 !important; }
+  .portal-header, .reader-nav, .resource-nav, .resource-actions, .week-pagination, .lesson-breadcrumbs, .lesson-art { display: none !important; }
+  .lesson-hero { background: white !important; color: #111 !important; padding: 0 0 1rem; }
+  .lesson-title h1, .lesson-title p { color: #111 !important; }
+  .lesson-hero-grid, .reader-layout { display: block; }
+  .lesson-reader-shell { width: 100%; }
+  .lesson-section { border: none; box-shadow: none; padding: 0; margin: 1.5rem 0; }
+  .instruction-visual, .callout, tr { break-inside: avoid; }
+  h2, h3 { break-after: avoid; }
+  .code-block { white-space: pre-wrap; color: #111; background: #f3f4f6; }
+  .response-space { display: block; padding: .5rem 0; border: none; }
+  .response-space svg, .response-space span { display: none; }
+  .print-response-lines { display: block; height: 1.5rem; border-bottom: 1px solid #999; }
+  .content-table-wrap { overflow: visible; }
+  .interactive-response textarea, .interactive-response small { display: none; }
+  .print-answer { display: block; white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; border-bottom: 1px solid #aaa; min-height: 3rem; }
+}

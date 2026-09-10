@@ -39,3 +39,8 @@ Enter `student1234` and `teacher1234` when prompted for the first two secrets. G
 - Teacher access opens teacher guides, student lessons and workbook practice.
 - Signing out clears the signed session.
 - Curriculum images are also routed through the protected Worker.
+- Word downloads use the same role checks. A student cannot retrieve a teacher file by copying its URL.
+- Public `curriculum-blobs` files contain encrypted bytes only. Keep the server output private; never host `lib` or `dist/server` as a static directory.
+- Answer fields are temporary to the current page. Print completed work or use the downloadable Word workbook for a saved record.
+
+After deployment, check the landing page while signed out, sign in with each passcode, open one lesson and workbook per level, download a Word file, and confirm that a student session cannot open a copied teacher-guide URL.

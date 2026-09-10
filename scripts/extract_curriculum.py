@@ -287,7 +287,7 @@ def extract_hero(docx_path: Path, output_dir: Path):
 
 def find_week_file(folder: Path, week: int):
     pattern = re.compile(rf"Week_0?{week}(?:_|\b)", re.I)
-    matches = sorted(path for path in folder.glob("*.docx") if pattern.search(path.name))
+    matches = sorted(path for path in folder.glob("*.docx") if pattern.search(path.name) and not path.name.endswith('.tmp.docx'))
     if len(matches) != 1:
         raise RuntimeError(f"Expected one Week {week} file in {folder}, found {len(matches)}")
     return matches[0]

@@ -5,6 +5,8 @@ import academyData from "./academy-data.json";
 export type AcademyRole = "student" | "teacher";
 
 export type ContentBlock =
+  | { type: "image"; src: string; alt: string; width: number; height: number }
+  | { type: "gallery"; cells: ContentBlock[][] }
   | { type: "title" | "heading" | "subheading" | "paragraph" | "step" | "code" | "response"; text: string }
   | { type: "list"; marker: "bullet" | "number"; text: string }
   | { type: "callout"; tone: "idea" | "think" | "caution" | "teacher" | "answer"; text: string }
@@ -16,9 +18,9 @@ export type Week = {
   number: number;
   phase: number;
   hero: string | null;
-  student: { title: string; pages: LessonPage[] };
-  teacher: { title: string; pages: LessonPage[] };
-  workbook: { title: string; blocks: ContentBlock[] };
+  student: { title: string; pages: LessonPage[]; download: string };
+  teacher: { title: string; pages: LessonPage[]; download: string };
+  workbook: { title: string; blocks: ContentBlock[]; download: string };
 };
 
 export type Level = {

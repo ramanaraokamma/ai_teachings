@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import { ContentReader } from "@/components/content-reader";
 import { PortalHeader } from "@/components/portal-header";
+import { PrintResource } from "@/components/print-resource";
 import { Badge } from "@/components/ui/badge";
 import { requireAccess } from "@/lib/access";
 import { getLevel, getWeek, titleWithoutWeek, type AcademyRole } from "@/lib/academy";
@@ -40,6 +41,10 @@ export default async function WeekPage({ params, searchParams }: { params: Promi
           <Link className={resource === "lesson" ? "active" : ""} href="?resource=lesson"><BookOpen aria-hidden="true" /><span>Student lesson<small>{week.student.pages.length} sections</small></span></Link>
           <Link className={resource === "workbook" ? "active" : ""} href="?resource=workbook"><GraduationCap aria-hidden="true" /><span>Workbook practice<small>Weekly mission</small></span></Link>
         </nav>
+        <div className="resource-actions">
+          <a className="resource-action" href={resource === "guide" ? week.teacher.download : resource === "workbook" ? week.workbook.download : week.student.download}>Download editable {resource === "workbook" ? "36-week workbook" : resource === "guide" ? "teacher guide" : "student booklet"} (.docx)</a>
+          <PrintResource />
+        </div>
       </section>
       <section className="lesson-reader-shell">
         {resource === "guide" && <ContentReader pages={week.teacher.pages} />}

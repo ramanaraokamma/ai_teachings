@@ -4,6 +4,8 @@ import { createSession, isCorrectPasscode, sessionCookie } from "@/lib/access";
 import type { AcademyRole } from "@/lib/academy";
 
 export async function POST(request: Request) {
+  const origin = request.headers.get("origin");
+  if (origin && origin !== new URL(request.url).origin) return new Response("Invalid origin.", { status: 403 });
   const form = await request.formData();
   const requestedRole = String(form.get("role") ?? "");
   const role: AcademyRole | null = requestedRole === "student" || requestedRole === "teacher" ? requestedRole : null;

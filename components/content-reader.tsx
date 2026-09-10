@@ -3,16 +3,19 @@ import { AlertTriangle, BookMarked, CheckCircle2, Lightbulb, MessageCircleQuesti
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import type { ContentBlock, LessonPage } from "@/lib/academy";
+import { ResponseSpace } from "@/components/response-space";
 
 const calloutIcon = { idea: Lightbulb, think: MessageCircleQuestion, caution: AlertTriangle, teacher: BookMarked, answer: CheckCircle2 };
 
 function Block({ block }: { block: ContentBlock }) {
+  if (block.type === "image") return <figure className="instruction-visual"><img src={block.src} alt={block.alt} width={block.width} height={block.height} loading="lazy" decoding="async" /><figcaption>{block.alt}</figcaption></figure>;
+  if (block.type === "gallery") return <div className="instruction-gallery">{block.cells.map((cell, i) => <div className="gallery-cell" key={i}>{cell.map((item,j) => <Block key={j} block={item} />)}</div>)}</div>;
   if (block.type === "title") return <h2 className="content-title">{block.text}</h2>;
   if (block.type === "heading") return <h2 className="content-heading">{block.text}</h2>;
   if (block.type === "subheading") return <h3 className="content-subheading">{block.text}</h3>;
   if (block.type === "code") return <pre className="code-block"><code>{block.text}</code></pre>;
   if (block.type === "step") return <div className="step-block">{block.text}</div>;
-  if (block.type === "response") return <div className="response-space"><PencilLine aria-hidden="true" /> Pause and record your response.</div>;
+  if (block.type === "response") return <ResponseSpace />;
   if (block.type === "list") return <div className={`content-list list-${block.marker}`}><span aria-hidden="true">{block.marker === "number" ? "→" : "•"}</span><p>{block.text}</p></div>;
   if (block.type === "callout") {
     const Icon = calloutIcon[block.tone];
@@ -29,7 +32,7 @@ function Block({ block }: { block: ContentBlock }) {
       </div>
     );
   }
-  return <p className="content-paragraph">{block.text}</p>;
+  return <p className="content-paragraph">{"text" in block ? block.text : ""}</p>;
 }
 
 export function ContentReader({ pages, workbookBlocks }: { pages?: LessonPage[]; workbookBlocks?: ContentBlock[] }) {
