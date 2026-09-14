@@ -1,8 +1,10 @@
-# AI Academy Curriculum 2.0 — Refined Website
+# AI Academy — Grade 6 Entry Edition
 
-**All-level Visual Teaching Edition — 14 September 2026.** Replace the older website source with this complete package before building. `PACKAGE_EDITION.txt`, the landing-page footer, and the `X-Academy-Edition` response header identify this edition. The live header is `topic-studio-2026-09-14`.
+The redesign reviews all 144 existing weeks across four levels, with prerequisite retrieval, fresh transfer assessments, optional hints and teacher-only solutions. Typical entry grades are 6–9; readiness determines placement. See [the week-by-week review](GRADE6_REVIEW.md). This is an extension and correction of the existing four-level curriculum, not the proposed seven-level replacement.
 
-Every level and week has an individually authored visual plan in `lib/topic-plans.txt`. The build compiles and checks all 144 plans. `VISUAL_COVERAGE.md` lists the exact concept, diagram form and title for every week.
+There are 258 authored vocabulary definitions, filling 288 empty student definition cells and their corresponding teacher meanings. The ML code labs retain Python indentation and include executable source examples. Use the portal print action for the current edition; original protected DOCX downloads are explicitly marked as the earlier edition.
+
+Cloudflare Worker hosting, signed sessions and student/teacher permissions are retained. Runtime secrets are unchanged. The response edition header is `grade6-entry-2026-09-14`. `npm run build` now also works on macOS without Linux flock or GNU timeout.
 
 A protected learning portal containing the complete AI‑1 through AI‑4 curriculum.
 

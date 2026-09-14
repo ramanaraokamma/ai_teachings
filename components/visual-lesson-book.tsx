@@ -90,11 +90,13 @@ export function WorkbookTrace({ level, week }: { level: string; week:number }) {
 }
 
 export function VisualLessonBook({ week, level }: { week: Week; level: string }) {
-  const sections = week.student.pages;
-  return <div className="visual-lesson-book" data-edition="topic-studio-2026-09-14">
-    <nav className="book-contents" aria-label="Lesson book chapters"><strong><BookOpen aria-hidden="true"/> In this lesson</strong><div>{sections.map(p=><a href={`#section-${p.number}`} key={p.number}><span>{String(p.number).padStart(2,'0')}</span>{labels[p.number]}</a>)}</div></nav>
-    <div className="book-pages">{sections.map(page=>{ const Icon=icons[page.number]??BookOpen;return <article className={`book-chapter chapter-${page.number}`} id={`section-${page.number}`} key={page.number}>
-      <header className="book-chapter-heading"><span className="chapter-number">{String(page.number).padStart(2,'0')}</span><div><p className="book-overline"><Icon aria-hidden="true"/> {page.number <= 5 ? "DISCOVER" : page.number <= 7 || page.number===13 ? "UNDERSTAND" : page.number <= 11 ? "PRACTISE" : "APPLY"}</p><h2>{labels[page.number]??page.label}</h2><p>{prompts[page.number]}</p></div></header>
+  // Read the concrete worked case before guided practice and independent assessment.
+  const order=[1,2,3,4,5,13,6,7,8,9,10,11,12,14,15];
+  const sections = [...week.student.pages].sort((a,b)=>order.indexOf(a.number)-order.indexOf(b.number));
+  return <div className="visual-lesson-book" data-edition="grade6-entry-2026-09-14">
+    <nav className="book-contents" aria-label="Lesson book chapters"><strong><BookOpen aria-hidden="true"/> In this lesson</strong><div>{sections.map((p,index)=><a href={`#section-${p.number}`} key={p.number}><span>{String(index+1).padStart(2,'0')}</span>{labels[p.number]}</a>)}</div></nav>
+    <div className="book-pages">{sections.map((page,index)=>{ const Icon=icons[page.number]??BookOpen;return <article className={`book-chapter chapter-${page.number}`} id={`section-${page.number}`} key={page.number}>
+      <header className="book-chapter-heading"><span className="chapter-number">{String(index+1).padStart(2,'0')}</span><div><p className="book-overline"><Icon aria-hidden="true"/> {page.number <= 5 ? "DISCOVER" : page.number <= 7 || page.number===13 ? "UNDERSTAND" : page.number <= 11 ? "PRACTISE" : "APPLY"}</p><h2>{labels[page.number]??page.label}</h2><p>{prompts[page.number]}</p></div></header>
       <div className="book-chapter-content"><VisualPage page={page} week={week} level={level}/></div>
     </article>})}</div>
   </div>;

@@ -7,6 +7,7 @@ const root=resolve('.');
 const manifest=JSON.parse(await readFile('lib/resource-manifest.json','utf8'));
 const data=JSON.parse(await readFile('lib/academy-data.json','utf8'));
 const plans=JSON.parse(await readFile('lib/topic-plans.json','utf8'));
+const review=JSON.parse(await readFile('lib/grade6-review.json','utf8'));
 const secret=randomBytes(32).toString('hex');
 const results=[];
 const testEnv={STUDENT_PASSCODE:'student1234',TEACHER_PASSCODE:'teacher1234',ACADEMY_SESSION_SECRET:secret,
@@ -55,16 +56,21 @@ try {
    const r=await request(`/learn/student/${level.slug}/${week.number}`,session('student'));
    assert.equal(r.status,200,`${level.slug}/${week.number}`);
    const html=await r.text();
+   const reviewId=`${level.slug}/${week.number}`;
+   assert.ok(html.includes(`data-review-id="${reviewId}"`));
+   assert.ok(html.includes(`data-transfer-id="${reviewId}"`));
+   assert.doesNotMatch(html,/data-teacher-solution=/);
+   assert.ok(!html.includes(review[reviewId].solution),`Teacher transfer answer leaked: ${reviewId}`);
    assert.equal((html.match(/class="instruction-visual"/g)||[]).length,5,`${level.slug}/${week.number} story and vocabulary artwork count`);
    assert.equal((html.match(/role="tab"/g)||[]).length,0);
    assert.match(html,/data-native-diagram="mechanism"/);
-   assert.match(html,/data-edition="topic-studio-2026-09-14"/);
+   assert.match(html,/data-edition="grade6-entry-2026-09-14"/);
    assert.ok(html.includes(`data-topic-id="${level.slug}/${week.number}"`));
    assert.ok(html.includes(`data-diagram-kind="${plans[`${level.slug}/${week.number}`].kind}"`));
    for(const panel of ['repair','worked-case','case-comparison'])assert.ok(html.includes(`data-topic-panel="${panel}"`));
    assert.match(html,/class="reasoning-path/);
    assert.match(html,/vocabulary-cards/);
-   assert.equal(r.headers.get('x-academy-edition'),'topic-studio-2026-09-14');
+   assert.equal(r.headers.get('x-academy-edition'),'grade6-entry-2026-09-14');
    assert.match(html,/Enlarge illustration/);
    for(const page of week.student.pages) assert.ok(html.includes(`id="section-${page.number}"`),`Missing page ${page.number}`);
    assert.doesNotMatch(html,/Expected independent answer/);
@@ -79,6 +85,10 @@ try {
    const role=resource==='guide'?'teacher':'student';
    const r=await request(`/learn/${role}/${level.slug}/${week.number}?resource=${resource}`,session(role));assert.equal(r.status,200);
    const html=await r.text();assert.match(html,resource==='guide'?/topic-teacher-prompt/:/topic-workbook-prompt/);
+   const reviewId=`${level.slug}/${week.number}`;
+   assert.ok(html.includes(`data-transfer-id="${reviewId}"`));
+   if(resource==='guide')assert.ok(html.includes(`data-teacher-solution="${reviewId}"`));
+   else {assert.doesNotMatch(html,/data-teacher-solution=/);assert.ok(!html.includes(review[reviewId].solution));}
    if(resource==='guide')assert.ok(html.includes(`data-topic-id="${level.slug}/${week.number}"`));
    else assert.doesNotMatch(html,/Expected independent answer/);
    if(process.env.EXPORT_BOOKS==='1')await writeFile(`outputs/books/${level.slug}/week-${String(week.number).padStart(2,'0')}-${resource}.html`,html);

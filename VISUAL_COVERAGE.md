@@ -1,6 +1,6 @@
 # All-level visual teaching coverage
 
-Edition: topic-studio-2026-09-14. All 144 weekly lessons have an individually authored diagram specification, a matching worked case, a misconception discussion and a teacher prompt. Existing student and teacher text, workbook missions and 292 protected DOCX downloads are retained. The DOCX files are the original editions; these improvements are to the website and printable HTML.
+Edition: grade6-entry-2026-09-14. All 144 weekly lessons have an individually authored diagram specification, a matching worked case, a misconception discussion and a teacher prompt. Existing student and teacher text, workbook missions and 292 protected DOCX downloads are retained. The DOCX files are the original editions; these improvements are to the website and printable HTML.
 
 Diagrams use exact HTML/SVG labels and quantities rather than generated text inside images. Existing weekly story art and vocabulary artwork remain available. Generic stage/case raster cards are replaced in the main reading flow; their source text is retained.
 

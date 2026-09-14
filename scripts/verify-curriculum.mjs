@@ -5,6 +5,7 @@ import { createDecipheriv } from "node:crypto";
 const root = new URL("../", import.meta.url);
 const read = path => readFile(new URL(path, root));
 const data = JSON.parse(await read("lib/academy-data.json"));
+const review=JSON.parse(await read('lib/grade6-review.json'));
 for (const file of ["components/visual-lesson-book.tsx", "components/sensor-lab.tsx", "components/lesson-visual.tsx", "app/lesson-book.css", "PACKAGE_EDITION.txt"]) assert.ok((await stat(new URL(file, root))).size > 0, `Missing visual book file: ${file}`);
 assert.match((await read("app/learn/[role]/[level]/[week]/page.tsx")).toString(), /<VisualLessonBook/, "The week route must render the complete illustrated lesson book");
 const manifest = JSON.parse(await read("lib/resource-manifest.json"));
@@ -33,6 +34,11 @@ assert.equal(data.levels.length, 4);
 for (const level of data.levels) {
   assert.deepEqual(level.weeks.map(w => w.number), Array.from({length:36}, (_, i) => i + 1));
   for (const week of level.weeks) {
+    const id=`${level.slug}/${week.number}`;
+    assert.ok(review[id]?.recall&&review[id]?.task&&review[id]?.hint&&review[id]?.solution,`Incomplete Grade 6 teaching set: ${id}`);
+    for(const block of week.student.pages.find(p=>p.number===5).blocks){
+      if(block.type==='table')for(const row of block.rows.slice(1))assert.ok(row[1]?.trim(),`Undefined vocabulary: ${id}: ${row[0]}`);
+    }
     reference(week.hero, "student");
     let count = 0;
     for (const p of week.student.pages) count += walk(p.blocks, "student");

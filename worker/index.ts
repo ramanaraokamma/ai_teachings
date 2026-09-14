@@ -32,7 +32,7 @@ const worker = {
 
     const original = await handler.fetch(request, env, ctx);
     const response = new Response(original.body, original);
-    response.headers.set("X-Academy-Edition", "topic-studio-2026-09-14");
+    response.headers.set("X-Academy-Edition", "grade6-entry-2026-09-14");
     if (url.pathname.startsWith("/learn/") || url.pathname.startsWith("/api/")) {
       const protectedResponse = new Response(response.body, response);
       protectedResponse.headers.set("Cache-Control", "private, no-store");

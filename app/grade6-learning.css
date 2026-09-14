@@ -1,0 +1,38 @@
+.readiness-check,.transfer-challenge {background:#fff;border:1px solid #b9ccdf;border-radius:14px;padding:clamp(1.25rem,3vw,2.5rem);margin:0 0 2rem;color:#17324f;overflow-wrap:anywhere;}
+.readiness-check {border-left:6px solid #2465a8;background:#edf5ff;}
+.review-eyebrow {font-size:.875rem;letter-spacing:.08em;font-weight:750;color:#285b8b;}
+.readiness-check h2,.transfer-challenge h2 {font-size:clamp(1.5rem,3vw,2rem);line-height:1.25;margin:.5rem 0 1rem;}
+.readiness-check p,.transfer-challenge p {max-width:78ch;font-size:1rem;line-height:1.75;margin:.75rem 0;}
+.transfer-challenge .transfer-question {font-size:1.15rem;font-weight:600;}
+.transfer-challenge h3 {font-size:1.25rem;font-weight:700;margin:1.25rem 0 .5rem;}
+.transfer-challenge h4 {font-size:1.05rem;font-weight:700;margin:1.25rem 0 .5rem;}
+.transfer-hint {margin:1.5rem 0;padding:1rem;border:1px solid #b9ccdf;border-radius:8px;}
+.transfer-hint summary {font-weight:650;cursor:pointer;}
+.transfer-self-check {border-top:1px solid #b9ccdf;margin-top:1.5rem;}
+.transfer-answer {margin-top:2rem;padding:1.25rem;background:#edf5f1;border:1px solid #a8c5b6;border-radius:8px;}
+.legacy-download-note {font-size:.875rem;color:#deebff;max-width:70ch;line-height:1.6;}
+.lesson-section,.section-blocks {min-width:0;}
+.reader-nav a,.section-kicker>span,.content-table-wrap th,.content-table-wrap td {font-size:.875rem;}
+.content-paragraph {font-size:1rem;}
+.reader-nav-title {font-size:.875rem;letter-spacing:.04em;}
+.section-kicker {flex-wrap:wrap;}
+@media print {
+ .readiness-check,.transfer-challenge {border-radius:0;box-shadow:none;padding:4mm;background:white;color:black;}
+ .readiness-check {break-inside:avoid;}
+ .transfer-challenge {break-before:page;}
+ .transfer-challenge header,h2,h3,h4 {break-after:avoid;}
+ .transfer-answer {break-before:page;background:white;border:0;padding:0;}
+ .transfer-hint {display:none!important;}
+ .transfer-challenge p,.readiness-check p {font-size:11pt;line-height:1.5;orphans:3;widows:3;}
+ .transfer-challenge .transfer-question {font-size:12pt;}
+ .transfer-challenge .print-answer {min-height:48mm;}
+ .legacy-download-note {display:none;}
+ /* Let long chapters flow; keep small teaching units together, not entire pages. */
+ .book-chapter {break-before:auto;margin-bottom:7mm;}
+ .book-chapter-heading {break-after:avoid;}
+ .book-chapter-content p {orphans:3;widows:3;}
+ tr {break-inside:avoid;}
+ .topic-diagram {max-width:100%;}
+ .topic-diagram svg {max-width:100%;height:auto;}
+ .code-block {break-inside:avoid;font-size:9pt;}
+}

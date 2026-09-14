@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./lesson-book.css";
 import "./topic-studio.css";
+import "./grade6-learning.css";
 
 export const metadata: Metadata = {
   title: { default: "AI Academy", template: "%s | AI Academy" },
-  description: "The refined AI Academy Curriculum 2.0 learning portal for students and teachers.",
+  description: "AI Academy for students starting in Grade 6: lessons, practice and protected teacher guidance.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",

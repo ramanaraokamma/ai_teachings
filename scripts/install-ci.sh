@@ -3,6 +3,11 @@ set -euo pipefail
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  cd "${script_dir}/.."
+  exec npm ci --cache .sites-runtime/npm-cache --no-audit --no-fund
+fi
+
 if [[ "${SITES_ENV_READY:-}" != "1" ]]; then
   exec "${script_dir}/sites-env.sh" -- "$0" "$@"
 fi

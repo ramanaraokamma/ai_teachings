@@ -15,6 +15,8 @@ const localBindingConfig = {
   name: "ai-teachings",
   main: "./worker/index.ts",
   compatibility_flags: ["nodejs_compat"],
+  // The protected resource route fetches encrypted files through this binding in dev and production.
+  assets: { binding: "ASSETS" },
   d1_databases: d1
     ? [
         {

@@ -14,4 +14,4 @@ for (const id of Object.keys(manifest)) {
   const emitted = new URL(`../dist/client/curriculum-blobs/${id}.bin`, import.meta.url);
   if ((await stat(emitted)).size <= 28) throw new Error(`Build omitted curriculum asset ${id}`);
 }
-console.log(`Deployment ready: ai-teachings; ${Object.keys(manifest).length} protected resources included; topic-studio-2026-09-14.`);
+console.log(`Deployment ready: ai-teachings; ${Object.keys(manifest).length} protected resources included; grade6-entry-2026-09-14.`);

@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, BookOpen, ClipboardCheck, GraduationCap, Image a
 import { notFound } from "next/navigation";
 
 import { ContentReader } from "@/components/content-reader";
+import { ReadinessCheck, TransferChallenge } from "@/components/grade6-learning";
 import { VisualLessonBook, TeacherVisualBoard, WorkbookTrace, lessonIdea } from "@/components/visual-lesson-book";
 import { PortalHeader } from "@/components/portal-header";
 import { PrintResource } from "@/components/print-resource";
@@ -44,14 +45,17 @@ export default async function WeekPage({ params, searchParams }: { params: Promi
           <Link className={resource === "workbook" ? "active" : ""} href="?resource=workbook"><GraduationCap aria-hidden="true" /><span>Workbook practice<small>Weekly mission</small></span></Link>
         </nav>
         <div className="resource-actions">
-          <a className="resource-action" href={resource === "guide" ? week.teacher.download : resource === "workbook" ? week.workbook.download : week.student.download}>Download editable {resource === "workbook" ? "36-week workbook" : resource === "guide" ? "teacher guide" : "student booklet"} (.docx)</a>
+          <a className="resource-action" href={resource === "guide" ? week.teacher.download : resource === "workbook" ? week.workbook.download : week.student.download}>Download editable original {resource === "workbook" ? "36-week workbook" : resource === "guide" ? "teacher guide" : "student booklet"} (.docx)</a>
           <PrintResource />
         </div>
+        <p className="legacy-download-note">Use Print for this current Grade 6 entry edition. Original Word downloads contain the earlier curriculum and exclude the new transfer tasks and vocabulary corrections.</p>
       </section>
       <section className="lesson-reader-shell">
+        <ReadinessCheck level={level.slug} week={week.number}/>
         {resource === "guide" && <><TeacherVisualBoard week={week} level={level.slug}/><ContentReader pages={week.teacher.pages} /></>}
         {resource === "lesson" && <VisualLessonBook week={week} level={level.slug} />}
         {resource === "workbook" && <><WorkbookTrace level={level.slug} week={week.number}/><ContentReader workbookBlocks={week.workbook.blocks} /></>}
+        <TransferChallenge level={level.slug} week={week.number} teacher={resource === "guide" && role === "teacher"}/>
       </section>
       <nav className="week-pagination" aria-label="Adjacent weeks">
         {previous ? <Link href={`/learn/${role}/${level.slug}/${previous}?resource=${resource}`}><ArrowLeft aria-hidden="true" /><span><small>Previous</small>Week {previous}</span></Link> : <span />}

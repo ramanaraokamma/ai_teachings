@@ -25,12 +25,12 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ a
   const hasError = query.access === "incorrect" || query.access === "required";
   return (
     <main className="landing-page">
-      <nav className="landing-nav"><div className="brand brand-light"><span className="brand-mark"><Sparkles aria-hidden="true" /></span><span><strong>AI Academy</strong><small>Curriculum 2.0 · Refined</small></span></div><div className="private-label"><LockKeyhole aria-hidden="true" /> Protected learning portal</div></nav>
+      <nav className="landing-nav"><div className="brand brand-light"><span className="brand-mark"><Sparkles aria-hidden="true" /></span><span><strong>AI Academy</strong><small>Grade 6 entry · Four levels</small></span></div><div className="private-label"><LockKeyhole aria-hidden="true" /> Protected learning portal</div></nav>
       <div className="landing-shell">
         <section className="landing-story">
           <p className="eyebrow"><Orbit aria-hidden="true" /> From curiosity to capable creation</p>
           <h1>Curious minds.<br />Confident creators.</h1>
-          <p className="landing-intro">A complete, carefully sequenced academy experience for students and the teachers who guide them.</p>
+          <p className="landing-intro">Start in Grade 6 and progress through foundations, algorithms and data, generative AI, and machine learning. Placement follows demonstrated readiness.</p>
           <div className="pathway-visual" aria-label="Four connected learning pathways">{["Observe", "Reason", "Create", "Build"].map((label, index) => <div className={`pathway-line pathway-${index + 1}`} key={label}><span>{index + 1}</span><p>{label}</p><i aria-hidden="true" /></div>)}</div>
           <div className="trust-line"><ShieldCheck aria-hidden="true" /><span>Learning materials stay hidden until the correct role passcode is entered.</span></div>
         </section>
@@ -41,7 +41,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ a
           <AccessCard role="teacher" highlighted={query.role === "teacher" && hasError} />
         </section>
       </div>
-      <footer className="landing-footer"><span>AI Academy · Visual Teaching Edition · 14 September 2026</span><span>Learn deeply. Build responsibly.</span></footer>
+      <footer className="landing-footer"><span>AI Academy · Grade 6 Entry Edition · 14 September 2026</span><span>Learn deeply. Build responsibly.</span></footer>
     </main>
   );
 }
