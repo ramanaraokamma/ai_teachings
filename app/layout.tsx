@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./lesson-book.css";
+import "./topic-studio.css";
 
 export const metadata: Metadata = {
   title: { default: "AI Academy", template: "%s | AI Academy" },

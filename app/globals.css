@@ -345,6 +345,53 @@ svg { stroke-width: 1.8; }
 }
 
 /* The complete illustrated lesson, with quiet space for working. */
+.learning-journey { max-width: 1040px; margin: auto; scroll-margin-top: 1rem; }
+.journey-intro { padding: .5rem 0 1.5rem; max-width: 65ch; }
+.journey-intro .eyebrow { color: #26695d; font-size: .75rem; letter-spacing: .13em; font-weight: 800; }
+.journey-intro h2 { font-size: clamp(1.65rem, 3vw, 2.3rem); line-height: 1.2; margin: .6rem 0; color: #183b3a; }
+.journey-intro p { color: #4b6068; line-height: 1.7; }
+.journey-tabs[data-slot="tabs-list"] { width: 100%; height: auto; display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); padding: .4rem; gap: .4rem; background: #e8eeeb; border-radius: 1.1rem; }
+.journey-tabs [role="tab"] { min-height: 78px; padding: .7rem; gap: .7rem; border-radius: .8rem; white-space: normal; color: #3b5555; font-size: 1.05rem; }
+.journey-tabs [role="tab"] span { display: grid; text-align: left; }
+.journey-tabs [role="tab"] small { font-size: .7rem; font-weight: 500; }
+.journey-tabs [role="tab"] svg { width: 23px; height: 23px; }
+.journey-tabs [role="tab"][data-state="active"] { background: #174e47; color: white; box-shadow: 0 3px 10px #15382b20; }
+.journey-panel[data-state="inactive"] { display: none; }
+.stage-purpose { margin: 1.5rem 0; padding: 1rem 1.3rem; background: #f0f6e7; border-left: 4px solid #799950; border-radius: 0 .75rem .75rem 0; color: #2a4931; }
+.stage-purpose strong { font-size: 1.1rem; }
+.stage-purpose p { margin-top: .35rem; line-height: 1.65; }
+.journey-next, .explanation-toggle, .visual-recovery button { display: inline-flex; align-items: center; justify-content: center; gap: .7rem; border: 0; padding: .9rem 1.2rem; border-radius: .75rem; background: #174e47; color: white; cursor: pointer; font-weight: 650; min-height: 48px; }
+.journey-next { margin: 1.5rem 0; }
+.journey-next svg { width: 20px; }
+.learning-journey .lesson-section { margin-bottom: 1.5rem; border-radius: 1.15rem; padding: clamp(1.1rem, 3vw, 2.5rem); }
+.learning-journey .content-paragraph, .learning-journey .content-list p { max-width: 70ch; line-height: 1.85; }
+.level-ai-1 .learning-journey .section-blocks { font-size: 1.15rem; }
+.level-ai-1 .learning-journey .content-paragraph, .level-ai-1 .learning-journey .content-list p { font-size: 1.15rem; max-width: 58ch; }
+.level-ai-2 .learning-journey .content-paragraph { font-size: 1.075rem; }
+.prediction-prompt { padding: 1.3rem; margin: 1.5rem 0 1rem; border: 1px solid #d9c891; background: #fffae9; border-radius: .85rem; }
+.prediction-prompt h3 { font-size: 1.2rem; font-weight: 750; color: #70521b; }
+.prediction-prompt p { margin: .5rem 0 1rem; line-height: 1.65; }
+.worked-reveal { padding: 1rem 0; }
+.visual-expand { position: relative; display: block; width: 100%; padding: .6rem; border-radius: .9rem; background: white; border: 1px solid #dce6e8; cursor: zoom-in; }
+.instruction-visual .visual-expand img { width: min(100%, 680px); max-height: 500px; object-fit: contain; }
+.visual-zoom-label { display: inline-flex; gap: .4rem; align-items: center; padding: .5rem; color: #2c605c; font-size: .75rem; font-weight: 600; }
+.visual-zoom-label svg { width: 14px; height: 14px; }
+.visual-dialog[data-slot="dialog-content"] { max-width: min(94vw, 1150px); max-height: 94dvh; overflow: auto; }
+.visual-dialog img { width: 100%; max-height: 72dvh; object-fit: contain; }
+.visual-recovery { padding: 1rem; border: 1px solid #c79451; background: #fffaef; border-radius: .75rem; }
+.visual-recovery p { margin: .5rem 0; }
+.week-card-image { width: 100%; height: 170px; object-fit: contain; border-radius: .75rem; background: #f6f9f7; margin-bottom: 1rem; }
+@media (max-width: 600px) {
+  .journey-tabs[data-slot="tabs-list"] { gap: .15rem; padding: .25rem; }
+  .journey-tabs [role="tab"] { flex-direction: column; gap: .25rem; padding: .6rem .2rem; font-size: .85rem; }
+  .journey-tabs [role="tab"] span { text-align: center; }
+}
+@media print {
+  .journey-tabs, .journey-next, .explanation-toggle, .visual-zoom-label { display: none !important; }
+  .journey-panel[data-state="inactive"], .worked-reveal[hidden] { display: block !important; }
+  .visual-expand { border: 0; padding: 0; }
+  .stage-purpose { break-after: avoid; }
+}
 .instruction-visual { margin: 1.5rem auto; max-width: 100%; text-align: center; }
 .instruction-visual img { display: block; max-width: 100%; height: auto; margin: auto; border-radius: .7rem; }
 .instruction-visual figcaption { max-width: 60ch; margin: .65rem auto 0; color: #64748b; font-size: .78rem; line-height: 1.5; }

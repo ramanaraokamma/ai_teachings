@@ -1,0 +1,3822 @@
+{
+  "ai-1/1": {
+    "id": "ai-1/1",
+    "kind": "compare",
+    "title": "Find the decision maker",
+    "items": [
+      {
+        "label": "Motion lamp",
+        "value": "Written rule"
+      },
+      {
+        "label": "Photo sorter",
+        "value": "Learned from examples"
+      },
+      {
+        "label": "Remote car",
+        "value": "Human command"
+      },
+      {
+        "label": "Smart speaker",
+        "value": "Need more information"
+      }
+    ],
+    "teach": "Ask what evidence would reveal how the smart speaker decides.",
+    "misconception": "A robot body proves the device learns.",
+    "lesson": "Week 1: AI or Not?",
+    "scenario": "Six devices are a motion-triggered lamp, a trained photo sorter, a remote-controlled car, a calculator, an unspecified smart speaker and an unspecified robot vacuum.",
+    "question": "Classify all six using mechanism evidence. Which two need more information?",
+    "explanation": "The lamp uses a fixed rule; the photo sorter uses a learned model; the car follows human commands; the calculator performs arithmetic. The speaker and vacuum need mechanism details. Products can combine mechanisms. A robot body or smart label proves none of them."
+  },
+  "ai-1/2": {
+    "id": "ai-1/2",
+    "kind": "flow",
+    "title": "From mood to song titles",
+    "items": [
+      {
+        "label": "Mood",
+        "value": "Input from listener"
+      },
+      {
+        "label": "Tag matching",
+        "value": "Process chooses matches"
+      },
+      {
+        "label": "Three titles",
+        "value": "Displayed output"
+      },
+      {
+        "label": "Audio playback",
+        "value": "A separate possible step"
+      }
+    ],
+    "teach": "Ask students to point to where information changes.",
+    "misconception": "Displaying a title means the song is already playing.",
+    "lesson": "Week 2: Input, Process, Output",
+    "scenario": "A playlist helper receives a mood, matches song tags and displays three titles.",
+    "question": "Name input, process and output. Is displaying titles the same as playing audio?",
+    "explanation": "Input is mood; process is tag matching; output is titles. Audio playback is another step. Matching can use fixed rules; the description alone does not establish machine learning."
+  },
+  "ai-1/3": {
+    "id": "ai-1/3",
+    "kind": "bars",
+    "title": "Two light readings, one sensor",
+    "items": [
+      {
+        "label": "Cupboard",
+        "value": "15"
+      },
+      {
+        "label": "Window",
+        "value": "90"
+      }
+    ],
+    "teach": "Cover the location labels and ask which reading suggests more light under the same settings.",
+    "misconception": "A light or sound sensor directly measures happiness.",
+    "lesson": "Week 3: Sensors Are Messengers",
+    "scenario": "A light sensor reads 15 in a cupboard and 90 near a window. A microphone records a clap.",
+    "question": "Which measures a light-related signal? Can either directly measure happiness?",
+    "explanation": "The light sensor measures light; the microphone measures sound. Neither directly measures feelings. Units and calibration matter when comparing devices."
+  },
+  "ai-1/4": {
+    "id": "ai-1/4",
+    "kind": "compare",
+    "title": "Where did the decision come from?",
+    "items": [
+      {
+        "label": "Written rule",
+        "value": "Red card goes left"
+      },
+      {
+        "label": "Learned pattern",
+        "value": "Fit using labelled leaves"
+      },
+      {
+        "label": "Missing rule",
+        "value": "Blue-card action unspecified"
+      }
+    ],
+    "teach": "Give a blue card to the rule follower and ask what instruction is missing.",
+    "misconception": "Every possible input has an action even when no rule states one.",
+    "lesson": "Week 4: Rules or Learned Patterns?",
+    "scenario": "Sorter A follows a written red-card-left rule. Sorter B is fitted using labelled leaves.",
+    "question": "How were their decision processes obtained? Where should A send blue cards?",
+    "explanation": "A was explicitly programmed; B learned parameters from examples. Blue-card handling is unspecified, so request a rule. Both systems can fail."
+  },
+  "ai-1/5": {
+    "id": "ai-1/5",
+    "kind": "pixels",
+    "title": "A picture represented by four numbers",
+    "items": [
+      {
+        "label": "Top left",
+        "value": "0"
+      },
+      {
+        "label": "Top right",
+        "value": "1"
+      },
+      {
+        "label": "Bottom left",
+        "value": "1"
+      },
+      {
+        "label": "Bottom right",
+        "value": "0"
+      }
+    ],
+    "teach": "Change the top-left value to 1. Ask what changes in the image and what stays the same.",
+    "misconception": "Storing pixel values is the same as recognising an object.",
+    "lesson": "Week 5: Pictures Become Numbers",
+    "scenario": "A 2 by 2 image has rows [0,1] and [1,0]. Zero means white and one means black.",
+    "question": "Draw it, then change the top-left value to 1.",
+    "explanation": "Initially top-right and bottom-left are black. The change produces three black squares. Pixel values encode an image; object recognition is a separate interpretation."
+  },
+  "ai-1/6": {
+    "id": "ai-1/6",
+    "kind": "wave",
+    "title": "Sound samples show changes in amplitude",
+    "items": [
+      {
+        "label": "Quiet clap",
+        "value": "1"
+      },
+      {
+        "label": "Loud clap",
+        "value": "3"
+      }
+    ],
+    "teach": "Keep microphone distance and settings the same. Ask what larger amplitude tells us, and what it cannot tell us.",
+    "misconception": "Larger amplitude identifies the spoken word.",
+    "lesson": "Week 6: Sound Becomes a Signal",
+    "scenario": "A microphone records quiet and loud claps at the same distance and settings.",
+    "question": "What waveform difference is expected? Does it reveal a spoken word?",
+    "explanation": "The louder clap generally produces larger amplitude. Amplitude is not word meaning. Distance, gain and noise must be controlled."
+  },
+  "ai-1/7": {
+    "id": "ai-1/7",
+    "kind": "groups",
+    "title": "Use the same label rule for every card",
+    "items": [
+      {
+        "label": "Circles",
+        "value": "2"
+      },
+      {
+        "label": "Triangles",
+        "value": "2"
+      },
+      {
+        "label": "Squares",
+        "value": "2"
+      }
+    ],
+    "teach": "Mix colours within each shape group and ask whether the shape label changes.",
+    "misconception": "Different colours require different shape labels.",
+    "lesson": "Week 7: Categories and Labels",
+    "scenario": "Six cards show two circles, two triangles and two squares. Sort by shape.",
+    "question": "Why can red and blue circles share a label?",
+    "explanation": "Both meet the circle definition. Colour does not change the agreed shape label. Apply one definition consistently."
+  },
+  "ai-1/8": {
+    "id": "ai-1/8",
+    "kind": "compare",
+    "title": "Choose a clue that answers this task",
+    "items": [
+      {
+        "label": "Target",
+        "value": "Smooth versus toothed edge"
+      },
+      {
+        "label": "Useful clue",
+        "value": "Edge shape"
+      },
+      {
+        "label": "Weak clue",
+        "value": "Leaf size alone"
+      }
+    ],
+    "teach": "Show two equally sized leaves with different edges and ask which clue separates them.",
+    "misconception": "The biggest visible difference is always the useful feature.",
+    "lesson": "Week 8: Features: Useful Clues",
+    "scenario": "Two green leaves have smooth and toothed edges. The task is to distinguish edge types.",
+    "question": "Choose the relevant feature and explain why size is insufficient.",
+    "explanation": "Edge shape directly addresses the target. Size can vary within both categories. Feature usefulness depends on the task."
+  },
+  "ai-1/9": {
+    "id": "ai-1/9",
+    "kind": "trace",
+    "title": "Trace a robot's position",
+    "items": [
+      {
+        "label": "Start",
+        "value": "Left square"
+      },
+      {
+        "label": "MOVE",
+        "value": "Middle square"
+      },
+      {
+        "label": "MOVE",
+        "value": "Right square"
+      },
+      {
+        "label": "STOP",
+        "value": "Right square"
+      }
+    ],
+    "teach": "Ask students to predict each position before advancing the trace.",
+    "misconception": "Commands work without a starting position or direction.",
+    "lesson": "Week 9: Algorithms as Recipes",
+    "scenario": "A robot starts on the left of three squares, facing right. It executes MOVE, MOVE, STOP, each MOVE being one square.",
+    "question": "Trace the position after each command.",
+    "explanation": "Middle, rightmost, unchanged. Direction, distance and starting conditions must be specified."
+  },
+  "ai-1/10": {
+    "id": "ai-1/10",
+    "kind": "branch",
+    "title": "Does this card have a star?",
+    "items": [
+      {
+        "label": "Star only",
+        "value": "Yes → tray A"
+      },
+      {
+        "label": "Circle only",
+        "value": "No → tray B"
+      },
+      {
+        "label": "Star and circle",
+        "value": "Yes → tray A"
+      }
+    ],
+    "teach": "Emphasise has a star, then test a card containing both shapes.",
+    "misconception": "Has a star means has only a star.",
+    "lesson": "Week 10: If/Then Decisions",
+    "scenario": "If a card has a star, send it to A; otherwise send it to B.",
+    "question": "Sort a star, a circle, and a card with both shapes.",
+    "explanation": "Star and mixed cards go to A because both have a star. The circle goes to B. The test is has a star, not has only a star."
+  },
+  "ai-1/11": {
+    "id": "ai-1/11",
+    "kind": "trace",
+    "title": "Repeat with a clear stopping point",
+    "items": [
+      {
+        "label": "Before",
+        "value": "0 stamped"
+      },
+      {
+        "label": "Repeat 1",
+        "value": "1 stamped"
+      },
+      {
+        "label": "Repeat 2",
+        "value": "2 stamped"
+      },
+      {
+        "label": "Repeat 3",
+        "value": "3 stamped"
+      },
+      {
+        "label": "Repeat 4",
+        "value": "4 stamped, stop"
+      }
+    ],
+    "teach": "Ask what happens if only three unstamped cards are available.",
+    "misconception": "A repeat command can continue without enough input or a stopping rule.",
+    "lesson": "Week 11: Repeating Efficiently",
+    "scenario": "Repeat take the next unstamped card and stamp it four times.",
+    "question": "How many cards are stamped? What assumption matters?",
+    "explanation": "Four, provided four unstamped cards exist and each repeat takes the next one. A limit or end-of-stack check prevents continuing indefinitely."
+  },
+  "ai-1/12": {
+    "id": "ai-1/12",
+    "kind": "compare",
+    "title": "Repair the earliest missing action",
+    "items": [
+      {
+        "label": "Intended destination",
+        "value": "Square three"
+      },
+      {
+        "label": "Broken program",
+        "value": "MOVE, STOP → square two"
+      },
+      {
+        "label": "Repaired program",
+        "value": "MOVE, MOVE, STOP → square three"
+      }
+    ],
+    "teach": "Run both programs from the same starting square and compare the trace.",
+    "misconception": "Changing the destination repairs the program.",
+    "lesson": "Week 12: Debug the Cause",
+    "scenario": "A robot should go from square one to square three. Its program is MOVE ONE, STOP.",
+    "question": "Find the cause and repair one thing.",
+    "explanation": "It stops at square two because one move is missing. Add MOVE ONE before STOP and retest from the same start."
+  },
+  "ai-1/13": {
+    "id": "ai-1/13",
+    "kind": "flow",
+    "title": "Examples suggest a pattern to test",
+    "items": [
+      {
+        "label": "Smooth leaves",
+        "value": "Training label S"
+      },
+      {
+        "label": "Toothed leaves",
+        "value": "Training label T"
+      },
+      {
+        "label": "New toothed leaf",
+        "value": "Predict T"
+      },
+      {
+        "label": "Fresh labelled cases",
+        "value": "Check the prediction rule"
+      }
+    ],
+    "teach": "Ask why one correct new leaf does not prove every future prediction.",
+    "misconception": "One successful prediction proves the classifier always works.",
+    "lesson": "Week 13: Learning from Examples",
+    "scenario": "Training examples label smooth leaves S and toothed leaves T. A new leaf is toothed.",
+    "question": "Predict and state the evidence limit.",
+    "explanation": "Predict T from the demonstrated edge pattern. One success does not establish broad reliability; use fresh labelled tests including ambiguous cases."
+  },
+  "ai-1/14": {
+    "id": "ai-1/14",
+    "kind": "branch",
+    "title": "Does the object have wheels?",
+    "items": [
+      {
+        "label": "Bicycle",
+        "value": "Yes → vehicle"
+      },
+      {
+        "label": "Wheelchair",
+        "value": "Yes → vehicle"
+      },
+      {
+        "label": "Toy car",
+        "value": "Yes → vehicle"
+      },
+      {
+        "label": "Boat",
+        "value": "No → excluded by this rule"
+      }
+    ],
+    "teach": "Ask whether the intended vehicle category includes boats, independently of the rule.",
+    "misconception": "The rule's output defines the true category automatically.",
+    "lesson": "Week 14: Build a Human Classifier",
+    "scenario": "A human classifier uses has wheels means vehicle on a bicycle, wheelchair, toy car and boat.",
+    "question": "Apply the rule and identify a limitation.",
+    "explanation": "The first three receive vehicle; the boat does not. If the intended category includes boats, the rule misses them. Define the category independently of the prediction rule."
+  },
+  "ai-1/15": {
+    "id": "ai-1/15",
+    "kind": "split",
+    "title": "Keep the final cards unseen",
+    "items": [
+      {
+        "label": "Practice A–F",
+        "value": "6"
+      },
+      {
+        "label": "Sealed test G–H",
+        "value": "2"
+      }
+    ],
+    "teach": "Ask when opening the sealed cards would make them part of practice.",
+    "misconception": "A familiar practice card is a fresh test.",
+    "lesson": "Week 15: Save New Examples for Testing",
+    "scenario": "Cards A–F are used for practice. G and H remain sealed.",
+    "question": "Which can provide a fresh test, and under what condition?",
+    "explanation": "G and H, only if neither influenced teaching or revision. Familiar cases do not establish unseen performance. Keep final test answers separate."
+  },
+  "ai-1/16": {
+    "id": "ai-1/16",
+    "kind": "compare",
+    "title": "Two different reasons to ask for help",
+    "items": [
+      {
+        "label": "Purple card",
+        "value": "Outside clear red/blue categories"
+      },
+      {
+        "label": "Very dark card",
+        "value": "Colour cannot be observed"
+      },
+      {
+        "label": "Review tray",
+        "value": "Preserve uncertainty for a person"
+      }
+    ],
+    "teach": "Ask students to explain each uncertainty cause instead of only saying wrong.",
+    "misconception": "Every uncertain case has the same cause.",
+    "lesson": "Week 16: Boundaries and 'Not Sure'",
+    "scenario": "A sorter handles clearly red and clearly blue cards. Purple and very dark cards arrive.",
+    "question": "How should it handle each uncertain case?",
+    "explanation": "Use a review tray. Purple is outside the clear categories; darkness prevents observation. These are different uncertainty causes."
+  },
+  "ai-1/17": {
+    "id": "ai-1/17",
+    "kind": "flow",
+    "title": "A prediction becomes checkable evidence",
+    "items": [
+      {
+        "label": "Today",
+        "value": "Record tomorrow's rain prediction"
+      },
+      {
+        "label": "Tomorrow",
+        "value": "Observe using an agreed rain rule"
+      },
+      {
+        "label": "Compare",
+        "value": "Prediction versus observation"
+      }
+    ],
+    "teach": "Ask when the class can know whether the prediction matched the observation.",
+    "misconception": "A prediction is already a fact about tomorrow.",
+    "lesson": "Week 17: Prediction Is Not Fact",
+    "scenario": "A weather helper predicts tomorrow's rain.",
+    "question": "Is this a fact about tomorrow? How can it be checked?",
+    "explanation": "It is a prediction. Record it now and compare with a predefined rain observation tomorrow. Useful predictions are not guarantees."
+  },
+  "ai-1/18": {
+    "id": "ai-1/18",
+    "kind": "compare",
+    "title": "Confidence cannot replace evidence",
+    "items": [
+      {
+        "label": "Blurred image",
+        "value": "Helper confidently says cat"
+      },
+      {
+        "label": "Clear original",
+        "value": "Actually a dog"
+      },
+      {
+        "label": "Conclusion",
+        "value": "Confident prediction was wrong"
+      }
+    ],
+    "teach": "Ask which evidence establishes correctness and which only describes certainty.",
+    "misconception": "A confident answer must be correct.",
+    "lesson": "Week 18: Confidence Is Not Correctness",
+    "scenario": "A helper confidently labels a blurred dog photo as cat; the clear original shows a dog.",
+    "question": "What does this show?",
+    "explanation": "Confidence and correctness differ. A confident error remains wrong. Check evidence, particularly unfamiliar or low-quality inputs."
+  },
+  "ai-1/19": {
+    "id": "ai-1/19",
+    "kind": "bars",
+    "title": "Count matching book traits",
+    "items": [
+      {
+        "label": "Book A",
+        "value": "2"
+      },
+      {
+        "label": "Book B",
+        "value": "1"
+      },
+      {
+        "label": "Book C",
+        "value": "0"
+      }
+    ],
+    "teach": "Ask how the ranking changes if the reader no longer wants adventure.",
+    "misconception": "Similarity is a universal measure of book quality.",
+    "lesson": "Week 19: Similarity",
+    "scenario": "Book A has animals and adventure; B has animals only; C has neither. A reader wants both traits.",
+    "question": "Rank by number of matching traits.",
+    "explanation": "A scores 2, B 1, C 0. Ranking depends on the chosen traits; it is not a universal measure of book quality."
+  },
+  "ai-1/20": {
+    "id": "ai-1/20",
+    "kind": "cycle",
+    "title": "Recommendations shape future evidence",
+    "items": [
+      {
+        "label": "Past choice",
+        "value": "One adventure book"
+      },
+      {
+        "label": "Suggestion",
+        "value": "More adventure"
+      },
+      {
+        "label": "Feedback",
+        "value": "Ask what the reader liked"
+      },
+      {
+        "label": "Next suggestion",
+        "value": "Use feedback and offer variety"
+      }
+    ],
+    "teach": "Ask what one choice fails to tell us about the reader.",
+    "misconception": "One chosen book reveals every interest.",
+    "lesson": "Week 20: Recommendations",
+    "scenario": "A recommender suggests adventure books after one adventure-book choice.",
+    "question": "Explain its evidence and limitation.",
+    "explanation": "The past choice supports considering adventure, but does not capture every interest. Ask for feedback and offer variety."
+  },
+  "ai-1/21": {
+    "id": "ai-1/21",
+    "kind": "compare",
+    "title": "Check suspicious data before changing it",
+    "items": [
+      {
+        "label": "12 cm",
+        "value": "Plausible recorded length"
+      },
+      {
+        "label": "14 cm",
+        "value": "Plausible recorded length"
+      },
+      {
+        "label": "Blank",
+        "value": "Missing measurement"
+      },
+      {
+        "label": "130 cm",
+        "value": "Check source and units"
+      }
+    ],
+    "teach": "Ask why crossing out a zero without checking the source invents data.",
+    "misconception": "An unusual value should silently become the number we expect.",
+    "lesson": "Week 21: Good Data, Bad Data",
+    "scenario": "Ordinary pencil lengths are recorded as 12 cm, 14 cm, blank and 130 cm.",
+    "question": "What needs checking? May 130 silently become 13?",
+    "explanation": "Investigate missing and unusually large values using the source and units. Do not invent a repair. Document verified corrections."
+  },
+  "ai-1/22": {
+    "id": "ai-1/22",
+    "kind": "groups",
+    "title": "Training examples can leave gaps",
+    "items": [
+      {
+        "label": "Daylight photos",
+        "value": "9"
+      },
+      {
+        "label": "Low-light photos",
+        "value": "1"
+      }
+    ],
+    "teach": "Ask whether copying the one dark photo nine times adds nine new situations.",
+    "misconception": "Repeated copies provide the same variety as fresh examples.",
+    "lesson": "Week 22: Missing and Unbalanced Examples",
+    "scenario": "Training includes nine daylight leaf photos and one low-light photo.",
+    "question": "What intended-use gap is present?",
+    "explanation": "Low light is poorly represented. Add varied, correctly labelled low-light examples if that use is intended. Copies of one photo do not add equivalent variety."
+  },
+  "ai-1/23": {
+    "id": "ai-1/23",
+    "kind": "fractions",
+    "title": "Compare success under two conditions",
+    "items": [
+      {
+        "label": "Quiet",
+        "value": "8/10"
+      },
+      {
+        "label": "Noisy",
+        "value": "4/10"
+      }
+    ],
+    "teach": "Ask students to shade the successful cases, then name a controlled follow-up test.",
+    "misconception": "Different rates prove noise is the only cause.",
+    "lesson": "Week 23: Fair for Whom?",
+    "scenario": "A voice system succeeds on 8/10 quiet and 4/10 noisy recordings.",
+    "question": "Compare and propose the next investigation.",
+    "explanation": "The rates differ. Test more varied recordings under controlled conditions and inspect other factors before claiming a cause."
+  },
+  "ai-1/24": {
+    "id": "ai-1/24",
+    "kind": "compare",
+    "title": "Collect only what the book task needs",
+    "items": [
+      {
+        "label": "Genre",
+        "value": "Useful for genre matching"
+      },
+      {
+        "label": "Home address",
+        "value": "Not needed for this task"
+      },
+      {
+        "label": "Photograph",
+        "value": "Not needed for this task"
+      }
+    ],
+    "teach": "Ask which decision each proposed field would help make.",
+    "misconception": "More personal data always makes the helper better.",
+    "lesson": "Week 24: Privacy by Choosing Less",
+    "scenario": "A genre-based book helper asks for genre, home address and a photograph.",
+    "question": "Which fields are necessary?",
+    "explanation": "Genre is relevant; address and photo are unnecessary for the stated task. Collecting less reduces exposure."
+  },
+  "ai-1/25": {
+    "id": "ai-1/25",
+    "kind": "compare",
+    "title": "Choose the operation that fits",
+    "items": [
+      {
+        "label": "New rain poem",
+        "value": "Generate"
+      },
+      {
+        "label": "18 + 7",
+        "value": "Calculate → 25"
+      },
+      {
+        "label": "Handbook passage",
+        "value": "Retrieve the actual text"
+      }
+    ],
+    "teach": "Ask how an invented passage differs from finding the real handbook.",
+    "misconception": "A fluent invented passage counts as retrieval.",
+    "lesson": "Week 25: Generate, Retrieve, or Calculate?",
+    "scenario": "A learner needs a new poem, 18+7, and a passage from the class handbook.",
+    "question": "Choose the operation for each.",
+    "explanation": "Generate the poem, calculate 25, retrieve the actual passage. Inventing a fluent passage is not retrieval."
+  },
+  "ai-1/26": {
+    "id": "ai-1/26",
+    "kind": "checklist",
+    "title": "Make a poem request checkable",
+    "items": [
+      {
+        "label": "Length",
+        "value": "Exactly four lines"
+      },
+      {
+        "label": "Topic",
+        "value": "Rain"
+      },
+      {
+        "label": "Vocabulary",
+        "value": "Simple words"
+      },
+      {
+        "label": "Check",
+        "value": "Inspect all three requirements"
+      }
+    ],
+    "teach": "Ask partners to check each condition separately after writing a poem.",
+    "misconception": "Make it good is a complete instruction.",
+    "lesson": "Week 26: Prompts Are Design Instructions",
+    "scenario": "The prompt says make it good; the desired output is a four-line rain poem using simple words.",
+    "question": "Write a checkable prompt.",
+    "explanation": "Ask for exactly four lines about rain in simple vocabulary. Check line count, topic and vocabulary separately."
+  },
+  "ai-1/27": {
+    "id": "ai-1/27",
+    "kind": "groups",
+    "title": "Six groups of four make twenty-four",
+    "items": [
+      {
+        "label": "Group 1",
+        "value": "4"
+      },
+      {
+        "label": "Group 2",
+        "value": "4"
+      },
+      {
+        "label": "Group 3",
+        "value": "4"
+      },
+      {
+        "label": "Group 4",
+        "value": "4"
+      },
+      {
+        "label": "Group 5",
+        "value": "4"
+      },
+      {
+        "label": "Group 6",
+        "value": "4"
+      }
+    ],
+    "teach": "Count four six times, then compare with the claimed answer 28.",
+    "misconception": "Confident wording makes incorrect arithmetic correct.",
+    "lesson": "Week 27: Verify Important Outputs",
+    "scenario": "An answer says six groups of four make 28.",
+    "question": "Verify independently.",
+    "explanation": "Six times four is 24. Draw six groups or add four six times. Confident wording does not change arithmetic."
+  },
+  "ai-1/28": {
+    "id": "ai-1/28",
+    "kind": "flow",
+    "title": "A suggestion must stop at the approval gate",
+    "items": [
+      {
+        "label": "Assistant",
+        "value": "Suggest equipment location"
+      },
+      {
+        "label": "Teacher",
+        "value": "Review and decide"
+      },
+      {
+        "label": "Approval",
+        "value": "Explicit permission to move"
+      },
+      {
+        "label": "Action",
+        "value": "Move only after approval"
+      }
+    ],
+    "teach": "Ask students to point to the exact step where permission is needed.",
+    "misconception": "Permission to suggest also permits action.",
+    "lesson": "Week 28: Humans Set Boundaries",
+    "scenario": "An assistant may suggest object locations; a teacher must approve moving valuable equipment.",
+    "question": "What may happen without approval?",
+    "explanation": "It may suggest a location within its role. Moving equipment requires actual teacher approval."
+  },
+  "ai-1/29": {
+    "id": "ai-1/29",
+    "kind": "compare",
+    "title": "Solve the need before selecting technology",
+    "items": [
+      {
+        "label": "Problem",
+        "value": "Markers returned to wrong trays"
+      },
+      {
+        "label": "Possible cause",
+        "value": "Unclear tray labels"
+      },
+      {
+        "label": "Simple trial",
+        "value": "Clearer labels"
+      },
+      {
+        "label": "Evidence",
+        "value": "Measure correct and quick returns"
+      }
+    ],
+    "teach": "Ask which observation would justify trying the simpler solution first.",
+    "misconception": "Every real problem needs AI.",
+    "lesson": "Week 29: Find a Real Problem",
+    "scenario": "Shared markers are often lost because tray labels are unclear.",
+    "question": "State the need before selecting AI.",
+    "explanation": "Students need to return markers correctly and quickly. Test clearer labels before proposing a model."
+  },
+  "ai-1/30": {
+    "id": "ai-1/30",
+    "kind": "flow",
+    "title": "Design a sorter with only relevant inputs",
+    "items": [
+      {
+        "label": "Input",
+        "value": "Material or a suitable image"
+      },
+      {
+        "label": "Decision",
+        "value": "Paper, plastic or uncertain"
+      },
+      {
+        "label": "Output",
+        "value": "Tray suggestion"
+      },
+      {
+        "label": "Review",
+        "value": "Ask a person when material is unclear"
+      }
+    ],
+    "teach": "Ask why a home address cannot help this material decision.",
+    "misconception": "A sorter needs all information about the person holding the object.",
+    "lesson": "Week 30: Choose Inputs and Outputs",
+    "scenario": "A sorter suggests paper or plastic trays using material observations.",
+    "question": "Name an input, output and unnecessary input.",
+    "explanation": "Input: material or a suitable image. Output: tray suggestion. Home address is unnecessary. Uncertain material needs review."
+  },
+  "ai-1/31": {
+    "id": "ai-1/31",
+    "kind": "branch",
+    "title": "Otherwise includes every remaining case",
+    "items": [
+      {
+        "label": "Paper",
+        "value": "Yes → P"
+      },
+      {
+        "label": "Not paper, metal",
+        "value": "Yes → M"
+      },
+      {
+        "label": "Not paper, not metal",
+        "value": "Glass or review"
+      }
+    ],
+    "teach": "Trace glass through the original paper/otherwise rule and locate the wrong turn.",
+    "misconception": "Otherwise means only the category I had in mind.",
+    "lesson": "Week 31: Design the Decision Process",
+    "scenario": "A rule sends paper to P and everything else to M. Inputs include paper, metal and glass.",
+    "question": "Trace glass and repair the rule.",
+    "explanation": "Glass incorrectly goes to M. Add an explicit metal check and a glass or review branch. Otherwise includes all remaining cases."
+  },
+  "ai-1/32": {
+    "id": "ai-1/32",
+    "kind": "flow",
+    "title": "Act out a paper prototype",
+    "items": [
+      {
+        "label": "Input card",
+        "value": "Observe material"
+      },
+      {
+        "label": "Decision cards",
+        "value": "Follow written checks"
+      },
+      {
+        "label": "Token",
+        "value": "Place in paper, plastic or review tray"
+      },
+      {
+        "label": "Trace",
+        "value": "Record each decision"
+      }
+    ],
+    "teach": "Ask which person is simulating each part of the system.",
+    "misconception": "A paper simulation proves a learned model was trained.",
+    "lesson": "Week 32: Build a Paper Prototype",
+    "scenario": "A paper prototype has input cards, decision cards and paper, plastic and review trays.",
+    "question": "How can a learner simulate it?",
+    "explanation": "Read input, follow written decisions and place a token in a tray. Record the trace. Human simulation does not establish model training."
+  },
+  "ai-1/33": {
+    "id": "ai-1/33",
+    "kind": "fractions",
+    "title": "Report the cases actually tested",
+    "items": [
+      {
+        "label": "Routine cases",
+        "value": "3/4"
+      }
+    ],
+    "teach": "Ask students to keep the failed case and trace its cause.",
+    "misconception": "Three successes justify a claim about all unfamiliar inputs.",
+    "lesson": "Week 33: Test Normal Cases",
+    "scenario": "Four routine cases are chosen before testing. Three are correct.",
+    "question": "What can be reported?",
+    "explanation": "3/4 on those cases. Preserve the failure and trace its cause. This does not guarantee unfamiliar-case performance."
+  },
+  "ai-1/34": {
+    "id": "ai-1/34",
+    "kind": "compare",
+    "title": "Test conditions that reveal limitations",
+    "items": [
+      {
+        "label": "Clean paper",
+        "value": "Routine case"
+      },
+      {
+        "label": "Crumpled paper",
+        "value": "Changed condition"
+      },
+      {
+        "label": "Mixed packaging",
+        "value": "Ambiguous material"
+      },
+      {
+        "label": "Expected action",
+        "value": "Declare tray or review before testing"
+      }
+    ],
+    "teach": "Ask how the team would know whether a review result was appropriate.",
+    "misconception": "A test counts as passed whenever the team likes the answer afterwards.",
+    "lesson": "Week 34: Test Edge Cases and Fairness",
+    "scenario": "A sorter handles clean paper but fails on crumpled paper and mixed packaging.",
+    "question": "Design revealing tests.",
+    "explanation": "Use separately labelled clean, crumpled and mixed cases with expected outputs or review actions declared first. Compare conditions."
+  },
+  "ai-1/35": {
+    "id": "ai-1/35",
+    "kind": "compare",
+    "title": "A fair comparison changes one cause",
+    "items": [
+      {
+        "label": "Before",
+        "value": "Four errors under recorded conditions"
+      },
+      {
+        "label": "Confounded revision",
+        "value": "Lighting, labels and rules all changed"
+      },
+      {
+        "label": "Controlled revision",
+        "value": "Change one planned factor and retest"
+      }
+    ],
+    "teach": "Ask which changed factor caused the improvement and why the evidence cannot isolate it.",
+    "misconception": "Fewer errors identify the cause even when everything changed.",
+    "lesson": "Week 35: Improve One Cause",
+    "scenario": "The team changes lighting, labels and rules together; errors fall from four to one.",
+    "question": "Can it identify the cause of improvement?",
+    "explanation": "No. Several factors changed. Compare one planned change at a time with controlled conditions."
+  },
+  "ai-1/36": {
+    "id": "ai-1/36",
+    "kind": "checklist",
+    "title": "Defend a claim with a complete trace",
+    "items": [
+      {
+        "label": "Input",
+        "value": "Show a specified test object"
+      },
+      {
+        "label": "Decision",
+        "value": "Explain its path"
+      },
+      {
+        "label": "Output",
+        "value": "Show the tray or review result"
+      },
+      {
+        "label": "Evidence",
+        "value": "Report six classroom passes and limits"
+      }
+    ],
+    "teach": "Ask the presenter to demonstrate an uncertain case as well as a success.",
+    "misconception": "Six passes prove the system is always correct.",
+    "lesson": "Week 36: Expo and Defense",
+    "scenario": "The expo poster says always correct after six classroom passes.",
+    "question": "Write a defensible claim.",
+    "explanation": "Report six specified passes with conditions and limits. Show an input, decision trace, output and test record, including an uncertain case."
+  },
+  "ai-2/1": {
+    "id": "ai-2/1",
+    "kind": "flow",
+    "title": "Make hidden instructions explicit",
+    "items": [
+      {
+        "label": "Materials",
+        "value": "Two paper bread squares"
+      },
+      {
+        "label": "Spread",
+        "value": "Mark one spoon-sized area"
+      },
+      {
+        "label": "Close",
+        "value": "Place second square on top"
+      },
+      {
+        "label": "Cut",
+        "value": "Draw a diagonal line"
+      }
+    ],
+    "teach": "Act literally and ask which instruction must name its object.",
+    "misconception": "Close it is precise even when no object is specified.",
+    "lesson": "Week 1: Precision in Algorithms",
+    "scenario": "A sandwich algorithm says add spread, close it, cut it, without stating materials or directions.",
+    "question": "Expose assumptions and write a precise paper simulation.",
+    "explanation": "Use two paper bread squares, mark a spoon-sized spread area on one, place the second on top and draw a diagonal cut. State materials and order. No real food or sharp tools are needed."
+  },
+  "ai-2/2": {
+    "id": "ai-2/2",
+    "kind": "flow",
+    "title": "Decompose a recommendation into records",
+    "items": [
+      {
+        "label": "Preferences",
+        "value": "Collect reader choices"
+      },
+      {
+        "label": "Traits",
+        "value": "Describe five books"
+      },
+      {
+        "label": "Scoring",
+        "value": "Apply the declared rule"
+      },
+      {
+        "label": "Decision",
+        "value": "Handle ties and explain"
+      }
+    ],
+    "teach": "Ask what inspectable output each step leaves for the next.",
+    "misconception": "A large goal can be tested without defining its steps.",
+    "lesson": "Week 2: Decompose a Goal",
+    "scenario": "A class wants to recommend one of five library books.",
+    "question": "Decompose the goal into checkable steps.",
+    "explanation": "Collect preferences, record book traits, score each with a declared rule, handle ties and explain the suggestion. Each step produces an inspectable record."
+  },
+  "ai-2/3": {
+    "id": "ai-2/3",
+    "kind": "branch",
+    "title": "Test strict and inclusive page boundaries",
+    "items": [
+      {
+        "label": "99 pages",
+        "value": "Less than 100 → Short"
+      },
+      {
+        "label": "100 pages",
+        "value": "100 to 200 inclusive → Medium"
+      },
+      {
+        "label": "200 pages",
+        "value": "100 to 200 inclusive → Medium"
+      },
+      {
+        "label": "201 pages",
+        "value": "Greater than 200 → Long"
+      }
+    ],
+    "teach": "Put 100 and 200 on the boundary and ask which comparison includes each.",
+    "misconception": "Less than and less than or equal to mean the same thing.",
+    "lesson": "Week 3: Branching Logic",
+    "scenario": "If pages<100 choose Short; otherwise if pages<=200 choose Medium; otherwise Long.",
+    "question": "Classify 99,100,200,201 pages.",
+    "explanation": "Short, Medium, Medium, Long. Strict and inclusive boundaries and branch order matter."
+  },
+  "ai-2/4": {
+    "id": "ai-2/4",
+    "kind": "trace",
+    "title": "Keep the state after each instruction",
+    "items": [
+      {
+        "label": "Set score",
+        "value": "2"
+      },
+      {
+        "label": "Add 3",
+        "value": "5"
+      },
+      {
+        "label": "If greater than 4, subtract 1",
+        "value": "4"
+      },
+      {
+        "label": "Double",
+        "value": "8"
+      }
+    ],
+    "teach": "Ask which value is compared with four before subtraction occurs.",
+    "misconception": "The comparison uses the final value rather than the current value.",
+    "lesson": "Week 4: Trace Tables",
+    "scenario": "Set score=2; add 3; if score>4 subtract 1; double score.",
+    "question": "Trace every value.",
+    "explanation": "2,5,4,8. The comparison is evaluated at 5 before subtraction."
+  },
+  "ai-2/5": {
+    "id": "ai-2/5",
+    "kind": "trace",
+    "title": "A loop must progress toward stopping",
+    "items": [
+      {
+        "label": "Start n",
+        "value": "0"
+      },
+      {
+        "label": "First update",
+        "value": "1"
+      },
+      {
+        "label": "Second update",
+        "value": "2"
+      },
+      {
+        "label": "Third update",
+        "value": "3"
+      },
+      {
+        "label": "Next n < 3 check",
+        "value": "False, stop"
+      }
+    ],
+    "teach": "Remove the update in a paper trace and ask why the loop would not stop.",
+    "misconception": "Repeating a check automatically changes the value.",
+    "lesson": "Week 5: Loops and Stopping",
+    "scenario": "Start n=0; while n<3, add 1 and record n.",
+    "question": "List records and stopping condition.",
+    "explanation": "1,2,3. The next comparison is false. The update makes progress toward termination."
+  },
+  "ai-2/6": {
+    "id": "ai-2/6",
+    "kind": "compare",
+    "title": "Put the addition inside the condition",
+    "items": [
+      {
+        "label": "One matching trait",
+        "value": "+2"
+      },
+      {
+        "label": "One nonmatching trait",
+        "value": "+0"
+      },
+      {
+        "label": "Expected total",
+        "value": "2"
+      },
+      {
+        "label": "Buggy total",
+        "value": "4 because both were awarded points"
+      }
+    ],
+    "teach": "Test zero, one and two matches, expecting zero, two and four points.",
+    "misconception": "Every visited trait should earn points.",
+    "lesson": "Week 6: Debugging Strategies",
+    "scenario": "Award two points per matching trait. A bug awards two for every trait.",
+    "question": "Test one match and one nonmatch.",
+    "explanation": "Expected 2; buggy result 4. Put the addition inside the match condition. Test zero, one and two matches for 0,2,4."
+  },
+  "ai-2/7": {
+    "id": "ai-2/7",
+    "kind": "compare",
+    "title": "A field has a meaning and a type",
+    "items": [
+      {
+        "label": "Title",
+        "value": "Text → River"
+      },
+      {
+        "label": "Pages",
+        "value": "Number → 90 after checking source"
+      },
+      {
+        "label": "Borrowed",
+        "value": "Boolean → true or false"
+      }
+    ],
+    "teach": "Ask why a field named Pages is not enough to make ninety numeric data.",
+    "misconception": "A column heading guarantees valid values.",
+    "lesson": "Week 7: Rows Columns and Data Types",
+    "scenario": "Fields are Title, Pages and Borrowed; a row contains River, ninety and yes.",
+    "question": "Assign intended types and a repair.",
+    "explanation": "Text, numeric and Boolean. Confirm ninety means 90, then convert and record the change; use a consistent Boolean representation."
+  },
+  "ai-2/8": {
+    "id": "ai-2/8",
+    "kind": "branch",
+    "title": "Define Short before labelling books",
+    "items": [
+      {
+        "label": "99 pages",
+        "value": "Short"
+      },
+      {
+        "label": "100 pages",
+        "value": "Not Short"
+      },
+      {
+        "label": "101 pages",
+        "value": "Not Short"
+      }
+    ],
+    "teach": "Ask two annotators to apply fewer than 100 independently.",
+    "misconception": "A 100-page book is Short under a fewer-than-100 definition.",
+    "lesson": "Week 8: Operational Labels",
+    "scenario": "Short means fewer than 100 pages. Two annotators disagree about a 100-page book.",
+    "question": "Resolve the label.",
+    "explanation": "It is not Short under the stated definition. Agree operational boundaries before labelling."
+  },
+  "ai-2/9": {
+    "id": "ai-2/9",
+    "kind": "compare",
+    "title": "Useful evidence versus a shortcut",
+    "items": [
+      {
+        "label": "Target",
+        "value": "Contains animal characters"
+      },
+      {
+        "label": "Animal tag",
+        "value": "Relevant if accurate"
+      },
+      {
+        "label": "Cover colour",
+        "value": "Possible distraction"
+      },
+      {
+        "label": "Shelf number",
+        "value": "Possible accidental shortcut"
+      }
+    ],
+    "teach": "Move a book to a new shelf and ask whether its animal label should change.",
+    "misconception": "A correlation in the classroom collection is a dependable defining feature.",
+    "lesson": "Week 9: Features and Distractors",
+    "scenario": "Target: includes animal characters. Fields: animal tag, cover colour and shelf number.",
+    "question": "Choose useful evidence and possible distractions.",
+    "explanation": "An accurate animal tag directly addresses the target. Colour and shelf can produce accidental shortcuts. Test on new books."
+  },
+  "ai-2/10": {
+    "id": "ai-2/10",
+    "kind": "branch",
+    "title": "Both conditions must pass",
+    "items": [
+      {
+        "label": "Adventure, 120 pages",
+        "value": "Genre yes, length yes → Recommend"
+      },
+      {
+        "label": "Adventure, 180 pages",
+        "value": "Genre yes, length no → Other"
+      },
+      {
+        "label": "Science, 90 pages",
+        "value": "Genre no, length yes → Other"
+      }
+    ],
+    "teach": "Ask students to mark both Boolean results for each book.",
+    "misconception": "Passing either condition is enough for AND.",
+    "lesson": "Week 10: Human Classifier Simulation",
+    "scenario": "Recommend if adventure AND pages<150; otherwise Other.",
+    "question": "Trace A=(adventure,120), B=(adventure,180), C=(science,90).",
+    "explanation": "A is Recommend. B fails length; C fails genre. Show both conditions."
+  },
+  "ai-2/11": {
+    "id": "ai-2/11",
+    "kind": "compare",
+    "title": "Separate development from fresh evaluation",
+    "items": [
+      {
+        "label": "Books A–H",
+        "value": "Influenced the rule"
+      },
+      {
+        "label": "Reserved books",
+        "value": "Did not influence construction"
+      },
+      {
+        "label": "Revision",
+        "value": "Keep final cases separate"
+      }
+    ],
+    "teach": "Ask when a repeatedly inspected test set becomes part of development.",
+    "misconception": "A score on development examples measures unseen performance.",
+    "lesson": "Week 11: Training and Testing",
+    "scenario": "A rule is developed and evaluated using the same books A–H.",
+    "question": "Why does this not establish unseen performance?",
+    "explanation": "Those cases influenced the rule. Reserve different labelled books that do not influence construction or revision."
+  },
+  "ai-2/12": {
+    "id": "ai-2/12",
+    "kind": "fractions",
+    "title": "All scored cases belong in the denominator",
+    "items": [
+      {
+        "label": "Correct classifications",
+        "value": "9/12"
+      }
+    ],
+    "teach": "Ask students to locate the three errors among the twelve cases.",
+    "misconception": "Accuracy divides correct cases by only the successful cases.",
+    "lesson": "Week 12: Accuracy as a Fraction",
+    "scenario": "Nine of twelve held-out classifications are correct.",
+    "question": "Compute accuracy and state the denominator.",
+    "explanation": "9/12=3/4=75%. Count all scored cases, including errors."
+  },
+  "ai-2/13": {
+    "id": "ai-2/13",
+    "kind": "matrix",
+    "title": "Name outcomes using actual and predicted labels",
+    "items": [
+      {
+        "label": "True positive",
+        "value": "1"
+      },
+      {
+        "label": "False negative",
+        "value": "1"
+      },
+      {
+        "label": "False positive",
+        "value": "1"
+      },
+      {
+        "label": "True negative",
+        "value": "1"
+      }
+    ],
+    "teach": "Define positive as should recommend before naming any cell.",
+    "misconception": "False positive means a negative prediction.",
+    "lesson": "Week 13: Types of Classification Error",
+    "scenario": "Positive means should recommend. Actual/predicted pairs are yes/yes, no/yes, yes/no, no/no.",
+    "question": "Name the four outcomes.",
+    "explanation": "True positive, false positive, false negative, true negative. Define positive before naming errors."
+  },
+  "ai-2/14": {
+    "id": "ai-2/14",
+    "kind": "branch",
+    "title": "A decision tree can stop early",
+    "items": [
+      {
+        "label": "Not an animal book",
+        "value": "Other"
+      },
+      {
+        "label": "Animal and fewer than 100 pages",
+        "value": "Short Animal"
+      },
+      {
+        "label": "Animal and at least 100 pages",
+        "value": "Longer Animal"
+      }
+    ],
+    "teach": "Trace a 90-page science book and ask whether the second question is needed.",
+    "misconception": "Every input visits every question in a tree.",
+    "lesson": "Week 14: Decision Trees",
+    "scenario": "First ask animal book? If no, Other. If yes, ask pages<100; yes gives Short Animal, no gives Longer Animal.",
+    "question": "Trace 90-page animal and science books.",
+    "explanation": "The animal book reaches Short Animal; science reaches Other after the first question."
+  },
+  "ai-2/15": {
+    "id": "ai-2/15",
+    "kind": "compare",
+    "title": "Choose a question that separates the target",
+    "items": [
+      {
+        "label": "Blue?",
+        "value": "All eight stay together"
+      },
+      {
+        "label": "Circle?",
+        "value": "Four circles versus four triangles"
+      },
+      {
+        "label": "Target",
+        "value": "Shape, not colour"
+      }
+    ],
+    "teach": "Ask why a question can be accurate yet uninformative for the target.",
+    "misconception": "Any visible feature is equally useful for splitting groups.",
+    "lesson": "Week 15: Choose Informative Questions",
+    "scenario": "Eight blue cards contain four circles and four triangles; target is shape.",
+    "question": "Which question is more useful: blue or circle?",
+    "explanation": "Circle separates target groups. Blue puts every card in one branch. Usefulness depends on the task and examples."
+  },
+  "ai-2/16": {
+    "id": "ai-2/16",
+    "kind": "fractions",
+    "title": "Perfect recall can hide weak transfer",
+    "items": [
+      {
+        "label": "Familiar books",
+        "value": "6/6"
+      },
+      {
+        "label": "New books",
+        "value": "2/6"
+      }
+    ],
+    "teach": "Ask what evidence is still needed before preferring an untested simpler rule.",
+    "misconception": "A simpler rule is automatically better without testing.",
+    "lesson": "Week 16: Overfitting Intuition",
+    "scenario": "Rule A memorises six training book names. It scores 6/6 familiar and 2/6 new. Rule B uses relevant traits but is untested.",
+    "question": "What does the evidence support?",
+    "explanation": "A shows weak transfer. B might generalise better but requires testing; simplicity is not proof."
+  },
+  "ai-2/17": {
+    "id": "ai-2/17",
+    "kind": "bars",
+    "title": "An outlier needs investigation",
+    "items": [
+      {
+        "label": "Book A",
+        "value": "90"
+      },
+      {
+        "label": "Book B",
+        "value": "95"
+      },
+      {
+        "label": "Book C",
+        "value": "100"
+      },
+      {
+        "label": "Book D",
+        "value": "105"
+      },
+      {
+        "label": "Book E",
+        "value": "900"
+      }
+    ],
+    "teach": "Ask what source check would distinguish a typo from a genuinely long book.",
+    "misconception": "Every outlier is erroneous and should be deleted.",
+    "lesson": "Week 17: Noise and Outliers",
+    "scenario": "Recorded lengths are 90,95,100,105,900 pages.",
+    "question": "Is 900 automatically wrong?",
+    "explanation": "No. It is an outlier, but may be a real large book. Check catalogue, units and entry process."
+  },
+  "ai-2/18": {
+    "id": "ai-2/18",
+    "kind": "branch",
+    "title": "Missing is different from zero",
+    "items": [
+      {
+        "label": "Retrieve",
+        "value": "Look up the page count"
+      },
+      {
+        "label": "Ask",
+        "value": "Request the missing information"
+      },
+      {
+        "label": "Partial score",
+        "value": "Use a documented policy with uncertainty"
+      }
+    ],
+    "teach": "Ask how a silent zero would affect a short-book score.",
+    "misconception": "A missing measurement is a measured zero.",
+    "lesson": "Week 18: Missing Data",
+    "scenario": "Genre is known, but page count is missing and length affects recommendation score.",
+    "question": "Choose transparent handling.",
+    "explanation": "Retrieve or ask for the count, or use a documented partial-score policy with uncertainty. Do not silently insert zero."
+  },
+  "ai-2/19": {
+    "id": "ai-2/19",
+    "kind": "compare",
+    "title": "Who was left out of the survey?",
+    "items": [
+      {
+        "label": "Sample",
+        "value": "Adventure-club members"
+      },
+      {
+        "label": "Intended population",
+        "value": "School readers"
+      },
+      {
+        "label": "Missing perspectives",
+        "value": "Other interests and relevant grades"
+      }
+    ],
+    "teach": "Ask how membership selects for the very preference being measured.",
+    "misconception": "A convenient club sample represents every school reader.",
+    "lesson": "Week 19: Sampling and Representation",
+    "scenario": "Only adventure-club members answer a school reading survey.",
+    "question": "Explain the sampling problem.",
+    "explanation": "Membership selects for a relevant interest. Include relevant grades and interests with appropriate data practices."
+  },
+  "ai-2/20": {
+    "id": "ai-2/20",
+    "kind": "groups",
+    "title": "Repair coverage with varied examples",
+    "items": [
+      {
+        "label": "Adventure readers",
+        "value": "18"
+      },
+      {
+        "label": "Poetry readers",
+        "value": "2"
+      }
+    ],
+    "teach": "Ask what evaluation evidence should be collected for both interests after repair.",
+    "misconception": "More copies of the same poetry example solve representation.",
+    "lesson": "Week 20: Repair Bias in Data",
+    "scenario": "Training has eighteen adventure readers and two poetry readers; many intended users prefer poetry.",
+    "question": "Propose repair and evaluation.",
+    "explanation": "Collect varied relevant poetry examples with consistent labels. Compare both interests on separate evaluation cases before and after repair."
+  },
+  "ai-2/21": {
+    "id": "ai-2/21",
+    "kind": "bars",
+    "title": "Count differing traits from query [1,0]",
+    "items": [
+      {
+        "label": "A [1,1]",
+        "value": "1"
+      },
+      {
+        "label": "B [1,0]",
+        "value": "0"
+      },
+      {
+        "label": "C [0,0]",
+        "value": "1"
+      }
+    ],
+    "teach": "Ask why a smaller distance means greater similarity under this rule.",
+    "misconception": "Largest distance identifies the nearest neighbour.",
+    "lesson": "Week 21: Similarity by Selected Traits",
+    "scenario": "Traits are [animals,adventure]. A=[1,1], B=[1,0], C=[0,0]; query=[1,0].",
+    "question": "Use number of differing traits as distance.",
+    "explanation": "Distances: A=1, B=0, C=1. B is nearest with equal feature weights."
+  },
+  "ai-2/22": {
+    "id": "ai-2/22",
+    "kind": "bars",
+    "title": "A nearest-neighbour tie needs a policy",
+    "items": [
+      {
+        "label": "A [1,1], liked",
+        "value": "1"
+      },
+      {
+        "label": "B [1,0], disliked",
+        "value": "2"
+      },
+      {
+        "label": "C [0,0], disliked",
+        "value": "1"
+      }
+    ],
+    "teach": "Use query [0,1] and ask why k=1 still needs a tie policy.",
+    "misconception": "Nearest-neighbour classification always has one unique nearest example.",
+    "lesson": "Week 22: Nearest Neighbor Reasoning",
+    "scenario": "A=[1,1] liked, B=[1,0] disliked, C=[0,0] disliked; query=[0,1].",
+    "question": "Find nearest neighbours using differing-trait distance and k=1.",
+    "explanation": "A and C tie at distance one; B is distance two. Conflicting nearest labels require a predefined tie policy or uncertainty."
+  },
+  "ai-2/23": {
+    "id": "ai-2/23",
+    "kind": "bars",
+    "title": "Weighted preferences determine the score",
+    "items": [
+      {
+        "label": "A",
+        "value": "3"
+      },
+      {
+        "label": "B",
+        "value": "2"
+      },
+      {
+        "label": "C",
+        "value": "1"
+      }
+    ],
+    "teach": "Award two for genre and one for length, then ask what a different weight would change.",
+    "misconception": "Chosen scoring weights express universal reader preferences.",
+    "lesson": "Week 23: Recommendation Scores",
+    "scenario": "Score=2 times genre match + length match. A matches both, B genre only, C length only.",
+    "question": "Score and rank.",
+    "explanation": "A=3, B=2, C=1. Weights encode a chosen preference, not universal reader truth."
+  },
+  "ai-2/24": {
+    "id": "ai-2/24",
+    "kind": "cycle",
+    "title": "Exposure affects the feedback you collect",
+    "items": [
+      {
+        "label": "Show adventure",
+        "value": "Limits visible choices"
+      },
+      {
+        "label": "Observe clicks",
+        "value": "Only among shown items"
+      },
+      {
+        "label": "Update preferences",
+        "value": "Uses those clicks"
+      },
+      {
+        "label": "Show more adventure",
+        "value": "Repeats the exposure pattern"
+      }
+    ],
+    "teach": "Ask whether no poetry clicks prove a dislike of unseen poetry books.",
+    "misconception": "Clicks reveal preferences independently of what was displayed.",
+    "lesson": "Week 24: Feedback Loops",
+    "scenario": "A recommender shows only adventure books, uses clicks to learn and then shows more adventure.",
+    "question": "Explain the feedback loop.",
+    "explanation": "Exposure affects clicks; clicks affect future exposure. Record what was shown and offer controlled variety."
+  },
+  "ai-2/25": {
+    "id": "ai-2/25",
+    "kind": "tokens",
+    "title": "One word can have different token counts",
+    "items": [
+      {
+        "label": "Tokenizer A",
+        "value": "rain / bow / s"
+      },
+      {
+        "label": "Tokenizer B",
+        "value": "rainbows"
+      }
+    ],
+    "teach": "Count three pieces versus one and label both as toy tokenisers.",
+    "misconception": "A word always equals one token in every model.",
+    "lesson": "Week 25: Text as Pieces",
+    "scenario": "Toy tokenizer A splits rainbows as [rain][bow][s]; B uses [rainbows].",
+    "question": "Count tokens and state the limit of the example.",
+    "explanation": "Three versus one. Token count depends on tokenizer; tokens need not equal words or letters."
+  },
+  "ai-2/26": {
+    "id": "ai-2/26",
+    "kind": "flow",
+    "title": "Locate the first error in a voice pipeline",
+    "items": [
+      {
+        "label": "Speech",
+        "value": "Reader says poetry"
+      },
+      {
+        "label": "Transcript",
+        "value": "May mishear the preference"
+      },
+      {
+        "label": "Extract",
+        "value": "Uses the transcript's genre"
+      },
+      {
+        "label": "Rank",
+        "value": "Wrong input can produce a wrong suggestion"
+      }
+    ],
+    "teach": "Ask students to inspect the transcript before blaming the ranking rule.",
+    "misconception": "A correct ranking step repairs a wrong transcription.",
+    "lesson": "Week 26: Image and Voice Pipelines",
+    "scenario": "A voice book helper transcribes speech, extracts preference, then ranks books.",
+    "question": "Where can a wrong suggestion begin?",
+    "explanation": "Transcription can mishear poetry and pass the wrong preference downstream. Check intermediate results."
+  },
+  "ai-2/27": {
+    "id": "ai-2/27",
+    "kind": "compare",
+    "title": "Three operations in one book helper",
+    "items": [
+      {
+        "label": "Classify",
+        "value": "Select a genre label"
+      },
+      {
+        "label": "Generate",
+        "value": "Write a new blurb"
+      },
+      {
+        "label": "Calculate",
+        "value": "24 divided by 6 equals 4"
+      }
+    ],
+    "teach": "Ask what each operation produces and how its output can be checked.",
+    "misconception": "All computer outputs are generated text.",
+    "lesson": "Week 27: Predictive vs Generative",
+    "scenario": "A labels genre; B writes a new blurb; C computes 24/6.",
+    "question": "Distinguish operations.",
+    "explanation": "A predicts a category, B generates text, C calculates 4. Products may combine them."
+  },
+  "ai-2/28": {
+    "id": "ai-2/28",
+    "kind": "compare",
+    "title": "Compare prompts under the same conditions",
+    "items": [
+      {
+        "label": "Prompt A",
+        "value": "Original catalogue request"
+      },
+      {
+        "label": "Prompt B",
+        "value": "Add under 100 pages and explain the match"
+      },
+      {
+        "label": "Hold fixed",
+        "value": "Catalogue, requests and scoring"
+      },
+      {
+        "label": "Check",
+        "value": "Constraint compliance and supported explanation"
+      }
+    ],
+    "teach": "Ask which evidence would show that the added instruction helped.",
+    "misconception": "Different catalogues give a fair comparison of the prompt alone.",
+    "lesson": "Week 28: Prompt Experiments",
+    "scenario": "Prompt B adds under 100 pages and explain the match to Prompt A. Both use a catalogue.",
+    "question": "Design a fair comparison.",
+    "explanation": "Use identical requests, catalogue and scoring criteria. Check constraint compliance and supported explanation; repeat stochastic outputs when relevant."
+  },
+  "ai-2/29": {
+    "id": "ai-2/29",
+    "kind": "compare",
+    "title": "Check the claim against the exact edition",
+    "items": [
+      {
+        "label": "Answer",
+        "value": "80 pages"
+      },
+      {
+        "label": "Catalogue",
+        "value": "120 pages for this edition"
+      },
+      {
+        "label": "Resolution",
+        "value": "Verify edition and cite the correct record"
+      }
+    ],
+    "teach": "Ask why the edition identifier matters before correcting the number.",
+    "misconception": "Any record for the same title verifies every edition.",
+    "lesson": "Week 29: Evidence and Sources",
+    "scenario": "An answer says 80 pages, but the catalogue for that edition says 120.",
+    "question": "What evidence guides correction?",
+    "explanation": "Check the exact edition and authoritative catalogue record. Record the supporting source."
+  },
+  "ai-2/30": {
+    "id": "ai-2/30",
+    "kind": "flow",
+    "title": "Tools operate within granted permissions",
+    "items": [
+      {
+        "label": "Search",
+        "value": "Approved catalogue"
+      },
+      {
+        "label": "Draft",
+        "value": "Short science-book suggestion"
+      },
+      {
+        "label": "Stop",
+        "value": "Sending messages is not permitted"
+      },
+      {
+        "label": "Review",
+        "value": "Request authorised permission before sending"
+      }
+    ],
+    "teach": "Ask where find a book and tell my class crosses the current permission boundary.",
+    "misconception": "Permission to draft includes permission to send.",
+    "lesson": "Week 30: Agents and Tools",
+    "scenario": "An agent may search an approved catalogue and draft suggestions, but not send messages.",
+    "question": "Trace find a short science book and tell my class.",
+    "explanation": "Search and draft are permitted; sending needs authorisation or an approved permission change."
+  },
+  "ai-2/31": {
+    "id": "ai-2/31",
+    "kind": "flow",
+    "title": "Put approval after evidence and before action",
+    "items": [
+      {
+        "label": "Draft",
+        "value": "Show recommendation content"
+      },
+      {
+        "label": "Evidence",
+        "value": "Show support and destination"
+      },
+      {
+        "label": "Teacher",
+        "value": "Review and explicitly approve"
+      },
+      {
+        "label": "Post",
+        "value": "Proceed only with approval"
+      }
+    ],
+    "teach": "Ask what the teacher needs to see to make a meaningful decision.",
+    "misconception": "Silence or a draft is equivalent to posting approval.",
+    "lesson": "Week 31: Permissions and Human Review",
+    "scenario": "Posting a recommendation requires teacher review.",
+    "question": "Place the approval gate.",
+    "explanation": "After draft and evidence are visible, before posting; include content and destination. No approval means no post."
+  },
+  "ai-2/32": {
+    "id": "ai-2/32",
+    "kind": "checklist",
+    "title": "Turn a project goal into acceptance tests",
+    "items": [
+      {
+        "label": "Catalogue",
+        "value": "Suggestion must be one of ten approved books"
+      },
+      {
+        "label": "Constraints",
+        "value": "Genre and length respected"
+      },
+      {
+        "label": "Scoring",
+        "value": "Explanation matches the calculation"
+      },
+      {
+        "label": "Boundaries",
+        "value": "Handle ties and no matches"
+      }
+    ],
+    "teach": "Ask students to define expected behaviour before trying each request.",
+    "misconception": "A project is successful whenever it produces a book title.",
+    "lesson": "Week 32: Project Problem and Success Test",
+    "scenario": "A project recommends from ten approved books using genre and length.",
+    "question": "Define acceptance tests.",
+    "explanation": "Verify book existence, hard constraints, correct scoring explanations, tie handling and no-match behaviour on predefined requests."
+  },
+  "ai-2/33": {
+    "id": "ai-2/33",
+    "kind": "bars",
+    "title": "Build and expose the scoring calculation",
+    "items": [
+      {
+        "label": "A, genre and length",
+        "value": "3"
+      },
+      {
+        "label": "B, genre only",
+        "value": "2"
+      },
+      {
+        "label": "C, length only",
+        "value": "1"
+      }
+    ],
+    "teach": "Use score equals two times genre match plus length match. Ask what must be displayed to reproduce the winner.",
+    "misconception": "A winner is transparent without its flags, formula or scores.",
+    "lesson": "Week 33: Build the Recommender",
+    "scenario": "A has flags (1,1), B=(1,0), C=(0,1); score=2g+l.",
+    "question": "Compute the winner and evidence to display.",
+    "explanation": "A wins at 3; B=2; C=1. Show flags, formula, scores and explanation; declare tie policy."
+  },
+  "ai-2/34": {
+    "id": "ai-2/34",
+    "kind": "fractions",
+    "title": "Compare success for different interests",
+    "items": [
+      {
+        "label": "Adventure requests",
+        "value": "5/6"
+      },
+      {
+        "label": "Poetry requests",
+        "value": "3/6"
+      }
+    ],
+    "teach": "Ask students to investigate catalogue coverage and scoring before claiming a cause.",
+    "misconception": "Twelve tests prove the cause of the group difference.",
+    "lesson": "Week 34: Test Diverse Users",
+    "scenario": "A recommender satisfies 5/6 adventure requests and 3/6 poetry requests.",
+    "question": "Compare and investigate.",
+    "explanation": "Rates are 5/6 and 3/6. Inspect catalogue coverage, labels and scoring; twelve tests do not establish cause."
+  },
+  "ai-2/35": {
+    "id": "ai-2/35",
+    "kind": "compare",
+    "title": "Improve with comparable evidence",
+    "items": [
+      {
+        "label": "Before",
+        "value": "Save results and failures"
+      },
+      {
+        "label": "Revision",
+        "value": "Change one identified cause"
+      },
+      {
+        "label": "Retest",
+        "value": "Use the same development cases"
+      },
+      {
+        "label": "Final check",
+        "value": "Reserve fresh cases"
+      }
+    ],
+    "teach": "Ask why replacing difficult cases with easier cases invalidates the comparison.",
+    "misconception": "A higher score proves improvement even when the test changed.",
+    "lesson": "Week 35: Improve and Challenge",
+    "scenario": "A repair raises success from 7/10 to 9/10 on the same validation set.",
+    "question": "What belongs in the improvement claim?",
+    "explanation": "Confirm fixed criteria, inspect remaining and introduced failures, then test the chosen version on fresh final cases."
+  },
+  "ai-2/36": {
+    "id": "ai-2/36",
+    "kind": "checklist",
+    "title": "Defend a transparent recommender",
+    "items": [
+      {
+        "label": "Inputs",
+        "value": "Explain necessary data"
+      },
+      {
+        "label": "Logic",
+        "value": "Show a score and tie decision"
+      },
+      {
+        "label": "Tests",
+        "value": "Report successes and failures"
+      },
+      {
+        "label": "Limits",
+        "value": "Demonstrate a missing or uncertain case"
+      }
+    ],
+    "teach": "Ask a reviewer to challenge one weight and trace the effect.",
+    "misconception": "A successful demo proves every reader will like the suggestion.",
+    "lesson": "Week 36: Capstone Expo",
+    "scenario": "An expo claim says the recommender knows everybody's favourite book after twelve tests.",
+    "question": "Rewrite the defence.",
+    "explanation": "Explain trait-based ranking, report the twelve outcomes and limits, and demonstrate no-match handling. It cannot know unstated preferences."
+  },
+  "ai-3/1": {
+    "id": "ai-3/1",
+    "kind": "compare",
+    "title": "Three outputs need three different checks",
+    "items": [
+      {
+        "label": "Classify",
+        "value": "Select biology as a category"
+      },
+      {
+        "label": "Generate",
+        "value": "Compose a new question"
+      },
+      {
+        "label": "Calculate",
+        "value": "7 times 8 equals 56"
+      }
+    ],
+    "teach": "Ask which operation creates wording and which computes an exact arithmetic result.",
+    "misconception": "Every output from an assistant is the same kind of operation.",
+    "lesson": "Week 1: Predictive and Generative AI",
+    "scenario": "A tool labels a question biology, writes a new question and computes 7 times 8.",
+    "question": "Identify each operation.",
+    "explanation": "Labelling selects a category; generation creates text; calculation returns 56. Generated questions need factual and instructional checks."
+  },
+  "ai-3/2": {
+    "id": "ai-3/2",
+    "kind": "bars",
+    "title": "A toy next-token probability distribution",
+    "items": [
+      {
+        "label": "rain",
+        "value": "50"
+      },
+      {
+        "label": "sun",
+        "value": "30"
+      },
+      {
+        "label": "snow",
+        "value": "20"
+      }
+    ],
+    "teach": "Use five rain, three sun and two snow slips. Ask why rain is most likely but not certain.",
+    "misconception": "A token probability is a truth score for the whole sentence.",
+    "lesson": "Week 2: A Distribution of Possibilities",
+    "scenario": "A toy next-token distribution is rain .5, sun .3, snow .2.",
+    "question": "Check total and interpret the largest value.",
+    "explanation": "Total is 1. Rain is most likely, not guaranteed under sampling. Token probability is not whole-sentence truth."
+  },
+  "ai-3/3": {
+    "id": "ai-3/3",
+    "kind": "context",
+    "title": "Nine requested tokens exceed eight spaces",
+    "items": [
+      {
+        "label": "Prompt",
+        "value": "6"
+      },
+      {
+        "label": "Quotation",
+        "value": "3"
+      },
+      {
+        "label": "Capacity",
+        "value": "8"
+      }
+    ],
+    "teach": "Ask which instructions and source evidence must survive when shortening the input.",
+    "misconception": "All earlier text always remains available to the model.",
+    "lesson": "Week 3: Tokens and Context",
+    "scenario": "A toy window holds eight tokens; prompt uses six and quotation uses three.",
+    "question": "Does it fit? What should be preserved?",
+    "explanation": "Nine exceeds eight. Shorten or select material while preserving essential instructions and evidence. Real systems also have output-budget rules."
+  },
+  "ai-3/4": {
+    "id": "ai-3/4",
+    "kind": "compare",
+    "title": "Variability and quality are separate",
+    "items": [
+      {
+        "label": "Trial A",
+        "value": "Different valid quiz question"
+      },
+      {
+        "label": "Trial B",
+        "value": "Another valid quiz question"
+      },
+      {
+        "label": "Trial C",
+        "value": "Check correctness, relevance and format"
+      }
+    ],
+    "teach": "Ask students to use the same rubric on repeated outputs.",
+    "misconception": "Different wording automatically means failure.",
+    "lesson": "Week 4: Sampling and Variability",
+    "scenario": "One prompt produces three different valid quiz questions.",
+    "question": "Does variability mean failure?",
+    "explanation": "No. Sampling can vary outputs. Score correctness, relevance and format over repeated trials; consistency differs from quality."
+  },
+  "ai-3/5": {
+    "id": "ai-3/5",
+    "kind": "checklist",
+    "title": "A prompt contract makes checking possible",
+    "items": [
+      {
+        "label": "Input",
+        "value": "Supplied passage"
+      },
+      {
+        "label": "Task",
+        "value": "Summarise"
+      },
+      {
+        "label": "Format",
+        "value": "Exactly three bullets"
+      },
+      {
+        "label": "Evidence",
+        "value": "Only facts from the passage"
+      }
+    ],
+    "teach": "Ask students to locate support for every bullet as well as count the bullets.",
+    "misconception": "Correct format proves factual support.",
+    "lesson": "Week 5: Prompt as a Contract",
+    "scenario": "Summarise a supplied passage in exactly three bullets using only passage facts.",
+    "question": "Define the contract and acceptance checks.",
+    "explanation": "Input: passage. Task: summary. Constraints: three bullets, source-only claims. Check count and every claim's support."
+  },
+  "ai-3/6": {
+    "id": "ai-3/6",
+    "kind": "fractions",
+    "title": "Score criteria separately",
+    "items": [
+      {
+        "label": "Correctness",
+        "value": "1/1"
+      },
+      {
+        "label": "Evidence",
+        "value": "0/1"
+      },
+      {
+        "label": "Clarity",
+        "value": "1/1"
+      }
+    ],
+    "teach": "Ask which missing criterion would move the total from two to three points.",
+    "misconception": "An understandable answer needs no evidence.",
+    "lesson": "Week 6: Examples and Rubrics",
+    "scenario": "A rubric gives one point each for correctness, evidence and clarity. An answer is correct and clear but unsupported.",
+    "question": "Score and give feedback.",
+    "explanation": "2/3. Ask for supporting evidence, then verify claim-to-source support."
+  },
+  "ai-3/7": {
+    "id": "ai-3/7",
+    "kind": "cycle",
+    "title": "Revise one cause and retest",
+    "items": [
+      {
+        "label": "Diagnose",
+        "value": "Too difficult for a nine-year-old"
+      },
+      {
+        "label": "Revise",
+        "value": "Simpler vocabulary and one concrete example"
+      },
+      {
+        "label": "Retest",
+        "value": "Use the same passages"
+      },
+      {
+        "label": "Compare",
+        "value": "Readability and factual preservation"
+      }
+    ],
+    "teach": "Ask what needs to stay fixed to assess the revision.",
+    "misconception": "Changing the passage and prompt together isolates the prompt's effect.",
+    "lesson": "Week 7: Iterative Prompting",
+    "scenario": "A factually correct explanation is too difficult for a nine-year-old.",
+    "question": "Make and test one focused revision.",
+    "explanation": "Constrain vocabulary and request a concrete example. Compare readability and factual preservation on the same passages."
+  },
+  "ai-3/8": {
+    "id": "ai-3/8",
+    "kind": "compare",
+    "title": "Type correctness is not factual correctness",
+    "items": [
+      {
+        "label": "Wrong type",
+        "value": "pages = \"80\" is text"
+      },
+      {
+        "label": "Correct type",
+        "value": "pages = 80 is numeric"
+      },
+      {
+        "label": "Remaining check",
+        "value": "Verify the real page count"
+      }
+    ],
+    "teach": "Ask why removing quotation marks fixes the type but does not verify the book.",
+    "misconception": "Valid JSON guarantees true values.",
+    "lesson": "Week 8: Structured Output and Schemas",
+    "scenario": "Schema requires title text and pages number. Output is {\"title\":\"River\",\"pages\":\"80\"}.",
+    "question": "Diagnose the shape error.",
+    "explanation": "Pages is a string, not a number. Use numeric 80. Structure validation does not verify the real page count."
+  },
+  "ai-3/9": {
+    "id": "ai-3/9",
+    "kind": "fractions",
+    "title": "Evaluate prompts on the same questions",
+    "items": [
+      {
+        "label": "Prompt A",
+        "value": "4/5"
+      },
+      {
+        "label": "Prompt B",
+        "value": "3/5"
+      }
+    ],
+    "teach": "Ask why attractive formatting should be scored separately from passing the task.",
+    "misconception": "The more attractive answer is necessarily the more correct one.",
+    "lesson": "Week 9: Prompt Evaluation",
+    "scenario": "On five fixed questions, A passes four and B passes three; B looks more attractive.",
+    "question": "What conclusion is supported?",
+    "explanation": "A has 4/5 versus B's 3/5 on this set. Appearance is separate. Broaden cases and repeat stochastic trials before generalising."
+  },
+  "ai-3/10": {
+    "id": "ai-3/10",
+    "kind": "flow",
+    "title": "A generated image does not document an event",
+    "items": [
+      {
+        "label": "Brief",
+        "value": "Bicycle beside a tree"
+      },
+      {
+        "label": "Model",
+        "value": "Synthesises visual patterns"
+      },
+      {
+        "label": "Image",
+        "value": "Fictional scene"
+      },
+      {
+        "label": "Check",
+        "value": "Content and intended use"
+      }
+    ],
+    "teach": "Ask what a realistic generated scene can establish about a real event.",
+    "misconception": "Photorealistic means photographed.",
+    "lesson": "Week 10: Image Generation Models",
+    "scenario": "A generator creates a realistic fictional bicycle beside a tree.",
+    "question": "How does this differ from event photography?",
+    "explanation": "It synthesises an image from learned patterns and instructions; it does not document that event. Many systems denoise iteratively, but architectures vary."
+  },
+  "ai-3/11": {
+    "id": "ai-3/11",
+    "kind": "spatial",
+    "title": "Map the brief to regions",
+    "items": [
+      {
+        "label": "Upper region",
+        "value": "Open sky"
+      },
+      {
+        "label": "Left foreground",
+        "value": "Large tree"
+      },
+      {
+        "label": "Right foreground",
+        "value": "Small bicycle"
+      }
+    ],
+    "teach": "Ask students to check subjects, relative sizes and positions separately.",
+    "misconception": "Including both objects is enough to satisfy their placement instructions.",
+    "lesson": "Week 11: Visual Composition",
+    "scenario": "Brief: large tree left, small bicycle right, open sky above. Output puts bicycle left.",
+    "question": "Create a visual checklist.",
+    "explanation": "Check subjects, relative size, positions and sky separately. The position violates composition even if subjects exist."
+  },
+  "ai-3/12": {
+    "id": "ai-3/12",
+    "kind": "flow",
+    "title": "Trace a speech error through the system",
+    "items": [
+      {
+        "label": "Speech",
+        "value": "Fifteen"
+      },
+      {
+        "label": "Transcript",
+        "value": "Fifty, the first error"
+      },
+      {
+        "label": "Calculator",
+        "value": "Correct arithmetic using fifty"
+      },
+      {
+        "label": "Result",
+        "value": "Wrong for the original request"
+      }
+    ],
+    "teach": "Ask which intermediate representation needs confirmation.",
+    "misconception": "Correct arithmetic can recover a misheard input automatically.",
+    "lesson": "Week 12: Speech and Audio Systems",
+    "scenario": "A speech tool hears fifteen as fifty, then calculates correctly using fifty.",
+    "question": "Where did the error enter?",
+    "explanation": "Transcription supplied the wrong number. Confirm the transcript or ask for clarification. Correct arithmetic cannot repair wrong input."
+  },
+  "ai-3/13": {
+    "id": "ai-3/13",
+    "kind": "compare",
+    "title": "Separate visible and off-frame claims",
+    "items": [
+      {
+        "label": "Image",
+        "value": "Three visible plants"
+      },
+      {
+        "label": "Caption",
+        "value": "A fourth outside the frame"
+      },
+      {
+        "label": "Evidence limit",
+        "value": "Image cannot settle the off-frame claim"
+      }
+    ],
+    "teach": "Cover the caption and ask what the picture alone establishes.",
+    "misconception": "An unseen claim becomes verified when placed beside a picture.",
+    "lesson": "Week 13: Multimodal Evidence",
+    "scenario": "An image shows three plants; caption claims a fourth outside the frame.",
+    "question": "What can the image establish?",
+    "explanation": "Three visible plants. It cannot settle an off-frame claim. Attribute claims and preserve missing evidence."
+  },
+  "ai-3/14": {
+    "id": "ai-3/14",
+    "kind": "checklist",
+    "title": "Different failures require different checks",
+    "items": [
+      {
+        "label": "Quotation",
+        "value": "Locate exact source text"
+      },
+      {
+        "label": "Citation",
+        "value": "Check support for the claim"
+      },
+      {
+        "label": "Date",
+        "value": "Check source and calendar consistency"
+      },
+      {
+        "label": "Repair",
+        "value": "Correct or remove unsupported statements"
+      }
+    ],
+    "teach": "Ask which check catches a real citation attached to an invented quote.",
+    "misconception": "One working source link verifies the whole response.",
+    "lesson": "Week 14: Hallucination Failure Types",
+    "scenario": "An answer invents a quotation, cites a source lacking it and supplies an impossible date.",
+    "question": "Separate the failures and checks.",
+    "explanation": "Check exact quote text, claim-to-source support and calendar consistency independently. Each failure needs its own correction."
+  },
+  "ai-3/15": {
+    "id": "ai-3/15",
+    "kind": "flow",
+    "title": "Follow a summary back to its evidence",
+    "items": [
+      {
+        "label": "Summary",
+        "value": "Identify its source"
+      },
+      {
+        "label": "Original report",
+        "value": "Read method and scope"
+      },
+      {
+        "label": "Limitations",
+        "value": "Keep conditions attached"
+      },
+      {
+        "label": "Conclusion",
+        "value": "State what evidence supports"
+      }
+    ],
+    "teach": "Ask why an original source still needs critical evaluation.",
+    "misconception": "An original report is automatically infallible.",
+    "lesson": "Week 15: Source Quality",
+    "scenario": "An original experiment report and an anonymous unlinked summary describe a method.",
+    "question": "Where should verification begin?",
+    "explanation": "Read the original method, scope and limitations. Original does not mean infallible; summaries may omit conditions."
+  },
+  "ai-3/16": {
+    "id": "ai-3/16",
+    "kind": "fractions",
+    "title": "Verify a percentage independently",
+    "items": [
+      {
+        "label": "Correct portion",
+        "value": "15/20"
+      },
+      {
+        "label": "Remaining portion",
+        "value": "5/20"
+      }
+    ],
+    "teach": "Shade fifteen of twenty boxes, then separately verify the impossible date February 30.",
+    "misconception": "Fluent writing means the numbers and dates were checked.",
+    "lesson": "Week 16: Verify Numbers and Dates",
+    "scenario": "An answer says 15/20=80% and sets a deadline of February 30.",
+    "question": "Verify both.",
+    "explanation": "15/20=75%. February 30 is invalid in the Gregorian calendar. Check the intended deadline from its authority rather than guessing."
+  },
+  "ai-3/17": {
+    "id": "ai-3/17",
+    "kind": "compare",
+    "title": "Retrieval creates an inspectable evidence trail",
+    "items": [
+      {
+        "label": "No retrieval",
+        "value": "Answer from learned patterns"
+      },
+      {
+        "label": "Retrieval",
+        "value": "Inspect a handbook paragraph"
+      },
+      {
+        "label": "Verification",
+        "value": "Check the paragraph supports the answer"
+      }
+    ],
+    "teach": "Ask what can be inspected in one workflow that is absent from the other.",
+    "misconception": "Retrieval guarantees the evidence is used correctly.",
+    "lesson": "Week 17: Model Memory vs Retrieval",
+    "scenario": "One assistant answers without search; another retrieves a handbook paragraph.",
+    "question": "Compare evidence trails.",
+    "explanation": "The first uses learned patterns without an inspected source. The second supplies a passage that can be checked. Retrieval still does not guarantee correct use."
+  },
+  "ai-3/18": {
+    "id": "ai-3/18",
+    "kind": "flow",
+    "title": "Use the passage that answers the question",
+    "items": [
+      {
+        "label": "Question",
+        "value": "When does the library open?"
+      },
+      {
+        "label": "Retrieve",
+        "value": "Note A says opens at 9"
+      },
+      {
+        "label": "Compose",
+        "value": "Library opens at 9"
+      },
+      {
+        "label": "Verify",
+        "value": "Note A supports opening time"
+      }
+    ],
+    "teach": "Ask why note B about the returns box does not support the opening time.",
+    "misconception": "Any retrieved library note supports every library claim.",
+    "lesson": "Week 18: Retrieval Augmented Generation",
+    "scenario": "Note A says library opens at 9. Note B says returns go in the blue box.",
+    "question": "Answer opening time with evidence.",
+    "explanation": "Answer 9 with note A. Retrieval supplies evidence and generation phrases it. B does not support opening time."
+  },
+  "ai-3/19": {
+    "id": "ai-3/19",
+    "kind": "compare",
+    "title": "Choose a narrow, testable contribution",
+    "items": [
+      {
+        "label": "Need",
+        "value": "Find chapter definitions"
+      },
+      {
+        "label": "Simple baseline",
+        "value": "Index or search"
+      },
+      {
+        "label": "AI help",
+        "value": "Explain with chapter references"
+      },
+      {
+        "label": "Limit",
+        "value": "Handle unsupported questions"
+      }
+    ],
+    "teach": "Ask when a simple index already solves the user need.",
+    "misconception": "A product must answer everything to be useful.",
+    "lesson": "Week 19: User Need and AI Contribution",
+    "scenario": "Learners struggle to locate definitions in an approved chapter; a proposed chatbot answers everything.",
+    "question": "Narrow the need and AI contribution.",
+    "explanation": "Help locate and explain chapter definitions with references and unsupported-question handling. Compare a simple index or search first."
+  },
+  "ai-3/20": {
+    "id": "ai-3/20",
+    "kind": "trace",
+    "title": "Update only the state the user changed",
+    "items": [
+      {
+        "label": "Before",
+        "value": "topic=plants, level=beginner"
+      },
+      {
+        "label": "Request",
+        "value": "Use an advanced explanation"
+      },
+      {
+        "label": "After",
+        "value": "topic=plants, level=advanced"
+      },
+      {
+        "label": "Reset",
+        "value": "Clear stored fields when requested"
+      }
+    ],
+    "teach": "Ask which field changes and which should remain.",
+    "misconception": "A style change automatically changes the topic.",
+    "lesson": "Week 20: Conversation State and Memory",
+    "scenario": "State stores topic=plants and reading_level=beginner. User requests advanced explanation.",
+    "question": "What changes?",
+    "explanation": "Update reading level, retain topic unless changed. Keep only necessary state with correction/reset. Context does not guarantee permanent memory."
+  },
+  "ai-3/21": {
+    "id": "ai-3/21",
+    "kind": "branch",
+    "title": "Choose a tool for each subtask",
+    "items": [
+      {
+        "label": "12 times 9",
+        "value": "Calculator → 108"
+      },
+      {
+        "label": "Habitat definition",
+        "value": "Search approved class pack"
+      },
+      {
+        "label": "Before answering",
+        "value": "Verify input, result and support"
+      }
+    ],
+    "teach": "Ask what evidence accompanies the retrieved definition.",
+    "misconception": "A tool result can be used without checking its inputs or relevance.",
+    "lesson": "Week 21: Tools and APIs",
+    "scenario": "An assistant has calculator and source-search tools. Request: 12 times 9 and habitat definition from a class pack.",
+    "question": "Choose and verify tools.",
+    "explanation": "Calculator returns 108; search retrieves the definition. Verify inputs, outputs and supporting passage before answering."
+  },
+  "ai-3/22": {
+    "id": "ai-3/22",
+    "kind": "checklist",
+    "title": "Validate the API response before using it",
+    "items": [
+      {
+        "label": "Request success",
+        "value": "Handle failure explicitly"
+      },
+      {
+        "label": "JSON syntax",
+        "value": "Reject malformed data"
+      },
+      {
+        "label": "Identity",
+        "value": "id must match B7"
+      },
+      {
+        "label": "Field type",
+        "value": "pages must be numeric 120"
+      }
+    ],
+    "teach": "Ask which check rejects valid JSON for book B8.",
+    "misconception": "A parseable response must belong to the requested item.",
+    "lesson": "Week 22: Requests Responses and JSON",
+    "scenario": "Request is for B7; response is {\"id\":\"B7\",\"pages\":120}. Another response has malformed JSON.",
+    "question": "What checks precede use?",
+    "explanation": "Request success, JSON validity, matching id, required fields and numeric type. Handle malformed responses explicitly."
+  },
+  "ai-3/23": {
+    "id": "ai-3/23",
+    "kind": "trace",
+    "title": "Trace the accumulator inside the loop",
+    "items": [
+      {
+        "label": "Start total",
+        "value": "0"
+      },
+      {
+        "label": "Add 2",
+        "value": "2"
+      },
+      {
+        "label": "Add 4",
+        "value": "6"
+      },
+      {
+        "label": "Add 6",
+        "value": "12"
+      }
+    ],
+    "teach": "Ask students to predict the next total and show where indentation places the update.",
+    "misconception": "Putting the update after the loop produces the same total.",
+    "lesson": "Week 23: Block to Python Bridge",
+    "scenario": "A block program sets total=0 and adds each value in [2,4,6].",
+    "question": "Translate and trace.",
+    "explanation": "Python uses total=0, then an indented total += value inside for value in [2,4,6]. Totals are 2,6,12."
+  },
+  "ai-3/24": {
+    "id": "ai-3/24",
+    "kind": "flow",
+    "title": "Build the smallest grounded path",
+    "items": [
+      {
+        "label": "Question",
+        "value": "How do roots help?"
+      },
+      {
+        "label": "Retrieve",
+        "value": "Roots take up water"
+      },
+      {
+        "label": "Answer",
+        "value": "Explain water uptake"
+      },
+      {
+        "label": "Check",
+        "value": "Reference and verify the roots note"
+      }
+    ],
+    "teach": "Ask what should happen if the approved notes contain no answer.",
+    "misconception": "Plausible extra claims are acceptable without support.",
+    "lesson": "Week 24: Prototype a Grounded Assistant",
+    "scenario": "Approved notes say plants need light and roots take up water. Ask how roots help.",
+    "question": "Specify the minimum grounded path.",
+    "explanation": "Retrieve the roots note, answer that roots take up water and reference it. Validate support and avoid unrelated claims."
+  },
+  "ai-3/25": {
+    "id": "ai-3/25",
+    "kind": "bars",
+    "title": "A total can hide a required failure",
+    "items": [
+      {
+        "label": "Support",
+        "value": "0"
+      },
+      {
+        "label": "Usefulness",
+        "value": "2"
+      },
+      {
+        "label": "Safety",
+        "value": "2"
+      }
+    ],
+    "teach": "Use a zero-to-two rubric. Ask why four of six points still fails when support is mandatory.",
+    "misconception": "Other points can compensate for every failed safety or support requirement.",
+    "lesson": "Week 25: Quality Rubrics",
+    "scenario": "Rubric gives 0–2 each for support, usefulness and safety. Response is useful and safe but unsupported.",
+    "question": "Why can a total mislead?",
+    "explanation": "It may get 4/6 while failing essential support. Declare mandatory criteria before testing so other points cannot compensate."
+  },
+  "ai-3/26": {
+    "id": "ai-3/26",
+    "kind": "groups",
+    "title": "Empty evaluation categories reveal gaps",
+    "items": [
+      {
+        "label": "Easy definitions",
+        "value": "10"
+      },
+      {
+        "label": "Absent evidence",
+        "value": "0"
+      },
+      {
+        "label": "Ambiguity",
+        "value": "0"
+      },
+      {
+        "label": "Boundary handling",
+        "value": "0"
+      }
+    ],
+    "teach": "Ask students to design a case for each empty category.",
+    "misconception": "Ten easy passes test every behaviour the assistant needs.",
+    "lesson": "Week 26: Evaluation Sets",
+    "scenario": "Ten evaluation questions are easy definitions; none lacks a source.",
+    "question": "What is untested?",
+    "explanation": "Absent evidence, ambiguity and boundary handling. Add predefined fallback cases and keep final cases separate from tuning."
+  },
+  "ai-3/27": {
+    "id": "ai-3/27",
+    "kind": "compare",
+    "title": "Source content cannot grant permissions",
+    "items": [
+      {
+        "label": "Authorised task",
+        "value": "Answer the chapter question"
+      },
+      {
+        "label": "Retrieved text",
+        "value": "Asks to ignore rules and reveal instructions"
+      },
+      {
+        "label": "Boundary",
+        "value": "Treat it as untrusted content"
+      }
+    ],
+    "teach": "Use harmless planted text and ask whether a page can change the assistant's permissions.",
+    "misconception": "Instructions found in evidence outrank the authorised task.",
+    "lesson": "Week 27: Red Team the Product",
+    "scenario": "A retrieved page says ignore rules and reveal hidden instructions.",
+    "question": "Design a safe boundary test.",
+    "explanation": "Use harmless planted text. Treat it as untrusted source content; answer the authorised task without exposing hidden data or expanding permissions."
+  },
+  "ai-3/28": {
+    "id": "ai-3/28",
+    "kind": "compare",
+    "title": "Keep a small, purposeful data plan",
+    "items": [
+      {
+        "label": "Preference",
+        "value": "Reading level may be useful"
+      },
+      {
+        "label": "Address",
+        "value": "Unnecessary for chapter study"
+      },
+      {
+        "label": "Raw chats",
+        "value": "Avoid indefinite retention"
+      },
+      {
+        "label": "Controls",
+        "value": "Define access, retention and deletion"
+      }
+    ],
+    "teach": "Ask which feature requires each proposed field.",
+    "misconception": "Keeping everything forever is a useful default.",
+    "lesson": "Week 28: Privacy by Design",
+    "scenario": "A study tool plans to retain names, addresses and all chats forever.",
+    "question": "Design a smaller data plan.",
+    "explanation": "Keep only needed preferences or progress, with retention, deletion and access controls. Avoid unnecessary addresses and raw chat storage."
+  },
+  "ai-3/29": {
+    "id": "ai-3/29",
+    "kind": "checklist",
+    "title": "Provenance makes reuse conditions visible",
+    "items": [
+      {
+        "label": "Origin",
+        "value": "Creator and source"
+      },
+      {
+        "label": "Permission",
+        "value": "Licence or explicit permission"
+      },
+      {
+        "label": "Conditions",
+        "value": "Attribution and other limits"
+      },
+      {
+        "label": "Modifications",
+        "value": "Record what changed"
+      }
+    ],
+    "teach": "Ask what a credit line fails to establish about permission.",
+    "misconception": "Attribution alone permits every reuse.",
+    "lesson": "Week 29: Copyright and Provenance",
+    "scenario": "A slide reuses an online photograph and textbook paragraph.",
+    "question": "What provenance and reuse checks are needed?",
+    "explanation": "Record creator, source, licence or permission, attribution requirements and modifications. Attribution alone is not permission; classroom context is not a universal exemption."
+  },
+  "ai-3/30": {
+    "id": "ai-3/30",
+    "kind": "compare",
+    "title": "Review representation across outputs",
+    "items": [
+      {
+        "label": "Observed pattern",
+        "value": "Only one demographic group shown"
+      },
+      {
+        "label": "Review",
+        "value": "Define relevant representation criteria"
+      },
+      {
+        "label": "Revision",
+        "value": "State inclusive requirements"
+      },
+      {
+        "label": "Retest",
+        "value": "Inspect multiple new outputs"
+      }
+    ],
+    "teach": "Ask why one image cannot establish the absence of all bias.",
+    "misconception": "A single attractive output proves balanced representation.",
+    "lesson": "Week 30: Bias and Representation",
+    "scenario": "Scientist images repeatedly show only one demographic group.",
+    "question": "Evaluate and improve representation.",
+    "explanation": "Review relevant representation criteria across outputs, revise inclusive requirements and retest. Appearance alone cannot establish absence of all bias."
+  },
+  "ai-3/31": {
+    "id": "ai-3/31",
+    "kind": "branch",
+    "title": "Keep a study tool inside its role",
+    "items": [
+      {
+        "label": "Study explanation",
+        "value": "Approved educational content"
+      },
+      {
+        "label": "Individual treatment",
+        "value": "Outside this product's role"
+      },
+      {
+        "label": "Response",
+        "value": "Direct to appropriate human help"
+      }
+    ],
+    "teach": "Ask how explaining a science concept differs from deciding a person's medicine.",
+    "misconception": "A scientific topic authorises an individual medical decision.",
+    "lesson": "Week 31: Safety Boundaries",
+    "scenario": "A Study Buddy is asked to decide whether a learner should take medicine.",
+    "question": "Set a product boundary.",
+    "explanation": "A classroom study tool should not decide individual treatment. Redirect to a trusted adult or qualified clinician and stay within approved educational content."
+  },
+  "ai-3/32": {
+    "id": "ai-3/32",
+    "kind": "flow",
+    "title": "Keep the learner responsible",
+    "items": [
+      {
+        "label": "Task",
+        "value": "Student defines permitted help"
+      },
+      {
+        "label": "Draft",
+        "value": "Assistant provides support"
+      },
+      {
+        "label": "Review",
+        "value": "Student verifies and follows class rules"
+      },
+      {
+        "label": "Submit",
+        "value": "Student authorises final work"
+      }
+    ],
+    "teach": "Ask which step demonstrates the learner's own understanding.",
+    "misconception": "An assistant can approve and submit its own unchecked draft.",
+    "lesson": "Week 32: Human AI Workflow",
+    "scenario": "An AI drafts, verifies and submits a student's assessment without review.",
+    "question": "Where should responsibility remain?",
+    "explanation": "The student reviews, verifies, follows class rules and remains responsible. Submission requires authorisation and must not bypass learning."
+  },
+  "ai-3/33": {
+    "id": "ai-3/33",
+    "kind": "checklist",
+    "title": "Acceptance tests include the boundaries",
+    "items": [
+      {
+        "label": "Answerable",
+        "value": "Correct cited chapter answer"
+      },
+      {
+        "label": "Ambiguous",
+        "value": "Clarifying question"
+      },
+      {
+        "label": "Unanswerable",
+        "value": "Missing-evidence fallback"
+      },
+      {
+        "label": "Permissions",
+        "value": "Respect data and action limits"
+      }
+    ],
+    "teach": "Ask students to write expected behaviours before building.",
+    "misconception": "Only questions with known answers belong in acceptance testing.",
+    "lesson": "Week 33: Capstone Design",
+    "scenario": "Capstone: answer from one approved chapter with citations and a missing-evidence fallback.",
+    "question": "Define acceptance tests.",
+    "explanation": "Use answerable, ambiguous and unanswerable cases. Check correctness, support, format and fallback, plus declared permissions and privacy."
+  },
+  "ai-3/34": {
+    "id": "ai-3/34",
+    "kind": "flow",
+    "title": "Validate before displaying the draft",
+    "items": [
+      {
+        "label": "Retrieve",
+        "value": "Relevant approved passages"
+      },
+      {
+        "label": "Draft",
+        "value": "Compose the answer"
+      },
+      {
+        "label": "Validate",
+        "value": "Check claims and citations"
+      },
+      {
+        "label": "Display or stop",
+        "value": "Show supported content or explain the limit"
+      }
+    ],
+    "teach": "Ask where an unsupported claim should be caught.",
+    "misconception": "Adding a citation is the same as validating support.",
+    "lesson": "Week 34: Capstone Build",
+    "scenario": "A pipeline retrieves passages, drafts and displays without checking citations.",
+    "question": "What step is missing?",
+    "explanation": "Validate every factual claim against its citation, plus required fields and boundaries. Revise or stop unsupported answers; retain diagnostic stages."
+  },
+  "ai-3/35": {
+    "id": "ai-3/35",
+    "kind": "fractions",
+    "title": "Compare supported answers on fixed cases",
+    "items": [
+      {
+        "label": "Before",
+        "value": "6/10"
+      },
+      {
+        "label": "After",
+        "value": "8/10"
+      }
+    ],
+    "teach": "Ask why the report must separate development improvement from fresh final evaluation.",
+    "misconception": "A development-set improvement guarantees future performance.",
+    "lesson": "Week 35: Capstone Evaluate and Improve",
+    "scenario": "A revision improves supported answers from 6/10 to 8/10 on a development set.",
+    "question": "What belongs in the report?",
+    "explanation": "Before/after results, exact change, errors and fixed conditions; evaluate the chosen version on fresh final cases and report failures."
+  },
+  "ai-3/36": {
+    "id": "ai-3/36",
+    "kind": "checklist",
+    "title": "Defend a bounded claim",
+    "items": [
+      {
+        "label": "Result",
+        "value": "Ten specified demonstrations passed"
+      },
+      {
+        "label": "Evidence",
+        "value": "Show sources and checks"
+      },
+      {
+        "label": "Limit",
+        "value": "Other conditions remain untested"
+      },
+      {
+        "label": "Demonstration",
+        "value": "Show an unanswerable question"
+      }
+    ],
+    "teach": "Ask which word makes never hallucinates too strong.",
+    "misconception": "Ten successes establish that a generator never makes unsupported claims.",
+    "lesson": "Week 36: Creator Defense",
+    "scenario": "Ten successful demos lead to a never hallucinates claim.",
+    "question": "Write a defensible conclusion.",
+    "explanation": "Report those ten specified passes, show evidence and fallback, and state untested conditions. Demonstrate an unanswerable question."
+  },
+  "ai-4/1": {
+    "id": "ai-4/1",
+    "kind": "cycle",
+    "title": "Evidence drives the ML lifecycle",
+    "items": [
+      {
+        "label": "Define",
+        "value": "Intended use and labels"
+      },
+      {
+        "label": "Prepare",
+        "value": "Collect and separate evaluation data"
+      },
+      {
+        "label": "Train",
+        "value": "Fit on training data"
+      },
+      {
+        "label": "Evaluate",
+        "value": "Inspect unseen results"
+      },
+      {
+        "label": "Revise",
+        "value": "Change a cause and retest"
+      }
+    ],
+    "teach": "Ask what one correct leaf prediction fails to establish.",
+    "misconception": "One successful demonstration is reliable performance evidence.",
+    "lesson": "Week 1: The ML Lifecycle",
+    "scenario": "A team labels leaf photos, trains a healthy/spotted classifier and shows one correct prediction.",
+    "question": "Order the lifecycle and identify missing evidence.",
+    "explanation": "Define use and labels, collect data, separate evaluation data, train, predict, evaluate and improve. One correct result is insufficient. Test unseen varied cases and retain human responsibility."
+  },
+  "ai-4/2": {
+    "id": "ai-4/2",
+    "kind": "compare",
+    "title": "Separate features from the target",
+    "items": [
+      {
+        "label": "Length",
+        "value": "Candidate input feature"
+      },
+      {
+        "label": "Edge type",
+        "value": "Candidate input feature"
+      },
+      {
+        "label": "Healthy or spotted",
+        "value": "Target label"
+      },
+      {
+        "label": "Prediction time",
+        "value": "True target is unavailable"
+      }
+    ],
+    "teach": "Ask which fields will actually be available before the answer is known.",
+    "misconception": "The true target can be an input feature for predicting itself.",
+    "lesson": "Week 2: Features, Labels, Targets",
+    "scenario": "Rows contain leaf length, edge type and healthy/spotted label.",
+    "question": "Identify features, target and prediction-time inputs.",
+    "explanation": "Length and edge type are candidate features; the label is the target. Do not supply the true target as an input to predicting it. Evaluate feature usefulness."
+  },
+  "ai-4/3": {
+    "id": "ai-4/3",
+    "kind": "compare",
+    "title": "Choose the task by the meaning of the output",
+    "items": [
+      {
+        "label": "Healthy or spotted",
+        "value": "Classification, category"
+      },
+      {
+        "label": "Height next week",
+        "value": "Regression, numeric cm"
+      },
+      {
+        "label": "Class code 0 or 1",
+        "value": "Still a category"
+      }
+    ],
+    "teach": "Ask why numeric encoding does not turn a class into a measurement.",
+    "misconception": "Every numeric output makes a task regression.",
+    "lesson": "Week 3: Classification or Regression?",
+    "scenario": "Task A predicts healthy/spotted; B predicts next week's height in cm.",
+    "question": "Choose task and output types.",
+    "explanation": "A is classification with categorical output; B is regression with numeric output and units. Numeric class codes do not make classification regression."
+  },
+  "ai-4/4": {
+    "id": "ai-4/4",
+    "kind": "trace",
+    "title": "Trace the calculation and its empty case",
+    "items": [
+      {
+        "label": "lengths",
+        "value": "[4,6,8]"
+      },
+      {
+        "label": "sum",
+        "value": "18"
+      },
+      {
+        "label": "count",
+        "value": "3"
+      },
+      {
+        "label": "mean",
+        "value": "6.0"
+      },
+      {
+        "label": "empty list",
+        "value": "No mean, guard division by zero"
+      }
+    ],
+    "teach": "Ask which denominator must be checked before division.",
+    "misconception": "An empty dataset has a mean of zero.",
+    "lesson": "Week 4: Python and Table Readiness",
+    "scenario": "Python lengths=[4,6,8]; total=sum(lengths); mean=total/len(lengths).",
+    "question": "Trace and handle an empty list.",
+    "explanation": "Total=18, count=3, mean=6.0. Guard the empty case against division by zero; no mean exists without observations."
+  },
+  "ai-4/5": {
+    "id": "ai-4/5",
+    "kind": "compare",
+    "title": "Inspect data before choosing repairs",
+    "items": [
+      {
+        "label": "5 cm",
+        "value": "Physically plausible"
+      },
+      {
+        "label": "Blank",
+        "value": "Missing measurement"
+      },
+      {
+        "label": "−3 cm",
+        "value": "Invalid length"
+      },
+      {
+        "label": "Duplicate photo",
+        "value": "Check record identity"
+      }
+    ],
+    "teach": "Ask how blindly deleting records could remove an important condition.",
+    "misconception": "All problematic rows should be deleted without investigation.",
+    "lesson": "Week 5: Inspect Before Modeling",
+    "scenario": "Lengths include 5 cm, blank and -3 cm, plus a duplicate photo row.",
+    "question": "Name checks and a deletion risk.",
+    "explanation": "Check missingness, physical validity, units and duplicate identity. Investigate and document repair. Blind deletion can disproportionately remove a relevant condition."
+  },
+  "ai-4/6": {
+    "id": "ai-4/6",
+    "kind": "fractions",
+    "title": "Agreement is useful evidence, not truth",
+    "items": [
+      {
+        "label": "Annotator agreement",
+        "value": "7/10"
+      },
+      {
+        "label": "Disagreement",
+        "value": "3/10"
+      }
+    ],
+    "teach": "Ask students to define mild spotting more precisely and review disagreements.",
+    "misconception": "Two people agreeing proves the label is objectively correct.",
+    "lesson": "Week 6: Label Quality",
+    "scenario": "Two annotators disagree on three of ten leaves, especially mild spotting.",
+    "question": "Improve label quality.",
+    "explanation": "Define spotting operationally, inspect disagreement, use appropriate adjudication and document ambiguity. Agreement is 7/10, but agreement is not proof of truth."
+  },
+  "ai-4/7": {
+    "id": "ai-4/7",
+    "kind": "compare",
+    "title": "Match data coverage to intended use",
+    "items": [
+      {
+        "label": "Training",
+        "value": "Indoor white backgrounds"
+      },
+      {
+        "label": "Intended use",
+        "value": "Outdoor plants"
+      },
+      {
+        "label": "Possible shift",
+        "value": "Lighting, background and device"
+      },
+      {
+        "label": "Evaluation",
+        "value": "Inspect outdoor cases separately"
+      }
+    ],
+    "teach": "Ask which conditions need new representative examples.",
+    "misconception": "Indoor success proves outdoor reliability.",
+    "lesson": "Week 7: Sampling and Intended Use",
+    "scenario": "Training photos use indoor white backgrounds; intended use is outdoors.",
+    "question": "Identify the coverage gap.",
+    "explanation": "Lighting, background and device conditions may differ. Collect representative examples and evaluate outdoor slices separately."
+  },
+  "ai-4/8": {
+    "id": "ai-4/8",
+    "kind": "split",
+    "title": "Keep related views in the same partition",
+    "items": [
+      {
+        "label": "Leaf A, all views",
+        "value": "10"
+      },
+      {
+        "label": "Leaf B, all views",
+        "value": "10"
+      },
+      {
+        "label": "Leaf C, all views",
+        "value": "10"
+      }
+    ],
+    "teach": "Treat each coloured block as one leaf's views. Assign whole blocks to partitions before fitting.",
+    "misconception": "Different photos of the same leaf are independent train and test examples.",
+    "lesson": "Week 8: Leakage",
+    "scenario": "Ten photos per leaf are randomly split so one leaf appears in train and test.",
+    "question": "Explain and repair leakage.",
+    "explanation": "Related views make evaluation familiar. Split by leaf identity before fitting or learned preprocessing; keep all views together."
+  },
+  "ai-4/9": {
+    "id": "ai-4/9",
+    "kind": "checklist",
+    "title": "A dataset card explains suitability",
+    "items": [
+      {
+        "label": "Origin",
+        "value": "Source, permission and collection"
+      },
+      {
+        "label": "Meaning",
+        "value": "Fields and operational labels"
+      },
+      {
+        "label": "Coverage",
+        "value": "Conditions, exclusions and missingness"
+      },
+      {
+        "label": "Use",
+        "value": "Intended tasks and limitations"
+      }
+    ],
+    "teach": "Ask what a field list fails to tell a future user.",
+    "misconception": "Column names alone are sufficient dataset documentation.",
+    "lesson": "Week 9: Dataset Cards",
+    "scenario": "A dataset card lists fields but omits source and intended use.",
+    "question": "Add information needed to assess suitability.",
+    "explanation": "Provenance, permissions, collection method/time/conditions, label definitions, coverage, exclusions, missingness, use and limitations. Fields alone are insufficient."
+  },
+  "ai-4/10": {
+    "id": "ai-4/10",
+    "kind": "fractions",
+    "title": "A majority baseline can miss every positive",
+    "items": [
+      {
+        "label": "Overall correct",
+        "value": "18/20"
+      },
+      {
+        "label": "Spotted found",
+        "value": "0/2"
+      }
+    ],
+    "teach": "Define spotted as positive and ask why high accuracy hides the missed leaves.",
+    "misconception": "Ninety percent accuracy makes the baseline useful for spotting detection.",
+    "lesson": "Week 10: Baselines First",
+    "scenario": "A test set has eighteen healthy and two spotted leaves. Baseline always predicts healthy.",
+    "question": "Calculate and critique accuracy.",
+    "explanation": "18/20=90%, but spotted recall is 0/2=0%. Compare with task-relevant metrics and the trained model."
+  },
+  "ai-4/11": {
+    "id": "ai-4/11",
+    "kind": "branch",
+    "title": "Trace the inclusive tree threshold",
+    "items": [
+      {
+        "label": "2 spots",
+        "value": "Below 3 → healthy"
+      },
+      {
+        "label": "3 spots",
+        "value": "At least 3 → spotted"
+      },
+      {
+        "label": "4 spots",
+        "value": "At least 3 → spotted"
+      }
+    ],
+    "teach": "Ask whether this supplied threshold has been shown to be optimal.",
+    "misconception": "A provided rule proves its threshold was learned optimally.",
+    "lesson": "Week 11: Decision Trees",
+    "scenario": "A supplied tree predicts spotted for spot_count>=3, otherwise healthy.",
+    "question": "Trace 2,3,4 and state boundary.",
+    "explanation": "Healthy, spotted, spotted. Three is included. This supplied rule does not show an optimal learned threshold."
+  },
+  "ai-4/12": {
+    "id": "ai-4/12",
+    "kind": "bars",
+    "title": "Absolute distance from query 6",
+    "items": [
+      {
+        "label": "Point 2, healthy",
+        "value": "4"
+      },
+      {
+        "label": "Point 4, healthy",
+        "value": "2"
+      },
+      {
+        "label": "Point 8, spotted",
+        "value": "2"
+      }
+    ],
+    "teach": "Ask how conflicting labels at equal nearest distance should be handled.",
+    "misconception": "k=1 removes the need for a tie policy.",
+    "lesson": "Week 12: Nearest Neighbors",
+    "scenario": "One-dimensional training points: 2 healthy, 4 healthy, 8 spotted. Query=6; absolute distance.",
+    "question": "Find k=1 neighbours and handle ties.",
+    "explanation": "Distances 4,2,2. Points 4 and 8 tie with different labels. Use a predefined tie policy or uncertainty. Scaling matters with differently measured features."
+  },
+  "ai-4/13": {
+    "id": "ai-4/13",
+    "kind": "branch",
+    "title": "Apply a developed rule to new cases",
+    "items": [
+      {
+        "label": "Training",
+        "value": "0 and 1 labelled H, 4 and 5 labelled S"
+      },
+      {
+        "label": "Supplied rule",
+        "value": "Spots at least 3 predicts S"
+      },
+      {
+        "label": "Test 2 spots",
+        "value": "Predict H"
+      },
+      {
+        "label": "Test 3 spots",
+        "value": "Predict S"
+      }
+    ],
+    "teach": "Ask which stage chose the rule and which simply applied it.",
+    "misconception": "Applying a supplied classifier demonstrates how it was trained.",
+    "lesson": "Week 13: Train a Classifier",
+    "scenario": "Training is (0,H),(1,H),(4,S),(5,S). Candidate rule predicts S for spots>=3. Held-out cases are (2,H),(3,S).",
+    "question": "Apply the rule and distinguish fitting from inference.",
+    "explanation": "Predictions H,S give 2/2 on this tiny set. Choosing the rule is development; applying it is inference. Two cases do not establish broad performance."
+  },
+  "ai-4/14": {
+    "id": "ai-4/14",
+    "kind": "fractions",
+    "title": "Compare a score bin with observed frequency",
+    "items": [
+      {
+        "label": "Spotted among score-0.8 cases",
+        "value": "8/10"
+      }
+    ],
+    "teach": "Ask what additional score bins and examples are needed to assess calibration.",
+    "misconception": "One bin proves global calibration or certainty for each individual case.",
+    "lesson": "Week 14: Scores and Calibration Intuition",
+    "scenario": "Ten cases receive probability .8 for spotted; eight are spotted.",
+    "question": "Interpret calibration and its limits.",
+    "explanation": "8/10 matches .8 in this tiny bin. It illustrates calibration, not proof of global calibration or individual certainty; test more bins and data."
+  },
+  "ai-4/15": {
+    "id": "ai-4/15",
+    "kind": "matrix",
+    "title": "Actual rows, predicted columns",
+    "items": [
+      {
+        "label": "True positive",
+        "value": "8"
+      },
+      {
+        "label": "False negative",
+        "value": "4"
+      },
+      {
+        "label": "False positive",
+        "value": "2"
+      },
+      {
+        "label": "True negative",
+        "value": "6"
+      }
+    ],
+    "teach": "Define positive as spotted, total twenty cases and locate the fourteen correct cases.",
+    "misconception": "A matrix is interpretable without stating its axes or positive class.",
+    "lesson": "Week 15: Confusion Matrix",
+    "scenario": "Positive is spotted. TP=8, FP=2, FN=4, TN=6.",
+    "question": "Build actual-row/predicted-column matrix and total.",
+    "explanation": "Actual spotted row is 8 spotted,4 healthy; actual healthy row is 2 spotted,6 healthy. Total=20; correct=14. State axes and positive class."
+  },
+  "ai-4/16": {
+    "id": "ai-4/16",
+    "kind": "groups",
+    "title": "The majority can hide a detection failure",
+    "items": [
+      {
+        "label": "Healthy, predicted healthy",
+        "value": "95"
+      },
+      {
+        "label": "Spotted, predicted healthy",
+        "value": "5"
+      }
+    ],
+    "teach": "Ask students to compute 95/100 accuracy and 0/5 spotted recall from these counts.",
+    "misconception": "High overall accuracy implies good performance on the rare class.",
+    "lesson": "Week 16: Accuracy and Imbalance",
+    "scenario": "A dataset has 95 healthy and 5 spotted. Model predicts healthy for all.",
+    "question": "Calculate and critique accuracy.",
+    "explanation": "95/100=95%, but spotted recall=0/5=0%. Majority performance hides the detection failure."
+  },
+  "ai-4/17": {
+    "id": "ai-4/17",
+    "kind": "fractions",
+    "title": "Precision and recall use different denominators",
+    "items": [
+      {
+        "label": "Precision, predicted positives",
+        "value": "8/10"
+      },
+      {
+        "label": "Recall, actual positives",
+        "value": "8/12"
+      }
+    ],
+    "teach": "Ask which denominator includes false positives and which includes false negatives.",
+    "misconception": "Precision and recall are interchangeable percentages.",
+    "lesson": "Week 17: Precision and Recall",
+    "scenario": "Positive is spotted: TP=8, FP=2, FN=4.",
+    "question": "Compute precision and recall.",
+    "explanation": "Precision=8/10=80%; recall=8/12 about 66.7%. Denominators are predicted positives and actual positives respectively."
+  },
+  "ai-4/18": {
+    "id": "ai-4/18",
+    "kind": "fractions",
+    "title": "Compare error rates, not only error counts",
+    "items": [
+      {
+        "label": "Backlit errors",
+        "value": "4/5"
+      },
+      {
+        "label": "Ordinary-light errors",
+        "value": "2/20"
+      }
+    ],
+    "teach": "Ask which confounding conditions must be inspected before identifying the cause.",
+    "misconception": "More errors automatically prove that lighting caused the failures.",
+    "lesson": "Week 18: Error Analysis",
+    "scenario": "Four errors occur among five backlit photos; two among twenty ordinary photos.",
+    "question": "Compare rates and investigate.",
+    "explanation": "Backlit error=80%; ordinary=10%. Inspect image quality and confounding differences. Association motivates controlled testing; it does not alone prove cause."
+  },
+  "ai-4/19": {
+    "id": "ai-4/19",
+    "kind": "residual",
+    "title": "Residual is actual minus predicted",
+    "items": [
+      {
+        "label": "Prediction",
+        "value": "9"
+      },
+      {
+        "label": "Actual",
+        "value": "12"
+      }
+    ],
+    "teach": "Use cm and the actual-minus-predicted convention. Ask why positive three means underprediction.",
+    "misconception": "Residual sign has a universal meaning without a stated convention.",
+    "lesson": "Week 19: Regression and Residuals",
+    "scenario": "Actual height=12 cm, prediction=9 cm. Residual means actual minus predicted.",
+    "question": "Calculate and interpret.",
+    "explanation": "+3 cm means underprediction by 3 cm. State this sign convention consistently."
+  },
+  "ai-4/20": {
+    "id": "ai-4/20",
+    "kind": "bars",
+    "title": "Mean and median baselines use the same observations",
+    "items": [
+      {
+        "label": "Observation A",
+        "value": "2"
+      },
+      {
+        "label": "Observation B",
+        "value": "4"
+      },
+      {
+        "label": "Observation C",
+        "value": "12"
+      },
+      {
+        "label": "Mean baseline",
+        "value": "6"
+      },
+      {
+        "label": "Median baseline",
+        "value": "4"
+      }
+    ],
+    "teach": "Compute absolute-error totals twelve and ten respectively, then ask what metric each comparison uses.",
+    "misconception": "The mean always minimises absolute error.",
+    "lesson": "Week 20: Mean, Median, and Baselines",
+    "scenario": "Training heights are 2,4,12 cm. Compare constant mean and median baselines.",
+    "question": "Compute both and training absolute errors.",
+    "explanation": "Mean=6, median=4. Mean errors 4,2,6 total12; median errors 2,0,8 total10. Median minimises absolute error here."
+  },
+  "ai-4/21": {
+    "id": "ai-4/21",
+    "kind": "bars",
+    "title": "Absolute errors are measured before averaging",
+    "items": [
+      {
+        "label": "Case 1, actual 3, predicted 2",
+        "value": "1"
+      },
+      {
+        "label": "Case 2, actual 5, predicted 7",
+        "value": "2"
+      },
+      {
+        "label": "Case 3, actual 9, predicted 6",
+        "value": "3"
+      }
+    ],
+    "teach": "Add the three absolute errors and divide by three, keeping cm as the unit.",
+    "misconception": "Positive and negative errors should cancel when computing MAE.",
+    "lesson": "Week 21: Absolute Error and MAE",
+    "scenario": "Actual=[3,5,9], predicted=[2,7,6] cm.",
+    "question": "Calculate MAE.",
+    "explanation": "Absolute errors=[1,2,3]; mean=2 cm. Do not cancel signed errors before taking absolute values."
+  },
+  "ai-4/22": {
+    "id": "ai-4/22",
+    "kind": "trace",
+    "title": "Apply the fitted equation, then evaluate",
+    "items": [
+      {
+        "label": "Rule",
+        "value": "height = 2 × age + 1"
+      },
+      {
+        "label": "Age 3",
+        "value": "Predict 7, actual 8, absolute error 1"
+      },
+      {
+        "label": "Age 4",
+        "value": "Predict 9, actual 9, absolute error 0"
+      },
+      {
+        "label": "MAE",
+        "value": "0.5 cm"
+      }
+    ],
+    "teach": "Ask which evidence is missing about the fitting process.",
+    "misconception": "Using a fitted equation demonstrates the training procedure.",
+    "lesson": "Week 22: Train a Regression Model",
+    "scenario": "Supplied fitted rule: height=2 times age+1. Held-out observations are (3,8),(4,9).",
+    "question": "Predict and evaluate; distinguish inference.",
+    "explanation": "Predictions 7,9; errors 1,0; MAE=.5 cm. Applying a supplied equation does not show how it was fitted."
+  },
+  "ai-4/23": {
+    "id": "ai-4/23",
+    "kind": "compare",
+    "title": "A repeatedly inspected test set is no longer final",
+    "items": [
+      {
+        "label": "Reserved folder",
+        "value": "Twenty leaves"
+      },
+      {
+        "label": "Weekly inspection",
+        "value": "Labels influence model choice"
+      },
+      {
+        "label": "Actual role",
+        "value": "Validation"
+      },
+      {
+        "label": "Repair",
+        "value": "Reserve genuinely unused final cases"
+      }
+    ],
+    "teach": "Ask when information from a test set first influences development.",
+    "misconception": "A folder name keeps a test set untouched despite repeated use.",
+    "lesson": "Week 23: Hold Out Test Data",
+    "scenario": "A final-test folder has twenty leaves; its labels are opened weekly to choose models.",
+    "question": "Is it still untouched?",
+    "explanation": "No. It functions as validation. Reserve a genuinely unused set for final evaluation or disclose the limitation."
+  },
+  "ai-4/24": {
+    "id": "ai-4/24",
+    "kind": "split",
+    "title": "Three partitions have three different jobs",
+    "items": [
+      {
+        "label": "Train, fit parameters",
+        "value": "60"
+      },
+      {
+        "label": "Validation, choose settings",
+        "value": "20"
+      },
+      {
+        "label": "Test, evaluate selected system",
+        "value": "20"
+      }
+    ],
+    "teach": "Group related records first. Ask where learned preprocessing is fitted.",
+    "misconception": "Validation and test data can train preprocessing without leakage.",
+    "lesson": "Week 24: Train, Validation, Test",
+    "scenario": "Split 100 independent leaves into 60 train,20 validation,20 test.",
+    "question": "Explain roles and preprocessing.",
+    "explanation": "Train fits parameters and learned transforms; validation chooses settings; final test evaluates the selected system. Group related records first."
+  },
+  "ai-4/25": {
+    "id": "ai-4/25",
+    "kind": "compare",
+    "title": "Connect error types to consequences",
+    "items": [
+      {
+        "label": "False negative",
+        "value": "Spotted leaf missed"
+      },
+      {
+        "label": "False positive",
+        "value": "Healthy leaf creates an alert"
+      },
+      {
+        "label": "Recall",
+        "value": "Fraction of positives found"
+      },
+      {
+        "label": "Precision",
+        "value": "Fraction of alerts correct"
+      }
+    ],
+    "teach": "Ask how review capacity and missed-sign consequences affect the chosen tradeoff.",
+    "misconception": "The same metric is best for every consequence and workload.",
+    "lesson": "Week 25: Metrics Match Consequences",
+    "scenario": "Spotting alerts can miss disease signs or create unnecessary healthy-leaf reviews.",
+    "question": "Connect metrics to consequences.",
+    "explanation": "Recall measures finding positives; precision measures alert correctness. Set tradeoffs using consequences, review capacity and validation evidence."
+  },
+  "ai-4/26": {
+    "id": "ai-4/26",
+    "kind": "checklist",
+    "title": "Make an experiment reproducible",
+    "items": [
+      {
+        "label": "Data",
+        "value": "Identity and split/group IDs"
+      },
+      {
+        "label": "Code",
+        "value": "Version and dependencies"
+      },
+      {
+        "label": "Procedure",
+        "value": "Features, preprocessing and settings"
+      },
+      {
+        "label": "Evidence",
+        "value": "Seeds, metric definitions and raw predictions"
+      }
+    ],
+    "teach": "Ask what a second team needs besides the reported 85% accuracy.",
+    "misconception": "Recording only a random seed makes an experiment reproducible.",
+    "lesson": "Week 26: Reproducible Experiments",
+    "scenario": "A report says accuracy85% without data split, code version, seed or preprocessing.",
+    "question": "Specify reproducibility records.",
+    "explanation": "Record data identity, group/split IDs, code/dependency versions, preprocessing, features, settings, seeds where relevant, metric definition and raw predictions. Seed alone is insufficient."
+  },
+  "ai-4/27": {
+    "id": "ai-4/27",
+    "kind": "bars",
+    "title": "Compare training and shared validation",
+    "items": [
+      {
+        "label": "A training",
+        "value": "100"
+      },
+      {
+        "label": "A validation",
+        "value": "60"
+      },
+      {
+        "label": "B training",
+        "value": "85"
+      },
+      {
+        "label": "B validation",
+        "value": "80"
+      }
+    ],
+    "teach": "Compute gaps of forty and five percentage points, then select using the declared validation metric.",
+    "misconception": "The best training score determines the best model.",
+    "lesson": "Week 27: Overfitting",
+    "scenario": "A scores100% train,60% validation; B scores85%,80% on the same sets.",
+    "question": "Compute gaps and select by validation accuracy.",
+    "explanation": "A gap40 percentage points; B gap5. B has better shared validation accuracy. A suggests overfitting, but investigate distribution differences too."
+  },
+  "ai-4/28": {
+    "id": "ai-4/28",
+    "kind": "curve",
+    "title": "More training data on the same validation set",
+    "items": [
+      {
+        "label": "20",
+        "value": "60"
+      },
+      {
+        "label": "40",
+        "value": "70"
+      },
+      {
+        "label": "80",
+        "value": "78"
+      }
+    ],
+    "teach": "Read training leaves on the horizontal axis and validation accuracy on the vertical axis. Ask what a repeat might reveal.",
+    "misconception": "The observed upward trend guarantees the next increase.",
+    "lesson": "Week 28: Learning Curves",
+    "scenario": "With20,40,80 training leaves, fixed-set validation accuracy is60%,70%,78%.",
+    "question": "Interpret the curve and uncertainty.",
+    "explanation": "These runs improve with more data. Further representative data may help, but gains are not guaranteed. Controlled repeats reveal variability."
+  },
+  "ai-4/29": {
+    "id": "ai-4/29",
+    "kind": "trace",
+    "title": "Engineer a ratio with boundary checks",
+    "items": [
+      {
+        "label": "Length",
+        "value": "8 cm"
+      },
+      {
+        "label": "Width",
+        "value": "2 cm"
+      },
+      {
+        "label": "Length divided by width",
+        "value": "4, unitless"
+      },
+      {
+        "label": "Width zero or missing",
+        "value": "Do not divide, handle explicitly"
+      }
+    ],
+    "teach": "Ask why units must match and where learned transforms are fitted.",
+    "misconception": "Ratios can be calculated safely for every recorded denominator.",
+    "lesson": "Week 29: Feature Engineering",
+    "scenario": "Features are leaf length and width in cm; add length/width.",
+    "question": "Compute for8 and2; state boundary checks.",
+    "explanation": "Ratio=4, unitless with matching units. Guard zero/missing width; fit learned transforms on training only."
+  },
+  "ai-4/30": {
+    "id": "ai-4/30",
+    "kind": "compare",
+    "title": "Repair a background shortcut deliberately",
+    "items": [
+      {
+        "label": "Observed shortcut",
+        "value": "Tray colour tracks label"
+      },
+      {
+        "label": "Changed condition",
+        "value": "New trays reduce performance"
+      },
+      {
+        "label": "Revision",
+        "value": "Reduce shortcut and add relevant variation"
+      },
+      {
+        "label": "Comparison",
+        "value": "Same validation conditions and slices"
+      }
+    ],
+    "teach": "Ask how to isolate the effect of one planned change.",
+    "misconception": "Any training improvement establishes better generalisation.",
+    "lesson": "Week 30: Improve Generalization",
+    "scenario": "A classifier relies on tray colour; new trays reduce performance.",
+    "question": "Propose controlled improvement.",
+    "explanation": "Reduce the shortcut and add representative variation; compare on fixed validation cases including new colours. Change one planned factor."
+  },
+  "ai-4/31": {
+    "id": "ai-4/31",
+    "kind": "fractions",
+    "title": "Report subgroup denominators with rates",
+    "items": [
+      {
+        "label": "Group A",
+        "value": "18/20"
+      },
+      {
+        "label": "Group B",
+        "value": "6/10"
+      }
+    ],
+    "teach": "Compute ninety versus sixty percent and investigate collection and label differences.",
+    "misconception": "A performance gap proves an inherent difference in the groups.",
+    "lesson": "Week 31: Subgroup Performance",
+    "scenario": "A has18/20 correct; B has6/10.",
+    "question": "Compute subgroup results and evidence limits.",
+    "explanation": "90% versus60%, gap30 percentage points. Report denominators and investigate collection/label differences without assuming an inherent group cause."
+  },
+  "ai-4/32": {
+    "id": "ai-4/32",
+    "kind": "compare",
+    "title": "Test whether a proxy replaces leaf evidence",
+    "items": [
+      {
+        "label": "Background colour",
+        "value": "Tracks collection location"
+      },
+      {
+        "label": "Location",
+        "value": "Associated with plant type"
+      },
+      {
+        "label": "Risk",
+        "value": "Model uses shortcut"
+      },
+      {
+        "label": "Test",
+        "value": "Cross leaf types with backgrounds and locations"
+      }
+    ],
+    "teach": "Ask what paired test would keep the leaf constant and change background.",
+    "misconception": "A useful training correlation is necessarily a legitimate causal feature.",
+    "lesson": "Week 32: Proxy Features and Fairness",
+    "scenario": "Background colour tracks collection location, associated with plant types.",
+    "question": "Explain proxy risk and test.",
+    "explanation": "Background can be a location shortcut rather than leaf evidence. Test leaf types across backgrounds and locations and compare slices."
+  },
+  "ai-4/33": {
+    "id": "ai-4/33",
+    "kind": "checklist",
+    "title": "A model card supports responsible review",
+    "items": [
+      {
+        "label": "Purpose",
+        "value": "Users, conditions and excluded uses"
+      },
+      {
+        "label": "Evidence",
+        "value": "Data, labels, metrics and subgroup results"
+      },
+      {
+        "label": "Version",
+        "value": "System and evaluation identity"
+      },
+      {
+        "label": "Limits",
+        "value": "Failure conditions and human review"
+      }
+    ],
+    "teach": "Ask what eighty percent accuracy alone leaves unanswered.",
+    "misconception": "A classroom leaf classifier is a professional diagnosis tool.",
+    "lesson": "Week 33: Model Cards and Human Review",
+    "scenario": "A model card says healthy/spotted,80% accuracy only.",
+    "question": "Add responsible-use evidence.",
+    "explanation": "Intended users/conditions, labels/data, evaluation sets/metrics, class/subgroup results, versions, limitations, excluded uses and human review. Classroom classification is not professional diagnosis."
+  },
+  "ai-4/34": {
+    "id": "ai-4/34",
+    "kind": "flow",
+    "title": "Begin the capstone with independent groups",
+    "items": [
+      {
+        "label": "Dataset",
+        "value": "Sixty leaves, multiple views each"
+      },
+      {
+        "label": "Group",
+        "value": "Keep views of one leaf together"
+      },
+      {
+        "label": "Partition",
+        "value": "Separate train, validation and test"
+      },
+      {
+        "label": "Baseline",
+        "value": "Fit majority choice on training labels"
+      }
+    ],
+    "teach": "Ask why splitting individual photos can leak leaf identity.",
+    "misconception": "More photos automatically mean more independent examples.",
+    "lesson": "Week 34: Capstone Dataset and Baseline",
+    "scenario": "Capstone has60 independent leaves, several photos per leaf, healthy/spotted labels.",
+    "question": "Plan grouping and baseline.",
+    "explanation": "Keep all views together in train/validation/test partitions. Define labels/use, fit a majority baseline on training labels and evaluate declared metrics."
+  },
+  "ai-4/35": {
+    "id": "ai-4/35",
+    "kind": "compare",
+    "title": "Keep improvement evidence comparable",
+    "items": [
+      {
+        "label": "Baseline",
+        "value": "Seventy percent validation accuracy"
+      },
+      {
+        "label": "Model",
+        "value": "Eighty percent on the same set"
+      },
+      {
+        "label": "Error slice",
+        "value": "Many failures in dim images"
+      },
+      {
+        "label": "Next revision",
+        "value": "Change one factor and retain final test"
+      }
+    ],
+    "teach": "Ask which fixed criteria and slices should be compared after the change.",
+    "misconception": "Selecting the best result on the final test preserves final-test independence.",
+    "lesson": "Week 35: Capstone Train, Analyze, Improve",
+    "scenario": "Baseline validation accuracy70%; model80%; most remaining errors are dim images.",
+    "question": "Plan improvement evidence.",
+    "explanation": "Keep partitions fixed, inspect dim-image errors, change one factor and compare the same validation criteria/slices. Reserve final test."
+  },
+  "ai-4/36": {
+    "id": "ai-4/36",
+    "kind": "fractions",
+    "title": "Report only metrics the evidence supports",
+    "items": [
+      {
+        "label": "Correct final predictions",
+        "value": "16/20"
+      }
+    ],
+    "teach": "Given two false negatives, ask what else is needed to calculate recall and why.",
+    "misconception": "Recall can be calculated from false negatives alone.",
+    "lesson": "Week 36: ML Builder Expo",
+    "scenario": "Final classifier gets16/20 correct; two of four errors are false negatives.",
+    "question": "Report supported metrics and what is missing.",
+    "explanation": "Accuracy80%. Recall cannot be computed from FN alone; actual positives or TP are needed. Show full matrix, limits and review path."
+  }
+}

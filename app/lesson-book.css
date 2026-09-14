@@ -1,0 +1,137 @@
+/* A complete lesson book: diagrams and evidence remain visible on screen and paper. */
+.book-title-grid { grid-template-columns: 1fr; }
+.book-title-grid .lesson-title { max-width: 900px; }
+.book-title-grid .lesson-title h1 { font-size: clamp(2rem,4vw,3.3rem); }
+.lesson-core-idea { display:flex; align-items:flex-start; gap:.75rem; max-width:80ch; color:#deebff; font-size:1.1rem; line-height:1.7; margin:1rem 0; }
+.lesson-core-idea svg { flex:0 0 23px; margin-top:.2rem; color:#ffce61; }
+.visual-lesson-book { --book-ink:#17324f; --book-blue:#24599e; --book-line:#cdddec; color:var(--book-ink); }
+.book-contents { margin:0 0 2rem; padding:1.5rem; background:#e8f1fc; border:1px solid #cadcf1; border-radius:1rem; }
+.book-contents>strong { display:flex; gap:.6rem; align-items:center; font-size:1.15rem; margin-bottom:1rem; }
+.book-contents svg { width:22px; }
+.book-contents>div { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.45rem 1.5rem; }
+.book-contents a { display:flex; gap:.6rem; align-items:center; font-size:.9rem; padding:.45rem 0; line-height:1.45; }
+.book-contents a:hover { text-decoration:underline; }
+.book-contents a span { color:#255ca5; font-size:.8rem; font-weight:800; }
+.book-chapter { margin:0 0 2.5rem; background:white; border:1px solid var(--book-line); border-radius:1.2rem; overflow:hidden; scroll-margin-top:1rem; box-shadow:0 6px 22px #18334806; }
+.book-chapter-heading { display:flex; gap:1.25rem; padding:1.6rem clamp(1rem,3vw,2.5rem); background:linear-gradient(115deg,#e6f1ff,#f7faff); border-bottom:1px solid var(--book-line); }
+.chapter-number { display:flex; justify-content:center; align-items:center; flex:0 0 60px; height:60px; border-radius:1rem; color:white; background:#24599e; font-size:1.5rem; font-weight:800; }
+.book-overline { display:flex; align-items:center; gap:.45rem; font-size:.8rem; letter-spacing:.09em; font-weight:750; color:#30679e; margin:0 0 .4rem; }
+.book-overline svg { width:17px; height:17px; }
+.book-chapter-heading h2 { font-size:clamp(1.5rem,2.5vw,2.1rem); font-weight:750; line-height:1.2; margin:0 0 .45rem; color:#153e71; }
+.book-chapter-heading>div>p:last-child { color:#426079; line-height:1.6; }
+.book-chapter-content { padding:clamp(1.1rem,3vw,2.5rem); font-size:1.06rem; }
+.book-chapter-content>.content-paragraph { font-size:inherit; line-height:1.85; max-width:74ch; margin:.8rem 0; }
+.book-chapter-content .content-subheading { margin:1.7rem 0 .7rem; }
+.book-chapter-content .callout { margin:1.5rem 0; padding:1.15rem; }
+.book-chapter-content .callout p { font-size:1rem; line-height:1.75; }
+.book-chapter-content .instruction-visual { margin:1rem auto; }
+.book-chapter-content .instruction-visual figcaption { font-size:.875rem; color:#476078; }
+.book-chapter-content .visual-zoom-label { font-size:.8rem; }
+.chapter-1 .book-chapter-content>.instruction-visual { max-width:500px; }
+.book-visual-cards { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.4rem; margin:1.5rem 0; }
+.book-visual-card { background:#f6f9fd; border:1px solid #cdddec; padding:1.2rem; border-radius:1rem; min-width:0; }
+.book-visual-card:nth-child(2n) { background:#eff8f8; border-color:#bfdedd; }
+.book-card-number { font-size:.8rem; letter-spacing:.1em; font-weight:750; color:#315f9a; }
+.book-visual-card h3 { font-size:1.3rem; font-weight:750; margin:1rem 0; color:#193f69; }
+.book-visual-card .instruction-visual img { max-height:300px; }
+.case-evidence { line-height:1.8; font-size:1rem; margin:1rem 0 0; }
+.vocabulary-use { margin:.8rem 0; }
+.vocabulary-use>strong { display:block; color:#36536e; font-size:.875rem; margin-bottom:.4rem; }
+.vocabulary-use p { line-height:1.8; }
+.vocabulary-use .interactive-response small { font-size:.8rem; }
+.native-mechanism { margin:1.7rem 0; padding:1.5rem; border-radius:1rem; background:#f0f6ff; border:1px solid #b9cee9; }
+.native-mechanism>figcaption { display:flex; gap:.6rem; align-items:center; font-size:1.2rem; font-weight:750; color:#224e8e; margin-bottom:1.2rem; }
+.native-mechanism>figcaption svg { width:24px; }
+.mechanism-nodes { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); list-style:none; padding:0; gap:1.7rem; }
+.mechanism-nodes.nodes-4 { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.mechanism-nodes li { position:relative; min-width:0; padding:1.1rem; background:white; border:2px solid #7da6d9; border-radius:.85rem; }
+.mechanism-nodes li:nth-child(2) { border-color:#4d9c97; }
+.mechanism-nodes li:nth-child(3) { border-color:#cc9844; }
+.mechanism-index { display:flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%; background:#24599e; color:white; font-weight:800; }
+.mechanism-nodes h3 { font-size:1.05rem; font-weight:800; text-transform:capitalize; margin:.8rem 0; }
+.mechanism-nodes p { line-height:1.75; font-size:1rem; }
+.mechanism-arrow { position:absolute; right:-1.55rem; top:50%; width:23px; color:#456c9d; }
+.nodes-4 li:nth-child(2) .mechanism-arrow { display:none; }
+.mechanism-question { margin:1.2rem 0 0; font-size:.95rem; color:#42617f; line-height:1.7; }
+.book-flow-pictures { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; margin:1.4rem 0; }
+.book-flow-pictures>div { min-width:0; }
+.book-picture-label { display:block; text-align:center; font-size:.85rem; font-weight:750; color:#416586; }
+.reasoning-path { list-style:none; padding:0; display:grid; gap:.85rem; margin:1.5rem 0; }
+.reasoning-path li { display:flex; gap:1rem; padding:1.1rem; border:1px solid #c3d4e9; border-radius:.8rem; background:#f4f8ff; align-items:flex-start; }
+.reasoning-path li>span { display:flex; justify-content:center; align-items:center; flex:0 0 36px; height:36px; border-radius:50%; background:#24599e; color:white; font-weight:800; }
+.reasoning-path p { margin:0; line-height:1.85; }
+.mastery-path li { background:#eef7f4; border-color:#b9d9cb; }
+.mastery-path li>span { background:#266b58; }
+.sensor-connections { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; margin:1.5rem 0; }
+.sensor-connections>div { display:flex; align-items:center; flex-direction:column; gap:.6rem; padding:1.3rem; border:1px solid #b9d6df; border-radius:1rem; background:#eef9fb; text-align:center; }
+.sensor-connections>div>svg:first-child { width:34px; height:34px; color:#216c80; }
+.sensor-connections h3 { font-weight:800; font-size:1.1rem; }
+.sensor-connections p { font-size:.95rem; line-height:1.65; }
+.sensor-connections strong { background:white; border:1px solid #b9d6df; padding:.6rem; border-radius:.5rem; }
+.sensor-lab { margin:2rem 0; padding:clamp(1rem,2vw,1.7rem); background:#fffbeb; border:1px solid #ddc575; border-radius:1rem; }
+.sensor-lab h3 { font-size:1.45rem; color:#6e4e17; font-weight:750; margin:.5rem 0; }
+.sensor-lab>p { line-height:1.8; margin:.8rem 0; }
+.sensor-control { max-width:550px; margin:1.5rem auto; padding:1rem; }
+.sensor-control label { display:block; margin-bottom:1rem; }
+.scale-labels { display:flex; justify-content:space-between; font-size:.875rem; margin-top:.8rem; }
+.sensor-demo-flow { display:grid; grid-template-columns:1fr 22px 1fr 22px 1fr; align-items:center; gap:.6rem; }
+.sensor-demo-card { display:flex; gap:.6rem; flex-direction:column; align-items:center; justify-content:center; min-height:240px; border:1px solid #d9c785; background:white; padding:1rem; border-radius:1rem; text-align:center; }
+.sensor-demo-card>svg { width:32px; height:32px; }
+.sensor-demo-card small { font-size:.8rem; font-weight:700; }
+.sensor-demo-card>strong { font-size:1.6rem; }
+.sensor-demo-card p { font-size:.95rem; line-height:1.6; }
+.sensor-demo-card code { text-align:left; font-size:.9rem; line-height:1.85; color:#3c4564; }
+.lamp-on { background:#fff0a8; }
+.lamp-off { background:#edf0f3; }
+.reading-bar { height:60px; width:32px; border:1px solid #9bb9db; display:flex; align-items:flex-end; background:#e8f0fb; border-radius:5px; overflow:hidden; }
+.reading-bar i { display:block; width:100%; background:#3574c3; }
+.book-discussion { margin:1.3rem 0 0; background:white; border-left:4px solid #d49c38; padding:1rem; }
+.book-discussion p { margin:.4rem 0 0; line-height:1.7; }
+.sensor-boundary { font-size:.95rem; font-weight:600; }
+.teacher-visual-board,.workbook-trace { background:white; border:1px solid #c1d5e8; border-radius:1rem; padding:clamp(1rem,3vw,2.5rem); margin-bottom:2rem; }
+.teacher-visual-board h2,.workbook-trace h2 { font-size:1.7rem; font-weight:750; margin:.5rem 0 1rem; color:#204f7c; }
+.board-big-idea,.workbook-trace>p { font-size:1.1rem; line-height:1.8; }
+.teacher-talk { margin-top:1rem; line-height:1.8; }
+.teacher-talk ol { list-style:decimal; padding-left:1.5rem; }
+.workbook-trace-cells { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; margin-top:1.2rem; }
+.workbook-trace-cells>div { padding:1rem; border:1px solid #c7d7e6; border-radius:.7rem; }
+.level-ai-1 .book-chapter-content, .level-ai-1 .book-chapter-content .content-paragraph { font-size:1.15rem; }
+.level-ai-1 .book-chapter-content .callout p, .level-ai-1 .case-evidence { font-size:1.05rem; }
+@media(max-width:850px) { .book-contents>div { grid-template-columns:repeat(2,minmax(0,1fr)); } .mechanism-nodes { grid-template-columns:1fr; } .mechanism-arrow { right:50%; top:auto; bottom:-1.65rem; transform:rotate(90deg); } .mechanism-nodes.nodes-4 { grid-template-columns:1fr; } .nodes-4 li:nth-child(2) .mechanism-arrow { display:block; } .book-flow-pictures { grid-template-columns:1fr; max-width:650px; margin-inline:auto; } }
+@media(max-width:600px) { .book-visual-cards,.sensor-connections,.workbook-trace-cells { grid-template-columns:1fr; } .chapter-number { flex-basis:42px; height:42px; font-size:1.1rem; border-radius:.6rem; } .book-chapter-heading { gap:.7rem; } .book-contents { padding:1rem; } .book-contents>div { grid-template-columns:1fr; } .sensor-demo-flow { grid-template-columns:1fr; } .sensor-demo-card { min-height:180px; } .sensor-flow-arrow { transform:rotate(90deg); justify-self:center; } }
+@media print {
+  @page { size:auto; margin:14mm; }
+  html,body { font-size:11pt; }
+  .book-contents,.visual-zoom-label,.sensor-control [data-slot="slider"],.sensor-control .scale-labels { display:none!important; }
+  .lesson-hero { padding:0 0 8mm!important; }
+  .lesson-core-idea { color:#222!important; }
+  .lesson-reader-shell { width:100%!important; max-width:none!important; }
+  .book-chapter { border:0; border-radius:0; box-shadow:none; margin:0; break-before:page; overflow:visible; }
+  .book-chapter:first-child { break-before:auto; }
+  .book-chapter-heading { padding:5mm 0; background:white; break-after:avoid; border-bottom:2px solid #52749b; }
+  .book-chapter-heading h2 { font-size:20pt; }
+  .chapter-number,.mechanism-index,.reasoning-path li>span { color:#17324f!important; background:white!important; border:1px solid #52749b; }
+  .book-chapter-content { padding:5mm 0 0; }
+  .book-chapter-content,.book-chapter-content .content-paragraph,.level-ai-1 .book-chapter-content,.level-ai-1 .book-chapter-content .content-paragraph { font-size:11pt; line-height:1.6; }
+  .book-chapter-content .callout p,.case-evidence { font-size:10.5pt!important; }
+  .native-mechanism,.book-visual-card,.sensor-demo-card,.reasoning-path li { break-inside:avoid; }
+  .book-visual-cards { grid-template-columns:repeat(2,minmax(0,1fr)); gap:5mm; }
+  .book-visual-card { padding:4mm; }
+  .book-flow-pictures,.sensor-connections,.workbook-trace-cells { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); max-width:none; }
+  .mechanism-nodes { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .mechanism-nodes.nodes-4 { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .mechanism-arrow { display:none!important; }
+  .mechanism-nodes p { font-size:10pt; }
+  .sensor-demo-flow { grid-template-columns:1fr 15px 1fr 15px 1fr; }
+  .sensor-flow-arrow { transform:none; }
+  .sensor-demo-card { min-height:160px; }
+  .content-table-wrap { overflow:visible!important; }
+  .content-table-wrap table { width:100%; table-layout:fixed; }
+  .content-table-wrap th,.content-table-wrap td { white-space:normal; overflow-wrap:anywhere; font-size:9.5pt; padding:2mm; }
+  .content-table-wrap thead { display:table-header-group; }
+  .book-chapter-content img { max-height:78mm!important; object-fit:contain; }
+  .chapter-1 .book-chapter-content img { max-height:100mm!important; }
+  .book-chapter-content .instruction-visual figcaption { font-size:9pt; }
+  .book-chapter-content pre { white-space:pre-wrap; overflow-wrap:anywhere; }
+  .sensor-lab,.teacher-visual-board,.workbook-trace { box-shadow:none; padding:4mm; }
+}

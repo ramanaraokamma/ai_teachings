@@ -41,7 +41,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ a
           <AccessCard role="teacher" highlighted={query.role === "teacher" && hasError} />
         </section>
       </div>
-      <footer className="landing-footer"><span>AI Academy</span><span>Learn deeply. Build responsibly.</span></footer>
+      <footer className="landing-footer"><span>AI Academy · Visual Teaching Edition · 14 September 2026</span><span>Learn deeply. Build responsibly.</span></footer>
     </main>
   );
 }

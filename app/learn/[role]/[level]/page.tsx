@@ -31,6 +31,7 @@ export default async function LevelPage({ params }: { params: Promise<{ role: st
             <div className="week-grid">
               {level.weeks.filter((week) => week.phase === phase.number).map((week) => (
                 <Link href={`/learn/${role}/${level.slug}/${week.number}`} className="week-card" key={week.number}>
+                  {week.hero && <img className="week-card-image" src={week.hero} alt={`Illustration for ${titleWithoutWeek(week.student.title)}`} width={420} height={170} loading="lazy" decoding="async" />}
                   <div className="week-card-meta"><span>Week {String(week.number).padStart(2, "0")}</span><Badge variant="outline">Phase {week.phase}</Badge></div>
                   <h3>{titleWithoutWeek(week.student.title)}</h3>
                   {role === "teacher" && <p className="teacher-week-title">Guide: {titleWithoutWeek(week.teacher.title)}</p>}

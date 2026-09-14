@@ -30,7 +30,9 @@ const worker = {
     // Protected resources never pass through the unauthenticated optimizer.
     if (url.pathname === "/_vinext/image" || url.pathname.startsWith("/academy-art/")) return new Response("Not found", { status: 404 });
 
-    const response = await handler.fetch(request, env, ctx);
+    const original = await handler.fetch(request, env, ctx);
+    const response = new Response(original.body, original);
+    response.headers.set("X-Academy-Edition", "topic-studio-2026-09-14");
     if (url.pathname.startsWith("/learn/") || url.pathname.startsWith("/api/")) {
       const protectedResponse = new Response(response.body, response);
       protectedResponse.headers.set("Cache-Control", "private, no-store");
