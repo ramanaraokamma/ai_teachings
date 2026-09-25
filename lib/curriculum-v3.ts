@@ -1,0 +1,58 @@
+import "server-only";
+import progression from "@/curriculum-v3/progression.json";
+import source1 from "@/curriculum-v3/ai-1-week-01.json";
+import source2 from "@/curriculum-v3/ai-1-week-02.json";
+import source3 from "@/curriculum-v3/ai-1-week-03.json";
+import source4 from "@/curriculum-v3/ai-1-week-04.json";
+import source5 from "@/curriculum-v3/ai-1-week-05.json";
+import source6 from "@/curriculum-v3/ai-1-week-06.json";
+import source7 from "@/curriculum-v3/ai-1-week-07.json";
+import source8 from "@/curriculum-v3/ai-1-week-08.json";
+import source9 from "@/curriculum-v3/ai-1-week-09.json";
+import source10 from "@/curriculum-v3/ai-1-week-10.json";
+import source11 from "@/curriculum-v3/ai-1-week-11.json";
+import source12 from "@/curriculum-v3/ai-1-week-12.json";
+import source13 from "@/curriculum-v3/ai-1-week-13.json";
+import source14 from "@/curriculum-v3/ai-1-week-14.json";
+import source15 from "@/curriculum-v3/ai-1-week-15.json";
+import source16 from "@/curriculum-v3/ai-1-week-16.json";
+import source17 from "@/curriculum-v3/ai-1-week-17.json";
+import source18 from "@/curriculum-v3/ai-1-week-18.json";
+import source19 from "@/curriculum-v3/ai-1-week-19.json";
+import source20 from "@/curriculum-v3/ai-1-week-20.json";
+import source21 from "@/curriculum-v3/ai-1-week-21.json";
+import source22 from "@/curriculum-v3/ai-1-week-22.json";
+import source23 from "@/curriculum-v3/ai-1-week-23.json";
+import source24 from "@/curriculum-v3/ai-1-week-24.json";
+import source25 from "@/curriculum-v3/ai-1-week-25.json";
+import source26 from "@/curriculum-v3/ai-1-week-26.json";
+import source27 from "@/curriculum-v3/ai-1-week-27.json";
+import source28 from "@/curriculum-v3/ai-1-week-28.json";
+import source29 from "@/curriculum-v3/ai-1-week-29.json";
+import source30 from "@/curriculum-v3/ai-1-week-30.json";
+import source31 from "@/curriculum-v3/ai-1-week-31.json";
+import source32 from "@/curriculum-v3/ai-1-week-32.json";
+import source33 from "@/curriculum-v3/ai-1-week-33.json";
+import source34 from "@/curriculum-v3/ai-1-week-34.json";
+import source35 from "@/curriculum-v3/ai-1-week-35.json";
+import source36 from "@/curriculum-v3/ai-1-week-36.json";
+import released from "@/curriculum-v3/releases.json";
+
+export type ChapterBlock = {type:string;text?:string;title?:string;caption?:string;headers?:string[];columns?:string[];rows?:string[][];values?:number[][];key?:string;id?:string;label?:string;lines?:number};
+export type Chapter = {
+ level:string;week:number;title:string;minutes:number;goals:string[];
+ prerequisite:{prompt:string;answer:string};vocabulary:string[][];
+ lesson:{title:string;blocks:ChapterBlock[]}[];
+ workbook:{id:string;title:string;prompt:string;lines:number;answer:string}[];
+ teacher:{background:string;materials:string[];sessions:string[][];guidedAnswer:string;misconceptions:string[][];assessment:string;support:string;next:string};
+};
+export type Release = {sourceHash:string;documents:Record<string,{id:string;sha256:string}>;diagrams:{id:string;sha256:string}[];review:{pages:number;checked:string}};
+const chapters:Chapter[]=[source1,source2,source3,source4,source5,source6,source7,source8,source9,source10,source11,source12,source13,source14,source15,source16,source17,source18,source19,source20,source21,source22,source23,source24,source25,source26,source27,source28,source29,source30,source31,source32,source33,source34,source35,source36];
+export const curriculumRoadmap=progression;
+export const curriculumReleases=released as Record<string,Release>;
+export function getChapter(level:string,week:string) {
+ if(!/^[1-9]\d*$/.test(week))return undefined;
+ const release=curriculumReleases[`${level}/${week}`];
+ const chapter=chapters.find(c=>c.level===level&&String(c.week)===week);
+ return release&&chapter?{chapter,release}:undefined;
+}

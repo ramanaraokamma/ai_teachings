@@ -1,0 +1,284 @@
+{
+  "level": "ai-1",
+  "week": 29,
+  "title": "A problem worth solving",
+  "minutes": 90,
+  "goals": [
+    "Describe a specific user difficulty using supplied evidence without inventing its cause",
+    "Define a useful outcome and a way to observe it before choosing a solution",
+    "Choose a small project with clear boundaries, permitted information and a simple alternative"
+  ],
+  "prerequisite": {
+    "prompt": "A teacher permits a paper prototype using fictional activity requests. Does this permit collecting real pupils\u2019 names and publishing their choices? Explain.",
+    "answer": "No. The permission covers a paper prototype and fictional requests. Collecting and publishing personal choices are different actions outside that scope."
+  },
+  "vocabulary": [
+    [
+      "User need",
+      "Something a person needs to accomplish in a particular situation"
+    ],
+    [
+      "Problem statement",
+      "A specific description of who faces a difficulty and what that difficulty is"
+    ],
+    [
+      "Outcome",
+      "The result experienced by the user"
+    ],
+    [
+      "Constraint",
+      "A condition that a proposed solution must respect"
+    ],
+    [
+      "Success measure",
+      "An observable quantity or result used to judge progress"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Begin with the difficulty someone faces",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For the final project sequence, we will develop a small activity recommender on paper. Its users are fictional pupils choosing a classroom activity that fits their available time and room conditions. We will decide what the recommender must do, build a traceable process, test it and explain its limits. A recommendation is a suggestion; the pupil can decline it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Start before the solution. Our supplied observation log describes ten fictional requests made using an activity catalogue. Six first choices fit the request\u2019s time and room conditions. Four did not and needed another choice. These invented classroom records give us a problem to investigate. They are not observations of your classmates and do not show how often this happens in other classes."
+        },
+        {
+          "type": "paragraph",
+          "text": "A useful problem statement is: \u201cIn the supplied ten-request exercise, four first choices did not fit the stated time or room conditions, so those users had to choose again.\u201d \u201cWe need AI\u201d names a possible technology but says neither who needs help nor what should improve. The log also does not establish whether unclear wording, missing information or another cause produced the mismatches."
+        }
+      ]
+    },
+    {
+      "title": "Connect evidence to an outcome",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "From an observed difficulty to a testable goal",
+          "columns": [
+            "Evidence or decision",
+            "What it supports",
+            "What remains to check"
+          ],
+          "rows": [
+            [
+              "4 of 10 choices mismatch",
+              "Some re-selection occurred",
+              "Cause is not established"
+            ],
+            [
+              "Need a compatible choice",
+              "Check time and conditions",
+              "User can still decline"
+            ],
+            [
+              "Paper suggestion process",
+              "Small permitted prototype",
+              "Benefit needs a comparison"
+            ],
+            [
+              "Measure fit and coverage",
+              "Observe useful outcomes",
+              "Do not hide no-result cases"
+            ]
+          ],
+          "caption": "The goal describes a useful result. Building a tool is an activity, not evidence that users benefited."
+        },
+        {
+          "type": "paragraph",
+          "text": "Our target outcome is a compatible suggestion when the catalogue contains one, and a clear no-match message when none fits. Compatibility means respecting the stated conditions; it does not mean that every pupil will enjoy the activity. We can check time and room conditions from a request and catalogue. Enjoyment would need different evidence."
+        },
+        {
+          "type": "paragraph",
+          "text": "Count compatible suggestions, incompatible suggestions and no-match messages separately. Otherwise a system could avoid every wrong suggestion by refusing to suggest anything. If a valid option existed, that refusal would still fail to provide the intended help. Record the total number of requests so a count has a clear denominator."
+        }
+      ]
+    },
+    {
+      "title": "Keep the first project small enough to inspect",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Project choice",
+            "Boundary for this sequence",
+            "Reason"
+          ],
+          "rows": [
+            [
+              "Users and setting",
+              "Fictional classroom activity requests",
+              "A clear situation to test"
+            ],
+            [
+              "Information",
+              "Available minutes and quiet-room requirement",
+              "Relevant to compatibility"
+            ],
+            [
+              "Action",
+              "Suggest an activity or report no match",
+              "The user retains the choice"
+            ],
+            [
+              "Outside the project",
+              "Names, profiles, purchases and public posting",
+              "Not needed for this paper task"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The teacher permits a paper prototype using fictional requests and an approved catalogue. We do not need names, home details or a history of a pupil\u2019s choices. A request can say \u201c10 minutes, quiet room required\u201d without identifying anyone. Use only the request information needed to test the intended outcome."
+        },
+        {
+          "type": "paragraph",
+          "text": "A clear catalogue or a short checklist may solve this problem. We will compare a proposed recommender with a simple starting method instead of assuming a more complicated system is better. This project can use explicit rules; it does not have to fit a machine-learning model. The choice should follow the problem, available evidence and limits of the task."
+        }
+      ]
+    },
+    {
+      "title": "Separate what you know from what you suspect",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Suppose a team writes \u201cAll pupils hate the catalogue because it is too long.\u201d The supplied log says nothing about every pupil\u2019s feelings or the cause of the mismatches. A more careful note is \u201cFour of ten first choices were incompatible; the cause is not yet known.\u201d A hypothesis such as \u201cthe time information may be hard to find\u201d is something to investigate, not an established finding."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Write a short project brief for the activity problem. Include the users and setting, the supplied evidence, the desired outcome, information needed, one boundary and a simple alternative. Name one claim the ten-request log does not establish",
+          "lines": 7
+        },
+        {
+          "type": "paragraph",
+          "text": "If we later investigate the cause, we could inspect where compatibility information appears in the catalogue or have a teacher organise a permitted comparison of clearer formats. Do not quietly collect real pupils\u2019 data just because it might help. For this sequence, the supplied fictional records are enough to build and test a paper process."
+        }
+      ]
+    },
+    {
+      "title": "Choose evidence that could change your decision",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Before building, say what would count against your idea. If a clear catalogue already produces compatible choices for all supplied cases, adding a recommender might offer little benefit on those cases. If the recommender hides valid options or produces unexplained no-match messages, revise it or keep the simpler method. A project can succeed as an investigation even when the evidence favours a simpler solution."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep the ten-request observation log separate from later evaluation records. It motivates the problem; it is not a fair test result for a tool that has not been built. Later weeks will introduce explicit requirements and test cases, including a reserved final set. Label plans as plans and measured results as results."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A proposed system always says \u201cAsk the teacher\u201d. It never suggests an incompatible activity. Has this alone demonstrated the intended benefit? Explain which additional result you would need to check",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Write the problem without prescribing a tool",
+      "prompt": "Use the ten-request activity log to write a problem statement with a user, setting and observed difficulty. Explain why \u201cBuild an AI app\u201d is not yet a problem statement.",
+      "lines": 6,
+      "answer": "For example: fictional pupils choosing activities in the supplied classroom exercise had to choose again in four of ten requests because the first choice did not fit the time or room conditions. Build an AI app names a solution or construction task without specifying a user difficulty or evidence of need."
+    },
+    {
+      "id": "W2",
+      "title": "Identify claims beyond the evidence",
+      "prompt": "A team says that the four mismatches prove every pupil dislikes the catalogue and that a recommender will fix the problem. Identify two unsupported conclusions and state what the log actually establishes.",
+      "lines": 6,
+      "answer": "The log establishes four incompatible first choices out of ten supplied fictional requests. It does not establish every pupil\u2019s opinion, the cause of the mismatches or that an untested recommender will improve outcomes. Accept any two of those unsupported conclusions with the bounded observation."
+    },
+    {
+      "id": "W3",
+      "title": "Choose information that serves the outcome",
+      "prompt": "The paper project must suggest an activity compatible with available time and a quiet-room requirement. Choose relevant inputs from minutes available, quiet required, pupil name and home address. State the output and a simpler alternative to a recommender. Explain one boundary.",
+      "lines": 6,
+      "answer": "Minutes available and quiet required are relevant. Name and address are unnecessary. Output a compatible activity suggestion or an explained no-match result. A clearer catalogue or compatibility checklist is a simple alternative. Keep requests fictional and the action advisory; do not extend the task to collecting personal profiles or publishing choices."
+    },
+    {
+      "id": "W4",
+      "title": "Frame a different problem independently",
+      "prompt": "In a fictional equipment cupboard exercise, eight teams choose a box from a list. Three boxes do not contain the items required by the corresponding request; five do. The teacher permits a paper box-finder using fictional item requests and an inventory. Write a brief naming the user difficulty, evidence, desired outcome, necessary information, an excluded action and a simple alternative. Identify one cause or benefit that these counts do not establish.",
+      "lines": 8,
+      "answer": "Teams selecting equipment in the supplied exercise had three mismatches out of eight and need a box whose listed contents meet the request, or a clear no-match result. Use requested items and the inventory; personal identities are unnecessary. Exclude real purchases, changing stock or public posting. A clearer inventory or item checklist is a simple alternative. The counts do not explain why teams chose mismatching boxes or prove that a box-finder will improve selection."
+    },
+    {
+      "id": "W5",
+      "title": "Measure help as well as avoided errors",
+      "prompt": "For W4, a proposed box-finder never selects a wrong box because it always reports no match. Explain why counting only wrong suggestions would hide a failure. Name two results to record on test requests and explain why the original three-of-eight observation is not already an evaluation of the new tool.",
+      "lines": 6,
+      "answer": "Always refusing misses useful matches when suitable boxes exist. Record compatible or incompatible suggestions and whether no-match outputs were justified by the inventory, along with total requests. The three-of-eight observation describes the earlier selection process; the proposed tool has not yet been tested under a comparison procedure."
+    }
+  ],
+  "teacher": {
+    "background": "This begins an eight-week project sequence culminating in an evidence-based defence. Use the activity recommender as a shared paper project; later weeks specify its catalogue and tests. The supplied counts are fictional motivation, not collected class data or a result of an AI system. Assess problem framing separately from enthusiasm for a particular technology. A justified decision to retain a simple method is a valid project conclusion.",
+    "materials": [
+      "The fictional ten-request activity observation in the lesson",
+      "Paper for a brief with user, evidence, outcome, inputs and boundaries",
+      "The independent equipment-cupboard scenario in W4"
+    ],
+    "sessions": [
+      [
+        "Session 1 start 0 to 7 minutes",
+        "Retrieve the limits of permission for a paper prototype."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the observation and distinguish difficulty, cause and proposed solution. Complete W1."
+      ],
+      [
+        "20 to 33 minutes",
+        "Trace the evidence-to-outcome diagram and complete W2."
+      ],
+      [
+        "33 to 45 minutes",
+        "Select relevant inputs and a simple alternative in W3."
+      ],
+      [
+        "Session 2 start 0 to 8 minutes",
+        "Retrieve why four mismatches do not prove a cause or a solution."
+      ],
+      [
+        "8 to 23 minutes",
+        "Draft the guided project brief; challenge unsupported claims and excess data."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently, checking the brief against the new scenario."
+      ],
+      [
+        "38 to 45 minutes",
+        "Complete W5 and the exit; discuss how a comparison could favour the simple method."
+      ]
+    ],
+    "guidedAnswer": "The brief should identify fictional pupils choosing classroom activities, four incompatible first choices out of ten, and the goal of a compatible suggestion where one exists or an explained no-match result otherwise. Inputs are minutes and quiet-room requirement. Boundaries include fictional requests, teacher-approved catalogue and suggestions only. A clear catalogue or checklist is a simpler alternative. The log does not establish causes, feelings or a future tool\u2019s benefit. Exit: no; always asking avoids a wrong suggestion but may miss available compatible activities. Check useful matches and justified no-match cases, not only avoided errors.",
+    "misconceptions": [
+      [
+        "Using AI is itself the outcome",
+        "State what improves for the user and how to observe it."
+      ],
+      [
+        "A mismatch count proves its cause",
+        "Separate observations from explanations that need further evidence."
+      ],
+      [
+        "No wrong suggestions means success",
+        "Check whether valid options were missed or every request was refused."
+      ],
+      [
+        "A prototype requires real personal data",
+        "This paper project uses permitted fictional requests and task-relevant inputs."
+      ]
+    ],
+    "assessment": "W4 must transfer the structure: three of eight mismatches, a compatible box or justified no-match outcome, requested items and inventory, one boundary, a simple alternative and a bounded claim. After support use a new scenario: six fictional room requests, two assigned rooms too small, four suitable; permit paper recommendations only. Require capacity and group size as relevant inputs, no real bookings, and no invented explanation for the two failures.",
+    "support": "Use sentence starters: In this setting, these users need; the supplied evidence shows; we will check; we will not change. Allow an oral brief recorded by the teacher without supplying the choices. Extension: describe evidence that would make the team abandon its preferred solution.",
+    "next": "Week 30 turns the activity problem into explicit requirements and a simple baseline for comparison."
+  }
+}

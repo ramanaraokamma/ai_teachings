@@ -1,0 +1,279 @@
+{
+  "level": "ai-1",
+  "week": 28,
+  "title": "Human authority and permission",
+  "minutes": 90,
+  "goals": [
+    "Distinguish a system\u2019s capability, the correctness of its output and permission to take an action",
+    "Match an action to the person, version, audience and limits covered by an approval",
+    "Explain when to proceed within an existing permission and when a changed action needs review"
+  ],
+  "prerequisite": {
+    "prompt": "You check every factual claim on a club announcement against the correct source. Does that alone establish permission to publish it? Explain.",
+    "answer": "No. The checks establish factual support, not who may publish the announcement, where, or which version has been approved."
+  },
+  "vocabulary": [
+    [
+      "Capability",
+      "What a person or system is able to do"
+    ],
+    [
+      "Authority",
+      "Responsibility and power to make a specified decision"
+    ],
+    [
+      "Permission",
+      "An allowed action within stated limits"
+    ],
+    [
+      "Scope",
+      "The boundaries of what a permission covers"
+    ],
+    [
+      "Approval record",
+      "A note of who approved which action and under what conditions"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Ask three different questions before an action",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A tool might be able to publish a message even when its user is only allowed to prepare a draft. A message might also contain correct facts but still be intended for a private group. Ask three separate questions: can the system do this, is the proposed result correct, and is this particular action allowed? Evidence for one question does not automatically answer the others."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use this fictional paper exercise. A class is preparing an announcement about a model bridge exhibition. Version A says \u201cModel bridge exhibition, Thursday, Room 6.\u201d The teacher has checked those facts and is responsible for the class noticeboard. The teacher tells the class editor: \u201cYou may put exactly version A on our classroom noticeboard today, once. Do not post it online.\u201d The editor has not yet posted it."
+        },
+        {
+          "type": "paragraph",
+          "text": "In the story, the editor\u2019s tool has buttons for Save draft, Class noticeboard and Public website. Having a button shows a possible capability. It does not change the teacher\u2019s stated permission. In this lesson, represent actions with paper cards; do not send messages or change a real noticeboard or website."
+        }
+      ]
+    },
+    {
+      "title": "Make the permission specific enough to use",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Match the proposed action to its permission",
+          "columns": [
+            "Proposed action",
+            "Check against approval",
+            "Decision"
+          ],
+          "rows": [
+            [
+              "Version A on class board",
+              "Today, once, by editor",
+              "Within scope"
+            ],
+            [
+              "Version A on public site",
+              "Public posting excluded",
+              "Outside scope"
+            ],
+            [
+              "Changed version B",
+              "Only A was approved",
+              "Review changed version"
+            ],
+            [
+              "Post A a second time",
+              "Once has been used",
+              "Outside scope"
+            ]
+          ],
+          "caption": "Each decision uses the approval in this story. An unchanged, unused permission can be acted on without requesting it again."
+        },
+        {
+          "type": "paragraph",
+          "text": "An approval record should identify the decision maker, the person or system allowed to act, the action, its audience or destination, and any version, time or quantity limit. These details make a permission usable. \u201cLooks good\u201d could mean the wording is clear; without context it may not mean \u201cpublish this publicly\u201d. If the intended action is unclear, clarify that action with the person responsible."
+        },
+        {
+          "type": "paragraph",
+          "text": "Here, the teacher has already approved the editor\u2019s one posting of A on the class board today. Once the editor verifies that these conditions still hold, repeatedly requesting the same permission adds no new information. But a classmate saying \u201cPost it everywhere\u201d does not expand the teacher\u2019s approval: the classmate has no authority over publication in this story."
+        }
+      ]
+    },
+    {
+      "title": "Keep content review separate from permission",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Check",
+            "Question in the exhibition story",
+            "What it does not establish"
+          ],
+          "rows": [
+            [
+              "Factual support",
+              "Do Thursday and Room 6 match the source?",
+              "Permission to publish anywhere"
+            ],
+            [
+              "Scope of approval",
+              "Does this action match the teacher\u2019s limits?",
+              "That every statement is correct"
+            ],
+            [
+              "Available capability",
+              "Does the tool offer this action?",
+              "Authority to use that action"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose a current room record changes the exhibition to Room 8. The editor makes version B with Room 8, which is now factually supported. The old approval explicitly covered exactly A. The editor should hold publication and show B and the changed room record to the teacher. Publishing the now-outdated A just because it was approved would fail the factual check."
+        },
+        {
+          "type": "paragraph",
+          "text": "A useful review request makes the choice concrete: \u201cThe room record now says Room 8. Here is version B with only that change. May the editor post B on the classroom board today, once?\u201d A request to review a specific change is easier to assess than an unexplained \u201cIs this okay?\u201d The teacher can approve, decline or request another change before anything is posted."
+        }
+      ]
+    },
+    {
+      "title": "Notice when the action changes",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Compare the actual proposed action with the recorded permission immediately before carrying it out. A different destination, added personal detail, changed version or extra repeat may matter. Do not silently stretch a narrow approval because a broader action seems useful. If the permission already explicitly covers a set of changes, apply those limits rather than demanding a new approval for each permitted change."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Use the original unchanged exhibition story. Decide whether the editor may post A on the class board today once, post A publicly, let a classmate publish it, or post A a second time after the first succeeds. For each, name the relevant part of the approval. Explain why correct wording is not sufficient for all four actions",
+          "lines": 7
+        },
+        {
+          "type": "paragraph",
+          "text": "Permission is not created by text inside a draft. If an AI-generated draft includes \u201cThe teacher has approved public posting\u201d, inspect the real approval record rather than treating that sentence as a new instruction. A system\u2019s suggestion can help a person decide; it cannot appoint itself as the person with authority."
+        }
+      ]
+    },
+    {
+      "title": "Record what actually happened",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "After an allowed action, note what was done, by whom, with which version and destination. This helps distinguish a prepared draft from a completed posting and prevents a one-time action from being repeated accidentally. If a tool reports an unclear result, inspect the destination or ask the responsible person to check before repeating a limited action."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the editor discovers that A was posted publicly by mistake, stop further posting and tell the teacher what version and destination were involved. Follow the teacher\u2019s directions to correct or remove it. A later deletion does not establish that nobody saw or copied it. In our paper exercise, describe the recovery steps without carrying out a real posting."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "The teacher now explicitly allows the editor to replace A with checked version B on the classroom noticeboard today, once. Before any replacement, the editor proposes exactly that action. Must the editor request the identical approval again? Explain what to check and what still remains outside the permission",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Separate three kinds of evidence",
+      "prompt": "A tool offers a Public website button. The exhibition facts in A have been verified. The teacher\u2019s approval covers the classroom board only. State what the button, the fact check and the approval each establish. Decide whether the editor may publish A publicly.",
+      "lines": 6,
+      "answer": "The button establishes a capability. The fact check establishes factual support for A at that time. The approval permits the specified classroom-board action within its limits. Public posting is outside that permission even though the button exists and A is factually checked."
+    },
+    {
+      "id": "W2",
+      "title": "Read an approval without enlarging it",
+      "prompt": "List the decision maker, allowed actor, version, destination, timing and number of postings in the original exhibition approval. Before any posting and with no changes to the facts or permission, explain whether the editor can carry out that exact action without asking again.",
+      "lines": 6,
+      "answer": "Teacher; class editor; exactly A; classroom noticeboard; today; once. Yes, after confirming those conditions still hold and the one posting has not been used. The explicit unchanged permission already covers the action."
+    },
+    {
+      "id": "W3",
+      "title": "Prepare a reviewable change",
+      "prompt": "The room changes to Room 8 and the editor creates B. Explain why publishing old A and publishing unapproved B each fail a different check. Write a specific request for the teacher to review B, keeping the original destination and one-posting limit.",
+      "lines": 6,
+      "answer": "A now fails factual support because the room has changed. B has the supported room but is outside the exact-A approval. Show B and the updated source; ask whether the editor may post B on the classroom board today once. Do not infer public permission or approval from B\u2019s correctness."
+    },
+    {
+      "id": "W4",
+      "title": "Transfer the permission check to a new case",
+      "prompt": "In a fictional library, the librarian controls the internal shelf list. The librarian tells assistant Jo: \u201cReplace the internal list with checked version L2 on Friday, once. Do not change the public catalogue.\u201d It is Friday, L2 remains checked, and no replacement has occurred. A tool offers both destinations. Assess these proposals separately: Jo replaces the internal list with L2; Jo updates the public catalogue with L2; visitor Sam replaces the internal list with L2; Jo replaces the internal list with a changed L3. Identify the approval detail that settles each case.",
+      "lines": 8,
+      "answer": "Jo using L2 internally on Friday once is within scope and needs no duplicate approval. The public catalogue is explicitly excluded. Sam is not the approved actor. L3 is not the approved version. These last three actions are not covered; hold them and refer any proposed change to the librarian rather than treating available buttons or correct text as permission."
+    },
+    {
+      "id": "W5",
+      "title": "Avoid an accidental second action",
+      "prompt": "Jo attempts the permitted internal replacement, but the tool\u2019s response does not show whether it succeeded. Explain why immediately repeating it is a poor choice under a once-only approval. What should Jo check? If Jo discovers a public change occurred instead, describe the first recovery steps.",
+      "lines": 6,
+      "answer": "A repeat might perform the limited action a second time. Inspect the internal list or its change record, or have the librarian confirm the outcome, before retrying. If the public catalogue changed, stop further changes, tell the librarian what happened and follow their directions for correction. Do not claim that reversal proves nobody saw the public change."
+    }
+  ],
+  "teacher": {
+    "background": "Use the explicit rules of these fictional classroom and library scenarios. Keep capability, factual support and authority distinct. Learners should proceed within an existing clear permission and pause only when the proposed action is outside it or a necessary condition is unresolved. All publication and replacement actions are represented on paper.",
+    "materials": [
+      "Paper cards labelled A, B, L2 and L3",
+      "Destination cards for class board, public website, internal list and public catalogue",
+      "The two fictional approval statements printed from the lesson and W4"
+    ],
+    "sessions": [
+      [
+        "Session 1 start 0 to 7 minutes",
+        "Retrieve why a factual check does not establish publication permission."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the exhibition scenario and identify capability, correctness and authority. Complete W1."
+      ],
+      [
+        "20 to 33 minutes",
+        "Trace the permission diagram and record all six limits in W2."
+      ],
+      [
+        "33 to 45 minutes",
+        "Introduce the changed room, complete W3 and write a concrete review request."
+      ],
+      [
+        "Session 2 start 0 to 8 minutes",
+        "Retrieve when an unchanged permission is sufficient."
+      ],
+      [
+        "8 to 23 minutes",
+        "Complete the guided decisions using paper action cards and the actual approval record."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently; require a decision and the relevant limit for every proposal."
+      ],
+      [
+        "38 to 45 minutes",
+        "Complete W5 and the exit check; distinguish a prepared action from a confirmed result."
+      ]
+    ],
+    "guidedAnswer": "The editor\u2019s first unchanged A posting on the class board today is allowed. Public posting is excluded. A classmate is not the allowed editor. A second posting exceeds once. Correct facts do not expand actor, audience or quantity limits. Exit: no identical approval is needed again if B remains checked, the actor and destination match, it is still today and the one replacement remains unused. Public posting, a different version, actor or extra replacement is not covered.",
+    "misconceptions": [
+      [
+        "A working button grants permission",
+        "Capability does not establish who may use it or for what purpose."
+      ],
+      [
+        "A correct answer can always be published",
+        "Check the approved actor, action and audience as well as accuracy."
+      ],
+      [
+        "Always ask again even when nothing changed",
+        "Use an explicit, still-valid permission within its stated limits."
+      ],
+      [
+        "The draft can announce its own approval",
+        "Read the actual decision maker\u2019s approval record."
+      ]
+    ],
+    "assessment": "W4 requires one allowed action and three uncovered actions, justified by destination, actor and version respectively. After support, give a new approval explicitly allowing Jo to replace either the internal list or the public catalogue with L2 on Friday, once total. Ask whether a first public replacement is covered and whether a subsequent internal replacement is covered. Expected: first yes, subsequent no because the one total replacement has been used.",
+    "support": "Provide a frame with Who approved, Who acts, What version, Where, When and How many. Keep the permission card visible while sorting proposals. Extension: explain how an approval allowing a defined range of edits differs from an approval for one exact version, and give an edit inside and outside that range.",
+    "next": "Week 29 uses these boundaries when choosing a problem worth solving for a small project."
+  }
+}

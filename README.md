@@ -1,3 +1,5 @@
+> **Curriculum 3 update:** The rebuilt Grade 6 sequence (Weeks 1–36) now has matching web, Word and PDF resources. The seven-level map marks the remaining 216 weeks as planned. See [CURRICULUM3.md](CURRICULUM3.md) for scope, access and validation.
+
 # AI Academy — Grade 6 Entry Edition
 
 The redesign reviews all 144 existing weeks across four levels, with prerequisite retrieval, fresh transfer assessments, optional hints and teacher-only solutions. Typical entry grades are 6–9; readiness determines placement. See [the week-by-week review](GRADE6_REVIEW.md). This is an extension and correction of the existing four-level curriculum, not the proposed seven-level replacement.

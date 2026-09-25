@@ -17,9 +17,10 @@ export default async function RoleDashboard({ params }: { params: Promise<{ role
   return (
     <main className="portal-page">
       <PortalHeader mode={role} sessionRole={sessionRole} />
+      <section className="v3-release-callout"><h2>The new seven-level curriculum</h2><p>Start with the rebuilt Grade 6 foundation unit, with matching student lessons, workbooks, teacher guides and printable downloads. Later weeks remain clearly marked as planned.</p><Link href={`/learn/${role}/curriculum`}>Open Curriculum 3 and its release map →</Link></section>
       <section className="dashboard-hero">
         <div><Badge variant="outline">{role === "student" ? "Your learning map" : "Your teaching studio"}</Badge><h1>{role === "student" ? "Choose a level. Start the next idea." : "Plan the lesson. Teach the idea. Check mastery."}</h1><p>{role === "student" ? "Every level is a 36-week path with explanations, visual models, practice, challenges, and a capstone." : "Open any level to see its 36-week sequence, teacher guide, student lesson, and workbook practice together."}</p></div>
-        <div className="dashboard-stat"><strong>4</strong><span>complete levels</span><i /><strong>144</strong><span>weeks of learning</span></div>
+        <div className="dashboard-stat"><strong>4</strong><span>existing levels</span><i /><strong>144</strong><span>weeks of learning</span></div>
       </section>
       <section className="level-grid" aria-label="AI Academy levels">
         {levels.map((level, index) => (

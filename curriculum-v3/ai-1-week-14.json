@@ -1,0 +1,289 @@
+{
+  "level": "ai-1",
+  "week": 14,
+  "title": "Constructing a classifier",
+  "minutes": 90,
+  "goals": [
+    "Construct a classifier with a stated input format, selected rule and recorded output",
+    "Trace valid, boundary and invalid inputs through different paths",
+    "Distinguish an input check from evidence that a prediction is correct"
+  ],
+  "prerequisite": {
+    "prompt": "A fitted rule predicts tall at a height of at least 6 cm and short otherwise. Predict at 5 and 6 cm. What should you check before applying it to a blank height?",
+    "answer": "At 5 predict short; at 6 predict tall. Check that a height was supplied. A blank is missing information, not the number zero."
+  },
+  "vocabulary": [
+    [
+      "Classifier",
+      "A procedure that assigns a predicted category to an input"
+    ],
+    [
+      "Input contract",
+      "The format and conditions an input must satisfy for a procedure to accept it"
+    ],
+    [
+      "Validation",
+      "Checking whether an input satisfies the stated contract"
+    ],
+    [
+      "No prediction",
+      "An explicit outcome when the classifier does not assign a category"
+    ],
+    [
+      "Model version",
+      "A name that identifies the particular model used for a prediction"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Build the procedure around the fitted rule",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Your task is to build a paper classifier that another learner can operate without guessing your instructions. It will predict short or tall for imaginary towers. Use the threshold of 6 centimetres selected after adding the height 5 short example in Week 13. Name this selected model Tower1."
+        },
+        {
+          "type": "paragraph",
+          "text": "Write an input contract: one height recorded as a whole number of centimetres from 1 through 10, including both endpoints. Require the unit cm to be shown. This is a classroom design choice about what the procedure accepts. It is not a claim that every accepted height appeared in fitting or that towers outside this range cannot exist."
+        },
+        {
+          "type": "paragraph",
+          "text": "A complete classifier needs instructions for checking the input, applying Tower1 when the input is accepted, and recording the outcome. It must also say what happens when the input fails a check. The threshold alone does not provide these surrounding instructions."
+        }
+      ]
+    },
+    {
+      "title": "Trace the paths before constructing your own",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Three records through the Tower1 classifier",
+          "columns": [
+            "Input record",
+            "Check and rule",
+            "Recorded outcome"
+          ],
+          "rows": [
+            [
+              "5 cm",
+              "Accepted; 5 is below 6",
+              "Tower1 predicts short"
+            ],
+            [
+              "6 cm",
+              "Accepted; 6 is at least 6",
+              "Tower1 predicts tall"
+            ],
+            [
+              "Height blank",
+              "Missing height; stop before rule",
+              "Tower1; no prediction"
+            ]
+          ],
+          "caption": "Read each row from left to right. An accepted input reaches the threshold rule. A missing input stops before that rule and receives an explicit no prediction outcome."
+        },
+        {
+          "type": "paragraph",
+          "text": "For every record, first check that a height is present and its stated unit is cm. Then check that it is a whole number from 1 through 10. If any check fails, record no prediction and the reason, then stop processing that record. Do not continue into the threshold comparison."
+        },
+        {
+          "type": "paragraph",
+          "text": "If all checks pass, compare the height with 6. At least 6 gives the prediction tall; otherwise give short. Record the original input, model version Tower1 and the prediction. For a rejected record, record the original input, Tower1, no prediction and a reason. Tower1 identifies the intended model even when its threshold was not used."
+        }
+      ]
+    },
+    {
+      "title": "Keep validation separate from correctness",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Input",
+            "Contract result",
+            "Outcome"
+          ],
+          "rows": [
+            [
+              "1 cm",
+              "Accepted at lower endpoint",
+              "Predict short"
+            ],
+            [
+              "9 cm",
+              "Accepted",
+              "Predict tall"
+            ],
+            [
+              "10 cm",
+              "Accepted at upper endpoint",
+              "Predict tall"
+            ],
+            [
+              "0 cm",
+              "Outside 1 through 10",
+              "No prediction"
+            ],
+            [
+              "60 mm",
+              "Unit is not cm",
+              "No prediction"
+            ],
+            [
+              "4.5 cm",
+              "Not a whole number",
+              "No prediction"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A valid 9 cm input receives a tall prediction, but the input check does not establish that the prediction matches its comparison label. Validation checks the contract. Evaluation checks predictions against appropriate evidence. Keep these questions separate."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sixty millimetres equals six centimetres, but this version accepts cm records only. It does not contain a conversion step. Ask for a correctly recorded cm measurement or deliberately design and check a conversion step in a new version. Do not silently treat the digits 60 as centimetres. A missing height must not become an invented zero either."
+        }
+      ]
+    },
+    {
+      "title": "Make another learner operate your instructions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Write the procedure as numbered steps or connected boxes with labelled branches. Give it to a partner who follows only what you wrote. The partner should record each check and stop point, including equality at the threshold and at both accepted range endpoints."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Construct Tower1 in your own words. Have a partner trace 1 cm, 6 cm, 10 cm, 11 cm and a blank height. Record each outcome and any instruction you had to clarify. Explain why the accepted 10 cm case still needs separate evidence of correctness",
+          "lines": 7
+        },
+        {
+          "type": "paragraph",
+          "text": "A partner finding an unclear branch gives useful design feedback. Revise the instruction and retrace the affected examples. Keep the model name and threshold visible so a change to the fitted rule is not confused with a correction to an instruction."
+        }
+      ]
+    },
+    {
+      "title": "Separate the predicted category from the next action",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The classifier reports a prediction or no prediction. It does not decide what a person must do with a tower. A separate classroom procedure might ask someone to remeasure a rejected input or compare a prediction with a recorded label. Write that action separately from the predicted category."
+        },
+        {
+          "type": "paragraph",
+          "text": "No prediction is not a third tower size. It records that this procedure did not assign short or tall. Count and investigate such records when evaluating the whole system; hiding them could make a system look more useful than it is."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A classifier accepts 9 cm and predicts tall. A learner says the input passed, so the label is definitely right. Correct the claim. Then explain why reporting short for a blank height would violate the Tower1 procedure",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Write an input contract",
+      "prompt": "Write the complete Tower1 input contract. Give one accepted example and three different rejected examples, each with its reason. Explain why an accepted input does not have to be one of the examples used to fit the threshold.",
+      "lines": 7,
+      "answer": "Require a present height, unit cm, a whole number and range 1 through 10 inclusive. For example, 7 cm is accepted; blank is missing, 60 mm has the wrong unit and 11 cm is outside the range. Fractional values such as 4.5 cm also fail. The contract defines accepted inputs; it does not list only the fitting records or establish prediction correctness."
+    },
+    {
+      "id": "W2",
+      "title": "Construct both outcome paths",
+      "prompt": "Write numbered instructions for Tower1, including input checks, the stopping path after a failed check, the threshold rule and the record to keep. Your partner must be able to use them without supplying an unstated rule.",
+      "lines": 8,
+      "answer": "Check present height and cm unit, then whole number in 1 through 10. On failure, record original input, Tower1, no prediction and the reason; stop that record. Otherwise predict tall if height is at least 6, short otherwise. Record original input, Tower1 and prediction. Equivalent clear branches are acceptable."
+    },
+    {
+      "id": "W3",
+      "title": "Trace boundaries and a broken path",
+      "prompt": "Trace 1 cm, 5 cm, 6 cm, 10 cm and 11 cm using Tower1. A faulty procedure records no prediction for a blank, then continues and treats the blank as zero to report short. Identify the missing instruction and the proper final outcome.",
+      "lines": 6,
+      "answer": "The first four are accepted and predict short, short, tall and tall. At 11 cm reject for being outside the range. The faulty path lacks stopping after failure; a blank must end as no prediction with reason missing height. It must not be converted to zero or reach the threshold rule."
+    },
+    {
+      "id": "W4",
+      "title": "Build an independent ribbon classifier",
+      "prompt": "Design Ribbon1 for ribbon lengths recorded as whole centimetres from 1 through 12 inclusive, with unit cm required. Predict long at 8 cm or more and short otherwise. Write complete instructions and trace 7 cm, 8 cm, a blank length and 13 cm. Include reasons for no prediction and the model version in each record.",
+      "lines": 8,
+      "answer": "Check present length, cm unit, whole number and range 1 through 12; otherwise record no prediction with reason and stop. For accepted inputs, use at least 8 for long, otherwise short. Ribbon1 at 7 cm predicts short; at 8 cm predicts long; blank gives no prediction because length is missing; 13 cm gives no prediction because outside range. Each record includes original input, Ribbon1 and outcome, plus reason when rejected."
+    },
+    {
+      "id": "W5",
+      "title": "Explain what your procedure establishes",
+      "prompt": "Ribbon1 accepts 12 cm and predicts long. No comparison label has been supplied for that record. State what has been checked and what remains unknown. Explain why changing a blank to 1 cm just to produce a category would be a mistake.",
+      "lines": 6,
+      "answer": "The value satisfies the input contract and the stated rule predicts long. Agreement with an appropriate comparison label has not been checked. Replacing a blank with 1 invents a measurement, conceals missing information and violates the stated rejection path. Ask for the measurement instead."
+    }
+  ],
+  "teacher": {
+    "background": "Students construct a paper procedure around a fitted threshold, joining input checks, conditions, stopping and recorded output. Separate input validation, predictive correctness and subsequent human action. Tower1\u2019s range and whole-number requirement are classroom restrictions, not general requirements for classifiers.",
+    "materials": [
+      "Input cards with 1, 5, 6, 9, 10 and 11 cm, a blank, 60 mm and 4.5 cm",
+      "Blank paper for numbered steps or branch diagrams and a record with input, version, outcome and reason",
+      "Separate Ribbon1 task cards; no accounts, devices or personal measurements required"
+    ],
+    "sessions": [
+      [
+        "Session 1 start 0 to 7 minutes",
+        "Retrieve threshold equality and the difference between missing and zero. Introduce the goal of instructions another learner can execute."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the Tower1 contract and model aloud. Trace 5 cm, 6 cm and blank through the diagram. Stop physically before comparing the rejected card."
+      ],
+      [
+        "20 to 33 minutes",
+        "Compare valid boundaries and rejected units or fractions. Complete W1 and explain why acceptance is not proof of a correct label."
+      ],
+      [
+        "33 to 45 minutes",
+        "Start W2 in pairs. One learner writes, the other follows only the written instructions. Require an explicit stop after a failed check."
+      ],
+      [
+        "Session 2 start 0 to 8 minutes",
+        "Retrieve the output record and both paths. Ask whether no prediction is a tower size."
+      ],
+      [
+        "8 to 23 minutes",
+        "Use the guided task and W3 to test partners\u2019 procedures at endpoints, threshold and missing input. Record and repair ambiguity."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently before support. Look for transfer to the new range, threshold, labels and version instead of copied Tower1 constants."
+      ],
+      [
+        "38 to 45 minutes",
+        "Use W5 and the exit to separate contract checks from correctness evidence. Preview final tests kept apart from model selection."
+      ]
+    ],
+    "guidedAnswer": "Check presence, cm unit, whole number and range 1 through 10 before comparing. At 1, 6 and 10 cm predict short, tall and tall. At 11 cm record no prediction, outside range; at blank record no prediction, missing height. Record Tower1 throughout. Acceptance of 10 cm does not verify its label. Exit: 9 cm passes the contract and predicts tall, but correctness still needs evidence. A blank must stop as no prediction.",
+    "misconceptions": [
+      [
+        "Any numeric input must receive a category",
+        "Check the stated unit, whole-number condition and supported range before comparing the threshold."
+      ],
+      [
+        "An accepted input proves a correct prediction",
+        "Ask separately whether the input satisfies the contract and whether the prediction agrees with evaluation evidence."
+      ],
+      [
+        "No prediction means a third category of tower",
+        "It is a system outcome indicating that no short or tall category was assigned."
+      ],
+      [
+        "Writing a rejection is enough even if processing continues",
+        "Follow the failed path to an explicit stop so the later rule cannot overwrite the outcome."
+      ]
+    ],
+    "assessment": "W4 is secure with both paths, range 1 through 12, threshold 8 including equality, explicit stops and Ribbon1 records. After support retry Flag1: whole cm from 1 through 9, unit cm, large at least 5 otherwise small. At 4, 5, blank and 10 cm expect small, large, no prediction for missing and no prediction for range.",
+    "support": "Use separate check, compare and record cards with arrows. Let partners move each input physically and read the branch aloud. Extension: propose a separate mm-to-cm conversion stage; state what extra cases would need checking, including a conversion that yields a fractional centimetre.",
+    "next": "Week 15 keeps final evaluation examples unseen during fitting and explains why repeated changes based on their labels weaken the independence of that test."
+  }
+}

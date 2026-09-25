@@ -1,0 +1,278 @@
+{
+  "level": "ai-1",
+  "week": 10,
+  "title": "Conditions and boundary cases",
+  "minutes": 90,
+  "goals": [
+    "Evaluate a condition using the current state and trace only the selected branch",
+    "Distinguish inclusive and strict boundaries using values below, at and above a threshold",
+    "Design a boundary test and handle an unknown input without silently treating it as false"
+  ],
+  "prerequisite": {
+    "prompt": "Score starts at 4. Add 2 to score, then double it. Which value is doubled, and what is the final score?",
+    "answer": "The addition changes score to 6, so the next instruction doubles 6 and produces 12. Each instruction reads the current state."
+  },
+  "vocabulary": [
+    [
+      "Condition",
+      "A test whose result is true or false when the required information is known"
+    ],
+    [
+      "Branch",
+      "The instruction or group of instructions selected by a condition"
+    ],
+    [
+      "Threshold",
+      "The value used as a comparison boundary"
+    ],
+    [
+      "Inclusive boundary",
+      "A boundary whose equality case is included"
+    ],
+    [
+      "Boundary test",
+      "A test using a value at or close to a point where behaviour can change"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "A condition selects what happens next",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A paper game updates a score with this procedure: add 2 to score; if score is at least 6, subtract 3 from score; otherwise add 4 to score; report score and stop. The if and otherwise instructions form one if/else decision. Exactly one of those branches runs each time this decision is reached."
+        },
+        {
+          "type": "paragraph",
+          "text": "A condition asks whether a statement is true for the current state. At least 6 means 6 or any larger number. If score is 6, the condition is true. If score is 5, it is false. The condition itself does not change score; the chosen branch performs the update."
+        },
+        {
+          "type": "paragraph",
+          "text": "Start score at 4. First add 2, giving 6. Now test the current 6: the condition is true, so subtract 3 and report 3. Testing the original 4 would choose the wrong branch. Write the state immediately before the condition so the evidence for the choice is visible."
+        }
+      ]
+    },
+    {
+      "title": "Read the boundary with care",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Compare the three values immediately around the threshold. These are the values when the condition is reached, after the initial add-2 instruction. Testing only a value far above 6 would not show whether equality was handled correctly."
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Three checks around the threshold",
+          "columns": [
+            "Score at the condition",
+            "Choose one branch",
+            "Score after the branch"
+          ],
+          "rows": [
+            [
+              "Score is 5",
+              "At least 6 is false so add 4",
+              "Score becomes 9"
+            ],
+            [
+              "Score is 6",
+              "At least 6 is true so subtract 3",
+              "Score becomes 3"
+            ],
+            [
+              "Score is 7",
+              "At least 6 is true so subtract 3",
+              "Score becomes 4"
+            ]
+          ],
+          "caption": "At least includes equality. The middle row is essential for checking this boundary. Read each row as a separate run; do not pass the result of one row into the next."
+        },
+        {
+          "type": "paragraph",
+          "text": "Above 6 is different: it means strictly greater than 6, so 6 itself does not pass. At most 6 means 6 or smaller. Below 6 means strictly smaller, so it excludes 6. Say the equality case aloud before using one of these phrases."
+        },
+        {
+          "type": "paragraph",
+          "text": "A condition can be true even when its chosen action makes the number smaller. True describes the test result; it does not mean good, bigger, or a successful game. The written instructions define the action."
+        }
+      ]
+    },
+    {
+      "title": "Trace the selected branch exactly once",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Initial score",
+            "State and condition after adding 2",
+            "Branch and final score"
+          ],
+          "rows": [
+            [
+              "3",
+              "5 is not at least 6",
+              "Add 4 and report 9"
+            ],
+            [
+              "4",
+              "6 is at least 6",
+              "Subtract 3 and report 3"
+            ],
+            [
+              "5",
+              "7 is at least 6",
+              "Subtract 3 and report 4"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "In the first run, the false branch increases 5 to 9. That does not make the earlier decision run again. The procedure has already chosen and carried out the otherwise branch, so it moves on to report and stop. Subtracting 3 afterward would incorrectly run both branches and report 6."
+        },
+        {
+          "type": "paragraph",
+          "text": "This rule applies to one if/else decision. A later, separate condition would be a new test of the state at that later point. Do not invent an extra test or loop because the value crossed the threshold. Follow only the instructions in the procedure."
+        }
+      ]
+    },
+    {
+      "title": "Use a test that exposes the mistake",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Suppose a copied procedure says above 6 instead of at least 6. A score of 5 at the condition takes the false branch under both versions. A score of 7 takes the true branch under both. But exactly 6 separates them: the intended version subtracts 3 and gives 3; the copied version adds 4 and gives 10."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Choose an initial score that reaches exactly 6 after the first add-2 instruction. Trace both the intended at-least version and the copied above version. Explain why this test reveals an error that the neighbouring values can miss",
+          "lines": 6
+        },
+        {
+          "type": "paragraph",
+          "text": "Record the initial value, the value at the condition, the true or false result, and the chosen update. A final number alone may not reveal whether the test or the arithmetic was wrong. Keep the expected behaviour tied to the stated policy instead of changing it to match a result."
+        }
+      ]
+    },
+    {
+      "title": "Do not invent a value for missing evidence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Our examples so far use known whole-number scores. If score is unreadable when the test is reached, we cannot establish whether it is at least 6. Unknown does not mean false, and a blank is not automatically zero. For this paper exercise, pause the procedure and request the missing value before selecting a branch."
+        },
+        {
+          "type": "paragraph",
+          "text": "A complete procedure must specify what to do when required input is unavailable. Another system might define a separate fallback, but it must be written explicitly. Testing below, at and above the boundary checks comparison behaviour; it does not replace a missing-input policy or prove every possible implementation correct."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A tester checks only scores 2 and 10 at the condition and says the at-least-6 comparison is correct. Which additional value is most useful for detecting an accidental above-6 comparison, and why",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Trace a decision from the current score",
+      "prompt": "Use the paper-game procedure: add 2 to score; if score is at least 6 subtract 3, otherwise add 4; report and stop. Start at 2, then make a separate run starting at 5. For each run record the value at the condition, its true or false result, the branch and the final score.",
+      "lines": 7,
+      "answer": "Start 2: after adding 2 score is 4; at least 6 is false; add 4 and report 8. Start 5: after adding 2 score is 7; at least 6 is true; subtract 3 and report 4. Each run starts fresh and executes only its selected branch."
+    },
+    {
+      "id": "W2",
+      "title": "Read four boundary phrases",
+      "prompt": "The known value at a condition is exactly 6. Decide whether each test is true or false: at least 6; above 6; at most 6; below 6. Explain which phrases include equality. Then name one value below and one value above 6 for neighbouring tests.",
+      "lines": 6,
+      "answer": "At least 6 is true, above 6 is false, at most 6 is true, and below 6 is false. At least and at most include equality; above and below are strict. The nearest whole-number neighbours are 5 and 7; other correctly identified lower and higher values are valid but are less close to the boundary."
+    },
+    {
+      "id": "W3",
+      "title": "Stop after the selected branch",
+      "prompt": "In a separate decision the current score is 4. If score is at least 5 subtract 2; otherwise add 3; report and stop. A learner adds 3 to get 7, then subtracts 2 because 7 is now at least 5, and reports 5. Identify the extra action and give the correct trace and result.",
+      "lines": 6,
+      "answer": "The condition at score 4 is false, so only the otherwise branch runs. Add 3 to get 7, then report 7 and stop. The extra subtraction incorrectly runs the other branch after the decision. Crossing the threshold does not repeat the test in this if/else procedure."
+    },
+    {
+      "id": "W4",
+      "title": "Transfer the method to a new display",
+      "prompt": "A paper brightness display adds 3 to its starting number. If the current brightness is at most 7, subtract 2; otherwise add 1. Report and stop. Trace separate runs from starting values 3, 4 and 5. Identify the run that tests equality. Then show how its result changes if at most 7 is accidentally written as below 7.",
+      "lines": 8,
+      "answer": "Start 3: 6 at the test, true, subtract 2, report 4. Start 4: 7 at the test, true, subtract 2, report 5. Start 5: 8 at the test, false, add 1, report 9. Starting at 4 tests equality. With below 7, the current 7 fails, so add 1 and report 8 instead of 5. All three runs use current values after adding 3."
+    },
+    {
+      "id": "W5",
+      "title": "Handle an unknown input explicitly",
+      "prompt": "The score is unreadable at the at-least-6 test. A helper says the test must be false and takes the otherwise branch. Explain what is unknown and why that choice is unjustified. State the next step required by this paper exercise and give two possible scores that would select different branches.",
+      "lines": 6,
+      "answer": "The score value, and therefore the truth of the comparison, is unknown. It could be 5, which selects otherwise, or 6, which selects the true branch. Neither is established by an unreadable value. Pause and request the missing score as specified; do not silently replace it with zero or treat the test as false."
+    }
+  ],
+  "teacher": {
+    "background": "This week combines current-state tracing with a single if/else decision. Use known whole-number scores first, then explicitly introduce missing input. Separate testing a condition from updating a value. At least and at most include equality; above and below exclude it. Exactly one branch runs for each decision reached. A changed value does not cause the decision to repeat unless another test is explicitly specified. All game and brightness examples are paper simulations.",
+    "materials": [
+      "A score box, an add-2 card, and a paired if/otherwise instruction card with report and stop beneath it",
+      "A three-column trace headed Current value, Test result and Chosen update, plus cards 5, 6 and 7",
+      "The brightness-display task from W4 for independent work, and one unreadable-value card"
+    ],
+    "sessions": [
+      [
+        "Session 1 start 0 to 7 minutes",
+        "Retrieve the current-state rule from Week 9 using start 4, add 2, double. Record 4,6,12 before introducing a condition."
+      ],
+      [
+        "7 to 20 minutes",
+        "Model the paper-game procedure from initial score 4. Mark the value 6 at the test and show that the test itself changes no value."
+      ],
+      [
+        "20 to 33 minutes",
+        "Compare values 5,6,7 at the condition. Say equality aloud for at least, above, at most and below. Keep separate runs visually separate."
+      ],
+      [
+        "33 to 45 minutes",
+        "Complete W1 and W2 in pairs. Require a true/false result and chosen branch alongside each final value."
+      ],
+      [
+        "Session 2 start 0 to 8 minutes",
+        "Trace initial score 3 to current 5, then false branch to 9. Point to report and stop so crossing the threshold does not trigger another branch."
+      ],
+      [
+        "8 to 23 minutes",
+        "Use W3 to diagnose running both branches. Complete the guided equality test and compare expected versus copied instructions."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently. Check whether students evaluate at most on 6,7,8 rather than on the starting 3,4,5."
+      ],
+      [
+        "38 to 45 minutes",
+        "Use W5 to distinguish unknown from false. Discuss the exit test and preview explicitly repeated tests in loops."
+      ]
+    ],
+    "guidedAnswer": "Choose initial score 4: add 2 to reach 6. Under at least 6, the test is true and subtracting 3 gives 3. Under above 6, it is false and adding 4 gives 10. Equality distinguishes the versions; test values 5 and 7 do not. The exit answer is 6 at the condition, since it is included by at least but excluded by above. If testing from the start of the whole procedure, use initial 4 to reach that value.",
+    "misconceptions": [
+      [
+        "The condition reads the starting value",
+        "Trace the initial add-2 instruction first and circle its result before evaluating the comparison."
+      ],
+      [
+        "At least means strictly above",
+        "Put 6 on the boundary and read at least as 6 or more. Compare its true result with above 6, which is false."
+      ],
+      [
+        "Crossing the threshold runs the other branch",
+        "Follow the chosen branch to report and stop. A second test must be explicitly written; it is not implied by the new value."
+      ],
+      [
+        "An unknown value makes the test false",
+        "Show that the unreadable value could be 5 or 6. Different possibilities select different branches, so the exercise requires a pause and clarification."
+      ]
+    ],
+    "assessment": "W4 is secure when the learner traces all three runs, applies the test to the updated value, includes equality for at most, and explains the changed output under below. A final answer without a branch reason is partial evidence. After support, retry with add 2 followed by if current value is at most 5 subtract 1, otherwise add 2. From starts 2,3,4, the correct final values are 3,4,8 respectively.",
+    "support": "Provide a number line with the boundary labelled and let students read each comparison in words. Use text labels True branch and Otherwise branch in addition to colour. Supply a blank trace with the comparison row highlighted. Extension: explain why checking 5,6,7 is useful but does not prove a program correct for every possible input or every unrelated implementation error.",
+    "next": "Week 11 introduces loops and stopping rules. Students will distinguish one decision from an explicitly repeated test and trace when a loop stops."
+  }
+}

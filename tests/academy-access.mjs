@@ -117,6 +117,52 @@ try {
  await check('Image optimizer cannot bypass access',async()=>{assert.equal((await request('/_vinext/image?url=/api/resource/'+studentImage+'&w=640&q=75')).status,404);});
  await check('Cross-origin sign-in is rejected',async()=>{const r=await request('/api/access',null,{method:'POST',headers:{origin:'https://other.test'}});assert.equal(r.status,403);});
  await check('Logout clears session cookie',async()=>{const r=await request('/api/logout',session('student'),{method:'POST'});assert.equal(r.status,303);assert.match(r.headers.get('set-cookie'),/Max-Age=0/i);});
+ const v3=JSON.parse(await readFile('curriculum-v3/releases.json','utf8'));
+ await check('Curriculum 3 roadmap and chapters require a session',async()=>{
+  for(const p of ['/learn/student/curriculum','/learn/teacher/curriculum','/learn/student/curriculum/ai-1/1'])assert.equal((await request(p)).status,307);
+  assert.equal((await request('/learn/teacher/curriculum/ai-1/1',session('student'))).status,307);
+  assert.equal((await request('/learn/student/curriculum/ai-1/1?resource=guide',session('student'))).status,404);
+ });
+ await check('Curriculum 3 exposes only released weeks as lessons',async()=>{
+  const html=(await (await request('/learn/student/curriculum',session('student'))).text()).replace(/<!--.*?-->/gs,'');
+  assert.ok(html.includes(`${Object.keys(v3).length} of 252 weekly packages released`));assert.equal((html.match(/class="v3-level"/g)||[]).length,7);
+  assert.equal((html.match(/class="v3-status v3-planned"/g)||[]).length,252-Object.keys(v3).length);
+  for(const path of ['/learn/student/curriculum/ai-2/1','/learn/student/curriculum/ai-7/1','/learn/student/curriculum/ai-1/01','/learn/student/curriculum/ai-1/1?resource=bad'])assert.equal((await request(path,session('student'))).status,404);
+ });
+ await check('All rebuilt pages contain canonical content and separate teacher answers',async()=>{
+  const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#x27;');
+  for(const [id,release] of Object.entries(v3)){
+   const [level,num]=id.split('/');const w=JSON.parse(await readFile(`curriculum-v3/${level}-week-${num.padStart(2,'0')}.json`,'utf8'));
+   for(const resource of ['lesson','workbook','guide']){
+    const role=resource==='guide'?'teacher':'student';const r=await request(`/learn/${role}/curriculum/${id}?resource=${resource}`,session(role));assert.equal(r.status,200);
+    const h=(await r.text()).replace(/<!--.*?-->/gs,'');assert.ok(h.includes(release.sourceHash));assert.ok(h.includes(esc(w.title)));assert.match(r.headers.get('cache-control'),/no-store/);
+    if(resource==='guide'){for(const task of w.workbook)assert.ok(h.includes(esc(task.answer)),`${id}: answer missing`);}
+    else {assert.doesNotMatch(h,/data-teacher-answers/);for(const task of w.workbook)assert.ok(!h.includes(esc(task.answer)),`${id}: teacher answer leaked`);}
+    if(resource==='lesson')for(const section of w.lesson)for(const b of section.blocks)if(b.type==='paragraph')assert.ok(h.includes(esc(b.text)),`${id}: lesson paragraph missing`);
+    if(resource==='workbook')for(const task of w.workbook)assert.ok(h.includes(esc(task.prompt)),`${id}: prompt missing`);
+    for(const ext of ['docx','pdf'])assert.ok(h.includes(release.documents[`${resource}.${ext}`].id));
+   }
+  }
+ });
+ await check('All rebuilt downloads enforce their roles and match reviewed bytes',async()=>{
+  const {createHash}=await import('node:crypto');
+  for(const r of Object.values(v3))for(const [name,a] of Object.entries(r.documents)){
+   assert.equal((await request('/api/resource/'+a.id)).status,401);
+   const role=name.startsWith('guide')?'teacher':'student';
+   if(role==='teacher')assert.equal((await request('/api/resource/'+a.id,session('student'))).status,404);
+   const response=await request('/api/resource/'+a.id,session(role));assert.equal(response.status,200);
+   assert.equal(createHash('sha256').update(Buffer.from(await response.arrayBuffer())).digest('hex'),a.sha256);
+  }
+ });
+ await check('Rebuilt teacher sources are absent from public JavaScript',async()=>{
+  async function files(dir){const all=[];for(const f of await readdir(dir,{withFileTypes:true})){const p=join(dir,f.name);if(f.isDirectory())all.push(...await files(p));else if(/\.(js|json|map)$/.test(f.name))all.push(p);}return all;}
+  const publicText=(await Promise.all((await files('dist/client')).map(p=>readFile(p,'utf8')))).join('\n');
+  for(const id of Object.keys(v3)){
+   const [level,num]=id.split('/');const chapter=JSON.parse(await readFile(`curriculum-v3/${level}-week-${num.padStart(2,'0')}.json`,'utf8'));
+   for(const task of chapter.workbook)assert.ok(!publicText.includes(task.answer),`${id}: answer in public bundle`);
+   assert.ok(!publicText.includes(chapter.teacher.background),`${id}: guide in public bundle`);
+  }
+ });
  await writeFile('access-test-results.json',JSON.stringify({passed:results.length,checks:results},null,2));
  console.log(JSON.stringify({passed:results.length,checks:results.map(r=>r.name)}));
 } finally { delete globalThis.__academyTestEnv; }

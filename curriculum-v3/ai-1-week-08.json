@@ -1,0 +1,288 @@
+{
+  "level": "ai-1",
+  "week": 8,
+  "title": "Features and useful distinctions",
+  "minutes": 90,
+  "goals": [
+    "Choose recorded properties that preserve distinctions needed for a stated task",
+    "Show why identical feature records can hide examples with different target labels",
+    "Reject an answer copied into the inputs and test a proposed feature with a new case"
+  ],
+  "prerequisite": {
+    "prompt": "Two annotators agree that a calendar card is ready. What must you still check before treating that label as correct?",
+    "answer": "Check the card fields against the same explicit policy and version. Agreement alone can preserve a shared mistake; it does not prove that an event exists or has permission."
+  },
+  "vocabulary": [
+    [
+      "Feature",
+      "A recorded property supplied as an input to a system"
+    ],
+    [
+      "Target label",
+      "The answer a supervised learning task asks a model to predict"
+    ],
+    [
+      "Feature record",
+      "The selected input values for one example, in a defined order"
+    ],
+    [
+      "Relevant feature",
+      "An input property that helps make distinctions needed for the stated task"
+    ],
+    [
+      "Leakage",
+      "Information used during development that would not legitimately be available when making the intended prediction"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Begin with the task before choosing inputs",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Imagine a paper sorting task for a model delivery station. Each rectangular card has a length, width, colour and card number. The station labels a card fits if its length is at most 12 centimetres and its width is at most 8 centimetres. Both limits include equality. Cards stay flat in the marked orientation; turning, bending and thickness are outside this paper task. All measurements in the first examples are known positive whole numbers."
+        },
+        {
+          "type": "paragraph",
+          "text": "A feature is a recorded input property, such as width in centimetres. The target label is the answer we want to produce: fits or too large under this guide. Decide what the answer means before choosing the inputs. A card number can help us find a record, but knowing its number does not tell us its dimensions."
+        },
+        {
+          "type": "paragraph",
+          "text": "This guide already gives us a direct rule, so we do not need to train a model to solve it. We use the task to investigate the information that either a rule or a learned model would need. Later, when relationships are learned from examples, the same question remains: did we supply the distinctions the task requires?"
+        }
+      ]
+    },
+    {
+      "title": "Watch a distinction disappear",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Card A is 10 centimetres long and 7 centimetres wide. Card B is 10 centimetres long and 9 centimetres wide. A fits; B is too large because its width exceeds 8. Compare two ways of recording these cards."
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "The same cards under two feature choices",
+          "columns": [
+            "Original card",
+            "Choose the inputs",
+            "Resulting feature record"
+          ],
+          "rows": [
+            [
+              "A is 10 by 7 cm and fits",
+              "Keep length only",
+              "10 cm"
+            ],
+            [
+              "B is 10 by 9 cm and is too large",
+              "Keep length only",
+              "10 cm"
+            ],
+            [
+              "A is 10 by 7 cm and fits",
+              "Keep length and width",
+              "10 cm and 7 cm"
+            ],
+            [
+              "B is 10 by 9 cm and is too large",
+              "Keep length and width",
+              "10 cm and 9 cm"
+            ]
+          ],
+          "caption": "Length alone makes A and B look identical to the system. Retaining width preserves the difference needed by this task. The letters identify the examples here; they are not additional inputs."
+        },
+        {
+          "type": "paragraph",
+          "text": "A system receiving only the length cannot use the hidden width to tell these two cards apart. The same input, 10, is paired with two different correct answers. It may guess, return an uncertainty, or use a usual answer, but length alone cannot guarantee the right label for both. A more complicated model cannot reconstruct this missing distinction with certainty from that input alone."
+        },
+        {
+          "type": "paragraph",
+          "text": "A feature record needs a consistent order and units. Here we write length in centimetres first, then width in centimetres. The record 10, 7 means something different if someone silently switches the order or records millimetres. Write the definitions alongside the data."
+        }
+      ]
+    },
+    {
+      "title": "Use contrasting cases to examine a feature",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Card measurements and colour",
+            "Label under the guide",
+            "What the comparison shows"
+          ],
+          "rows": [
+            [
+              "10 by 7 cm and blue",
+              "Fits",
+              "Compare with the next card"
+            ],
+            [
+              "10 by 9 cm and blue",
+              "Too large",
+              "Same length and colour but width changes the label"
+            ],
+            [
+              "13 by 7 cm and blue",
+              "Too large",
+              "Same width and colour as the first card but length changes the label"
+            ],
+            [
+              "10 by 7 cm and red",
+              "Fits",
+              "Changing only colour does not change this guide"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The first two cards show why width matters. The first and third show why length matters. The first and fourth show that colour has no part in this particular rule. That is a statement about our task, not a claim that colour is useless for every task. For sorting red and blue cards, colour would be essential."
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose every fitting card in a small practice set is blue and every oversized card is red. Colour would appear to predict the labels perfectly in that set. A red 10 by 7 card and a blue 13 by 7 card expose the shortcut. Check a proposed feature on deliberately different cases before trusting the practice score."
+        }
+      ]
+    },
+    {
+      "title": "Separate available evidence from a copied answer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "After measuring a card, a teacher adds a sticker saying fits or too large. A learner proposes using sticker text as an input to predict the label before that inspection. The sticker seems excellent in the completed records because it contains the answer. But it does not exist at the time of the intended prediction. This is leakage: development has used information the real task cannot provide."
+        },
+        {
+          "type": "paragraph",
+          "text": "Draw a line at the moment the system must answer. On the before side, put the permitted measurements available then. On the after side, put the final label sticker. Keep labels available for teaching and checking predictions, but do not feed the sticker back in as an input for this task."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "A card is 12 cm long and its width is unreadable. Someone proposes using the label sticker that will be added after inspection. Which information is usable before inspection? Explain why it does not establish the label",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Test what the record preserves",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Before adopting a feature set, state the task, name the inputs with units, and ask whether two different answers can share the same input record. Construct such a pair if you can. Then check that each input is available at the time the answer is needed. These checks can reveal a broken representation before any model is trained."
+        },
+        {
+          "type": "paragraph",
+          "text": "For our known measurements and fixed orientation, length and width are sufficient to apply the paper rule exactly. That does not establish whether a real parcel will fit through a real opening: thickness, shape and measurement error were excluded. If the task changes, review the features again. More columns are not automatically better; each one needs a reason to be collected and used."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Someone claims that a model using only card colour is reliable because it matches every practice label. Give a new card that challenges this claim and explain what should be checked instead",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Separate inputs from the target",
+      "prompt": "For the fixed-orientation card task, fits requires length at most 12 cm and width at most 8 cm, including equality. Choose the measurements needed as inputs from length, width, colour, card number and the final inspection sticker. State the target label and write the feature record for a 12 cm by 8 cm red card using a defined order.",
+      "lines": 6,
+      "answer": "Use length and width measured before the decision. State the order as length in cm, then width in cm; the record is 12, 8. The target is fits or too large under the guide, and this card is fits because both equalities are included. Colour and card number are not needed for this rule; the final inspection sticker copies the answer and is unavailable before inspection."
+    },
+    {
+      "id": "W2",
+      "title": "Prove that one measurement is insufficient",
+      "prompt": "Invent two cards with the same width but different correct labels under the card guide. Give both lengths and widths and justify the labels. Explain why a system receiving only width cannot always label both correctly.",
+      "lines": 7,
+      "answer": "One valid pair is length 11 width 6, which fits, and length 13 width 6, which is too large. Both give the width-only input 6 but require different labels. Without length or other permitted distinguishing information, the system cannot guarantee correct labels for both. Accept any valid pair with positive measurements, equal widths at most 8, and lengths on opposite sides of 12."
+    },
+    {
+      "id": "W3",
+      "title": "Challenge an apparent colour shortcut",
+      "prompt": "A practice set contains three blue cards that fit and three red cards that are too large. A helper uses blue means fits and red means too large. Create a new card that this helper mislabels. Explain why the perfect practice score did not establish that colour was a reliable feature for this task.",
+      "lines": 6,
+      "answer": "A red 10 by 7 cm card fits but the helper says too large; alternatively a blue 13 by 7 cm card is too large but the helper says fits. The practice set paired colour with size and did not test cases that separate them. The stated guide depends on measurements, so compare predictions with that guide on cases where colour and size no longer follow the shortcut."
+    },
+    {
+      "id": "W4",
+      "title": "Design a record for a new task",
+      "prompt": "A fictional display tray accepts a tile if its height is at most 9 cm and its thickness is at most 2 cm, including equality. Other dimensions are fixed. Before checking, you can record height, thickness and pattern name. A pass sticker is added afterward. Choose inputs with units. Construct two tiles with the same height but different labels. Then label a 9 cm high, 2 cm thick striped tile and explain why the sticker is unsuitable as an input before checking.",
+      "lines": 8,
+      "answer": "Record height in cm and thickness in cm. A valid pair is height 8 thickness 1, which passes, and height 8 thickness 3, which fails: equal height hides the required thickness distinction. The 9 cm high, 2 cm thick tile passes both inclusive boundaries. Pattern name does not affect the stated rule. The pass sticker is created after checking and copies the target; using it to predict before checking is leakage."
+    },
+    {
+      "id": "W5",
+      "title": "Notice when the task changes",
+      "prompt": "The delivery station now sorts cards into red and blue bins instead of checking dimensions. Which previously unneeded feature becomes useful? Explain why length and width alone may now be insufficient. Give two cards that support your explanation.",
+      "lines": 6,
+      "answer": "Colour becomes useful because the new target is red or blue. A red 10 by 7 card and a blue 10 by 7 card have identical length-width records but require different bins. Feature relevance depends on the task; reusing the previous feature set without reviewing the target can discard the needed distinction."
+    }
+  ],
+  "teacher": {
+    "background": "Students investigate representation before fitting a model. Keep the paper rule explicit: positive known measurements, fixed orientation, no thickness in the card task, and both boundaries inclusive. Length and width suffice for that limited rule. A collision between feature records with different correct labels demonstrates lost information; it does not prove that every task needs these same inputs. Explain leakage through timing and the copied sticker, without requiring model training or statistics.",
+    "materials": [
+      "Four cards matching the worked table, with dimensions, colour and identifying letters written as text",
+      "Two paper columns headed Before the decision and After inspection, plus removable label stickers",
+      "Blank records headed Length in cm and Width in cm, and the independent display-tray task from W4"
+    ],
+    "sessions": [
+      [
+        "Session 1 start 0 to 7 minutes",
+        "Retrieve Week 7: agreement is not proof of a correct label. State the new target and check both inclusive boundaries."
+      ],
+      [
+        "7 to 20 minutes",
+        "Show cards A and B. Cover their widths and identifying letters. Ask what identical length-only inputs allow the system to distinguish, then reveal width."
+      ],
+      [
+        "20 to 33 minutes",
+        "Trace the four-row comparison table. Have students cite the pair showing each measurement matters and the pair showing colour does not enter this rule."
+      ],
+      [
+        "33 to 45 minutes",
+        "Complete W1 and W2 with partners. Require a constructed pair and reasons; do not accept only a list of feature names."
+      ],
+      [
+        "Session 2 start 0 to 8 minutes",
+        "Retrieve the same-input problem using length 11 width 5 and length 11 width 10. Both length-only records are 11; the first fits and the second is too large."
+      ],
+      [
+        "8 to 23 minutes",
+        "Use W3 to break the colour shortcut. Place the sticker after the decision line and discuss why its apparent predictive success is misleading."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently. Look for height and thickness, a valid equal-height pair, boundary reasoning and the timing explanation."
+      ],
+      [
+        "38 to 45 minutes",
+        "Use W5 and the exit response to revisit task-dependent relevance. Preview algorithms that update a recorded state one step at a time."
+      ]
+    ],
+    "guidedAnswer": "Length 12 cm is usable before inspection and passes its criterion. The unreadable width remains unknown, so it might be at most 8 or above 8; the available measurements do not establish fits or too large. The final sticker does not exist before inspection, so it cannot supply an input at the time the answer is needed. Using it would leak the later answer. The exit answer may use red 10 by 7 cm, which fits, or blue 13 by 7 cm, which is too large. Check the dimensions and use new cases that break the practice colour pattern.",
+    "misconceptions": [
+      [
+        "A stronger model can always recover an omitted measurement",
+        "Cover width and all identifiers for two same-length cards with different labels. Ask which supplied value tells them apart. Guessing or using typical values cannot guarantee correctness for both."
+      ],
+      [
+        "A feature that matches practice labels must be useful",
+        "Use a red fitting card or a blue oversized card. Ask whether the feature preserves the stated distinction when the practice pattern changes."
+      ],
+      [
+        "The final label is the best input feature",
+        "Place the sticker after inspection on the timeline. It is a target for checking or teaching, not an available input for a prediction before inspection."
+      ],
+      [
+        "Useful features stay useful for every task",
+        "Change the target to red or blue bins. Identical dimensions can now require different answers, so colour matters."
+      ]
+    ],
+    "assessment": "W4 shows secure independent understanding when the learner selects height and thickness with units, supplies an equal-height pair on opposite sides of the thickness limit, labels the boundary tile correctly, and explains the sticker timing. Naming inputs without a counterexample is partial evidence. After support, retry with a new tray limit of height 7 cm and thickness 3 cm; ask for a fresh equal-height pair before confirming mastery.",
+    "support": "Let students physically cover unselected columns and compare two records side by side. Provide the sentence frame Same input ___ but labels ___ and ___ because ___. Use written colour names so no task depends on colour vision. Extension: ask learners to prove the width-only input fails using a second valid pair, or explain how permitting card rotation would change the decision procedure even when the recorded dimensions stay the same.",
+    "next": "Week 9 introduces algorithms and changing state. Students will trace ordered instructions and record how values change, keeping the initial conditions and the sequence visible."
+  }
+}

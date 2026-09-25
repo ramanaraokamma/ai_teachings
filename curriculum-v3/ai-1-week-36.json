@@ -1,0 +1,283 @@
+{
+  "level": "ai-1",
+  "week": 36,
+  "title": "Evaluating and explaining your project",
+  "minutes": 90,
+  "goals": [
+    "Evaluate a saved candidate and a manual baseline fairly",
+    "Defend a conclusion using results, failures and limits",
+    "Explain the rules, privacy choices and human control in your project"
+  ],
+  "prerequisite": {
+    "prompt": "You change a candidate after seeing a final test fail. Can the same case be an unseen final test of the new version? Explain.",
+    "answer": "No. It informed the change and is now development evidence for the revision. Keep the old candidate and its final result; a fresh evaluation of the revision needs new reserved cases."
+  },
+  "vocabulary": [
+    [
+      "Final evaluation",
+      "Testing a saved candidate under stated conditions after development"
+    ],
+    [
+      "Baseline",
+      "A comparison method tested under the same conditions"
+    ],
+    [
+      "Evidence",
+      "Recorded observations that support or challenge a claim"
+    ],
+    [
+      "Limitation",
+      "A boundary on what a result or system can establish"
+    ],
+    [
+      "Defence",
+      "An explanation of a decision using evidence and reasoning"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Save what you will evaluate",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "This week you will evaluate your activity adviser and explain what its evidence supports. A project with an honestly reported failure can show strong understanding. Save your candidate instructions, version label, input rules, development records and known problems before your teacher reveals the final requests and catalogue. Keep the instructions unchanged during this evaluation."
+        },
+        {
+          "type": "paragraph",
+          "text": "The agreed rule remains: validate whole available minutes from 0 to 30 and Quiet required Yes or No. No allows quiet or nonquiet activities. Start at the first row and suggest the first activity whose time is no more than available time AND whose quiet label satisfies the request. Explain the choice. If all rows fail, report no match. Invalid or missing input needs clarification before searching. Clear the previous output for each run."
+        },
+        {
+          "type": "paragraph",
+          "text": "Your teacher will supply a fresh, labelled catalogue in the same format. Its values are test inputs, not permission to rewrite your instructions. All materials are assumed available. The manual baseline checks every row against the same requirements, then selects the first fit. Both methods advise only; neither books, publishes or chooses on a person\u2019s behalf."
+        }
+      ]
+    },
+    {
+      "title": "Keep the comparison fair",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "From saved version to supported claim",
+          "columns": [
+            "Before the run",
+            "During the run",
+            "After the run"
+          ],
+          "rows": [
+            [
+              "Save instructions and label",
+              "Use the assigned data",
+              "Keep results and traces"
+            ],
+            [
+              "Keep final cases reserved",
+              "Run both methods fairly",
+              "Compare full passes"
+            ],
+            [
+              "State rules and limits",
+              "Record actual outputs",
+              "Explain failures and limits"
+            ]
+          ],
+          "caption": "Changing instructions during evaluation creates a different version. Keep evidence for the original version."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use the same final requests, catalogue, requirements and full-pass rule for both methods. Record the candidate output and reason before looking at the expected answer. Record the baseline separately; do not copy the candidate result into it. Your teacher holds the answer key. A full pass needs both the required output and a valid reason, including why earlier rows fail when a later row is selected."
+        },
+        {
+          "type": "paragraph",
+          "text": "For each request record its ID, inputs, catalogue label, candidate label, candidate output and reason, baseline output and reason, and both results after checking. Keep a trace for any failure. Mark unrun cases explicitly. Do not silently correct an observation. If a person misreads an instruction, record that execution error separately from a defect in the written instruction."
+        }
+      ]
+    },
+    {
+      "title": "Make a claim that matches the evidence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Here is a fictional example from a different project, not your class results. A candidate has 6 full passes from 8 attempted cases; the baseline has 8 from the same 8. Two more planned cases were not run. The candidate passed 75 percent of attempted cases; the baseline passed 100 percent. Neither has evidence for the two unrun cases. The candidate did not outperform the baseline on this measure."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Evidence",
+            "Supported statement",
+            "Claim to avoid"
+          ],
+          "rows": [
+            [
+              "6 of 8 full passes",
+              "Six attempted cases met the full rule",
+              "It works for every request"
+            ],
+            [
+              "Both methods pass the same cases",
+              "They tie on this measured result",
+              "Automation must be better"
+            ],
+            [
+              "A time was not measured",
+              "Speed is unknown",
+              "The candidate is faster"
+            ],
+            [
+              "Only fictional catalogue data",
+              "Results concern these test conditions",
+              "People will enjoy every suggestion"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Explain each failure and its consequence instead of hiding it inside a total. Even perfect results on a small reserved set do not establish reliability in every situation. Our paper adviser applies human-written rules; it has not learned a model from training examples. It checks compatibility, not enjoyment, popularity or real material availability."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "In the fictional example, state the candidate and baseline results, explain how the two unrun cases should be reported, and give one useful next action. Why is \u201cthe adviser is ready for every classroom\u201d unsupported?",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Defend your decisions with a small evidence folder",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Prepare a short explanation using your saved instructions, one complete trace, the final comparison, and a limitation. State the problem and whose choice the adviser supports. Explain validation, both matching conditions, first-fit order, reset and stopping. Show the exact instruction behind your trace. Describe any repair with its old evidence, or say honestly that no repair was needed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use only fictional requests and the two necessary input fields. Do not collect names, diagnoses or reasons a pupil prefers quiet. A quiet request is enough. A person may decline the suggestion; a teacher checks real materials and local rules before an activity. A successful output grants no permission to book or publish."
+        },
+        {
+          "type": "paragraph",
+          "text": "For a two-minute partner presentation, use this order: problem and rule; trace; candidate versus baseline results; failure or limitation; next action. Partners swap speaker and listener roles. Each person must explain one trace independently. The listener asks which recorded observation supports the main claim; attractive slides cannot substitute for that observation."
+        }
+      ]
+    },
+    {
+      "title": "Close the project honestly",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Archive the evaluated candidate and its original results. If you repair it after evaluation, give it a new version label and use revealed cases as development checks. Do not relabel them as unseen. Ask your teacher for fresh reserved cases only after the revision is fixed. Do not erase the first result."
+        },
+        {
+          "type": "paragraph",
+          "text": "Write one conclusion limited to the actual conditions tested and one specific next step. It may be better to keep the manual baseline. Grade 7 will turn carefully stated procedures into programs and examine data more closely. Carry forward the habits of validating inputs, recording evidence and keeping people in control."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Name one observation from your own evaluation, one limit on your conclusion and one next action. Explain why your adviser is a rule-based program design rather than a trained model, and why passing tests does not give it permission to book an activity.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Record the fixed candidate",
+      "prompt": "Before final cases are revealed, record your version label, where its complete instructions are saved, the agreed input and matching rules, the manual baseline and any known limitation. Confirm that the instructions stay unchanged while the assigned catalogue is used as input.",
+      "lines": 6,
+      "answer": "Require an identifiable saved version, complete instructions, valid whole minutes 0 to 30, Yes or No quiet input, inclusive time AND quiet compatibility, first-fit order, reset, stopping and clarification. The baseline checks all rows and selects the first fit under the same contract. Accept honestly stated known failures; do not award a stronger result for hiding them."
+    },
+    {
+      "id": "W2",
+      "title": "Keep the final evaluation record",
+      "prompt": "Use a separate sheet for the teacher\u2019s reserved cases. For every case record its ID and inputs, catalogue and candidate labels, both methods\u2019 observed outputs and reasons, and results after checking. Preserve failure traces. Here summarise each method\u2019s full passes over attempted cases and list unrun cases. State what the comparison supports.",
+      "lines": 6,
+      "answer": "Use the reserved key in Preparation only after observations are saved. Full pass requires output and reason; no-match explanations must rule out all rows. Clarification must precede search. Report actual candidate and baseline counts over the same attempted cases, plus unrun cases. Never substitute the key for an observation or assume a baseline run was correct."
+    },
+    {
+      "id": "W3",
+      "title": "Prepare your evidence defence",
+      "prompt": "Write a two-minute explanation of the problem, one trace, your actual comparison, a limitation and a next action. Explain why this is a written-rule design rather than a model trained on examples. State which personal information is unnecessary and who decides whether to act.",
+      "lines": 7,
+      "answer": "Look for a saved trace connected to the actual instruction, accurate counts, a specific failure or limitation and a justified next step. The project applies explicit human-written rules, with no fitted model. Only minutes and quiet preference are needed; names and reasons for quiet are unnecessary. The person may decline and the teacher checks real conditions; the adviser does not book or publish."
+    },
+    {
+      "id": "W4",
+      "title": "Judge a different project independently",
+      "prompt": "A fictional library adviser and its manual baseline face the same 6 reserved cases. The candidate has 4 full passes; the baseline has 5. One additional planned case is unrun by both. No speed data was collected. The team says \u201cours is faster and more reliable everywhere\u201d and repairs it after seeing the failures. Explain what the counts support, two unsupported claims and how to label a rerun of the revealed cases.",
+      "lines": 7,
+      "answer": "Report candidate 4 of 6 and baseline 5 of 6 full passes, with one unrun case for each. The baseline performed better on this measured set; neither result establishes reliability everywhere. Speed was not measured. A rerun after the failures informed a repair is development evidence for the revised version, not an unseen final test. Preserve the old results and label both versions."
+    },
+    {
+      "id": "W5",
+      "title": "Write your final conclusion",
+      "prompt": "Use your own records to complete: Under these conditions, our saved version showed\u2026 The baseline showed\u2026 We still do not know\u2026 Our next action is\u2026 Include one privacy or human-control choice. If a case failed, explain its consequence without deleting the result.",
+      "lines": 6,
+      "answer": "Accept different conclusions grounded in actual observations, including a decision to retain the baseline. Require stated conditions, honest comparison, a real uncertainty and a specific action. A quiet requirement does not require a diagnosis; an output does not authorise action. A failure remains part of the evaluated version\u2019s record even after a repair."
+    }
+  ],
+  "teacher": {
+    "background": "This final week evaluates the saved paper candidate, not presentation polish or an imagined trained model. Fix instructions before revealing the new catalogue and requests. Keep the key below teacher-only until observations are recorded. If a pupil has already seen these cases, use a fresh teacher-checked set and record that substitution; do not call familiar cases unseen.",
+    "materials": [
+      "Saved candidate, manual baseline, development folder and blank record sheets with the fields listed in W2. Provide the catalogue and requests without the answer key after candidates are fixed.",
+      "Reserved catalogue B version 4 keeps B1 to B4 order and names, with times 18, 14, 11, 7 minutes and quiet labels Yes, No, Yes, No. All materials are assumed available. Same input and matching rules as before.",
+      "Reserved requests and key: F1 7 No \u2192 B4; F2 11 Yes \u2192 B3; F3 14 No \u2192 B2; F4 18 Yes \u2192 B1; F5 6 No \u2192 no match; F6 7 Yes \u2192 no match; F7 0 No \u2192 no match; F8 30 Yes \u2192 B1; F9 31 No \u2192 clarify; F10 blank minutes Yes \u2192 clarify. For F1\u2013F4, earlier rows fail time; the selected row fits with equality and satisfies quiet. F5 and F7 fail all times. F6 fits only nonquiet B4, which quiet excludes. F8 accepts first quiet B1. F9 and F10 fail validation before search."
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Check the prerequisite and W1; collect or photograph each fixed instruction set before revealing any final inputs."
+      ],
+      [
+        "7 to 12 minutes",
+        "Reveal B version 4 and F1\u2013F10 requests without the key. Explain W2 record fields and the unchanged full-pass criterion."
+      ],
+      [
+        "12 to 37 minutes",
+        "Run all ten cases with candidate and baseline. Partners swap operating and recording; preserve each output before comparison with the key. Record assistance and unrun cases."
+      ],
+      [
+        "37 to 45 minutes",
+        "Reveal the key, check reasons and summarise actual results in W2. Retain failure traces; do not edit the evaluated instructions."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Discuss the fictional 6-of-8 example and collect the guided explanation. Keep hypothetical results separate from class records."
+      ],
+      [
+        "8 to 22 minutes",
+        "Prepare W3 and run paired two-minute presentations with questions and role swaps. Sample individual traces; offer accessible spoken or written responses."
+      ],
+      [
+        "22 to 37 minutes",
+        "Collect W4 independently before hints. Assess evidence claims and the meaning of a rerun after revision."
+      ],
+      [
+        "37 to 45 minutes",
+        "Complete W5 and the exit. Archive the candidate, final results and next action; note support needs for Grade 7."
+      ]
+    ],
+    "guidedAnswer": "Fictional candidate 6/8 and baseline 8/8 attempted, with two unrun planned cases each; candidate 75 percent and baseline 100 percent on that set. Investigate retained failure traces before a versioned repair. Neither has evidence for all classrooms. Exit answers must use the pupil\u2019s real record, limit the conclusion, name a next step and distinguish explicit rules from fitted models. Passing tests grants no booking authority.",
+    "misconceptions": [
+      [
+        "A polished presentation proves the system works",
+        "Ask for the saved instruction, trace and actual result behind the claim."
+      ],
+      [
+        "Unrun cases count as passes",
+        "Report attempted denominators and unrun cases separately."
+      ],
+      [
+        "The baseline must lose",
+        "A tie or a better baseline can justify retaining the simpler method."
+      ],
+      [
+        "A repair erases the final failure",
+        "Preserve the evaluated version and results; revealed cases become development checks for the revision."
+      ]
+    ],
+    "assessment": "Assess four strands separately: faithful execution with traces; honest comparison including failures; independent explanation of rule-based mechanism and human control; justified limits and next action. Mark each secure, developing or not yet evidenced, with one cited observation. Do not infer individual mastery from group totals. W4 requires 4/6 versus 5/6, one unrun, unknown speed and a development rerun. After support, retry with candidate 3/5 and baseline 3/5, two unrun and no timing: a tie on observed passes, no universal or speed claim. Require fresh reasoning.",
+    "support": "Provide a blank record grid, read instructions aloud and allow oral defence, while recording assistance. Keep independent W4 responses before feedback. Allow additional time for unrun cases with the same fixed version and record when they ran; do not manufacture completion. Extension: propose an additional test for a stated limitation and explain why it would help without claiming proof of every situation.",
+    "next": "Grade 6 Foundations is complete. Grade 7 AI 2 begins programming and data. Carry forward versioned instructions, validation, tests, privacy and evidence-based conclusions; use the recorded assessment strands to plan support."
+  }
+}

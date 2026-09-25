@@ -1,0 +1,274 @@
+{
+  "level": "ai-1",
+  "week": 17,
+  "title": "Predictions and observations",
+  "minutes": 90,
+  "goals": [
+    "Separate a recorded prediction from the observation used to check it",
+    "Compare matching cases using a stated outcome rule and preserve unresolved evidence",
+    "Report checked results without counting missing observations as successes or failures"
+  ],
+  "prerequisite": {
+    "prompt": "A model predicts far, but the distance record is unreadable. Can this case be called correct? What evidence would let you check it?",
+    "answer": "It remains unassessed. Obtain a reliable distance record for the same trial, with units and the rule defining far. Repeating the prediction does not provide the missing observation."
+  },
+  "vocabulary": [
+    [
+      "Prediction",
+      "A model output recorded before consulting the comparison outcome"
+    ],
+    [
+      "Observation",
+      "A recorded measurement or event used as evidence"
+    ],
+    [
+      "Outcome rule",
+      "The agreed method for turning observed evidence into the category being checked"
+    ],
+    [
+      "Mismatch",
+      "A prediction that differs from an established comparison outcome"
+    ],
+    [
+      "Unassessed",
+      "A case whose prediction has not yet been judged against adequate outcome evidence"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Keep two records for two different jobs",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A prediction states what a model outputs. An observation records what was measured or happened. To check a prediction, keep both records and compare the same case under the same outcome rule. Writing a prediction into the observation column would make the check circular."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use a fictional ramp investigation. Before each trial, Ramp1 predicts far for a ramp height of at least 6 cm and near otherwise. Its allowed heights are whole centimetres from 1 through 10. After a toy rolls, a learner measures its travel distance. The outcome rule is far for a distance of at least 4 floor units and near otherwise. Ramp height and travel distance are different quantities."
+        },
+        {
+          "type": "paragraph",
+          "text": "The values in this lesson are invented practice records, not a physical law about ramps. Ramp1 is a fixed paper model for learning how to check predictions. Each trial has an ID so that its height, prediction and later measurement stay together. Keep the model version and record the prediction before opening the observation card."
+        }
+      ]
+    },
+    {
+      "title": "Follow the prediction and the observation separately",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Two records meet at a comparison",
+          "columns": [
+            "Before the trial",
+            "After the trial",
+            "Comparison"
+          ],
+          "rows": [
+            [
+              "A: height 4 cm",
+              "Distance 3 units",
+              "Near matches near"
+            ],
+            [
+              "B: height 6 cm",
+              "Distance 3 units",
+              "Far differs from near"
+            ],
+            [
+              "C: height 8 cm",
+              "Distance 5 units",
+              "Far matches far"
+            ]
+          ],
+          "caption": "Ramp1 predicts from height: A near, B far, C far. The observation is travel distance. Apply the distance outcome rule separately, then compare categories for the same trial."
+        },
+        {
+          "type": "paragraph",
+          "text": "For B, the input 6 cm produces the prediction far. The later distance of 3 units produces the observed category near. This is a mismatch. Retain far as the original prediction and near as the observed category. Changing the old prediction to near would hide the mistake rather than improve the original result."
+        },
+        {
+          "type": "paragraph",
+          "text": "For A and C, the categories match. These two matches provide evidence about these trials. They do not show that every future prediction will be correct. Even a correctly computed prediction can disagree with an observation because following the model rule and matching the world are different checks."
+        }
+      ]
+    },
+    {
+      "title": "Decide whether the evidence supports a comparison",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Record",
+            "Evidence available",
+            "Status under the outcome rule"
+          ],
+          "rows": [
+            [
+              "D: height 5 cm; predicts near",
+              "Distance missing",
+              "Unassessed; request the trial record"
+            ],
+            [
+              "E: height 7 cm; predicts far",
+              "Two records say 3 and 4 units",
+              "Unassessed; investigate the conflict"
+            ],
+            [
+              "F: height 6 cm; predicts far",
+              "Verified distance exactly 4 units",
+              "Match; at least 4 includes 4"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "For E, 3 units means near and 4 units means far. The disagreement can change the judgment. Check the trial ID, original measurement and recording procedure. Do not choose the distance that makes Ramp1 look better. If the conflict cannot be resolved, retain both reports and mark the comparison unassessed."
+        },
+        {
+          "type": "paragraph",
+          "text": "An observation is evidence, not an automatic guarantee of truth. A wrong trial ID, unclear unit or copying error can make the comparison unreliable. If a supported correction is made, retain the original entry, the correction, its source and the reason. Remeasuring a new trial does not reveal what happened in the old one."
+        }
+      ]
+    },
+    {
+      "title": "Report the denominator and the unresolved cases",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Consider only trials A through E. Three have established outcomes: A, B and C. Two of those three predictions match and one does not. D and E are unassessed. Report two matches out of three assessed trials, with two more trials unassessed. Do not report four successes by treating the unknowns as correct, or two out of five as if every trial had a known outcome."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Write a results record for A through E. Include each prediction, its observed category or unresolved evidence, its comparison status, and a summary that names both assessed and unassessed counts. Explain why D and E cannot be counted as correct",
+          "lines": 7
+        },
+        {
+          "type": "paragraph",
+          "text": "The missing cases might be different from the checked cases. The result describes the assessed group; it does not settle performance on all five or on future trials. Collect the missing evidence where possible, document what remains unknown, and keep the original model version visible. Week 23 will develop performance fractions more fully."
+        }
+      ]
+    },
+    {
+      "title": "Investigate a mismatch without rewriting history",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Start a mismatch investigation by checking the input, trial ID, prediction calculation and observation procedure. A mismatch alone does not identify which part caused the problem. If all records are sound, this case is evidence that the model prediction did not match the outcome."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you revise the model after seeing B, record a new version. A new prediction for B can help explain the change, but it is no longer a check on an unseen case. Preserve Ramp1\u2019s result and use new reserved trials to evaluate the revised version, following Week 15\u2019s method."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A learner changes B\u2019s old prediction from far to near after reading its distance, then reports three matches out of three. Explain what is wrong with the report and how to preserve an honest record",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Separate inputs from observed outcomes",
+      "prompt": "For Ramp1 trial B, height is 6 cm and the later travel distance is 3 units. State the input, prediction, observation, observed category and comparison status. Explain why the prediction rule and outcome rule use different measurements.",
+      "lines": 6,
+      "answer": "Input height 6 cm; prediction far because 6 is at least 6; observed distance 3 units; observed category near because 3 is below 4; mismatch. Height is available to the model before the trial, while travel distance is measured afterward to check its prediction."
+    },
+    {
+      "id": "W2",
+      "title": "Check a boundary without changing the rule",
+      "prompt": "Trial F has height 6 cm and verified travel distance exactly 4 units. Apply Ramp1 and the outcome rule. A partner says exactly 4 is near because far means greater than 4. Use the stated rule to resolve the disagreement.",
+      "lines": 6,
+      "answer": "Ramp1 predicts far at height 6. The observation is far because the stated outcome rule is at least 4, including equality. The prediction matches. Greater than 4 would be a different rule and must not replace the agreed one after viewing the result."
+    },
+    {
+      "id": "W3",
+      "title": "Keep incomplete evidence visible",
+      "prompt": "D predicts near but has no distance record. E predicts far but its two distance records say 3 and 4 units. State each comparison status, request useful evidence, and explain why neither guessing nor a new trial can establish the old trial\u2019s outcome.",
+      "lines": 6,
+      "answer": "Both are unassessed. For D request the original distance record for D with units. For E inspect the trial IDs, original measurement and recording procedure to resolve 3 versus 4. Guesses supply no observation; a new trial produces a new outcome. Retain unresolved evidence if the old result cannot be established."
+    },
+    {
+      "id": "W4",
+      "title": "Transfer the check to drying predictions",
+      "prompt": "In a fictional paper test, Dry1 predicts slow for a moisture score of at least 7, quick otherwise. Allowed scores are whole numbers 1 through 10. The observed outcome is slow if drying time is greater than 10 minutes, quick otherwise. Records are P: score 6, time 12; Q: score 7, time 10; R: score 9, time 14; S: score 5, time missing. Record all predictions, observed categories and comparison statuses. Summarise matches out of assessed cases, name the unassessed count, and limit the conclusion.",
+      "lines": 8,
+      "answer": "P predicts quick, observed slow, mismatch. Q predicts slow, observed quick because exactly 10 is not greater than 10, mismatch. R predicts slow, observed slow, match. S predicts quick, observed outcome unavailable, unassessed. One match out of three assessed cases, with one unassessed. This describes the assessed cases and does not establish the result for S or future trials."
+    },
+    {
+      "id": "W5",
+      "title": "Correct a report without erasing evidence",
+      "prompt": "After seeing B\u2019s observed near category, a learner replaces Ramp1\u2019s far prediction with near. They call the new entry a corrected observation and report a perfect result for A through C. Explain the two record-keeping errors and write a defensible replacement report.",
+      "lines": 6,
+      "answer": "They changed a prediction after seeing the outcome and mislabelled that change as an observation correction. Restore the original far prediction for B and retain the observed near category. Report two matches out of three assessed Ramp1 trials A through C, including B\u2019s mismatch. Any revised model needs a new version and new reserved cases for evaluation."
+    }
+  ],
+  "teacher": {
+    "background": "Teach comparison as an evidence procedure. The ramp and drying records are fictional; do not present either predictor as a scientific law. Distinguish predictor inputs from outcome measurements, correct rule execution from outcome agreement, and an unassessed case from a failure. Keep observation quality open to documented review.",
+    "materials": [
+      "Ramp trial cards A through F with heights and separate distance cards from the lesson",
+      "A record sheet with trial ID, model version, input, prediction, observation, outcome category and status",
+      "Drying records P through S from W4; paper only and no personal data"
+    ],
+    "sessions": [
+      [
+        "Session 1 start 0 to 7 minutes",
+        "Retrieve why a missing observation prevents judgment even when a prediction is available."
+      ],
+      [
+        "7 to 20 minutes",
+        "Model A, B and C with separate height and distance cards. Record predictions before revealing distances. Explain that the lesson shows a worked retrospective example."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2. Require both numerical rules and include the exact-distance boundary at 4."
+      ],
+      [
+        "33 to 45 minutes",
+        "Discuss D and E and complete W3. Ask which evidence could establish the old trial outcome and why a new trial cannot do so."
+      ],
+      [
+        "Session 2 start 0 to 8 minutes",
+        "Retrieve input, prediction, observation and outcome category with four labelled spaces."
+      ],
+      [
+        "8 to 23 minutes",
+        "Complete the guided A-through-E results record. Make assessed and unassessed counts visible before forming a result fraction."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently. Watch for the different greater-than boundary at 10 minutes and the missing S outcome."
+      ],
+      [
+        "38 to 45 minutes",
+        "Discuss W5 and the exit. Preserve old predictions, distinguish documented observation corrections, and connect model revision to new reserved tests."
+      ]
+    ],
+    "guidedAnswer": "A predicts near, observed near, match; B far, observed near, mismatch; C far, observed far, match. D predicts near with missing distance; E predicts far with conflicting 3 and 4; both unassessed. Two matches out of three assessed, two unassessed. Exit: changing B after reading the outcome hides a mismatch; retain its original far prediction and observed near outcome, and identify any revised model separately.",
+    "misconceptions": [
+      [
+        "Running the rule correctly proves the prediction correct",
+        "Rule execution and agreement with the observed outcome are separate checks."
+      ],
+      [
+        "A missing outcome is a success or a failure",
+        "Mark it unassessed and report the missing count alongside assessed results."
+      ],
+      [
+        "Every recorded observation must be true",
+        "Check the trial identity, units and evidence; document supported corrections."
+      ],
+      [
+        "A new trial repairs the old observation",
+        "A new trial has its own ID and result; the old outcome may remain unknown."
+      ]
+    ],
+    "assessment": "W4 is secure with quick/slow/slow/quick predictions, slow/quick/slow/unknown outcomes, two mismatches, one match and one unassessed case. Require one of three assessed and limited claims. After support retry scores 5, 8, 4 with times 9, 10, missing: quick/slow/quick predictions, quick/quick/unknown outcomes; one match, one mismatch, one unassessed.",
+    "support": "Use separate coloured cards for predictions and observations and pair them by trial ID. Read at least and greater than aloud on number lines. Extension: investigate how selective missing records could make the assessed cases an incomplete picture of model performance.",
+    "next": "Week 18 distinguishes confidence from correctness and asks what evidence could support a confidence claim."
+  }
+}

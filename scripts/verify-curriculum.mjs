@@ -64,7 +64,8 @@ for (const [id, metadata] of Object.entries(manifest)) {
     decipher.setAuthTag(encrypted.subarray(-16));
     const plain = Buffer.concat([decipher.update(encrypted.subarray(12, -16)), decipher.final()]);
     if (metadata.mime === "image/png") assert.equal(plain.subarray(0,8).toString("hex"), "89504e470d0a1a0a");
-    if (metadata.filename) assert.equal(plain.subarray(0,2).toString(), "PK");
+    if (metadata.mime === "application/pdf") assert.equal(plain.subarray(0,5).toString(), "%PDF-");
+    else if (metadata.filename) assert.equal(plain.subarray(0,2).toString(), "PK");
   }
 }
 console.log(`Curriculum verified: 144 weeks, ${visuals} illustration placements, ${downloads.size} Word downloads, ${Object.keys(manifest).length} protected resources${full ? "; all resources decrypted successfully" : ""}.`);

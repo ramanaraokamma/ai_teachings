@@ -1,0 +1,274 @@
+{
+  "level": "ai-1",
+  "week": 25,
+  "title": "Generation retrieval and calculation",
+  "minutes": 90,
+  "goals": [
+    "Distinguish retrieving a record, calculating from inputs and generating wording",
+    "Trace a task that combines these operations and check each step",
+    "Identify unsupported details and explain why output appearance does not reveal its method"
+  ],
+  "prerequisite": {
+    "prompt": "You need a chart of three fictional topic totals. Why should a named pupil spreadsheet not be the default input?",
+    "answer": "The task needs the three totals, not pupil identities. Use the least information needed and follow the teacher\u2019s approved tool and data rules."
+  },
+  "vocabulary": [
+    [
+      "Retrieval",
+      "Finding and returning existing information from a collection"
+    ],
+    [
+      "Calculation",
+      "Applying specified mathematical operations to input values"
+    ],
+    [
+      "Generation",
+      "Producing content using a model and its input context"
+    ],
+    [
+      "Source record",
+      "An existing item whose content and origin can be inspected"
+    ],
+    [
+      "Trace",
+      "A record of the inputs, operations and outputs used in a task"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Ask what operation produced the answer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Three tasks can produce similar-looking text while doing different work. Retrieval finds existing information. Calculation applies mathematical operations to input values. Generation produces content using a model and the context it receives. A single application can combine all three, so the label AI does not tell you which step happened."
+        },
+        {
+          "type": "paragraph",
+          "text": "Our fictional makers club has a current notice N2: Wednesday, Room 4, six tables with four places at each table, and three places reserved for helpers. An older notice N1 says Room 2. N2 explicitly replaces N1 for this event. These records are invented for this lesson; no search, account or real booking is needed."
+        },
+        {
+          "type": "paragraph",
+          "text": "To answer \u201cWhich room does the current notice list?\u201d, find N2 and return Room 4 with the record identifier. That is retrieval. To answer \u201cHow many places remain after the helper reservation?\u201d, use 6 \u00d7 4 \u2212 3 = 21. That is calculation. To suggest a friendly invitation, generate wording and check that its factual details agree with N2."
+        }
+      ]
+    },
+    {
+      "title": "Follow three operations with three different checks",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "One club task with three kinds of work",
+          "columns": [
+            "Operation",
+            "Example output",
+            "Required check"
+          ],
+          "rows": [
+            [
+              "Retrieve N2",
+              "Room 4 on Wednesday",
+              "Right event and version"
+            ],
+            [
+              "Calculate",
+              "6 \u00d7 4 \u2212 3 = 21",
+              "Inputs and operations"
+            ],
+            [
+              "Generate wording",
+              "Try a making activity",
+              "Facts and constraints"
+            ]
+          ],
+          "caption": "Retrieval supplies recorded information; calculation derives a result; generation drafts wording. Each operation needs a check suited to what it does."
+        },
+        {
+          "type": "paragraph",
+          "text": "Retrieving N1 accurately would still give an outdated room for this task. Successful retrieval means finding a record, not proving that every record is correct or current. Check the event, source and version. Here the explicit replacement statement tells us which notice governs the classroom example."
+        },
+        {
+          "type": "paragraph",
+          "text": "A calculator given 6 \u00d7 4 correctly returns 24, but 24 is the total capacity, not the number remaining after three reserved places. Correct arithmetic on an incomplete expression answers the wrong question. Explain the input values, units and operations before accepting a number."
+        }
+      ]
+    },
+    {
+      "title": "Generated wording needs evidence for factual details",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Draft statement",
+            "Evidence in this example",
+            "Decision"
+          ],
+          "rows": [
+            [
+              "Meet Wednesday in Room 4",
+              "Current notice N2",
+              "Supported by the record"
+            ],
+            [
+              "There are 21 non-helper places",
+              "6 \u00d7 4 \u2212 3 from N2",
+              "Supported by calculation"
+            ],
+            [
+              "Free snacks will be provided",
+              "Not stated in N2",
+              "Remove or verify separately"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A generated invitation might add free snacks because that detail fits a familiar invitation pattern. Plausible wording is not evidence that snacks are provided. Remove that claim or obtain an appropriate confirming source before including it. Generated content can be useful and can contain correct facts; its fluent style alone does not verify those facts."
+        },
+        {
+          "type": "paragraph",
+          "text": "Generation also does not guarantee originality. A response may repeat wording already present in its context or elsewhere. Retrieval and calculation can feed a generator, and a generator can propose a calculation for another tool. Keep the evidence path visible instead of assuming that every sentence came from the same operation."
+        }
+      ]
+    },
+    {
+      "title": "Use a trace instead of guessing from the final sentence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Two applications display \u201c21 places remain.\u201d One trace shows retrieval of N2 followed by a calculator call for 6 \u00d7 4 \u2212 3 and a sentence built from the result. The other gives no record or tool trace. Their identical visible answers do not establish identical methods. The second answer may be right, but its appearance does not prove retrieval or calculation took place."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "A draft says \u201cJoin us Thursday in Room 4 for free snacks; 24 places remain.\u201d Use N2 to identify which claims need correction or removal. Write a corrected factual sentence and state the retrieval and calculation steps that support it",
+          "lines": 7
+        },
+        {
+          "type": "paragraph",
+          "text": "Check the record yourself and independently recompute 6 \u00d7 4 \u2212 3. A displayed trace is useful evidence, but it should refer to an inspectable record and the actual tool result. A sentence saying \u201cI checked\u201d is not the same as a check you can inspect. If evidence is unavailable, say what remains unverified."
+        }
+      ]
+    },
+    {
+      "title": "Choose the work needed for the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For an existing meeting time, retrieve the relevant notice. For a total, calculate using the right inputs and units. For a draft title or invitation, generation can offer wording, followed by review. You can also do these classroom tasks on paper. Choose the operation because it fits the question, not because a tool is described as intelligent."
+        },
+        {
+          "type": "paragraph",
+          "text": "A complete answer keeps source facts, derived results and suggested wording distinguishable. It marks missing facts instead of inventing them, preserves the source identifier and explains the arithmetic. This makes a later change easier to handle: if the number of reserved places changes, recompute the result and update the sentence."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "If N2 now reserves five helper places, calculate the remaining places. State which existing source facts stay the same and why the old answer of 21 must be revised",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Name the operation and its evidence",
+      "prompt": "For each task name the main operation and a suitable check: find the room listed in N2; work out six tables of four places minus three reserved places; suggest an inviting title for the event. Can an application combine these operations?",
+      "lines": 6,
+      "answer": "Room: retrieval, checked against the right source N2 and event. Remaining places: calculation, checked as 6 \u00d7 4 \u2212 3 = 21 with correct inputs. Title: generation, checked for the requested style and unsupported factual details. An application can combine them; the labels describe operations rather than exclusive types of application."
+    },
+    {
+      "id": "W2",
+      "title": "Separate a correct sum from a correct answer",
+      "prompt": "A calculator correctly returns 24 for 6 \u00d7 4. A pupil reports this as the number of non-helper places available. Explain the problem and write the correct expression, result and meaning.",
+      "lines": 6,
+      "answer": "24 is total capacity before the three helper places are reserved. The requested remaining count is 6 \u00d7 4 \u2212 3 = 21 non-helper places. The calculator can execute the supplied expression correctly while that expression omits a required step."
+    },
+    {
+      "id": "W3",
+      "title": "Inspect a record and a draft",
+      "prompt": "N1 lists Room 2. N2 explicitly replaces N1 for this event and lists Wednesday in Room 4. A draft says Thursday in Room 2 with free snacks. Identify the supported corrections and the unsupported detail. Explain why finding N1 successfully would not settle the current-room question.",
+      "lines": 6,
+      "answer": "Use Wednesday and Room 4 from N2. Free snacks are unsupported and should be removed or verified with a suitable source. N1 is an existing record but is superseded for this event, so retrieving it does not establish the current room."
+    },
+    {
+      "id": "W4",
+      "title": "Trace a new library workshop",
+      "prompt": "Current fictional record B lists a library workshop on Friday in Room 5: five tables with six places each, with four places reserved for helpers. B replaces old record A, which lists Room 3. A draft says \u201cThursday in Room 3, with 30 places remaining and a free bus home.\u201d Retrieve the current day and room, calculate the non-helper places, write a corrected factual sentence and identify the detail that cannot be supported by B.",
+      "lines": 8,
+      "answer": "Retrieve Friday and Room 5 from B. Calculate 5 \u00d7 6 \u2212 4 = 26 non-helper places. A suitable sentence is: The workshop is Friday in Room 5 with 26 places after the helper reservation, according to B and the capacity calculation. The free bus is unsupported and must be removed or verified separately. The draft\u2019s 30 is total capacity before reservation."
+    },
+    {
+      "id": "W5",
+      "title": "Do not infer a method from its output",
+      "prompt": "Two applications both display \u201c26 places remain.\u201d Only one provides record B and a trace showing 5 \u00d7 6 \u2212 4. What can and cannot be concluded from their matching sentences? Describe how you would check the numerical claim without relying on either application\u2019s assurance.",
+      "lines": 6,
+      "answer": "The visible numerical outputs match, but that alone does not reveal the second application\u2019s method or prove that either checked the right task. Inspect current B, confirm the inputs and independently calculate 5 \u00d7 6 \u2212 4 = 26. The first trace supports inspection; a verbal assurance of checking is not equivalent to inspectable evidence."
+    }
+  ],
+  "teacher": {
+    "background": "Keep operations distinct without presenting three mutually exclusive product categories. A modern system can retrieve records, call a calculator and generate a final response. Lewis and colleagues provide a primary example combining retrieval and generation: Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks (2020), https://arxiv.org/abs/2005.11401. Use this as teacher background, not required pupil reading. The fictional notices and arithmetic here are independent classroom examples.",
+    "materials": [
+      "The fictional N1 and N2 notice details printed in the student lesson",
+      "Paper for three-column traces labelled source facts, calculation and wording",
+      "The independent library record B in W4; no online account is needed"
+    ],
+    "sessions": [
+      [
+        "Session 1 start 0 to 7 minutes",
+        "Retrieve the minimal-input principle from Week 24."
+      ],
+      [
+        "7 to 20 minutes",
+        "Compare the three operations using N2 and complete W1."
+      ],
+      [
+        "20 to 33 minutes",
+        "Trace the diagram and complete W2. Ask what the result\u2019s unit and meaning are."
+      ],
+      [
+        "33 to 45 minutes",
+        "Complete W3 and separate a retrieved record from a current record."
+      ],
+      [
+        "Session 2 start 0 to 8 minutes",
+        "Retrieve why correct arithmetic can still answer the wrong question."
+      ],
+      [
+        "8 to 23 minutes",
+        "Complete the guided correction. Require evidence for each factual claim."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently, with source, expression, result and unsupported detail."
+      ],
+      [
+        "38 to 45 minutes",
+        "Complete W5 and the exit. Discuss identical outputs with different or unknown methods."
+      ]
+    ],
+    "guidedAnswer": "Correct Thursday to Wednesday using N2; Room 4 is supported. Remove free snacks unless independently verified. Replace 24 remaining with 21 from 6 \u00d7 4 \u2212 3. One sentence: The makers club meets Wednesday in Room 4, with 21 places after the helper reservation. Exit: 6 \u00d7 4 \u2212 5 = 19; day, room, table count and places per table stay the same. The changed reservation invalidates the old remaining count.",
+    "misconceptions": [
+      [
+        "Retrieving a record proves it is current",
+        "Check event and version; N1 is superseded by N2 in this example."
+      ],
+      [
+        "A correct calculator result always answers the task",
+        "The expression must include the required reservation and correct units."
+      ],
+      [
+        "Fluent generated details are verified facts",
+        "Free snacks and transport need evidence; wording alone is insufficient."
+      ],
+      [
+        "The final sentence reveals the method",
+        "Matching outputs do not establish matching operations; inspect records and traces."
+      ]
+    ],
+    "assessment": "W4 requires Friday, Room 5, record B, 5 \u00d7 6 \u2212 4 = 26, a consistent corrected sentence and rejection of the unsupported free bus. After support change B to reserve seven helper places: require 23 remaining with the same day and room, and continued rejection of the transport claim. A numerical result without its source and expression is incomplete evidence.",
+    "support": "Use three coloured cards for recorded fact, derived quantity and suggested wording. Work with counters for total and reserved places. Extension: explain which steps should be repeated if only the room changes versus if the number of tables changes.",
+    "next": "Week 26 turns a vague request into a clear prompt with supplied evidence, output requirements and tests."
+  }
+}

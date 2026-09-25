@@ -1,0 +1,279 @@
+{
+  "level": "ai-1",
+  "week": 20,
+  "title": "Recommendations and feedback",
+  "minutes": 90,
+  "goals": [
+    "Apply eligibility requirements before ranking candidates by preferences",
+    "Explain a recommendation using its actual scoring rule and limits",
+    "Interpret feedback in the context of what was shown and distinguish clicks from satisfaction"
+  ],
+  "prerequisite": {
+    "prompt": "A book has the highest similarity score but is in a language the reader cannot use. Should the score override the language requirement? Explain.",
+    "answer": "No. Eligibility requirements must be checked separately. A high preference score does not make an ineligible item suitable."
+  },
+  "vocabulary": [
+    [
+      "Eligibility",
+      "Whether an item meets the requirements for consideration"
+    ],
+    [
+      "Preference",
+      "A desired feature used to rank eligible choices"
+    ],
+    [
+      "Recommendation",
+      "A suggested option produced under a stated process"
+    ],
+    [
+      "Exposure",
+      "An opportunity for a person to see an item"
+    ],
+    [
+      "Feedback loop",
+      "A process in which earlier recommendations influence the feedback used for later recommendations"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Separate requirements from preferences",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A recommendation suggests an option for a particular purpose. Start with requirements: conditions every suggested item must meet. Then use preferences to rank the eligible options. An item that fails a requirement cannot make up for it by collecting more preference points."
+        },
+        {
+          "type": "paragraph",
+          "text": "A fictional reader needs an available English book. The reader prefers topic space and format comic. BookRec1 gives eligible books 2 points for space and 1 for comic; a known mismatch gives 0. It returns every eligible book tied for the highest score. If none are eligible, it reports no eligible option rather than ignoring a requirement."
+        },
+        {
+          "type": "paragraph",
+          "text": "The candidates are J: space, prose, English, available; K: animals, comic, English, available; L: space, comic, Spanish, available; M: space, comic, English, unavailable. These are invented records. The purpose is to trace a recommendation, not to infer anything about real students or collect their personal preferences."
+        }
+      ]
+    },
+    {
+      "title": "Trace the decision before writing the explanation",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Requirements come before preference scores",
+          "columns": [
+            "Candidate",
+            "Eligibility check",
+            "Result"
+          ],
+          "rows": [
+            [
+              "J: space and prose",
+              "English; available",
+              "Eligible; 2 points"
+            ],
+            [
+              "K: animals and comic",
+              "English; available",
+              "Eligible; 1 point"
+            ],
+            [
+              "L and M",
+              "Language or stock fails",
+              "Excluded from ranking"
+            ]
+          ],
+          "caption": "BookRec1 recommends J from this candidate set. L and M match both preferences but fail a requirement. The recommendation does not guarantee that the reader will enjoy J."
+        },
+        {
+          "type": "paragraph",
+          "text": "J passes both requirements and scores 2. K passes and scores 1. L fails the English requirement; M fails availability. Do not place L or M above J because they would earn 3 preference points. They are excluded before the eligible scores are compared."
+        },
+        {
+          "type": "paragraph",
+          "text": "A faithful explanation says J is available in English and has the highest eligible score because its space topic matches the stated preference. It should also mention that J is prose, not comic. Claiming that the system knows the reader will love J would go beyond the computation and the evidence."
+        }
+      ]
+    },
+    {
+      "title": "Read feedback without inventing a motive",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Recorded event",
+            "What it establishes",
+            "What it does not establish"
+          ],
+          "rows": [
+            [
+              "J was shown",
+              "There was a recorded exposure",
+              "The reader noticed or liked it"
+            ],
+            [
+              "J was clicked",
+              "A recorded interaction occurred",
+              "The reader enjoyed the book"
+            ],
+            [
+              "Reader said J was too long",
+              "A stated reason in this context",
+              "All space books are unwanted"
+            ],
+            [
+              "K was never shown",
+              "No exposure recorded for K",
+              "The reader rejected K"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A click can reflect interest, curiosity or a mistaken tap. No click can reflect a missed display, lack of time or a decision not to choose it. Preserve the observed event separately from any interpretation. More direct feedback may clarify a reason, but one response still describes one person and occasion."
+        },
+        {
+          "type": "paragraph",
+          "text": "Useful feedback records name the item, what was shown, the system version, the event and any stated reason. Use only information needed for the task. Our paper exercises use invented feedback; they do not require accounts or recording classmates\u2019 browsing behaviour."
+        }
+      ]
+    },
+    {
+      "title": "Follow how exposure can shape later records",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Suppose a system shows only space books, then collects clicks only on those books. If it treats those clicks as proof that space is the only wanted topic, it may keep showing space. Its choices helped produce the evidence it later uses. The absence of animal-book clicks says little when animal books were never shown."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "A log says J was shown and clicked; K was never shown. A designer wants to label J enjoyed and K disliked. Write the two defensible records, identify the unsupported labels, and propose a useful way to ask for feedback without assuming the answer",
+          "lines": 7
+        },
+        {
+          "type": "paragraph",
+          "text": "A better investigation can ask the fictional reader directly or offer a small set of eligible alternatives with clear choice and optional feedback. Record what was offered as well as the response. Such a comparison still needs care: order, context and missing responses can affect what is observed. Do not call an unseen item rejected."
+        }
+      ]
+    },
+    {
+      "title": "Revise the process without rewriting feedback",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "If feedback says J is too long, length may be a relevant missing feature. Ask what limit matters before adding a requirement. Do not automatically remove all space books or silently turn one comment into a permanent preference. Keep the original feedback and document any change to the recommendation rules."
+        },
+        {
+          "type": "paragraph",
+          "text": "Check a revised version on reserved paper cases, including ties, no eligible choices and missing required information. If a required fact is unknown, mark that candidate pending verification and report the limitation; do not assume it passes. If all candidates are pending or excluded, return no verified eligible option. A recommendation leaves the final choice with the reader."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A system recommends only the books it showed last week because those are the only books with clicks. Explain how its own display choices could keep other books out of consideration and name one improvement to the evidence collection",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Filter before scoring",
+      "prompt": "Apply BookRec1 to J, K, L and M from the lesson. State eligibility or exclusion reason for each, the scores of eligible books and the recommendation. Explain why L\u2019s two preference matches do not make it the winner.",
+      "lines": 6,
+      "answer": "J eligible scores 2; K eligible scores 1; L excluded for Spanish; M excluded because unavailable. Recommend J. Preference matches cannot compensate for failing the English requirement."
+    },
+    {
+      "id": "W2",
+      "title": "Explain a recommendation honestly",
+      "prompt": "Write an explanation of why J was recommended that mentions one preference it does not match. A marketer adds guaranteed enjoyment. Explain why that phrase is unsupported.",
+      "lines": 6,
+      "answer": "J is available in English and its space topic earns 2, the highest score among eligible choices; it is prose rather than the preferred comic. The rule supplies a ranking, not evidence guaranteeing enjoyment."
+    },
+    {
+      "id": "W3",
+      "title": "Do not label an unseen item rejected",
+      "prompt": "J was shown and clicked. K was never shown. Separate the observed records from the labels enjoyed and disliked. Write a question that could gather a stated reason while allowing no answer.",
+      "lines": 6,
+      "answer": "Record J shown and clicked; K not shown. Enjoyment of J and dislike of K remain unsupported. An optional question such as Did this suggestion suit what you wanted, and why or why not? seeks a reason without presuming satisfaction. No answer remains missing feedback."
+    },
+    {
+      "id": "W4",
+      "title": "Transfer the process to activities",
+      "prompt": "A fictional learner needs an indoor activity lasting at most 20 minutes. Preferences score 2 for drawing and 1 for solo. Candidates: A drawing, solo, outdoor, 10 minutes; B drawing, group, indoor, 20 minutes; C music, solo, indoor, 15 minutes; D drawing, group, indoor, 18 minutes. Filter, score and return all highest scorers. Only B is then shown and selected; C and D are not shown. State what the feedback establishes and what remains unknown.",
+      "lines": 8,
+      "answer": "A excluded because outdoor. B eligible scores 2; C eligible scores 1; D eligible scores 2. Return B and D. Exactly 20 minutes passes at most 20. The log establishes B shown and selected, not enjoyment. Preferences about unshown C and D are unknown; selecting B does not prove rejection of D or validate the choice to hide it."
+    },
+    {
+      "id": "W5",
+      "title": "Handle an empty eligible set",
+      "prompt": "Return to BookRec1. J and K become unavailable, L remains Spanish, and M\u2019s availability becomes unknown. A designer proposes recommending M anyway because it matches both preferences. Apply the requirements and propose an honest response.",
+      "lines": 6,
+      "answer": "J and K are excluded as unavailable, L for language. M is pending availability verification and cannot yet count as eligible. Report no verified eligible option, identify the missing availability fact, and request confirmation or let the reader revise requirements explicitly."
+    }
+  ],
+  "teacher": {
+    "background": "This is an explicit paper recommender, not a claim that all recommenders use the same algorithm. Separate eligibility, scoring, exposure and feedback meaning. The feedback-loop concept is supported by the primary research Degenerate Feedback Loops in Recommender Systems, https://arxiv.org/abs/1902.10730. All task records are fictional.",
+    "materials": [
+      "Book records J through M and requirement and preference cards",
+      "A feedback log with item, exposure, event and optional stated reason",
+      "Activity records A through D for the independent task"
+    ],
+    "sessions": [
+      [
+        "Session 1 start 0 to 7 minutes",
+        "Retrieve why a similarity score cannot override a requirement."
+      ],
+      [
+        "7 to 20 minutes",
+        "Trace BookRec1 eligibility and scoring. Ask why L and M never enter the eligible ranking."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2. Compare a faithful explanation with a claim of guaranteed enjoyment."
+      ],
+      [
+        "33 to 45 minutes",
+        "Read the feedback table and complete W3. Preserve what was observed without guessing motives."
+      ],
+      [
+        "Session 2 start 0 to 8 minutes",
+        "Retrieve the difference between an unseen item and a rejected item."
+      ],
+      [
+        "8 to 23 minutes",
+        "Complete the guided feedback record and trace the space-only display loop. Discuss an optional, neutral feedback question."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently. Require the tie, the 20-minute boundary and limits on the selection log."
+      ],
+      [
+        "38 to 45 minutes",
+        "Discuss W5 and the exit. Test no eligible option and unknown availability without relaxing requirements silently."
+      ]
+    ],
+    "guidedAnswer": "J: shown and clicked; enjoyment not established. K: never shown; dislike not established. Ask an optional neutral question about suitability and reason, or offer eligible alternatives and record exposure and response. Exit: only showing prior clicked items restricts opportunities for other feedback; include eligible alternatives and preserve which options were actually shown.",
+    "misconceptions": [
+      [
+        "A high score can cancel a failed requirement",
+        "Filter on requirements before ranking preferences."
+      ],
+      [
+        "A click proves enjoyment",
+        "It is an interaction; motive and satisfaction need further evidence."
+      ],
+      [
+        "No clicks means dislike even without exposure",
+        "An unseen option has not received a meaningful opportunity for a response."
+      ],
+      [
+        "No eligible result means the system must choose anyway",
+        "Return no verified eligible option and explain exclusions or missing facts."
+      ]
+    ],
+    "assessment": "W4 requires excluding A, scores B 2 C 1 D 2, both B and D returned, and no inferred enjoyment or rejection from unshown items. After support change the time limit to at most 18: B becomes excluded, D wins with 2 over C\u2019s 1. Keep feedback limits unchanged.",
+    "support": "Use separate trays for excluded, pending and eligible items. Score only the eligible tray. Extension: change the display order while keeping scores fixed and explain why different clicks would not automatically show changed preferences.",
+    "next": "Week 21 investigates data quality and how to repair a record with evidence while preserving its history."
+  }
+}

@@ -1,0 +1,274 @@
+{
+  "level": "ai-1",
+  "week": 23,
+  "title": "Fractions and performance comparisons",
+  "minutes": 90,
+  "goals": [
+    "Compute a correct-out-of-assessed fraction and explain its denominator",
+    "Compare systems on shared cases while checking performance within conditions",
+    "Combine counts correctly and keep missing outcomes separate from assessed errors"
+  ],
+  "prerequisite": {
+    "prompt": "Eight cases were selected, but one has no assessed outcome. How many have assessed outcomes, and what must a performance report say about the remaining case?",
+    "answer": "Seven are assessed. Report the one unassessed case separately and explain why its outcome is unavailable; do not silently count it as correct or incorrect."
+  },
+  "vocabulary": [
+    [
+      "Numerator",
+      "The count above the fraction line; here, assessed correct cases"
+    ],
+    [
+      "Denominator",
+      "The count below the fraction line; here, all assessed cases"
+    ],
+    [
+      "Equivalent fractions",
+      "Different written fractions that represent the same proportion"
+    ],
+    [
+      "Accuracy",
+      "The fraction of assessed classification cases labelled correctly under a stated rule"
+    ],
+    [
+      "Aggregate",
+      "A result formed by combining the counts of several groups"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Name what goes above and below the fraction line",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For this week, accuracy means the number of correctly labelled cases divided by the number of assessed cases. Every assessed case has a system label and a checked reference label, so its result can be judged correct or incorrect. State the system version, cases and scoring rule with the fraction. Cases without an assessable outcome are reported separately."
+        },
+        {
+          "type": "paragraph",
+          "text": "Two fixed shape-recognition versions, A and B, label the same 12 previously unseen picture cards. Eight cards are bright and four are dim; each has a checked circle or square reference label. Both versions return labels for all 12. A is correct on 8 bright and 1 dim card. B is correct on 6 bright and 2 dim cards."
+        },
+        {
+          "type": "paragraph",
+          "text": "A therefore has 9 correct out of 12 assessed, written 9/12. Dividing numerator and denominator by 3 gives 3/4. Three quarters equals 75 out of 100, or 75%. B has 8/12, equal to 2/3. For this comparison keep B as an exact fraction; a rounded percentage is unnecessary."
+        }
+      ]
+    },
+    {
+      "title": "Use the same denominator for a direct comparison",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Combine correct and assessed counts",
+          "columns": [
+            "Condition",
+            "Version A",
+            "Version B"
+          ],
+          "rows": [
+            [
+              "Bright: 8 cards",
+              "8 correct of 8",
+              "6 correct of 8"
+            ],
+            [
+              "Dim: 4 cards",
+              "1 correct of 4",
+              "2 correct of 4"
+            ],
+            [
+              "All: 12 cards",
+              "9 of 12 = 3 of 4",
+              "8 of 12 = 2 of 3"
+            ]
+          ],
+          "caption": "A has the higher overall accuracy on these same 12 cards, while B has the higher accuracy on the 4 dim cards. The overall fraction does not describe every condition equally."
+        },
+        {
+          "type": "paragraph",
+          "text": "With the same denominator 12, compare the numerators: 9 is greater than 8. A is correct on one more of these cards. This establishes the ordering on this test under this scoring rule; it does not prove that A will always outperform B on future cards."
+        },
+        {
+          "type": "paragraph",
+          "text": "To compare fractions with different denominators, rewrite them as equivalent fractions with a common denominator. For example, 3/4 equals 9/12 and 2/3 equals 8/12. Changing the written denominator does not create new test cases: it only helps compare the proportions."
+        }
+      ]
+    },
+    {
+      "title": "Look inside a total before choosing a system",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Question",
+            "Version A",
+            "Version B"
+          ],
+          "rows": [
+            [
+              "Bright-card accuracy",
+              "8/8 = 1",
+              "6/8 = 3/4"
+            ],
+            [
+              "Dim-card accuracy",
+              "1/4",
+              "2/4 = 1/2"
+            ],
+            [
+              "Combined accuracy",
+              "(8 + 1)/(8 + 4) = 9/12",
+              "(6 + 2)/(8 + 4) = 8/12"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The bright group has twice as many assessed cards as the dim group. Each individual card counts once in the combined result, so add correct counts and assessed counts. Do not simply average the two group percentages and call it the all-card accuracy: that would give each group equal weight despite their different sizes."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the intended task especially needs dim-card performance, inspect that result and gather suitable additional evidence before choosing. An overall leader can still be weaker in a relevant condition. This table alone also does not tell us whether particular mistakes have different consequences. The scoring rule must match the purpose."
+        }
+      ]
+    },
+    {
+      "title": "Keep comparison conditions and missing outcomes visible",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A third version C is run on the same 12 cards, but two results are lost before they can be judged. Among its 10 assessed outcomes, 9 are correct and 1 is wrong: 9/10 = 90% assessed accuracy, with 2 outcomes unassessed. Do not call this 90% on all 12. Its assessed subset differs from A and B, so the headline fractions do not give the same complete-case comparison."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "A report declares C best because 90% exceeds A\u2019s 75%. Write the fraction and missing count for C, explain the comparison problem, and propose an evaluation step that would make the evidence easier to compare",
+          "lines": 7
+        },
+        {
+          "type": "paragraph",
+          "text": "Recover and assess the two lost results if possible, without changing the versions. Another clearly labelled comparison can use the exact same cases with known outcomes for every version; disclose which cases it excludes and why. The current totals do not tell us how A performed on C\u2019s ten assessed cases. Never invent that subset score."
+        }
+      ]
+    },
+    {
+      "title": "Write a claim that preserves the counts",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A useful performance statement gives the correct count, assessed count, missing count and evaluation conditions. For A: 9/12 correct, no missing outcomes, on the shared test of 8 bright and 4 dim cards. Follow it with the important contrast: 8/8 bright and 1/4 dim. Percentages are optional shorthand, not replacements for these counts."
+        },
+        {
+          "type": "paragraph",
+          "text": "A score of 3/4 and a score of 75/100 are equal proportions, but they describe different quantities of evidence if they come from different tests. The collection method and case coverage still matter. Neither fraction is an individual prediction confidence or a guarantee about the next case."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A system has 2 correct of 2 in one group and 4 correct of 8 in another. Write the combined correct and assessed counts. Explain why averaging 100% and 50% would answer a different question",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Explain both parts of a performance fraction",
+      "prompt": "For version A in the lesson, write correct and assessed counts, simplify the accuracy fraction and express it as a percentage. Explain what its denominator includes and why 9/9 would be misleading.",
+      "lines": 6,
+      "answer": "A has 9 correct out of 12 assessed: 9/12 = 3/4 = 75%. The denominator includes all 12 judged outcomes, including 3 incorrect ones. Using 9/9 would exclude the errors and falsely report perfect assessed accuracy."
+    },
+    {
+      "id": "W2",
+      "title": "Compare totals and conditions",
+      "prompt": "Compare A and B on the shared 12-card test and on its bright and dim groups. State the leader in each and explain why the overall result does not imply that one version wins in every condition.",
+      "lines": 6,
+      "answer": "Overall A leads 9/12 to B\u2019s 8/12. On bright cards A leads 8/8 to 6/8. On dim cards B leads 2/4 to A\u2019s 1/4. The overall count combines unequal groups; A\u2019s overall lead does not mean a lead in the dim group or a guarantee for future cards."
+    },
+    {
+      "id": "W3",
+      "title": "Do not hide unassessed outcomes",
+      "prompt": "C has 9 correct and 1 incorrect assessed outcome, with 2 other selected cases unassessed. Write its assessed accuracy and missing count. A reviewer reports 9/12 as assessed accuracy; another reports 90% on all 12. Explain the problem with each label.",
+      "lines": 6,
+      "answer": "C has 9/10 = 90% assessed accuracy and 2 unassessed outcomes. The denominator 12 includes cases not assessed, so 9/12 is the fraction of selected cases with verified correct outcomes, not assessed accuracy. Reporting 90% on all 12 incorrectly extends the assessed-subset fraction to missing outcomes."
+    },
+    {
+      "id": "W4",
+      "title": "Compare a new shared sound test",
+      "prompt": "Versions X and Y label the same 20 previously unseen clips: 12 quiet and 8 noisy, with no missing outcomes. X is correct on 10 quiet and 2 noisy clips; Y on 9 quiet and 5 noisy clips. Calculate each combined fraction and percentage, identify the overall leader and compare the leaders within each group. Explain why an overall result cannot guarantee the next clip\u2019s outcome.",
+      "lines": 8,
+      "answer": "X has (10 + 2)/(12 + 8) = 12/20 = 3/5 = 60%. Y has (9 + 5)/20 = 14/20 = 7/10 = 70%, so Y leads overall. X leads quiet clips 10/12 to 9/12, while Y leads noisy clips 5/8 to 2/8. These are observed results on this shared test; they do not determine the outcome of the next clip or show that Y is better in every condition."
+    },
+    {
+      "id": "W5",
+      "title": "Combine counts rather than group percentages",
+      "prompt": "A separate test has 2 correct out of 2 assessed in group P and 4 correct out of 8 assessed in group Q. Calculate combined accuracy as a fraction and percentage. A chart reports 75% by averaging the group percentages. Explain why that is not the accuracy over all assessed cases.",
+      "lines": 6,
+      "answer": "There are 6 correct out of 10 assessed: 6/10 = 3/5 = 60%. The unweighted mean of 100% and 50% is 75%, but it treats the two differently sized groups equally. All-case accuracy counts each case once, so the larger group contributes 8 of the 10 cases."
+    }
+  ],
+  "teacher": {
+    "background": "Keep the metric definition visible: this lesson measures accuracy among assessed classification outcomes and separately reports unassessed selected cases. It does not teach that missing system outputs should always be removed from every real evaluation; an end-to-end task may define output failure as a failure. Here, the scoring scope and unavailable records are explicit. Fractions compare observed proportions, not certainty or individual confidence.",
+    "materials": [
+      "The shared A/B card counts from the lesson and two colours of counters for correct and incorrect outcomes",
+      "Paper fraction strips partitioned into 4 and 12 equal parts",
+      "The independent X/Y sound counts in W4 and a place to record missing outcomes separately"
+    ],
+    "sessions": [
+      [
+        "Session 1 start 0 to 7 minutes",
+        "Retrieve selected versus assessed counts from Week 22."
+      ],
+      [
+        "7 to 20 minutes",
+        "Model 9 correct and 3 incorrect counters. Explain denominator 12 and complete W1."
+      ],
+      [
+        "20 to 33 minutes",
+        "Use fraction strips to compare 3/4 and 2/3 in twelfths. Trace the diagram."
+      ],
+      [
+        "33 to 45 minutes",
+        "Complete W2 and discuss the overall and dim-condition leaders."
+      ],
+      [
+        "Session 2 start 0 to 8 minutes",
+        "Retrieve why the incorrect cases stay in the assessed denominator."
+      ],
+      [
+        "8 to 23 minutes",
+        "Complete the guided C comparison and W3. Keep unknown cases separate and avoid inventing A\u2019s subset score."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently. Require totals, percentages, condition comparisons and a bounded claim."
+      ],
+      [
+        "38 to 45 minutes",
+        "Complete W5 and the exit. Use counters to show why combined case counts differ from an equal-group average."
+      ]
+    ],
+    "guidedAnswer": "C has 9/10 correct among assessed outcomes, with 2 unassessed out of 12 selected. A has 9/12 across all 12. The assessed sets differ, so recover C\u2019s lost results or compare all versions on an explicitly documented common assessed subset using case-level records. A\u2019s score on that subset cannot be inferred from the totals. Exit: 6/10 = 60% across cases; averaging 100% and 50% gives 75% with equal weight to the two groups, a different summary.",
+    "misconceptions": [
+      [
+        "Only correct cases belong in the denominator",
+        "All assessed cases, including errors, belong in the assessed-accuracy denominator."
+      ],
+      [
+        "Equivalent fractions mean equal test sizes",
+        "The proportions match, but 4 assessed cases are not 100 assessed cases; preserve actual counts."
+      ],
+      [
+        "The overall leader wins in every condition",
+        "The lesson\u2019s dim group and W4\u2019s quiet group provide counterexamples."
+      ],
+      [
+        "Average group percentages to get all-case accuracy",
+        "Add correct counts and assessed counts when each individual case is weighted equally."
+      ]
+    ],
+    "assessment": "W4 requires X 12/20 = 60%, Y 14/20 = 70%, Y overall, X quiet, Y noisy and no next-case guarantee. After support change Y\u2019s noisy correct count to 3: Y becomes 12/20 = 60%, tying X overall while X still leads quiet and Y still leads noisy. Require the changed conclusion with unchanged denominators.",
+    "support": "Use counters and equal-sized fraction strips before percentage notation. Accept exact fractions for group comparisons; rounding is not required. Extension: describe what per-case records are needed to compare A fairly on C\u2019s ten assessed cases, and why the group totals cannot recover them.",
+    "next": "Week 24 asks which information a task actually needs and how to reduce unnecessary collection and exposure of personal data."
+  }
+}

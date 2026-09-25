@@ -1,0 +1,274 @@
+{
+  "level": "ai-1",
+  "week": 18,
+  "title": "Confidence and correctness",
+  "minutes": 90,
+  "goals": [
+    "Distinguish a confidence claim from evidence that a prediction was correct",
+    "Compare recorded confidence claims with observed outcomes for a group",
+    "Explain why a score, a confident sentence and repeated agreement need different checks"
+  ],
+  "prerequisite": {
+    "prompt": "A prediction says far and sounds very certain. No travel distance has been recorded. Can you mark it correct? Explain what is missing.",
+    "answer": "No. The case is unassessed until adequate outcome evidence is available. The strength of the wording supplies no observed distance."
+  },
+  "vocabulary": [
+    [
+      "Confidence claim",
+      "A statement or number expressing how strongly a prediction is supported according to a stated method"
+    ],
+    [
+      "Correctness",
+      "Whether a prediction agrees with an adequately established outcome for the task"
+    ],
+    [
+      "Probability estimate",
+      "A numerical estimate of how likely a specified event is"
+    ],
+    [
+      "Calibration",
+      "Agreement between probability estimates and observed frequencies across relevant groups of cases"
+    ],
+    [
+      "Score meaning",
+      "The definition explaining what a reported number measures"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Ask what a confidence claim means",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A prediction can be expressed strongly and still be wrong. Confidence describes a claim about support or likelihood; correctness is checked against evidence. Keep the prediction, the confidence claim and the observed outcome in separate columns. None can replace the others."
+        },
+        {
+          "type": "paragraph",
+          "text": "A display reading 80 might mean 80 out of 100 points for matching features, an estimated 80 percent chance of a specified event, or something else. Read its definition before interpreting it. The number alone does not tell you which meaning applies. A sentence such as definitely far is not a measured probability."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ramp1 from Week 17 produced categories using a threshold. It supplied no probability estimates. We must not attach a probability merely because the height is far from that threshold. This week uses fictional forecast records with an explicitly stated probability claim; we are checking those claims, not inventing them for Ramp1."
+        }
+      ]
+    },
+    {
+      "title": "Compare a claim with a group of outcomes",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Claims and results are separate records",
+          "columns": [
+            "Before outcomes",
+            "After outcomes",
+            "What the group shows"
+          ],
+          "rows": [
+            [
+              "Ten claims of 80 percent",
+              "Eight predictions correct",
+              "8 out of 10 matched"
+            ],
+            [
+              "Ten claims of 80 percent",
+              "Five predictions correct",
+              "5 out of 10 matched"
+            ],
+            [
+              "One claim of 80 percent",
+              "Outcome not available",
+              "Correctness unknown"
+            ]
+          ],
+          "caption": "Here each percentage claims the probability that its chosen category will be correct. The two ten-case groups are fictional examples. A group comparison cannot identify an unknown individual outcome."
+        },
+        {
+          "type": "paragraph",
+          "text": "An 80 percent claim means an estimated chance of 80 out of 100, for the event that was named. Across many relevant cases carrying that claim, a well-calibrated method should be correct about that often. It does not promise exactly eight successes in every ten cases or tell us which cases will fail."
+        },
+        {
+          "type": "paragraph",
+          "text": "Eight correct out of ten agrees numerically with 80 percent in this small group. Five out of ten is lower. Both are observations worth reporting; neither small group alone establishes how dependable the method will be. Larger relevant checks, independent of model fitting and score adjustment, give a stronger basis for judging the claim."
+        }
+      ]
+    },
+    {
+      "title": "Check individual cases without changing their scores",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Case and recorded claim",
+            "Observed outcome",
+            "Judgment"
+          ],
+          "rows": [
+            [
+              "A predicts far at 90 percent",
+              "Verified near",
+              "Incorrect despite high confidence"
+            ],
+            [
+              "B predicts near at 60 percent",
+              "Verified near",
+              "Correct despite lower confidence"
+            ],
+            [
+              "C predicts far at 90 percent",
+              "Outcome missing",
+              "Unassessed"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A high-confidence error and a lower-confidence success can occur even when a probability method is useful. One error does not prove that all confidence estimates are worthless, and one success does not validate a method. Keep the original scores and investigate patterns across relevant cases."
+        },
+        {
+          "type": "paragraph",
+          "text": "Record the task, model version, event being assigned a probability, score definition and evidence used for checking. If outcomes are missing, report that count. Do not quietly remove difficult cases or change the confidence values after reading the answers. Adjustments belong to a new recorded method and need a fresh evaluation."
+        }
+      ]
+    },
+    {
+      "title": "Make a limited report from complete records",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A fictional classifier records an 80 percent probability that each selected category will be correct on ten reserved cases. All ten outcomes are later established: eight correct and two incorrect. The report should preserve both the claim and the observed counts. The group supports a comparison, not a guarantee about the next case."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Write a short report for this ten-case group. State the event claimed, the recorded probability, both outcome counts and one limitation. Explain why the next prediction at 80 percent cannot be marked correct before its outcome is checked",
+          "lines": 7
+        },
+        {
+          "type": "paragraph",
+          "text": "Now suppose two of the ten outcomes were missing. You would need to report which cases were assessed and how many remained unknown, as in Week 17. A confident-looking percentage does not repair missing observations or make an incomplete sample representative."
+        }
+      ]
+    },
+    {
+      "title": "Choose evidence instead of confident wording",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Before relying on a confidence display, ask what its number means, how it was checked on relevant cases and what happens when it is wrong. A feature-match score may help rank options without being a probability. A generated sentence may sound certain without supplying either a defined score or supporting evidence."
+        },
+        {
+          "type": "paragraph",
+          "text": "Repeating a claim does not establish its truth. Several tools can share information and mistakes. Useful checks seek relevant independent evidence and preserve unresolved outcomes. Review decisions also depend on the consequences of an error; a probability alone does not grant permission to act."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A tool says definitely correct and repeats the same answer five times. A learner writes 100 percent confidence and skips the outcome check. Explain two unsupported steps and name evidence that would be more useful",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Read the score definition",
+      "prompt": "A card sorter gives a match score of 80 out of 100 points. Its documentation says the score counts weighted feature matches and is not a probability. A learner calls this an 80 percent chance of correctness. Explain the error and write an accurate description.",
+      "lines": 6,
+      "answer": "The learner replaced the documented score meaning with a probability interpretation. Report 80 of 100 feature-match points. To claim a chance of correctness, a defined probability method and relevant outcome evaluation would be needed."
+    },
+    {
+      "id": "W2",
+      "title": "Judge cases using outcomes",
+      "prompt": "Use cases A, B and C from the lesson table. State which is correct, incorrect and unassessed. Explain why ordering them by confidence cannot replace checking their outcomes.",
+      "lines": 6,
+      "answer": "A is incorrect, B correct and C unassessed. The score is a prior claim; the observed category determines agreement for an assessable case. A larger claim does not supply a missing outcome or override a conflicting one."
+    },
+    {
+      "id": "W3",
+      "title": "Interpret a small group carefully",
+      "prompt": "Ten predictions each claim an 80 percent probability that their chosen category is correct. Five later prove correct and five incorrect. State the claimed probability and observed fraction separately. Does this prove every future prediction will be wrong, or that each next prediction has exactly a 50 percent chance? Explain.",
+      "lines": 6,
+      "answer": "Claim 80 percent; observed five correct out of ten, or 50 percent in this group. This group falls below the claim but is small. It proves neither all future failures nor a precisely known 50 percent chance for each next case. More relevant independent evidence is needed."
+    },
+    {
+      "id": "W4",
+      "title": "Audit a different probability claim",
+      "prompt": "A fictional leaf sorter claims a 75 percent probability of correctness for each of eight chosen labels. Later evidence establishes six correct labels, one incorrect label and one missing outcome. A report says six out of eight proves perfect calibration and guarantees the next label. Repair the report, state the assessed and unassessed counts, and describe a better follow-up check.",
+      "lines": 8,
+      "answer": "Seven cases are assessed: six correct and one incorrect; one is unassessed. Report six out of seven assessed alongside the missing count, and preserve the original 75 percent claims. Six out of eight treats the missing outcome as known. The small incomplete group proves neither calibration nor the next label. Seek the missing outcome and evaluate the unchanged method on more relevant reserved cases."
+    },
+    {
+      "id": "W5",
+      "title": "Keep repetition separate from evidence",
+      "prompt": "A learner copies the same 90 percent prediction into ten rows and calls this ten independent tests. No new outcomes were obtained. Explain why the evidence has not grown and propose a useful check.",
+      "lines": 6,
+      "answer": "The rows duplicate one prediction, not ten independently assessed cases. No new outcome evidence was obtained. Preserve the original record, establish its outcome where possible, and gather distinct relevant reserved cases with their own predictions and verified outcomes."
+    }
+  ],
+  "teacher": {
+    "background": "Keep confidence, numerical scores and correctness separate. Calibration is introduced as a group comparison, without formal estimation. Small exact matches do not prove calibration. Concept reference: scikit-learn probability calibration documentation at https://scikit-learn.org/1.8/modules/calibration.html. All classroom examples here are fictional.",
+    "materials": [
+      "Separate cards for probability claims and later outcomes",
+      "Ten counters to show observed correct and incorrect cases",
+      "W4 leaf-sorter records, with one outcome deliberately missing"
+    ],
+    "sessions": [
+      [
+        "Session 1 start 0 to 7 minutes",
+        "Retrieve the need for an observed outcome before judging correctness."
+      ],
+      [
+        "7 to 20 minutes",
+        "Contrast a feature-match score, a defined probability estimate and confident wording. Explain each diagram row."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2. Require score meanings and outcome evidence in separate statements."
+      ],
+      [
+        "33 to 45 minutes",
+        "Use ten counters for W3. Compare the recorded claim with the observed fraction without turning the fraction into a guarantee."
+      ],
+      [
+        "Session 2 start 0 to 8 minutes",
+        "Retrieve why a high-confidence prediction can be wrong."
+      ],
+      [
+        "8 to 23 minutes",
+        "Complete the guided group report. Discuss the difference between numerical agreement in a small group and evidence about a wider method."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently. Check that the missing outcome stays visible and the denominator is seven assessed cases."
+      ],
+      [
+        "38 to 45 minutes",
+        "Discuss W5 and the exit. End with the evidence needed for a meaningful confidence claim."
+      ]
+    ],
+    "guidedAnswer": "Each score claims an 80 percent chance that the chosen category is correct. Observed results are eight correct and two incorrect out of ten assessed. This small group matches the claim numerically but cannot guarantee future performance or identify the next result. Exit: confident language is not a defined probability, and repeated wording does not establish correctness; seek relevant outcome evidence and documented score evaluation.",
+    "misconceptions": [
+      [
+        "An 80 point score always means an 80 percent probability",
+        "Read the documented quantity before interpreting it."
+      ],
+      [
+        "An 80 percent method must succeed exactly eight times in every ten",
+        "A probability describes likelihood; small groups can vary."
+      ],
+      [
+        "A high-confidence error disproves all probabilities",
+        "Investigate many relevant cases while preserving individual errors."
+      ],
+      [
+        "A missing outcome can be counted as a failure to finish the fraction",
+        "Report assessed results and missing counts separately."
+      ]
+    ],
+    "assessment": "W4 requires six of seven assessed, one unassessed, the original 75 percent claim, no calibration guarantee and a relevant follow-up. After support retry ten 80 percent claims with seven correct, two incorrect and one missing: seven of nine assessed and one unassessed, with the same limits.",
+    "support": "Use counters and separate headings for claim and outcome. Read 80 percent as 80 out of 100 before comparing fractions. Extension: explain why checking only easy cases might make the confidence method appear more dependable than it is.",
+    "next": "Week 19 investigates how selected features change similarity and the examples a system considers close."
+  }
+}

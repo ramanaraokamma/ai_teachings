@@ -1,0 +1,279 @@
+{
+  "level": "ai-1",
+  "week": 24,
+  "title": "Privacy and data minimisation",
+  "minutes": 90,
+  "goals": [
+    "Justify which information a stated task needs and remove unnecessary fields",
+    "Distinguish reducing personal data from hiding a name",
+    "Design a simple access, retention and deletion plan for a classroom activity"
+  ],
+  "prerequisite": {
+    "prompt": "A report needs the number of correct answers out of 20 fictional test cards. Does that calculation require a student\u2019s name or home address? Explain.",
+    "answer": "No. It needs the assessed outcomes and counts, not a student\u2019s identity or home address. The required information depends on the purpose."
+  },
+  "vocabulary": [
+    [
+      "Personal data",
+      "Information about an identifiable person, including combinations that can identify someone"
+    ],
+    [
+      "Purpose",
+      "The specific job information is collected or used to do"
+    ],
+    [
+      "Data minimisation",
+      "Using only the information needed for a stated purpose"
+    ],
+    [
+      "Access control",
+      "A rule and mechanism deciding who can see or use information"
+    ],
+    [
+      "Retention",
+      "How long information is kept before an agreed deletion or other approved action"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Begin with the job, not the collection form",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Privacy includes having appropriate boundaries around information about people. A useful first question is: what exact job are we trying to do? A second is: what is the least information that can do that job? Collecting extra details just because a form has room for them creates more information to protect."
+        },
+        {
+          "type": "paragraph",
+          "text": "Our fictional class wants to choose one of three workshop topics for Friday: drawing, music or coding. It needs a total for each topic, not a list of who chose what. Each fictional pupil gets one paper slip and marks one topic. No real class survey is needed for this lesson. The teacher counts the choices and uses the largest total; a tie goes to a class discussion."
+        },
+        {
+          "type": "paragraph",
+          "text": "A proposed form asks for name, full date of birth, home address, photograph and topic choice. For the stated counting task only the topic choice is needed. Remove the other fields before collection. Do not fill them in and promise to ignore them later. If the purpose changes to individual attendance, design and justify that separate task with the teacher rather than silently reusing the survey."
+        }
+      ]
+    },
+    {
+      "title": "Follow the information from collection to deletion",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "A small information plan for a fictional vote",
+          "columns": [
+            "Stage",
+            "Needed action",
+            "Privacy check"
+          ],
+          "rows": [
+            [
+              "Collect",
+              "One topic per slip",
+              "No name or address"
+            ],
+            [
+              "Count",
+              "Teacher totals choices",
+              "Keep slips restricted"
+            ],
+            [
+              "Share",
+              "Three topic totals",
+              "No individual choices"
+            ],
+            [
+              "Delete",
+              "After totals checked",
+              "Follow agreed plan"
+            ]
+          ],
+          "caption": "Purpose: choose a workshop topic. Collect the minimum, limit access, share the required result and agree how long the source slips are kept."
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose the fictional counts are drawing 8, music 7 and coding 5. These totals support the choice of drawing. There is no need to publish each slip or a photograph of a child holding it. The teacher checks the total of 20 against the number of slips and then follows the agreed school process for disposing of the slips after verification."
+        },
+        {
+          "type": "paragraph",
+          "text": "A retention plan needs a clear trigger and a responsible person: for example, the teacher disposes of the fictional vote slips after the totals are checked and the activity closes. Real classroom records must follow the school\u2019s approved process. Deleting one visible copy does not prove that every backup, screenshot or previously shared copy is gone."
+        }
+      ]
+    },
+    {
+      "title": "Removing a name is only one change",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Proposed change",
+            "What it changes",
+            "What still needs thought"
+          ],
+          "rows": [
+            [
+              "Replace a name with P07",
+              "Hides the name on this sheet",
+              "A separate key can reconnect the code"
+            ],
+            [
+              "Remove names but keep photos",
+              "Removes one identifying field",
+              "Faces may still identify people"
+            ],
+            [
+              "Share topic totals only",
+              "Removes individual rows",
+              "Small or unusual groups may still reveal a choice"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A code is not a promise of anonymity. If a teacher keeps a key connecting P07 to a pupil, the coded record can still be linked to that pupil. Even without a key, a combination such as an exact birthday, a team and a photograph may identify someone. Ask whether a reader could connect the information to a person, not just whether the name column is blank."
+        },
+        {
+          "type": "paragraph",
+          "text": "Totals also need context. A report saying that the only member of a tiny club chose music reveals that member\u2019s choice. Our whole-class topic totals reveal less detail than individual rows, but we should not describe every possible total as automatically anonymous. Share only what the audience needs for the purpose."
+        }
+      ]
+    },
+    {
+      "title": "Check access before sending information to a tool",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "An AI tool is another place where information may be sent. Before using it for schoolwork, follow the teacher\u2019s approved tool and data rules. Do not paste real names, contact details, photos, passwords or private messages into an unapproved service. For this lesson, use the provided fictional counts or work entirely on paper. An AI tool is not needed to add 8 + 7 + 5."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "A classmate proposes uploading the named vote spreadsheet to an AI tool to make a chart. The required chart shows only three topic totals. Propose a smaller input, explain what must be checked before tool use, and name a way to complete the task without uploading data",
+          "lines": 7
+        },
+        {
+          "type": "paragraph",
+          "text": "A student may need the lesson and their own work; a teacher may need restricted teaching records. Access should match these jobs. A hidden link or a hard-to-guess filename is not a substitute for an access check. When information is shared more widely, it may be copied beyond the original audience. Decide the audience before sharing."
+        }
+      ]
+    },
+    {
+      "title": "Write a plan someone can actually follow",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A useful data plan answers five questions: what is the purpose; which fields are necessary; who needs access; what result will be shared; and when will the source information be disposed of under the agreed process? It also names who is responsible. \u201cKeep everything safe forever\u201d answers neither the collection question nor the retention question."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you accidentally share personal information, stop sharing it and tell the teacher or another trusted adult promptly. Do not repost it to ask classmates for help. An adult can follow the school\u2019s process and decide what action is appropriate. Avoid promising that deleting a message has removed every copy."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "For the fictional workshop vote, name one field to collect and two to remove. State the audience for the totals and a clear trigger for the teacher to dispose of the slips under the agreed process",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Trim a form to its purpose",
+      "prompt": "The fictional workshop vote asks for name, full date of birth, address, photograph and topic choice. Its only purpose is to count votes for drawing, music and coding. State which field to keep, which to remove and why. Explain why collecting the extra fields first is different from never collecting them.",
+      "lines": 6,
+      "answer": "Keep topic choice; remove name, full date of birth, address and photograph. The totals do not require identity or contact details. Collecting extra fields creates copies and exposure to manage even if those fields are later ignored or deleted."
+    },
+    {
+      "id": "W2",
+      "title": "Challenge a claim of anonymity",
+      "prompt": "A teacher replaces names with codes and keeps a separate code-to-name key. A pupil calls the records anonymous. Explain the problem. Then explain why removing names while leaving photographs would not settle the question either.",
+      "lines": 6,
+      "answer": "The key can reconnect each code to a person, so the coded records are not anonymous just because names are absent. Restricting the key helps limit access but does not erase the link. Photographs can identify people even if the name field is removed."
+    },
+    {
+      "id": "W3",
+      "title": "Share the result the audience needs",
+      "prompt": "The fictional class has drawing 8, music 7 and coding 5. Write the result needed to choose a workshop. A pupil suggests posting every vote slip online as proof. Explain a lower-exposure way to check and share the result. Why can a total about a one-person club still reveal a choice?",
+      "lines": 6,
+      "answer": "Drawing leads with 8; totals are 8, 7 and 5, adding to 20. The teacher checks the slips and totals, then shares the three totals with the class rather than public individual slips. A one-person club total can be linked to its only member, revealing that person\u2019s choice."
+    },
+    {
+      "id": "W4",
+      "title": "Design a different minimal-data task",
+      "prompt": "A fictional library wants only the total number of books needing repair in each category: cover, page or binding. It does not need to contact borrowers. A draft repair sheet asks for borrower name, home address, book repair category and borrower photograph. Design a plan: state the purpose, required and removed fields, who handles source sheets, what totals are shared with the librarian, and who disposes of sheets at what agreed point. Use no real borrower details.",
+      "lines": 8,
+      "answer": "Purpose: count repair needs by category. Keep repair category; remove borrower name, address and photograph because no borrower contact is required. An assigned teacher or librarian handles the source sheets, checks counts and shares category totals with the librarian. Name that adult as responsible for disposal after totals are verified and the counting task closes, following the agreed school process. Other justified restricted roles and clear disposal triggers are acceptable."
+    },
+    {
+      "id": "W5",
+      "title": "Respond to an unnecessary upload",
+      "prompt": "Someone plans to upload the library repair sheet with borrower details to an unapproved AI tool to add three totals. Explain a smaller-input alternative and a no-upload method. If the sheet was already shared, state a suitable first response and one claim you must not make about deleting it.",
+      "lines": 6,
+      "answer": "Use only fictional category counts in this lesson; for real work check teacher-approved tools and data rules before any upload. Add totals on paper or with an approved local calculator. If shared, stop further sharing and tell the teacher or trusted adult promptly so the school process can be followed. Do not claim that deleting the visible message removes all copies or backups."
+    }
+  ],
+  "teacher": {
+    "background": "Teach privacy as purposeful information design, not a demand that pupils disclose private experiences. Use fictional paper examples throughout; no account creation, real survey or upload is necessary. These examples are classroom design exercises, not legal advice or a substitute for school policy. Coded records with a re-identification key remain linkable. Aggregation reduces individual detail but does not guarantee anonymity in every context.",
+    "materials": [
+      "Fictional topic slips or counters marked drawing, music and coding",
+      "A sample form containing only the fictional field labels in W1",
+      "Paper for the five-question data plan; no real pupil or borrower records"
+    ],
+    "sessions": [
+      [
+        "Session 1 start 0 to 7 minutes",
+        "Retrieve which fields a performance count actually needs. Establish fictional examples only."
+      ],
+      [
+        "7 to 20 minutes",
+        "Define the vote purpose. Complete W1 and remove unnecessary fields before collection."
+      ],
+      [
+        "20 to 33 minutes",
+        "Trace collection, access, sharing and disposal on the diagram. Check the totals."
+      ],
+      [
+        "33 to 45 minutes",
+        "Complete W2. Contrast coded records with a claim of anonymity."
+      ],
+      [
+        "Session 2 start 0 to 8 minutes",
+        "Retrieve why a blank name column does not prove anonymity."
+      ],
+      [
+        "8 to 23 minutes",
+        "Complete W3 and the guided chart task. Discuss small-group inference and approved tool rules."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently. Check that purpose, fields, access, output and disposal align."
+      ],
+      [
+        "38 to 45 minutes",
+        "Complete W5 and the exit. Rehearse telling a trusted adult without repeating exposed information."
+      ]
+    ],
+    "guidedAnswer": "A chart needs the three topic totals, not the named spreadsheet. Use the fictional counts provided here. Before any real tool use, check teacher approval for both tool and data; a smaller input does not itself authorize an upload. Draw bars on paper or use an approved local chart tool. Exit: collect topic choice; remove any two identity/contact fields. Share totals with the class. The teacher disposes of slips after verification and task closure under the agreed school process.",
+    "misconceptions": [
+      [
+        "More data always improves a task",
+        "Unnecessary identity fields do not improve a category count and create more information to manage."
+      ],
+      [
+        "Codes or missing names mean anonymous",
+        "A key or other identifying fields may reconnect records to a person."
+      ],
+      [
+        "Every total is safe to publish",
+        "A small or distinctive group may allow a reader to infer a person\u2019s choice."
+      ],
+      [
+        "Deleting one copy proves all copies are gone",
+        "Other copies, screenshots or backups may remain; follow the adult-led school process."
+      ]
+    ],
+    "assessment": "W4 requires a category-count purpose, repair category only from the listed fields, removal of all three borrower fields, a restricted responsible adult, category totals for the librarian and an actionable disposal trigger under the agreed process. After support change the task to contacting borrowers about repairs. Ask the pupil to explain that the old minimal field set no longer performs the new task and that an adult must design an approved contact workflow; do not request real contact details.",
+    "support": "Offer a five-box planning frame: purpose, fields, access, shared result, disposal. Accept spoken explanations of why each field is or is not needed. Avoid asking children to describe past privacy incidents. Extension: construct a fictional small-group total that reveals one choice and suggest a less detailed output.",
+    "next": "Week 25 distinguishes generating a plausible response, retrieving an existing record and calculating a result from explicit rules."
+  }
+}

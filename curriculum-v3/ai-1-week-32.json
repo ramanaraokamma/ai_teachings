@@ -1,0 +1,274 @@
+{
+  "level": "ai-1",
+  "week": 32,
+  "title": "Building and tracing a paper prototype",
+  "minutes": 90,
+  "goals": [
+    "Build a runnable paper prototype with explicit instructions and visible state",
+    "Record what actually happens without silently repairing the instructions",
+    "Use a trace to distinguish an instruction defect from an execution mistake"
+  ],
+  "prerequisite": {
+    "prompt": "When one candidate fails, what must happen next, and when is no match justified?",
+    "answer": "Advance to the next catalogue row. No match is justified only after valid input and failure of every row. A passing row produces the first suggestion and stops the run."
+  },
+  "vocabulary": [
+    [
+      "Prototype",
+      "An early working version used to explore and test a design"
+    ],
+    [
+      "Instruction",
+      "A precise action or decision for the operator to follow"
+    ],
+    [
+      "Trace",
+      "A record of the steps and state during one run"
+    ],
+    [
+      "Expected result",
+      "The result required by the agreed specification"
+    ],
+    [
+      "Observed result",
+      "What actually happened when this version was run"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Build something a partner can run",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "This week you will turn the decision process into a paper prototype. One partner operates the instructions and another records the steps. A working prototype needs more than a polished drawing: someone else must be able to follow it without asking its author to supply missing rules. Keep the version you ran so the trace can be checked against it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Copy this catalogue in order onto four cards: B1 Bookmark drawing, 10 minutes, quiet Yes; B2 Story circle, 8 minutes, quiet No; B3 Pattern puzzle, 12 minutes, quiet Yes; B4 Tower challenge, 15 minutes, quiet No. These are fictional paper-model values with materials assumed available. Label the catalogue B version 1."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep the Week 30 contract: input is a whole number of available minutes from 0 to 30, and Quiet required Yes or No. An activity fits when its time is no more than the available minutes AND either quiet is not required or the activity is quiet. No means either kind is allowed. Suggest the first fit with a reason; otherwise report no match. Missing or invalid input needs clarification. Suggestions do not book materials or publish anything."
+        }
+      ]
+    },
+    {
+      "title": "Make the state and instructions visible",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "A paper run that can be checked",
+          "columns": [
+            "Prepare the run",
+            "Operate one step",
+            "Keep the evidence"
+          ],
+          "rows": [
+            [
+              "Request and version labels",
+              "Validate the two fields",
+              "Record pass or clarification"
+            ],
+            [
+              "Marker at current row",
+              "Check time AND quiet",
+              "Record checks and next step"
+            ],
+            [
+              "First fit or end of list",
+              "Suggest or report no match",
+              "Record output and stop"
+            ]
+          ],
+          "caption": "The request stays fixed while the marker advances. Keep the instruction version and trace together."
+        },
+        {
+          "type": "paragraph",
+          "text": "Make a request card with Available minutes and Quiet required fields, a marker for the current catalogue row, and a trace sheet. Head the sheet Run ID, prototype version, catalogue version and request. Below it use columns Step, current row, time check, quiet check and next action or output. Use not checked when validation stops the search."
+        },
+        {
+          "type": "paragraph",
+          "text": "Write instruction cards P1 version 1. Card 1: validate both fields; if invalid, name the field needing correction and stop; otherwise put the marker at B1. Card 2: check the marked row against both compatibility conditions; record both checks. If both pass, suggest that row with the reason and stop. Card 3: if either fails and another row remains, advance exactly one row and return to Card 2; if no row remains, report no match and stop. Begin each new request at Card 1 with a cleared output."
+        }
+      ]
+    },
+    {
+      "title": "Record the actual run",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Before operating P1, use the full manual checklist to write the expected result for 9 minutes, Quiet required No. Then run the cards literally. Do not replace a surprising result with the expected one. Recording disagreement gives you something to investigate; hiding it removes useful evidence."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Trace step for 9 minutes No",
+            "Checks recorded",
+            "Next action or output"
+          ],
+          "rows": [
+            [
+              "1 Validate",
+              "Whole minutes in range; No accepted",
+              "Place marker at B1"
+            ],
+            [
+              "2 Check B1",
+              "10 is greater than 9; quiet unrestricted",
+              "Move to B2"
+            ],
+            [
+              "3 Check B2",
+              "8 is no more than 9; quiet unrestricted",
+              "Suggest B2 with reason; stop"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "This trace agrees with the expected B2 result. It shows that this run followed the instructions. One matching result does not prove that every request will work or that the prototype is faster than the manual checklist. This is a system of written rules, not a model trained on examples."
+        }
+      ]
+    },
+    {
+      "title": "Investigate a disagreement fairly",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Suppose the operator starts a fresh 11-minute No request at B2 because the marker was left there. They return B2. The required first fit is B1, and Card 1 explicitly says to restart at B1. The trace therefore reveals an execution mistake. If the written instructions had omitted the reset, that would instead be an instruction defect. Inspect the saved version before deciding."
+        },
+        {
+          "type": "paragraph",
+          "text": "Preserve the first trace. For an execution mistake, rerun the same written version correctly and label the new run. For an instruction defect, save a corrected version with a new label, state what changed, and rerun. Never rewrite an old observed result to make a version appear successful."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Run P1 for 8 minutes with Quiet required Yes. Record every row, both checks and the final output. Then consider a blank Quiet required field: which card stops that run and how many candidates should be checked?",
+          "lines": 7
+        }
+      ]
+    },
+    {
+      "title": "Hand over a small reproducible prototype",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Swap roles and give your partner the request card, catalogue, instruction cards and blank trace sheet. Let them operate without extra hints from the author. Record any point where they cannot decide what to do from the written instructions. Label and save changes, then repeat the affected run. Keep development cases separate from any cases your teacher has reserved for a later evaluation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Your handover should let someone repeat a run using the same inputs and versions and check why it stopped. Keep all results, including disagreements. Next week you will organise several routine cases into a test record. A neat interface is useful, but correctness depends on validation, both conditions, the first-match rule and a clear ending."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A saved trace says \u201cP1 version 1; 11 minutes No; started at B2; suggested B2.\u201d Explain the error using the written cards. State what evidence to keep and what should happen in a new correct run.",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Assemble the runnable kit",
+      "prompt": "Create P1 version 1 using the three instruction cards in the lesson. Copy catalogue B version 1 and make a request card, current-row marker and trace sheet. List what each item records. Explain which information stays fixed during one run and what changes.",
+      "lines": 6,
+      "answer": "The kit contains labelled instructions and catalogue, request fields, a marker and a trace sheet with run and version labels. The request and catalogue stay fixed during the run; the current row and trace advance. The final output starts clear. The cards validate, check both conditions, return the first fit, advance after failure and stop with no match after exhaustion."
+    },
+    {
+      "id": "W2",
+      "title": "Run and record the first match",
+      "prompt": "Use the manual checklist to predict P1\u2019s output for 11 minutes No. Then ask a partner to operate your saved cards. Record the expected result separately from the observed steps and output, including the reason. Explain why the operator should stop without checking later rows.",
+      "lines": 6,
+      "answer": "The expected output is B1: 10 is no more than 11, quiet is unrestricted and B1 is first. A correct observed trace validates, starts at B1, passes both checks and suggests B1 with this reason. Stop because the specification selects the first fit. If a pupil observes a different run, retain and investigate that evidence rather than replacing it with this expected trace."
+    },
+    {
+      "id": "W3",
+      "title": "Locate the source of a wrong result",
+      "prompt": "Saved instructions P0 say \u201cstart at B1; if B1 fails, report no match.\u201d For the valid request 9 minutes No, an operator follows P0 exactly and reports no match. Identify the instruction defect and write the changed step. Explain how to label the correction and what to retain from the failed run.",
+      "lines": 6,
+      "answer": "P0 stops after one failure and misses B2, which fits 9 No. After failure, advance to the next row and continue; no match follows only after all rows fail. Save a new version with the change recorded. Keep the original P0 instructions, request, expected B2, observed no match and trace. Rerun the corrected version and record a new result."
+    },
+    {
+      "id": "W4",
+      "title": "Build a new route through a small catalogue",
+      "prompt": "Independently make and trace instruction cards for this paper equipment catalogue: E1 first, capacity 3 people; E2 second, capacity 6. Valid input is a whole group size from 1 to 8. Suggest the first item whose capacity is at least the group size; no booking occurs. Include invalid input and no match. Write expected results, then operate your cards for groups of 5 and 7. Record both runs and explain every stopping point.",
+      "lines": 8,
+      "answer": "Validate whole group size 1 to 8, otherwise clarify and stop. Start E1; if capacity is at least the group size, suggest and stop; otherwise advance to E2. If E2 fails, no match and stop. Expected 5: E1 fails 3 below 5; E2 passes 6 at least 5, suggest E2. Expected 7: both capacities too small, no match. Record actual runs separately and investigate any disagreement."
+    },
+    {
+      "id": "W5",
+      "title": "Make the evidence repeatable",
+      "prompt": "A teammate keeps only a final \u201cB2\u201d answer and throws away the request and old instructions after editing them. Explain why another person cannot check this result. List what to save for each run and explain why an observed error must remain in the record.",
+      "lines": 6,
+      "answer": "B2 alone does not identify the request, version or route taken, so its correctness cannot be checked. Keep run ID, exact request, instruction and catalogue versions, expected result, observed steps and output, and any change with its later rerun. Keeping errors allows the team to locate and verify repairs instead of showing only favourable results."
+    }
+  ],
+  "teacher": {
+    "background": "This session builds a runnable paper implementation of the existing rule-based recommender. A trace reports execution; the specification and manual baseline determine the expected result. Do not silently coach an operator through omitted instructions. Distinguish an instruction defect from a failure to follow a correct instruction by comparing the saved cards with the trace. A paper prototype can test logic and handover, but does not establish automated speed, real pupil satisfaction or general reliability.",
+    "materials": [
+      "Paper for request, instruction and catalogue cards, using the exact B version 1 values in the lesson",
+      "A movable marker and trace sheets with version labels and check columns",
+      "The Week 30 requirements and manual checklist; a folder for unchanged runs and revisions"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the conditions for continuing a search and reporting no match."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the contract, build and label the P1 kit, and complete W1."
+      ],
+      [
+        "20 to 33 minutes",
+        "Model the 9 No trace, keeping expected and observed records separate."
+      ],
+      [
+        "33 to 45 minutes",
+        "Partners complete W2 with an unaided operator and retain any disagreement."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Compare the stale-marker execution mistake with the P0 instruction defect."
+      ],
+      [
+        "8 to 23 minutes",
+        "Complete W3 and the guided 8 Yes trace; record correction versions without altering old runs."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently, including cards and two trace records. Offer support only after the first attempt."
+      ],
+      [
+        "38 to 45 minutes",
+        "Complete W5 and the exit; save the handover kit for routine tests next week."
+      ]
+    ],
+    "guidedAnswer": "8 Yes is valid. B1 fails time 10 greater than 8 but passes quiet; B2 passes time 8 equal to 8 but fails quiet; B3 fails time 12 greater than 8 but passes quiet; B4 fails time 15 greater than 8 and fails quiet. After B4, no match. Blank quiet stops at Card 1 with clarification and zero candidate checks. Exit: starting at B2 violates P1\u2019s reset instruction, so this is an execution mistake. Keep the original trace and run P1 again from validation and B1; for 11 No, suggest B1 because 10 fits 11 and quiet is unrestricted.",
+    "misconceptions": [
+      [
+        "A correct-looking answer is enough",
+        "Inspect the request, versions and trace to check how it was reached."
+      ],
+      [
+        "The observer should repair missing instructions during a run",
+        "Record the ambiguity, revise a labelled version and rerun separately."
+      ],
+      [
+        "An observed result should be changed to match the expected one",
+        "Preserve disagreement as evidence and investigate its cause."
+      ],
+      [
+        "A successful paper run proves a trained AI works",
+        "These are explicit rules; one run supports only a limited claim about that implementation."
+      ]
+    ],
+    "assessment": "Assess W4 for a runnable validated process, first-match stopping, advancement, exhaustion and separate expected and observed records. The 5-person run should reach E2 and the 7-person run should exhaust both rows. After support, retry with group size 3, then blank: 3 selects E1 at equality; blank requests clarification before any capacity checks. Ask the pupil to explain the evidence rather than only name the result.",
+    "support": "Provide trace column headings and let pupils move a marker while speaking each check aloud. Use not checked for candidates never examined. Extension: swap partners without author explanation and record whether any instruction needs clarification; do not turn one successful handover into a reliability claim.",
+    "next": "Week 33 organises routine cases into a test record with expected and observed results, keeping the prototype version fixed during each test set."
+  }
+}

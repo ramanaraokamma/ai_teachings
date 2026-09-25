@@ -1,0 +1,279 @@
+{
+  "level": "ai-1",
+  "week": 33,
+  "title": "Testing routine cases",
+  "minutes": 90,
+  "goals": [
+    "Plan routine cases with expected results derived from the requirements",
+    "Compare a fixed prototype and manual baseline on the same requests",
+    "Report every result and explain what a small test set cannot establish"
+  ],
+  "prerequisite": {
+    "prompt": "How does an expected result differ from an observed result, and why keep both when they disagree?",
+    "answer": "The expected result comes from the requirements; the observed result records what the saved version actually did. Disagreement is evidence to investigate, so neither record should be silently changed to match the other."
+  },
+  "vocabulary": [
+    [
+      "Test case",
+      "A specified input with an expected result and a reason for testing it"
+    ],
+    [
+      "Test set",
+      "A collection of cases used together to check a version"
+    ],
+    [
+      "Pass criterion",
+      "The requirement an observed result must meet to count as a pass"
+    ],
+    [
+      "Coverage",
+      "Which conditions or behaviours the selected tests examine"
+    ],
+    [
+      "Baseline",
+      "A simple comparison method tested under the same conditions"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Choose cases before running them",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "This week you will turn separate paper traces into a test record. Choose several ordinary requests, write the required answers first, then run the same saved prototype on every request. Testing is useful when it can reveal a mistake, so keep failures as carefully as successes. A demonstration chosen because it works is not a complete evaluation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use catalogue B version 1 in order: B1 Bookmark drawing, 10 minutes, quiet Yes; B2 Story circle, 8 minutes, quiet No; B3 Pattern puzzle, 12 minutes, quiet Yes; B4 Tower challenge, 15 minutes, quiet No. These fictional values assume materials are available. Inputs are whole minutes from 0 to 30 and Quiet required Yes or No. Time must fit AND either quiet is not required or the activity is quiet. No allows either kind. Select the first fit with a correct reason; otherwise report no match. Missing or invalid input requires clarification. No booking or publishing takes place."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep the P1 version 1 instructions from Week 32: validate and stop with clarification if input is invalid; otherwise start at B1, check both conditions, suggest the first passing row and stop. After a failure advance one row; report no match only after all rows fail. Reset to validation and B1 for each new valid request. The manual baseline marks every row against both conditions and selects the first fit. Both methods must follow the same contract."
+        }
+      ]
+    },
+    {
+      "title": "Design a record that can reveal a failure",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "From a planned case to evidence",
+          "columns": [
+            "Before the run",
+            "During the run",
+            "After the run"
+          ],
+          "rows": [
+            [
+              "Write input and expected result",
+              "Use the saved version",
+              "Compare with the requirement"
+            ],
+            [
+              "State why the case matters",
+              "Record output and reason",
+              "Mark pass or explain failure"
+            ],
+            [
+              "Label both comparison methods",
+              "Keep every trace",
+              "Report counts and limits"
+            ]
+          ],
+          "caption": "Keep the catalogue, requests and pass criteria the same for the prototype and baseline."
+        },
+        {
+          "type": "paragraph",
+          "text": "Give each case an ID. Record its exact input, purpose, expected output and expected explanation before running it. Then add observed output, observed explanation, pass or fail, and a trace reference. Put the prototype version, catalogue version and baseline method at the top of the sheet. A pass needs the correct result and a reason supported by the checked conditions; the right activity with a false reason is not a full pass."
+        },
+        {
+          "type": "paragraph",
+          "text": "Our routine set R contains four valid requests. R1 is 11 minutes Yes, checking an early quiet match. R2 is 9 minutes No, checking that the search reaches a later fitting row. R3 is 6 minutes No, checking that a valid request can exhaust the list. R4 is 9 minutes Yes, checking that a time fit alone is insufficient. These cases do not cover every accepted input or validation error."
+        }
+      ]
+    },
+    {
+      "title": "Compare two methods on the same cases",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Case and request",
+            "Expected output and reason",
+            "Fictional observed Q version 0"
+          ],
+          "rows": [
+            [
+              "R1 11 minutes Yes",
+              "B1; 10 fits 11 and B1 is quiet",
+              "B1 with the same correct reason; pass"
+            ],
+            [
+              "R2 9 minutes No",
+              "B2; 8 fits 9, quiet unrestricted, B1 too long",
+              "B2 with the same correct reason; pass"
+            ],
+            [
+              "R3 6 minutes No",
+              "No match; all activities take longer",
+              "No match with the same correct reason; pass"
+            ],
+            [
+              "R4 9 minutes Yes",
+              "No match; B2 is not quiet and other rows take longer",
+              "B2 because 8 fits 9; fail"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "This is an invented record for a comparison prototype Q version 0, not a claim about your P1 runs. Q ignores the quiet condition when searching. Its trace explains the R4 failure. In the same fictional comparison, the manual baseline produced the expected result and correct explanation on all four cases: 4 of 4 full passes. Q achieved 3 of 4. The denominator includes the failed case."
+        },
+        {
+          "type": "paragraph",
+          "text": "On this set Q has fewer full passes than the baseline. This supports investigating its quiet check; it does not establish performance on all requests. Do not claim a speed advantage because we did not measure time. Correct implementations of P1 and the baseline can both pass all four, in which case these results show no correctness advantage for either method."
+        }
+      ]
+    },
+    {
+      "title": "Run the set without changing the evidence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Before testing your own cards, finish all four expected results and agree the pass criterion. Swap roles: one pupil operates and the other records. Keep the same version throughout the set and begin a fresh run for each request. Record what happened even if a card is ambiguous or the operator makes a mistake. A run that stops without a required answer is a failed run to investigate, not a row to delete."
+        },
+        {
+          "type": "paragraph",
+          "text": "Run the manual baseline on the same four requests and catalogue. Record its actual results too; a person can make an error in either method. If you find a defect, preserve this set\u2019s results, save a new version and start a separately labelled set after the repair. Never combine the best result from each version into a score for one version."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "In the fictional Q record, give the full-pass fraction for each method and explain the R4 failure. A teammate removes R4 and reports Q as 3 of 3. Explain how that changes the question being answered. Then state one condition that set R has not checked.",
+          "lines": 7
+        }
+      ]
+    },
+    {
+      "title": "Report a useful but limited conclusion",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A useful report names the version, catalogue, case set, full-pass count and total, then describes each failure and the requirement it breaks. Keep the trace so someone can reproduce the result. Say which conditions have not been tested. Four passing runs support a claim about those four runs; they do not prove that every possible request works."
+        },
+        {
+          "type": "paragraph",
+          "text": "For catalogue B, any request allowing B3 also allows the earlier quiet B1; any request allowing B4 also allows earlier B1 when quiet is not required. Therefore the first-match rule never selects B3 or B4 with this catalogue. Checking those rows in a no-match trace is different from testing a successful output from a later row. Next week we will deliberately examine boundaries and labelled catalogue variations while keeping the requirements explicit."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A team reports \u201cOur prototype passed 4 of 4 routine cases, so it always works and is faster than the baseline.\u201d Rewrite this as a claim supported by the evidence, and identify two further checks that would address different gaps.",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Prepare the four cases",
+      "prompt": "Create the test record for R1 11 Yes, R2 9 No, R3 6 No and R4 9 Yes. Before running anything, write each expected output, explanation and purpose using catalogue B version 1. Include blank places for observed output, observed reason, pass or fail and trace reference. State the version labels and pass criterion.",
+      "lines": 6,
+      "answer": "R1 B1 because time fits and it is quiet; early match. R2 B2 because B1 is too long, B2 fits and quiet is unrestricted; later match. R3 no match because every time exceeds 6; exhaustion. R4 no match because B2 fails quiet while other rows exceed 9; both conditions. Record P1 version 1, B version 1 and the manual baseline. A full pass needs the required output and a correct explanation."
+    },
+    {
+      "id": "W2",
+      "title": "Run a fair comparison",
+      "prompt": "Operate your saved P1 cards and the manual baseline on all four R cases. Record actual results and traces on your sheet. Summarise full passes over all attempted cases for each method, name any failures and explain why a tie would not prove the prototype improves correctness. Do not invent an observed run.",
+      "lines": 6,
+      "answer": "A correctly executed P1 and baseline both produce B1, B2, no match, no match with correct reasons, giving 4 of 4 each. Accept an honest record of different observed results when the pupil identifies and investigates the disagreements. Both methods must use the same requests, catalogue and pass criterion. A tie establishes no correctness advantage on this set; an unperformed run must remain unperformed."
+    },
+    {
+      "id": "W3",
+      "title": "Keep the failed case in the total",
+      "prompt": "Use the fictional Q version 0 record. Calculate its full-pass fraction and the baseline\u2019s fraction. Explain why R4 fails and why dropping it to report 3 of 3 misrepresents the original four-case set. State what evidence you would inspect before changing Q.",
+      "lines": 6,
+      "answer": "Q passes 3 of 4; the baseline passes 4 of 4. R4 returns nonquiet B2 when quiet is required, so time alone is insufficient. Removing R4 changes the tested set and hides its known failure; 3 of 3 is not the original set\u2019s result. Inspect the saved Q instructions and R4 trace to locate the missing quiet check, then label any repair separately."
+    },
+    {
+      "id": "W4",
+      "title": "Audit a new test record",
+      "prompt": "Independently audit this fictional equipment selector. Catalogue E has E1 first with capacity 4 and E2 second with capacity 8. Valid group sizes are whole numbers 1 to 10. Select the first item with capacity at least the group size, or no match; invalid input needs clarification. The saved prototype reports E1 for group 3 with reason \u201c4 holds 3\u201d; E1 for group 6 with reason \u201c4 holds 6\u201d; no match for group 9 with reason \u201cboth too small\u201d. Write all expected results, mark full passes, calculate the fraction and explain the failure. Give one untested input category. No booking occurs.",
+      "lines": 8,
+      "answer": "Expected group 3: E1 because 4 holds 3. Group 6: E2 because E1 is too small and 8 holds 6. Group 9: no match because both capacities are too small. The first and third pass; the second fails both output and reason, giving 2 of 3 full passes. The record suggests a capacity-check problem but the saved instructions and trace are needed to locate it. Missing, nonwhole or out-of-range input is untested, as is equality with a capacity."
+    },
+    {
+      "id": "W5",
+      "title": "State what the evidence leaves open",
+      "prompt": "Explain why catalogue B cannot produce B3 or B4 as its first fitting output even if you try many ordinary requests. Distinguish checking a row during a failed search from successfully selecting it. Write a limited conclusion for a P1 run that passed all four R cases and name a useful next test category.",
+      "lines": 6,
+      "answer": "B3 needs at least 12 minutes and is quiet, so earlier B1 at 10 also fits whenever B3 fits. B4 needs 15 and is nonquiet, so a compatible request permits earlier B1 as well. Both later rows may be checked in no-match runs but are never first fits in catalogue B. Report 4 of 4 full passes on set R with named versions; broader reliability is unestablished. Next examine boundaries, invalid inputs or an explicitly labelled catalogue variation."
+    }
+  ],
+  "teacher": {
+    "background": "The prototype remains an explicit rule system. This lesson focuses on prewritten expectations, repeatable conditions and honest records. Q version 0 and its comparison results are fictional worked examples. Pupils must record their own P1 observations, including operator errors, without copying invented successes. Judge both the output and its reason. Routine coverage is deliberately limited; boundary and variation tests follow next week.",
+    "materials": [
+      "The saved P1 version 1 cards, catalogue B version 1 and manual checklist from Week 32",
+      "Paper test sheets with case ID, input, purpose, expected result, observed result, judgement and trace reference",
+      "A folder for all versions and results; keep any reserved final evaluation cases separate from development work"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve expected versus observed results and why disagreement is retained."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the contract and diagram; prepare W1 expectations and agree the full-pass criterion."
+      ],
+      [
+        "20 to 33 minutes",
+        "Work through the fictional Q table and W3, including the denominator and failed quiet condition."
+      ],
+      [
+        "33 to 45 minutes",
+        "Begin W2 partner runs with fixed versions and one trace per request."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Finish W2 baseline comparison and audit whether any cases or failures were omitted."
+      ],
+      [
+        "8 to 23 minutes",
+        "Complete the guided explanation and discuss coverage gaps without claiming universal reliability."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently before offering support; require reasons and the denominator."
+      ],
+      [
+        "38 to 45 minutes",
+        "Complete W5 and the exit; retain versioned records for boundary testing next week."
+      ]
+    ],
+    "guidedAnswer": "Q has 3 of 4 full passes and the fictional baseline 4 of 4. R4 selects B2 despite the quiet requirement. Dropping R4 answers how Q did on a selected three-case subset and conceals the failure in the original set. Gaps include missing or invalid fields, equality at thresholds, accepted range endpoints and successful later-row selection under a varied catalogue. Exit: this named version passed these four routine cases under the recorded conditions; all-input correctness and a speed advantage are not established. Two distinct useful checks could be invalid-input handling and equal-time boundaries. Measuring speed would require a separate fair timing comparison.",
+    "misconceptions": [
+      [
+        "A correct label is always a full pass",
+        "The agreed criterion also requires a correct explanation."
+      ],
+      [
+        "Remove a failed run because something went wrong",
+        "Keep and investigate it; missing required output cannot count as success."
+      ],
+      [
+        "Four passes prove all inputs work",
+        "The conclusion is limited by the selected cases and conditions."
+      ],
+      [
+        "The prototype must beat the manual baseline",
+        "A correct simple baseline can tie or outperform a prototype; report the evidence."
+      ]
+    ],
+    "assessment": "W4 must independently produce E1, E2 and no match, identify the group-6 capacity failure and report 2 of 3 full passes without diagnosing unseen code. After support, use a fresh record: groups 2, 7 and 10 produce observed E1 with \u201c4 holds 2\u201d, E2 with \u201c8 holds 7\u201d, and E2 with \u201c8 holds 10\u201d. Expected E1, E2, no match gives 2 of 3. Require the pupil to identify the final failure and propose an untested validation case.",
+    "support": "Provide blank column headings and a separate copy of the requirements. Ask pupils to check time and quiet separately before combining them. Permit a spoken explanation recorded by the teacher, while retaining the pupil\u2019s independent first attempt. Extension: explain why repeated R1 runs do not add coverage of a missing condition.",
+    "next": "Week 34 tests equality boundaries, accepted ranges, invalid inputs and explicitly labelled catalogue variations, then revisits what the evidence can support."
+  }
+}

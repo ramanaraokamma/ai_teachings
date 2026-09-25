@@ -1,0 +1,279 @@
+{
+  "level": "ai-1",
+  "week": 31,
+  "title": "Designing a complete decision process",
+  "minutes": 90,
+  "goals": [
+    "Design a decision process that covers valid, invalid and no-match requests",
+    "Trace changing state and explain why the search stops",
+    "Preserve both compatibility conditions and the agreed first-match rule"
+  ],
+  "prerequisite": {
+    "prompt": "For the activity project, how does a blank time differ from a valid request for zero minutes?",
+    "answer": "Blank time requires clarification because an input is missing. Zero is valid within 0 to 30, but no activity in the catalogue fits it, so the correct result is no match."
+  },
+  "vocabulary": [
+    [
+      "Validation",
+      "Checking an input against the agreed rules before using it"
+    ],
+    [
+      "Branch",
+      "A path chosen according to a condition"
+    ],
+    [
+      "Candidate",
+      "An option currently being checked"
+    ],
+    [
+      "State",
+      "Information that records the process\u2019s current position or values"
+    ],
+    [
+      "Termination",
+      "Reaching a point where the process stops"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Turn the requirements into a complete path",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A complete process says what happens for every kind of request in the task. It must handle a fitting activity, no fitting activity and unusable input. We will design a paper algorithm before building the prototype. Its decisions use the requirements from Week 30, so a different drawing should not silently change what counts as correct."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep the same catalogue order: B1 Bookmark drawing, 10 minutes, quiet Yes; B2 Story circle, 8 minutes, quiet No; B3 Pattern puzzle, 12 minutes, quiet Yes; B4 Tower challenge, 15 minutes, quiet No. These are fixed paper-model values with materials assumed available. Valid input is a whole number of minutes from 0 to 30 and Quiet required Yes or No."
+        },
+        {
+          "type": "paragraph",
+          "text": "A candidate fits when its required minutes are no more than the available minutes and either quiet is not required or the activity is quiet. Both parts must hold. The output is the first fitting activity in catalogue order, with a reason, or a clear no-match result. Invalid or missing input produces a clarification request. None of these outputs books materials or publishes a message."
+        }
+      ]
+    },
+    {
+      "title": "Give every branch a next step",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Four paths through the recommender",
+          "columns": [
+            "Condition reached",
+            "Next action",
+            "Where the path ends"
+          ],
+          "rows": [
+            [
+              "Input missing or invalid",
+              "Ask for corrected input",
+              "Stop this run"
+            ],
+            [
+              "Candidate fails a check",
+              "Move to the next row",
+              "Continue search"
+            ],
+            [
+              "Candidate passes both",
+              "Suggest it with a reason",
+              "Stop this run"
+            ],
+            [
+              "All rows checked and failed",
+              "Report no match",
+              "Stop this run"
+            ]
+          ],
+          "caption": "Failing one candidate continues the search. No match is justified only after the valid request has no fitting candidate."
+        },
+        {
+          "type": "paragraph",
+          "text": "Begin by checking the request. If minutes are missing, outside 0 to 30 or not a whole number, ask for a whole number in that range. If the quiet field is not Yes or No, ask for one of those values. State the fields needing correction and stop this run. When a corrected request arrives, validate it as a new run rather than continuing with old candidate state."
+        },
+        {
+          "type": "paragraph",
+          "text": "For a valid request, start at B1. Check time and the quiet condition for the current candidate. If both pass, output that candidate and stop. If either fails, move forward exactly one row. After B4 fails, there is no next row, so output no match and stop. Never jump back to B1 within the same search."
+        }
+      ]
+    },
+    {
+      "title": "Trace a request before trusting the design",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Stage for 9 minutes and Quiet required No",
+            "Evidence",
+            "Next state or output"
+          ],
+          "rows": [
+            [
+              "Validate",
+              "9 is a whole number in range; No is valid",
+              "Current candidate B1"
+            ],
+            [
+              "Check B1",
+              "10 minutes is more than 9",
+              "Move to B2"
+            ],
+            [
+              "Check B2",
+              "8 is no more than 9; quiet is not required",
+              "Suggest B2 and stop"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The current candidate changes from B1 to B2. The request values stay the same. After B2 passes, the process stops: it does not replace B2 with a later fitting row. This early stop preserves the first-match rule and gives the same required suggestion as the manual baseline, which marked every row before selecting the first fit."
+        },
+        {
+          "type": "paragraph",
+          "text": "Termination needs a reason. There are only four rows, each failed check moves to the next row, and no row is revisited. A valid request therefore examines at most four candidates. A success can stop sooner. Invalid input stops before the search. Merely drawing an arrow around a loop is not enough; the state must make progress toward an end."
+        }
+      ]
+    },
+    {
+      "title": "Find gaps with revealing examples",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Consider the mistaken instruction \u201cIf B1 fails, report no match.\u201d It would miss B2 on the 9-minute No request. Another mistake is \u201cIf time fits or quiet fits, suggest the activity.\u201d That could allow an activity that takes too long merely because it is quiet. Use a concrete request to show which requirement a design breaks."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Trace 9 minutes with Quiet required Yes through every candidate. State the reason each fails and the final output. Then explain what would happen if a failed candidate were checked again without moving to the next row. Finally, state the first step for 31 minutes with Quiet required No",
+          "lines": 7
+        },
+        {
+          "type": "paragraph",
+          "text": "A process must also distinguish the meaning of No from a requirement for noise. When Quiet required is No, a quiet candidate can still pass. For 11 minutes No, B1 fits and comes first, even though B2 also fits. An instruction to reject all quiet activities when No is selected would change the task."
+        }
+      ]
+    },
+    {
+      "title": "Keep the explanation tied to the decision",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "An explanation should identify the checks that actually justified the result. For example, B2 fits the 9-minute No request because its 8-minute duration fits and quiet was not required. Do not add \u201cyou will love it\u201d, which was neither an input nor a tested condition. For no match, report that no catalogue row met both conditions; a trace can show why."
+        },
+        {
+          "type": "paragraph",
+          "text": "Save a labelled version of the process with its validation, candidate order, conditions, state changes and stopping points. A partner should be able to follow it without asking you to fill a missing step. Next week the paper prototype will turn this design into instruction cards and a trace record. Keep any final evaluation cases reserved while developing the design."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A design finds B1 compatible for 15 minutes No but keeps searching and returns B4 instead. Is B4 compatible? Does this output meet the full task requirements? Explain the difference and give the required output",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Describe all possible kinds of ending",
+      "prompt": "Name the three kinds of final output in the activity process and the condition that leads to each. Explain why a candidate failing its time check is not automatically a final no-match result.",
+      "lines": 6,
+      "answer": "Clarification follows invalid or missing input. A suggestion follows the first candidate passing both compatibility conditions. No match follows a valid request after all candidates fail. A single failed candidate does not settle whether later candidates fit, so the process must advance."
+    },
+    {
+      "id": "W2",
+      "title": "Track the current candidate",
+      "prompt": "Trace 9 minutes with Quiet required No. Record the current candidate, time result, quiet condition and next step until the process stops. Explain why the request values should not change as the candidate advances.",
+      "lines": 6,
+      "answer": "B1 fails time because 10 is greater than 9; quiet is unrestricted. Advance to B2. B2 passes time because 8 is no more than 9 and quiet is not required, so suggest B2 and stop. Candidate state changes to search the catalogue; changing the request values would solve a different task."
+    },
+    {
+      "id": "W3",
+      "title": "Repair an incorrect branch",
+      "prompt": "A design says \u201cIf the activity is quiet OR its time fits, suggest it.\u201d For 5 minutes with Quiet required Yes it selects B1. Identify the failed requirement and replace the condition with a correct one. Give the correct result for this request.",
+      "lines": 6,
+      "answer": "B1 is quiet but requires 10 minutes, exceeding 5. Require time to fit AND the quiet condition to hold. The quiet condition is either quiet not required or a quiet activity. No catalogue activity fits 5 minutes, so the correct output is no match after checking all candidates."
+    },
+    {
+      "id": "W4",
+      "title": "Design a complete room decision process",
+      "prompt": "A new paper catalogue lists C1 first, capacity 4, quiet Yes; C2 second, capacity 8, quiet No. Valid requests give a whole group size from 1 to 10 and Quiet required Yes or No. A room fits if capacity is at least group size and the quiet condition is met; choose the first fit. Write a complete process with validation, search, state change and stopping rules. Trace 6 people No and explain the outcome for a blank quiet field. No booking takes place.",
+      "lines": 8,
+      "answer": "Validate group size and Yes or No; request clarification and stop if invalid. Start C1; check capacity and quiet. If both pass, suggest and stop; otherwise advance to C2. If C2 also fails, report no match and stop. For 6 No, C1 fails capacity, C2 passes capacity with quiet unrestricted, so suggest C2. Blank quiet requires clarification before searching. Each failed row advances, so at most two candidates are checked."
+    },
+    {
+      "id": "W5",
+      "title": "Preserve the first compatible option",
+      "prompt": "For the activity catalogue, 15 minutes with Quiet required No allows several activities. Explain why returning the last compatible row breaks the agreed rule even though it fits. Describe a stopping rule that preserves the first match, and one way to check that a loop cannot repeat forever.",
+      "lines": 6,
+      "answer": "All four activities fit, but the tie rule requires B1 first. Returning B4 meets compatibility but not the full specification. Stop immediately after the first passing candidate. Check that every failure advances exactly one row, no row is revisited and exhaustion of B4 ends with no match."
+    }
+  ],
+  "teacher": {
+    "background": "Keep Week 30\u2019s requirements separate from the algorithm that implements them. The manual baseline marked all rows; this design may stop at the first fit while preserving the required output. Check more than final labels: pupils must explain both conditions, validation and progress through the finite catalogue. This is an explicit-rule recommender, not a model fitted from examples.",
+    "materials": [
+      "The unchanged B1 to B4 catalogue and Week 30 requirements",
+      "Four candidate cards and a marker for the current row",
+      "Paper for a process drawing and a trace with candidate, checks and next step"
+    ],
+    "sessions": [
+      [
+        "Session 1 start 0 to 7 minutes",
+        "Retrieve blank input versus a valid zero and no match."
+      ],
+      [
+        "7 to 20 minutes",
+        "Identify all endings and branches using the diagram; complete W1."
+      ],
+      [
+        "20 to 33 minutes",
+        "Trace 9 No and complete W2 with visible candidate state."
+      ],
+      [
+        "33 to 45 minutes",
+        "Complete W3 and contrast both conditions with either condition."
+      ],
+      [
+        "Session 2 start 0 to 8 minutes",
+        "Retrieve the first-match rule and the meaning of No."
+      ],
+      [
+        "8 to 23 minutes",
+        "Complete the guided no-match trace and demonstrate a loop without progress."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently; ask a partner to follow the written process literally."
+      ],
+      [
+        "38 to 45 minutes",
+        "Complete W5 and the exit; save the versioned design for the prototype."
+      ]
+    ],
+    "guidedAnswer": "9 Yes: B1 takes 10, too long; B2 takes 8 but is not quiet; B3 takes 12, too long; B4 takes 15 and is not quiet. After all four fail, output no match. Rechecking a failed row without advancing could repeat forever with unchanged state. 31 No is outside the accepted time range, so request a whole time from 0 to 30 and stop before searching. Exit: B4 is compatible for 15 No, but violates the first-match rule; the required output is B1.",
+    "misconceptions": [
+      [
+        "One failed row proves no match",
+        "Later rows may fit; continue until a fit or catalogue exhaustion."
+      ],
+      [
+        "Passing either condition is sufficient",
+        "The time and quiet conditions must both hold."
+      ],
+      [
+        "Any compatible answer satisfies the task",
+        "The first-in-catalogue tie rule is also a requirement."
+      ],
+      [
+        "A loop stops because it should",
+        "Show a state change that advances toward a finite end."
+      ]
+    ],
+    "assessment": "W4 must contain input validation, both room checks, first-match stopping, advancement, exhaustion and the C2 trace for 6 No. Blank quiet must produce clarification. After support change the request to 6 Yes: both rooms fail different conditions, so no match after two checks. Require an explanation that this is different from invalid input.",
+    "support": "Move a marker down the candidate cards while leaving the request card fixed. Use separate time and quiet ticks before combining them. Extension: compare the number of candidates examined by the early-stop process and the full manual checklist without claiming a measured time saving.",
+    "next": "Week 32 builds a paper prototype from the decision process and records each step as a trace."
+  }
+}

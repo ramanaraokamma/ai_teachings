@@ -1,0 +1,283 @@
+{
+  "level": "ai-1",
+  "week": 12,
+  "title": "Debugging with revealing tests",
+  "minutes": 90,
+  "goals": [
+    "Compare expected and observed traces to locate the first difference",
+    "Choose a test that distinguishes competing explanations of a fault",
+    "Repair a stated instruction and rerun both the failing case and earlier passing cases"
+  ],
+  "prerequisite": {
+    "prompt": "Start at 3. While counter is below 7, add 2. List the values at every test and state when the body stops running.",
+    "answer": "The tests see 3 true, 5 true and 7 false. Two iterations occur; the body does not run after the false test. Report 7."
+  },
+  "vocabulary": [
+    [
+      "Specification",
+      "A statement of what a system is required to do"
+    ],
+    [
+      "Expected result",
+      "The result worked out from the specification before running a test"
+    ],
+    [
+      "Observed result",
+      "The result actually recorded during a test"
+    ],
+    [
+      "First divergence",
+      "The earliest step where observed behaviour differs from expected behaviour"
+    ],
+    [
+      "Regression test",
+      "A repeated check that previously correct behaviour still works after a change"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Start with what should happen",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A paper points machine must add 3 to its starting score, double the updated score, then subtract 2 and report. From 4 the expected values are 4, 7, 14 and 12. These instructions are the specification. Calculate the expected result from them before looking at the machine output."
+        },
+        {
+          "type": "paragraph",
+          "text": "An observed run instead records 4, 7, 11 and 9. The final result is wrong, but changing the report from 9 to 12 would only hide this particular failure. Compare the intermediate values to find where the behaviour first stopped matching the instructions."
+        },
+        {
+          "type": "paragraph",
+          "text": "The first difference is after the doubling instruction: expected 14, observed 11. The final subtraction is consistent with the observed 11, since 11 minus 2 is 9. That later difference can be a consequence of the earlier fault rather than a second faulty subtraction. A trace narrows the investigation; it does not automatically reveal every cause."
+        }
+      ]
+    },
+    {
+      "title": "Keep expected and observed evidence together",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Locate the first mismatch",
+          "columns": [
+            "Recorded checkpoint",
+            "Compare the values",
+            "What the evidence tells us"
+          ],
+          "rows": [
+            [
+              "Start",
+              "Expected 4 observed 4",
+              "Values agree"
+            ],
+            [
+              "After add 3",
+              "Expected 7 observed 7",
+              "Values agree"
+            ],
+            [
+              "After double",
+              "Expected 14 observed 11",
+              "First difference"
+            ],
+            [
+              "After subtract 2",
+              "Expected 12 observed 9",
+              "Difference continues"
+            ]
+          ],
+          "caption": "Each row compares the same checkpoint in two traces. Arrows lead from the checkpoint to its comparison and interpretation; they do not represent arithmetic between columns."
+        },
+        {
+          "type": "paragraph",
+          "text": "Record the input, the exact instruction version, expected values, observed values and first mismatch. This makes the failure reproducible: someone else can follow the same procedure with the same starting value and check your observation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not rewrite the expected column to match the observed result. If the specification itself seems ambiguous, clarify it first and record that change openly. A test can judge an implementation only against a stated expectation."
+        }
+      ]
+    },
+    {
+      "title": "Choose a test that separates explanations",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For the faulty doubling step, two explanations fit the observed change from 7 to 11. Perhaps the step adds 4. Perhaps it adds the original starting score, which was 4. Repeating the same start 4 cannot separate those explanations because they make the same prediction."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Start score",
+            "Expected final result",
+            "If step adds 4 or original start"
+          ],
+          "rows": [
+            [
+              "4",
+              "12",
+              "9 under either explanation"
+            ],
+            [
+              "2",
+              "8",
+              "7 if add 4 or 5 if add original 2"
+            ],
+            [
+              "5",
+              "14",
+              "10 if add 4 or 11 if add original 5"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Starting at 2 produces 5 after the first addition. The intended double gives 10 and then reports 8. Adding 4 would give 9 and report 7. Adding the original 2 would give 7 and report 5. The different predictions make this a revealing test."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the observed final result is 7, it supports add 4 over add original among these two explanations. Other faults could still give 7, so inspect the actual instruction or more checkpoints before claiming a unique cause."
+        }
+      ]
+    },
+    {
+      "title": "Repair the instruction and rerun the evidence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Suppose inspection confirms that the second instruction says add 4. Replace that instruction with double the current score. Keep the original failing test, then rerun other inputs. From starts 4, 2 and 5, the corrected final results should be 12, 8 and 14."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "A copied machine reports 9 from start 4 and 7 from start 2. Which of the two proposed explanations is consistent with both results? State what to inspect, the repair if confirmed, and the expected results to record after the repair",
+          "lines": 6
+        },
+        {
+          "type": "paragraph",
+          "text": "Change the suspected instruction while keeping the test inputs fixed. If you change several instructions and inputs together, it is harder to tell which change mattered. Rerun previously passing cases as regression tests, because a repair can accidentally break other behaviour."
+        }
+      ]
+    },
+    {
+      "title": "Match each test to a reason",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For an arithmetic step, choose inputs that produce different predictions under plausible faults. For a condition, test its equality case as well as values on each side. For a loop, include a false first test and a run that crosses its stopping boundary. A test list is stronger when you can explain what each case checks."
+        },
+        {
+          "type": "paragraph",
+          "text": "A useful bug report names the version and input, says what should happen, records what did happen, and identifies the first known difference. Include the repair and retest evidence once available. Passing a finite collection of tests increases confidence in those behaviours; it does not prove every possible input correct."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A repaired below 7 loop is checked only from start 1. Name a regression test that would reveal an accidental change from below 7 to at most 7, give both expected outcomes with add 2, and explain why the test is revealing",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Locate the first difference",
+      "prompt": "A procedure must add 2, double the updated value, then subtract 1. Starting at 3, an observed trace is 3, 5, 8, 7. Write the expected trace, identify the first difference and explain why the final subtraction is not necessarily a separate fault.",
+      "lines": 7,
+      "answer": "Expected trace: 3, 5, 10, 9. First difference is the doubling checkpoint: 10 expected versus 8 observed. The later 8 minus 1 equals 7, so the observed subtraction is consistent with its input. Investigate the earlier step before claiming another fault."
+    },
+    {
+      "id": "W2",
+      "title": "Choose between two explanations",
+      "prompt": "In W1 the faulty middle step may add 3, or add the original starting value. Both explain 5 becoming 8 when the start is 3. Choose start 1 or start 3 for a revealing new test. Predict the final result under each explanation and under the intended procedure.",
+      "lines": 6,
+      "answer": "Choose start 1. After add 2 the value is 3. Adding 3 then subtracting 1 reports 5; adding original 1 then subtracting 1 reports 3. Doubling then subtracting 1 should report 5. This separates the two fault explanations, but a final 5 alone cannot separate add 3 from correct doubling on this input; retain the original failing start 3."
+    },
+    {
+      "id": "W3",
+      "title": "Reject a repair that hides the symptom",
+      "prompt": "A learner repairs the original points machine by reporting 12 for every input, because 12 is correct from start 4. Give a different starting input and its expected output under add 3, double, subtract 2. Explain why the constant report is not a valid repair and what earlier evidence should be preserved.",
+      "lines": 6,
+      "answer": "Start 2 should report 8, with trace 2, 5, 10, 8; other correctly calculated starts with a different output also work. Always reporting 12 breaks the specification. Preserve the original input and observed intermediate trace as evidence, then correct the faulty instruction and rerun the cases."
+    },
+    {
+      "id": "W4",
+      "title": "Debug a new ticket rule",
+      "prompt": "A paper ticket rule must add 1 to the input count. If the updated count is at least 5, report Group; otherwise report Single. A copied version says above 5. Choose the smallest three consecutive nonnegative starting counts that test just below, exactly at and just above the comparison boundary. Predict both versions, identify the revealing start and state the repair and retests.",
+      "lines": 8,
+      "answer": "Use starts 3, 4 and 5, which reach 4, 5 and 6. Intended results are Single, Group, Group. Copied results are Single, Single, Group. Start 4 exposes the equality fault. Restore at least 5 and rerun all three, retaining starts 3 and 5 as previously passing regression cases."
+    },
+    {
+      "id": "W5",
+      "title": "Make a defensible completion claim",
+      "prompt": "After repairing W4, all three chosen tests pass. Write a short report with the fault, the exact repair, the three inputs and expected outputs, and what those passing tests establish. Explain why saying every possible error is now impossible would go beyond the evidence.",
+      "lines": 6,
+      "answer": "The copied rule excluded equality. Change above 5 to at least 5 after the add 1 step. Tests 3, 4 and 5 now report Single, Group and Group. The repair passes these checks around this boundary and retains the tested neighbouring behaviour. Other inputs, missing values or unrelated implementation faults were not established by these three tests."
+    }
+  ],
+  "teacher": {
+    "background": "Use debugging as evidence-based investigation of a stated procedure. Distinguish finding the first observed divergence from establishing a unique root cause. The arithmetic examples show that two faults can fit one result and that a test may separate two explanations while still missing a different fault. Use paper traces and preserve the original failing case throughout repair.",
+    "materials": [
+      "The points-machine specification and its observed trace on separate cards",
+      "An expected and observed trace sheet with an instruction-version field",
+      "Cards for add 4 and add original start, plus the ticket rule for independent assessment"
+    ],
+    "sessions": [
+      [
+        "Session 1 start 0 to 7 minutes",
+        "Retrieve the complete loop trace. Emphasise that the false test is a checkpoint that must be recorded."
+      ],
+      [
+        "7 to 20 minutes",
+        "Work the points-machine specification before revealing the observed run. Align checkpoints and find the first mismatch at the doubling step."
+      ],
+      [
+        "20 to 33 minutes",
+        "Compare add 4 with add original start. Predict outcomes from 2 before showing any observations. Explain the limits of choosing between two proposed causes."
+      ],
+      [
+        "33 to 45 minutes",
+        "Complete W1 and W2 in pairs. Ask why a passing result from start 1 does not remove the failure from start 3."
+      ],
+      [
+        "Session 2 start 0 to 8 minutes",
+        "Use W3 to distinguish repairing an instruction from replacing a reported answer. Retrieve the need for an unchanged specification."
+      ],
+      [
+        "8 to 23 minutes",
+        "Complete the guided repair and write expected retest results. Keep a record of the original failing case and prior passing cases."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently. Check that starts are chosen before the add 1 step, so equality is reached from start 4."
+      ],
+      [
+        "38 to 45 minutes",
+        "Use W5 and the exit to practise a limited, evidence-based completion claim. Preview fitting a rule from examples next week."
+      ]
+    ],
+    "guidedAnswer": "Add 4 fits both reported results: from 4, 7 plus 4 minus 2 is 9; from 2, 5 plus 4 minus 2 is 7. Adding the original start predicts 5 on the second run and is inconsistent. Inspect the actual middle instruction. If it says add 4, restore double the current score and expect 12 from start 4 and 8 from start 2; also check start 5 gives 14. This distinguishes the proposed faults without claiming no other cause exists. Exit: start 7. Below 7 runs zero times and reports 7; at most 7 adds 2 once and reports 9.",
+    "misconceptions": [
+      [
+        "The last wrong number locates the fault",
+        "Compare every aligned checkpoint; an early mismatch can cause several later wrong values."
+      ],
+      [
+        "One revealing test proves the only possible cause",
+        "List the explanations actually compared. A different, untested fault may make the same prediction."
+      ],
+      [
+        "A correct answer on one input proves the repair",
+        "Use the constant-report example and rerun original failing and previously passing cases."
+      ],
+      [
+        "Expected results should follow observed results",
+        "Calculate expectations from the specification first. Clarify genuine specification changes explicitly rather than hiding a failure."
+      ]
+    ],
+    "assessment": "W4 is secure when the learner chooses starts 3, 4, 5, tests the updated values, explains equality, repairs the comparator and retains both neighbouring cases. W5 must limit the claim to the tested evidence. After support, retry add 2 then if current is at most 6 report A otherwise B, with a below 6 fault. Starts 3, 4, 5 should produce A, A, B; the fault produces A, B, B.",
+    "support": "Provide aligned expected and observed columns and ask learners to point to the first unequal pair. Separate predicting a result from running the procedure. Extension: explain why start 1 in W2 is useful for comparing the two faults but cannot alone prove correct doubling.",
+    "next": "Week 13 introduces fitting a pattern from examples. Students will carry forward the need to state candidate rules, compare their predictions and keep fitting evidence distinct from later evaluation."
+  }
+}

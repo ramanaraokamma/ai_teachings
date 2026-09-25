@@ -1,0 +1,289 @@
+{
+  "level": "ai-1",
+  "week": 34,
+  "title": "Testing boundaries and varied conditions",
+  "minutes": 90,
+  "goals": [
+    "Choose tests just below, at and above a decision boundary",
+    "Distinguish valid no-match requests from invalid input",
+    "Use labelled catalogue variations to examine previously untested paths"
+  ],
+  "prerequisite": {
+    "prompt": "Why can four successful routine cases leave a mistake undiscovered?",
+    "answer": "They examine only the selected inputs and conditions. A mistake may affect equality, invalid input, another catalogue or a path that none of those cases reaches."
+  },
+  "vocabulary": [
+    [
+      "Boundary",
+      "A value where an input changes category or a condition changes truth"
+    ],
+    [
+      "Inclusive",
+      "Including the stated endpoint or equal value"
+    ],
+    [
+      "Invalid input",
+      "A value that does not meet the agreed input rules"
+    ],
+    [
+      "Test variation",
+      "A documented change in the conditions used for a test"
+    ],
+    [
+      "Coverage gap",
+      "A relevant condition or behaviour the current tests have not examined"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Test where an answer can change",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Routine examples can miss a mistake at an exact limit. This week you will choose revealing cases around those limits and vary the paper catalogue to reach later successful outputs. Write expected results from the requirements before operating the prototype. Keep its saved instructions and each test record so a failure remains useful evidence."
+        },
+        {
+          "type": "paragraph",
+          "text": "Catalogue B version 1 is unchanged: B1 Bookmark drawing, 10 minutes, quiet Yes; B2 Story circle, 8 minutes, quiet No; B3 Pattern puzzle, 12 minutes, quiet Yes; B4 Tower challenge, 15 minutes, quiet No. Search in that order. These fictional paper values assume materials are available. Inputs are whole minutes from 0 to 30 inclusive and Quiet required Yes or No. No allows quiet or nonquiet activities."
+        },
+        {
+          "type": "paragraph",
+          "text": "Time fits when required minutes are no more than available minutes, including equality. The quiet condition must also hold. Select the first fitting row with a correct reason, or report no match after every row fails. Invalid or missing input requires clarification before searching. P1 validates, resets to the first row, checks both conditions, advances after failure and stops at the first fit or catalogue exhaustion. No output books or publishes anything."
+        }
+      ]
+    },
+    {
+      "title": "Compare the two sides and the exact limit",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Three requests around ten minutes",
+          "columns": [
+            "Available time",
+            "Check B1 time",
+            "Result for quiet Yes"
+          ],
+          "rows": [
+            [
+              "9 minutes",
+              "10 is too long",
+              "No match in catalogue B"
+            ],
+            [
+              "10 minutes",
+              "10 fits exactly",
+              "Suggest B1"
+            ],
+            [
+              "11 minutes",
+              "10 fits with time left",
+              "Suggest B1"
+            ]
+          ],
+          "caption": "Keep Quiet required Yes and catalogue B version 1 fixed while changing available time."
+        },
+        {
+          "type": "paragraph",
+          "text": "For quiet requests, 10 minutes is the first time a catalogue activity fits. Test 9, 10 and 11 with Yes so only the time changes. A faulty comparison S version 0 uses strictly less than instead of no more than for time, while keeping the other P1 rules. It rejects B1 at exactly 10. With quiet required, every later row also fails, so it incorrectly reports no match."
+        },
+        {
+          "type": "paragraph",
+          "text": "S can pass all four routine requests from Week 33: 11 Yes, 9 No, 6 No and 9 Yes. None has a fitting activity whose duration equals the request. The 10 Yes case reveals a gap those passes did not close. Another useful boundary is 8 minutes with No: equality should allow B2, while 7 No has no match. Keep both quiet values in your wider plan because No does not mean nonquiet only."
+        }
+      ]
+    },
+    {
+      "title": "Separate validation limits from activity limits",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Request using catalogue B",
+            "Expected response",
+            "Reason"
+          ],
+          "rows": [
+            [
+              "0 minutes Yes",
+              "No match",
+              "Zero is valid; every activity needs more time"
+            ],
+            [
+              "30 minutes Yes",
+              "B1 with a matching reason",
+              "30 is valid; B1 is the first fit"
+            ],
+            [
+              "31 minutes Yes",
+              "Clarify minutes; no search",
+              "31 is outside the accepted range"
+            ],
+            [
+              "Blank minutes with Yes",
+              "Clarify minutes; no search",
+              "The time field is missing"
+            ],
+            [
+              "10.5 minutes Yes",
+              "Clarify minutes; no search",
+              "The accepted time must be a whole number"
+            ],
+            [
+              "10 minutes with blank quiet",
+              "Clarify quiet; no search",
+              "Choose Yes or No before searching"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The accepted range and activity durations are different kinds of boundary. Zero belongs to the valid range even though no activity fits. Thirty also belongs to it. A negative time, such as minus one minute, is below zero and invalid. Do not change a blank to zero, round 10.5 to 10 or turn a blank quiet choice into No. Ask for the field to be corrected and start a new validated run."
+        },
+        {
+          "type": "paragraph",
+          "text": "A test record should say whether a search is expected to begin. Clarification should name the field needing correction; it should not claim the catalogue has no suitable activity. Test an unrecognised quiet value such as Maybe as well as a missing value. These check different forms of unusable input."
+        }
+      ]
+    },
+    {
+      "title": "Vary the catalogue to reach a later success",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "In B version 1, earlier B1 always fits whenever B3 or B4 could be chosen. To test a successful later-row path, make a labelled copy of the catalogue. Keep the input rules, both compatibility conditions and first-match rule unchanged. Both the prototype and manual baseline must read the same test copy. Do not overwrite the original catalogue or reuse its expected answers for the changed data."
+        },
+        {
+          "type": "paragraph",
+          "text": "Test copy B version 2 changes only B1\u2019s duration from 10 to 20 minutes. All other rows, quiet labels and order stay as in version 1. For 12 Yes, B1 is now too long, B2 is not quiet, and B3 fits exactly and is quiet. The expected first suggestion is B3. This checks a third-row success and equality under a documented variation."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Make test copy B version 3 with durations B1 20, B2 18, B3 17 and B4 15 minutes. Keep the original quiet labels and order. For 15 No, trace the rows and give the required output and reason. Then use 15 Yes with the same copy. Explain why the outcomes differ and what must be written on both test records.",
+          "lines": 7
+        }
+      ]
+    },
+    {
+      "title": "Keep the expanded evidence interpretable",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Label each case by its purpose: time equality, accepted-range endpoint, invalid field or catalogue variation. Record the exact catalogue version and request, the expected output and explanation, and what actually happened. Compare the prototype with the manual baseline under identical conditions. Count every attempted case, retain failures, and distinguish cases not yet run from successful tests."
+        },
+        {
+          "type": "paragraph",
+          "text": "These are development tests that can guide repairs. Keep any final evaluation cases reserved by your teacher separate until the prototype version is fixed for evaluation. Even a broad development set does not establish real-world enjoyment, material availability or speed. Next week you will repair a located defect and check whether the change breaks behaviour that worked before."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "S passes the four routine cases but fails 10 Yes by reporting no match. Explain which comparison to inspect and why changing the expected answer to no match would be wrong. Give one additional equality case and one invalid-input case, including their expected outcomes.",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Plan the equality tests",
+      "prompt": "For catalogue B version 1, write expected outputs and reasons for 9 Yes, 10 Yes and 11 Yes. Explain why keeping quiet and catalogue fixed helps examine the time boundary. Predict what the faulty strictly-less-than S comparison does for 10 Yes.",
+      "lines": 6,
+      "answer": "9 Yes has no match: B1 and B3 are too long and B2 is not quiet; B4 also fails. 10 Yes and 11 Yes select B1, which is quiet and fits at equality or with time left. Fixing the other conditions isolates the time comparison. S rejects equality at B1 and cannot find a later fit for 10 Yes, so incorrectly returns no match."
+    },
+    {
+      "id": "W2",
+      "title": "Check the validation boundary",
+      "prompt": "Classify these requests before searching: 0 Yes, 30 Yes, 31 Yes, blank minutes with Yes, 10.5 Yes, and 10 Maybe. Give each expected output or clarification and explain whether any candidate should be checked. Why must zero not be treated like a blank?",
+      "lines": 6,
+      "answer": "0 Yes is valid and checks all rows before no match. 30 Yes is valid and selects B1 at the first row. 31, blank minutes and 10.5 require minutes clarification; 10 Maybe requires a Yes or No quiet choice. Invalid cases check zero candidates. Zero is a supplied whole number within range; blank is missing information."
+    },
+    {
+      "id": "W3",
+      "title": "Run a labelled catalogue variation",
+      "prompt": "Copy B version 1 and change only B1\u2019s duration to 20, labelling it B version 2. Write the expected result for 12 Yes, then run your saved P1 and the manual baseline on this copy. Record the actual traces separately. Explain why an answer checked against B version 1 would not be a fair judgement of this run.",
+      "lines": 6,
+      "answer": "Expected B3: B1 takes too long, B2 fails quiet, B3 fits 12 exactly and is quiet. Correct P1 and baseline agree, but retain actual disagreements for investigation. Under version 1 the expected first fit is B1, so using that expectation with changed data would mix conditions. Save catalogue and instruction versions with both traces."
+    },
+    {
+      "id": "W4",
+      "title": "Find an independent capacity boundary",
+      "prompt": "A new equipment selector lists E1 first, capacity 4; E2 second, capacity 8. Valid group size is a whole number from 1 to 10. Choose the first item whose capacity is at least the group size, or no match; invalid input needs clarification. A faulty version uses capacity strictly greater than group size. Independently give correct and faulty outputs for groups 3, 4 and 5, then for group 8. Explain the defect and give the correct response to group 0. No booking occurs.",
+      "lines": 8,
+      "answer": "Correct outputs for 3, 4, 5 and 8 are E1, E1, E2 and E2. Faulty outputs are E1, E2, E2 and no match. Equality is wrongly excluded at capacities 4 and 8. Use capacity at least group size, including equality. Group 0 is outside the accepted 1 to 10 range and needs clarification before any search. This range differs from the activity time range."
+    },
+    {
+      "id": "W5",
+      "title": "Audit what changed in the test",
+      "prompt": "A team runs 15 No on B version 3, gets B4, but records \u201cB version 1\u201d and calls B4 correct. Explain the documentation error and the expected result under each catalogue. State what must stay the same in a fair prototype-versus-baseline comparison and why a test not yet run cannot be counted as a pass.",
+      "lines": 6,
+      "answer": "For version 3, B1 20, B2 18 and B3 17 are too long; B4 15 fits and quiet is unrestricted, so B4 is correct. Under version 1, earlier B1 fits and must be selected. Correct the catalogue label while preserving what was actually used and observed. Both methods need the same request, catalogue and pass criterion. An unrun case has no observed evidence, so cannot be counted as passing."
+    }
+  ],
+  "teacher": {
+    "background": "Boundary testing returns to inclusive comparisons and validation using the capstone context. S version 0 is a deliberately faulty comparison example, not the correct P1 implementation. It can pass the earlier routine set while rejecting exact duration fits. Catalogue variations test later successful paths that the original data cannot reach. Preserve the distinction between changing data, changing requirements and changing implementation; the variations here change only declared catalogue values.",
+    "materials": [
+      "Saved P1 instructions and catalogue B version 1, plus separate labelled copies for versions 2 and 3",
+      "Test records with purpose, versions, input, expected result, observed result, judgement and trace",
+      "Paper cards for the independent equipment selector and a folder retaining every attempted run"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve why routine-case success can leave coverage gaps."
+      ],
+      [
+        "7 to 20 minutes",
+        "Use the diagram and W1 to compare below, at and above ten minutes."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W2; distinguish accepted range endpoints from activity duration limits."
+      ],
+      [
+        "33 to 45 minutes",
+        "Prepare B version 2 and begin W3 expected results and partner traces."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Finish W3 and verify both methods used the same catalogue copy."
+      ],
+      [
+        "8 to 23 minutes",
+        "Trace guided version 3 requests and discuss purpose and version labels."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently before support; inspect both equality cases and validation."
+      ],
+      [
+        "38 to 45 minutes",
+        "Complete W5 and the exit; save the expanded development set for repair checks."
+      ]
+    ],
+    "guidedAnswer": "For B version 3 and 15 No, B1 20, B2 18 and B3 17 fail time. B4 15 fits exactly and quiet is unrestricted, so select B4 and stop. For 15 Yes, B4 fails quiet and all earlier rows fail time, so no match after all four. Record B version 3, the saved instruction version, exact request, expected and observed output with reasons, and trace. Exit: inspect strictly less than versus no more than; the specification includes equality, so expected 10 Yes remains B1. Another equality case is 8 No, expected B2. Invalid 31 Yes requires minutes clarification before searching.",
+    "misconceptions": [
+      [
+        "At the limit means outside the rule",
+        "An inclusive rule accepts its endpoints and equality."
+      ],
+      [
+        "No match and invalid mean the same thing",
+        "No match follows valid input; invalid fields need clarification before search."
+      ],
+      [
+        "A catalogue change needs the same expected answer",
+        "Recompute expectations from the declared new data and unchanged requirements."
+      ],
+      [
+        "More routine repetitions close every gap",
+        "Choose cases that exercise a missing condition or path."
+      ]
+    ],
+    "assessment": "W4 should distinguish correct E1, E1, E2, E2 from faulty E1, E2, E2, no match for 3, 4, 5, 8. Require an inclusive-capacity explanation and clarification for zero, not the activity task\u2019s valid-zero rule. After support, use a new catalogue F1 capacity 5 then F2 capacity 9 with the same 1 to 10 input range. For groups 5 and 9, correct F1 and F2; strict comparison gives F2 and no match. Require an independent explanation of both changes.",
+    "support": "Draw a number line around each boundary and read at least or no more than aloud. Keep validation and candidate checks on separate cards. Provide version-label headings without filling expected results. Extension: contrast a catalogue reorder with a duration change and explain how the first-match requirement remains unchanged in both.",
+    "next": "Week 35 repairs a documented defect, reruns revealing cases and checks earlier successful cases for regressions before fixing a version for final evaluation."
+  }
+}

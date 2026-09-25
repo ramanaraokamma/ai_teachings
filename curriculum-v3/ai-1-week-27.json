@@ -1,0 +1,279 @@
+{
+  "level": "ai-1",
+  "week": 27,
+  "title": "Verifying claims and quantities",
+  "minutes": 90,
+  "goals": [
+    "Separate an answer into claims and connect each claim to relevant evidence",
+    "Recalculate quantities with consistent units and a reasonableness check",
+    "Report supported, contradicted and unresolved claims without inventing missing evidence"
+  ],
+  "prerequisite": {
+    "prompt": "A response follows the requested four-line format but invents a missing start time. Has it passed the task? Explain.",
+    "answer": "No. Format and factual support are separate criteria. A correct layout cannot make an unsupported time acceptable."
+  },
+  "vocabulary": [
+    [
+      "Claim",
+      "A statement that can be examined against evidence"
+    ],
+    [
+      "Verification",
+      "Checking whether a claim is supported by appropriate evidence"
+    ],
+    [
+      "Citation",
+      "A reference that helps a reader locate a source"
+    ],
+    [
+      "Unit",
+      "The agreed measurement scale attached to a quantity, such as centimetres"
+    ],
+    [
+      "Corroboration",
+      "Additional evidence that supports a claim, with its origin checked"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Split a polished answer into smaller claims",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "An answer can contain a mixture of correct, incorrect and unverified statements. Checking one sentence does not validate every other sentence. First separate the answer into individual claims. Then ask what evidence would support each one: a record, a measurement, a calculation or some combination."
+        },
+        {
+          "type": "paragraph",
+          "text": "Our fictional ribbon activity uses current materials card R. R states: four rolls of ribbon, each exactly 2 metres long; twelve pieces will each use 50 centimetres; no cutting loss is included in this paper model. One metre equals 100 centimetres. An old card Q describes a different activity with three rolls. These are provided classroom records, not instructions to cut real materials."
+        },
+        {
+          "type": "paragraph",
+          "text": "A draft says \u201cR gives four rolls. The starting length is 8 metres. The pieces use 600 metres. Two metres remain. Every participant will enjoy the activity.\u201d Do not approve or reject the whole paragraph at once. Inspect the roll count, starting length, used length, remaining length and enjoyment claim separately."
+        }
+      ]
+    },
+    {
+      "title": "Follow the claim to the actual evidence",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Different claims need different checks",
+          "columns": [
+            "Claim",
+            "Evidence path",
+            "Decision"
+          ],
+          "rows": [
+            [
+              "Four rolls",
+              "Read current card R",
+              "Supported"
+            ],
+            [
+              "8 metres at start",
+              "4 rolls \u00d7 2 metres",
+              "Supported"
+            ],
+            [
+              "600 metres used",
+              "12 \u00d7 50 cm = 600 cm",
+              "Wrong unit"
+            ],
+            [
+              "Everyone will enjoy it",
+              "No enjoyment evidence",
+              "Unresolved"
+            ]
+          ],
+          "caption": "A correct source reference is a starting point. Read what the record actually says and check every derived quantity."
+        },
+        {
+          "type": "paragraph",
+          "text": "A citation is useful only if you can locate the source and confirm that it supports the specific claim. The title \u201cMaterials card R\u201d beside a paragraph does not make the enjoyment claim part of R. If a cited card Z is not supplied or cannot be found, that citation cannot currently verify its claim. Record the gap rather than inventing Z\u2019s contents."
+        },
+        {
+          "type": "paragraph",
+          "text": "Check whether the source covers the right activity, version, population or time. Q\u2019s three rolls may be accurate for its own activity but irrelevant to the current four-roll task. In real work, also inspect who created the record, how they obtained the information and whether there is a correction or better source."
+        }
+      ]
+    },
+    {
+      "title": "Carry units through the whole calculation",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Quantity",
+            "Calculation in centimetres",
+            "Equivalent in metres"
+          ],
+          "rows": [
+            [
+              "Starting length",
+              "4 \u00d7 200 cm = 800 cm",
+              "8 m"
+            ],
+            [
+              "Length used",
+              "12 \u00d7 50 cm = 600 cm",
+              "6 m"
+            ],
+            [
+              "Length remaining",
+              "800 cm \u2212 600 cm = 200 cm",
+              "2 m"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Convert to one length unit before subtracting. Two metres is 200 centimetres, so four rolls give 800 centimetres. The twelve pieces use 600 centimetres, leaving 200 centimetres, or 2 metres. Subtracting the bare numbers 8 \u2212 600 would mix metres with centimetres and would not describe the remaining length correctly."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use a second route as a check: 50 centimetres is half a metre, so twelve pieces use six metres. Eight minus six leaves two metres. A reasonableness check also asks whether the used length is at most the starting length and whether starting length equals used plus remaining. These checks can reveal mistakes; they do not replace checking the original inputs and assumptions."
+        }
+      ]
+    },
+    {
+      "title": "Keep absence of evidence distinct from contradiction",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The claim \u201c600 metres used\u201d conflicts with the stated inputs and calculation. The claim \u201ceveryone will enjoy it\u201d is not supported by R or by any supplied enjoyment evidence. That does not establish that nobody will enjoy it. State \u201cnot verified from these records\u201d rather than changing an unsupported positive claim into an unsupported negative claim."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Audit the draft from section one. For each of its five claims, state supported, contradicted or unresolved under the supplied evidence. Correct the used-length claim and explain why the correct remaining-length claim still needs its own calculation",
+          "lines": 7
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose three posters repeat the same number and each copied it from one unverified draft. That is three copies of one claim, not three independent measurements. Follow references back to their origin. A separate check of R and the arithmetic provides more useful evidence than counting copies that repeat the same mistake."
+        }
+      ]
+    },
+    {
+      "title": "Write a correction that another reader can check",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A useful correction names the original claim, relevant source, calculation with units and revised conclusion. For example: R lists four 2-metre rolls and twelve 50-centimetre pieces. The pieces use 600 centimetres, or 6 metres; the paper model leaves 2 metres when no cutting loss is included. This preserves the condition on which the result depends."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the real activity loses ribbon at each cut, the no-loss result cannot simply be reused. Obtain that missing information or label the answer as a model with an explicit assumption. Similarly, if you cannot access a source, mark the claim unresolved and identify what evidence would settle it. Repeating a confident answer is not a new measurement."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "In a changed paper model, each of the twelve pieces uses 50 cm and an extra 2 cm is lost for each piece. Calculate the total loss and the remaining ribbon from the same four rolls. State which assumption changed",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Separate source facts from derived quantities",
+      "prompt": "Using R, identify a directly stated fact and a quantity that must be calculated. Give the source or expression for each. Explain why a citation to R does not verify the claim that every participant will enjoy the activity.",
+      "lines": 6,
+      "answer": "A directly stated fact is four rolls, 2 m per roll or twelve 50 cm pieces. A derived quantity is 8 m starting length, 6 m used or 2 m remaining, supported by the relevant calculation from R. R contains no enjoyment evidence, so citing it does not support everyone enjoying the activity."
+    },
+    {
+      "id": "W2",
+      "title": "Repair a unit error",
+      "prompt": "A report calculates 12 \u00d7 50 = 600 and labels the result metres. Use R to correct the unit, convert the result to metres and calculate the remaining length. Give a second arithmetic route or a check using starting, used and remaining lengths.",
+      "lines": 6,
+      "answer": "Each piece is 50 cm, so 12 \u00d7 50 cm = 600 cm = 6 m. Starting length is 4 \u00d7 2 m = 8 m; remaining is 8 \u2212 6 = 2 m. A check is 6 m used + 2 m remaining = 8 m starting; alternatively twelve half-metre pieces use 6 m."
+    },
+    {
+      "id": "W3",
+      "title": "Do not count copied claims as separate evidence",
+      "prompt": "Three posters say 600 metres were used, but all copied one draft. A fourth poster cites card Z, which is unavailable. Explain why these posters do not settle the quantity. Name the available evidence and check you would use instead.",
+      "lines": 6,
+      "answer": "The first three are copies of one claim, not independent evidence. Z cannot be inspected, so the fourth citation cannot currently verify the result. Inspect supplied R and recompute twelve 50 cm pieces as 600 cm or 6 m; verify source, units and the no-loss assumption."
+    },
+    {
+      "id": "W4",
+      "title": "Audit a new model with mass units",
+      "prompt": "Fictional craft card M states five sealed bags of modelling material at exactly 250 g per bag. Three models each use 300 g, with no other loss. A draft says \u201cM supplies 1250 g; the models use 900 g; 350 kg remains; every model will win a prize.\u201d Check all four claims, show the remaining mass in grams, and explain the status of the prize claim. Use 1 kg = 1000 g.",
+      "lines": 8,
+      "answer": "1250 g is supported by 5 \u00d7 250 g; 900 g is supported by 3 \u00d7 300 g. Remaining mass is 1250 \u2212 900 = 350 g, so 350 kg is contradicted by the inputs and unit conversion: 350 kg would be 350000 g, greater than the starting mass. The prize claim is unresolved because M gives no prize evidence; it is not established true or false by the material counts."
+    },
+    {
+      "id": "W5",
+      "title": "State what a missing source prevents you from knowing",
+      "prompt": "Another draft claims that the amount left in W4 accounts for all real-world waste, citing a missing instruction card. Explain which result can still be checked from M and which claim remains unresolved. What information would be needed before revising the no-loss model?",
+      "lines": 6,
+      "answer": "The no-other-loss model in M can be checked: 350 g remains under its stated assumptions. The assertion that this includes all real-world waste is unresolved without relevant waste information. Obtain the actual instruction or measurement record specifying additional loss, its units and what stage it covers; do not invent a waste amount or subtract it twice."
+    }
+  ],
+  "teacher": {
+    "background": "Use the supplied fictional source cards to keep the activity accessible offline and separate evidence checking from internet search skill. Supported and contradicted are judgments relative to stated evidence and assumptions; unresolved is not a synonym for false. Emphasise that identical repeated claims may share one origin. This lesson checks exact paper models, not uncertain physical measurements.",
+    "materials": [
+      "Current ribbon card R and old card Q details in the lesson",
+      "A metre strip marked into 100 centimetres or a paper drawing of one",
+      "The independent craft card M in W4 and paper for claim-by-claim audit notes"
+    ],
+    "sessions": [
+      [
+        "Session 1 start 0 to 7 minutes",
+        "Retrieve format versus factual support from Week 26."
+      ],
+      [
+        "7 to 20 minutes",
+        "Split the ribbon draft into five claims and complete W1."
+      ],
+      [
+        "20 to 33 minutes",
+        "Trace the evidence diagram and work through centimetres and metres."
+      ],
+      [
+        "33 to 45 minutes",
+        "Complete W2 and check used plus remaining against starting length."
+      ],
+      [
+        "Session 2 start 0 to 8 minutes",
+        "Retrieve why unresolved does not mean false."
+      ],
+      [
+        "8 to 23 minutes",
+        "Complete the guided audit and W3. Trace repeated claims to their common origin."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently, requiring calculations, units and separate claim judgments."
+      ],
+      [
+        "38 to 45 minutes",
+        "Complete W5 and the changed-loss exit; retain the changed assumption."
+      ]
+    ],
+    "guidedAnswer": "Four rolls: supported by R. Starting 8 m: supported by 4 \u00d7 2 m. Used 600 m: contradicted; it is 600 cm = 6 m. Remaining 2 m: supported by 8 \u2212 6, with no cutting loss. Everyone enjoys it: unresolved. Correctness of one number does not validate another; show each calculation. Exit: loss is 12 \u00d7 2 cm = 24 cm. Remaining is 800 \u2212 600 \u2212 24 = 176 cm. The no-cutting-loss assumption changed.",
+    "misconceptions": [
+      [
+        "A citation proves every nearby claim",
+        "Inspect the actual source and the specific claim it supports."
+      ],
+      [
+        "The number is enough without a unit",
+        "600 cm and 600 m differ by a factor of 100."
+      ],
+      [
+        "An unsupported claim must be false",
+        "Unresolved means the supplied evidence does not settle it."
+      ],
+      [
+        "Three copied claims are three independent checks",
+        "Find the origin and seek an independent record or calculation."
+      ]
+    ],
+    "assessment": "W4 requires 1250 g, 900 g, 350 g remaining, rejection of 350 kg with a unit or size explanation, and an unresolved prize claim. After support change each model to use 350 g: require 1050 g used and 200 g remaining, still no evidence about prizes. Confirm that pupils change the affected quantities without changing unrelated claims.",
+    "support": "Use a claim/evidence/decision frame and write units beside every number. Model the 100 cm to 1 m conversion before combining quantities. Extension: explain why a plausible-looking answer can pass a size check yet still be wrong, using a different incorrect remaining length.",
+    "next": "Week 28 distinguishes checking whether an action is sensible from checking who has authority to approve it."
+  }
+}

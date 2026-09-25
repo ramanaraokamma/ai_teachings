@@ -1,0 +1,278 @@
+{
+  "level": "ai-1",
+  "week": 9,
+  "title": "Algorithms and changing state",
+  "minutes": 90,
+  "goals": [
+    "Trace an ordered algorithm using the current value after every instruction",
+    "Explain how changing the initial state or instruction order can change the result",
+    "Locate the first incorrect update and distinguish copying a value from linking two variables"
+  ],
+  "prerequisite": {
+    "prompt": "Two cards have the same recorded length but different widths and labels. Why can the length-only record fail to distinguish them?",
+    "answer": "The selected record hides width, which this task needs. Identical length-only inputs can require different labels. We must retain the relevant information instead of expecting a later process to recover it with certainty."
+  },
+  "vocabulary": [
+    [
+      "Algorithm",
+      "A precise procedure for carrying out a task"
+    ],
+    [
+      "Variable",
+      "A named place for a value that can be updated"
+    ],
+    [
+      "State",
+      "The current values being tracked at a particular point in a process"
+    ],
+    [
+      "Initial state",
+      "The values before the first instruction is carried out"
+    ],
+    [
+      "Trace",
+      "A record of the state as instructions are carried out in order"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Instructions act on the current state",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A classroom score display starts with the number 4. Its instructions are: add 3 to score; double score; subtract 2 from score; report score and stop. What number should it report? Before doing the arithmetic, name the value being tracked and write its starting value. Here the variable is score and the initial state is score 4."
+        },
+        {
+          "type": "paragraph",
+          "text": "An algorithm gives precise instructions for a task. In this chapter each instruction is carried out once, in the written order. An update replaces the current value. After adding 3, score is 7. The next instruction therefore doubles 7, not the original 4. Keeping only the starting value in mind is a common source of errors."
+        },
+        {
+          "type": "paragraph",
+          "text": "A variable name stays the same while its value may change. Think of score as the label on an erasable number box. Updating the box does not keep all earlier numbers inside it. A separate trace preserves those earlier states so we can explain how the result was reached. This score procedure follows fixed arithmetic instructions; it does not learn from examples."
+        }
+      ]
+    },
+    {
+      "title": "Record every transition in a trace",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Write the initial state first. For each instruction, read the latest value, perform the operation, and record the new state. A transition is the change from one recorded state to the next."
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow the current score through three updates",
+          "columns": [
+            "State before",
+            "Instruction",
+            "State after"
+          ],
+          "rows": [
+            [
+              "Score is 4",
+              "Add 3 to score",
+              "Score becomes 7"
+            ],
+            [
+              "Score is 7",
+              "Double score",
+              "Score becomes 14"
+            ],
+            [
+              "Score is 14",
+              "Subtract 2 from score",
+              "Score becomes 12"
+            ]
+          ],
+          "caption": "Read the rows from top to bottom. Each row starts with the state produced by the previous row. Reporting the final score gives 12; reporting does not change the value."
+        },
+        {
+          "type": "paragraph",
+          "text": "In words, double score means calculate twice its current value and store that result in score. Add 3 to score means increase the current value by 3. Set score to 3 means replace it with 3 instead. These instructions sound similar but do different things: if score is 7, adding 3 produces 10, while setting it to 3 produces 3."
+        },
+        {
+          "type": "paragraph",
+          "text": "A trace is evidence of one execution from one initial state. To compare two procedures fairly, keep the initial state the same and list every intermediate value. Then you can point to the first difference instead of only comparing the final numbers."
+        }
+      ]
+    },
+    {
+      "title": "Order matters and copies do not stay linked",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Stage from score 4",
+            "Add then double",
+            "Double then add"
+          ],
+          "rows": [
+            [
+              "After first instruction",
+              "Add 3 gives 7",
+              "Double gives 8"
+            ],
+            [
+              "After second instruction",
+              "Double gives 14",
+              "Add 3 gives 11"
+            ],
+            [
+              "After subtracting 2",
+              "Report 12",
+              "Report 9"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Both procedures use add 3, double and subtract 2, but the first two operations are exchanged. Doubling after the addition also doubles the extra 3. Adding afterward does not. The final difference comes from the order, even though both procedures started at 4."
+        },
+        {
+          "type": "paragraph",
+          "text": "Now use two number boxes: A starts at 2 and B starts at 0. Copy the current value of A into B, then add 5 to A. After the copy, A is 2 and B is 2. After the addition, A is 7 and B remains 2. Copying stores the value at that moment; it does not create a lasting connection between these number boxes. Record both values after each instruction, including the one that did not change."
+        }
+      ]
+    },
+    {
+      "title": "Find the first incorrect update",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A learner traces the score procedure as 4, 7, 8, 6. The first update is correct: 4 plus 3 is 7. The first error is the next update: double should use the current 7 and produce 14, but the learner doubled the starting 4. Correct that step and recompute the later subtraction, giving 12. Changing only the final answer would hide the faulty reasoning."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Start score at 5. Add 2 to score, double score, then subtract 1. Write the initial state and every later state. Explain which value is doubled and why",
+          "lines": 6
+        },
+        {
+          "type": "paragraph",
+          "text": "If two traces disagree, compare the initial state before blaming an instruction. If the starting values match, compare the states in order and stop at the first difference. Check the instruction used there, repair it if needed, and continue from the corrected state."
+        }
+      ]
+    },
+    {
+      "title": "State what a successful run establishes",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A final value does not reveal every step that produced it. Starting at 10, adding 2 then subtracting 2 reports 10. Adding 4 then subtracting 4 also reports 10. The intermediate states differ. If a task requires a particular procedure, the final answer alone cannot establish that the required steps were followed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before running an algorithm, state its initial values, the meaning and order of each instruction, and when to report and stop. Our short procedures stop after their listed steps. A correct trace shows what those instructions do for the given start; it does not establish that the procedure solves every possible task or that a real-world display was measured correctly."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Two learners use the same instruction list but report different final scores. Name two things to compare before deciding which trace is wrong, and explain how a trace helps",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Trace the current value",
+      "prompt": "Start score at 3. Add 4 to score, double score, then subtract 5. Record the initial state and the state after each instruction. Underline the number used by the doubling step and explain where it came from.",
+      "lines": 6,
+      "answer": "The trace is 3, 7, 14, 9. The doubling step uses 7, the current value after adding 4 to 3. It must not double the initial 3. Accept a table, arrows or clearly labelled sentences that preserve the order."
+    },
+    {
+      "id": "W2",
+      "title": "Distinguish replacement from addition",
+      "prompt": "Two procedures start score at 6. Procedure A sets score to 4, then adds 2. Procedure B adds 4 to score, then adds 2. Trace both and explain why the first instructions are different.",
+      "lines": 6,
+      "answer": "A traces 6, 4, 6. B traces 6, 10, 12. Setting replaces the current value with 4; adding increases the current 6 by 4. The procedures therefore have different intermediate and final states."
+    },
+    {
+      "id": "W3",
+      "title": "Repair the first error",
+      "prompt": "A procedure starts score at 6, adds 2, doubles score, then subtracts 3. A trace says 6, 8, 12, 9. Identify the first wrong transition, explain the likely mistake and write a complete corrected trace. Why is changing only the last value inadequate?",
+      "lines": 6,
+      "answer": "The transition from 8 to 12 is the first error. It appears to double the initial 6 instead of the current 8. The correct trace is 6, 8, 16, 13. Changing only the last value leaves the incorrect update unexplained and does not show a valid execution."
+    },
+    {
+      "id": "W4",
+      "title": "Trace two changing number boxes",
+      "prompt": "For a new display, X starts at 4 and Y starts at 1. Copy the current X into Y; add 3 to X; double Y; report both and stop. Record X and Y initially and after each instruction. Explain why Y does not become 7 when X changes. Then swap the first two instructions and trace the new procedure from the same initial state.",
+      "lines": 8,
+      "answer": "Original trace in X,Y order: 4,1 then 4,4 then 7,4 then 7,8. Reporting leaves 7,8 unchanged. Copying captured X as 4; it did not link Y to later changes in X. With the first two instructions swapped: 4,1 then 7,1 then 7,7 then 7,14. The changed order makes the copy capture 7 instead of 4."
+    },
+    {
+      "id": "W5",
+      "title": "Test what a final answer can prove",
+      "prompt": "The required procedure starts score at 10, adds 2 and subtracts 2. A learner instead adds 4 and subtracts 4. Both report 10. Write both traces and explain whether matching the final result proves that the learner followed the required procedure.",
+      "lines": 6,
+      "answer": "Required trace: 10,12,10. Learner trace: 10,14,10. Matching the final value does not prove the required procedure was followed; the intermediate states and instructions differ. Inspecting the trace reveals the discrepancy even though the final result matches."
+    }
+  ],
+  "teacher": {
+    "background": "This week develops precise sequential execution with small whole-number values. An algorithm is a procedure; state consists of the current values being tracked. Make the transition from one variable to two explicit. Copying in these exercises means copying a number value, not linking boxes. Avoid presenting this as a claim about every programming-language object model. No software accounts are required, and a fixed arithmetic procedure is not evidence of learning from data.",
+    "materials": [
+      "An erasable box labelled Score and instruction cards for add, double, subtract, set, report and stop",
+      "Two erasable boxes labelled X and Y, and paper traces with Stage, X and Y columns",
+      "The independent W4 task on a separate sheet; counters may support addition before students trace without them"
+    ],
+    "sessions": [
+      [
+        "Session 1 start 0 to 7 minutes",
+        "Recall why a record must retain relevant information. Introduce score as a named box and write the initial value before the first update."
+      ],
+      [
+        "7 to 20 minutes",
+        "Model score 4 through add 3, double and subtract 2. Erase and replace the current value while retaining every old value in a separate trace."
+      ],
+      [
+        "20 to 33 minutes",
+        "Compare the reordered procedure from the same initial 4. Contrast set score to 3 with add 3 to score using a current value of 7."
+      ],
+      [
+        "33 to 45 minutes",
+        "Students complete W1 and W2. Ask them to identify the value each instruction reads, not just announce the final result."
+      ],
+      [
+        "Session 2 start 0 to 8 minutes",
+        "Model the A and B copy example: 2,0 becomes 2,2 then 7,2. Record unchanged values as well as updated ones."
+      ],
+      [
+        "8 to 23 minutes",
+        "Use W3 and the guided response to identify the first incorrect transition. Require later states to be recomputed from the repaired value."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently. Learners trace both instruction orders from the same start and explain why copying a number is not a lasting link."
+      ],
+      [
+        "38 to 45 minutes",
+        "Discuss W5 and the exit response. Show why an intermediate trace can distinguish procedures whose final values happen to match. Preview conditional instructions."
+      ]
+    ],
+    "guidedAnswer": "The guided trace is 5,7,14,13. Double reads 7 because the add-2 instruction has already replaced 5 with 7. For the exit response, compare the initial states and the meaning/order of the instructions, then compare successive recorded states. Different starts can give different correct results. With matching starts and instructions, the first differing transition identifies where to inspect the calculation or interpretation.",
+    "misconceptions": [
+      [
+        "Every instruction uses the original number",
+        "Point to the most recent trace entry. Double after add reads the updated number, not the initial one."
+      ],
+      [
+        "Set and add mean the same thing",
+        "Start at 6: setting to 4 gives 4 while adding 4 gives 10. Ask which value remains in the box."
+      ],
+      [
+        "Copying keeps number boxes linked",
+        "Copy A 2 into B, then change only A to 7. B still contains the copied number 2."
+      ],
+      [
+        "A matching final value proves the whole process",
+        "Compare 10,12,10 with 10,14,10. The final values match but the steps do not."
+      ]
+    ],
+    "assessment": "W4 is secure when both traces include both variables after each instruction, copying preserves the then-current value, and the swapped procedure correctly ends at X 7 and Y 14. A correct final pair without intermediate states is incomplete evidence. After support, retry from X 3 and Y 0 with copy X into Y, add 2 to X, double Y. The expected states are 3,0 then 3,3 then 5,3 then 5,6.",
+    "support": "Use a finger or token to mark the current instruction and provide a blank trace with one row per update. Let learners verbalise Read, calculate, replace, record. Allow oral explanations alongside the table. Extension: starting at 0, compare add 2 then double with double then add 2; explain why their difference remains 2 for any starting whole number.",
+    "next": "Week 10 adds conditions and boundary cases. Students will decide which instruction runs by testing the current state, then trace the selected update."
+  }
+}

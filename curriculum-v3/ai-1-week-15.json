@@ -1,0 +1,279 @@
+{
+  "level": "ai-1",
+  "week": 15,
+  "title": "Keeping final tests unseen",
+  "minutes": 90,
+  "goals": [
+    "Separate examples used to choose a model from examples reserved for its final evaluation",
+    "Record a fixed model and its predictions before revealing comparison labels",
+    "Explain how test feedback changes the evidence available for a revised model"
+  ],
+  "prerequisite": {
+    "prompt": "A height passes the input contract and the model predicts tall. What is still needed to check that prediction? If its comparison label changes your threshold choice, what role has that example played?",
+    "answer": "Compare the prediction with an appropriate recorded label. If the label helps choose the threshold, that example has participated in fitting or model selection; it is not independent evaluation evidence for the resulting model."
+  },
+  "vocabulary": [
+    [
+      "Development examples",
+      "Examples available for fitting, comparing or revising a model"
+    ],
+    [
+      "Held-out test set",
+      "Examples reserved from development for evaluating a fixed model"
+    ],
+    [
+      "Freeze",
+      "Record a model and stop changing it for a particular evaluation"
+    ],
+    [
+      "Test leakage",
+      "Information from a reserved test influencing model development"
+    ],
+    [
+      "Evaluation record",
+      "A record of the tested model, predictions, comparison labels and results"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Give development and testing different jobs",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A rule chosen to fit examples may work differently on new cases. To investigate that difference, reserve a set of examples before development. Use the development examples to choose the model. Keep the final test examples separate until the model is fixed, then evaluate that recorded model."
+        },
+        {
+          "type": "paragraph",
+          "text": "In this paper activity, a teacher keeps the reserved examples in an envelope. Record the input contract, feature, category rule and model version before opening it. Once the input values are revealed, predict using the frozen model before revealing their comparison labels. This prevents copying the labels into the predictions."
+        },
+        {
+          "type": "paragraph",
+          "text": "The worked example below describes a completed experiment, so its test labels are visible for discussion. It is not an unseen test for you. In the workbook experiment, the teacher will supply a separate set of comparison labels after you have saved your predictions. All data are imaginary classroom records."
+        }
+      ]
+    },
+    {
+      "title": "Follow the evidence through a completed experiment",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Different roles for development and final testing",
+          "columns": [
+            "Evidence available",
+            "Allowed step",
+            "Record to keep"
+          ],
+          "rows": [
+            [
+              "Development examples",
+              "Fit and select a model",
+              "Choice and its reasons"
+            ],
+            [
+              "Reserved inputs; labels hidden",
+              "Use the frozen model",
+              "Predictions and version"
+            ],
+            [
+              "Reserved labels revealed",
+              "Compare without revising",
+              "Results for that version"
+            ]
+          ],
+          "caption": "Read the rows in order. Information from the final comparison must not travel back into model selection while the result is still described as an independent final test of that model."
+        },
+        {
+          "type": "paragraph",
+          "text": "In the completed experiment, development towers at heights 2, 4, 6 and 8 cm have labels short, short, tall and tall. Candidates predict tall at or above 5 or 6 cm. Both fit all four labels; the stated smaller-threshold tie rule selects 5. The team freezes model TowerA with threshold 5."
+        },
+        {
+          "type": "paragraph",
+          "text": "The reserved inputs are different records at heights 3, 5, 7 and 9 cm. TowerA accepts whole cm heights from 1 through 10. It predicts short, tall, tall and tall. These predictions are saved before the reserved labels are opened. The comparison below records what happened, including the failure."
+        }
+      ]
+    },
+    {
+      "title": "Report the original test before making improvements",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Reserved height",
+            "Saved TowerA prediction",
+            "Revealed comparison label"
+          ],
+          "rows": [
+            [
+              "3 cm",
+              "Short",
+              "Short"
+            ],
+            [
+              "5 cm",
+              "Tall",
+              "Short"
+            ],
+            [
+              "7 cm",
+              "Tall",
+              "Tall"
+            ],
+            [
+              "9 cm",
+              "Tall",
+              "Tall"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "TowerA agrees on three of these four reserved examples and disagrees at 5 cm. That is evidence about this fixed model on this small set. It does not prove a success rate for every future tower. The labels, range of examples and way records were selected also matter."
+        },
+        {
+          "type": "paragraph",
+          "text": "After seeing the 5 cm label, the team changes the threshold to 6 and names the revision TowerB. TowerB agrees on all four of these now-seen examples. The change may be useful, but those examples have influenced its development. Four agreements on them are not an independent final test result for TowerB. Keep TowerA\u2019s original three-of-four record."
+        }
+      ]
+    },
+    {
+      "title": "Plan a fair next evaluation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Improvement after a test is allowed. State that the old test informed the revision, preserve both versions, and reserve fresh appropriate examples to evaluate the revised model independently. If none are available, report that limitation instead of inventing a fresh test result."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Write two result statements: one for TowerA on the original reserved set, and one for TowerB after the revision. Explain what must happen before a new independent evaluation of TowerB. Would shuffling the four old records make them unseen again",
+          "lines": 6
+        },
+        {
+          "type": "paragraph",
+          "text": "A test can lose independence even when you never copy its labels into a training table. Repeatedly trying thresholds and choosing the one with the best test score also uses test information to choose the model. Separate development comparisons from the final check."
+        }
+      ]
+    },
+    {
+      "title": "Check the limits of the reserved set",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Keeping a set unseen is necessary for this kind of independent check, but secrecy alone does not make it a good test. Four near-identical easy cases provide little evidence about varied cases. Copies of development records can also make a reserved set misleading even if their file names differ."
+        },
+        {
+          "type": "paragraph",
+          "text": "Define what future cases the model is meant to handle and choose evaluation examples that address that use. Keep related or copied records together when separating sets. Record invalid inputs and no prediction outcomes separately instead of quietly dropping them from the report. Later weeks examine coverage and performance comparisons in more detail."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A team tries ten thresholds, reads the reserved test score for each, and reports only the best score as its final unseen test. Explain the problem and give an honest description of what it has measured",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Assign the evidence its role",
+      "prompt": "For each event, state whether examples are being used for development or independent evaluation of a fixed model: comparing candidates on fitting labels; scoring a frozen model on previously reserved examples once; changing a threshold after reading a test score. Explain your last choice.",
+      "lines": 6,
+      "answer": "Comparing candidates is development. Scoring a frozen model on previously reserved examples is evaluation, provided they did not influence its development. Changing a threshold after reading the test score uses that test information for development of the revision; the same set is no longer independent of that revision."
+    },
+    {
+      "id": "W2",
+      "title": "Preserve the original result",
+      "prompt": "TowerA uses threshold 5 on reserved heights 3, 5, 7 and 9 cm. The labels are short, short, tall and tall. Write its predictions, agreements and disagreement. Then state why TowerB with threshold 6, selected after seeing these labels, cannot claim four independent test successes on these same records.",
+      "lines": 7,
+      "answer": "TowerA predicts short, tall, tall, tall: three agreements and one disagreement at 5. TowerB predicts short, short, tall, tall, matching all four, but the revealed labels influenced its selection. Report its four agreements as a result on examples used in development, preserving TowerA\u2019s original test record."
+    },
+    {
+      "id": "W3",
+      "title": "Detect a less visible leak",
+      "prompt": "A team leaves reserved labels out of its fitting table but tries six rules and reads a test score for each. It chooses the highest-scoring rule. Explain how information still reached model selection. Would renaming or reordering the same test records repair the problem?",
+      "lines": 6,
+      "answer": "The scores depend on the reserved labels and guide the choice among rules, so test information influences selection indirectly. Omitting the labels from a fitting table is insufficient. Renaming or reordering records does not remove that information; reserve new appropriate examples for an independent final check."
+    },
+    {
+      "id": "W4",
+      "title": "Run a separate ribbon experiment",
+      "prompt": "Before receiving any test labels, freeze RibbonA: whole cm lengths 1 through 12, long at least 6 cm and short otherwise. Save predictions for 5, 7, 9 and 11 cm. Ask your teacher to reveal the reserved labels, then record agreements, disagreements and a limited result statement. If you later choose threshold 8 after seeing these labels, explain how you must describe its result on the same records.",
+      "lines": 8,
+      "answer": "Saved predictions are short, long, long, long. Reveal labels only after predictions are saved: short, short, long, long. RibbonA has three agreements and one disagreement at 7 on four reserved records. Threshold 8 then gives short, short, long, long, but it was chosen after feedback. Its four agreements are on now-seen development examples, not a new independent test. Do not alter the saved RibbonA predictions."
+    },
+    {
+      "id": "W5",
+      "title": "Audit a proposed final set",
+      "prompt": "A class reserves ten copies of one easy development example in a new file. The model agrees with all ten labels. Explain two reasons this gives weak evidence about new cases, and propose a better final evaluation plan without promising perfect future performance.",
+      "lines": 6,
+      "answer": "Copies repeat a case already used in development and provide almost no variety; a new file does not make them new evidence. Reserve distinct relevant cases before model choices, keep related copies together, freeze the model, save predictions, reveal labels and report every outcome. Include cases relevant to intended use and state that a finite test cannot guarantee all future results."
+    }
+  ],
+  "teacher": {
+    "background": "Make the order of evidence visible. The lesson table is a retrospective worked example, not an unseen student test. W4 is a separate staged exercise: do not reveal its labels before predictions are committed. Avoid calling ordinary input validation a validation set here; the focus is development versus a held-out final check.",
+    "materials": [
+      "Development and reserved tower cards from the worked example, marked as a completed experiment",
+      "RibbonA input cards 5, 7, 9, 11 cm and a covered label sheet: short, short, long, long",
+      "Paper for a dated frozen-rule record and separate predictions, labels and outcome columns"
+    ],
+    "sessions": [
+      [
+        "Session 1 start 0 to 7 minutes",
+        "Retrieve the difference between accepted input and checked prediction. Ask when a label becomes part of development."
+      ],
+      [
+        "7 to 20 minutes",
+        "Trace the three evidence stages in the diagram. Explicitly identify the lesson table as an already completed experiment."
+      ],
+      [
+        "20 to 33 minutes",
+        "Compare TowerA predictions and revealed labels. Complete W1 and W2, preserving the original failure when TowerB is introduced."
+      ],
+      [
+        "33 to 45 minutes",
+        "Use W3 to show how a score can influence model selection without exposing individual labels. Discuss why shuffling is not a repair."
+      ],
+      [
+        "Session 2 start 0 to 8 minutes",
+        "Retrieve the frozen-model and saved-prediction requirements. Keep the RibbonA label sheet covered."
+      ],
+      [
+        "8 to 23 minutes",
+        "Complete the guided task and plan the two statements for TowerA and TowerB. Describe what fresh evidence would be needed."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 predictions independently before revealing short, short, long, long. Students append results without erasing predictions, then explain the revised threshold."
+      ],
+      [
+        "38 to 45 minutes",
+        "Use W5 and the exit to distinguish independence from coverage. Keep original and revised result claims side by side."
+      ]
+    ],
+    "guidedAnswer": "TowerA agreed on three of four original reserved records, failing at 5 cm. TowerB agreed on all four after their labels informed its revision; this is performance on development evidence. Freeze TowerB before evaluating fresh appropriate reserved examples. Shuffling cannot undo prior use. Exit: the team selected using test scores, so it measured a development comparison and still lacks an independent final check of the winner.",
+    "misconceptions": [
+      [
+        "A new file makes old records unseen",
+        "Trace whether records or copies already influenced development, regardless of their file names."
+      ],
+      [
+        "Only labels copied into training can leak",
+        "A test score can guide rule selection even when individual labels remain hidden."
+      ],
+      [
+        "Testing means the model can never improve",
+        "Improve openly, preserve the original result, and obtain fresh independent evidence for the revision."
+      ],
+      [
+        "A perfect reserved score proves universal correctness",
+        "Check sample size, variety, relation to development records and intended use; keep the conclusion within the evidence."
+      ]
+    ],
+    "assessment": "W4 is secure with saved predictions, three agreements, the 7 cm failure, a limited claim and a correct account of post-test revision. If labels were seen early, record the exercise as coached practice. For an uncoached retry freeze BandA at long at least 4, use inputs 2, 4, 6, 8, then reveal short, short, long, long: three agreements, failure at 4.",
+    "support": "Use two envelopes and a timeline with a clear freeze point. Read the steps aloud, preserving the learner\u2019s original predictions. Extension: explain why selecting the best of many test scores may give a flattering result even without deliberate cheating.",
+    "next": "Week 16 develops explicit uncertainty and review paths when available evidence does not justify a confident category or action."
+  }
+}

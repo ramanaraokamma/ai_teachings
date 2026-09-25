@@ -1,0 +1,278 @@
+{
+  "level": "ai-1",
+  "week": 19,
+  "title": "Similarity and selected features",
+  "minutes": 90,
+  "goals": [
+    "Calculate similarity using explicitly selected features and a stated scoring rule",
+    "Explain how a change in feature weights can change the highest scoring item",
+    "Handle ties and missing features without claiming that a similarity score proves suitability"
+  ],
+  "prerequisite": {
+    "prompt": "A system gives an item two matching-feature points. Does that mean a two-thirds chance that the item is suitable? What must you read first?",
+    "answer": "No. Read the score definition and selected features. Matching-feature points describe a comparison rule, not a probability of suitability."
+  },
+  "vocabulary": [
+    [
+      "Similarity",
+      "Closeness under a stated choice of features and comparison rule"
+    ],
+    [
+      "Feature match",
+      "Agreement between two recorded values for a selected feature"
+    ],
+    [
+      "Weight",
+      "The number of points assigned to a feature match in this scoring rule"
+    ],
+    [
+      "Tie",
+      "Two or more candidates sharing the same score"
+    ],
+    [
+      "Candidate",
+      "An item being considered in a comparison"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Define similar for a particular purpose",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Two objects can be alike in colour and different in shape. A computer comparison needs a precise answer to similar in what way. Select features, state how their values are compared, and define what a larger score means. The result belongs to that rule; it is not a universal judgment about the objects."
+        },
+        {
+          "type": "paragraph",
+          "text": "Our target card is red, round and smooth. Three candidate cards are A: red, round, rough; B: blue, square, smooth; C: red, square, rough. First give one point for each feature that exactly matches the target and zero for each known mismatch. Add the points. Colour, shape and texture are the only selected features."
+        },
+        {
+          "type": "paragraph",
+          "text": "This paper exercise uses complete category values with agreed spelling. Real records can be missing or uncertain. Do not silently treat an unknown texture as a known mismatch or copy a value from the target. First identify whether the information supports the comparison."
+        }
+      ]
+    },
+    {
+      "title": "Trace every part of the score",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Three features contribute to a score",
+          "columns": [
+            "Candidate",
+            "Matches with target",
+            "One point per match"
+          ],
+          "rows": [
+            [
+              "A: red round rough",
+              "Colour and shape",
+              "2 points"
+            ],
+            [
+              "B: blue square smooth",
+              "Texture only",
+              "1 point"
+            ],
+            [
+              "C: red square rough",
+              "Colour only",
+              "1 point"
+            ]
+          ],
+          "caption": "The target is red, round and smooth. A has the largest score under equal weights. These points count selected feature matches; they are not probabilities or evidence that A suits every purpose."
+        },
+        {
+          "type": "paragraph",
+          "text": "A receives 1 for colour, 1 for shape and 0 for texture: total 2. B receives 0, 0 and 1: total 1. C receives 1, 0 and 0: total 1. Record the contributions, not just the totals, so another learner can check the computation."
+        },
+        {
+          "type": "paragraph",
+          "text": "A is most similar among these three candidates under this rule. That sentence names the candidate set and the rule. It does not say A is identical to the target, has the right texture or will be the best choice for a task that needs smooth material."
+        }
+      ]
+    },
+    {
+      "title": "Change one scoring choice and compare again",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Candidate",
+            "Colour and shape points",
+            "Texture worth 3 points",
+            "New total"
+          ],
+          "rows": [
+            [
+              "A",
+              "1 + 1",
+              "0",
+              "2"
+            ],
+            [
+              "B",
+              "0 + 0",
+              "3",
+              "3"
+            ],
+            [
+              "C",
+              "1 + 0",
+              "0",
+              "1"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose texture matters more for the stated comparison. Keep colour and shape worth one point each, but give three points for a texture match. B now scores 3 and becomes the unique highest scoring candidate. No card changed; the rule changed. Record both versions rather than overwriting the first result."
+        },
+        {
+          "type": "paragraph",
+          "text": "Weights express priorities in this designed rule. They need a reason connected to the task and should be set before inspecting the final evaluation results. A convenient winner does not justify a weight. If smooth texture is required without exception, use a requirement check rather than hoping a weighted score will always enforce it."
+        }
+      ]
+    },
+    {
+      "title": "Preserve ties and unknown information",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Add candidate D: blue, round, smooth. Under the original one-point rule, D scores 2, tying A. Our policy is to return every candidate with the largest score, so the result is A and D. Returning only the first row would silently introduce a different policy."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Using A, B, C and D, calculate the four totals under the original rule and then under texture worth 3. Return every highest scoring candidate each time. Explain which matches caused the change and why neither result establishes a probability of suitability",
+          "lines": 7
+        },
+        {
+          "type": "paragraph",
+          "text": "If a required comparison value is missing, our classroom policy pauses the final ranking and requests the missing value. Retain the known contributions and the reason for the pause. A different policy could be designed, but it would need to be explicit and checked for its effects. Unknown and different are separate states."
+        }
+      ]
+    },
+    {
+      "title": "Keep the task bigger than the score",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Feature selection leaves information out. A card comparison ignores size and material unless those are included. A book comparison using topic and format may ignore language or reading difficulty. More features are not automatically better: irrelevant or repeatedly copied features can change a score without improving the decision."
+        },
+        {
+          "type": "paragraph",
+          "text": "A useful report states the purpose, candidates, selected features, weights, missing-value policy and tie policy. Check the proposed method on relevant cases that include ties and imperfect records. If it supports a recommendation, keep the explanation limited to what was actually compared."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A learner says A is objectively the closest card because it won the original comparison. Use the changed texture weight and the added candidate D to explain why the claim needs qualification",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Show the contributions before the total",
+      "prompt": "For the red round smooth target and candidates A, B and C in the lesson, record the colour, shape and texture contributions under one point per match. Give each total and identify every highest scoring candidate.",
+      "lines": 6,
+      "answer": "A: 1, 1, 0 gives 2. B: 0, 0, 1 gives 1. C: 1, 0, 0 gives 1. A is the only highest scoring candidate among A, B and C under equal weights."
+    },
+    {
+      "id": "W2",
+      "title": "Explain a changed winner",
+      "prompt": "Keep the same target and candidates but make texture worth 3 points, with colour and shape worth 1 each. Recalculate A, B and C. Explain what changed and what stayed the same.",
+      "lines": 6,
+      "answer": "A stays at 2, B becomes 3 and C stays at 1, so B wins. Only the texture weight changed; candidate values, target and other weights stayed the same. The result is specific to this new comparison rule."
+    },
+    {
+      "id": "W3",
+      "title": "Keep unknown separate from different",
+      "prompt": "Candidate E is red and round but its texture is missing. A learner assigns zero for texture and declares E fully scored. Apply our classroom policy. State the known contributions, the missing information and what must happen before a final ranking.",
+      "lines": 6,
+      "answer": "Colour and shape contribute 1 each, giving a known subtotal of 2 under the original rule. Texture is unknown, not a known mismatch. Pause the final ranking, request E\u2019s texture, and record the unresolved feature if it cannot be obtained."
+    },
+    {
+      "id": "W4",
+      "title": "Transfer the comparison to books",
+      "prompt": "A target book has topic space, format comic and language English. Candidates are J: space, prose, English; K: animals, comic, English; L: space, comic, Spanish. Give 1 point per exact match and return all tied highest scorers. Then make topic worth 3 points while keeping the other weights at 1. Report both sets of totals and winners. Explain why a winner may still fail a requirement to read English.",
+      "lines": 8,
+      "answer": "Equal weights: J 2, K 2, L 2; all three tie. Topic weighted 3: J 4, K 2, L 4; J and L tie. L remains a highest scorer despite Spanish language, so weighted similarity does not enforce the English requirement. Check language eligibility separately if English is required."
+    },
+    {
+      "id": "W5",
+      "title": "Notice an accidental extra weight",
+      "prompt": "A designer adds a second colour column that copies the first and gives both columns one point. They say no feature has been given extra importance because every column has equal weight. Explain the problem and propose a clearer rule.",
+      "lines": 6,
+      "answer": "Colour now contributes twice for one underlying match, so it has effective weight 2 while other features have weight 1. Remove the duplicate or state and justify colour\u2019s weight explicitly. Equal column weights do not guarantee equal importance for the underlying features."
+    }
+  ],
+  "teacher": {
+    "background": "Treat similarity as a defined computation with a purpose. This week uses exact category matching and whole-number weights, avoiding formal distance geometry. Keep ranking, probability and eligibility distinct. Students should be able to explain changes in results from the feature contributions rather than memorise a winning item.",
+    "materials": [
+      "Target and candidate card records from the lesson, with D and incomplete E added later",
+      "Counters for colour, shape and texture contributions",
+      "Book records J, K and L from W4 with feature headings"
+    ],
+    "sessions": [
+      [
+        "Session 1 start 0 to 7 minutes",
+        "Retrieve why a point score is not automatically a probability."
+      ],
+      [
+        "7 to 20 minutes",
+        "Trace the three diagram rows with one counter per match. State the target and candidates aloud."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2. Change only the texture weight and compare the two recorded results."
+      ],
+      [
+        "33 to 45 minutes",
+        "Use W3 to distinguish a missing value from a known mismatch. Require a recorded pause under the classroom policy."
+      ],
+      [
+        "Session 2 start 0 to 8 minutes",
+        "Retrieve the scoring rule and why it depends on selected features."
+      ],
+      [
+        "8 to 23 minutes",
+        "Introduce D and complete the guided task. Return all tied maximum scores and explain the weighted result."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently. Look for all ties and the distinction between similarity and a required language."
+      ],
+      [
+        "38 to 45 minutes",
+        "Discuss W5 and the exit. End with the need to document feature choices and effective weights."
+      ]
+    ],
+    "guidedAnswer": "Original totals A 2, B 1, C 1, D 2, so return A and D. With texture worth 3: A 2, B 3, C 1, D 4, so return D. D combines shape and texture. Scores count weighted matches, not observed chances of suitability. Exit: the winner depends on weights and candidate set; A\u2019s first result is not a universal fact.",
+    "misconceptions": [
+      [
+        "Similar has one objective meaning for every task",
+        "Name the features, comparison rule and purpose."
+      ],
+      [
+        "The highest score proves all requirements are met",
+        "Check mandatory requirements separately."
+      ],
+      [
+        "Equal scores can be resolved by whichever row appears first",
+        "Use the stated tie policy; here return all highest scorers."
+      ],
+      [
+        "Missing texture deserves zero as if it were rough",
+        "Retain an unknown and apply the stated missing-value policy."
+      ]
+    ],
+    "assessment": "W4 is secure with 2/2/2 then 4/2/4, all candidates then J and L as winners, and a separate English eligibility check. After support retry topic weight 2: totals 3/2/3, J and L still tie. Require contribution explanations, not only totals.",
+    "support": "Place one row of counters under each feature heading. Keep the target visible while checking candidates. Extension: add a feature that is irrelevant to the stated purpose and show how it could change the winner without improving usefulness.",
+    "next": "Week 20 uses explicit scores and requirements to form recommendations, then examines what feedback can and cannot establish."
+  }
+}

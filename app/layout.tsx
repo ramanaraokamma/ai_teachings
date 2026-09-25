@@ -3,6 +3,7 @@ import "./globals.css";
 import "./lesson-book.css";
 import "./topic-studio.css";
 import "./grade6-learning.css";
+import "./curriculum-v3.css";
 
 export const metadata: Metadata = {
   title: { default: "AI Academy", template: "%s | AI Academy" },

@@ -1,0 +1,279 @@
+{
+  "level": "ai-1",
+  "week": 16,
+  "title": "Uncertainty and review",
+  "minutes": 90,
+  "goals": [
+    "Identify a specific source of uncertainty and explain how it affects a prediction",
+    "Compare predictions across stated possible inputs without inventing a missing value",
+    "Design a review step with relevant evidence and an explicit unresolved outcome"
+  ],
+  "prerequisite": {
+    "prompt": "A model predicts tall at a height of at least 6 cm. What would it predict if an unclear record could mean either 5 or 6 cm? Does a good result on a small final test settle this particular input?",
+    "answer": "At 5 it predicts short; at 6 it predicts tall. The unclear input leaves two different possible predictions. A previous test result does not tell us which height this record contains."
+  },
+  "vocabulary": [
+    [
+      "Uncertainty",
+      "Something relevant that the available evidence does not settle"
+    ],
+    [
+      "Possible input",
+      "An input still compatible with the stated information"
+    ],
+    [
+      "Review trigger",
+      "A stated condition that sends a case for an additional check"
+    ],
+    [
+      "Review evidence",
+      "Information gathered to investigate the reason a case was referred"
+    ],
+    [
+      "Unresolved",
+      "Still not settled after the available checks"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Name what is unknown before choosing a check",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "An unclear measurement, a missing feature and a weakly tested model create different problems. Saying the AI is unsure does not identify which one matters. Write what is known, what remains unknown and how the unknown could change the result. Then choose a check that addresses that specific gap."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use the familiar tower model: tall at a height of at least 6 cm, short otherwise, for whole-number heights from 1 through 10. A smudged card could read 5 cm or 6 cm. The threshold is known; the input is unclear. Repeating the same calculation cannot recover the missing digit."
+        },
+        {
+          "type": "paragraph",
+          "text": "For this paper investigation, treat the listed possibilities as the complete set allowed by the exercise. In real use, that assumption would itself need evidence. We will compare the model\u2019s predictions under each possibility; we are not changing Tower1 to accept an invented exact measurement."
+        }
+      ]
+    },
+    {
+      "title": "Compare every stated possibility",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Possible heights can change the prediction",
+          "columns": [
+            "Available record",
+            "Predictions to compare",
+            "What can be stated"
+          ],
+          "rows": [
+            [
+              "Either 5 or 6 cm",
+              "5 gives short; 6 gives tall",
+              "Category unresolved"
+            ],
+            [
+              "Either 8 or 9 cm",
+              "Both give tall",
+              "Tall under both inputs"
+            ],
+            [
+              "No height supplied",
+              "Possibilities not listed",
+              "Request a measurement"
+            ]
+          ],
+          "caption": "A shared prediction across the listed possibilities does not identify the exact input or prove the category correct. Different predictions show that the unknown input can change this model\u2019s result."
+        },
+        {
+          "type": "paragraph",
+          "text": "At either 5 or 6 cm, one possibility predicts short and the other tall. Record no single category yet and ask for the original record or a new measurement. Do not select the more convenient digit. Averaging the two readings would introduce a different input that neither possibility stated."
+        },
+        {
+          "type": "paragraph",
+          "text": "At either 8 or 9 cm, the model predicts tall in both cases. You can state that the prediction stays tall under these two possibilities. Keep the exact-height uncertainty visible. This agreement does not check the model against a correct task label or establish that the list of possible heights is complete."
+        }
+      ]
+    },
+    {
+      "title": "Match the review to the cause",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Reason for review",
+            "Relevant check",
+            "What it cannot settle alone"
+          ],
+          "rows": [
+            [
+              "Smudged height",
+              "Read the original or remeasure",
+              "Whether the model is accurate"
+            ],
+            [
+              "Unit missing",
+              "Check how the record was made",
+              "The unit from digits alone"
+            ],
+            [
+              "Two labels for one record",
+              "Check the label policy and sources",
+              "Truth by majority vote"
+            ],
+            [
+              "Poorly tested new use",
+              "Evaluate relevant reserved cases",
+              "Every future outcome"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A review request should carry the original input, model version, unresolved issue and any predictions already made. Name the evidence to seek and the person responsible for checking it. A reviewer needs access to relevant evidence and a clear task; being human does not make an unsupported guess correct."
+        },
+        {
+          "type": "paragraph",
+          "text": "After review, record what was checked and what changed. If a reliable new reading establishes 6 cm, the model predicts tall. If the record is still unreadable, keep no prediction with reason unresolved height. Do not replace the original record without retaining the reason for the correction."
+        }
+      ]
+    },
+    {
+      "title": "Construct a review path with a stopping point",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Use a written review policy: if stated possible valid heights lead to different predictions, pause the single-category output and request a measurement check. If a required input or its unit is missing, request that information. After the check, apply the model only to a supported valid input; otherwise retain an unresolved outcome."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "A card could mean 5 or 6 cm. Write the record sent for review, the check requested and two possible endings: a new measurement establishes 6 cm, or no reliable height can be obtained. Explain what each ending permits you to report",
+          "lines": 7
+        },
+        {
+          "type": "paragraph",
+          "text": "A review path needs an ending even when evidence cannot be obtained. Repeating the same unsuccessful request forever does not resolve the uncertainty. Record that the case remains unresolved and follow the agreed next step, such as holding the classroom sorting decision until the missing record is supplied."
+        }
+      ]
+    },
+    {
+      "title": "Avoid turning agreement into certainty",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A deterministic model repeats the same prediction for the same input and settings. Ten identical runs do not give ten independent measurements of a smudged digit. Several models can also share a feature gap, training examples or mistaken assumption. Agreement alone is not proof that the prediction is correct."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep the claim specific: tall under both listed heights, input still unclear, or no category until the measurement is checked. Do not attach a made-up confidence percentage. Evidence about correctness and the meaning of confidence will be developed in Weeks 17 and 18."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A learner runs the same model ten times on a guessed height and gets tall every time. They say review is no longer needed. Explain what the repetitions establish and name the evidence still needed",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Describe the uncertainty precisely",
+      "prompt": "For a smudged height that could be 5 or 6 cm, state what is known, what is unknown and the two predictions under tall at least 6. Choose a check that could distinguish the heights. Explain why rerunning the threshold comparison cannot do that.",
+      "lines": 6,
+      "answer": "The rule and two stated possibilities are known; the actual height is unresolved. At 5 predict short, at 6 predict tall. Inspect the original readable record or remeasure. Repeating a calculation supplies no new information about which height was recorded."
+    },
+    {
+      "id": "W2",
+      "title": "Keep a stable prediction within its limits",
+      "prompt": "Assume the only possible heights are 8 and 9 cm. Apply tall at least 6 to each. Write a justified result statement and two things it does not establish. Do not invent a confidence percentage.",
+      "lines": 6,
+      "answer": "Both inputs predict tall, so the prediction is tall under both listed possibilities. This does not identify whether the exact height is 8 or 9 and does not establish agreement with the correct task label. Outside the exercise, completeness of the possibilities also needs evidence."
+    },
+    {
+      "id": "W3",
+      "title": "Choose useful review evidence",
+      "prompt": "A record says 60 but omits the unit. A reviewer suggests reading it as 60 cm because the model needs cm. Explain the problem, name the evidence to request and state the outcome if the unit cannot be established.",
+      "lines": 6,
+      "answer": "The required input format does not prove the original measurement\u2019s unit. Ask for the original measurement record, instrument scale or recording instructions. If the unit cannot be established, retain no prediction with reason unresolved unit; do not silently assume cm or convert from an assumed unit."
+    },
+    {
+      "id": "W4",
+      "title": "Transfer the method to distance",
+      "prompt": "A paper model predicts far at a distance of at least 4 units, otherwise near, for whole-number distances 1 through 8. For each complete possibility set, compare predictions: 2 or 3; 3 or 4; 4 or 5. Identify the set requiring review before a single category can be stated. Design a relevant check and an unresolved ending. Limit the claims for the other two sets.",
+      "lines": 8,
+      "answer": "At 2 or 3 both predict near. At 3 predict near and at 4 far, so that set leaves the category unresolved. At 4 or 5 both predict far. Request a reliable distance reading in the stated units for the disputed set; if unavailable retain no single category and reason unresolved distance. The other two predictions are stable only across their listed possibilities, not verified as correct labels or exact distances."
+    },
+    {
+      "id": "W5",
+      "title": "Review the reviewer\u2019s conclusion",
+      "prompt": "A reviewer cannot read the original tower card but chooses 6 cm because two models both predict tall when given 6. Explain why this fails to resolve the input. Write a more defensible review record and a next step.",
+      "lines": 6,
+      "answer": "Both models were given the same guessed input, so their agreement does not establish the actual measurement. Record that the original remains unreadable, the height is unresolved and no supported single-category output is available. Request a reliable new measurement or keep the sorting decision on hold under the stated policy."
+    }
+  ],
+  "teacher": {
+    "background": "Develop uncertainty as a specific evidence gap with a matching review path. The possible-input comparison is a reasoning exercise, not a probability calculation. Assume the listed possibilities are complete for the paper tasks; do not imply that a model normally knows all possible inputs or that shared predictions verify correctness.",
+    "materials": [
+      "Tower cards labelled either 5 or 6 cm, either 8 or 9 cm, and height missing",
+      "A review record with original input, model version, issue, requested evidence and outcome",
+      "Distance possibility cards from W4; use fictional measurements and no personal data"
+    ],
+    "sessions": [
+      [
+        "Session 1 start 0 to 7 minutes",
+        "Retrieve the two threshold outcomes for 5 and 6. Distinguish an unclear input from a known model rule."
+      ],
+      [
+        "7 to 20 minutes",
+        "Trace every diagram row. State the complete-possibilities assumption and retain exact-height uncertainty even when predictions agree."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2. Ask students to identify which claim follows from both possible inputs and which claims still lack evidence."
+      ],
+      [
+        "33 to 45 minutes",
+        "Use W3 and the review table to match each missing fact to a useful source. Reject an assumed unit as a repair."
+      ],
+      [
+        "Session 2 start 0 to 8 minutes",
+        "Retrieve the difference between a new measurement and another run on an unchanged input."
+      ],
+      [
+        "8 to 23 minutes",
+        "Construct the guided review record and both endings. Require the unresolved path to stop without inventing a height."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently. Look for all three possibility comparisons, an appropriate measurement check and limited claims."
+      ],
+      [
+        "38 to 45 minutes",
+        "Discuss W5 and the exit. A reviewer can preserve an unknown; human involvement alone is not correctness evidence."
+      ]
+    ],
+    "guidedAnswer": "Record the original 5-or-6 cm card, threshold-6 model version, possible predictions short and tall, and unresolved height. Request a reliable original reading or remeasurement. A supported 6 cm reading permits a tall prediction, with the correction documented. If no reliable value is obtained, retain no prediction and hold sorting under the policy. Exit: repeated runs show consistent computation on the guessed input; a reliable height is still needed.",
+    "misconceptions": [
+      [
+        "Two possible values imply equal probabilities",
+        "A list of possibilities supplies no probabilities unless further evidence states them."
+      ],
+      [
+        "Averaging guesses recovers the missing input",
+        "A calculated average is a new assumption, not an observed measurement."
+      ],
+      [
+        "Repeated identical outputs remove input uncertainty",
+        "Re-running unchanged information does not reveal a missing digit or unit."
+      ],
+      [
+        "A human reviewer can always settle the case",
+        "Require relevant evidence and allow an explicit unresolved outcome."
+      ]
+    ],
+    "assessment": "W4 is secure with near/near, near/far and far/far comparisons, review of the middle set, useful evidence and an unresolved ending. After support retry long at least 7 for whole cm lengths 1 through 10 using 4 or 5, 6 or 7, and 8 or 9: short/short, short/long, long/long. Require limits as well as labels.",
+    "support": "Use a number line and a separate card for each possibility. Keep known, unknown and requested evidence in three columns. Extension: add a third possibility that changes an apparently stable result and explain why completeness of the possibility list matters.",
+    "next": "Week 17 separates a prediction from the later observation or comparison evidence used to judge it, preserving both records."
+  }
+}

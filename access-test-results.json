@@ -1,5 +1,5 @@
 {
-  "passed": 26,
+  "passed": 31,
   "checks": [
     {
       "name": "Only landing content is public",
@@ -103,6 +103,26 @@
     },
     {
       "name": "Logout clears session cookie",
+      "passed": true
+    },
+    {
+      "name": "Curriculum 3 roadmap and chapters require a session",
+      "passed": true
+    },
+    {
+      "name": "Curriculum 3 exposes only released weeks as lessons",
+      "passed": true
+    },
+    {
+      "name": "All rebuilt pages contain canonical content and separate teacher answers",
+      "passed": true
+    },
+    {
+      "name": "All rebuilt downloads enforce their roles and match reviewed bytes",
+      "passed": true
+    },
+    {
+      "name": "Rebuilt teacher sources are absent from public JavaScript",
       "passed": true
     }
   ]

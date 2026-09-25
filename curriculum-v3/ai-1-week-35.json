@@ -1,0 +1,279 @@
+{
+  "level": "ai-1",
+  "week": 35,
+  "title": "Improving and checking regressions",
+  "minutes": 90,
+  "goals": [
+    "Repair a located defect without changing the agreed requirements",
+    "Check the repaired case and earlier successful behaviour",
+    "Preserve versioned evidence and fix a candidate before final evaluation"
+  ],
+  "prerequisite": {
+    "prompt": "The faulty S comparison rejects an activity that takes exactly the available time. Which requirement does this break?",
+    "answer": "Time fits when required minutes are no more than available minutes, including equality. Strictly less than wrongly excludes an exact fit."
+  },
+  "vocabulary": [
+    [
+      "Defect",
+      "A fault in the instructions or implementation that can cause incorrect behaviour"
+    ],
+    [
+      "Repair",
+      "A change intended to correct a located defect"
+    ],
+    [
+      "Regression",
+      "Previously correct behaviour that becomes incorrect after a change"
+    ],
+    [
+      "Change record",
+      "A note of what changed, why, and which versions and tests support it"
+    ],
+    [
+      "Fixed candidate",
+      "A saved version kept unchanged while a specified evaluation is run"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Make a repair that follows the requirements",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Finding a failure is useful only if you can explain and check the repair. This week you will locate an incorrect comparison, change it in a labelled version, and test both the revealing case and behaviour that worked before. A repair can solve one problem while introducing another, so one newly passing example is not enough."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep catalogue B version 1 in order: B1 Bookmark drawing, 10 minutes, quiet Yes; B2 Story circle, 8 minutes, quiet No; B3 Pattern puzzle, 12 minutes, quiet Yes; B4 Tower challenge, 15 minutes, quiet No. These fictional values assume materials are available. Inputs are whole minutes from 0 to 30 inclusive and Quiet required Yes or No. No allows either quiet or nonquiet activities."
+        },
+        {
+          "type": "paragraph",
+          "text": "A candidate fits when its duration is no more than the available minutes AND either quiet is not required or the activity is quiet. Return the first fit with a correct reason. Valid input with no fit gives no match after all rows fail. Invalid or missing input needs clarification before search. Each new run starts with validation and a cleared output, then the first row if valid. Suggestions do not book or publish anything. These written rules are not a model fitted from examples."
+        }
+      ]
+    },
+    {
+      "title": "Locate the cause before editing",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "A repair with evidence",
+          "columns": [
+            "Locate",
+            "Change",
+            "Check"
+          ],
+          "rows": [
+            [
+              "Keep the failing trace",
+              "Save a new version",
+              "Rerun the revealing case"
+            ],
+            [
+              "Name the broken requirement",
+              "Correct the faulty step",
+              "Rerun earlier passing cases"
+            ],
+            [
+              "Keep input and catalogue labels",
+              "Record what changed",
+              "Keep every result and limit"
+            ]
+          ],
+          "caption": "A passing repair test checks the reported defect. Regression tests examine previously correct behaviour."
+        },
+        {
+          "type": "paragraph",
+          "text": "S version 0 follows the P1 process except that its time check uses strictly less than. On 10 Yes with catalogue B version 1, it reports no match. The expected result is B1 because 10 fits exactly and B1 is quiet. Compare the saved instruction with the trace: the cause is the exclusion of equality, not a need to change the catalogue or expected answer."
+        },
+        {
+          "type": "paragraph",
+          "text": "Create S version 1 by replacing only the time comparison with no more than. Keep validation, the quiet condition, catalogue order, advancement and stopping rules. Write a change record naming S0, S1, the failing 10 Yes case, the comparison changed and why equality belongs in the rule. Retain the old version and failed trace; do not overwrite them with the new result."
+        }
+      ]
+    },
+    {
+      "title": "A tempting repair can cause a regression",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Consider a different proposed repair, T version 1. It accepts equal times but accidentally removes the quiet check. It fixes 10 Yes, yet now returns B2 for 9 Yes. That second request correctly returned no match under S0 because B2 is not quiet. Previously correct behaviour has become wrong: this is a regression."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Case with catalogue B version 1",
+            "Required result",
+            "Outputs from the stated instructions"
+          ],
+          "rows": [
+            [
+              "10 Yes; equality repair",
+              "B1 with a valid reason",
+              "S0 no match; T1 B1; S1 B1"
+            ],
+            [
+              "9 Yes; quiet regression check",
+              "No match with a valid reason",
+              "S0 no match; T1 B2; S1 no match"
+            ],
+            [
+              "8 No; another equality case",
+              "B2 with a valid reason",
+              "S0 no match; T1 B2; S1 B2"
+            ],
+            [
+              "6 No; exhaustion check",
+              "No match with a valid reason",
+              "S0 no match; T1 no match; S1 no match"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "These outputs are worked predictions from the described versions. Your own test record must contain the actual runs and their reasons. T1 should not replace the candidate merely because it passes the first row. For S1, check the revealing equality cases and rerun all four routine cases from Week 33, then validation and the labelled catalogue variations from Week 34. A full pass still needs both the required output and a correct explanation."
+        }
+      ]
+    },
+    {
+      "title": "Run a repair and regression set",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Write expectations before running S1. Use B version 1 for 11 Yes, 9 No, 6 No and 9 Yes; include the revealing 10 Yes and 8 No. Add 0 Yes, 30 Yes, 31 Yes, blank minutes with Yes, 10.5 Yes and 10 Maybe to check valid endpoints and invalid fields. Keep cases and results separated by version, and compare with the manual baseline under the same conditions."
+        },
+        {
+          "type": "paragraph",
+          "text": "Retain the catalogue variation tests: B version 2 changes only B1 time to 20, giving B3 for 12 Yes. B version 3 has times 20, 18, 17 and 15 for B1 to B4, with the original quiet labels and order; it gives B4 for 15 No and no match for 15 Yes. These cases check later successful paths and the quiet condition under changed data. Label each test with the catalogue it actually uses."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Explain why T1\u2019s result on 9 Yes is a regression but S0\u2019s result on 8 No is an existing defect. State the required result in each case and the instruction that explains the mistake. If S1 passes both, what further evidence should you keep before making a broader claim?",
+          "lines": 7
+        }
+      ]
+    },
+    {
+      "title": "Prepare an honest candidate for evaluation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "If your own P1 already passes the development set, do not introduce a defect just to claim an improvement. Use the supplied S example to practise repair, and report that no change was needed in your saved version for the tested cases. If your version fails, retain the evidence, locate the cause and label the next repair. A new label alone does not prove a better version."
+        },
+        {
+          "type": "paragraph",
+          "text": "Save a candidate with its complete instructions, required catalogue data, input rules, change history and development results. State unresolved failures and limitations. Keep this version unchanged during the final evaluation. Do not inspect reserved final cases to decide which repair to make. If you revise after seeing final results, retain those results as belonging to the old version and treat the seen cases as development evidence; they are no longer an unseen evaluation for the revision."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A team fixes 10 Yes, checks only that case and deletes S0\u2019s failed trace. Explain two weaknesses in its evidence and give a better next action. Why should the candidate be fixed before reserved final cases are revealed?",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Write the change record",
+      "prompt": "Use S0\u2019s failure on 10 Yes with catalogue B version 1. Record the expected and incorrect outputs, the faulty time comparison, the exact S1 correction and the other conditions that must remain. Explain what old evidence to preserve.",
+      "lines": 6,
+      "answer": "Expected B1 with equality and quiet satisfied; S0 incorrectly returns no match because its time condition is strictly less than. S1 uses no more than, including equality. Preserve validation, quiet, first-match order, advancement, stopping and reset. Save S0, its failing trace and exact request/catalogue labels beside the new S1 change record and rerun."
+    },
+    {
+      "id": "W2",
+      "title": "Check the repair and earlier behaviour",
+      "prompt": "Plan and operate the S1 repair and regression set described in the lesson, using the appropriate catalogue version for each case. Record expected and observed results separately with reasons and traces. Summarise full passes over all attempted cases, list unrun cases separately and identify any remaining failures. Do not replace observed mistakes with worked answers.",
+      "lines": 6,
+      "answer": "Under B version 1 the listed requests yield B1, B2, no match, no match, B1, B2, no match, B1, then four clarifications for 31, blank minutes, 10.5 and Maybe. B version 2 with 12 Yes yields B3. B version 3 yields B4 for 15 No and no match for 15 Yes. There are 15 planned cases. Correct execution with correct reasons gives 15 of 15; accept honest different observations with investigation. Unrun cases are not passes and the attempted denominator must be stated."
+    },
+    {
+      "id": "W3",
+      "title": "Reject a repair that breaks quiet requests",
+      "prompt": "T1 accepts equal times but omits the quiet check. Explain why it passes 10 Yes yet fails 9 Yes. Use S0\u2019s earlier correct result for 9 Yes to justify the word regression. What should change in T1, and which two cases should be rerun first?",
+      "lines": 6,
+      "answer": "At 10 Yes, first B1 fits and happens to be quiet, so the omission is hidden. At 9 Yes, T1 selects B2 on time despite its nonquiet label; required output is no match. S0 correctly gave no match on that request, so the new failure is a regression. Restore the quiet condition combined with inclusive time; rerun 10 Yes for the repair and 9 Yes for the regression, then the wider set."
+    },
+    {
+      "id": "W4",
+      "title": "Audit a different proposed repair",
+      "prompt": "Equipment catalogue E lists E1 first with capacity 4 and E2 second with capacity 8. Valid whole group sizes are 1 to 10. Choose the first capacity at least the group size, or no match; invalid input needs clarification. Old U0 uses strictly greater capacity and stops at the first fit. Proposed U1 includes equality but keeps searching and returns the last fit. Independently compare U0, U1 and the requirement for groups 8 and 3. Identify the repair and regression, propose U2 and give one validation check. No booking occurs.",
+      "lines": 8,
+      "answer": "For 8, U0 returns no match, U1 returns E2 and the requirement is E2: equality is repaired. For 3, U0 returns E1 correctly but U1 returns E2, violating first-fit order: a regression. U2 includes equality and stops immediately at the first fit, giving E2 for 8 and E1 for 3. Preserve both old traces and rerun both cases plus wider tests. Group 0 or 11, a blank or a nonwhole size needs clarification before searching."
+    },
+    {
+      "id": "W5",
+      "title": "Protect the meaning of final evaluation",
+      "prompt": "After seeing a reserved final case fail, a team edits its candidate, reruns that same case and calls the result \u201ca successful unseen test of the new version\u201d. Explain what is wrong and what should be recorded instead. State what must be saved before an evaluation begins.",
+      "lines": 6,
+      "answer": "The case informed the repair and is now seen development evidence for the new version. Preserve the original candidate and its final result, label the revision and describe the repeated case as a repair check. A fresh independent evaluation needs new reserved cases for the fixed revision. Save complete instructions, catalogue, requirements, version label, change history, development results and known limitations before evaluation."
+    }
+  ],
+  "teacher": {
+    "background": "Repair and regression testing concern the implementation of explicit rules, not fitting a model to examples. S0 and T1 are deliberately faulty instructional examples. Pupils whose P1 works should not invent a defect or claim an unneeded improvement. Assess the causal explanation and retained evidence, not only a favourable count. Final evaluation tests a fixed version; development success and a polished presentation cannot replace it.",
+    "materials": [
+      "Saved P1 and the clearly labelled S0, S1 and T1 comparison instructions described in the lesson",
+      "Catalogue B versions 1, 2 and 3, the manual baseline and all earlier development records",
+      "Blank change records and an envelope or folder for the candidate; keep reserved final cases teacher-only"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the inclusive time requirement and S0 equality failure."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the repair diagram and complete W1 with a specific comparison change."
+      ],
+      [
+        "20 to 33 minutes",
+        "Trace S0, T1 and S1; complete W3 and distinguish old defects from new regressions."
+      ],
+      [
+        "33 to 45 minutes",
+        "Begin W2 partner repair checks using saved versions and prepared expectations."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Continue W2 with validation and catalogue variations; report attempted and unrun cases honestly."
+      ],
+      [
+        "8 to 23 minutes",
+        "Complete the guided explanation and organise the candidate evidence folder."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently before support; check first-fit and equality reasoning."
+      ],
+      [
+        "38 to 45 minutes",
+        "Complete W5 and the exit, record unresolved issues and fix a candidate for final evaluation."
+      ]
+    ],
+    "guidedAnswer": "For 9 Yes, required no match; S0 met it but T1 newly returns nonquiet B2 because quiet was removed, so a regression. For 8 No, required B2; S0 already excluded equality and returned no match, so an existing defect. Keep saved versions, change records, exact inputs and catalogues, expected and observed reasons, traces and results for the remaining routine, validation and variation cases. Exit: one repaired case does not check earlier behaviour; deleting the old trace destroys evidence of the defect. Preserve the failure and rerun the wider development set with a new version. Fixing the candidate before reveal prevents tailoring that candidate to the reserved cases.",
+    "misconceptions": [
+      [
+        "One repaired example proves improvement everywhere",
+        "Check the revealing case and previously successful behaviour under recorded conditions."
+      ],
+      [
+        "Any failure after editing is a regression",
+        "Show that the same behaviour was correct before the change; otherwise it may be an existing defect."
+      ],
+      [
+        "A good project must contain a repair",
+        "An unchanged correct version can be justified with honest evidence."
+      ],
+      [
+        "A seen final case becomes unseen after a new version label",
+        "Once it guides revision, it is development evidence for that revision."
+      ]
+    ],
+    "assessment": "W4 must identify U0 no match and U1 E2 for group 8, then U0 E1 and U1 E2 for group 3, with equality repaired but first-match stopping broken. U2 needs both inclusive capacity and immediate first-fit stopping. After support, retry with F1 capacity 5 then F2 capacity 9, same input range: group 9 exposes the equality defect and group 2 exposes the last-fit regression. Require fresh reasoning and one valid clarification test.",
+    "support": "Use separate cards for time or capacity, quiet, and first-match stopping so pupils can point to the changed condition. Provide change-record headings without supplying the diagnosis. Partners may divide execution and recording, then swap; collect the independent audit before hints. Extension: explain why a higher total can still conceal a serious regression and why individual failures matter.",
+    "next": "Week 36 evaluates a fixed candidate with reserved cases and asks pupils to defend their project using results, failures, a baseline and explicit limitations."
+  }
+}

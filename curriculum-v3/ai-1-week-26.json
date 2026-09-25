@@ -1,0 +1,279 @@
+{
+  "level": "ai-1",
+  "week": 26,
+  "title": "Specifying and testing prompts",
+  "minutes": 90,
+  "goals": [
+    "Write a prompt with a clear task, supplied evidence and checkable output requirements",
+    "Test a response against criteria chosen before seeing it",
+    "Revise a prompt using observed failures while preserving missing and conflicting information"
+  ],
+  "prerequisite": {
+    "prompt": "A generated invitation adds a meeting time that is absent from its source. Does fluent wording make that time supported? What should happen next?",
+    "answer": "No. Remove the unsupported time or verify it from an appropriate source. A plausible sentence is not evidence for a missing fact."
+  },
+  "vocabulary": [
+    [
+      "Prompt",
+      "Instructions and context supplied to a model for a task"
+    ],
+    [
+      "Constraint",
+      "A requirement that an acceptable response must satisfy"
+    ],
+    [
+      "Criterion",
+      "A stated rule used to judge a response"
+    ],
+    [
+      "Test case",
+      "A particular input with expected behaviour used to check a process"
+    ],
+    [
+      "Revision",
+      "A documented change intended to address a specific problem"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Turn a vague request into a checkable task",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "\u201cWrite something good about our club\u201d leaves many decisions unstated. Who will read it? Which facts may be used? What must the output contain? A more useful prompt states the job, audience, evidence and requirements. This makes it easier to judge the result rather than choosing the answer that sounds most confident."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use this fictional source C: the paper modelling club meets Monday in Room 7, and participants bring paper. C gives no start time. Our task is a short information card for Grade 6 readers. It must report day, time, place and what to bring, using only C. There is no need to supply names or private information."
+        },
+        {
+          "type": "paragraph",
+          "text": "Prompt P1: Using only source C, produce an information card for Grade 6 readers. Return exactly four labelled lines in this order: Day, Time, Place, Bring. Copy or faithfully restate each supported value. For a missing value write \u201cnot stated\u201d. Add no other details. Source C: the paper modelling club meets Monday in Room 7; bring paper."
+        }
+      ]
+    },
+    {
+      "title": "Connect each instruction to a test",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "From prompt requirement to evidence of success",
+          "columns": [
+            "Requirement",
+            "Expected behaviour",
+            "How to check"
+          ],
+          "rows": [
+            [
+              "Use source C only",
+              "Monday and Room 7",
+              "Compare with C"
+            ],
+            [
+              "Mark missing values",
+              "Time: not stated",
+              "Check absent time"
+            ],
+            [
+              "Four labelled lines",
+              "Day Time Place Bring",
+              "Count and inspect"
+            ],
+            [
+              "No added details",
+              "No invented promises",
+              "Check every claim"
+            ]
+          ],
+          "caption": "Choose these checks before reading a response. A response must satisfy all required criteria, not merely look tidy."
+        },
+        {
+          "type": "paragraph",
+          "text": "For P1, an acceptable card has Day: Monday; Time: not stated; Place: Room 7; Bring: paper, each on its own line. The semicolons here separate lines for discussion. A correct format with an invented 3 pm time still fails the evidence requirement. Accurate facts inside a long paragraph still fail the requested four-line format."
+        },
+        {
+          "type": "paragraph",
+          "text": "These are classroom response examples written for inspection, not measurements from a live AI system. You can test the instructions by asking a partner to follow them on paper. That checks how clear the instructions are, but it does not prove that a model will always follow them."
+        }
+      ]
+    },
+    {
+      "title": "Test missing and conflicting information deliberately",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Test input",
+            "Expected behaviour",
+            "What it reveals"
+          ],
+          "rows": [
+            [
+              "C plus a stated 3 pm time",
+              "Use 3 pm for Time",
+              "Can use supplied information"
+            ],
+            [
+              "Original C with no time",
+              "Time: not stated",
+              "Does not fill a gap by guessing"
+            ],
+            [
+              "C and D disagree on room",
+              "Flag the room conflict",
+              "Does not silently choose a record"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "For the third case, D describes the same event as C but gives Room 9, and neither record is marked as replacing the other. P1 explains missing values but says nothing about disagreement. Revise that weakness: if supplied records conflict about a requested field and no priority is given, write \u201cconflicting information\u201d for that field. Preserve values that do not conflict."
+        },
+        {
+          "type": "paragraph",
+          "text": "Call the revision P2 and keep the rest of P1 unchanged, except that it now refers to the supplied records rather than C alone. The place field should flag the conflict; it must not silently choose Room 7, choose Room 9 or combine them into Room 79. A later authoritative correction may resolve the conflict, but this input does not provide one."
+        }
+      ]
+    },
+    {
+      "title": "Record failures before changing the instructions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A small test log can record prompt version, input case, output, each criterion\u2019s result and the reason for failure. If you use an approved model, also record the model and available settings. Compare prompt versions on the same cases under the same recorded conditions. Keep all observed outputs rather than only the best-looking attempt."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "For original C, an example response has four lines: Day: Monday; Time: 3 pm; Place: Room 7; Bring: paper. Identify the criteria it passes and fails. Explain why adding \u201cbe accurate\u201d alone is not enough, and propose a missing-value test to rerun after a revision",
+          "lines": 7
+        },
+        {
+          "type": "paragraph",
+          "text": "P1 already tells the model not to invent missing values. A failed output can therefore be a failure to follow an adequate instruction, not necessarily a missing instruction. Inspect the actual output, retain the failure and try targeted changes if useful. Clear prompting helps communicate requirements but cannot guarantee correctness, remove the need for checks or grant permission to use restricted data."
+        }
+      ]
+    },
+    {
+      "title": "Make a bounded claim about an improvement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Suppose a revised prompt handles three classroom examples correctly. You can report that it passed those examples under the recorded conditions. You cannot conclude that it will always work. If outputs can vary between runs, plan repeated trials and keep every result. A single good response is not a reliability guarantee."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use the failures to improve the specification and add revealing cases. Keep the same evaluation criteria when comparing versions; changing both the prompt and the scoring rule makes the comparison hard to interpret. A new requirement may justify a new criterion, but document that change rather than pretending the results used the same test."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Two prompts are compared: P1 receives a complete record and P2 receives a record with a missing time. Why is that insufficient to attribute different results to the prompt change? Describe a fairer comparison",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Find what the vague request leaves open",
+      "prompt": "The request says \u201cWrite something good about our club.\u201d Name four decisions it leaves open. Then explain how source C, the Grade 6 audience and four labelled lines make the task easier to check.",
+      "lines": 6,
+      "answer": "Possible omissions include audience, source facts, required fields, format, missing-value behaviour and limits on extra claims. C supplies evidence, Grade 6 specifies readers, and four labelled lines define visible fields and structure. These requirements support checks but do not guarantee compliance."
+    },
+    {
+      "id": "W2",
+      "title": "Score a response by separate criteria",
+      "prompt": "For original C, a card gives four correctly labelled lines but says Time: 3 pm. All other values match C. State which format and evidence checks pass or fail. Is the card acceptable overall? Explain.",
+      "lines": 6,
+      "answer": "The four-line label and order checks pass; day, place and bring values match. The time and no-unsupported-details checks fail because C gives no time; Time should be not stated. It is not acceptable overall because every required criterion must pass."
+    },
+    {
+      "id": "W3",
+      "title": "Handle disagreement without choosing a favourite",
+      "prompt": "C gives Room 7 and D gives Room 9 for the same club event, with no replacement or priority stated. Both agree on Monday and paper, and neither gives a time. Under P2, write the four output values and explain why the room cannot be selected from confidence or wording alone.",
+      "lines": 6,
+      "answer": "Day: Monday; Time: not stated; Place: conflicting information; Bring: paper. Neither source is given priority, so choosing one room from style or confidence would invent a resolution. The other fields can still preserve their supported values."
+    },
+    {
+      "id": "W4",
+      "title": "Specify and test a new exhibit card",
+      "prompt": "Fictional record X says an exhibit is called Shadow Pairs and is in Hall 2; no opening time is given. Write a complete prompt for a Grade 6 card with exactly three labelled lines: Title, Location, Opening. Limit facts to supplied records, define missing and conflicting values and prohibit added claims. Give two test inputs and expected outputs: original X, then X with an opening time of 10 am added.",
+      "lines": 8,
+      "answer": "A valid prompt names the Grade 6 card task, supplied records only, exactly three lines in Title/Location/Opening order, not stated for missing values, conflicting information for unresolved disagreements and no added details. It includes X. Original X gives Title: Shadow Pairs; Location: Hall 2; Opening: not stated. Adding 10 am gives the same title and location with Opening: 10 am. Equivalent clear wording is acceptable."
+    },
+    {
+      "id": "W5",
+      "title": "Preserve the comparison evidence",
+      "prompt": "A pupil tries P1 once and P2 five times, then compares the P1 response only with the best P2 response and declares P2 always reliable. Identify two problems and design a fairer small comparison. State a conclusion the evidence could support.",
+      "lines": 6,
+      "answer": "Selecting only the best P2 output hides failures; unequal trial counts and an always-reliable claim also undermine the comparison. Use the same cases, criteria and recorded model conditions, with the same planned number of runs for each version. Keep all outputs and report pass counts and failures. The evidence can describe performance on these trials, not guarantee all future outputs."
+    }
+  ],
+  "teacher": {
+    "background": "This is a specification and evaluation lesson, not a live model benchmark or a collection of magic prompt phrases. All example responses are authored classroom cases. A partner following instructions on paper is useful for finding ambiguity but does not establish model reliability. If an approved tool is used, record the exact prompt, inputs, model and available settings; keep failures as well as successes.",
+    "materials": [
+      "Fictional C and D records from the lesson, with D sharing the event but giving Room 9",
+      "A four-criterion checklist for supported values, missing/conflicting handling, format and no additions",
+      "Paper for a prompt-version and test-case log; optional teacher-approved model only"
+    ],
+    "sessions": [
+      [
+        "Session 1 start 0 to 7 minutes",
+        "Retrieve why an unsupported time must not be accepted from fluent wording."
+      ],
+      [
+        "7 to 20 minutes",
+        "Compare the vague request with P1 and complete W1."
+      ],
+      [
+        "20 to 33 minutes",
+        "Trace requirement-to-check links in the diagram. Complete W2."
+      ],
+      [
+        "33 to 45 minutes",
+        "Introduce C/D disagreement and P2. Complete W3."
+      ],
+      [
+        "Session 2 start 0 to 8 minutes",
+        "Retrieve why format success cannot cancel a factual failure."
+      ],
+      [
+        "8 to 23 minutes",
+        "Complete the guided criterion check. Distinguish inadequate instructions from failed compliance."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently, requiring both prompt and expected test outcomes."
+      ],
+      [
+        "38 to 45 minutes",
+        "Complete W5 and the exit. Preserve all trial results and bound the conclusion."
+      ]
+    ],
+    "guidedAnswer": "The response passes four-line structure and the three supported values. It fails the missing-time requirement and introduces an unsupported time. Be accurate does not specify how to handle absence; P1 already gives that rule, so this is a compliance failure. Rerun a record lacking a time, expecting not stated, and also a record with a time, expecting that value. Exit: input completeness differs as well as the prompt. Compare both versions on both inputs with the same criteria and recorded conditions.",
+    "misconceptions": [
+      [
+        "A tidy response is a correct response",
+        "Score facts and missing-value handling separately from layout."
+      ],
+      [
+        "A better prompt guarantees correct output",
+        "Inspect actual responses; even explicit requirements can be violated."
+      ],
+      [
+        "A conflict can be resolved by choosing the confident record",
+        "Without authority or priority, flag the unresolved field."
+      ],
+      [
+        "The best attempt represents every attempt",
+        "Keep all planned trials and report failures rather than selecting only a success."
+      ]
+    ],
+    "assessment": "W4 requires a complete task, audience, X, three labels and their order, evidence restriction, no additions, missing and conflict rules, and both expected outputs. After support add Y for the same exhibit giving Hall 4, with no priority and no opening time. Require unchanged title, conflicting information for Location and not stated for Opening. Do not demand identical prompt wording if the requirements are clear.",
+    "support": "Provide a frame with task, readers, evidence, output, missing/conflicting behaviour and checks. Let pupils mark an example output before writing their own prompt. Extension: propose a test that reveals whether a revision accidentally marks a present value as missing.",
+    "next": "Week 27 examines the evidence behind individual claims and independently checks quantities and units."
+  }
+}

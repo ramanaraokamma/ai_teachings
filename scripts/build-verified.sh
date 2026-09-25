@@ -26,6 +26,7 @@ echo "Running bounded vinext build..."
 node "${script_dir}/compile-topic-plans.mjs"
 node "${script_dir}/compile-grade6-review.mjs"
 node "${script_dir}/verify-curriculum.mjs"
+node "${script_dir}/verify-v3.mjs"
 timeout \
   --signal=TERM \
   --kill-after="${SITES_BUILD_KILL_AFTER:-10s}" \

@@ -9,5 +9,6 @@ const run=(command,args,timeout=180000)=>{
 run(process.execPath,['scripts/compile-grade6-review.mjs']);
 run(process.execPath,['scripts/compile-topic-plans.mjs']);
 run(process.execPath,['scripts/verify-curriculum.mjs']);
+run(process.execPath,['scripts/verify-v3.mjs']);
 run(`${root}node_modules/.bin/vinext`,['build']);
 run(process.execPath,['scripts/protect-static-assets.mjs']);

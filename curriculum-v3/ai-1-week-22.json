@@ -1,0 +1,284 @@
+{
+  "level": "ai-1",
+  "week": 22,
+  "title": "Sampling and coverage",
+  "minutes": 90,
+  "goals": [
+    "Name the target collection, selection list and cases actually assessed",
+    "Use a coverage table to identify missing conditions before making a claim",
+    "Propose a selection plan that addresses a stated gap without promising certainty"
+  ],
+  "prerequisite": {
+    "prompt": "A table has been checked and every recorded value matches its source. Does that prove it includes all the conditions in which a system will be used? Explain.",
+    "answer": "No. Correct records can still describe only a narrow set of conditions. Source checking does not establish coverage of unrecorded cases."
+  },
+  "vocabulary": [
+    [
+      "Target population",
+      "The whole collection of cases a question is about"
+    ],
+    [
+      "Sample",
+      "The selected cases used to investigate a larger collection"
+    ],
+    [
+      "Sampling frame",
+      "The list or source from which cases can be selected"
+    ],
+    [
+      "Coverage",
+      "Which relevant kinds of cases the list or sample includes"
+    ],
+    [
+      "Selection bias",
+      "Systematic distortion caused by how cases enter an investigation"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Name the collection before reporting a result",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Suppose a shape recogniser will be evaluated on a fixed collection of 24 invented picture cards. This target population has 6 bright circles, 6 dim circles, 6 bright squares and 6 dim squares. Each card has its own ID and an independently checked circle or square label. We want to know how often the recogniser gives the correct label across these 24 cards."
+        },
+        {
+          "type": "paragraph",
+          "text": "A tester takes the 6 bright-circle cards nearest the front of the box. Those 6 cards form the sample; the other 18 have not been assessed. The recogniser is correct on 5 of the 6 sampled cards. That is a result for these assessed bright circles. It does not establish correctness on the squares or dim cards."
+        },
+        {
+          "type": "paragraph",
+          "text": "A sampling frame is the list or source available for selection. A complete list of all 24 IDs could give every card a chance of selection. A list containing only bright-circle IDs cannot select dim cards or squares, even if the choice from that list is random. These fictional picture cards do not contain personal information."
+        }
+      ]
+    },
+    {
+      "title": "Make the missing conditions visible",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Coverage is about cases as well as counts",
+          "columns": [
+            "Card condition",
+            "Target count",
+            "Assessed count"
+          ],
+          "rows": [
+            [
+              "Bright circles",
+              "6 cards",
+              "6 assessed"
+            ],
+            [
+              "Dim circles",
+              "6 cards",
+              "0 assessed"
+            ],
+            [
+              "Bright squares",
+              "6 cards",
+              "0 assessed"
+            ],
+            [
+              "Dim squares",
+              "6 cards",
+              "0 assessed"
+            ]
+          ],
+          "caption": "All 6 assessed cases come from one of four conditions. An assessed count of zero means no evidence for that condition; it does not mean the recogniser failed every case in it."
+        },
+        {
+          "type": "paragraph",
+          "text": "The target has 24 distinct cards, but the sample covers only the 6 bright circles. Photographing each sampled card twice would create 12 image records without adding a new card or covering a missing condition. Record the identity of the underlying case as well as the number of files."
+        },
+        {
+          "type": "paragraph",
+          "text": "Both shape and lighting matter to this question. A sample with bright circles and dim squares includes each shape and each lighting label, yet still misses dim circles and bright squares. Check combinations when the interaction could matter, not just whether each individual label appears somewhere."
+        }
+      ]
+    },
+    {
+      "title": "Match the selection plan to the purpose",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Plan",
+            "What it helps with",
+            "Limit to report"
+          ],
+          "rows": [
+            [
+              "Take cards at the front",
+              "Quick initial check",
+              "Front position may restrict conditions"
+            ],
+            [
+              "Draw from all 24 IDs by chance",
+              "Every listed card can be selected",
+              "A small draw need not balance conditions"
+            ],
+            [
+              "Choose 2 distinct cards per condition",
+              "Includes all four conditions",
+              "8 cards do not establish all 24 outcomes"
+            ],
+            [
+              "Assess all 24 distinct cards",
+              "Covers this entire fixed collection",
+              "Does not prove performance on future images"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "For a broad estimate, a chance-based plan should start from a suitable complete list and use a documented selection procedure. For investigating missing conditions, deliberately selecting cases from each condition can be useful. State which purpose you chose. A set built to expose problems is not automatically a faithful miniature of everyday use."
+        },
+        {
+          "type": "paragraph",
+          "text": "Selection bias is about a systematic feature of the selection process, not whether a person had bad intentions. Choosing only easy-to-reach, bright cards can leave harder conditions out. More cases from the same narrow source may repeat that gap. A larger sample cannot by itself repair a frame that excludes relevant cases."
+        }
+      ]
+    },
+    {
+      "title": "Keep selected, assessed and unassessed separate",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Imagine a new plan selects 2 distinct cards from each of the four conditions: 8 cards in total. One selected dim-square file cannot be opened. Only 7 have assessed outcomes. Record the missing file and its condition; do not call it a recognition error or pretend all 8 outcomes were checked. This exercise evaluates recognition only, so file availability is reported separately."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "A report says the original recogniser is correct on 5 of 6 cards, so it works on all shapes and lighting. Rewrite the claim using the original sample, identify the three missing conditions, and propose a selection plan to investigate them",
+          "lines": 7
+        },
+        {
+          "type": "paragraph",
+          "text": "Choose and document cases before seeing their outcomes. If you use the results to revise the recogniser, keep a separate unseen final test as in Week 15. Coverage and an unseen test solve different problems: one asks which conditions appear; the other asks whether the evaluation cases influenced the revision."
+        }
+      ]
+    },
+    {
+      "title": "Describe what the evidence can reach",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A careful report identifies the target, frame, selection method, distinct cases, assessed outcomes and gaps. For the original sample: 5 of 6 selected bright-circle cards were correct; the 18 cards in other conditions were not assessed. This is useful evidence with a narrow reach, not a score for all future images."
+        },
+        {
+          "type": "paragraph",
+          "text": "Even checking all 24 cards answers a question about that fixed collection and that recogniser version. New image sources, different lighting or other shapes introduce new cases. Revisit the target and the coverage plan when the intended use changes."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A tester collects 100 more bright-circle images and says the absence of dim-square tests no longer matters. Explain what increased and what coverage gap remains",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Name target, frame and sample",
+      "prompt": "Use the 24-card investigation. State the target collection, the original six-card sample and the three absent conditions. If the selection list contains only bright-circle IDs, explain why random selection from that list cannot reach every target condition.",
+      "lines": 6,
+      "answer": "The target is all 24 specified cards across four conditions. The sample is the 6 bright-circle cards. Dim circles, bright squares and dim squares are absent. A frame containing only bright-circle IDs excludes every other condition, regardless of how randomly IDs are drawn from it."
+    },
+    {
+      "id": "W2",
+      "title": "Separate files from distinct cases",
+      "prompt": "Each of the six original sampled cards is photographed twice. State the number of image files and distinct cards. Has this covered a new shape or lighting condition? Explain why the counts need different labels.",
+      "lines": 6,
+      "answer": "There are 12 image files but still 6 distinct cards, all bright circles. No new shape or lighting condition has been covered. Multiple records of the same cases are not 12 distinct sampled cards and do not resolve the missing conditions."
+    },
+    {
+      "id": "W3",
+      "title": "Read a coverage table in combinations",
+      "prompt": "A different test includes 3 bright circles and 3 dim squares. A designer says it covers both shapes and both lighting conditions, so no combinations are missing. Identify the missing combinations and propose six additional distinct cards to investigate them.",
+      "lines": 6,
+      "answer": "Dim circles and bright squares are missing, even though circle, square, bright and dim each occur somewhere. Add 3 distinct dim circles and 3 distinct bright squares from the target collection. This addresses those combination gaps but does not establish every unassessed card outcome."
+    },
+    {
+      "id": "W4",
+      "title": "Audit a new sound-recognition claim",
+      "prompt": "A fixed target has 20 invented clips: 5 quiet bells, 5 noisy bells, 5 quiet claps and 5 noisy claps. A tester selects 4 distinct quiet bells from a quiet-bell-only list; 3 are correctly labelled and 1 is wrong. Write a supported result, name missing conditions and explain why the result is not established for all 20 clips. Propose an 8-clip plan that includes every condition, with no clip selected twice.",
+      "lines": 8,
+      "answer": "The recogniser is correct on 3 of 4 assessed quiet-bell clips. No noisy bells, quiet claps or noisy claps were assessed; even one quiet-bell clip remains unassessed. The restricted frame and sample cannot establish the all-20 result. Select 2 distinct clips from each of the four conditions using the complete target list, document selection before outcomes and report remaining limits. Eight clips improve condition coverage but are not all 20."
+    },
+    {
+      "id": "W5",
+      "title": "Report a selected case without an outcome",
+      "prompt": "An 8-clip plan selects 2 from each sound condition. One selected noisy-clap file cannot be opened. The task measures recognition correctness only. State selected and assessed counts and the assessed count for each condition. Explain why a report of all 8 checked is wrong, and how to handle the missing file transparently.",
+      "lines": 6,
+      "answer": "Eight clips were selected; seven were assessed. Quiet bells, noisy bells and quiet claps each have 2 assessed; noisy claps have 1 assessed and 1 unassessed file. No recognition outcome is available for the unopened file. Log its ID and reason, recover it if possible, and document any replacement rule without choosing on outcomes. Do not label its recognition result correct or wrong or hide its absence."
+    }
+  ],
+  "teacher": {
+    "background": "Teach the difference between accurate records and adequate coverage. The populations here are finite invented card and clip collections, so students can account for every selected and unselected case. Avoid presenting equal group counts as a universal sampling rule: this target has equal groups, and the proposed balanced plan investigates condition coverage. It does not guarantee an unbiased estimate in every application.",
+    "materials": [
+      "A paper inventory with 6 IDs for each of the four picture-card conditions",
+      "A four-row coverage table with target, selected, assessed and missing columns",
+      "Twenty paper clip IDs grouped into the four fictional sound conditions; no audio recording needed"
+    ],
+    "sessions": [
+      [
+        "Session 1 start 0 to 7 minutes",
+        "Retrieve why source-checked data can still omit relevant conditions."
+      ],
+      [
+        "7 to 20 minutes",
+        "Model target, frame and sample using the picture-card inventory. Complete W1."
+      ],
+      [
+        "20 to 33 minutes",
+        "Read the coverage diagram. Complete W2 and distinguish file count from distinct cases."
+      ],
+      [
+        "33 to 45 minutes",
+        "Complete W3 and compare individual features with their combinations."
+      ],
+      [
+        "Session 2 start 0 to 8 minutes",
+        "Retrieve the three absent conditions in the original investigation."
+      ],
+      [
+        "8 to 23 minutes",
+        "Compare selection plans and complete the guided claim rewrite. Use shuffled paper IDs to show that a small chance draw need not balance conditions."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently. Require a bounded result and a feasible plan with distinct clips."
+      ],
+      [
+        "38 to 45 minutes",
+        "Discuss W5 and the exit. Keep selected, assessed and unavailable counts separate."
+      ]
+    ],
+    "guidedAnswer": "The original recogniser correctly labelled 5 of 6 assessed bright-circle cards. Dim circles, bright squares and dim squares were not assessed. A documented plan selecting 2 distinct cards per condition from all 24 IDs would include each condition without claiming to establish every outcome. Exit: the image count grew, but the absence of dim-square tests remains; more bright-circle data cannot supply dim-square evidence.",
+    "misconceptions": [
+      [
+        "More records always remove bias",
+        "A restricted source can keep excluding the same conditions as its record count grows."
+      ],
+      [
+        "Random selection repairs an incomplete list",
+        "Excluded cases cannot be selected from a list that does not contain them."
+      ],
+      [
+        "Every feature value appears, so every combination appears",
+        "Bright circles and dim squares still omit dim circles and bright squares."
+      ],
+      [
+        "Zero assessed means every case failed",
+        "Zero assessed means no observed recognition outcomes for that group."
+      ]
+    ],
+    "assessment": "W4 requires 3 of 4 quiet bells, all three missing conditions, recognition that the all-20 result is unestablished, and an 8-clip plan with distinct cases from all four conditions; 2 per condition is one valid plan. After support use a sample of 4 noisy claps with 2 correct: the supported result is 2 of 4 noisy claps, and quiet bells, noisy bells and quiet claps are absent. Require a fresh explanation, not a copied list.",
+    "support": "Place paper IDs in four labelled boxes and physically mark selected and assessed cards. Provide the column headings while students fill the counts. Extension: explain why a full assessment of this fixed 24-card population still would not prove correctness on every future photograph.",
+    "next": "Week 23 compares performance fractions while keeping denominators, missing outcomes and evaluation conditions explicit."
+  }
+}

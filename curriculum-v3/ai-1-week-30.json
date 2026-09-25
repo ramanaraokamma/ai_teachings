@@ -1,0 +1,288 @@
+{
+  "level": "ai-1",
+  "week": 30,
+  "title": "Requirements and a simple baseline",
+  "minutes": 90,
+  "goals": [
+    "Turn the project outcome into precise input and output requirements",
+    "Apply a simple manual baseline to valid requests and record its results",
+    "Plan a fair comparison using the same catalogue, requests and judging rules"
+  ],
+  "prerequisite": {
+    "prompt": "A recommender always reports no match. Why is a count of zero incompatible suggestions insufficient to show that it helps users?",
+    "answer": "It may miss compatible options on every request where one exists. Check useful suggestions and whether no-match results are justified, as well as incompatible suggestions."
+  },
+  "vocabulary": [
+    [
+      "Requirement",
+      "A precise condition that the solution must satisfy"
+    ],
+    [
+      "Baseline",
+      "A defined starting method used for comparison"
+    ],
+    [
+      "Compatible",
+      "Meeting all the stated conditions of the request"
+    ],
+    [
+      "Tie rule",
+      "A stated way to choose when several options qualify"
+    ],
+    [
+      "Acceptance check",
+      "A check of whether a result satisfies a requirement"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Specify what a correct result means",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Last week we identified a difficulty: some fictional activity choices did not fit the available time or room conditions. Now define the task precisely enough that two reviewers can agree whether an output is correct. A requirement such as \u201csuggest a good activity\u201d is too vague. State which inputs are accepted, what counts as compatible and what to do when no option fits."
+        },
+        {
+          "type": "paragraph",
+          "text": "For this paper project, a valid request contains an available time from 0 to 30 whole minutes and a quiet-room requirement written Yes or No. Yes means the activity must be marked quiet. No means either quiet or non-quiet activities are permitted; it does not mean noise is required. A missing or invalid value needs clarification, not a guessed value or a no-match claim."
+        },
+        {
+          "type": "paragraph",
+          "text": "A compatible activity takes no more than the available minutes and meets the quiet-room condition. If several activities fit, suggest the first in catalogue order. If none fits a valid request, report no match. Give a brief reason. This is a suggestion only: it does not book resources, tell anyone to begin or guarantee enjoyment."
+        }
+      ]
+    },
+    {
+      "title": "Use one catalogue for both methods",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Catalogue order and activity",
+            "Minutes required",
+            "Quiet activity"
+          ],
+          "rows": [
+            [
+              "B1 Bookmark drawing",
+              "10",
+              "Yes"
+            ],
+            [
+              "B2 Story circle",
+              "8",
+              "No"
+            ],
+            [
+              "B3 Pattern puzzle",
+              "12",
+              "Yes"
+            ],
+            [
+              "B4 Tower challenge",
+              "15",
+              "No"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "These four rows are the complete approved catalogue for the paper model. Treat their times as fixed task values, not measured guarantees about real pupils. All required materials are assumed available. The catalogue order B1, B2, B3, B4 is the tie rule; it is not a claim that B1 is everyone\u2019s favourite."
+        },
+        {
+          "type": "paragraph",
+          "text": "For 10 minutes with quiet required, B1 fits because 10 is no more than 10 and B1 is quiet. B2 fails the quiet requirement. B3 and B4 take too long. For 8 minutes with quiet not required, B2 fits; B1 takes too long. A request for 7 minutes has no compatible activity in this catalogue, even when quiet is not required."
+        },
+        {
+          "type": "paragraph",
+          "text": "Check each condition. A fast activity can still fail the quiet requirement. A quiet activity can still take too long. Exact equality is allowed: an activity listed as 10 minutes fits 10 available minutes. A blank time is different from a valid time of zero."
+        }
+      ]
+    },
+    {
+      "title": "Describe a baseline someone else can repeat",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "The manual checklist baseline",
+          "columns": [
+            "Stage",
+            "Manual action",
+            "Recorded result"
+          ],
+          "rows": [
+            [
+              "Validate the request",
+              "Check minutes and Yes or No",
+              "Clarify invalid input"
+            ],
+            [
+              "Inspect catalogue in order",
+              "Check time and quiet for each",
+              "Mark compatible rows"
+            ],
+            [
+              "Choose or explain absence",
+              "First compatible row or none",
+              "Suggestion or no match"
+            ],
+            [
+              "Keep the evidence",
+              "Record input, result, reason",
+              "Comparable baseline record"
+            ]
+          ],
+          "caption": "The baseline is a complete manual method. A prototype must be compared with this defined procedure, not an invented weak opponent."
+        },
+        {
+          "type": "paragraph",
+          "text": "Write the request at the top of a sheet. If it is invalid, record what needs clarification and stop. Otherwise mark each catalogue row as compatible or incompatible using both conditions. Circle the first compatible row in order, or write no match if every row fails. Record the output and its reason. This checklist is our baseline."
+        },
+        {
+          "type": "paragraph",
+          "text": "The baseline can be correct on all cases when applied carefully. A prototype that matches it has not demonstrated better compatibility. It may still be easier to use or faster to trace, but those are separate claims that need their own measures. Do not make the baseline skip a condition just to make the prototype look better."
+        }
+      ]
+    },
+    {
+      "title": "Plan the comparison before seeing its outcome",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Both methods must receive the same request values and the same catalogue version, and both must be judged by the same requirements. Record actual results, including errors, no-match outputs and clarification requests. A valid no-match result can pass; a no-match result that overlooks a fitting activity cannot. A guessed answer to invalid input fails the clarification requirement."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Apply the manual baseline to 12 minutes with quiet required and to 8 minutes with quiet required. Mark every catalogue row for each request, choose the required output and explain the tie rule. State what to do if the available-time field is blank instead",
+          "lines": 7
+        },
+        {
+          "type": "paragraph",
+          "text": "The cases used while designing are development cases. Keep the teacher\u2019s reserved final cases unopened until the process is fixed and ready for evaluation. Do not change the requirements after seeing a poor result simply to count that result as a success. If a real need changes, record the new requirement and rerun the relevant checks."
+        }
+      ]
+    },
+    {
+      "title": "Keep the project evidence ready for the next week",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Your project record now needs the problem brief, this catalogue, the input rules, compatibility rule, tie rule and clarification behaviour. Add a baseline sheet with one row per request: supplied input, actual output, reason and whether the requirements were met. Record the method and catalogue version so a later reader can repeat the comparison."
+        },
+        {
+          "type": "paragraph",
+          "text": "For this week, complete the baseline before building a new process. Next week you will design the full decision path, including invalid input and no-match cases. Keep compatibility claims within the paper model. Real materials, changing room conditions and pupils\u2019 preferences would require more information and a revised task."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Two methods both produce the required outputs on the same five valid requests. One team claims its prototype is more accurate because it uses an app. Is that conclusion supported? Name a separate benefit the team could investigate and what it would need to record",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Make a requirement checkable",
+      "prompt": "Replace \u201csuggest a good activity\u201d with the time condition, quiet condition and tie rule used in this project. Explain why Quiet required No permits B1 as well as non-quiet activities when their times fit.",
+      "lines": 6,
+      "answer": "Time required must be no more than available time; when quiet is required the activity must be quiet. Choose the first compatible activity in B1 to B4 order. No means quiet is not required, not forbidden, so quiet B1 is permitted if 10 minutes fits."
+    },
+    {
+      "id": "W2",
+      "title": "Run the baseline on three requests",
+      "prompt": "Using the catalogue, record the baseline output and reason for 10 minutes with quiet required, 8 minutes with quiet not required, and 7 minutes with quiet not required. Identify which no-match result is justified and why.",
+      "lines": 6,
+      "answer": "10 Yes gives B1: 10 fits exactly and it is quiet. 8 No gives B2: B1 is too long, B2 fits and non-quiet is permitted. 7 No gives no match: even the shortest activity requires 8 minutes. That no-match result is justified by the complete catalogue."
+    },
+    {
+      "id": "W3",
+      "title": "Separate invalid input from no matching option",
+      "prompt": "Compare a request with blank minutes and Quiet required Yes to a request with 0 minutes and Quiet required Yes. What should the baseline record for each? Explain why these are different outcomes even though neither produces an activity suggestion.",
+      "lines": 6,
+      "answer": "Blank minutes is invalid and requires clarification of the missing time. Zero is a valid whole number within 0 to 30; no activity takes 0 minutes or less, so no match is justified. The first lacks a usable input; the second has a usable input but no compatible option."
+    },
+    {
+      "id": "W4",
+      "title": "Build a baseline for a different catalogue",
+      "prompt": "A paper room recommender uses R1 first, capacity 6, quiet Yes; then R2, capacity 10, quiet No. Valid requests give a whole group size from 1 to 12 and Quiet required Yes or No. A room fits when capacity is at least group size and the quiet condition is met; choose the first fitting room. Record outputs and reasons for 6 people Yes, 8 people No and 8 people Yes. Explain how a manual baseline can be compared fairly with a prototype. No real booking is allowed.",
+      "lines": 8,
+      "answer": "6 Yes gives R1: equality fits and it is quiet. 8 No gives R2: R1 is too small and R2 meets capacity with quiet not required. 8 Yes gives no match: R1 is too small, R2 is not quiet. Use the same room catalogue, request set and requirements for both methods and keep all results. Compare suggestions only; do not make bookings."
+    },
+    {
+      "id": "W5",
+      "title": "Challenge an unfair comparison",
+      "prompt": "Team A tests a prototype on five easy requests and the manual baseline on five different requests, then reports only the prototype\u2019s successful outputs. Identify two changes needed for a fair comparison. If both methods then meet all requirements, what can and cannot be concluded about compatibility?",
+      "lines": 6,
+      "answer": "Use the same requests and catalogue for both with the same judging rules, and retain all outputs including failures and no-match or clarification results. If both meet the requirements on those cases, both pass those checks; the results do not demonstrate the prototype has better compatibility or prove either works on every possible case."
+    }
+  ],
+  "teacher": {
+    "background": "Use this catalogue and task contract unchanged through the shared project unless a later activity explicitly introduces a versioned change. The baseline is deliberately complete and credible: careful manual checking can satisfy the specification. The educational aim is a traceable, tested recommender and a defensible comparison, not a compulsory claim that automation wins. Minutes are exact paper-model values and resources are assumed available.",
+    "materials": [
+      "The four-row B1 to B4 catalogue and fictional request cards",
+      "A baseline sheet with input, output, reason and pass or fail columns",
+      "Separate storage for teacher-reserved final cases, kept out of development work"
+    ],
+    "sessions": [
+      [
+        "Session 1 start 0 to 7 minutes",
+        "Retrieve why zero incompatible suggestions is not sufficient evidence of help."
+      ],
+      [
+        "7 to 20 minutes",
+        "Define valid input and both compatibility conditions; complete W1."
+      ],
+      [
+        "20 to 33 minutes",
+        "Read the complete catalogue and run W2 by hand."
+      ],
+      [
+        "33 to 45 minutes",
+        "Complete W3 and distinguish blank input from a valid zero."
+      ],
+      [
+        "Session 2 start 0 to 8 minutes",
+        "Retrieve the tie rule and the meaning of Quiet required No."
+      ],
+      [
+        "8 to 23 minutes",
+        "Complete the guided baseline and discuss a fair comparison plan."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently, requiring reasons for each room result."
+      ],
+      [
+        "38 to 45 minutes",
+        "Complete W5 and the exit; save the contract and baseline for Week 31."
+      ]
+    ],
+    "guidedAnswer": "12 Yes: B1 and B3 fit; B2 and B4 are non-quiet, and B4 is also too long. Choose B1 because it is first in catalogue order. 8 Yes: B1 and B3 are too long; B2 is not quiet; B4 fails both. Report no match. Blank time requires clarification, not a guessed number. Exit: equal successful outputs on five cases do not show better accuracy for the app. A separate claim such as faster completion needs recorded times under comparable conditions, with errors and help also recorded.",
+    "misconceptions": [
+      [
+        "Quiet required No excludes quiet activities",
+        "No removes the quiet restriction; it does not reverse it."
+      ],
+      [
+        "Ten minutes does not fit a ten-minute limit",
+        "No more than includes equality."
+      ],
+      [
+        "Blank time means zero",
+        "Blank is missing; zero is a valid input with no matching activity here."
+      ],
+      [
+        "A baseline must be bad to make a comparison useful",
+        "Use a credible simple method and accept a tie or a baseline win."
+      ]
+    ],
+    "assessment": "W4 requires R1, R2 and no match with capacity and quiet reasons, plus matching inputs, catalogue and judging rules in the comparison. After support change R2 to quiet Yes and repeat 8 Yes: expected R2. Ask whether this revises a requirement or a catalogue value; it revises the catalogue, so record a new catalogue version and rerun affected checks.",
+    "support": "Give one tick column for time or capacity and another for quiet. Require both ticks before circling a suggestion. Use a number line to distinguish equal to from greater than. Extension: explain why a fixed tie rule helps reproducibility but does not prove a preference ranking.",
+    "next": "Week 31 designs the complete decision process using the same requirements and catalogue."
+  }
+}

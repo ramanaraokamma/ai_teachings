@@ -1,0 +1,279 @@
+{
+  "level": "ai-1",
+  "week": 21,
+  "title": "Data quality and documented repair",
+  "minutes": 90,
+  "goals": [
+    "Check records against a stated format, unit and meaning before using them",
+    "Distinguish an evidence-based correction from an unsupported guess",
+    "Keep original values and a change log, then report what remains unresolved"
+  ],
+  "prerequisite": {
+    "prompt": "A recommender needs availability, but that field is blank. Can the highest preference score establish that the item is available? Explain.",
+    "answer": "No. The score does not supply the missing fact. Keep availability unknown and seek evidence before counting the item as eligible."
+  },
+  "vocabulary": [
+    [
+      "Schema",
+      "A description of required fields, formats, units and allowed values"
+    ],
+    [
+      "Validation",
+      "Checking a record against stated requirements"
+    ],
+    [
+      "Provenance",
+      "A record of where information came from"
+    ],
+    [
+      "Correction",
+      "A change supported by evidence about the intended value"
+    ],
+    [
+      "Change log",
+      "A record of what changed, why, when and on what evidence"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Decide what each field means before checking it",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A tidy table can still contain wrong information. Validation checks whether a record follows a schema. A schema says which fields are required and what their values mean. Passing these checks makes a record usable for a stated task; it does not prove that the measurement or claim is true."
+        },
+        {
+          "type": "paragraph",
+          "text": "Our fictional RampLog records one ramp trial per trial ID. The fields are trial ID, height in centimetres, travel in centimetres and source card. Height must be a whole number from 1 through 10. Travel must be a whole number from 0 through 10. The source card identifies the original observation. Repeated trial IDs need investigation before counting trials."
+        },
+        {
+          "type": "paragraph",
+          "text": "The purpose is to count trials whose travel is at least 4 cm. A measured zero means no travel; a blank means no value was recorded. Never silently replace a blank by zero. Use only the invented records here; no personal information is needed."
+        }
+      ]
+    },
+    {
+      "title": "Follow the evidence from original to corrected record",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Preserve the original and explain each decision",
+          "columns": [
+            "Original record",
+            "Evidence check",
+            "Working decision"
+          ],
+          "rows": [
+            [
+              "T2 height 60 cm",
+              "Card C2 says 6 cm",
+              "Correct to 6; log C2"
+            ],
+            [
+              "T3 travel blank",
+              "Card C3 also blank",
+              "Keep missing; flag"
+            ],
+            [
+              "T4 travel 0 cm",
+              "Card C4 confirms zero",
+              "Keep measured zero"
+            ]
+          ],
+          "caption": "C2 supports correcting T2. C3 cannot supply a missing measurement. C4 shows that zero is a recorded observation, not a placeholder for missing data."
+        },
+        {
+          "type": "paragraph",
+          "text": "The complete raw table is T1: height 4, travel 3, card C1; T2: height 60, travel 5, card C2; T3: height 5, travel blank, card C3; T4: height 6, travel 0, card C4. A second export row repeats T1 with height 4, travel 3 and C1. C1 confirms one trial T1, not two. C2 reads height 6 and travel 5. C3 has no travel measurement. C4 reads height 6 and travel 0."
+        },
+        {
+          "type": "paragraph",
+          "text": "Work in a separate corrected copy. Record T2 height 60 to 6, evidence C2, transcription error, reviewer and review date. Link the repeated T1 export row to the first T1; count that single trial once and keep both raw rows. Do not remove two different trials merely because their measured numbers match."
+        }
+      ]
+    },
+    {
+      "title": "Choose an action that the evidence supports",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Problem",
+            "Permitted action here",
+            "Unsupported shortcut"
+          ],
+          "rows": [
+            [
+              "Invalid height 60",
+              "Check C2; correct to 6",
+              "Guess by deleting a zero"
+            ],
+            [
+              "Missing travel",
+              "Keep missing; seek source",
+              "Fill with the class average"
+            ],
+            [
+              "Repeated T1 ID",
+              "Confirm one trial on C1; count once",
+              "Treat every repeated number as a duplicate"
+            ],
+            [
+              "Two sources disagree",
+              "Flag conflict; ask for resolution",
+              "Pick the value that improves the result"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A conversion changes units while preserving the quantity. If an authorised source records 50 mm, that is 5 cm because 10 mm equals 1 cm. Write the original unit, conversion and resulting unit in the log. A bare value 50 without a known unit does not justify assuming millimetres."
+        },
+        {
+          "type": "paragraph",
+          "text": "A plausible value can still be a transcription error: 7 would pass the height rule even if its source said 6. Conversely, an unusual but supported value is not automatically wrong. Checking format and checking agreement with a source are different jobs. A source can itself contain an error, so retain its identity and any unresolved concern."
+        }
+      ]
+    },
+    {
+      "title": "Count only after describing the repaired records",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "After the documented correction and confirmed duplicate handling, RampLog contains four distinct trials: T1, T2, T3 and T4. Three have recorded travel. T1 has 3 cm, T2 has 5 cm and T4 has 0 cm. Only T2 meets at least 4 cm, so the result is 1 of 3 assessed trials, with 1 trial missing travel. Do not report T3 as a failure or hide it from the account."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "A reviewer fills T3 travel with 4 because it makes the results look more balanced. Identify the unsupported change, write an honest report using the recorded evidence, and name the source information still needed",
+          "lines": 7
+        },
+        {
+          "type": "paragraph",
+          "text": "Describe which records entered the calculation and why. Keep unresolved records visible in a separate status list. A new measurement is a new observation with its own time and identity; it should not be passed off as the missing observation from an earlier trial."
+        }
+      ]
+    },
+    {
+      "title": "Check the repair and preserve the uncertainty",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "After changing a value, run the schema checks again and compare the corrected copy with the raw copy and log. Recount distinct trials. Check that every correction has evidence and that zero, missing and conflict remain separate. A repair can introduce a new mistake if a value is changed in the wrong row."
+        },
+        {
+          "type": "paragraph",
+          "text": "The corrected RampLog supports a statement about its three assessed trials. It does not establish how every ramp or future trial behaves. Better formatting cannot create missing observations or broaden what was sampled. Next week asks which cases a dataset actually covers."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A table now has no blank cells because a designer guessed all missing measurements. Explain why this does not establish better evidence, and state what a trustworthy repair record should retain",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Check a schema without guessing",
+      "prompt": "Use the RampLog schema. State the issue or valid status for height 60, travel blank and travel 0. Give the range allowed for each numeric field and explain why a blank and zero require different treatment.",
+      "lines": 6,
+      "answer": "Height 60 fails the whole-number range 1 through 10. Travel blank is missing; its value cannot be inferred. Travel 0 is valid in the whole-number range 0 through 10 and can represent observed no travel. Zero is a measurement, not a replacement for a blank."
+    },
+    {
+      "id": "W2",
+      "title": "Write a traceable correction",
+      "prompt": "C2 says T2 height is 6 cm and travel is 5 cm; the export says height 60 cm. Write a change-log entry with ID, field, old and new values with units, evidence, reason, reviewer and date. Use a fictional reviewer and date. Explain where the raw export is kept.",
+      "lines": 6,
+      "answer": "Example: T2; height; 60 cm to 6 cm; source C2; transcription error; reviewer R; review date 16 September 2026. Preserve the original export unchanged and apply the correction to a separate working copy. The source supports 6; the invalid 60 alone would not reveal the intended number."
+    },
+    {
+      "id": "W3",
+      "title": "Distinguish duplicate rows from similar trials",
+      "prompt": "The export repeats T1 with the same source C1, which confirms one trial. A different trial T5 also has height 4 and travel 3, with its own source C5 confirming a separate trial. Explain which rows count once and why T5 must remain separate.",
+      "lines": 6,
+      "answer": "The two export rows for T1 represent one confirmed trial and count once, with a link explaining the duplicate. T5 is another confirmed trial and stays separate even though its measurements equal T1. Matching numeric values alone do not establish duplication."
+    },
+    {
+      "id": "W4",
+      "title": "Audit an independent paper-plane log",
+      "prompt": "Each flight ID must be unique; distance is a whole number from 0 through 20 cm. Raw rows: F1 8 cm; F2 120 cm; F3 blank; F4 0 cm; another F1 8 cm. Source S1 confirms one F1 flight. S2 says F2 travelled 12 cm. S3 is blank. S4 confirms zero. Preserve the raw rows, describe supported repairs and give the number of distinct flights. Report how many assessed flights travelled at least 10 cm, including missing records separately.",
+      "lines": 8,
+      "answer": "Correct F2 distance from 120 to 12 cm using S2 and log the change. Link the duplicate F1 row using S1 and count F1 once. Keep F3 missing and F4 at measured zero. Four distinct flights remain; three have recorded distances 8, 12 and 0. Only F2 meets at least 10 cm: 1 of 3 assessed, with 1 missing. Retain all five raw rows and the evidence for both repair actions."
+    },
+    {
+      "id": "W5",
+      "title": "Handle conflicting and converted evidence",
+      "prompt": "Two signed cards disagree about the same F3 flight: one says 9 cm and the other 11 cm. Neither is established as the correction. What can you report for the at-least-10-cm question? Separately, a source for a new F5 flight explicitly records 100 mm. Convert it to centimetres and state the conversion evidence to retain.",
+      "lines": 6,
+      "answer": "Keep F3 unresolved because 9 would fail and 11 would meet the threshold; do not choose whichever improves the result. Flag both sources and request resolution; the known F1, F2 and F4 results still give 1 of 3 assessed with F3 unresolved. F5 is 10 cm because 100 divided by 10 equals 10. Preserve 100 mm, the source ID and the 10-mm-per-cm conversion. F5 is a new flight, not a repair of F3."
+    }
+  ],
+  "teacher": {
+    "background": "This paper investigation separates validation, source checking, correction and reporting. The schema is a classroom contract, not a universal range for real ramps or flights. Preserve raw records and treat a repair as an evidence claim. No spreadsheet, AI account or collection of student data is required.",
+    "materials": [
+      "The five raw RampLog rows and source-card statements printed in the lesson",
+      "A blank change log with ID, field, old value, new value, evidence, reason, reviewer and date",
+      "The five independent flight rows and source statements printed in W4"
+    ],
+    "sessions": [
+      [
+        "Session 1 start 0 to 7 minutes",
+        "Retrieve why a preference score cannot supply an unknown required fact."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the schema and distinguish a measured zero from a blank. Complete W1."
+      ],
+      [
+        "20 to 33 minutes",
+        "Trace the diagram and source cards. Model a correction in a separate copy, then complete W2."
+      ],
+      [
+        "33 to 45 minutes",
+        "Complete W3. Compare a duplicate export row with a separate trial that happens to have matching values."
+      ],
+      [
+        "Session 2 start 0 to 8 minutes",
+        "Retrieve the evidence needed for a correction and the reason to keep the raw copy."
+      ],
+      [
+        "8 to 23 minutes",
+        "Complete the guided report. Require 1 of 3 assessed and 1 missing, with no invented T3 measurement."
+      ],
+      [
+        "23 to 38 minutes",
+        "Collect W4 independently. Check the repair log, distinct-flight count and denominator."
+      ],
+      [
+        "38 to 45 minutes",
+        "Discuss W5 and the exit. Distinguish unresolved conflicting sources, supported unit conversion and a new observation."
+      ]
+    ],
+    "guidedAnswer": "Filling T3 with 4 has no observational support. Keep travel missing; T1 3, T2 5 and T4 0 give 1 of 3 assessed at least 4 cm, with 1 missing trial. Seek an original travel observation for T3; C3 currently supplies none. Exit: guessed completeness is not evidence of accuracy. Retain raw values, source identity, supported changes, reviewer, date and unresolved statuses.",
+    "misconceptions": [
+      [
+        "Every valid value is true",
+        "Schema compliance does not prove agreement with an observation or establish that the source was accurate."
+      ],
+      [
+        "A blank means zero",
+        "Zero is a known value; a blank is missing information."
+      ],
+      [
+        "Matching measurements must be duplicates",
+        "Distinct trials can have equal measurements; investigate identity and provenance."
+      ],
+      [
+        "A repair should make the result look better",
+        "Corrections follow evidence, regardless of whether the result improves."
+      ]
+    ],
+    "assessment": "W4 requires the supported 120-to-12 correction, one count for the repeated F1, four distinct flights, measured zero retained and 1 of 3 assessed with 1 missing. After support change F1 to 10 cm with confirming S1: the numerator becomes 2 of the same 3 assessed; the missing count remains 1. Do not award independent mastery for copying the original report.",
+    "support": "Use three cards labelled measured zero, missing and conflicting. Provide a change-log frame while requiring students to supply the evidence. Extension: show a value that passes the schema but disagrees with its source, and ask which check reveals the problem.",
+    "next": "Week 22 examines sampling and coverage: which cases supplied the records, which are absent, and how that limits a conclusion."
+  }
+}
