@@ -1,0 +1,278 @@
+{
+  "level": "ai-3",
+  "week": 2,
+  "title": "Features labels and prediction time",
+  "minutes": 90,
+  "goals": [
+    "Separate prediction inputs from observed targets",
+    "Check whether each feature exists at prediction time",
+    "Repair target leakage and state a feature contract"
+  ],
+  "prerequisite": {
+    "prompt": "Why must held out labels not be used to choose the threshold in Week 1?",
+    "answer": "They are reserved to evaluate the fixed choice. Using their labels to choose it makes them part of development."
+  },
+  "vocabulary": [
+    [
+      "Feature contract",
+      "A specification of input meaning units order and timing"
+    ],
+    [
+      "Target",
+      "The outcome a prediction aims to estimate"
+    ],
+    [
+      "Prediction time",
+      "The moment when the prediction must be made"
+    ],
+    [
+      "Target leakage",
+      "Predictor information that reveals the outcome but is unavailable at prediction time"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Set the moment of prediction",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Week 1 separated training examples from testing examples. This week asks a different question: could each input actually be known when a prediction is needed? A historical table may contain facts added after the event. A model trained with those facts can appear successful even though the inputs will be missing when it is used."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use fictional library loans. At the instant a book is checked out, predict whether it will be returned more than 14 days later. For completed historical loans, label 1 means days_to_return is greater than 14; label 0 means it is at most 14. Exactly 14 days is on time. Assume no changed due dates in this exercise. All records and values are invented; do not collect classmates' borrowing histories."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Field",
+            "When known",
+            "Role for this task"
+          ],
+          "rows": [
+            [
+              "pages",
+              "At checkout",
+              "Candidate feature"
+            ],
+            [
+              "queue_at_checkout",
+              "At checkout",
+              "Candidate feature"
+            ],
+            [
+              "days_to_return",
+              "After return",
+              "Creates the label only"
+            ],
+            [
+              "returned_late",
+              "After return",
+              "Label to predict"
+            ],
+            [
+              "loan_id",
+              "At checkout",
+              "Tracking metadata"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "queue_at_checkout is a saved count of waiting requests at that instant. It is not the queue when we later export the table. Candidate means available to consider, not proven useful or appropriate. Exclude the arbitrary loan identifier from this exercise; keep it separately to track records."
+        }
+      ]
+    },
+    {
+      "title": "Separate inputs from the target",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "def features(row):\n    return [row[\"pages\"], row[\"queue_at_checkout\"]]\n\npast = {\"loan_id\": \"A\", \"pages\": 120,\n        \"queue_at_checkout\": 2, \"days_to_return\": 18,\n        \"returned_late\": 1}\nprint(features(past))\nprint(past[\"returned_late\"])\nnew = {\"loan_id\": \"B\", \"pages\": 80,\n       \"queue_at_checkout\": 0}\nprint(features(new))"
+        },
+        {
+          "type": "paragraph",
+          "text": "The feature order is always pages first, queue count second. The first output is [120, 2]; the separate label is 1 because this historical loan took 18 days. The new loan produces [80, 0] even though its return outcome does not yet exist. The same feature function serves past and new records. It deliberately selects allowed fields rather than copying every column except returned_late."
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow information through time",
+          "columns": [
+            "Moment",
+            "Available information",
+            "Allowed use"
+          ],
+          "rows": [
+            [
+              "Checkout",
+              "Pages and saved queue",
+              "Prediction inputs"
+            ],
+            [
+              "Later return",
+              "Elapsed days",
+              "Create observed label"
+            ],
+            [
+              "Historical training",
+              "Inputs plus separate label",
+              "Fit a model later"
+            ]
+          ],
+          "caption": "The outcome may teach the model during training, but it cannot be an input to an earlier checkout prediction."
+        },
+        {
+          "type": "paragraph",
+          "text": "This code prepares inputs; it does not fit a model or predict lateness. It assumes the two feature fields contain valid nonnegative integer values and pages is positive. A missing required field raises KeyError. A real pipeline needs explicit validation and a missing-data policy."
+        }
+      ]
+    },
+    {
+      "title": "Audit availability before running",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For every proposed input, ask what it means, when it was recorded, and whether the same definition can be supplied at checkout. A field in the historical export is not automatically available at prediction time. An input calculated from later information is also unavailable, even if its name does not mention the outcome."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "A completed loan has pages 200, queue_at_checkout 3 and days_to_return 14. Write the feature list and label. Someone adds overdue_fee calculated after return. Can it become a feature for the checkout prediction? Explain.",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "title": "Repair information from the future",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A learner removes returned_late but keeps days_to_return in the inputs. That still reveals the answer: compare days_to_return with 14. Remove both the target and the later return measurement from prediction inputs. Also exclude a fee calculated after return or a renewal made after checkout. These are examples of target leakage, where unavailable outcome information enters the predictors."
+        },
+        {
+          "type": "paragraph",
+          "text": "Moving rows into a test set does not repair this problem if each test row still contains the later return measurement. Rebuild the inputs to match checkout time and repeat development and evaluation honestly. If earlier test results influenced changes, obtain a new final evaluation set as well."
+        }
+      ]
+    },
+    {
+      "title": "State the contract and its limits",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A feature contract records field names, meaning, units, order and availability time. Here the inputs are pages in pages, then queue_at_checkout in requests, both captured at checkout. The target definition is returned more than 14 days later. Historical outcomes may be available for training, while new outcomes are unknown. Never fill an unknown label with 0 merely because the book has not yet been returned."
+        },
+        {
+          "type": "paragraph",
+          "text": "Availability alone does not establish predictive value, fairness, a causal effect or a reason to use a model. This lesson audits inputs; later lessons evaluate models. If an input cannot be collected at checkout, revise the design or specify a justified missing-input policy before use."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Write a two-sentence input contract for this checkout task. Include the feature order and timing, then explain why an unknown future outcome must not be recorded as an on-time return.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Assign the roles",
+      "prompt": "For the worked loan table, identify the two candidate features, the target label and the tracking field. Explain why days_to_return is not a predictor.",
+      "answer": "Candidate features are pages and queue_at_checkout. The target is returned_late and the tracking field is loan_id. days_to_return is known only after return and directly defines the target, so it must not enter checkout predictions.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Trace the feature contract",
+      "prompt": "A completed loan has pages 96, queue_at_checkout 4 and days_to_return 14. Give the ordered feature list and target. Then state what changes if it took 15 days instead.",
+      "answer": "The feature list is [96, 4]. At 14 days the target is 0. At 15 days the target becomes 1; the checkout feature list remains [96, 4].",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair a misleading score",
+      "prompt": "A model has every test prediction correct after using pages and days_to_return. A learner says a separate test set makes this valid. Explain the flaw and repair the inputs.",
+      "answer": "The test rows contain future information that reveals the label. Separate rows do not make days_to_return available at checkout. Remove later outcome fields, use the checkout feature contract, and rerun development and evaluation with honest records.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Audit a new task independently",
+      "prompt": "A fictional robot predicts at dispatch whether a parcel trip will take more than 10 minutes. Fields are route_steps and queue_at_dispatch captured at dispatch, trip_id for tracking, arrival_minutes measured after arrival, and slow = 1 when arrival_minutes > 10. Specify inputs, order, target and exclusions. For a past trip with steps 30, queue 2, arrival 10, give features and label. For a new trip with steps 24 and queue 0, give features and explain whether slow is known.",
+      "answer": "Use [route_steps, queue_at_dispatch] in that order, measured in steps and queued trips at dispatch. slow is the target. Keep trip_id as tracking metadata; exclude arrival_minutes and slow from inputs. Past features are [30, 2] with label 0 because 10 is not greater than 10. New features are [24, 0]; slow is unknown until the outcome can be established.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Handle an unavailable input",
+      "prompt": "For the robot task, a dataset stores queue_now at export time but has no saved queue_at_dispatch. Can you rename that field to make it usable? State a defensible next step.",
+      "answer": "Renaming does not restore the missing dispatch-time value. Recover a reliable timestamped dispatch snapshot if available, or remove the feature and reevaluate the revised design. Do not invent a zero queue or copy the later count.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach features, labels and prediction time in two 45-minute sessions using fictional records. Students must define the decision moment before judging columns. The key distinction is that labels may be known for historical training but must not be fed into predictions for new cases. This lesson prepares inputs; it does not demonstrate a trained model or establish that loan prediction is useful. Use paper records or local Python, without accounts or personal borrowing data.",
+    "materials": [
+      "Printed lesson and workbook",
+      "Two cards labelled checkout and later return",
+      "Optional Python 3 editor; no external packages",
+      "Blank field meaning unit availability role table"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Recall why held out labels must not choose the Week 1 threshold. Connect separate examples to the separate question of input availability."
+      ],
+      [
+        "7 to 18 minutes",
+        "State the checkout moment and label boundary. Place each field on the timeline. Explain why an arbitrary identifier can stay as metadata without becoming an input."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace the feature function on past and new records. Complete W1 and W2. Require the correct order and the 14 versus 15 day distinction."
+      ],
+      [
+        "32 to 45 minutes",
+        "Complete the guided 200-page loan and fee question. Ask which fields are unknown on a new checkout and why unknown does not mean zero."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the contract: names, units, order and availability time. Ask students to explain one later field without using only the word leakage."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to challenge a perfect test score. Trace how days_to_return reveals the answer even on separate test rows."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently. Require inputs, target, exclusions, boundary answer and unknown-outcome explanation before giving hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit contract. Use the fresh retry after support where needed and record the support given."
+      ]
+    ],
+    "guidedAnswer": "Guided: the ordered inputs are [200, 3] and the observed label is 0 at exactly 14 days. The fee is calculated later and cannot be used for an earlier checkout prediction. Exit example: use [pages, queue_at_checkout], in pages and requests, both recorded at checkout. An unknown future return outcome is not evidence of an on-time return and must not be silently labelled 0.",
+    "misconceptions": [
+      [
+        "Every stored column is a feature",
+        "A historical export combines information from different times. Require a meaning and timestamp before treating a column as an input."
+      ],
+      [
+        "Removing the label column removes leakage",
+        "days_to_return and an outcome-based fee may still disclose the target. Audit how every field was created."
+      ],
+      [
+        "An unknown outcome is a negative label",
+        "Unknown means not established. In this exercise labels come from completed historical returns. Do not turn unavailable outcomes into on-time labels."
+      ]
+    ],
+    "assessment": "Require W4 features [30, 2], target 0, new features [24, 0], unknown new target, and the timing reason for exclusions. A column list without timing justification is insufficient. Fresh retry: at print-job submission, predict whether completion takes more than 5 minutes. Inputs are page_count then queue_at_submit. A completed job has 12 pages, queue 1, completion_minutes 6: inputs [12, 1], label 1. A new job has 8 pages, queue 0: inputs [8, 0], label unknown. Exclude completion_minutes and the label from inputs; keep job_id as metadata. Exactly 5 minutes would have label 0.",
+    "support": "Place field cards before or after the prediction-time line. Supply an empty contract table, not completed answers. Extension: a queue measurement is recorded before checkout but overwritten at export. Explain why its current value is not necessarily the original snapshot, and propose retaining timestamped history.",
+    "next": "Week 3 distinguishes classification targets from regression targets. Carry forward the explicit target definition and prediction time. Teacher reference: https://scikit-learn.org/stable/common_pitfalls.html#data-leakage (reviewed 2026-09-26)."
+  }
+}

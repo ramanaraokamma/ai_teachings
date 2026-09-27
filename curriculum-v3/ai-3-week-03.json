@@ -1,0 +1,268 @@
+{
+  "level": "ai-3",
+  "week": 3,
+  "title": "Classification and regression",
+  "minutes": 90,
+  "goals": [
+    "Identify a task from the meaning of its target",
+    "Distinguish category agreement from numerical error",
+    "Specify outputs and checks that match a user need"
+  ],
+  "prerequisite": {
+    "prompt": "At dispatch, may the observed arrival duration be used as an input to predict that same trip duration? Explain.",
+    "answer": "No. It is known later and is the outcome to predict, not an available dispatch-time input."
+  },
+  "vocabulary": [
+    [
+      "Classification",
+      "Predicting a category from a defined set"
+    ],
+    [
+      "Regression",
+      "Estimating a numerical quantity with meaningful differences"
+    ],
+    [
+      "Threshold",
+      "A boundary used to turn a value into a decision"
+    ],
+    [
+      "Absolute error",
+      "The nonnegative distance between an estimate and an observation"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Choose the question before the model",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "At robot dispatch, we can ask two questions about the same fictional trip. Will it take more than 10 minutes? Or how many minutes will it take? The first asks for a category. The second asks for an amount with units. The target question determines the task, even if both models would use the same dispatch-time inputs."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Question",
+            "Target meaning",
+            "Task"
+          ],
+          "rows": [
+            [
+              "Will the trip exceed 10 minutes?",
+              "0 for no and 1 for yes",
+              "Classification"
+            ],
+            [
+              "How long will the trip take?",
+              "Elapsed duration in minutes",
+              "Regression"
+            ],
+            [
+              "Which route type will be used?",
+              "Indoor or outdoor",
+              "Classification"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Classification predicts a category from a defined set. Regression estimates a numerical quantity for which differences have meaning. A category may be coded with numbers: 0 and 1 here are names for no and yes, not travel times. Conversely, a duration recorded as a whole number of minutes can still be a regression target. Decimal points do not decide the task."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep Week 2's prediction time: route length and the saved queue may exist at dispatch, while the observed duration is available later for training or evaluation. Do not feed that observed duration into an earlier dispatch prediction."
+        }
+      ]
+    },
+    {
+      "title": "Compare two ways to judge a prediction",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The following predictions are supplied for practice; no model is fitted here. Each estimate was written before revealing its matching observed duration. We compare duration error with a category decision made from that estimate. Predict slow when the estimated duration is greater than 10 minutes; exactly 10 is not slow. A classifier could also predict categories directly, but this example uses a threshold on estimates."
+        },
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "actual_minutes = [8, 10, 14]\nestimated_minutes = [9, 11, 12]\ncorrect = 0\nerrors = []\nfor actual, estimate in zip(actual_minutes, estimated_minutes):\n    actual_slow = int(actual > 10)\n    predicted_slow = int(estimate > 10)\n    correct = correct + int(actual_slow == predicted_slow)\n    errors.append(abs(estimate - actual))\nprint(correct, len(actual_minutes))\nprint(errors)"
+        },
+        {
+          "type": "paragraph",
+          "text": "zip pairs the lists in order. They must have equal lengths and refer to the same trips; otherwise this loop is not a valid evaluation. abs gives the distance from zero, so both a one-minute overestimate and a one-minute underestimate have absolute error 1. The output is 2 3 followed by [1, 1, 2]. The mean absolute error is (1 + 1 + 2) / 3 = 4/3 minutes, about 1.33 minutes."
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Read both kinds of evidence",
+          "columns": [
+            "Actual and estimate",
+            "Duration error",
+            "Category match"
+          ],
+          "rows": [
+            [
+              "8 and 9 minutes",
+              "1 minute",
+              "No and no match"
+            ],
+            [
+              "10 and 11 minutes",
+              "1 minute",
+              "No and yes differ"
+            ],
+            [
+              "14 and 12 minutes",
+              "2 minutes",
+              "Yes and yes match"
+            ]
+          ],
+          "caption": "All three rows use the same greater-than-10 boundary. A small duration error can cross that boundary; a larger error can stay on the same side."
+        }
+      ]
+    },
+    {
+      "title": "Predict what the threshold changes",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The 14-minute trip has the largest duration error in our example, yet its slow category is correct. The 10-minute trip has only a one-minute error but the category is wrong. These checks answer different questions. Report 2 correct out of 3 category decisions separately from a mean absolute error of about 1.33 minutes. Do not compare a fraction directly with minutes."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "A trip actually takes 10 minutes and its estimate is 10.5 minutes. At the greater-than-10 boundary, give the actual category, predicted category and absolute duration error. Is the category decision correct?",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "title": "Repair the wrong task definition",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A learner says that predicting route type is regression because indoor is encoded as 1 and outdoor as 2. The numbers are category codes: their difference does not measure travel time or another meaningful amount. Treat this as classification and judge the predicted category. Changing the codes must not change the meaning of the task."
+        },
+        {
+          "type": "paragraph",
+          "text": "Another learner puts durations into short and long bins, then claims to predict exact minutes. Binning creates a classification target and loses within-bin detail. If the user needs minutes, keep a quantity target and evaluate error in minutes. If the user needs a threshold decision, define the boundary and relevant consequences. Neither task is automatically better."
+        }
+      ]
+    },
+    {
+      "title": "Match the evidence to the purpose",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A task specification should name the prediction moment, permitted inputs, target meaning and how predictions will be checked. Classification checks compare category decisions with observed categories. Regression checks measure numerical error with stated units. Later weeks examine additional metrics and why the consequences of different errors matter."
+        },
+        {
+          "type": "paragraph",
+          "text": "A correct category does not imply an exact quantity, and low numerical error does not guarantee every threshold decision is right. Three supplied examples establish only these calculations. They do not establish a trained model's reliability or show that a robot should act without review."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A team needs an estimated arrival duration in minutes. State the task type and a suitable error check. Explain why reporting only the fraction of correct slow or not-slow decisions leaves its main question unanswered.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Classify the target meaning",
+      "prompt": "At dispatch, identify the task for predicting route type coded 1 or 2, duration in whole minutes, and whether duration exceeds 10 minutes. Explain your choices.",
+      "answer": "Route type is classification because 1 and 2 encode categories. Whole-minute duration is regression because numerical differences measure time. Exceeding 10 minutes is binary classification because the target is yes or no.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Trace both checks",
+      "prompt": "For actual 14 minutes and estimate 12 minutes, calculate absolute error and both slow categories using greater than 10. Explain why a correct category does not mean an exact duration.",
+      "answer": "Absolute error is 2 minutes. Both actual and predicted categories are 1, so the category matches even though the duration estimate is 2 minutes too low.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair a category average",
+      "prompt": "Indoor is coded 1 and outdoor is coded 2. Someone averages predictions and reports route type 1.5 as an accurate halfway category. Explain the problem and name an appropriate check.",
+      "answer": "The codes label categories, so 1.5 is not a defined route type. Predict one of the defined categories and compare it with the observed category. A numerical midpoint of arbitrary codes does not establish correctness.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Compare new evidence independently",
+      "prompt": "For three fictional print jobs, actual completion times are 4, 5 and 9 minutes; estimates are 6, 5 and 8 minutes in matching order. Slow means more than 5 minutes. Write actual and predicted category lists, count correct categories, calculate each absolute error and the mean error in minutes. State what each result measures.",
+      "answer": "Actual categories are [0, 0, 1]; predicted categories are [1, 0, 1], so 2 of 3 match. Absolute errors are [2, 0, 1] minutes; their mean is 1 minute. The fraction measures threshold-category agreement on these jobs, while mean absolute error measures average duration discrepancy.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Specify a useful output",
+      "prompt": "A user needs the arrival duration in minutes, but a report gives only slow or not slow. What task should be specified, and what information was lost by the category output?",
+      "answer": "Specify regression for duration in minutes and check numerical error, such as mean absolute error in minutes. The category omits the estimated duration and how far it is from the boundary; it cannot answer the requested quantity.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions to distinguish tasks by target meaning, not by input types or whether values contain decimals. Connect to Week 2 by keeping inputs available at dispatch and outcomes separate. Supplied duration estimates let students inspect category decisions and numerical errors without suggesting a model was trained. The threshold is fixed before evaluation. All examples are fictional.",
+    "materials": [
+      "Printed lesson and workbook",
+      "Number line marked at 10 minutes and cards for no and yes",
+      "Optional Python 3 editor; no packages needed",
+      "Blank actual estimate category absolute error table"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the Week 2 rule that later outcomes cannot be dispatch inputs. Ask the prerequisite question and keep the prediction moment visible."
+      ],
+      [
+        "7 to 18 minutes",
+        "Compare the three target questions. Ask why numeric category codes remain categories and why whole-minute durations remain quantities."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace the three supplied estimates. Explain abs and zip, including equal lengths and matching record order. Complete W1 and W2."
+      ],
+      [
+        "32 to 45 minutes",
+        "Use the number line for the guided 10 versus 10.5 case. Separate category agreement from numerical closeness."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve task meaning and units. Ask for a numerical category code and a whole-number quantity as counterexamples to the decimal shortcut."
+      ],
+      [
+        "8 to 20 minutes",
+        "Complete W3 and discuss information lost by binning. Distinguish directly predicting a class from thresholding a quantity estimate."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, requiring category lists, denominator, absolute errors and the mean with units. Record hints or other support."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit to match outputs to a user need. Offer the fresh retry after support where necessary."
+      ]
+    ],
+    "guidedAnswer": "Guided: actual category 0, predicted category 1, absolute duration error 0.5 minutes; the category is wrong. Exit: specify regression for duration in minutes and use a numerical error check such as mean absolute error in minutes. Category agreement does not report how close the duration estimates are to observed times.",
+    "misconceptions": [
+      [
+        "Numbers always mean regression",
+        "Category codes remain categories. Ask what a difference between the numbers would mean in the task."
+      ],
+      [
+        "Regression requires decimal observations",
+        "A quantity measured or rounded to whole minutes still has meaningful numerical distances. Target meaning decides the task."
+      ],
+      [
+        "A correct category means a precise estimate",
+        "The 14 versus 12 minute example has a correct category but a two-minute error. Conversely, a small error near the boundary can change the category."
+      ]
+    ],
+    "assessment": "Require W4 actual categories [0,0,1], predicted [1,0,1], 2 of 3 correct, absolute errors [2,0,1] and mean 1 minute. The learner must explain both meanings. Fresh retry: actual times 3,6,8 and estimates 4,5,10; slow means greater than 6. Actual and predicted categories are both [0,0,1], so 3 of 3 match. Absolute errors [1,1,2] have mean 4/3 minutes, about 1.33. Ask why perfect category agreement does not mean zero duration error.",
+    "support": "Use a number line to mark actual and estimated times, then color which side of the boundary each lies on. Supply a blank table without answers. Extension: recode no and yes as 7 and 9. The classification task and matching count stay the same, while distances between those codes are not time errors.",
+    "next": "Week 4 inspects datasets and documents their origin, units and limitations. Carry forward the target definition, prediction moment and measurement units. Teacher reference: https://scikit-learn.org/1.0/tutorial/basic/tutorial.html (classification and regression definitions; reviewed 2026-09-26)."
+  }
+}

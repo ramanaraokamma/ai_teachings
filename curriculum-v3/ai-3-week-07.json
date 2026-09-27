@@ -1,0 +1,276 @@
+{
+  "level": "ai-3",
+  "week": 7,
+  "title": "A baseline before a model",
+  "minutes": 90,
+  "goals": [
+    "Fit a majority label baseline using training labels only",
+    "Score fixed predictions on the same validation examples",
+    "Explain what a baseline comparison does and does not establish"
+  ],
+  "prerequisite": {
+    "prompt": "Why should frames from the same trip stay in one set when evaluating on new trips?",
+    "answer": "Related frames can share conditions and objects. Keeping the trip together prevents that trip from appearing in both development and evaluation sets."
+  },
+  "vocabulary": [
+    [
+      "Baseline",
+      "A simple reference method used to judge a more complex approach"
+    ],
+    [
+      "Majority label",
+      "The label with more examples than the other label in this binary task"
+    ],
+    [
+      "Accuracy",
+      "Correct predictions divided by the number of scored examples"
+    ],
+    [
+      "Percentage point",
+      "A unit for the difference between two percentages"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Give a score a useful comparison",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A learner reports that a classifier gets 80 percent correct. Is that useful? We need to know the task, the examples and what a simple method achieves on those same examples. A baseline is a reference method. This week our baseline ignores each scene and always predicts the label that is most common in the training set."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use a new teacher-authored fictional dataset for predicting clear or blocked lanes. Each listed row describes one frame from a different trip on a familiar route; training and validation trips do not overlap. This is a new practice set, not the twelve-frame table from Week 6. All supplied labels have been resolved under the classroom rule. There are no review cases in this exercise, and no real navigation claim is made."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Set",
+            "Labels in row order",
+            "Use"
+          ],
+          "rows": [
+            [
+              "Training",
+              "clear clear blocked clear blocked clear",
+              "Choose the constant label"
+            ],
+            [
+              "Validation",
+              "blocked clear blocked clear",
+              "Score the fixed predictions"
+            ],
+            [
+              "Final test",
+              "Not supplied in this exercise",
+              "Keep for later final evaluation"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The training counts are four clear and two blocked. Our stated method therefore predicts clear for every new example. A baseline can still learn a value from training data; simple does not mean it uses no data. If the two training counts tie, our rule chooses clear, declared before scoring."
+        }
+      ]
+    },
+    {
+      "title": "Fit once and score the fixed prediction",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "train = [\"clear\", \"clear\", \"blocked\",\n         \"clear\", \"blocked\", \"clear\"]\nvalid = [\"blocked\", \"clear\", \"blocked\", \"clear\"]\nprediction = \"clear\"\nif train.count(\"blocked\") > train.count(\"clear\"):\n    prediction = \"blocked\"\ncorrect = 0\nfor label in valid:\n    if prediction == label:\n        correct = correct + 1\nprint(prediction, correct, len(valid))"
+        },
+        {
+          "type": "paragraph",
+          "text": "The output is clear 2 4. The fixed prediction matches two of the four validation labels, so accuracy is 2/4 or 50 percent. The training majority share, 4/6, is not the validation accuracy. The baseline does not inspect the validation labels to decide which constant to predict."
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Keep fitting separate from scoring",
+          "columns": [
+            "Evidence",
+            "Operation",
+            "Result"
+          ],
+          "rows": [
+            [
+              "Training labels only",
+              "Count clear and blocked",
+              "Store prediction clear"
+            ],
+            [
+              "New validation examples",
+              "Repeat stored prediction",
+              "clear for every row"
+            ],
+            [
+              "Validation labels",
+              "Compare after prediction",
+              "2 correct out of 4"
+            ]
+          ],
+          "caption": "The baseline uses training labels to choose its constant. Validation labels are used to score that fixed constant, not to refit it."
+        },
+        {
+          "type": "paragraph",
+          "text": "The code assumes nonempty training data with only clear and blocked labels. It counts matches on the supplied validation list; a percentage also requires a nonempty validation set. Do not run it on empty training data and describe the default clear value as learned evidence. Other labels and unresolved review statuses need an explicit policy."
+        }
+      ]
+    },
+    {
+      "title": "Compare on the same examples",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Suppose a candidate method supplies blocked, clear, clear, clear for the four validation rows in the table. These are supplied predictions for a comparison exercise; we have not fitted that candidate. It gets three of four correct, or 75 percent. The baseline gets two of four, or 50 percent. The candidate is ahead by one correct example and 25 percentage points on this set."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use identical row IDs, reference labels, exclusions and metric for both methods. Match predictions to their rows even if files are reordered. A score on easier examples is not a fair comparison. Neither this four-row result nor beating one baseline proves that the candidate will perform well on future trips."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "The candidate misses the third validation row. Which rows does the baseline miss? Explain how the candidate changes the number correct. Why is the improvement 25 percentage points rather than a claim of 25 percent relative improvement?",
+          "lines": 5
+        },
+        {
+          "type": "paragraph",
+          "text": "Record training counts, the fixed prediction and tie rule, validation IDs and labels, prediction lists and correct/total counts. Keep the final test separate from development decisions. Next week we will search candidate rules using training evidence, then compare choices carefully."
+        }
+      ]
+    },
+    {
+      "title": "Repair a misleading baseline",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A learner sees that blocked is common in a new validation set and changes the baseline to always blocked. That is not the original training-majority baseline. Its parameter was selected from evaluation labels. Restore the training-derived constant for that comparison and document any separate method honestly."
+        },
+        {
+          "type": "paragraph",
+          "text": "Another learner compares a candidate on ten easy rows with a baseline on four difficult rows. The difference could come from the examples. Score both on the same intended set with the same treatment of missing predictions and unresolved labels; report exclusions rather than silently dropping mistakes."
+        }
+      ]
+    },
+    {
+      "title": "Look beyond the overall score",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Imagine ten validation cases with nine clear and one blocked, while the training-derived constant is clear. The baseline gets 9/10 or 90 percent accuracy but misses the only blocked case. Overall accuracy counts all rows equally; it does not describe every kind of error or its consequences. Later weeks will examine those errors in detail."
+        },
+        {
+          "type": "paragraph",
+          "text": "A majority baseline is a useful first comparison, not a guarantee of the best simple method. It can be weak when validation label proportions differ from training. Keep the declared baseline, report what happened and consider other justified reference methods during development. Do not tune a final test result into a better-looking claim."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A candidate and the clear baseline both get 90 percent on ten cases. Does that prove they make the same mistakes or are suitable for use? State what additional evidence you would inspect.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Choose from training evidence",
+      "prompt": "Count clear and blocked in the worked training list. State the constant prediction and the declared tie rule. Explain why the validation majority does not choose this baseline.",
+      "answer": "Training has four clear and two blocked, so the constant is clear. A tie chooses clear under the declared classroom rule. Validation labels score the stored prediction; using their majority to choose it would change the fitting procedure.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Calculate the validation score",
+      "prompt": "List the four baseline predictions and mark which validation rows are correct. Give correct/total and accuracy. Explain why 4/6 is not the answer.",
+      "answer": "Predictions are clear, clear, clear, clear. Rows 2 and 4 match, giving 2/4 or 50 percent. The fraction 4/6 describes clear labels in training, not correct predictions on the four validation rows.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Make the comparison fair",
+      "prompt": "A candidate is scored on ten easy rows and the baseline on four difficult rows. Describe a fair comparison and two details you must record.",
+      "answer": "Score both methods on the same intended validation examples with matched IDs, reference labels, metric and exclusion policy. Record predictions, correct/total counts and the training-derived baseline rule. Different example sets do not isolate a method difference.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Fit and compare independently",
+      "prompt": "New training labels are blocked, clear, blocked, blocked, clear. New validation labels are clear, blocked, clear, blocked. Fit the same baseline rule and list its four predictions. A supplied candidate predicts clear, blocked, blocked, blocked. Score both on these rows and state the difference in correct examples and percentage points. What claim remains unsupported?",
+      "answer": "Training counts are three blocked and two clear, so predict blocked four times. The baseline matches rows 2 and 4: 2/4 or 50 percent. The candidate matches rows 1,2,4: 3/4 or 75 percent. It gains one correct example and 25 percentage points. This tiny validation comparison does not prove future performance or readiness for use.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Explain the hidden error",
+      "prompt": "A training-derived clear baseline gets nine of ten validation cases correct; the labels are nine clear and one blocked. State its accuracy and missed case. If a candidate also gets nine correct, must it miss the same case? Explain.",
+      "answer": "Accuracy is 90 percent, and the baseline misses the sole blocked case. A candidate could also score 90 percent by correctly identifying blocked but missing one clear case. Equal totals do not imply identical errors; inspect predictions by row and error type.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions. Fit a binary majority-label baseline from training labels and freeze its prediction before scoring. The invented set uses one frame per distinct trip; it is separate from Week 6 data. Supplied candidate predictions are comparison examples, not an implemented fitted model. Treat this as a first benchmark and evidence lesson, not a readiness test.",
+    "materials": [
+      "Printed lesson and workbook",
+      "Six training label cards and four validation cards kept in order",
+      "Optional Python 3 editor with no extra packages",
+      "Blank comparison table with row reference baseline candidate and matches"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the split roles and related-trip issue. Ask what a score means without a reference method."
+      ],
+      [
+        "7 to 18 minutes",
+        "Count training labels and write the constant before revealing validation labels. State the tie rule before any comparison."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace the code. Complete W1 and W2, separating training share from validation accuracy."
+      ],
+      [
+        "32 to 45 minutes",
+        "Build a row-by-row comparison for the supplied candidate. Complete the guided percentage-point question."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve what changes if the baseline constant is chosen using validation labels."
+      ],
+      [
+        "8 to 20 minutes",
+        "Discuss the two unfair comparisons and complete W3. Require common rows, labels and scoring policy."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before hints. Require the training counts, both prediction lists, scores and restrained claim."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit question to compare error patterns. Give the fresh retry after feedback and record support."
+      ]
+    ],
+    "guidedAnswer": "Guided: the baseline misses rows 1 and 3; the candidate misses only row 3, adding one correct example. The difference is 75 minus 50 = 25 percentage points. Relative improvement in accuracy would be (75 minus 50)/50 = 50 percent; keep the measure explicit. Exit: equal accuracy does not establish identical mistakes or suitability. Inspect predictions by row, missed blocked cases, false blocked predictions, sample coverage and consequences, then evaluate using an appropriate held out process.",
+    "misconceptions": [
+      [
+        "A simple baseline does not need training data",
+        "This method learns its constant from training label counts, although it ignores input features."
+      ],
+      [
+        "Training majority share is validation accuracy",
+        "Fit using training labels, then count matches separately on validation rows. Their label proportions can differ."
+      ],
+      [
+        "Beating a baseline proves the system is ready",
+        "It is one comparison on specified examples. Error types, coverage, uncertainty and final evaluation remain relevant."
+      ]
+    ],
+    "assessment": "Require W4 blocked from counts 3 versus 2, baseline 2/4, candidate 3/4, one extra correct and 25 percentage points. Fresh retry: training clear, blocked, blocked, clear is tied, so choose clear by the declared rule. Validation blocked, clear, blocked, blocked gives baseline 1/4 or 25 percent. Candidate blocked, clear, clear, blocked gives 3/4 or 75 percent: two extra correct and 50 percentage points. Require the tie rule and explain why validation majority blocked cannot replace the stored constant.",
+    "support": "Use labelled cards and matching ticks before fractions. Supply a blank row-aligned comparison table without predictions. Extension: construct two different prediction lists with identical accuracy but different missed rows, and explain how to report both.",
+    "next": "Week 8 searches candidate rules. Carry forward a frozen training-derived baseline and a fair comparison record. Teacher reference: scikit-learn DummyClassifier documentation, most_frequent strategy, https://scikit-learn.org/dev/modules/generated/sklearn.dummy.DummyClassifier.html (reviewed 2026-09-27)."
+  }
+}

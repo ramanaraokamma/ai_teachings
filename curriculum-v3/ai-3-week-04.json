@@ -1,0 +1,282 @@
+{
+  "level": "ai-3",
+  "week": 4,
+  "title": "Dataset inspection and cards",
+  "minutes": 90,
+  "goals": [
+    "Inspect row meaning missing values and repeated records",
+    "Document dataset source schema and limitations",
+    "Separate observed quality flags from justified corrections"
+  ],
+  "prerequisite": {
+    "prompt": "Why is elapsed trip duration in minutes a regression target even when recorded as whole numbers?",
+    "answer": "It is a numerical quantity whose differences measure time. Whole-number formatting does not turn it into a category."
+  },
+  "vocabulary": [
+    [
+      "Provenance",
+      "Where data came from and how it was created"
+    ],
+    [
+      "Schema",
+      "The stated meaning types units and rules for fields"
+    ],
+    [
+      "Missing value",
+      "An unknown or unavailable value rather than a measured zero"
+    ],
+    [
+      "Dataset card",
+      "A concise record of dataset contents creation intended use and limitations"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Inspect before choosing a model",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A dataset can look like a neat table and still contain missing outcomes, repeated records or impossible values. Before fitting a model, inspect what one row represents and document where the table came from. A dataset card is a short record of its purpose, contents, collection, changes and limits. It helps another person decide whether the data suits a proposed use."
+        },
+        {
+          "type": "paragraph",
+          "text": "Our source is a teacher-authored fictional export called Robot practice v1, created for this lesson. Each row is intended to describe one trip, with one unique trip ID and elapsed duration in minutes. Durations may be zero or positive; None means unknown. All trips are described as indoor practice trips. No real robot measurements or personal records were collected, and there is no evidence about outdoor performance."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Trip ID",
+            "Duration in minutes",
+            "What is visible"
+          ],
+          "rows": [
+            [
+              "A",
+              "8",
+              "A recorded duration"
+            ],
+            [
+              "B",
+              "None",
+              "An unknown duration"
+            ],
+            [
+              "B",
+              "None",
+              "The same ID appears again"
+            ],
+            [
+              "C",
+              "-2",
+              "A negative duration"
+            ],
+            [
+              "D",
+              "12",
+              "A recorded duration"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep this raw version unchanged. At this stage a flag means investigate, not automatically delete or replace. A repeated ID might be a copied row or a problem with the supposed one-row-per-trip definition. We need evidence before deciding what happened."
+        }
+      ]
+    },
+    {
+      "title": "Count findings with clear denominators",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "rows = [(\"A\", 8), (\"B\", None), (\"B\", None),\n        (\"C\", -2), (\"D\", 12)]\nids = set()\nmissing = 0\nnegative = 0\nfor trip_id, minutes in rows:\n    ids.add(trip_id)\n    if minutes is None:\n        missing = missing + 1\n    elif minutes < 0:\n        negative = negative + 1\nprint(len(rows), len(ids), missing, negative)"
+        },
+        {
+          "type": "paragraph",
+          "text": "A set stores each distinct ID once. The output is 5 4 2 1: five rows, four distinct IDs, two rows with unknown duration and one row with a negative duration. There is one extra occurrence beyond the four distinct IDs. This is not a count of all rows in repeated-ID groups: both B rows belong to that group."
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Turn an observation into a documented action",
+          "columns": [
+            "Finding",
+            "What it establishes",
+            "Next action"
+          ],
+          "rows": [
+            [
+              "B appears twice",
+              "Identity needs review",
+              "Check export history"
+            ],
+            [
+              "Two None values",
+              "2 of 5 rows lack duration",
+              "Keep unknown explicit"
+            ],
+            [
+              "C has minus 2",
+              "Invalid elapsed duration",
+              "Check source and units"
+            ]
+          ],
+          "caption": "Flags can overlap: both rows with ID B also have missing duration. Do not add flag counts as if they were separate groups."
+        },
+        {
+          "type": "paragraph",
+          "text": "The code assumes every row is a pair and each duration is a number or None. It is a small audit, not full schema validation. It does not check text values, units, source truth or whether IDs refer to real unique events. A successful run does not certify data quality."
+        }
+      ]
+    },
+    {
+      "title": "Write a card another person can use",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For Robot practice v1, record the purpose as practising inspection, the source as teacher-authored fictional data, and the row meaning as an intended single indoor trip. Record the five-row count, the ID field, minutes as the duration unit and None as unknown. List the duplicate-ID and invalid-duration findings. State that no cleaning has occurred, no train/test split is assigned, and no model has been evaluated."
+        },
+        {
+          "type": "paragraph",
+          "text": "Add intended use, excluded uses, known gaps, version and a contact or owner. Here the lesson teacher maintains the practice copy; its allowed classroom purpose is inspection practice. Do not describe it as validated navigation data. For a real external dataset, also verify its actual permission or licence and collection context; an absent field in the documentation is an unanswered question, not permission to invent a value."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "What fraction of the five raw rows has unknown duration? Can you subtract two missing rows, one negative row and one extra ID occurrence from five to count distinct usable trips? Explain using the B rows.",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "title": "Repair a claim without hiding the raw data",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A learner replaces both None values with 0 and removes the negative sign from -2. The table now passes a simple nonnegative check, but those edits invent durations. Keep the original values, record the reason for each flag, and check the source. If a correction is supported, save a new version with the original value, corrected value and reason. If not, keep the uncertainty visible."
+        },
+        {
+          "type": "paragraph",
+          "text": "Another learner says all robot trips are covered because every row says indoor. A dataset card should instead state that outdoor trips are absent and that the data is fictional. Extra copies of existing rows do not create new conditions or new independent evidence."
+        }
+      ]
+    },
+    {
+      "title": "Separate documentation from validation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A complete-looking card does not prove the table is accurate or suitable for a model. It makes claims and unanswered questions reviewable. Report raw counts separately from any later accepted subset, with explicit rules for missing, invalid and repeated records. Do not silently change denominators after cleaning."
+        },
+        {
+          "type": "paragraph",
+          "text": "For this exercise, zero is allowed and unknown is not zero. That is a stated schema choice, not a universal rule for all duration datasets. In a real task, measurement resolution and event definitions determine which values make sense. Dataset inspection also does not replace protecting held out data from model choices."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A card says the dataset is ready because it has no empty cells. Name two checks that claim misses, then write a more accurate statement about Robot practice v1.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Define the row and source",
+      "prompt": "For Robot practice v1, state what one row is intended to represent, the source, the unit and the meaning of None.",
+      "answer": "One row is intended to represent one indoor practice trip. The source is a teacher-authored fictional export for this lesson, duration uses minutes, and None means unknown rather than zero.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Interpret the audit counts",
+      "prompt": "Explain each number in 5 4 2 1. How many extra ID occurrences are there, and how many rows belong to a repeated-ID group?",
+      "answer": "The numbers mean 5 raw rows, 4 distinct IDs, 2 missing durations and 1 negative duration. There is 1 extra ID occurrence; 2 rows belong to the repeated-ID group B. These are different counts.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Reject an unsupported correction",
+      "prompt": "A learner changes None to 0 and -2 to 2, then reports a clean dataset. Explain why this is not a justified repair and what record should be kept.",
+      "answer": "Those edits invent outcomes without source evidence. Preserve the raw version, flag the affected rows and investigate. Record any supported correction with old value, new value, reason and version; unresolved values remain uncertain.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Inspect and document independently",
+      "prompt": "A new fictional indoor trip export has (P,4), (Q,None), (Q,None), (R,-1), (S,6), (T,0), with durations in minutes and the same schema. Count raw rows, distinct IDs, missing durations, negative durations and extra ID occurrences. Identify overlap. Draft a short dataset card stating source, row meaning, unit, findings, unchanged version and one excluded use.",
+      "answer": "There are 6 rows, 5 distinct IDs, 2 missing durations, 1 negative duration and 1 extra ID occurrence. Both Q rows are missing, so the duplicate and missing flags overlap. Zero for T is allowed by the stated schema. The card should identify the supplied fictional indoor export, one intended row per trip, minutes, all findings, raw unchanged version and no evidence for real or outdoor navigation use.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "State an evidence gap",
+      "prompt": "Someone duplicates each row ten times and claims the export now covers more kinds of trips. Explain what changed and what did not.",
+      "answer": "The row count increased but no new trip conditions or independent observations were added. Coverage remains limited to the same supplied fictional indoor cases; the larger count does not establish broader usefulness.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach inspection before modelling in two 45-minute sessions. Use fictional data only. Emphasize the unit of observation, provenance, units, unknown values and overlapping audit flags. The dataset card is a concise classroom documentation exercise inspired by datasheets for datasets, not a claim to implement every part of a research framework. Students must distinguish observations from unsupported repairs and from evidence of model fitness.",
+    "materials": [
+      "Printed lesson and workbook",
+      "Cards for the five raw rows including both B rows",
+      "Optional Python 3 editor; no packages required",
+      "Blank card headings: purpose source row schema findings changes limits version owner"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve regression target meaning and why later outcomes are separate from prediction inputs. Establish that this week inspects data before fitting."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read the source description and schema. Count physical rows and distinct trip IDs separately. Ask whether a repeated ID proves the reason for duplication."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace the code with row cards. Explain set, None and negative checks. Complete W1 and W2 with named denominators."
+      ],
+      [
+        "32 to 45 minutes",
+        "Use the guided question to show overlap: place both B cards in missing and repeated-ID groups. Do not subtract all flag counts independently."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve raw version versus corrected version. Ask what evidence could justify changing a recorded value."
+      ],
+      [
+        "8 to 20 minutes",
+        "Read the card example and complete W3. Distinguish a documented fact, an unknown and an assumption."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently. Require counts, overlap and a concise card with source and limitations before offering hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit claim. Use the fresh retry after support and record the support given."
+      ]
+    ],
+    "guidedAnswer": "Guided: 2 of 5 raw rows have unknown duration, or 40 percent. No: the extra B occurrence is already among the missing rows, so subtracting all three flag counts double-counts it. A distinct usable-trip count requires a stated resolution policy and source review. Exit examples include duplicate IDs, impossible values, units, provenance and coverage. A defensible statement is that this five-row fictional export has documented quality flags and is suitable for inspection practice, with no model-readiness claim.",
+    "misconceptions": [
+      [
+        "A complete card certifies data quality",
+        "The card records evidence and gaps; its claims still need checking. Documentation does not prove suitability."
+      ],
+      [
+        "Missing means zero",
+        "None is unknown; zero is a specific allowed value in this exercise. Substitution without evidence changes the meaning."
+      ],
+      [
+        "Flag counts can always be added",
+        "The same row can have multiple flags. Count rows or unique events under an explicit policy and retain the raw denominator."
+      ]
+    ],
+    "assessment": "Require W4 counts 6,5,2,1,1 in the stated order, the Q overlap, acceptance of zero under this schema, and a card with source, unit, raw version and excluded use. Fresh retry: rows (L,3), (M,None), (N,-2), (N,-2), (O,0). Counts are 5 raw, 4 IDs, 1 missing, 2 negative and 1 extra ID occurrence. The negative and repeated-ID flags overlap on N. Do not infer whether the two N rows describe one event without checking the source.",
+    "support": "Use physical row cards and overlapping circles for flags. Supply blank card headings but no completed findings. Extension: explain how to record an evidenced seconds-to-minutes conversion while preserving the raw value, unit and version, and why a unit guess is not enough.",
+    "next": "Week 5 examines label definitions and disagreement. Carry forward the dataset card, source questions and explicit distinction between unknown and observed values. Teacher reference: https://arxiv.org/abs/1803.09010 (Datasheets for Datasets; reviewed 2026-09-26)."
+  }
+}

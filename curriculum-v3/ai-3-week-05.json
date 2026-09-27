@@ -1,0 +1,285 @@
+{
+  "level": "ai-3",
+  "week": 5,
+  "title": "Label definitions and disagreement",
+  "minutes": 90,
+  "goals": [
+    "Write an observable label rule with boundaries and a review option",
+    "Measure agreement using matched items and an explicit denominator",
+    "Investigate disagreement and record justified label decisions"
+  ],
+  "prerequisite": {
+    "prompt": "Why should an unknown duration remain different from zero in a dataset card?",
+    "answer": "Unknown means the measurement is unavailable. Zero is a recorded value permitted by that schema; replacing unknown with zero invents evidence."
+  },
+  "vocabulary": [
+    [
+      "Label rule",
+      "A written definition for assigning an outcome to an example"
+    ],
+    [
+      "Annotator",
+      "A person who assigns labels using a stated rule"
+    ],
+    [
+      "Agreement",
+      "How often annotators assign the same label to the same items"
+    ],
+    [
+      "Adjudication",
+      "Reviewing evidence and rules to resolve a disputed label or retain uncertainty"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Define what the label describes",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A model learns from examples with recorded targets. If two people interpret a target differently, their labels can mix different tasks. This week you will write a label rule, compare independent labels and keep a record of disputed cases. We use invented corridor descriptions, not real images or a system for controlling a robot."
+        },
+        {
+          "type": "paragraph",
+          "text": "The classroom task is to label whether a marked practice lane is blocked in a supplied description. Rule v1 says blocked means an object touches or crosses either lane boundary or lies inside the lane; clear means all objects are outside both boundaries and the entire lane is visible. Use review if visibility or position is insufficient to decide. Review is a workflow status for a person to inspect, not a third physical condition of the lane."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Description",
+            "Rule v1 result",
+            "Reason"
+          ],
+          "rows": [
+            [
+              "A box lies inside a fully visible lane",
+              "blocked",
+              "Inside satisfies the rule"
+            ],
+            [
+              "A wheel touches the boundary line",
+              "blocked",
+              "Touching is explicitly included"
+            ],
+            [
+              "All objects are outside and the lane is fully visible",
+              "clear",
+              "Both clear conditions hold"
+            ],
+            [
+              "A curtain hides part of the lane",
+              "review",
+              "Hidden space cannot be checked"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "These are exercise definitions, not real robot safety rules. Do not infer that a lane is physically safe from this label. The label describes only the supplied evidence under this version of the rule."
+        }
+      ]
+    },
+    {
+      "title": "Compare independent labels on matched items",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Two annotators used an earlier vague instruction, mark an obstructed lane, on four invented items. Their labels are shown in the code. A and D match; B and C differ. Compare the same item IDs, not merely the first row in two differently ordered files."
+        },
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "pairs = [(\"A\", \"blocked\", \"blocked\"),\n         (\"B\", \"clear\", \"blocked\"),\n         (\"C\", \"review\", \"clear\"),\n         (\"D\", \"clear\", \"clear\")]\nagree = 0\nfor item_id, first, second in pairs:\n    if first == second:\n        agree = agree + 1\nprint(agree, len(pairs))"
+        },
+        {
+          "type": "paragraph",
+          "text": "The output is 2 4: two matching labels among four paired items, so observed exact agreement is 2/4 or 50 percent. Here review is included as a label value in the comparison: review versus clear is a disagreement. This simple count is not model accuracy and does not establish which labels are correct."
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow a disagreement back to evidence",
+          "columns": [
+            "Observe",
+            "Investigate",
+            "Record"
+          ],
+          "rows": [
+            [
+              "B has two labels",
+              "Read boundary rule",
+              "Keep labels and reason"
+            ],
+            [
+              "C includes review",
+              "Check visible evidence",
+              "Retain uncertainty if needed"
+            ],
+            [
+              "A and D match",
+              "Check rule as well",
+              "Agreement is not proof"
+            ]
+          ],
+          "caption": "Preserve independent labels before discussion. Shared mistakes can produce agreement, and missing evidence can prevent a justified final label."
+        },
+        {
+          "type": "paragraph",
+          "text": "The code assumes one valid pair per unique item ID and allowed label strings. It does not validate IDs or spelling. Use a nonempty paired set before calculating a fraction; zero paired items gives no agreement estimate."
+        }
+      ]
+    },
+    {
+      "title": "Resolve a case with evidence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For B, the full lane is visible and a wheel touches its boundary. One annotator treated touching as clear; the other treated it as blocked. Rule v1 explicitly includes touching, so the reviewed label is blocked. Preserve both original labels and record the item, rule version, evidence, decision and reviewer. Do not silently overwrite the originals."
+        },
+        {
+          "type": "paragraph",
+          "text": "For C, a curtain hides part of the lane. One annotator guessed clear; the other requested review. Rule v1 requires full visibility for clear. The justified status remains review until sufficient evidence is available. More votes cannot reveal the hidden area."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Using rule v1, explain the decisions for B and C. If you exclude C from the original comparison, what is agreement among the remaining pairs? Why must you still report the exclusion?",
+          "lines": 5
+        },
+        {
+          "type": "paragraph",
+          "text": "A decision log could say: B, original clear/blocked, wheel touches line, v1, blocked after review by the teacher. For C it could say: original review/clear, lane partly hidden, v1, unresolved review. Add the labeling method and rule version to the dataset card."
+        }
+      ]
+    },
+    {
+      "title": "Improve the rule without changing the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A useful rule names the object of judgment, allowed labels, observable evidence, boundaries and an uncertainty route. Include a typical example and a boundary example. Pilot the rule independently on a few new items, compare labels, discuss causes, revise the wording and label new items again. Record which rule produced each set of labels."
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not change the rule simply to improve a score or make a model look correct. A rule revision can change the target itself. If touching is changed from blocked to clear, document the changed task, review all affected examples consistently and keep versions separate. Consult task evidence when interpreting a disagreement; a majority vote alone cannot prove truth."
+        }
+      ]
+    },
+    {
+      "title": "Make a claim the comparison supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Report the paired-item count, agreement count, handling of review and the rule version. For the original four-item comparison, say two of four pairs match, including review statuses. If you report a subset, name its selection rule and denominator. This tiny invented set says nothing about reliability on other scenes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep practice for writing label rules separate from final model testing. Resolving labels needs a documented process; reviewing model predictions to choose convenient labels would undermine a fair evaluation. Next week you will separate related examples when designing data splits."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Two annotators agree on every item but both ignore the boundary rule. What does perfect agreement establish, and what does it fail to establish? Give one evidence check to perform next.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Use the boundary and review rules",
+      "prompt": "Under rule v1, label a wheel touching the boundary, an object entirely outside a fully visible lane, and a partly hidden lane. Explain the evidence for each.",
+      "answer": "Touching is blocked. An object entirely outside is clear only when all objects are outside and the entire lane is visible. A partly hidden lane requires review because clear cannot be established from the available description.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Interpret agreement",
+      "prompt": "Explain the output 2 4 for A through D. State the fraction and percent, whether review is included, and why this is not model accuracy.",
+      "answer": "Two of four matched items have identical annotator labels: 2/4 or 50 percent. Review is included in this exact comparison. Neither annotator is established as a correct reference, and no model predictions are being scored.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Write a decision log",
+      "prompt": "For B and C, record original labels, visible evidence, rule version and reviewed decision. Explain why the original labels should remain available.",
+      "answer": "B: clear/blocked, wheel touches boundary, v1, blocked. C: review/clear, partly hidden lane, v1, unresolved review. Record the reviewer as well. Originals preserve the independent disagreement and let another person audit how a decision was made.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Apply the process independently",
+      "prompt": "New pairs are P blocked/blocked, Q clear/blocked, R review/review, S clear/clear, T blocked/clear. P has an object inside; Q touches the line; R is partly hidden; S has all objects outside a fully visible lane; T has an object inside. Count agreement including review. Apply v1 to all five. Then report agreement on the original pairs excluding any review status, with its denominator and limitation.",
+      "answer": "Three of five pairs match, or 60 percent. Reviewed results are P blocked, Q blocked, R review, S clear, T blocked. Excluding R leaves two matches among four pairs, or 50 percent. The subset omits the uncertain case and does not establish correctness or general reliability. Preserve original labels separately from reviewed decisions.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Draft and test a label rule",
+      "prompt": "Write a short v1 labeling instruction covering blocked, clear, the touching boundary and review. Add one boundary example. Explain why three people voting clear cannot settle a hidden lane.",
+      "answer": "A suitable instruction specifies the marked lane: inside or touching either boundary means blocked; clear requires all objects outside and full visibility; insufficient position or visibility means review. A wheel touching the line is blocked. Votes supply no missing visual evidence, so a hidden lane remains review under v1.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions using invented scene descriptions. The target is applying a stated observation rule, not certifying real robot safety. Keep original independent labels separate from reviewed decisions. Exact agreement includes review in the main exercise; review is a workflow status, not a physical lane class. Avoid calling annotator agreement accuracy.",
+    "materials": [
+      "Printed lesson and workbook",
+      "Scene cards for the four worked examples and five independent cases",
+      "Optional Python 3 editor with no extra packages",
+      "Blank decision log with item originals evidence rule decision reviewer"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve unknown versus zero. Ask why a label needs an explicit meaning before it becomes training data."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read v1. Apply inside, boundary, outside and hidden examples. Establish that these are fictional descriptions, not robot safety advice."
+      ],
+      [
+        "18 to 32 minutes",
+        "Have pairs label fresh verbal examples independently before talking. Trace the supplied four-item code and complete W1 and W2."
+      ],
+      [
+        "32 to 45 minutes",
+        "Compare B and C using evidence. Complete the guided denominator question and preserve the original pair list."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve agreement versus correctness. Show a shared mistake on a touching-boundary example."
+      ],
+      [
+        "8 to 20 minutes",
+        "Model a decision-log entry without erasing original labels. Complete W3 and discuss a genuine rule revision."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before support. Require both denominators, rule-based decisions and the unresolved review case."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit response. After feedback, offer the fresh retry and record any support used."
+      ]
+    ],
+    "guidedAnswer": "Guided: B is blocked because touching counts; C stays review because the lane is partly hidden. Excluding C leaves the original pairs A, B and D: 2 matches out of 3, about 66.7 percent. Report the exclusion because this is a different subset from the four-item comparison, not newly correct labels. Exit: perfect agreement establishes matching labels on these items only. Both people can share a rule error. Check their labels against the boundary evidence and v1 before making a correctness claim.",
+    "misconceptions": [
+      [
+        "Agreement is accuracy",
+        "Agreement compares annotators. Accuracy would require predictions and an appropriate reference; shared mistakes can still match."
+      ],
+      [
+        "Review means clear",
+        "Review preserves insufficient evidence. It is neither a negative label nor proof of a physical condition."
+      ],
+      [
+        "Voting removes uncertainty",
+        "Votes may select a decision policy but cannot create missing evidence. Preserve unresolved cases and document the policy."
+      ]
+    ],
+    "assessment": "Require W4 counts 3/5 including review and 2/4 excluding review, all five v1 decisions, and an explicit subset limitation. Fresh retry: U clear/clear with all objects outside a fully visible lane; V blocked/clear with an object touching the boundary; W blocked/blocked with an object inside; X review/blocked with part of the lane hidden. Original agreement is 2/4 or 50 percent; excluding X gives 2/3 or about 66.7 percent. Reviewed v1 decisions are clear, blocked, blocked, review. Require evidence for V and X before accepting the retry.",
+    "support": "Use lane drawings and movable object cards for touching versus outside; cover part of the drawing for review. Provide blank log headings without decisions. Extension: construct two annotators who agree perfectly while both break v1 and explain why the agreement fraction does not reveal the error.",
+    "next": "Week 6 covers splits and related examples. Carry forward item IDs, rule versions, original labels and review status so that related cases and labeling decisions remain traceable."
+  }
+}

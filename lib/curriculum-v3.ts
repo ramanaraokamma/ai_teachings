@@ -73,6 +73,13 @@ import ai2source34 from "@/curriculum-v3/ai-2-week-34.json";
 import ai2source35 from "@/curriculum-v3/ai-2-week-35.json";
 import ai2source36 from "@/curriculum-v3/ai-2-week-36.json";
 import ai3source1 from "@/curriculum-v3/ai-3-week-01.json";
+import ai3source2 from "@/curriculum-v3/ai-3-week-02.json";
+import ai3source3 from "@/curriculum-v3/ai-3-week-03.json";
+import ai3source8 from "@/curriculum-v3/ai-3-week-08.json";
+import ai3source7 from "@/curriculum-v3/ai-3-week-07.json";
+import ai3source6 from "@/curriculum-v3/ai-3-week-06.json";
+import ai3source5 from "@/curriculum-v3/ai-3-week-05.json";
+import ai3source4 from "@/curriculum-v3/ai-3-week-04.json";
 import released from "@/curriculum-v3/releases.json";
 
 export type ChapterBlock = {type:string;text?:string;title?:string;caption?:string;headers?:string[];columns?:string[];rows?:string[][];values?:number[][];key?:string;id?:string;label?:string;lines?:number};
@@ -84,7 +91,7 @@ export type Chapter = {
  teacher:{background:string;materials:string[];sessions:string[][];guidedAnswer:string;misconceptions:string[][];assessment:string;support:string;next:string};
 };
 export type Release = {sourceHash:string;documents:Record<string,{id:string;sha256:string}>;diagrams:{id:string;sha256:string}[];review:{pages:number;checked:string}};
-const chapters:Chapter[]=[ai3source1,ai2source36,ai2source35,ai2source34,ai2source33,ai2source32,ai2source31,ai2source30,ai2source29,ai2source28,ai2source27,ai2source26,ai2source25,ai2source24,ai2source23,ai2source22,ai2source21,ai2source20,ai2source19,ai2source18,ai2source17,ai2source16,ai2source15,ai2source14,ai2source13,ai2source12,ai2source11,ai2source10,ai2source9,ai2source8,ai2source7,ai2source6,ai2source5,ai2source4,ai2source3,ai2source2,ai2source1,source1,source2,source3,source4,source5,source6,source7,source8,source9,source10,source11,source12,source13,source14,source15,source16,source17,source18,source19,source20,source21,source22,source23,source24,source25,source26,source27,source28,source29,source30,source31,source32,source33,source34,source35,source36];
+const chapters:Chapter[]=[ai3source8,ai3source7,ai3source6,ai3source5,ai3source4,ai3source3,ai3source2,ai3source1,ai2source36,ai2source35,ai2source34,ai2source33,ai2source32,ai2source31,ai2source30,ai2source29,ai2source28,ai2source27,ai2source26,ai2source25,ai2source24,ai2source23,ai2source22,ai2source21,ai2source20,ai2source19,ai2source18,ai2source17,ai2source16,ai2source15,ai2source14,ai2source13,ai2source12,ai2source11,ai2source10,ai2source9,ai2source8,ai2source7,ai2source6,ai2source5,ai2source4,ai2source3,ai2source2,ai2source1,source1,source2,source3,source4,source5,source6,source7,source8,source9,source10,source11,source12,source13,source14,source15,source16,source17,source18,source19,source20,source21,source22,source23,source24,source25,source26,source27,source28,source29,source30,source31,source32,source33,source34,source35,source36];
 export const curriculumRoadmap=progression;
 export const curriculumReleases=released as Record<string,Release>;
 export function getChapter(level:string,week:string) {

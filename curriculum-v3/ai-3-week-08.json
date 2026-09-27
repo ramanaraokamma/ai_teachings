@@ -1,0 +1,281 @@
+{
+  "level": "ai-3",
+  "week": 8,
+  "title": "Searching candidate rules",
+  "minutes": 90,
+  "goals": [
+    "Fit a threshold rule by comparing training errors",
+    "Apply an explicit boundary and tie rule consistently",
+    "Compare the frozen rule with a baseline on validation data"
+  ],
+  "prerequisite": {
+    "prompt": "How does a training-majority baseline choose its prediction, and where is its validation accuracy measured?",
+    "answer": "It chooses its constant from training label counts, using a declared tie rule. Accuracy is then measured by matching the fixed prediction to validation labels."
+  },
+  "vocabulary": [
+    [
+      "Candidate rule",
+      "One possible prediction rule in a declared search"
+    ],
+    [
+      "Threshold",
+      "A numerical boundary used to choose between outcomes"
+    ],
+    [
+      "Training error",
+      "A mismatch between a prediction and its reference label in training data"
+    ],
+    [
+      "Fitting",
+      "Using training examples to choose a model value or rule"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Turn a rule template into a search",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Last week the baseline ignored scene features. This week a small fitting algorithm will choose a rule that uses one feature. We supply the rule form: predict blocked when a distance reading is at or below a cutoff, otherwise predict clear. The algorithm will try three cutoffs and keep the one making the fewest training mistakes."
+        },
+        {
+          "type": "paragraph",
+          "text": "The teacher-authored fictional rows contain a sensor distance in centimetres and a separate reviewed lane label, blocked or clear. The reading is available before prediction; the label comes from the scene review. A single distance need not describe every obstruction. These numbers are for learning, not real robot control. Each row comes from a different trip, and training and validation trips are separate."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Training row",
+            "Distance in cm",
+            "Reference label"
+          ],
+          "rows": [
+            [
+              "1",
+              "2",
+              "blocked"
+            ],
+            [
+              "2",
+              "4",
+              "blocked"
+            ],
+            [
+              "3",
+              "6",
+              "clear"
+            ],
+            [
+              "4",
+              "8",
+              "clear"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Before scoring, declare cutoffs 3, 5 and 7 cm in ascending order, predict blocked at equality, and keep the smaller cutoff if training errors tie. This search tests only these three rules with this direction. It does not find the best possible model or prove that distance causes the label."
+        }
+      ]
+    },
+    {
+      "title": "Count mistakes for every candidate",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "train = [(2, \"blocked\"), (4, \"blocked\"),\n         (6, \"clear\"), (8, \"clear\")]\nbest_errors = len(train) + 1\nbest_cutoff = None\nfor cutoff in [3, 5, 7]:\n    errors = 0\n    for distance, label in train:\n        guess = \"clear\"\n        if distance <= cutoff:\n            guess = \"blocked\"\n        if guess != label:\n            errors = errors + 1\n    print(cutoff, errors)\n    if errors < best_errors:\n        best_errors = errors\n        best_cutoff = cutoff\nprint(\"chosen\", best_cutoff)"
+        },
+        {
+          "type": "paragraph",
+          "text": "The output lines are 3 1, 5 0, 7 1, then chosen 5. Cutoff 3 misses the blocked row at 4 cm. Cutoff 5 matches all four training labels. Cutoff 7 wrongly marks the 6 cm clear row as blocked. Fitting stores cutoff 5; prediction then applies that stored rule to a new distance."
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Separate search from later scoring",
+          "columns": [
+            "Stage",
+            "Evidence",
+            "Decision"
+          ],
+          "rows": [
+            [
+              "Try cutoffs 3 5 7",
+              "Training labels",
+              "Count 1 0 1 errors"
+            ],
+            [
+              "Store cutoff 5",
+              "Smallest training error",
+              "Freeze this rule"
+            ],
+            [
+              "Compare with baseline",
+              "Same validation rows",
+              "Report both scores"
+            ]
+          ],
+          "caption": "The supplied search chooses a cutoff using training errors. A perfect training fit does not establish performance on new examples."
+        },
+        {
+          "type": "paragraph",
+          "text": "best_errors starts above any possible mistake count. The strict < keeps the first tied candidate; ascending order makes that the smaller cutoff. The code assumes nonempty training data, numeric distances and the two allowed labels. Validate those assumptions before using another dataset."
+        }
+      ]
+    },
+    {
+      "title": "Evaluate the frozen rule",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Now reveal four validation rows in order: (3, blocked), (5, clear), (7, clear), (9, blocked). With the stored cutoff 5, predictions are blocked, blocked, clear, clear. Rows 1 and 3 match, so validation accuracy is 2/4 or 50 percent despite zero training mistakes."
+        },
+        {
+          "type": "paragraph",
+          "text": "The training labels tie at two blocked and two clear. Carry forward Week 7\u2019s baseline tie rule, choose clear. That baseline matches validation rows 2 and 3, also 2/4 or 50 percent. The fitted rule has not improved total accuracy on this set, and the two methods make different mistakes."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "For the validation distance exactly 5 cm, what does the fitted rule predict and why? Which rows are wrong for the rule and the baseline? State their difference in percentage points.",
+          "lines": 5
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep the rule and baseline fixed for this comparison. Do not secretly choose a different cutoff after seeing validation labels and call that a training-only choice. Validation can guide later development, but record those choices and reserve an untouched final test. No final test is supplied here."
+        }
+      ]
+    },
+    {
+      "title": "Repair a search that changes its own rules",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A learner uses distance < cutoff instead of distance <= cutoff during prediction. That changes the boundary: at 5 cm the stored cutoff now predicts clear. Recheck code against the declared rule before interpreting the score. A small symbol can change which examples match."
+        },
+        {
+          "type": "paragraph",
+          "text": "Another learner uses <= when deciding whether a candidate has fewer errors. That replaces an earlier candidate on a tie. The prediction boundary <= and the search comparison < have different jobs. Use the declared tie policy; a tied training score gives no evidence that one tied rule will be better on new cases."
+        }
+      ]
+    },
+    {
+      "title": "Describe what was learned honestly",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Humans chose the feature, labels, candidate cutoffs, direction and scoring method. The program used training examples to select the cutoff. That is a small example of fitting a model; writing a loop alone does not make a method learn. Choosing the cutoff in advance without consulting training examples would instead be a fixed rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "Record the source and split, rule form, candidate list, all training error counts, tie policy, selected cutoff and both validation prediction lists. Do not discard a difficult row to improve a score. Next week a decision tree will extend the idea of feature-based decisions, while the need for honest evaluation stays the same."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A learner reports that cutoff 5 is perfect because training error is zero. Rewrite the claim using the training result, validation comparison and the limits of this small search.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "State the search before running it",
+      "prompt": "Write the rule direction, equality behavior, candidate cutoffs and tie policy. Identify what humans supplied and what fitting selects.",
+      "answer": "Predict blocked for distance <= cutoff and clear otherwise. Try 3,5,7 cm; choose the smaller cutoff on tied training errors. Humans supplied the feature, rule form, candidates and policy; fitting selects the cutoff using training labels.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Trace the training mistakes",
+      "prompt": "List errors for cutoffs 3, 5 and 7 on the worked training rows. Identify the mistaken row for each imperfect candidate. Which cutoff is stored?",
+      "answer": "Errors are 1,0,1. Cutoff 3 misses row 2 at 4 cm; cutoff 7 misses row 3 at 6 cm. Cutoff 5 has no training mistakes and is stored as the best of these three candidates.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Audit the boundary and comparison",
+      "prompt": "What happens at distance 5 if prediction uses < instead of <= with cutoff 5? Explain why the search uses a strict < for error counts even though prediction uses <= for distance.",
+      "answer": "The changed prediction would be clear instead of blocked at 5 cm. Prediction <= includes equality in blocked. Search < replaces a candidate only for fewer mistakes, preserving the first tied candidate; with ascending candidates that implements the smaller-cutoff policy.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Search and evaluate independently",
+      "prompt": "New training rows are (1,blocked), (3,clear), (5,blocked), (7,clear). Try cutoffs 2,4,6, using the same direction and smaller-cutoff tie policy. Give every training error count and select a cutoff. Validation rows are (2,blocked), (4,blocked), (6,clear), (8,clear). List the selected rule\u2019s predictions and score. Compare with the training-majority baseline using clear on ties.",
+      "answer": "Training errors for 2,4,6 are 1,2,1. Choose 2 under the declared tie policy. Validation predictions are blocked,clear,clear,clear, matching rows 1,3,4: 3/4 or 75 percent. Training labels tie, so baseline clear matches rows 3,4: 2/4 or 50 percent. The selected rule gains one correct example or 25 percentage points on this small set only.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Limit the claim",
+      "prompt": "The worked rule fits training perfectly but ties the baseline on validation accuracy. Explain why neither result proves it is the best possible model. Name two details to keep in the experiment record.",
+      "answer": "Perfect training fit describes the examples used for selection; the four-row validation score is only 50 percent and ties the baseline. Only three candidates of one form were searched. Keep the candidates, all error counts, tie policy, chosen cutoff, split and row-aligned validation predictions; none proves general superiority.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions using fictional sensor readings and reviewed labels. This is a small supervised fitting algorithm with a supplied rule form, not a complete decision-tree implementation. Separate the prediction boundary from the candidate replacement rule. The same split and baseline principles apply, and a zero training error must never be described as proof of generalization.",
+    "materials": [
+      "Printed lesson and workbook",
+      "Four training cards and four validation cards with distance and reference label",
+      "Optional Python 3 editor with no extra packages",
+      "Blank table for cutoff predictions errors and selected rule"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve training-majority fitting and validation scoring. Establish the distinct-trip fictional data and distance unit."
+      ],
+      [
+        "7 to 18 minutes",
+        "State candidates, direction, equality and tie policy before counting. Predict all four training rows for cutoff 3 by hand."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace the loop and complete W1 and W2. Name the stored parameter and distinguish fitting from later prediction."
+      ],
+      [
+        "32 to 45 minutes",
+        "Reveal validation and compute both methods on the same rows. Complete the guided boundary and error-pattern question."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the difference between the prediction <= and search < comparisons."
+      ],
+      [
+        "8 to 20 minutes",
+        "Complete W3 and inspect both bug examples. Explain that a tie policy is a convention, not evidence of future superiority."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before hints. Require every candidate count, selected cutoff, predictions and baseline comparison."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit claim. Give the fresh retry after feedback and record support."
+      ]
+    ],
+    "guidedAnswer": "Guided: at 5 cm the selected rule predicts blocked because equality is included. The rule misses validation rows 2 and 4; baseline clear misses rows 1 and 4. Both score 50 percent, a zero percentage-point difference. Exit: cutoff 5 has zero mistakes on four training rows among the three supplied candidates, but scores 2/4 on validation and ties the baseline. This small comparison does not prove broad performance or global optimality.",
+    "misconceptions": [
+      [
+        "Zero training error means perfect predictions",
+        "The rule was selected using those labels. New examples can disagree, as the two validation mistakes show."
+      ],
+      [
+        "Every comparison should include equality",
+        "Prediction and candidate replacement serve different purposes. Follow the specified boundary and tie policy separately."
+      ],
+      [
+        "The best tested rule is the best possible model",
+        "The search covers only the declared candidates and rule form, evaluated on a small set. Other forms and future cases remain unknown."
+      ]
+    ],
+    "assessment": "Require W4 training errors 1,2,1, cutoff 2, validation 3/4 and baseline 2/4 with a 25 percentage-point difference. Fresh retry: training (2,blocked),(4,clear),(6,blocked),(8,clear), candidates 3,5,7. Errors are 1,2,1; select 3. Validation (3,clear),(5,blocked),(7,clear),(9,clear) gives rule blocked,clear,clear,clear: 2/4. Baseline clear gives 3/4, so the rule is one correct example or 25 percentage points worse. Require correct equality handling and a restrained claim.",
+    "support": "Use a number line and move a cutoff marker; place equality on the blocked side. Give a blank prediction grid but no error counts. Extension: reverse tied candidate order in the supplied code and explain why the retained cutoff changes unless the tie policy is implemented explicitly.",
+    "next": "Week 9 fits a decision tree. Carry forward the distinction between model choices learned from training and evaluation on separate data."
+  }
+}

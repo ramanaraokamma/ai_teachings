@@ -1,6 +1,6 @@
 # Curriculum 3 learning sequence
 
-Curriculum 3 is a new seven-level progression beginning in Grade 6. This release contains **AI 1 Weeks 1–36, AI 2 Weeks 1–36 and AI 3 Week 1**, each authored as a complete student lesson, workbook and teacher guide. It does not claim to complete all seven levels. The other **179 week positions are a proposed sequence**, explicitly labelled Planned with no lesson links. The existing four-level, 144-week edition remains available.
+Curriculum 3 is a new seven-level progression beginning in Grade 6. This release contains **AI 1 Weeks 1–36, AI 2 Weeks 1–36 and AI 3 Weeks 1–8**, each authored as a complete student lesson, workbook and teacher guide. It does not claim to complete all seven levels. The other **172 week positions are a proposed sequence**, explicitly labelled Planned with no lesson links. The existing four-level, 144-week edition remains available.
 
 ## Released packages
 
@@ -51,7 +51,7 @@ Each package has a prerequisite check, three outcomes, five explanatory sections
 | --- | --- | --- | --- |
 | AI 1 | 6 | Foundations | 36 of 36 |
 | AI 2 | 7 | Programming and Data | 36 of 36 |
-| AI 3 | 8 | Machine Learning | 1 of 36 |
+| AI 3 | 8 | Machine Learning | 8 of 36 |
 | AI 4 | 9 | Neural Networks | 0 of 36 |
 | AI 5 | 10 | Generative AI Systems | 0 of 36 |
 | AI 6 | 11 | AI Engineering | 0 of 36 |
@@ -99,7 +99,7 @@ Do not update a source hash simply to suppress the mismatch check. It protects s
 - All 18 web resources were printed to PDF for browser-print inspection. Downloadable PDFs are the reviewed, paginated print editions.
 - A deliberate source change was rejected by the stale-download guard, then the source was restored.
 
-Grade 6 AI 1 Foundations and Grade 7 AI 2 Programming and Data are complete with 36 weekly packages each. Grade 8 AI 3 Week 1 is also complete. Grade 8 Weeks 2–36 and the remaining four levels require individually authored chapters, exercises, solutions and print review; the progression map is not a substitute for that work.
+Grade 6 AI 1 Foundations and Grade 7 AI 2 Programming and Data are complete with 36 weekly packages each. Grade 8 AI 3 Weeks 1–8 are also complete. Grade 8 Weeks 9–36 and the remaining four levels require individually authored chapters, exercises, solutions and print review; the progression map is not a substitute for that work.
 
 ## Week 7 completion (2026-09-15)
 
@@ -409,3 +409,66 @@ The machine learning lifecycle introduces fitting a threshold from labelled trai
 Executable checks verified the exact worked Python output, independent and retry calculations, threshold equality, declared tie handling and reversed input order. Six desktop/mobile resource checks and both role maps passed. The production build, TypeScript check and all 31 access-test groups passed. The unreleased-route test now derives its examples from the progression and release manifest instead of treating Grade 8 Week 1 as permanently unavailable.
 
 There are now 73 rebuilt packages and 438 matching Word/PDF downloads. All 2,684 protected resources decrypted successfully. Grade 8 has 1 of 36 weeks complete; Weeks 2–36 remain planned. The seven-level sequence has 179 remaining planned positions. Cloudflare hosting and student/teacher access controls are preserved. Changes have not been deployed; classroom pacing and effectiveness remain untested.
+
+
+## Grade 8 AI 3 Week 2 completion (2026-09-26)
+
+Features labels and prediction time adds a complete 90-minute package: a four-page lesson, three-page workbook, four-page teacher guide and information-timing diagram. It separates available inputs, historical targets and tracking metadata; explains outcome leakage despite separate test rows; and requires an independent feature contract for a new task. A fresh retry and teacher explanations distinguish unknown outcomes from negative labels.
+
+The exact worked Python output, feature order, unchanged source records, exclusion of later fields, missing-field behavior and assessment boundaries passed executable checks. Every downloadable print page and all 12 browser-print pages were inspected. Canonical text, workbook response spaces, six desktop/mobile resource checks and both protected maps passed.
+
+The production build, TypeScript check and all 31 access-test groups passed. There are now 74 rebuilt weekly packages with 444 matching Word/PDF downloads. All 2,691 protected resources decrypted successfully. Grade 8 Weeks 1–2 are complete; Weeks 3–36 remain planned. Across seven levels, 178 weekly positions remain planned. Cloudflare hosting and student/teacher access controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
+
+
+## Grade 8 AI 3 Week 3 completion (2026-09-26)
+
+Classification and regression includes a four-page lesson, three-page workbook, four-page teacher guide and a diagram comparing numerical error with category agreement. The 90-minute sequence distinguishes target meaning from number formatting, evaluates supplied estimates without claiming a model was fitted, and includes an independent task and fresh retry with explained answers.
+
+The exact worked Python, guided fractional boundary, independent and retry categories, absolute errors, means and category recoding passed executable checks. All 11 downloadable print pages and 12 browser-print pages were visually inspected. Canonical text and workbook response spaces passed, as did six desktop/mobile resource checks and both protected maps.
+
+The production build, TypeScript check and all 31 access-test groups passed. There are 75 rebuilt weekly packages and 450 matching Word/PDF downloads. All 2,698 protected resources decrypted successfully. Grade 8 Weeks 1–3 are complete; Weeks 4–36 remain planned. Across seven levels, 177 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
+
+
+## Grade 8 AI 3 Week 4 completion (2026-09-26)
+
+Dataset inspection and cards includes a four-page lesson, three-page workbook, four-page teacher guide and a diagram connecting findings to evidence and source checks. The 90-minute sequence explains provenance, schema, missing values, repeated identifiers and overlapping flags. Students preserve raw records, reject unsupported repairs and produce a dataset card that separates observed findings from unknowns. Independent practice and a fresh retry include explained teacher answers.
+
+The worked Python output, independent and retry counts, overlapping flags, zero versus unknown values, row reversal, repeated rows and empty-input counts passed executable checks. All 11 downloadable print pages and 12 browser-print pages were visually inspected. Canonical text, workbook response spaces, six desktop/mobile resource checks and both protected maps passed.
+
+The production build, TypeScript check and all 31 access-test groups passed. There are 76 rebuilt weekly packages and 456 matching Word/PDF downloads. All 2,705 protected resources decrypted successfully. Grade 8 Weeks 1–4 are complete; Weeks 5–36 remain planned. Across seven levels, 176 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
+
+
+## Grade 8 AI 3 Week 5 completion (2026-09-27)
+
+Label definitions and disagreement includes a four-page lesson, three-page workbook, four-page teacher guide and a diagram linking disagreements to evidence and recorded decisions. The 90-minute sequence defines observable labels and boundaries, preserves uncertainty through review status, measures exact agreement on matched items and distinguishes agreement from correctness. Independent practice and a fresh retry require rule-based decisions, explicit denominators and preservation of original labels.
+
+The worked Python output, guided subset, independent and retry agreement counts, reversed pairs, empty-pair handling and shared-error example passed executable checks. All 11 downloadable print pages and 12 browser-print pages were visually inspected. Canonical text, workbook response spaces, six desktop/mobile resource checks and both protected maps passed.
+
+The production build, TypeScript check and all 31 access-test groups passed. There are 77 rebuilt weekly packages and 462 matching Word/PDF downloads. All 2,712 protected resources decrypted successfully. Grade 8 Weeks 1–5 are complete; Weeks 6–36 remain planned. Across seven levels, 175 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
+
+
+## Grade 8 AI 3 Week 6 completion (2026-09-27)
+
+Splits and related examples includes a four-page lesson, three-page workbook, four-page teacher guide and a diagram separating whole trips into training, validation and test roles. The 90-minute sequence connects the split unit to the intended prediction claim, distinguishes row and group counts, audits every pair of group sets and preserves final evaluation. Independent practice and a fresh retry require repairs that retain every frame exactly once and acknowledge the limits of tiny fictional samples.
+
+The worked Python output, all three overlap pairs, guided counts, independent and retry repairs, source-row coverage and deliberately injected overlaps passed executable checks. All 11 downloadable print pages and 12 browser-print pages were visually inspected. Canonical text, workbook response spaces, six desktop/mobile resource checks and both protected maps passed.
+
+The production build, TypeScript check and all 31 access-test groups passed. There are 78 rebuilt weekly packages and 468 matching Word/PDF downloads. All 2,719 protected resources decrypted successfully. Grade 8 Weeks 1–6 are complete; Weeks 7–36 remain planned. Across seven levels, 174 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
+
+
+## Grade 8 AI 3 Week 7 completion (2026-09-27)
+
+A baseline before a model includes a four-page lesson, three-page workbook, four-page teacher guide and a diagram separating baseline fitting from scoring. The 90-minute sequence fits a majority-label constant from training labels, uses a declared tie rule, compares supplied candidate predictions on identical validation rows and distinguishes percentage points from relative improvement. Independent practice and a fresh retry emphasize honest comparison and error patterns hidden by overall accuracy.
+
+The worked code, all 126 nonempty binary training sequences through six rows with three validation variants, tie handling, validation-independent predictions, equal-accuracy counterexample and assessment calculations passed executable checks. All 11 downloadable print pages and 12 browser-print pages were visually inspected. Canonical text, workbook response spaces, six desktop/mobile resource checks and both protected maps passed.
+
+The production build, TypeScript check and all 31 access-test groups passed. There are 79 rebuilt weekly packages and 474 matching Word/PDF downloads. All 2,726 protected resources decrypted successfully. Grade 8 Weeks 1–7 are complete; Weeks 8–36 remain planned. Across seven levels, 173 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
+
+
+## Grade 8 AI 3 Week 8 completion (2026-09-27)
+
+Searching candidate rules includes a four-page lesson, three-page workbook, four-page teacher guide and a diagram separating training search from validation comparison. The 90-minute sequence fits a threshold from a declared candidate list, distinguishes prediction boundaries from search tie handling and compares the frozen rule with a training-derived baseline. Independent practice and a fresh retry include tied candidates and a case where the learned rule performs worse than the baseline.
+
+The exact worked code, all 16 binary labelings of four training rows, row-order invariance, threshold equality and nearby values, reversed candidate order and assessment scores passed executable checks. All 11 downloadable print pages and 12 browser-print pages were visually inspected. Canonical text, workbook response spaces, six desktop/mobile resource checks and both protected maps passed.
+
+The production build, TypeScript check and all 31 access-test groups passed. There are 80 rebuilt weekly packages and 480 matching Word/PDF downloads. All 2,733 protected resources decrypted successfully. Grade 8 Weeks 1–8 are complete; Weeks 9–36 remain planned. Across seven levels, 172 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.

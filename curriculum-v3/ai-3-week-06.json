@@ -1,0 +1,295 @@
+{
+  "level": "ai-3",
+  "week": 6,
+  "title": "Splits and related examples",
+  "minutes": 90,
+  "goals": [
+    "Choose a split unit that matches the intended prediction claim",
+    "Keep related examples together and audit group overlap",
+    "Record split roles counts and limits before model evaluation"
+  ],
+  "prerequisite": {
+    "prompt": "Why does agreement between two annotators not prove their labels are correct?",
+    "answer": "They can share the same mistake or use an unclear rule. Agreement counts matching labels; correctness requires checking the rule and evidence."
+  },
+  "vocabulary": [
+    [
+      "Training set",
+      "Examples used to fit a model"
+    ],
+    [
+      "Validation set",
+      "Separate examples used to compare choices during development"
+    ],
+    [
+      "Test set",
+      "Held out examples used for final evaluation after choices are fixed"
+    ],
+    [
+      "Group",
+      "Related examples that must stay together for a stated evaluation goal"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Ask what should be new at evaluation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A model may seem successful when its test examples closely resemble examples it already learned from. Imagine several pictures taken seconds apart during one robot trip. They have different picture IDs but share a route, lighting and objects. This week you will assign entire trips to separate sets and explain what the resulting evaluation could measure. No model is fitted in this lesson."
+        },
+        {
+          "type": "paragraph",
+          "text": "Our invented twelve-row dataset contains frame descriptions from six trips. Each row is one frame; the group is its trip ID. The proposed claim concerns new trips on the same practice route under similar conditions. We therefore keep all frames from a trip in one set. To claim success on new routes, grouping only by trip would not be enough."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Trip group",
+            "Frame IDs",
+            "Assigned role"
+          ],
+          "rows": [
+            [
+              "A",
+              "A1 A2 A3",
+              "Training"
+            ],
+            [
+              "B",
+              "B1 B2",
+              "Training"
+            ],
+            [
+              "C",
+              "C1",
+              "Training"
+            ],
+            [
+              "D",
+              "D1 D2",
+              "Validation"
+            ],
+            [
+              "E",
+              "E1 E2",
+              "Test"
+            ],
+            [
+              "F",
+              "F1 F2",
+              "Test"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "This small fictional assignment is for learning split design, not evidence of real performance. Each frame belongs to one group and one set. Store frame and trip IDs as metadata for auditing; do not assume an ID is an appropriate prediction input."
+        }
+      ]
+    },
+    {
+      "title": "Check every pair of group sets",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Training data fits the model. Validation data helps compare choices such as candidate rules. Keep the test set for a final check after those choices are fixed. A learner who repeatedly changes the model after seeing test results has used that set for development; its score is no longer an untouched final check."
+        },
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "train_groups = {\"A\", \"B\", \"C\"}\nvalid_groups = {\"D\"}\ntest_groups = {\"E\", \"F\"}\nshared = ((train_groups & valid_groups)\n          | (train_groups & test_groups)\n          | (valid_groups & test_groups))\nprint(sorted(shared))\nprint(len(train_groups), len(valid_groups),\n      len(test_groups))"
+        },
+        {
+          "type": "paragraph",
+          "text": "The first line of output is []: no trip ID is shared between any pair of sets. The second is 3 1 2: training, validation and test contain three, one and two trip groups. The symbol & finds shared values and | combines sets. These are group counts, not frame counts."
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Keep each trip in one role",
+          "columns": [
+            "Whole groups",
+            "Role",
+            "Purpose"
+          ],
+          "rows": [
+            [
+              "A B C with all frames",
+              "Training",
+              "Fit from examples"
+            ],
+            [
+              "D with all frames",
+              "Validation",
+              "Compare choices"
+            ],
+            [
+              "E F with all frames",
+              "Test",
+              "Final check after choices"
+            ]
+          ],
+          "caption": "Keep related frames together. Separate group IDs prevent this form of overlap; they do not prove that every other source of leakage is absent."
+        },
+        {
+          "type": "paragraph",
+          "text": "This audit assumes the lists correctly describe every frame assignment. It cannot find an omitted frame, a wrong trip ID, a copied image with a different ID or a feature containing the answer. Check the assignment table and source records too."
+        }
+      ]
+    },
+    {
+      "title": "Repair a split at the group level",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Suppose A1 and A2 are in training while A3 is in test. The frame IDs differ, but A appears in both sets. Shuffling the rows does not remove this relationship. For our new-trip claim, move all A frames to one chosen role and record the revised assignment before evaluating a model. Do not copy A3 into both roles."
+        },
+        {
+          "type": "paragraph",
+          "text": "Audit that every source frame occurs exactly once, no group crosses roles and the assigned counts sum to the source count. In our worked plan the row counts are six training, two validation and four test: twelve total. A fixed random seed can reproduce a random split, but it cannot make a flawed grouping choice fair."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "A learner moves D2 from validation to training but leaves D1 in validation. Give the new row counts and shared trip ID. Explain why different frame IDs and a fixed seed do not repair the overlap.",
+          "lines": 5
+        },
+        {
+          "type": "paragraph",
+          "text": "A split record names the prediction goal, source version, group definition, exact assignments, row and group counts, date and any random method or seed used. For this hand-assigned example, record that there was no random sampling. Keep label-rule versions and unresolved review statuses traceable as in Week 5."
+        }
+      ]
+    },
+    {
+      "title": "Choose the split for the intended use",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For new trips on a familiar route, holding out whole trips addresses within-trip similarity. For new routes, hold out entire routes so all their trips stay together. For forecasting future events, a time-respecting split may be needed: training on later events to predict earlier ones would not represent that intended use. The evaluation question determines the separation."
+        },
+        {
+          "type": "paragraph",
+          "text": "There is no universal percentage that makes a split valid. Large groups can make row counts unequal. Check that the sets can support the intended comparison, including enough relevant cases and labels, without moving individual related frames just to hit a percentage. This twelve-row example is too small to justify a reliable performance claim."
+        }
+      ]
+    },
+    {
+      "title": "Preserve the final check",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Fit learned preprocessing, such as scaling values using an average, on training data and apply the stored transformation to the other sets. Using the full dataset to learn such values would let held out information influence development. We will implement preprocessing later; group separation alone does not solve that issue."
+        },
+        {
+          "type": "paragraph",
+          "text": "Record exclusions and label-review policies before scoring. Do not remove difficult test cases because they reduce the score. If a genuine data error requires repair, document it and its effect on the evaluation rather than claiming the old test stayed untouched. Next week you will build a simple baseline using these split roles."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "All trip IDs are separate, but every trip uses the same route. Can you claim the model works on unseen routes? Explain the limitation and propose a split unit for that new claim.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Explain the three roles",
+      "prompt": "Explain what training, validation and test sets are used for. What changes if you repeatedly choose a model using its test score?",
+      "answer": "Training fits the model; validation compares development choices; test evaluates after choices are fixed. Repeatedly selecting by the test score uses that set for development, so it is no longer an untouched final evaluation.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Distinguish frames from groups",
+      "prompt": "For the worked A through F plan, give training, validation and test counts first in groups and then in rows. Interpret [] from the code and state one problem it cannot detect.",
+      "answer": "Group counts are 3,1,2; row counts are 6,2,4. The empty list means no trip ID overlaps between any pair of the listed sets. The code cannot detect wrong metadata, an omitted frame, a disguised duplicate or an outcome feature.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair a related example leak",
+      "prompt": "A1 and A2 are in training and A3 is in test. Explain why unique frame IDs and a fixed random seed do not fix this. Propose a repair and what to record.",
+      "answer": "The frames share trip A, so the test contains a trip already represented in training. Unique frame IDs do not remove similarity; a seed only reproduces the assignment. Put every A frame in one role, keep each frame once and record the revised assignments and counts before model evaluation.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Audit and repair independently",
+      "prompt": "Eight frames come from trips P (P1 P2 P3), Q (Q1 Q2), R (R1), S (S1 S2). A proposed split is training P1 Q1 R1; validation P2 S1; test Q2 P3 S2. Identify shared groups for each pair of sets. Repair it by assigning P and Q to training, R to validation and S to test. List all frames in each role and give row and group counts. State one limit of the repaired plan.",
+      "answer": "Training/validation share P; training/test share P and Q; validation/test share P and S. Repaired training is P1 P2 P3 Q1 Q2 (5 rows,2 groups), validation R1 (1 row,1 group), test S1 S2 (2 rows,1 group). Every frame appears once and groups are disjoint. This tiny plan does not establish reliable performance, correct metadata, label coverage or success on new routes.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Match separation to the claim",
+      "prompt": "A model will be evaluated on new routes. Route North has trips A and B; route South has C and D. A proposed split trains on A and C and tests on B and D. Explain the problem and give a route-based alternative. Is this enough for a strong performance claim?",
+      "answer": "Both routes occur in training and test, so the plan does not hold out a new route. For illustration, keep A and B together for training and C and D together for test, or reverse the route roles. With only two routes there is too little evidence for a strong general claim and no separate route left for validation; obtain more routes for a fuller design.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions with fictional frame cards. Focus on the evaluation goal and unit of separation before percentages. The worked plan separates trips for an intended new-trip claim on a familiar route. It neither trains a model nor establishes performance. Distinguish frames, groups and sets, and retain Week 5 label-rule and review records.",
+    "materials": [
+      "Printed lesson and workbook",
+      "Twelve frame cards A1 A2 A3 B1 B2 C1 D1 D2 E1 E2 F1 F2",
+      "Three trays or paper areas named training validation and test",
+      "Optional Python 3 editor with no extra packages"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve why matching labels can share an error. State the new-trip evaluation goal and define one row and one group."
+      ],
+      [
+        "7 to 18 minutes",
+        "Use the frame cards to build the worked split. Count rows and groups separately and explain the three roles."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace the intersection audit. Complete W1 and W2; ask which metadata problems an empty overlap list could miss."
+      ],
+      [
+        "32 to 45 minutes",
+        "Move D2 into training and complete the guided question. Repair it by moving it back, then record the before and after counts."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve why shuffling and fixed seeds do not remove relationships. Ask what must stay together for a new-route claim."
+      ],
+      [
+        "8 to 20 minutes",
+        "Complete W3 and discuss group-based, route-based and time-respecting evaluation goals. Explain why percentages cannot decide the goal."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before hints. Require all three overlap checks, exact repaired frame lists and both count units."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit question. Use the fresh retry after support and record what help was needed."
+      ]
+    ],
+    "guidedAnswer": "Guided: the row counts become 7 training, 1 validation and 4 test. D is shared by training and validation because D1 and D2 are related frames from one trip. Unique frame IDs and a seed do not remove the shared trip. Return D2 to validation to recover the worked plan. Exit: separate trip IDs on one route do not test unseen routes. Hold out whole routes with all their trips, and collect enough routes and relevant conditions for the intended evaluation.",
+    "misconceptions": [
+      [
+        "Different row IDs mean independent examples",
+        "Different frames may share a trip or source. Choose group metadata based on the claim and verify it against the source."
+      ],
+      [
+        "A fixed percentage guarantees a fair test",
+        "Percentages do not remove overlap or ensure enough groups and relevant cases. The goal and dependencies determine the split."
+      ],
+      [
+        "An empty overlap list proves there is no leakage",
+        "The audit checks listed group IDs only. Wrong metadata, copied content, outcome features or preprocessing fitted on all sets can still invalidate evaluation."
+      ]
+    ],
+    "assessment": "Require W4 overlaps P; P and Q; P and S, in pair order, then exact repaired lists with rows 5,1,2 and groups 2,1,1. Fresh retry: U1 U2 belong to U, V1 to V, W1 W2 to W. Proposed training U1 V1, validation W1, test U2 W2 has shared U between training/test and W between validation/test; training/validation share none. Repair to all U in training, V in validation and all W in test: rows 2,1,2 and groups 1,1,1. Require an explicit small-sample limitation.",
+    "support": "Keep a coloured border shared by cards from the same trip. Supply blank assignment tables without the correct roles. Extension: explain why a new-route evaluation with many frames but only two routes has limited evidence and cannot obtain three nonempty disjoint route sets.",
+    "next": "Week 7 introduces a baseline before a model. Carry forward the split record and keep the final test protected while comparing choices. Teacher reference: scikit-learn cross-validation documentation, grouped data section, https://scikit-learn.org/stable/modules/cross_validation.html (reviewed 2026-09-27)."
+  }
+}
