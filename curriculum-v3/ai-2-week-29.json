@@ -1,0 +1,218 @@
+{
+  "level": "ai-2",
+  "week": 29,
+  "title": "Privacy and least privilege",
+  "minutes": 90,
+  "goals": [
+    "Collect only necessary information",
+    "Give each role only needed access",
+    "Explain retention and deletion choices"
+  ],
+  "prerequisite": {
+    "prompt": "Does a duration summary need student names to calculate a total?",
+    "answer": "No; names are not required for that calculation."
+  },
+  "vocabulary": [
+    [
+      "Data minimization",
+      "Keeping only data needed for the stated purpose"
+    ],
+    [
+      "Least privilege",
+      "Giving a role only the access it needs"
+    ],
+    [
+      "Retention",
+      "How long data is kept"
+    ],
+    [
+      "Authorization",
+      "Permission to perform a particular action"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A fictional class activity dashboard needs category counts, not names or personal messages. Design its data and role permissions before collection. This exercise uses invented data and policy cards; do not change the Academy's actual authentication settings."
+        }
+      ]
+    },
+    {
+      "title": "Work through the example",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "roles = {\"student\": [\"read_summary\"],\n         \"teacher\": [\"read_summary\", \"read_review\"]}\ndef allowed(role, action):\n    return action in roles.get(role, [])\n\nprint(allowed(\"student\", \"read_summary\"))\nprint(allowed(\"student\", \"read_review\"))\nprint(allowed(\"unknown\", \"read_summary\"))"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow the evidence",
+          "columns": [
+            "Step or case",
+            "Evidence",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "Student",
+              "Read summary",
+              "No review notes"
+            ],
+            [
+              "Teacher",
+              "Read summary and review",
+              "Authorized purpose"
+            ],
+            [
+              "Unknown role",
+              "No listed permissions",
+              "Deny by default"
+            ]
+          ],
+          "caption": "Read each row from left to right and connect the evidence to the stated rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "The toy code prints True, False, False. It models a permission decision, not a complete security system. A real server must verify identity and enforce authorization on every protected request; hiding a button in a page is insufficient."
+        }
+      ]
+    },
+    {
+      "title": "Predict before running",
+      "blocks": [
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "If a student manually requests the review endpoint, should hiding its menu link be enough?",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Find and explain the failure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A form asks for names, birthdays and comments to count activity preferences. Remove fields not needed for the purpose. Aggregated counts can still expose information in very small groups; choose reporting rules with the responsible teacher."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Retention must be tied to a purpose and school policy rather than a guessed universal number of days. Identify who can correct or delete records and avoid keeping raw responses indefinitely just because storage is available."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Does the allowed function alone prove an app is secure?",
+          "lines": 6
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Minimize fields",
+      "prompt": "For a count of preferred activities, identify which of activity choice, full name and birthday is necessary.",
+      "answer": "Activity choice is needed; full name and birthday are not needed for an anonymous category count.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Trace permissions",
+      "prompt": "Under the worked role policy, can teacher read_review and unknown read_summary?",
+      "answer": "Teacher can; unknown cannot.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair access control",
+      "prompt": "A website hides teacher answers using CSS but sends them to student browsers. Explain the flaw and required boundary.",
+      "answer": "Students still receive the content. Enforce teacher authorization on the server and do not send answers in student responses.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Design independently",
+      "prompt": "Design a fictional preference summary with student and teacher roles. List necessary fields, permitted actions, a retention purpose and a deletion owner.",
+      "answer": "Use anonymous choice/count data, student access to approved summary and teacher access only to necessary review data. State a purpose-limited school-approved retention period/process and a responsible deletion owner. Do not collect identifiers without a justified need.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Limit the toy model",
+      "prompt": "Does the allowed function alone prove an app is secure?",
+      "answer": "No. It omits authentication, server integration, session protection and many other controls; it demonstrates only a policy lookup.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach Week 29 as a two-session investigation using fictional data. A fictional class activity dashboard needs category counts, not names or personal messages. Design its data and role permissions before collection. This exercise uses invented data and policy cards; do not change the Academy's actual authentication settings. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+    "materials": [
+      "Python 3 editor with a fresh local practice file",
+      "Paper trace table and the student workbook",
+      "Fictional input records from this lesson; no real student identifiers"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and explain the purpose in the opening section."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the worked example and diagram; ask learners to trace each step aloud."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2, then compare predictions with observed results."
+      ],
+      [
+        "33 to 45 minutes",
+        "Collect the guided prediction before running; discuss a mismatch and its cause."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the main rule without showing the previous answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to diagnose and repair the stated failure; rerun an earlier case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including code or plan, predictions and explanations, before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit; use the fresh retry when support was needed."
+      ]
+    ],
+    "guidedAnswer": "No. The server must reject an unauthorized request even if a link is guessed. Exit: No. It omits authentication, server integration, session protection and many other controls; it demonstrates only a policy lookup.",
+    "misconceptions": [
+      [
+        "A successful run proves the conclusion",
+        "Retention must be tied to a purpose and school policy rather than a guessed universal number of days. Identify who can correct or delete records and avoid keeping raw responses indefinitely just because storage is available."
+      ],
+      [
+        "Matching the example is enough",
+        "Require the new W4 case, explicit predictions and an explanation. Fresh retry: a library category counter. Require category counts without names, default-deny permissions and an owner for retention/deletion decisions."
+      ],
+      [
+        "A convenient shortcut preserves meaning",
+        "A form asks for names, birthdays and comments to count activity preferences. Remove fields not needed for the purpose. Aggregated counts can still expose information in very small groups; choose reporting rules with the responsible teacher."
+      ]
+    ],
+    "assessment": "Independent W4 evidence: Use anonymous choice/count data, student access to approved summary and teacher access only to necessary review data. State a purpose-limited school-approved retention period/process and a responsible deletion owner. Do not collect identifiers without a justified need. Record whether the learner needed no help, a hint or explanation. Fresh retry: a library category counter. Require category counts without names, default-deny permissions and an owner for retention/deletion decisions.",
+    "support": "Use role and action cards. Extension: test direct unauthorized requests in a teacher-approved local demo, never by probing another person's system.",
+    "next": "Next week: A reproducible data investigation. Reuse this week's explicit contracts and evidence."
+  }
+}

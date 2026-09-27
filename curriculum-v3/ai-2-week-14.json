@@ -1,0 +1,218 @@
+{
+  "level": "ai-2",
+  "week": 14,
+  "title": "Missing values and validation",
+  "minutes": 90,
+  "goals": [
+    "Detect absent and unusable values",
+    "Keep unknown distinct from zero",
+    "Report accepted and rejected records"
+  ],
+  "prerequisite": {
+    "prompt": "Is the text \"12\" the same type as the integer 12?",
+    "answer": "No. The first is text and the second is an integer."
+  },
+  "vocabulary": [
+    [
+      "Missing value",
+      "A value that was not recorded"
+    ],
+    [
+      "Validation",
+      "Checking data against explicit rules"
+    ],
+    [
+      "Rejection",
+      "Holding a record out because it fails a rule"
+    ],
+    [
+      "Coverage",
+      "Which intended records or groups are represented"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A fictional activity log contains an absent duration, a recorded zero and an out-of-range value. Our schema accepts exact integer minutes from 0 through 60. Keep rejected records visible for review instead of replacing their values with guesses."
+        }
+      ]
+    },
+    {
+      "title": "Work through the example",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "rows = [{\"minutes\": 0}, {}, {\"minutes\": 12},\n        {\"minutes\": -1}, {\"minutes\": None}]\naccepted = []\nrejected = 0\nfor row in rows:\n    value = row.get(\"minutes\")\n    if type(value) is int and 0 <= value <= 60:\n        accepted.append(value)\n    else:\n        rejected = rejected + 1\nprint(accepted)\nprint(rejected)"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow the evidence",
+          "columns": [
+            "Step or case",
+            "Evidence",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "Recorded zero",
+              "0",
+              "Accept as a measurement"
+            ],
+            [
+              "Absent or None",
+              "Unknown",
+              "Hold for review"
+            ],
+            [
+              "Negative integer",
+              "Outside range",
+              "Reject under this schema"
+            ]
+          ],
+          "caption": "Read each row from left to right and connect the evidence to the stated rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "dict.get returns None when this key is absent. An explicit None also represents unknown in this dataset. append adds an item to the end of a list. The script prints [0, 12] and then 3. The exact type check prevents comparing None or text with the numeric range."
+        }
+      ]
+    },
+    {
+      "title": "Predict before running",
+      "blocks": [
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Add {\"minutes\": 60} and {\"minutes\": \"5\"}. Predict the accepted list and rejection count.",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Find and explain the failure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Using if value would discard the legitimate zero and accept some invalid nonempty text. Test the written type and range rules explicitly. Filling an absent duration with 0 falsely claims an observed zero."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Rejection can change which sessions remain represented. Report 2 accepted of 5 supplied here. A summary of accepted rows does not automatically describe the missing or rejected sessions."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Only 2 of 5 supplied durations were accepted. Why should the report include this?",
+          "lines": 6
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Distinguish zero and unknown",
+      "prompt": "Explain the difference between {\"minutes\": 0}, {} and {\"minutes\": None}.",
+      "answer": "0 is a recorded allowed duration. The other two are unknown under this schema.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Trace filtering",
+      "prompt": "Predict accepted values and rejections for minutes 4, 0, 61 and \"4\".",
+      "answer": "Accepted [4, 0]; 2 rejected.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair a condition",
+      "prompt": "A program uses if value to accept durations. Give a counterexample and the correct rule.",
+      "answer": "0 is wrongly rejected; nonempty text can be accepted. Require exact integer type and 0 <= value <= 60.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Validate independently",
+      "prompt": "Write a filter for count values that must be integers from 0 to 10. Process {count: 3}, {}, {count: 0}, {count: 11}, {count: \"3\"}, using quoted keys in Python. Report accepted values and rejected count.",
+      "answer": "Use get, exact int check and inclusive bounds. Accept [3, 0]; reject 3 records. Do not invent values for missing entries.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Report the limitation",
+      "prompt": "Only 2 of 5 supplied durations were accepted. Why should the report include this?",
+      "answer": "The summary excludes three sessions, which may differ from accepted ones. Report the exclusion and reasons rather than implying full coverage.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach Week 14 as a two-session investigation using fictional data. A fictional activity log contains an absent duration, a recorded zero and an out-of-range value. Our schema accepts exact integer minutes from 0 through 60. Keep rejected records visible for review instead of replacing their values with guesses. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+    "materials": [
+      "Python 3 editor with a fresh local practice file",
+      "Paper trace table and the student workbook",
+      "Fictional input records from this lesson; no real student identifiers"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and explain the purpose in the opening section."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the worked example and diagram; ask learners to trace each step aloud."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2, then compare predictions with observed results."
+      ],
+      [
+        "33 to 45 minutes",
+        "Collect the guided prediction before running; discuss a mismatch and its cause."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the main rule without showing the previous answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to diagnose and repair the stated failure; rerun an earlier case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including code or plan, predictions and explanations, before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit; use the fresh retry when support was needed."
+      ]
+    ],
+    "guidedAnswer": "Accepted [0, 12, 60]; 4 rejected. Text \"5\" fails our rule. Exit: The summary excludes three sessions, which may differ from accepted ones. Report the exclusion and reasons rather than implying full coverage.",
+    "misconceptions": [
+      [
+        "A successful run proves the conclusion",
+        "Rejection can change which sessions remain represented. Report 2 accepted of 5 supplied here. A summary of accepted rows does not automatically describe the missing or rejected sessions."
+      ],
+      [
+        "Matching the example is enough",
+        "Require the new W4 case, explicit predictions and an explanation. Fresh retry: integer score 0 through 5 for 5, None, 0, 6 and True. Accept [5, 0]; reject 3. Exact type rejects Boolean True."
+      ],
+      [
+        "A convenient shortcut preserves meaning",
+        "Using if value would discard the legitimate zero and accept some invalid nonempty text. Test the written type and range rules explicitly. Filling an absent duration with 0 falsely claims an observed zero."
+      ]
+    ],
+    "assessment": "Independent W4 evidence: Use get, exact int check and inclusive bounds. Accept [3, 0]; reject 3 records. Do not invent values for missing entries. Record whether the learner needed no help, a hint or explanation. Fresh retry: integer score 0 through 5 for 5, None, 0, 6 and True. Accept [5, 0]; reject 3. Exact type rejects Boolean True.",
+    "support": "Use three piles: accepted zero, accepted other and review. Extension: retain each rejected row with a reason instead of just counting it.",
+    "next": "Next week: Units conversions and data provenance. Reuse this week's explicit contracts and evidence."
+  }
+}

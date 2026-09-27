@@ -1,0 +1,278 @@
+{
+  "level": "ai-2",
+  "week": 5,
+  "title": "Branching and boundary tests",
+  "minutes": 90,
+  "goals": [
+    "Trace the selected branch in an if elif else chain",
+    "Use indentation to identify which statements belong to a branch",
+    "Test values at and around a decision boundary"
+  ],
+  "prerequisite": {
+    "prompt": "Does minutes <= 12 accept exactly 12? How does < differ?",
+    "answer": "<= accepts equality; < excludes it. At 12 the two conditions produce different Boolean values."
+  },
+  "vocabulary": [
+    [
+      "Branch",
+      "A possible path through a program"
+    ],
+    [
+      "Condition",
+      "An expression used to decide which path to take"
+    ],
+    [
+      "Indentation",
+      "Leading spaces that identify a Python code block"
+    ],
+    [
+      "Boundary",
+      "A value where a classification may change"
+    ],
+    [
+      "Regression check",
+      "A previous test rerun after an edit to detect a new failure"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Choose one result for one input",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A fictional activity sorter labels a supplied integer duration. Negative values are Invalid; values from zero through 12 are Short; larger values are Long. The labels describe duration only. Write this requirement before the program so that a test has an expected answer independent of the code."
+        },
+        {
+          "type": "paragraph",
+          "text": "An if statement selects a block when its condition is true. An elif is considered only if earlier conditions in the same chain were false. An else handles the remaining cases. Colons end the condition lines. Use four spaces for the indented statements and keep related branches aligned."
+        }
+      ]
+    },
+    {
+      "title": "Follow the selected path",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "One chain chooses one label",
+          "columns": [
+            "Input",
+            "Checks in order",
+            "Selected label"
+          ],
+          "rows": [
+            [
+              "-1",
+              "Below zero is True",
+              "Invalid"
+            ],
+            [
+              "12",
+              "Below zero False; <= 12 True",
+              "Short"
+            ],
+            [
+              "13",
+              "Both checks False",
+              "Long"
+            ]
+          ],
+          "caption": "Later branches in this chain are skipped after a condition succeeds."
+        },
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "minutes = 12\nif minutes < 0:\n    label = \"Invalid\"\nelif minutes <= 12:\n    label = \"Short\"\nelse:\n    label = \"Long\"\nprint(label)"
+        },
+        {
+          "type": "paragraph",
+          "text": "The output is Short. For 12, the first condition is false and the second is true. The else block is skipped. print(label) is not indented, so it runs after the selected branch. Each path assigns label before this line reads it. Change only minutes and save before each fresh run."
+        }
+      ]
+    },
+    {
+      "title": "Check the boundary deliberately",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Input minutes",
+            "Expected label",
+            "Reason for this test"
+          ],
+          "rows": [
+            [
+              "-1",
+              "Invalid",
+              "Negative input rejection"
+            ],
+            [
+              "0",
+              "Short",
+              "Lowest valid duration"
+            ],
+            [
+              "11",
+              "Short",
+              "Just below the upper boundary"
+            ],
+            [
+              "12",
+              "Short",
+              "Exact upper boundary"
+            ],
+            [
+              "13",
+              "Long",
+              "Just above the boundary"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "These tests exercise every branch and the equality case. A change from <= 12 to < 12 is exposed by 12; testing 11 alone misses it. Branch coverage means every branch was exercised, but it does not prove every condition is correct."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Suppose the program uses < 12 instead of <= 12. What is printed for 12, why does that violate the written rule, and which earlier test should still pass after repair?",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "title": "Separate a chain from two independent checks",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "minutes = -1\nif minutes < 0:\n    label = \"Invalid\"\nif minutes <= 12:\n    label = \"Short\"\nelse:\n    label = \"Long\"\nprint(label)"
+        },
+        {
+          "type": "paragraph",
+          "text": "This faulty version prints Short. The second if starts a separate decision and overwrites Invalid. Its else belongs to that second if. Restoring elif makes the second test depend on the first test failing. Moving print inside one branch can also hide output on other paths; indentation affects behavior, not just appearance."
+        },
+        {
+          "type": "paragraph",
+          "text": "The script rejects negative integers, but it does not validate arbitrary types or check a measured duration. A supplied text value can raise an error during comparison. Keep the stated integer input contract and report the limitation honestly."
+        }
+      ]
+    },
+    {
+      "title": "Keep a trace with the result",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For each run, record input, expected label, conditions actually checked and observed label. Mark skipped conditions as skipped rather than pretending the program evaluated them. After a repair, rerun earlier cases as well as the failing one. Week 6 will repeat a block and track changes across iterations."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A learner tests -1, 2 and 20 and concludes the sorter is completely correct because all three branches ran. Explain what important case is missing and why branch coverage alone is insufficient.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Explain the chain",
+      "prompt": "Describe the purpose of if, elif and else in the worked duration sorter. Explain why print(label) is outside the indented branches.",
+      "answer": "if tests negative first; elif checks <= 12 only after that fails; else handles the rest. Unindented print runs after any selected branch, whose assignment gives label a value.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Trace the tested path",
+      "prompt": "For -1, 12 and 13, record checked conditions, skipped conditions and the final label. Run each as a fresh script after predicting.",
+      "answer": "-1: first True, second skipped, Invalid. 12: first False, second True, Short. 13: both False, else selected, Long. Retain observed results separately.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair the overwritten result",
+      "prompt": "Trace the two-independent-if example for -1. Identify which assignment overwrites the earlier label and make the smallest repair.",
+      "answer": "The first assignment sets Invalid; the second if also succeeds and changes label to Short. Replace the second if with elif. The repaired output is Invalid.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Build a new sorter independently",
+      "prompt": "Use an integer tiles count. Label a negative value Invalid, zero Empty, 1 through 6 Small and values above 6 Large. Write an ordered if elif else script and predict -1, 0, 1, 6 and 7. Include one print after the chain.",
+      "answer": "Use if tiles < 0, elif tiles == 0, elif tiles <= 6, else, assigning the respective labels and printing after the chain. Outputs Invalid, Empty, Small, Small, Large. Zero must be handled before the <= 6 branch.",
+      "lines": 8
+    },
+    {
+      "id": "W5",
+      "title": "Choose revealing regression tests",
+      "prompt": "A repair changes the small-count condition from < 6 to <= 6. Name the case that exposes the original error and two different kinds of earlier cases to rerun.",
+      "answer": "6 exposes the original wrong Large label. Rerun zero for Empty and a negative count for Invalid, or 7 for Large. Passing only 6 does not check earlier branches.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach ordered selection and indentation using a written input contract. A script can cover all branches while missing an equality bug. Reference: https://docs.python.org/3/tutorial/controlflow.html#if-statements. The new task requires one four-way chain; independently correct equivalent conditions are acceptable.",
+    "materials": [
+      "Python 3 editor and branches.py",
+      "The written duration rule and boundary case cards",
+      "Blank trace table with a skipped marker"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve inclusive comparison and collect the prerequisite."
+      ],
+      [
+        "7 to 20 minutes",
+        "Translate the duration rule and complete W1."
+      ],
+      [
+        "20 to 33 minutes",
+        "Trace the diagram and code, marking skipped branches."
+      ],
+      [
+        "33 to 45 minutes",
+        "Complete W2 with predicted and actual outputs."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve why equality needs a separate test."
+      ],
+      [
+        "8 to 20 minutes",
+        "Run the faulty two-if script and complete W3 and the guided question."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect the new sorter in W4 before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit to distinguish coverage from correctness."
+      ]
+    ],
+    "guidedAnswer": "The faulty < 12 version prints Long for 12, contrary to the inclusive Short rule. Repair to <= 12 and rerun 11 or 13 as well as 12. Exit: exact 12 is missing. -1, 2 and 20 can visit all branches even when the equality comparison is wrong.",
+    "misconceptions": [
+      [
+        "Every condition in the chain always runs",
+        "Once one condition succeeds, later alternatives are skipped."
+      ],
+      [
+        "Two if statements behave like if then elif",
+        "Independent if statements can both run and overwrite a result."
+      ],
+      [
+        "Indentation is cosmetic",
+        "Leading spaces define the branch body."
+      ],
+      [
+        "Every branch tested means every input correct",
+        "A missing equality case can hide a wrong comparison."
+      ]
+    ],
+    "assessment": "W4 must assign one correct label on all five cases and explain zero before the small branch. After support, retry a shelf-count sorter with Empty at zero, Few for 1 through 4, Many above 4 and Invalid below zero. Expected outputs at -1, 0, 4, 5 are Invalid, Empty, Few, Many.",
+    "support": "Provide movable branch cards and align the four-space blocks on a ruled page. Permit an oral trace alongside the script and record help. Extension: swap the zero and <= 6 checks and find the smallest nonnegative counterexample.",
+    "next": "Week 6 repeats a block with loops and records each change in state."
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "level": "ai-2",
+  "week": 18,
+  "title": "Graphs and honest scales",
+  "minutes": 90,
+  "goals": [
+    "Choose an appropriate graph",
+    "Use honest labelled scales",
+    "Describe evidence without exaggerating differences"
+  ],
+  "prerequisite": {
+    "prompt": "Counts are 8 and 10. What is their absolute difference?",
+    "answer": "2."
+  },
+  "vocabulary": [
+    [
+      "Axis",
+      "A reference line with a scale on a graph"
+    ],
+    [
+      "Baseline",
+      "The starting reference value on a scale"
+    ],
+    [
+      "Bar chart",
+      "A graph using bar lengths to compare categories"
+    ],
+    [
+      "Scale",
+      "The mapping from values to positions or lengths"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A fictional poll records 8 votes for Drawing and 10 for Building. A bar chart should make lengths proportional to counts, starting at zero. A chart starting at 7 makes the visible bars 1 and 3 units tall and can exaggerate the difference."
+        }
+      ]
+    },
+    {
+      "title": "Work through the example",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "counts = {\"Drawing\": 8, \"Building\": 10}\nfor label in counts:\n    print(label, \"#\" * counts[label], counts[label])"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow the evidence",
+          "columns": [
+            "Step or case",
+            "Evidence",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "Drawing",
+              "########",
+              "8 votes"
+            ],
+            [
+              "Building",
+              "##########",
+              "10 votes"
+            ]
+          ],
+          "caption": "Read each row from left to right and connect the evidence to the stated rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "The text chart uses one # per vote and a zero baseline. The second category has 2 more votes and 1.25 times as many votes, not three times as many. Include the poll question, date or collection occasion and number of responses when presenting a real graph."
+        }
+      ]
+    },
+    {
+      "title": "Predict before running",
+      "blocks": [
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Draw bars for counts 4 and 6 using one square per vote. State the difference and ratio.",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Find and explain the failure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A graph with bars beginning at 7 turns counts 8 and 10 into visible lengths 1 and 3. Redraw from zero and label counts directly. A line chart can use a restricted axis for detail if clearly labelled, but it must not disguise its scale."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Counts alone do not show why students chose an activity or whether nonrespondents would choose differently. Graph choices should match the question: categories suit bars; ordered time observations can suit a line."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Art has the most votes among 18 responses. Does that establish Art is best for learning?",
+          "lines": 6
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Read the scale",
+      "prompt": "A bar is 6 squares long with 2 votes per square. How many votes is that?",
+      "answer": "12 votes.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Compare fairly",
+      "prompt": "Counts are 12 and 15. State the difference and ratio using the true values.",
+      "answer": "Difference 3; ratio 15/12 = 1.25.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair a misleading graph",
+      "prompt": "Bars for 12 and 15 start at 10. Explain the misleading lengths and repair.",
+      "answer": "Visible lengths 2 and 5 suggest a 2.5 ratio. Start at zero, use a common scale and label counts 12 and 15.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Draw independently",
+      "prompt": "Draw a bar chart for Music 6, Art 9, Coding 3. Include title, category labels, vote units, zero baseline and equal scale. State two supported comparisons.",
+      "answer": "Music 6, Art 9, Coding 3 on one scale. Art has 3 more than Music and three times Coding. Accept other correct comparisons.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Limit the claim",
+      "prompt": "Art has the most votes among 18 responses. Does that establish Art is best for learning?",
+      "answer": "No. Preference counts do not measure learning effectiveness or establish a cause.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach Week 18 as a two-session investigation using fictional data. A fictional poll records 8 votes for Drawing and 10 for Building. A bar chart should make lengths proportional to counts, starting at zero. A chart starting at 7 makes the visible bars 1 and 3 units tall and can exaggerate the difference. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+    "materials": [
+      "Python 3 editor with a fresh local practice file",
+      "Paper trace table and the student workbook",
+      "Fictional input records from this lesson; no real student identifiers"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and explain the purpose in the opening section."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the worked example and diagram; ask learners to trace each step aloud."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2, then compare predictions with observed results."
+      ],
+      [
+        "33 to 45 minutes",
+        "Collect the guided prediction before running; discuss a mismatch and its cause."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the main rule without showing the previous answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to diagnose and repair the stated failure; rerun an earlier case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including code or plan, predictions and explanations, before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit; use the fresh retry when support was needed."
+      ]
+    ],
+    "guidedAnswer": "Difference 2 votes; ratio 6/4 = 1.5. Both bars begin at zero. Exit: No. Preference counts do not measure learning effectiveness or establish a cause.",
+    "misconceptions": [
+      [
+        "A successful run proves the conclusion",
+        "Counts alone do not show why students chose an activity or whether nonrespondents would choose differently. Graph choices should match the question: categories suit bars; ordered time observations can suit a line."
+      ],
+      [
+        "Matching the example is enough",
+        "Require the new W4 case, explicit predictions and an explanation. Fresh retry: Reading 4, Building 8 and Drawing 6; draw all bars from zero with one scale. Building has twice Reading, and 2 more than Drawing."
+      ],
+      [
+        "A convenient shortcut preserves meaning",
+        "A graph with bars beginning at 7 turns counts 8 and 10 into visible lengths 1 and 3. Redraw from zero and label counts directly. A line chart can use a restricted axis for detail if clearly labelled, but it must not disguise its scale."
+      ]
+    ],
+    "assessment": "Independent W4 evidence: Music 6, Art 9, Coding 3 on one scale. Art has 3 more than Music and three times Coding. Accept other correct comparisons. Record whether the learner needed no help, a hint or explanation. Fresh retry: Reading 4, Building 8 and Drawing 6; draw all bars from zero with one scale. Building has twice Reading, and 2 more than Drawing.",
+    "support": "Use graph paper with a marked zero. Extension: show the same values on two clearly labelled scales and discuss visual emphasis.",
+    "next": "Next week: Questions populations and samples. Reuse this week's explicit contracts and evidence."
+  }
+}

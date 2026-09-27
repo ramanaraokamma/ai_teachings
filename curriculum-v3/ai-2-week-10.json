@@ -1,0 +1,213 @@
+{
+  "level": "ai-2",
+  "week": 10,
+  "title": "Dictionaries and records",
+  "minutes": 90,
+  "goals": [
+    "Read and update named dictionary fields",
+    "Connect a record to a function call",
+    "Distinguish missing fields from zero values"
+  ],
+  "prerequisite": {
+    "prompt": "What does remaining(8, 3) return when its body returns capacity - used?",
+    "answer": "5; the caller may store or print it."
+  },
+  "vocabulary": [
+    [
+      "Dictionary",
+      "A mapping from unique keys to values"
+    ],
+    [
+      "Key",
+      "A name used to look up a value"
+    ],
+    [
+      "Record",
+      "Related fields describing one item"
+    ],
+    [
+      "KeyError",
+      "The error from looking up an absent dictionary key"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A fictional cupboard record has a name, capacity and used count. A list asks us to remember positions. Named fields make the intended meaning visible. Our schema requires name as text and capacity and used as nonnegative integers, with used no greater than capacity."
+        }
+      ]
+    },
+    {
+      "title": "Work through the example",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "cupboard = {\"name\": \"Blue\", \"capacity\": 12, \"used\": 4}\ndef remaining(capacity, used):\n    return capacity - used\n\nprint(remaining(cupboard[\"capacity\"], cupboard[\"used\"]))\ncupboard[\"used\"] = 6\nprint(remaining(cupboard[\"capacity\"], cupboard[\"used\"]))"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow the evidence",
+          "columns": [
+            "Step or case",
+            "Evidence",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "Read used",
+              "4",
+              "12 - 4 = 8"
+            ],
+            [
+              "Update used",
+              "6",
+              "12 - 6 = 6"
+            ]
+          ],
+          "caption": "Read each row from left to right and connect the evidence to the stated rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "Square brackets look up the value for a key. The quoted key \"used\" is text; its value is an integer. Assigning to an existing key replaces that field. Other fields remain the same. Dictionary syntax does not enforce our schema: the programmer must check it."
+        }
+      ]
+    },
+    {
+      "title": "Predict before running",
+      "blocks": [
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Set used to 12. Predict the returned spaces. Does a used value of 0 mean the field is missing?",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Find and explain the failure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "cupboard[\"Used\"] raises KeyError here because keys are case sensitive. Correct it to \"used\". Adding a new field called \"Used\" would create a second key and leave the original unchanged; it would not repair the intended lookup."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Named fields reduce position mistakes but do not prove that a record is accurate. A capacity of 2 with used of 5 is representable in a dictionary and violates this schema."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A record has capacity 3 and used 4. It gives -1 spaces without an error. Should it be accepted? Explain.",
+          "lines": 6
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Identify fields",
+      "prompt": "For {\"name\": \"Red\", \"capacity\": 9, \"used\": 2}, state the keys, value of used and remaining spaces.",
+      "answer": "Keys name, capacity, used; used is 2; remaining spaces 7.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Trace an update",
+      "prompt": "Change the Red record used to 9. State remaining spaces and whether capacity changes.",
+      "answer": "Spaces 0; capacity remains 9.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair a lookup",
+      "prompt": "The code reads record[\"Used\"] from the Red record. Explain the error and repair it without adding a field.",
+      "answer": "KeyError because Used is absent. Use record[\"used\"].",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Build a record independently",
+      "prompt": "Create a Green record with capacity 15 and used 6. Pass its fields to remaining and store the result. Update used to 10 and repeat. Predict both results.",
+      "answer": "Use a dictionary with name Green, capacity 15, used 6; results are 9 and then 5. The second call must read the updated field.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Check the contract",
+      "prompt": "A record has capacity 3 and used 4. It gives -1 spaces without an error. Should it be accepted? Explain.",
+      "answer": "No. The used count exceeds capacity. Successful arithmetic does not validate the record.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach Week 10 as a two-session investigation using fictional data. A fictional cupboard record has a name, capacity and used count. A list asks us to remember positions. Named fields make the intended meaning visible. Our schema requires name as text and capacity and used as nonnegative integers, with used no greater than capacity. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+    "materials": [
+      "Python 3 editor with a fresh local practice file",
+      "Paper trace table and the student workbook",
+      "Fictional input records from this lesson; no real student identifiers"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and explain the purpose in the opening section."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the worked example and diagram; ask learners to trace each step aloud."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2, then compare predictions with observed results."
+      ],
+      [
+        "33 to 45 minutes",
+        "Collect the guided prediction before running; discuss a mismatch and its cause."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the main rule without showing the previous answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to diagnose and repair the stated failure; rerun an earlier case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including code or plan, predictions and explanations, before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit; use the fresh retry when support was needed."
+      ]
+    ],
+    "guidedAnswer": "Spaces are 0. A present used field with value 0 is different from an absent field. Exit: No. The used count exceeds capacity. Successful arithmetic does not validate the record.",
+    "misconceptions": [
+      [
+        "A successful run proves the conclusion",
+        "Named fields reduce position mistakes but do not prove that a record is accurate. A capacity of 2 with used of 5 is representable in a dictionary and violates this schema."
+      ],
+      [
+        "Matching the example is enough",
+        "Require the new W4 case, explicit predictions and an explanation. Fresh retry: create a Gold record with capacity 11 and used 3; return 8, update used to 11 and return 0. Require field lookups rather than copied literal arguments."
+      ],
+      [
+        "A convenient shortcut preserves meaning",
+        "cupboard[\"Used\"] raises KeyError here because keys are case sensitive. Correct it to \"used\". Adding a new field called \"Used\" would create a second key and leave the original unchanged; it would not repair the intended lookup."
+      ]
+    ],
+    "assessment": "Independent W4 evidence: Use a dictionary with name Green, capacity 15, used 6; results are 9 and then 5. The second call must read the updated field. Record whether the learner needed no help, a hint or explanation. Fresh retry: create a Gold record with capacity 11 and used 3; return 8, update used to 11 and return 0. Require field lookups rather than copied literal arguments.",
+    "support": "Use key cards and value cards. Extension: add a location text field and show why it does not change the remaining calculation.",
+    "next": "Next week: Reading structured data. Reuse this week's explicit contracts and evidence."
+  }
+}

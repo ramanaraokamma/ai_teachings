@@ -1,0 +1,213 @@
+{
+  "level": "ai-2",
+  "week": 28,
+  "title": "Versioned experiments",
+  "minutes": 90,
+  "goals": [
+    "Record a reproducible experiment version",
+    "Change one factor deliberately",
+    "Keep development checks separate from final evaluation"
+  ],
+  "prerequisite": {
+    "prompt": "Why should expected test results be written before running the function?",
+    "answer": "To avoid changing expectations simply to match a bug."
+  },
+  "vocabulary": [
+    [
+      "Version",
+      "An identified state of code or rules"
+    ],
+    [
+      "Configuration",
+      "Settings used for a run"
+    ],
+    [
+      "Development set",
+      "Cases used while choosing or improving a method"
+    ],
+    [
+      "Holdout",
+      "Cases reserved for an evaluation after choices are fixed"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A fictional activity scoring experiment compares two weight settings on the same development records. Save code version, input version, weights, tie rule and outputs. A label such as v2 is useful only when it refers to an identifiable saved state."
+        }
+      ]
+    },
+    {
+      "title": "Work through the example",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "items = [{\"name\": \"A\", \"fun\": 4, \"learning\": 1},\n         {\"name\": \"B\", \"fun\": 2, \"learning\": 4}]\nfor version, fun_weight, learning_weight in [(\"v1\", 2, 1), (\"v2\", 1, 2)]:\n    scores = []\n    for item in items:\n        scores.append(fun_weight * item[\"fun\"]\n                      + learning_weight * item[\"learning\"])\n    print(version, scores)"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow the evidence",
+          "columns": [
+            "Step or case",
+            "Evidence",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "v1 weights 2 and 1",
+              "A 9; B 8",
+              "A ranks first"
+            ],
+            [
+              "v2 weights 1 and 2",
+              "A 6; B 10",
+              "B ranks first"
+            ]
+          ],
+          "caption": "Read each row from left to right and connect the evidence to the stated rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "The ranking changes because the preference weights changed. That is a policy comparison, not proof that v2 is more accurate. Keep the same data and constraints when comparing weights, and record why a policy better fits the stated goal."
+        }
+      ]
+    },
+    {
+      "title": "Predict before running",
+      "blocks": [
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "If the data also changes between v1 and v2, can the ranking change be attributed only to weights?",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Find and explain the failure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Overwriting a file called latest removes the ability to reproduce earlier results unless versions are retained elsewhere. Save identifiable versions and a run log. Avoid editing a reserved final test after seeing its output to make the chosen version look better."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Once holdout results guide another change, those cases have become development evidence. A later independent evaluation needs new reserved cases. Small holdouts still provide limited evidence."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "You revise the policy after reading final-case failures. Are those cases still untouched holdout evidence?",
+          "lines": 6
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Record a run",
+      "prompt": "List five items needed to reproduce a scoring run.",
+      "answer": "Code version, input version, configuration weights, tie/eligibility rules and outputs; also record date and method as useful context.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Compute a comparison",
+      "prompt": "A has fun 3 and learning 2. Score it under weights (2,1) and (1,2).",
+      "answer": "Scores 8 and 7.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair an experiment",
+      "prompt": "A learner changes weights, input ratings and the time limit together. Why is attribution difficult?",
+      "answer": "Multiple factors changed. Compare one deliberate change while holding the others fixed, or explicitly describe a multi-change experiment without attributing it to one cause.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Design independently",
+      "prompt": "Plan two versions for C (fun 5, learning 1) and D (fun 2, learning 5), using weights (2,1) and (1,2). Record expected scores, ranks, fixed data and a separate final-case plan.",
+      "answer": "v1 C 11, D 9 selects C; v2 C 7, D 12 selects D. Preserve the same records and other rules; reserve unseen cases until the policy is fixed.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Protect evaluation",
+      "prompt": "You revise the policy after reading final-case failures. Are those cases still untouched holdout evidence?",
+      "answer": "No. They now informed development. Report that use and seek fresh cases for a new independent check.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach Week 28 as a two-session investigation using fictional data. A fictional activity scoring experiment compares two weight settings on the same development records. Save code version, input version, weights, tie rule and outputs. A label such as v2 is useful only when it refers to an identifiable saved state. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+    "materials": [
+      "Python 3 editor with a fresh local practice file",
+      "Paper trace table and the student workbook",
+      "Fictional input records from this lesson; no real student identifiers"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and explain the purpose in the opening section."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the worked example and diagram; ask learners to trace each step aloud."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2, then compare predictions with observed results."
+      ],
+      [
+        "33 to 45 minutes",
+        "Collect the guided prediction before running; discuss a mismatch and its cause."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the main rule without showing the previous answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to diagnose and repair the stated failure; rerun an earlier case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including code or plan, predictions and explanations, before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit; use the fresh retry when support was needed."
+      ]
+    ],
+    "guidedAnswer": "No. The data change is another possible explanation. Exit: No. They now informed development. Report that use and seek fresh cases for a new independent check.",
+    "misconceptions": [
+      [
+        "A successful run proves the conclusion",
+        "Once holdout results guide another change, those cases have become development evidence. A later independent evaluation needs new reserved cases. Small holdouts still provide limited evidence."
+      ],
+      [
+        "Matching the example is enough",
+        "Require the new W4 case, explicit predictions and an explanation. Fresh retry: E (4,2), F (1,5) gives v1 10 versus 7 and v2 8 versus 11. Require a complete run log and a statement of what is held fixed."
+      ],
+      [
+        "A convenient shortcut preserves meaning",
+        "Overwriting a file called latest removes the ability to reproduce earlier results unless versions are retained elsewhere. Save identifiable versions and a run log. Avoid editing a reserved final test after seeing its output to make the chosen version look better."
+      ]
+    ],
+    "assessment": "Independent W4 evidence: v1 C 11, D 9 selects C; v2 C 7, D 12 selects D. Preserve the same records and other rules; reserve unseen cases until the policy is fixed. Record whether the learner needed no help, a hint or explanation. Fresh retry: E (4,2), F (1,5) gives v1 10 versus 7 and v2 8 versus 11. Require a complete run log and a statement of what is held fixed.",
+    "support": "Provide a run-log table. Extension: rerun a saved version in a fresh folder and compare exact output values.",
+    "next": "Next week: Privacy and least privilege. Reuse this week's explicit contracts and evidence."
+  }
+}

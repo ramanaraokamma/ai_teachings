@@ -1,0 +1,273 @@
+{
+  "level": "ai-2",
+  "week": 6,
+  "title": "Loops and trace tables",
+  "minutes": 90,
+  "goals": [
+    "Trace variable values before and after each loop iteration",
+    "Use the excluded stop value in range correctly",
+    "Explain initialization and test zero one and several iterations"
+  ],
+  "prerequisite": {
+    "prompt": "Starting with total = 2, what does total = total + 3 store?",
+    "answer": "It reads the old 2, adds 3 and stores 5. Assignment updates a value; it is not an algebraic equality."
+  },
+  "vocabulary": [
+    [
+      "Loop",
+      "A block of instructions that can run repeatedly"
+    ],
+    [
+      "Iteration",
+      "One execution of a loop body"
+    ],
+    [
+      "Accumulator",
+      "A variable that keeps a running result"
+    ],
+    [
+      "Initialization",
+      "Giving a variable its starting value"
+    ],
+    [
+      "Trace table",
+      "A record of variable values as instructions execute"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Repeat a block with a clear stopping point",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Imagine adding numbered counters: first 1, then 2, then 3. A loop can repeat the same addition with a different number each time. This week you will predict each change before running a short Python script. Tracing repeated calculations prepares you to inspect the data processing used in larger AI applications."
+        },
+        {
+          "type": "paragraph",
+          "text": "In for turn in range(1, 4), Python supplies 1, 2 and 3 in order. The start is included and the stop is excluded. The indented body runs once for each supplied value. The colon and four-space indentation mark that body. This lesson uses integer range values with the default positive step of 1."
+        }
+      ]
+    },
+    {
+      "title": "Watch the running total grow",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "total = 0\nfor turn in range(1, 4):\n    total = total + turn\nprint(total)"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "State after each addition",
+          "columns": [
+            "turn",
+            "total before",
+            "total after"
+          ],
+          "rows": [
+            [
+              "1",
+              "0",
+              "1"
+            ],
+            [
+              "2",
+              "1",
+              "3"
+            ],
+            [
+              "3",
+              "3",
+              "6"
+            ]
+          ],
+          "caption": "Initialize total to 0 before the loop. The unindented print runs once afterward."
+        },
+        {
+          "type": "paragraph",
+          "text": "The output is 6. Before the first iteration, total is 0. Each assignment reads the previous total and adds the current turn. After turn 3, the range is exhausted, so execution continues after the loop. The table records state; it does not create extra instructions."
+        }
+      ]
+    },
+    {
+      "title": "Test how many times the body runs",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Range expression",
+            "Values supplied",
+            "Number of iterations"
+          ],
+          "rows": [
+            [
+              "range(1, 4)",
+              "1, 2, 3",
+              "3"
+            ],
+            [
+              "range(1, 2)",
+              "1",
+              "1"
+            ],
+            [
+              "range(1, 1)",
+              "No values",
+              "0"
+            ],
+            [
+              "range(4)",
+              "0, 1, 2, 3",
+              "4"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "With one argument, range starts at zero. range(4) supplies four values but none is 4. If the worked script uses range(1, 1), the body never runs and the initialized total remains 0. Do not rely on a variable first assigned inside a loop: a zero-iteration run might never assign it."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Replace range(1, 4) with range(1, 3) in the worked script. Predict the supplied values and final total. What stop value is needed to include 3?",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "title": "Find a reset hidden inside the loop",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "total = 0\nfor turn in range(1, 4):\n    total = 0\n    total = total + turn\nprint(total)"
+        },
+        {
+          "type": "paragraph",
+          "text": "This faulty version prints 3. The extra reset discards earlier additions on every iteration. Remove the indented reset while keeping initialization before the loop. Then test zero, one and several iterations: the one-iteration case alone cannot reveal this reset bug."
+        },
+        {
+          "type": "paragraph",
+          "text": "Moving print(total) into the correct loop produces three lines, 1 then 3 then 6. Moving it out produces only the final 6. Trace both values and output events. A loop follows written instructions; repeating them does not make the program learn."
+        }
+      ]
+    },
+    {
+      "title": "Use evidence to explain a repair",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Write the expected range values and trace table before running. Keep predicted and observed output separate, then explain the first row where they differ. For a loop that should add a fixed amount repeatedly, zero iterations should preserve the initial amount. One iteration checks one update; several check accumulation."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A learner checks the reset bug using only range(1, 2) and sees the expected answer 1. Explain why this does not establish correctness, and give a revealing test with its expected correct output.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Explain the range",
+      "prompt": "List the values supplied by range(2, 5) and explain why 5 is absent. How many times does its body run?",
+      "answer": "2, 3 and 4; the stop value is excluded. The body runs three times.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Trace before running",
+      "prompt": "Copy the worked script. Change the range to range(2, 5). Record turn, total before and total after each iteration. Predict the single output, then run and compare.",
+      "answer": "Rows are 2 / 0 / 2, 3 / 2 / 5, 4 / 5 / 9. Final output 9. Keep the observed result distinct from the prediction.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair the reset",
+      "prompt": "For the faulty script with range(1, 4), record total after each addition. Explain the wrong final output and remove only the faulty reset.",
+      "answer": "Faulty after-addition values are 1, 2, 3 because each starts from zero. Remove the indented total = 0. Correct after-addition values are 1, 3, 6; final output 6.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Build a repeated addition independently",
+      "prompt": "A box starts with 5 counters. Each round adds 2 counters. Use rounds = 3, an initialized total and for turn in range(rounds). Print the final total once after the loop. Trace the totals and predict fresh runs with rounds 0, 1 and 3. Assume rounds is a nonnegative integer.",
+      "answer": "Initialize total = 5 before the loop; add 2 inside it. For three rounds, turn values 0, 1, 2 give totals 7, 9, 11. Final outputs for 0, 1, 3 rounds are 5, 7, 11. Print is unindented.",
+      "lines": 8
+    },
+    {
+      "id": "W5",
+      "title": "Check a contract limitation",
+      "prompt": "In your counter script, range(-2) performs no iterations. Does returning the initial 5 make negative rounds valid? Explain what the script checks and what it assumes.",
+      "answer": "No. The written contract requires a nonnegative integer. The script assumes this and does not reject negative values. Empty range behavior does not validate the input; report the limitation or add an explicit check.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach for loops with finite integer ranges before adding more loop forms. Keep range values, body executions and output events separate. Reference: https://docs.python.org/3/tutorial/controlflow.html#the-range-function. The examples use a positive default step and do not require lists or while loops.",
+    "materials": [
+      "Python 3 editor and loops.py",
+      "Counters or numbered paper cards",
+      "Blank trace table with turn total before and total after columns"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve assignment using the prerequisite."
+      ],
+      [
+        "7 to 20 minutes",
+        "Model range with numbered cards and complete W1."
+      ],
+      [
+        "20 to 33 minutes",
+        "Trace each row of the worked addition and predict output."
+      ],
+      [
+        "33 to 45 minutes",
+        "Complete W2 and compare predicted and observed values."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve included start and excluded stop."
+      ],
+      [
+        "8 to 20 minutes",
+        "Trace the reset bug, complete W3 and discuss the guided response."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect independent W4 code and zero one and several iteration traces."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit to examine assumptions and revealing tests."
+      ]
+    ],
+    "guidedAnswer": "range(1, 3) supplies 1 and 2, giving total 3. Stop 4 includes 3. Exit: the reset bug agrees for one iteration because there are no earlier additions to lose. range(1, 4) should give 6; the faulty version gives 3.",
+    "misconceptions": [
+      [
+        "The stop value is included",
+        "List the supplied values before tracing; range(1, 4) excludes 4."
+      ],
+      [
+        "Initialization belongs inside every iteration",
+        "Resetting the accumulator loses earlier work."
+      ],
+      [
+        "An unindented print repeats with the body",
+        "Indentation determines which statements repeat."
+      ],
+      [
+        "Zero iterations mean the entire program does nothing",
+        "Initialization and statements after the loop still execute."
+      ]
+    ],
+    "assessment": "W4 must preserve the initial 5, update by 2, trace three iterations and print once. Require outputs 5, 7, 11 for zero one and three rounds. After support, retry with an initial 4 and additions of 3 for zero one and two rounds: outputs 4, 7, 10. Record assistance before judging independence.",
+    "support": "Use counters and let the learner move a pointer through one instruction at a time. Offer a blank trace grid and permit oral explanation. Extension: put print inside the correct loop and explain why zero rounds produces no output while an outside print still does.",
+    "next": "Week 7 stores several values in a list and distinguishes an index from the value at that position."
+  }
+}

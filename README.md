@@ -1,4 +1,4 @@
-> **Curriculum 3 update:** The rebuilt Grade 6 sequence (Weeks 1–36) now has matching web, Word and PDF resources. The seven-level map marks the remaining 216 weeks as planned. See [CURRICULUM3.md](CURRICULUM3.md) for scope, access and validation.
+> **Curriculum 3 update:** The rebuilt Grade 6 sequence (Weeks 1–36) and Grade 7 AI 2 Weeks 1–36, plus Grade 8 AI 3 Week 1, now have matching web, Word and PDF resources. The seven-level map marks the remaining 179 weeks as planned. See [CURRICULUM3.md](CURRICULUM3.md) for scope, access and validation.
 
 # AI Academy — Grade 6 Entry Edition
 

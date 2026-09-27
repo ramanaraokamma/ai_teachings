@@ -1,0 +1,278 @@
+{
+  "level": "ai-2",
+  "week": 4,
+  "title": "Boolean conditions",
+  "minutes": 90,
+  "goals": [
+    "Translate stated requirements into comparisons",
+    "Combine Boolean values with and or and not",
+    "Choose a case that distinguishes two conditions"
+  ],
+  "prerequisite": {
+    "prompt": "What type is False and how does it differ from \"False\"?",
+    "answer": "False is a Boolean value; \"False\" is text. This week uses actual Boolean values for yes-or-no flags."
+  },
+  "vocabulary": [
+    [
+      "Comparison",
+      "An expression that checks a relation between values"
+    ],
+    [
+      "Boolean",
+      "A type with the values True and False"
+    ],
+    [
+      "Conjunction",
+      "A requirement that both conditions hold"
+    ],
+    [
+      "Inclusive or",
+      "A condition satisfied when either or both parts hold"
+    ],
+    [
+      "Counterexample",
+      "A case that shows a claim or rule is wrong"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Turn a written requirement into a condition",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A fictional activity must take at most 12 minutes and be quiet. An activity taking exactly 12 minutes meets the time requirement. A quiet 15-minute activity does not. Before writing code, underline each requirement and decide whether all requirements must hold or whether alternatives are allowed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use a fresh conditions.py file with nonnegative integer minutes and an actual Boolean quiet flag. A comparison produces True or False for these values. The expression minutes <= 12 includes 12; minutes < 12 excludes it. Use == for equality and != for inequality. A single = assigns a value to a name; it does not ask whether two values are equal."
+        }
+      ]
+    },
+    {
+      "title": "Trace each condition before combining it",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Two requirements must both hold",
+          "columns": [
+            "Input case",
+            "Time check",
+            "Combined result"
+          ],
+          "rows": [
+            [
+              "12 min, quiet False",
+              "12 <= 12 is True",
+              "True and False is False"
+            ],
+            [
+              "12 min, quiet True",
+              "12 <= 12 is True",
+              "True and True is True"
+            ],
+            [
+              "15 min, quiet True",
+              "15 <= 12 is False",
+              "False and True is False"
+            ]
+          ],
+          "caption": "Passing only one requirement does not make the activity suitable."
+        },
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "minutes = 12\nquiet = False\ntime_ok = minutes <= 12\nsuitable = time_ok and quiet\nprint(time_ok)\nprint(suitable)"
+        },
+        {
+          "type": "paragraph",
+          "text": "The script prints True then False. The first result concerns time only. The second requires time_ok and quiet. These are separate claims. Trace each input before explaining the combined result; a result without its conditions can be misleading."
+        }
+      ]
+    },
+    {
+      "title": "Compare all Boolean combinations",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "A",
+            "B",
+            "A and B",
+            "A or B"
+          ],
+          "rows": [
+            [
+              "False",
+              "False",
+              "False",
+              "False"
+            ],
+            [
+              "False",
+              "True",
+              "False",
+              "True"
+            ],
+            [
+              "True",
+              "False",
+              "False",
+              "True"
+            ],
+            [
+              "True",
+              "True",
+              "True",
+              "True"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "With Boolean operands, and needs both parts True. Inclusive or needs at least one True, so both True is allowed. not reverses a Boolean: not True is False and not False is True. Python can also apply and and or to other types; keep operands Boolean here so this table directly describes the result."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "A game requires a pencil or a crayon. If both are available, does inclusive or accept the case? Explain how this differs from requiring exactly one.",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "title": "Make grouping and boundaries visible",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "minutes = 12\nquiet = True\nprint((minutes >= 0) and (minutes <= 12))\nprint(not quiet)\nprint(minutes == 12)"
+        },
+        {
+          "type": "paragraph",
+          "text": "This prints True, False and True. Parentheses make the two range checks clear. To express minutes equal to 8 or 12, write (minutes == 8) or (minutes == 12). Do not write minutes == 8 or 12: the number 12 is not a second equality comparison. Later lessons examine truth testing of other types."
+        },
+        {
+          "type": "paragraph",
+          "text": "The rule uses values supplied by a person. It does not verify that the activity is really quiet, and a True result grants no permission to act. Our input contract already assumes a valid integer and Boolean; handling wrong types is a separate task."
+        }
+      ]
+    },
+    {
+      "title": "Find evidence that can reveal a mistake",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Testing only a quiet 8-minute activity cannot distinguish and from or because both pass. Use a case where exactly one requirement holds. Keep expected results beside observed results and explain which requirement caused failure. Next week a program will choose an action using a condition."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "For the original at-most-12-minutes and quiet rule, choose one input that reveals changing <= to < and a different input that reveals changing and to or. State the expected correct result for each.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Translate the requirement",
+      "prompt": "Write a condition for an activity taking at most 12 minutes and being quiet. Explain why exactly 12 minutes is included.",
+      "answer": "(minutes <= 12) and quiet. At most includes equality, so <= is required; the nonnegative integer and Boolean input contract still applies.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Trace separate checks",
+      "prompt": "For (minutes, quiet) cases (11, True), (12, False), and (13, True), write the time comparison and final suitability values before running the program.",
+      "answer": "Time results are True, True, False. Combined results are True, False, False; the second case fails quiet and the third fails time.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Distinguish alternatives",
+      "prompt": "Complete all four Boolean combinations for pencil or crayon. Explain the both-available case and the effect of not pencil.",
+      "answer": "or gives False, True, True, True for FF, FT, TF, TT. Both available is accepted. not pencil is True when pencil is False and False when pencil is True.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Write a new rule independently",
+      "prompt": "A fictional puzzle qualifies when its duration is at least 5 and at most 9 minutes and its available flag is True. Write the condition. Predict results for (5, True), (9, True), (10, True), and (7, False). Choose a case that detects replacing and with or between the range check and available.",
+      "answer": "(minutes >= 5) and (minutes <= 9) and available. Results True, True, False, False. (7, False) distinguishes (range_check and available) from (range_check or available): correct False versus faulty True.",
+      "lines": 7
+    },
+    {
+      "id": "W5",
+      "title": "Separate a check from a guarantee",
+      "prompt": "Explain why a True suitability result does not prove that the supplied duration is accurate or that a child has permission to start the activity.",
+      "answer": "The expression checks supplied values against stated conditions. Inaccurate input can still pass. Permission is a separate human decision and must not be inferred from suitability.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use fictional activities and Boolean operands throughout. Do not equate suitability with permission or claim that a programmed condition learns from data. Reference for teacher precision: https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not. Python and/or may return operands of other types; this lesson deliberately confines them to Booleans.",
+    "materials": [
+      "Python 3 editor and conditions.py",
+      "True and False cards and written activity requirements",
+      "Blank input, separate checks, expected and observed columns"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Check Boolean versus text with the prerequisite."
+      ],
+      [
+        "7 to 20 minutes",
+        "Underline the two requirements and complete W1."
+      ],
+      [
+        "20 to 33 minutes",
+        "Model the diagram and trace the two printed values."
+      ],
+      [
+        "33 to 45 minutes",
+        "Complete W2 with predictions before running."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve an inclusive boundary and a one-condition failure."
+      ],
+      [
+        "8 to 20 minutes",
+        "Build the four-row truth table and complete W3 and the guided question."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including a counterexample."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and use the exit to diagnose boundary and logic errors."
+      ]
+    ],
+    "guidedAnswer": "Inclusive or accepts both available; exactly one would reject both. Exit: (12, True) should pass and reveals <= changed to <. (8, False) should fail and reveals and changed to or. Other inputs are acceptable if they distinguish the versions.",
+    "misconceptions": [
+      [
+        "At most excludes the boundary",
+        "At most 12 includes 12; compare < and <= at exactly 12."
+      ],
+      [
+        "or means exactly one",
+        "Inclusive or also accepts two True values."
+      ],
+      [
+        "A single equals sign tests equality",
+        "= assigns; == compares."
+      ],
+      [
+        "A True result proves a fact about the world",
+        "It establishes only that the supplied values satisfy this expression."
+      ]
+    ],
+    "assessment": "W4 requires both inclusive bounds, the available flag, all four outcomes and a distinguishing case with reasoning. After support, retry a 2-to-4-minute inclusive rule with an open flag: (2, True) passes, (4, False) fails and (5, True) fails. Record initial independent work before the retry.",
+    "support": "Use separate cards for each comparison, then combine them. Read at most and at least aloud with number lines. Extension: explain why not ((minutes >= 5) and (minutes <= 9)) identifies out-of-range numeric values under the stated input contract.",
+    "next": "Week 5 uses conditions in if elif and else branches, then tests exact boundaries."
+  }
+}

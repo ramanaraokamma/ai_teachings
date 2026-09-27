@@ -1,0 +1,278 @@
+{
+  "level": "ai-2",
+  "week": 2,
+  "title": "Values variables and types",
+  "minutes": 90,
+  "goals": [
+    "Distinguish integer, floating-point, text and Boolean values",
+    "Trace reassignment without treating a name as a live formula",
+    "Choose a suitable representation for a count and an identifier"
+  ],
+  "prerequisite": {
+    "prompt": "What does print(total) do after total = 24?",
+    "answer": "It displays the current value 24. Assignment and display are separate operations."
+  },
+  "vocabulary": [
+    [
+      "Value",
+      "A piece of data such as 8 or a text label"
+    ],
+    [
+      "Variable",
+      "A name bound to a value during execution"
+    ],
+    [
+      "Type",
+      "A category of value that determines available operations"
+    ],
+    [
+      "String",
+      "A sequence of text characters"
+    ],
+    [
+      "Reassignment",
+      "Binding an existing name to a new value"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Choose data that matches its meaning",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A count and a shelf label can look similar while needing different operations. The integer 8 is a number; \"08\" is text that preserves a leading zero. You can count eight objects, but adding two shelf labels is usually meaningless. This week you will examine values, trace changes to names and explain which representation a task needs."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use the saved Python 3 script workflow from Week 1. Make a new file values.py, predict before running and keep actual output separately. Use fictional labels only. Four useful types are int for whole numbers, float for floating-point numbers, str for text, and bool for True or False. A type describes a value, not whether its meaning is sensible for the task."
+        }
+      ]
+    },
+    {
+      "title": "Look at values and types together",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Literal in code",
+            "Type",
+            "Possible meaning"
+          ],
+          "rows": [
+            [
+              "8",
+              "int",
+              "Number of counters"
+            ],
+            [
+              "2.5",
+              "float",
+              "Length in metres"
+            ],
+            [
+              "\"08\"",
+              "str",
+              "Shelf identifier"
+            ],
+            [
+              "True",
+              "bool",
+              "A yes-or-no condition"
+            ]
+          ]
+        },
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "count = 8\nshelf = \"08\"\nprint(type(count))\nprint(type(shelf))"
+        },
+        {
+          "type": "paragraph",
+          "text": "type(count) produces the type of the value bound to count. These print lines display <class 'int'> and <class 'str'>. The quotes in \"08\" mark text; they are not displayed by print(shelf). True and False have capital initials and no quotes. \"False\" is text, not a Boolean."
+        }
+      ]
+    },
+    {
+      "title": "Follow reassignment in order",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "A saved value is not a live link",
+          "columns": [
+            "Instruction",
+            "count now",
+            "saved now"
+          ],
+          "rows": [
+            [
+              "count = 8",
+              "8",
+              "Not assigned"
+            ],
+            [
+              "saved = count",
+              "8",
+              "8"
+            ],
+            [
+              "count = count + 2",
+              "10",
+              "8"
+            ]
+          ],
+          "caption": "Evaluate the right side using the current value, then bind the left-hand name. The saved integer does not update when count is reassigned."
+        },
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "count = 8\nsaved = count\ncount = count + 2\nprint(count)\nprint(saved)"
+        },
+        {
+          "type": "paragraph",
+          "text": "The outputs are 10 and 8 on separate lines. saved = count uses the value available at that moment. It does not store a formula that keeps following count. count = count + 2 is valid assignment: read the old 8, calculate 10, then rebind count. It is not a claim that 8 equals 10."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "After count becomes 10, add saved = count and print(saved). Predict the new output and explain why this is different from expecting saved to change automatically.",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "title": "Use an operation appropriate to the type",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "print(8 + 2)\nprint(\"8\" + \"2\")\nprint(\"8\" * 2)"
+        },
+        {
+          "type": "paragraph",
+          "text": "These lines display 10, 82 and 88. Number addition calculates a sum. String addition joins text; string multiplication by a whole number repeats it. Python does not infer from the digits that you wanted a number. Trying \"8\" + 2 instead raises TypeError because this addition mixes text and an integer."
+        },
+        {
+          "type": "paragraph",
+          "text": "For a supplied count, use a numeric literal such as 8. For a shelf ID, preserve text such as \"08\". Later weeks will parse and validate data read from files; changing a type alone will not prove that a value is valid. Use descriptive names with underscores, such as shelf_id. Names are case-sensitive: count and Count are different names."
+        }
+      ]
+    },
+    {
+      "title": "Explain the representation choice",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A negative int is still an integer, but it may be invalid as a count of objects. A correctly typed label can still name the wrong shelf. Keep the task\u2019s meaning separate from the value\u2019s Python type. Week 3 uses arithmetic expressions and grouping to calculate with known numeric values."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A shelf identifier \"08\" is changed to the number 8 so that it can be added to another identifier. Explain what information is lost and why numeric addition does not solve an identifier task. Give one example of a value with the right type but the wrong meaning.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Identify the value and its type",
+      "prompt": "Classify 12, 1.5, \"12\", False and \"False\". Explain why the last two are different.",
+      "answer": "12 is int; 1.5 is float; \"12\" is str; False is bool; \"False\" is str. Quotes mark text even when the characters spell a Boolean name.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Trace a saved value",
+      "prompt": "Trace the five-line count and saved program. Record both printed outputs, then predict the result of assigning saved = count after the change. Check with a run or label a paper trace.",
+      "answer": "Original outputs 10 then 8. After the new assignment, saved becomes 10. Keep actual observations separate. Reading an integer value earlier does not create a live link to another name.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Diagnose the operation",
+      "prompt": "Predict 6 + 3, \"6\" + \"3\" and \"6\" * 3. Explain what happens for \"6\" + 3. Which expression counts six groups of three?",
+      "answer": "9, text 63, text 666, and TypeError respectively. Six groups of three needs numeric multiplication 6 * 3, giving 18; none of the listed successful expressions calculates that total.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Trace a new pair of names independently",
+      "prompt": "A fresh script runs seats = 12; booked = seats; seats = seats - 5; print(seats); print(booked), with each statement on a separate line. Predict both outputs. Then add booked = seats + 1 and print(booked). Explain the evaluation order and choose a type for a seat label \"07\".",
+      "answer": "The outputs are 7 and 12, then 8 after the added assignment. The right side reads the current seats value 7 before binding booked to 8. The seat label remains str to preserve its leading zero.",
+      "lines": 7
+    },
+    {
+      "id": "W5",
+      "title": "Separate type from validity",
+      "prompt": "Give a suitable type for a counter count, a length of 2.5 metres, a shelf ID with a leading zero, and a yes-or-no availability flag. Give a count value with the right type that should still be rejected.",
+      "answer": "Use int, float, str and bool respectively. A negative integer such as -3 has type int but is invalid for a nonnegative physical count. Type checking and checking the task\u2019s permitted values are different.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Focus on scalar values and rebinding; lists and mutation come later. Avoid saying every assignment makes a deep copy. For the integers used here, rebinding one name leaves the other bound to its prior value. Reference: Python tutorial introduction, https://docs.python.org/3/tutorial/introduction.html, and built-in types, https://docs.python.org/3/library/stdtypes.html.",
+    "materials": [
+      "Python 3 editor prepared in Week 1 and fresh values.py script",
+      "Name cards and value cards marked with int, float, str or bool",
+      "Fictional shelf labels and a blank trace table"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve assignment versus print and collect the prerequisite."
+      ],
+      [
+        "7 to 20 minutes",
+        "Compare count and shelf label; model type output and complete W1."
+      ],
+      [
+        "20 to 33 minutes",
+        "Use the diagram and move name cards while tracing the count program."
+      ],
+      [
+        "33 to 45 minutes",
+        "Complete W2 with predicted and actual outputs in separate columns."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the two saved values and explain the extra assignment in the guided task."
+      ],
+      [
+        "8 to 20 minutes",
+        "Run the numeric and text operations; use W3 to diagnose a TypeError."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before support, including the seat-label choice."
+      ],
+      [
+        "35 to 45 minutes",
+        "Complete W5 and the exit; separate type from permitted value."
+      ]
+    ],
+    "guidedAnswer": "The new saved = count binds saved to the current 10, so print(saved) displays 10. Without that assignment it stays 8. Exit: turning \"08\" into 8 loses the leading zero; identifier addition has no defined meaning in the stated task. -3 is an integer but cannot be a nonnegative count.",
+    "misconceptions": [
+      [
+        "Digits always mean a number",
+        "Quotes make a string, even when every character is a digit."
+      ],
+      [
+        "Changing one scalar name updates every earlier assignment",
+        "Trace the value bound at each assignment; no formula link is stored."
+      ],
+      [
+        "The right type guarantees valid data",
+        "A negative integer can be an invalid object count."
+      ],
+      [
+        "Lowercase false is Python\u2019s Boolean false value",
+        "The literal is False; lowercase false is a name and is undefined in a fresh script."
+      ]
+    ],
+    "assessment": "W4 needs outputs 7, 12 and 8 with a right-side-first explanation and str for \"07\". After support, retry with stock = 9, spare = stock, stock = stock - 4: printing stock and spare gives 5 and 9; spare = stock + 2 then gives 7. Record independent reasoning before giving the retry.",
+    "support": "Use movable name cards and immutable number cards. Keep quotations visible on text cards and show source beside output. Offer an oral trace but record assistance. Extension: explain why a type-correct number such as -3 is not acceptable as the number of seats.",
+    "next": "Week 3 combines numeric values in expressions and uses parentheses to make grouping explicit."
+  }
+}

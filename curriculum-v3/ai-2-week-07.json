@@ -1,0 +1,273 @@
+{
+  "level": "ai-2",
+  "week": 7,
+  "title": "Lists and indexing",
+  "minutes": 90,
+  "goals": [
+    "Distinguish a list index from the value stored at that position",
+    "Read and update an item using a valid index",
+    "Trace a loop through list values and test an empty list"
+  ],
+  "prerequisite": {
+    "prompt": "What values does range(3) supply? How many iterations occur?",
+    "answer": "0, 1 and 2; three iterations. The stop value 3 is excluded."
+  },
+  "vocabulary": [
+    [
+      "List",
+      "An ordered collection of items"
+    ],
+    [
+      "Index",
+      "An integer position used to access an item"
+    ],
+    [
+      "Length",
+      "The number of items in a collection"
+    ],
+    [
+      "Item",
+      "One value stored in a collection"
+    ],
+    [
+      "IndexError",
+      "An error raised when an index is outside a sequence"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Give each position an address",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A fictional supply shelf has three trays with counts 4, 7 and 4 in that order. Store them as counts = [4, 7, 4]. Square brackets enclose the list and commas separate its items. The order matters: the first and third trays contain equal values but occupy different positions."
+        },
+        {
+          "type": "paragraph",
+          "text": "Python counts positions from zero. counts[0] reads the first item, counts[1] the second and counts[2] the third. len(counts) is 3 because there are three items. It is a count, not the last nonnegative index. This lesson uses integer counts and nonnegative indices; Python also supports negative indices, which are outside our current indexing convention."
+        }
+      ]
+    },
+    {
+      "title": "Read a value and change one position",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Positions and stored counts",
+          "columns": [
+            "Tray position",
+            "Index",
+            "Value"
+          ],
+          "rows": [
+            [
+              "First",
+              "0",
+              "4"
+            ],
+            [
+              "Second",
+              "1",
+              "7"
+            ],
+            [
+              "Third",
+              "2",
+              "4"
+            ]
+          ],
+          "caption": "Equal stored values do not imply equal positions. There is no item at index 3."
+        },
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "counts = [4, 7, 4]\nprint(len(counts))\nprint(counts[0])\nprint(counts[1])\ncounts[1] = 9\nprint(counts)"
+        },
+        {
+          "type": "paragraph",
+          "text": "The printed lines are 3, 4, 7 and [4, 9, 4]. The assignment counts[1] = 9 replaces the item at index 1; it does not add a fourth item or change the two other values. The length stays 3. A recorded count can be changed by code without proving that the physical tray really contains that many objects."
+        }
+      ]
+    },
+    {
+      "title": "Loop through the values",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "counts = [4, 7, 4]\ntotal = 0\nfor count in counts:\n    total = total + count\nprint(total)"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Item read as count",
+            "total before",
+            "total after"
+          ],
+          "rows": [
+            [
+              "4",
+              "0",
+              "4"
+            ],
+            [
+              "7",
+              "4",
+              "11"
+            ],
+            [
+              "4",
+              "11",
+              "15"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "This fresh script prints 15. for count in counts supplies the stored values, not the indices. Both copies of 4 are processed because both are items. For an empty list written [], the body runs zero times and total stays 0. For [7], it runs once and prints 7."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Change only the list to [2, 0, 5]. Trace the three additions and state the final output. Explain why the middle item is processed even though its value is zero.",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "title": "Find the first invalid index",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "counts = [4, 7, 4]\nprint(counts[3])"
+        },
+        {
+          "type": "paragraph",
+          "text": "This deliberately faulty script raises IndexError. The list has three items, but its nonnegative indices are 0, 1 and 2. Replace 3 with 2 to read the third item, which is 4. For any nonempty list, len(counts) - 1 identifies the last item using a nonnegative index. An empty list has no valid item index."
+        },
+        {
+          "type": "paragraph",
+          "text": "Avoid confusing values with positions: for count in counts followed by counts[count] would try indices 4, 7 and 4 in this example. If you need both, use for index in range(len(counts)) and read counts[index]. If you only need a total, looping directly through values is simpler."
+        }
+      ]
+    },
+    {
+      "title": "Test order and empty input",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Before running a script, sketch positions above the stored values. Test an empty list, a one-item list and a list with repeated values. These cases reveal different mistakes. A total alone loses order: [4, 7, 4] and [7, 4, 4] both total 15 even though their first items differ. Data checks should retain the detail needed for the question."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A learner uses counts[len(counts)] to read the final item. Explain the error for [8, 3] and give a valid nonnegative index. Explain why your repair still needs an empty-list check.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Separate index and value",
+      "prompt": "For counts = [4, 7, 4], give the length, valid nonnegative indices and value at index 1. Explain how the two items with value 4 differ.",
+      "answer": "Length 3; indices 0, 1, 2; counts[1] is 7. The equal values occupy different positions, indices 0 and 2.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Trace an update",
+      "prompt": "Start with counts = [4, 7, 4]. Run counts[0] = 6. Write the resulting list, its length and the value at index 2. Predict before running.",
+      "answer": "The result is [6, 7, 4]; length remains 3; index 2 still holds 4. Only the first item was replaced.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair a position mistake",
+      "prompt": "A learner loops with for count in counts and tries to read counts[count] for counts = [4, 7, 4]. Identify the first attempted index and error. Explain how to print each value directly.",
+      "answer": "The first count is 4, so counts[4] raises IndexError. The loop variable already holds each value. Use an indented print(count) to print 4, 7 and 4 on separate lines.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Process new data independently",
+      "prompt": "Start with readings = [3, 0, 3, 2]. Replace the second item with 5 using its index. Write a loop that adds all updated readings and prints one final total. Trace every update of the total. Then test the summing part alone on [] and [6].",
+      "answer": "Use readings[1] = 5, giving [3, 5, 3, 2]. Initialize total = 0 before for reading in readings, add reading inside, and print outside. Running totals are 3, 8, 11, 13; final 13. Summing [] gives 0 and [6] gives 6. The replacement line itself requires at least two items.",
+      "lines": 8
+    },
+    {
+      "id": "W5",
+      "title": "Keep the information you need",
+      "prompt": "Compare [1, 5, 2] and [5, 1, 2]. State their totals and first items. Would storing only the total answer which first item was larger? Explain.",
+      "answer": "Both total 8. Their first items are 1 and 5, so the second list has the larger first item. A total alone discards the order and cannot answer this question.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach lists as ordered collections, with index and value kept distinct. The first exercises use nonnegative indices, although Python also permits negative indexing. Reference: https://docs.python.org/3/tutorial/introduction.html#lists. Do not imply that updating a record changes or verifies the physical object represented.",
+    "materials": [
+      "Python 3 editor and lists.py",
+      "Four position cards numbered 0 through 3 and movable value cards",
+      "Blank trace table and separate predicted and observed output columns"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve range(3) and its excluded stop."
+      ],
+      [
+        "7 to 20 minutes",
+        "Place value cards under position cards and complete W1."
+      ],
+      [
+        "20 to 33 minutes",
+        "Run the worked read and update script, then complete W2."
+      ],
+      [
+        "33 to 45 minutes",
+        "Trace the value loop and answer the guided question."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the distinction between length and final index."
+      ],
+      [
+        "8 to 20 minutes",
+        "Predict the faulty access before running; use W3 to repair value versus index confusion."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, keeping the replacement step separate from empty-list summation."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and use the exit to diagnose indexing assumptions."
+      ]
+    ],
+    "guidedAnswer": "For [2, 0, 5], totals become 2, 2, 7. Output is 7. Zero is still an item and its iteration still executes. Exit: len([8, 3]) is 2, but index 2 is outside the list. Last nonnegative index is 1, whose value is 3. An empty list has no last item, so a length check is required before access.",
+    "misconceptions": [
+      [
+        "Length is the last nonnegative index",
+        "Length counts items; the last nonnegative index of a nonempty list is one less."
+      ],
+      [
+        "A loop variable always contains an index",
+        "A direct list loop supplies stored values."
+      ],
+      [
+        "Updating one item grows the list",
+        "Assignment at an existing index replaces that item; length is unchanged."
+      ],
+      [
+        "Repeated values are processed only once",
+        "Each position contributes one item, even when values repeat."
+      ]
+    ],
+    "assessment": "W4 must use index 1 for the second item, retain all four items, produce the full trace and output 13, and obtain 0 and 6 when testing only summation. After support, retry [2, 2, 1], replace the first item with 4, and sum: updated list [4, 2, 1], totals 4, 6, 7. Then sum [] and [5] for outputs 0 and 5. Record support before judging independence.",
+    "support": "Keep position cards fixed while moving value cards. Permit an oral trace and provide a blank grid. Extension: write a guarded final-item reader that prints Empty when len(readings) == 0, otherwise prints readings[len(readings) - 1]. Test [] and [6].",
+    "next": "Week 8 groups reusable instructions in functions and supplies values through arguments."
+  }
+}

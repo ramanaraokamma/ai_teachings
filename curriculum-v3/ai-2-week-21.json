@@ -1,0 +1,218 @@
+{
+  "level": "ai-2",
+  "week": 21,
+  "title": "Relationships and confounding",
+  "minutes": 90,
+  "goals": [
+    "Describe associations without claiming cause",
+    "Suggest a plausible confounder",
+    "Propose a fairer comparison"
+  ],
+  "prerequisite": {
+    "prompt": "Can a survey of only one club establish the preference of all students?",
+    "answer": "No; selection and coverage limit the claim."
+  },
+  "vocabulary": [
+    [
+      "Association",
+      "Two variables vary together in observed data"
+    ],
+    [
+      "Cause",
+      "A change in one factor produces a change in another"
+    ],
+    [
+      "Confounder",
+      "A factor related to both the proposed cause and outcome"
+    ],
+    [
+      "Comparison",
+      "Examining outcomes under different conditions"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "In a fictional log, groups that practiced longer also scored higher: 1 hour with 4 points, 2 hours with 6 and 3 hours with 8. This pattern is an association. Prior experience could affect both practice choices and scores. The table alone cannot establish the effect of adding practice time."
+        }
+      ]
+    },
+    {
+      "title": "Work through the example",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "rows = [{\"hours\": 1, \"score\": 4},\n        {\"hours\": 2, \"score\": 6},\n        {\"hours\": 3, \"score\": 8}]\nfor row in rows:\n    print(row[\"hours\"], row[\"score\"])"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow the evidence",
+          "columns": [
+            "Step or case",
+            "Evidence",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "Observed",
+              "More practice with higher scores",
+              "Association"
+            ],
+            [
+              "Possible other factor",
+              "Prior experience",
+              "May affect both"
+            ],
+            [
+              "Missing evidence",
+              "Comparable starting conditions",
+              "Limits causal claim"
+            ]
+          ],
+          "caption": "Read each row from left to right and connect the evidence to the stated rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "The numbers rise together in these three invented records. A description such as higher practice hours went with higher scores is supported. A claim that one extra hour guarantees two more points goes beyond the observations. No statistical calculation is required to see this limit."
+        }
+      ]
+    },
+    {
+      "title": "Predict before running",
+      "blocks": [
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Name one factor besides practice duration that could influence both time chosen and score.",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Find and explain the failure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A chart title Practice causes success overstates the evidence. Replace it with Practice time and scores in three fictional records, and describe the possible confounder. Better wording does not repair the study, but it makes the report honest."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A fairer comparison could offer the same task, instructions and assessment and randomly assign fictional groups to practice conditions. In real classrooms, a teacher must approve any activity and protect equal learning opportunities; this lesson uses a paper plan."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Even a better comparison has only four fictional groups. What should be reported?",
+          "lines": 6
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Describe the evidence",
+      "prompt": "State the pattern in the three worked records without using caused or guaranteed.",
+      "answer": "Higher recorded practice hours are associated with higher scores in these three records.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Identify a confounder",
+      "prompt": "Explain how prior experience could relate to both practice time and score.",
+      "answer": "Experienced learners may choose different practice amounts and also score higher even without additional practice.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair an overclaim",
+      "prompt": "A learner predicts every student gains 2 points per extra hour. Explain why that is unsupported.",
+      "answer": "The three observations do not establish a universal causal rule or predict every individual; other factors and variation are unmeasured.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Plan independently",
+      "prompt": "A fictional dataset links more hints used with lower scores. Give a noncausal explanation and plan a fairer comparison of whether hints help.",
+      "answer": "Learners finding tasks harder may use more hints and score lower. Use comparable tasks and starting skill, a teacher-approved or paper random-assignment plan, same outcome measure and report uncertainty; do not deny needed support.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "State a remaining limit",
+      "prompt": "Even a better comparison has only four fictional groups. What should be reported?",
+      "answer": "Small size, constructed data, conditions and measured outcome; do not generalize broadly or claim classroom effectiveness.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach Week 21 as a two-session investigation using fictional data. In a fictional log, groups that practiced longer also scored higher: 1 hour with 4 points, 2 hours with 6 and 3 hours with 8. This pattern is an association. Prior experience could affect both practice choices and scores. The table alone cannot establish the effect of adding practice time. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+    "materials": [
+      "Python 3 editor with a fresh local practice file",
+      "Paper trace table and the student workbook",
+      "Fictional input records from this lesson; no real student identifiers"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and explain the purpose in the opening section."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the worked example and diagram; ask learners to trace each step aloud."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2, then compare predictions with observed results."
+      ],
+      [
+        "33 to 45 minutes",
+        "Collect the guided prediction before running; discuss a mismatch and its cause."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the main rule without showing the previous answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to diagnose and repair the stated failure; rerun an earlier case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including code or plan, predictions and explanations, before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit; use the fresh retry when support was needed."
+      ]
+    ],
+    "guidedAnswer": "Prior experience, motivation or available support could plausibly affect both. Explain the connection to each. Exit: Small size, constructed data, conditions and measured outcome; do not generalize broadly or claim classroom effectiveness.",
+    "misconceptions": [
+      [
+        "A successful run proves the conclusion",
+        "A fairer comparison could offer the same task, instructions and assessment and randomly assign fictional groups to practice conditions. In real classrooms, a teacher must approve any activity and protect equal learning opportunities; this lesson uses a paper plan."
+      ],
+      [
+        "Matching the example is enough",
+        "Require the new W4 case, explicit predictions and an explanation. Fresh retry: a log links more library visits with higher reading scores. Reading interest may influence both. Require a supported association statement and a fairer comparison plan."
+      ],
+      [
+        "A convenient shortcut preserves meaning",
+        "A chart title Practice causes success overstates the evidence. Replace it with Practice time and scores in three fictional records, and describe the possible confounder. Better wording does not repair the study, but it makes the report honest."
+      ]
+    ],
+    "assessment": "Independent W4 evidence: Learners finding tasks harder may use more hints and score lower. Use comparable tasks and starting skill, a teacher-approved or paper random-assignment plan, same outcome measure and report uncertainty; do not deny needed support. Record whether the learner needed no help, a hint or explanation. Fresh retry: a log links more library visits with higher reading scores. Reading interest may influence both. Require a supported association statement and a fairer comparison plan.",
+    "support": "Draw arrows from the proposed confounder to both observed variables. Extension: explain why reversing cause and effect can also fit some observational patterns.",
+    "next": "Next week: Distance between feature vectors. Reuse this week's explicit contracts and evidence."
+  }
+}

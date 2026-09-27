@@ -1,0 +1,263 @@
+{
+  "level": "ai-2",
+  "week": 9,
+  "title": "Return values and local state",
+  "minutes": 90,
+  "goals": [
+    "Use a returned value in a later calculation",
+    "Trace local variables separately for each function call",
+    "Detect a missing return and test repeated calls"
+  ],
+  "prerequisite": {
+    "prompt": "A function show_remaining(capacity, used) prints capacity - used. What does calling it with (9, 4) display? Does defining it alone display that result?",
+    "answer": "The call prints 5. The definition alone creates the function without running its body."
+  },
+  "vocabulary": [
+    [
+      "Return value",
+      "A value a function sends back to its caller"
+    ],
+    [
+      "Caller",
+      "The code that calls a function"
+    ],
+    [
+      "Local variable",
+      "A name assigned inside a function and used in that function call"
+    ],
+    [
+      "Scope",
+      "The region of code in which a name can be looked up"
+    ],
+    [
+      "None",
+      "A Python value representing no result value in this lesson"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Keep a result for another calculation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Two fictional cupboards have spare spaces. We want to add their spare spaces without copying numbers from the screen. Last week a function printed each answer. This week a function returns its answer so the calling code can store it, combine it or choose to print it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Assume nonnegative integer counts and used no greater than capacity. This calculation does not validate those assumptions. Work in a Python script so a call does not automatically display its return value as it might in an interactive console."
+        }
+      ]
+    },
+    {
+      "title": "Follow the result back to the caller",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "def remaining(capacity, used):\n    spaces = capacity - used\n    return spaces\n\nfirst = remaining(12, 4)\nsecond = remaining(10, 7)\nprint(first + second)"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Two calls return two values",
+          "columns": [
+            "Call",
+            "Inside this call",
+            "Back in the caller"
+          ],
+          "rows": [
+            [
+              "remaining(12, 4)",
+              "spaces becomes 8",
+              "first receives 8"
+            ],
+            [
+              "remaining(10, 7)",
+              "spaces becomes 3",
+              "second receives 3"
+            ]
+          ],
+          "caption": "The caller adds the returned values. Only print(first + second) displays 11."
+        },
+        {
+          "type": "paragraph",
+          "text": "return spaces ends the current function call and sends the value of spaces back. The assignment first = remaining(12, 4) waits for that value and stores 8. The next call stores 3 in second. Neither call prints. The final statement prints 11. A statement after an executed return in the same call is not reached."
+        }
+      ]
+    },
+    {
+      "title": "Give each call its own local names",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Point in execution",
+            "Local spaces",
+            "Caller values"
+          ],
+          "rows": [
+            [
+              "First call before return",
+              "8",
+              "first not assigned yet"
+            ],
+            [
+              "Second call before return",
+              "3",
+              "first is still 8"
+            ],
+            [
+              "After both calls",
+              "Not accessible by this local name",
+              "first is 8 and second is 3"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "capacity, used and spaces belong to the current call. The second call gets new parameter values and calculates its own spaces; it does not overwrite first. In a fresh script with no outside variable called spaces, adding print(spaces) after the calls raises NameError. Use the returned value stored in first or second instead."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Change the calls to remaining(9, 9) and remaining(9, 0). What values are stored and what does their sum print? What happens if only the final print statement is removed?",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "title": "Repair a function that only prints",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "def remaining(capacity, used):\n    spaces = capacity - used\n    print(spaces)\n\nanswer = remaining(12, 4)\nprint(answer)"
+        },
+        {
+          "type": "paragraph",
+          "text": "This faulty version displays 8 and then None. It reaches the end of its body without a return statement, so the call returns None. Printing 8 inside the function does not make 8 its return value. None is not zero. Trying answer + 1 raises TypeError in this example."
+        },
+        {
+          "type": "paragraph",
+          "text": "Replace print(spaces) inside the function with return spaces. Keep print(answer) in the caller. The repaired script prints 8 once, and the caller can calculate answer + 1. Test the stored value as well as what appears on screen."
+        }
+      ]
+    },
+    {
+      "title": "Test fresh state and a usable result",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For a function that only calculates from these integer arguments, repeat the first call after a different call. remaining(12, 4), remaining(10, 7), remaining(12, 4) should return 8, 3, 8. Store each result and compare it with a prediction. These examples create fresh local variables each time; do not assume every possible function is independent of earlier calls."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A learner says that a function is correct because it prints 8. Explain how you would check that its caller actually receives 8. Include a second call and say why two passing tests are limited evidence.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Separate returning from displaying",
+      "prompt": "Using the correct worked definition, execute result = remaining(15, 6), then doubled = result * 2. State both stored values and what the script displays before a print statement is added.",
+      "answer": "result is 9 and doubled is 18. Nothing is displayed by these assignments or the returning function. print(doubled) would display 18.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Trace separate calls",
+      "prompt": "Using the correct definition, store a = remaining(8, 3), b = remaining(8, 8), c = remaining(8, 3). State a, b and c. In a fresh script, explain why print(spaces) outside the function fails.",
+      "answer": "a is 5, b is 0, c is 5. Each call has its own local spaces. That name has not been defined outside the function, so print(spaces) there raises NameError. Print a, b or c to use the saved results.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair the returned value",
+      "prompt": "Use the faulty printing version with answer = remaining(11, 2). State the displayed number and the value stored in answer. Explain why print(answer + 1) fails, then repair the function and predict the repaired output.",
+      "answer": "The call displays 9 but stores None. None + 1 raises TypeError. Replace the internal print(spaces) with return spaces. The repaired call itself displays nothing; print(answer + 1) displays 10. Rerun (12, 4) and check that the stored value is 8.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Build a reusable calculation independently",
+      "prompt": "Each tray holds 5 counters. Define stock(trays, loose) to return the total using a local variable total. Assume nonnegative integer arguments. Store results for (2, 3), (0, 3) and (2, 0). Print the sum of the first two stored results. Predict that output and all three stored values. Call (2, 3) again to check fresh state.",
+      "answer": "Define stock(trays, loose) with total = trays * 5 + loose followed by return total. Store values 13, 3 and 10. The sum of the first two is 16. The repeat returns 13. The function should not print; the caller prints 16.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Locate a statement that never runs",
+      "prompt": "A function body has spaces = capacity - used, then return spaces, then print(\"done\"), all at the same indentation. What does answer = remaining(4, 4) store and display? Explain whether the final print can run.",
+      "answer": "The call stores 0 and displays nothing. return ends this call, so the following print(\"done\") is not reached. Zero is a valid returned value here and is different from None.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use integer inputs, explicit return and simple local assignments. Avoid global variables, mutable defaults and shared objects in this introduction. Python reference: https://docs.python.org/3/tutorial/controlflow.html#defining-functions. A call has its own local names; return sends a value to the caller. Examples assume valid counts and do not validate them.",
+    "materials": [
+      "Python 3 editor and returns.py",
+      "Separate paper spaces for each call and the caller",
+      "Expected return value and observed return value table"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the Week 8 distinction between definition and call."
+      ],
+      [
+        "7 to 20 minutes",
+        "Trace the worked example and move returned-value cards to first and second."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and trace local names separately for W2."
+      ],
+      [
+        "33 to 45 minutes",
+        "Predict the guided case, run it and explain why assignments do not print."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Recall where the caller stores a return value."
+      ],
+      [
+        "8 to 20 minutes",
+        "Run the printing bug, record None and repair it for W3."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect independent W4 code and predictions before offering hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit to check return control flow and test evidence."
+      ]
+    ],
+    "guidedAnswer": "first stores 0, second stores 9, and the final print displays 9. Removing only that print leaves the calculations and stored values but no displayed output. Exit: assign answer = remaining(12, 4), then print(answer) and check it is 8 rather than None. Repeat with (10, 7), expecting 3. Passing two tests does not establish all-input correctness or verify the input assumptions.",
+    "misconceptions": [
+      [
+        "Printing a value returns that value",
+        "print displays a value. Without an explicit return, these functions return None."
+      ],
+      [
+        "A second call overwrites the first saved answer",
+        "These integer results are stored separately in the caller. A later call creates new local bindings."
+      ],
+      [
+        "A local name is available anywhere",
+        "spaces is assigned inside remaining. In our fresh script it cannot be looked up outside that function."
+      ],
+      [
+        "Zero means the function returned nothing",
+        "Zero is a number and supports arithmetic. None is a different value."
+      ]
+    ],
+    "assessment": "W4 must use both arguments, return its local total, store 13, 3, 10 and print 16 in the caller. Repeating (2, 3) must return 13. After support use fresh retry tiles(packs, singles), with 4 tiles per pack: (3, 2), (0, 2), (3, 0) return 14, 2, 12; print the sum of the first two, 16; repeat (3, 2) to obtain 14. Record help used and collect predictions before running.",
+    "support": "Use separate boxes on paper labelled caller and current call. Move the value card at return, not the local name. Offer the definition header as a hint and record it. Extension: set spaces = 100 outside the correct worked function, call remaining(9, 4), then print the returned result and outside spaces separately. Expect 5 and 100. Explain why the two assignments use different scopes; do not generalize this to mutation of shared objects.",
+    "next": "Week 10 uses dictionaries to keep related values together as named fields in a record."
+  }
+}

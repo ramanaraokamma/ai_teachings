@@ -1,0 +1,218 @@
+{
+  "level": "ai-2",
+  "week": 30,
+  "title": "A reproducible data investigation",
+  "minutes": 90,
+  "goals": [
+    "Write a reproducible data question",
+    "Connect cleaning decisions to conclusions",
+    "Report results with coverage and uncertainty"
+  ],
+  "prerequisite": {
+    "prompt": "What should happen to an invalid duration instead of silently making it zero?",
+    "answer": "Record the rejection and reason; preserve the raw value for authorized review."
+  },
+  "vocabulary": [
+    [
+      "Investigation",
+      "A documented process for answering a question with evidence"
+    ],
+    [
+      "Pipeline",
+      "An ordered sequence of processing steps"
+    ],
+    [
+      "Audit trail",
+      "A record of inputs, decisions and changes"
+    ],
+    [
+      "Limitation",
+      "A reason a conclusion has restricted scope"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Investigate the fictional question: among supplied sessions with valid duration records, what is the mean duration? Inputs are 10, 0, 20, None and -2 minutes. Our schema accepts exact integers 0 through 60. The wording deliberately limits the answer to accepted records."
+        }
+      ]
+    },
+    {
+      "title": "Work through the example",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "raw = [10, 0, 20, None, -2]\nvalid = []\nrejected = 0\nfor value in raw:\n    if type(value) is int and 0 <= value <= 60:\n        valid.append(value)\n    else:\n        rejected = rejected + 1\nprint(len(valid), rejected)\nif len(valid) > 0:\n    print(sum(valid) / len(valid))\nelse:\n    print(\"No valid observations\")"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow the evidence",
+          "columns": [
+            "Step or case",
+            "Evidence",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "Raw evidence",
+              "Five supplied values",
+              "Keep unchanged"
+            ],
+            [
+              "Validation",
+              "Accept 10, 0, 20",
+              "Reject unknown and negative"
+            ],
+            [
+              "Summary",
+              "30 divided by 3",
+              "Mean 10 minutes"
+            ]
+          ],
+          "caption": "Read each row from left to right and connect the evidence to the stated rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "The result is 3 accepted, 2 rejected, and mean 10.0 minutes. A reproducible report states the question, raw input version, schema, exclusion reasons, calculation and scope. Someone else should obtain the same result from the same inputs and rules."
+        }
+      ]
+    },
+    {
+      "title": "Predict before running",
+      "blocks": [
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "If another valid value 30 is added, calculate the new accepted count and mean.",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Find and explain the failure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Dividing the accepted total 30 by all five records gives 6 and answers no clear observed-duration question. Use the accepted count for this mean, disclose exclusions, and never describe it as the average for every supplied session."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Missing or invalid durations might belong to unusually long sessions. The accepted mean may therefore differ from the full group's mean. Do not make a causal claim from this descriptive investigation."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A report gives only mean 9. What additional evidence lets a peer reproduce it?",
+          "lines": 6
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "State the question",
+      "prompt": "Write the worked investigation question so its population of records is clear.",
+      "answer": "What is the mean duration among supplied sessions with valid integer minutes from 0 through 60?",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Trace exclusions",
+      "prompt": "Classify 0, None, -2 and 60 under the schema.",
+      "answer": "0 and 60 accepted; None missing/unknown and -2 out of range are rejected.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair a denominator",
+      "prompt": "A report divides a valid total of 24 by six supplied rows, though only three are valid. Correct the valid-record mean.",
+      "answer": "24/3 = 8. Report 3 accepted and 3 rejected; do not use all six as the valid-record denominator.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Investigate independently",
+      "prompt": "Analyze raw durations [6, 12, None, 0, 70, 18] with the same schema. Report question, accepted list, rejections, mean and one limitation.",
+      "answer": "Accepted [6, 12, 0, 18], 2 rejected, total 36, mean 9. State 4 of 6 accepted; missing/invalid records may differ. Preserve the raw list and rules.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Support reproduction",
+      "prompt": "A report gives only mean 9. What additional evidence lets a peer reproduce it?",
+      "answer": "Input records/version, schema, excluded rows and reasons, accepted count, calculation and code/configuration version.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach Week 30 as a two-session investigation using fictional data. Investigate the fictional question: among supplied sessions with valid duration records, what is the mean duration? Inputs are 10, 0, 20, None and -2 minutes. Our schema accepts exact integers 0 through 60. The wording deliberately limits the answer to accepted records. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+    "materials": [
+      "Python 3 editor with a fresh local practice file",
+      "Paper trace table and the student workbook",
+      "Fictional input records from this lesson; no real student identifiers"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and explain the purpose in the opening section."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the worked example and diagram; ask learners to trace each step aloud."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2, then compare predictions with observed results."
+      ],
+      [
+        "33 to 45 minutes",
+        "Collect the guided prediction before running; discuss a mismatch and its cause."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the main rule without showing the previous answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to diagnose and repair the stated failure; rerun an earlier case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including code or plan, predictions and explanations, before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit; use the fresh retry when support was needed."
+      ]
+    ],
+    "guidedAnswer": "Four accepted values total 60, so mean 15 minutes; still two rejected. Exit: Input records/version, schema, excluded rows and reasons, accepted count, calculation and code/configuration version.",
+    "misconceptions": [
+      [
+        "A successful run proves the conclusion",
+        "Missing or invalid durations might belong to unusually long sessions. The accepted mean may therefore differ from the full group's mean. Do not make a causal claim from this descriptive investigation."
+      ],
+      [
+        "Matching the example is enough",
+        "Require the new W4 case, explicit predictions and an explanation. Fresh retry: [5, None, 15, -1, 10] gives accepted [5,15,10], 2 rejected and mean 10, with coverage 3 of 5."
+      ],
+      [
+        "A convenient shortcut preserves meaning",
+        "Dividing the accepted total 30 by all five records gives 6 and answers no clear observed-duration question. Use the accepted count for this mean, disclose exclusions, and never describe it as the average for every supplied session."
+      ]
+    ],
+    "assessment": "Independent W4 evidence: Accepted [6, 12, 0, 18], 2 rejected, total 36, mean 9. State 4 of 6 accepted; missing/invalid records may differ. Preserve the raw list and rules. Record whether the learner needed no help, a hint or explanation. Fresh retry: [5, None, 15, -1, 10] gives accepted [5,15,10], 2 rejected and mean 10, with coverage 3 of 5.",
+    "support": "Provide an investigation checklist with blank evidence fields. Extension: compare median and mean of accepted values and explain what each hides.",
+    "next": "Next week: Planning the application. Reuse this week's explicit contracts and evidence."
+  }
+}

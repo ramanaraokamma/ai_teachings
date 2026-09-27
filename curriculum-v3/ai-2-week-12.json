@@ -1,0 +1,218 @@
+{
+  "level": "ai-2",
+  "week": 12,
+  "title": "Testing and debugging functions",
+  "minutes": 90,
+  "goals": [
+    "Design revealing tests for a function",
+    "Compare expected and actual results",
+    "Repair a defect and rerun earlier cases"
+  ],
+  "prerequisite": {
+    "prompt": "For capacity 9 and used 2, what should remaining return?",
+    "answer": "7."
+  },
+  "vocabulary": [
+    [
+      "Test case",
+      "Inputs and an expected result"
+    ],
+    [
+      "Boundary",
+      "An edge of a permitted range"
+    ],
+    [
+      "Regression",
+      "A previously working case that fails after a change"
+    ],
+    [
+      "Assertion",
+      "A check that raises an error when its condition is false"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A function can pass one example by coincidence. Start with a written rule, calculate expected results independently, and include ordinary, zero and boundary cases. We will test a subtraction function under the contract 0 <= used <= capacity."
+        }
+      ]
+    },
+    {
+      "title": "Work through the example",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "def remaining(capacity, used):\n    return capacity - used\n\ncases = [(8, 3, 5), (8, 8, 0), (8, 0, 8)]\nfor capacity, used, expected in cases:\n    actual = remaining(capacity, used)\n    print(actual == expected)"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow the evidence",
+          "columns": [
+            "Step or case",
+            "Evidence",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "Ordinary case",
+              "8 and 3",
+              "Expect 5"
+            ],
+            [
+              "Full case",
+              "8 and 8",
+              "Expect 0"
+            ],
+            [
+              "Unused case",
+              "8 and 0",
+              "Expect 8"
+            ]
+          ],
+          "caption": "Read each row from left to right and connect the evidence to the stated rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "Each parenthesized group is a tuple, an ordered group of values. The loop unpacks each group into three names. Equality compares the actual result to the independently calculated expected result. The worked script prints True three times. An assert actual == expected could instead stop at the first mismatch with AssertionError."
+        }
+      ]
+    },
+    {
+      "title": "Predict before running",
+      "blocks": [
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Would replacing the body with return 5 pass every worked case? Identify the first revealing test.",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Find and explain the failure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A faulty return capacity + used gives 11, 16 and 8. The unused case passes even though the rule is wrong. Repair the operator to subtraction and rerun all three cases. Never change an expected result merely to match faulty output."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Passing this small suite supports these particular cases. It neither proves every allowed input correct nor checks invalid input handling. A test outside the contract needs a separately specified expected behavior."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "All three stock tests pass. Does that prove correct handling of negative counts?",
+          "lines": 6
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Write expectations",
+      "prompt": "Give expected results for remaining(6, 2), remaining(6, 6) and remaining(6, 0).",
+      "answer": "4, 0 and 6.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Find a revealing case",
+      "prompt": "A faulty function always returns 4. Which of your three cases pass and fail?",
+      "answer": "Only (6, 2) passes. The full and unused cases fail.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair and retest",
+      "prompt": "A faulty function adds capacity and used. For (6, 2), state actual and expected. Repair it and name a regression case.",
+      "answer": "Actual 8, expected 4. Subtract used; rerun a prior case such as (6, 0), expecting 6.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Test a new function independently",
+      "prompt": "Define stock(packs, loose) to return packs * 4 + loose. Create expected tests for (2, 3), (0, 3), (2, 0), then show which detects a faulty packs + loose body.",
+      "answer": "Expected 11, 3, 8. Faulty results 5, 3, 2; first and third reveal it. Use independent expectations in the test loop.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Limit the conclusion",
+      "prompt": "All three stock tests pass. Does that prove correct handling of negative counts?",
+      "answer": "No. Negative counts are outside our nonnegative-input contract and were not tested; rejection behavior must first be defined.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach Week 12 as a two-session investigation using fictional data. A function can pass one example by coincidence. Start with a written rule, calculate expected results independently, and include ordinary, zero and boundary cases. We will test a subtraction function under the contract 0 <= used <= capacity. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+    "materials": [
+      "Python 3 editor with a fresh local practice file",
+      "Paper trace table and the student workbook",
+      "Fictional input records from this lesson; no real student identifiers"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and explain the purpose in the opening section."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the worked example and diagram; ask learners to trace each step aloud."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2, then compare predictions with observed results."
+      ],
+      [
+        "33 to 45 minutes",
+        "Collect the guided prediction before running; discuss a mismatch and its cause."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the main rule without showing the previous answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to diagnose and repair the stated failure; rerun an earlier case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including code or plan, predictions and explanations, before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit; use the fresh retry when support was needed."
+      ]
+    ],
+    "guidedAnswer": "It passes (8, 3) but fails (8, 8), returning 5 instead of 0. Exit: No. Negative counts are outside our nonnegative-input contract and were not tested; rejection behavior must first be defined.",
+    "misconceptions": [
+      [
+        "A successful run proves the conclusion",
+        "Passing this small suite supports these particular cases. It neither proves every allowed input correct nor checks invalid input handling. A test outside the contract needs a separately specified expected behavior."
+      ],
+      [
+        "Matching the example is enough",
+        "Require the new W4 case, explicit predictions and an explanation. Fresh retry: bundles * 3 + singles with (3, 1), (0, 1), (3, 0) expects 10, 1, 9. A constant return 10 passes only the first."
+      ],
+      [
+        "A convenient shortcut preserves meaning",
+        "A faulty return capacity + used gives 11, 16 and 8. The unused case passes even though the rule is wrong. Repair the operator to subtraction and rerun all three cases. Never change an expected result merely to match faulty output."
+      ]
+    ],
+    "assessment": "Independent W4 evidence: Expected 11, 3, 8. Faulty results 5, 3, 2; first and third reveal it. Use independent expectations in the test loop. Record whether the learner needed no help, a hint or explanation. Fresh retry: bundles * 3 + singles with (3, 1), (0, 1), (3, 0) expects 10, 1, 9. A constant return 10 passes only the first.",
+    "support": "Provide a blank inputs expected actual table. Extension: use assert for the same cases and explain why only the first failure is reported.",
+    "next": "Next week: Rows columns and schemas. Reuse this week's explicit contracts and evidence."
+  }
+}

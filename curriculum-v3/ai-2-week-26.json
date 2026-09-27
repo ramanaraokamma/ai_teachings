@@ -1,0 +1,218 @@
+{
+  "level": "ai-2",
+  "week": 26,
+  "title": "JSON and interface contracts",
+  "minutes": 90,
+  "goals": [
+    "Parse JSON into Python records",
+    "Validate data after parsing",
+    "Document input and output contracts"
+  ],
+  "prerequisite": {
+    "prompt": "Why is reading text different from validating it?",
+    "answer": "Reading obtains characters; validation checks whether their meaning and values satisfy rules."
+  },
+  "vocabulary": [
+    [
+      "JSON",
+      "A text format for structured values"
+    ],
+    [
+      "Parsing",
+      "Converting formatted text into program values"
+    ],
+    [
+      "Interface",
+      "The agreed way one part of a system exchanges data with another"
+    ],
+    [
+      "Contract",
+      "Specified inputs, outputs and error behavior"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A fictional activity service supplies JSON text. The input contract is a JSON object with name text and minutes an integer from 0 through 60. The output contract will be a record with accepted and minutes fields. Parsing valid JSON is only the first step."
+        }
+      ]
+    },
+    {
+      "title": "Work through the example",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "import json\ntext = '{\"name\": \"Sketch\", \"minutes\": 12}'\nrecord = json.loads(text)\nvalid = (type(record) is dict\n         and type(record.get(\"name\")) is str\n         and len(record[\"name\"]) > 0\n         and type(record.get(\"minutes\")) is int\n         and 0 <= record[\"minutes\"] <= 60)\nresult = {\"accepted\": valid, \"minutes\": record.get(\"minutes\")}\nprint(json.dumps(result))"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow the evidence",
+          "columns": [
+            "Step or case",
+            "Evidence",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "Input text",
+              "JSON object",
+              "Parse with json.loads"
+            ],
+            [
+              "Python value",
+              "Dictionary fields",
+              "Check schema"
+            ],
+            [
+              "Output text",
+              "accepted and minutes",
+              "Serialize with json.dumps"
+            ]
+          ],
+          "caption": "Read each row from left to right and connect the evidence to the stated rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "The output is {\"accepted\": true, \"minutes\": 12}. JSON uses lowercase true, false and null; Python uses True, False and None. json.loads converts between representations. The worked output line assumes the parsed top-level value is a dictionary; a robust interface must reject other top-level types before accessing fields."
+        }
+      ]
+    },
+    {
+      "title": "Predict before running",
+      "blocks": [
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "JSON text contains {\"name\": \"Sketch\", \"minutes\": \"12\"}. Does parsing fail, or does validation fail?",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Find and explain the failure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Single quotes around property names are not valid JSON syntax. Use double quotes in the JSON text. If the whole parsed value is a list, do not call .get on it: check the top-level type first and report a schema failure."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "An interface should state what happens for malformed text, wrong structure and invalid values. Do not expose raw private input in error messages. Use only the fictional records supplied for practice."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A JSON record parses successfully. Does that prove its observation is correct?",
+          "lines": 6
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Translate a value",
+      "prompt": "What Python value does JSON null become? What JSON value represents Python True?",
+      "answer": "None and true, respectively.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Separate failures",
+      "prompt": "Classify {\"minutes\": \"5\"} and {minutes: 5} as valid JSON text or malformed JSON.",
+      "answer": "The first is valid JSON but its minutes field fails the integer schema. The second is malformed because the key is not double-quoted.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair the interface",
+      "prompt": "A parser accepts a JSON list then crashes on .get. What check belongs before field access?",
+      "answer": "Require type(record) is dict and handle failure before any .get or keyed field access.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Specify independently",
+      "prompt": "Define a JSON contract for {\"label\": \"Box\", \"count\": 4}: nonempty text label, integer count 0 through 10. Give a valid case, a wrong-type case and a missing-field case with expected acceptance.",
+      "answer": "Valid Box/4 accepted; count \"4\" rejected for type; absent count rejected as missing. State that malformed JSON and non-object top levels are also rejected.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Limit parsing",
+      "prompt": "A JSON record parses successfully. Does that prove its observation is correct?",
+      "answer": "No. Syntax, schema validity and observational truth are separate checks.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach Week 26 as a two-session investigation using fictional data. A fictional activity service supplies JSON text. The input contract is a JSON object with name text and minutes an integer from 0 through 60. The output contract will be a record with accepted and minutes fields. Parsing valid JSON is only the first step. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+    "materials": [
+      "Python 3 editor with a fresh local practice file",
+      "Paper trace table and the student workbook",
+      "Fictional input records from this lesson; no real student identifiers"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and explain the purpose in the opening section."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the worked example and diagram; ask learners to trace each step aloud."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2, then compare predictions with observed results."
+      ],
+      [
+        "33 to 45 minutes",
+        "Collect the guided prediction before running; discuss a mismatch and its cause."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the main rule without showing the previous answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to diagnose and repair the stated failure; rerun an earlier case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including code or plan, predictions and explanations, before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit; use the fresh retry when support was needed."
+      ]
+    ],
+    "guidedAnswer": "Parsing succeeds; validation fails because minutes is text. Exit: No. Syntax, schema validity and observational truth are separate checks.",
+    "misconceptions": [
+      [
+        "A successful run proves the conclusion",
+        "An interface should state what happens for malformed text, wrong structure and invalid values. Do not expose raw private input in error messages. Use only the fictional records supplied for practice."
+      ],
+      [
+        "Matching the example is enough",
+        "Require the new W4 case, explicit predictions and an explanation. Fresh retry: label Tray and score integer 0 through 5. Cases score 0 accepted, score 6 rejected, score null rejected; JSON list rejected before field access."
+      ],
+      [
+        "A convenient shortcut preserves meaning",
+        "Single quotes around property names are not valid JSON syntax. Use double quotes in the JSON text. If the whole parsed value is a list, do not call .get on it: check the top-level type first and report a schema failure."
+      ]
+    ],
+    "assessment": "Independent W4 evidence: Valid Box/4 accepted; count \"4\" rejected for type; absent count rejected as missing. State that malformed JSON and non-object top levels are also rejected. Record whether the learner needed no help, a hint or explanation. Fresh retry: label Tray and score integer 0 through 5. Cases score 0 accepted, score 6 rejected, score null rejected; JSON list rejected before field access.",
+    "support": "Color JSON punctuation separately from values. Extension: serialize a valid result, parse it again and check the data values are preserved.",
+    "next": "Next week: Exceptions and recovery. Reuse this week's explicit contracts and evidence."
+  }
+}

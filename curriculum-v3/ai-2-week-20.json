@@ -1,0 +1,218 @@
+{
+  "level": "ai-2",
+  "week": 20,
+  "title": "Selection bias and coverage",
+  "minutes": 90,
+  "goals": [
+    "Identify selection and coverage bias",
+    "Compare groups before combining results",
+    "Explain why more biased data may not help"
+  ],
+  "prerequisite": {
+    "prompt": "What is the difference between a population and a sample?",
+    "answer": "The population is the full target group; the sample is the observed subset."
+  },
+  "vocabulary": [
+    [
+      "Selection bias",
+      "Systematic distortion caused by who enters the data"
+    ],
+    [
+      "Undercoverage",
+      "Leaving part of the target group out of selection"
+    ],
+    [
+      "Nonresponse",
+      "A selected participant does not respond"
+    ],
+    [
+      "Subgroup",
+      "A defined part of a larger group"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A fictional poll has 8 Yes among 10 club respondents and 2 Yes among 10 other respondents. If only club members are surveyed, an 80 percent result misses a group with a different pattern. Examine who is included before treating a larger sample as better."
+        }
+      ]
+    },
+    {
+      "title": "Work through the example",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "club_yes, club_n = 8, 10\nother_yes, other_n = 2, 10\nprint(club_yes / club_n)\nprint(other_yes / other_n)\nprint((club_yes + other_yes) / (club_n + other_n))"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow the evidence",
+          "columns": [
+            "Step or case",
+            "Evidence",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "Club sample",
+              "8 of 10",
+              "80 percent"
+            ],
+            [
+              "Other sample",
+              "2 of 10",
+              "20 percent"
+            ],
+            [
+              "Combined sample",
+              "10 of 20",
+              "50 percent"
+            ]
+          ],
+          "caption": "Read each row from left to right and connect the evidence to the stated rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "The combined observed sample has 50 percent Yes. This is not automatically a population estimate: we also need to know how the groups were selected and how many people each represents. Do not average percentages without considering their denominators."
+        }
+      ]
+    },
+    {
+      "title": "Predict before running",
+      "blocks": [
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Suppose 90 club respondents give 72 Yes and 10 others give 2 Yes. What is the combined observed proportion?",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Find and explain the failure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Surveying another 100 people from the same undercovered source may make the sample larger without fixing the selection problem. Improve access to missing groups and record nonresponse; do not simply duplicate existing rows."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Group differences suggest that coverage matters, but do not explain why choices differ. Small group counts also make percentages unstable. Use neutral group labels in fictional data rather than personal or sensitive attributes."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Club members favor coding more often. Does club membership necessarily cause that preference?",
+          "lines": 6
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Locate undercoverage",
+      "prompt": "A morning-only survey claims to represent all library visitors. Which visitors may be missed?",
+      "answer": "Afternoon or evening visitors, and people unable to attend in the morning.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Combine counts",
+      "prompt": "Group A has 3 Yes of 4 and B has 2 Yes of 6. Find the combined proportion.",
+      "answer": "5/10 = 50 percent. The unweighted average of 75 percent and about 33.3 percent is not the combined sample rate.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair the collection",
+      "prompt": "A form is shared only in the robotics club. How can the process better cover the grade?",
+      "answer": "Use a full-grade selection frame and access channels available across groups, with a nonresponse record. State remaining limitations.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Audit independently",
+      "prompt": "A survey has 18 Yes of 20 club members and 2 Yes of 10 others. Compute both group rates and combined rate. Explain why 20/30 does not automatically describe the whole grade.",
+      "answer": "90 percent, 20 percent and 20/30 about 66.7 percent. Group sampling proportions and response patterns may differ from the grade.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Avoid causal claims",
+      "prompt": "Club members favor coding more often. Does club membership necessarily cause that preference?",
+      "answer": "No. Existing interest could influence club membership, and other factors may differ.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach Week 20 as a two-session investigation using fictional data. A fictional poll has 8 Yes among 10 club respondents and 2 Yes among 10 other respondents. If only club members are surveyed, an 80 percent result misses a group with a different pattern. Examine who is included before treating a larger sample as better. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+    "materials": [
+      "Python 3 editor with a fresh local practice file",
+      "Paper trace table and the student workbook",
+      "Fictional input records from this lesson; no real student identifiers"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and explain the purpose in the opening section."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the worked example and diagram; ask learners to trace each step aloud."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2, then compare predictions with observed results."
+      ],
+      [
+        "33 to 45 minutes",
+        "Collect the guided prediction before running; discuss a mismatch and its cause."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the main rule without showing the previous answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to diagnose and repair the stated failure; rerun an earlier case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including code or plan, predictions and explanations, before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit; use the fresh retry when support was needed."
+      ]
+    ],
+    "guidedAnswer": "74/100 = 74 percent. The sample is dominated by club respondents. Exit: No. Existing interest could influence club membership, and other factors may differ.",
+    "misconceptions": [
+      [
+        "A successful run proves the conclusion",
+        "Group differences suggest that coverage matters, but do not explain why choices differ. Small group counts also make percentages unstable. Use neutral group labels in fictional data rather than personal or sensitive attributes."
+      ],
+      [
+        "Matching the example is enough",
+        "Require the new W4 case, explicit predictions and an explanation. Fresh retry: A 6/8 and B 1/2 combine to 7/10 = 70 percent, with group rates 75 and 50 percent. Require a selection limitation."
+      ],
+      [
+        "A convenient shortcut preserves meaning",
+        "Surveying another 100 people from the same undercovered source may make the sample larger without fixing the selection problem. Improve access to missing groups and record nonresponse; do not simply duplicate existing rows."
+      ]
+    ],
+    "assessment": "Independent W4 evidence: 90 percent, 20 percent and 20/30 about 66.7 percent. Group sampling proportions and response patterns may differ from the grade. Record whether the learner needed no help, a hint or explanation. Fresh retry: A 6/8 and B 1/2 combine to 7/10 = 70 percent, with group rates 75 and 50 percent. Require a selection limitation.",
+    "support": "Use two colors of anonymous group cards. Extension: compare combined rates after changing only sample group sizes while preserving group rates.",
+    "next": "Next week: Relationships and confounding. Reuse this week's explicit contracts and evidence."
+  }
+}

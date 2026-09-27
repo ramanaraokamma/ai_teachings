@@ -1,0 +1,273 @@
+{
+  "level": "ai-2",
+  "week": 1,
+  "title": "From a paper algorithm to Python",
+  "minutes": 90,
+  "goals": [
+    "Translate a short paper calculation into a Python script",
+    "Predict and explain the order of executed statements",
+    "Keep expected and observed output separate when checking a program"
+  ],
+  "prerequisite": {
+    "prompt": "Four packs contain six counters each. What steps find and show the total?",
+    "answer": "Record four and six, multiply them to get 24, then display 24. The order must make the required values available before use."
+  },
+  "vocabulary": [
+    [
+      "Algorithm",
+      "An ordered procedure for solving a stated problem"
+    ],
+    [
+      "Program",
+      "Instructions written in a language a computer can execute"
+    ],
+    [
+      "Interpreter",
+      "Software that executes Python instructions"
+    ],
+    [
+      "Assignment",
+      "Binding a name to the value of an expression"
+    ],
+    [
+      "Output",
+      "Information a program displays or returns"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Start with a small complete task",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "In Grade 6 you traced rules on paper. Now you will write a small Python program and check what it actually does. Begin with a counter-packing calculation, not the whole activity adviser. The requirement is to find the total counters in equal packs and display that total. For this first program, the supplied quantities are whole, nonnegative numbers; it does not yet validate typed input."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use a teacher-prepared Python 3 editor that can run a saved .py file. Open a new file called counters.py, type the code exactly as shown in the next section, save it, and use the editor\u2019s Run command. Read the output area separately from the source editor. No account, AI tool, package installation or personal data is needed. If a device is unavailable, trace on paper and label the result predicted rather than executed."
+        }
+      ]
+    },
+    {
+      "title": "Translate the procedure into code",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "A calculation from paper to output",
+          "columns": [
+            "Paper step",
+            "Python instruction",
+            "Effect"
+          ],
+          "rows": [
+            [
+              "Record pack count",
+              "packs = 4",
+              "Name holds 4"
+            ],
+            [
+              "Multiply two quantities",
+              "total = packs * per_pack",
+              "Name holds product"
+            ],
+            [
+              "Show the answer",
+              "print(total)",
+              "Displays the value"
+            ]
+          ],
+          "caption": "Assign per_pack before the multiplication. This diagram summarises the steps; the complete script below includes that assignment."
+        },
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "packs = 4\nper_pack = 6\ntotal = packs * per_pack\nprint(total)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Read the script from top to bottom. The equals sign assigns the value on its right to the name on its left. The star means multiplication. print(total) displays the value of total; it does not display the letters in the name. Type ordinary straight characters and keep the parentheses. The Python prompt symbols >>> are not part of this saved script."
+        }
+      ]
+    },
+    {
+      "title": "Trace before running",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "After line",
+            "Names and values",
+            "Displayed output"
+          ],
+          "rows": [
+            [
+              "packs = 4",
+              "packs is 4",
+              "Nothing yet"
+            ],
+            [
+              "per_pack = 6",
+              "packs is 4; per_pack is 6",
+              "Nothing yet"
+            ],
+            [
+              "total = packs * per_pack",
+              "total is 24",
+              "Nothing yet"
+            ],
+            [
+              "print(total)",
+              "Values are unchanged",
+              "24"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Write 24 as the expected output before running. Then copy the actual output into a separate column. A matching result supports this case, not every possible input. A saved file may contain an old edit: save again and rerun the whole script. Do not type the expected number into the output record without running."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Why is there no displayed output after the third line? What changes if print(total) is placed first in a fresh run, before any assignment? Explain using which names exist.",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "title": "Change one supplied quantity",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Change only packs to 5. Predict the result from five groups of six, save, then run the entire file again. The expected output is 30. Keep the original four-pack result beside the new one and label the changed input. A comment can explain an instruction: Python ignores text after # outside a string. A comment does not change the calculation."
+        },
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "packs = 5  # five equal packs\nper_pack = 6\ntotal = packs * per_pack\nprint(total)"
+        },
+        {
+          "type": "paragraph",
+          "text": "A program can run successfully and still solve the wrong problem. Replacing * with + would display 11 for this input, but addition does not count five groups of six. Use the requirement and a paper calculation to check meaning; the absence of an error message is not proof of correctness."
+        }
+      ]
+    },
+    {
+      "title": "Explain what your program establishes",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Save the file with the input values, expected and observed outputs, and a short explanation. This program follows a written multiplication rule. It has not trained a model, predicted somebody\u2019s preferences or checked that real packs contain the stated number. Its conclusion depends on the supplied data. Week 2 examines the values and types behind these names."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A script runs without an error and displays 11 for five packs of six. Is it correct for the stated requirement? Give the required result, the likely wrong operation and one check after repair. State whether your evidence came from a device run or a paper trace.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Connect the paper steps to Python",
+      "prompt": "Write the complete four-line script for 4 packs of 6. Beside each line explain what it does. Which line displays information?",
+      "answer": "packs = 4; per_pack = 6; total = packs * per_pack; print(total), each on its own line. The first two bind quantities, the third computes 24 and the fourth displays 24. Assignment alone produces no displayed output in this script.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Predict then observe",
+      "prompt": "Make records for 4 packs of 6, then 5 packs of 6. Predict before running. Record actual output, any error and what changed. If working on paper, label both results as traces.",
+      "answer": "Expected 24 then 30. Accept actual errors with an accurate account; do not replace observations. Record the changed pack count, saved file and run or trace status. Two matching cases do not show all inputs are handled.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Explain an order error",
+      "prompt": "Move print(total) to the first line of a fresh script. Predict what happens and why. Put the lines back into an order that meets the requirement.",
+      "answer": "The first line tries to read total before it exists, causing NameError in a fresh run. Assign packs and per_pack, calculate total, then print it. Earlier values lingering in an interactive session can hide the problem; run the complete saved script afresh.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Transfer the procedure independently",
+      "prompt": "A fictional shelf has 3 trays of 7 tiles each. Write a four-line Python script using trays, per_tray and tiles. Predict its output. Then change only trays to 0 and predict again. Explain why adding the two quantities is wrong.",
+      "answer": "trays = 3; per_tray = 7; tiles = trays * per_tray; print(tiles), on separate lines. Outputs 21 and then 0. Zero trays contain zero tiles. Addition would give 10 then 7, not the number in equal groups.",
+      "lines": 7
+    },
+    {
+      "id": "W5",
+      "title": "Keep an honest conclusion",
+      "prompt": "Explain the difference between a successful run and a correct calculation. State one limit of this program and what you would keep so another person can check your work.",
+      "answer": "A successful run means the execution finished without a reported error; correctness requires matching the stated total-count rule. The script assumes supplied whole nonnegative quantities and does not validate arbitrary input. Keep source, quantities, expected and actual output and whether it was run or traced.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "This is a first encounter with saved Python scripts, not a compressed implementation of the Grade 6 adviser. Teach assignment, multiplication and print only as needed; values and types follow in Week 2. Use a fresh run to avoid hidden interactive state. Reference: Python tutorial, An Informal Introduction to Python, https://docs.python.org/3/tutorial/introduction.html (assignment, arithmetic and print).",
+    "materials": [
+      "Teacher-prepared Python 3 editor with a new saved .py file and a visible output area; test Run before class",
+      "Paper counters or equal-group sketches and a blank expected/observed record",
+      "The printed script and workbook; no logins or personal data required"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve equal-group multiplication and collect the prerequisite explanation."
+      ],
+      [
+        "7 to 20 minutes",
+        "Model source versus output, save counters.py and translate each paper step with the diagram."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and predict the trace before running the four-line program."
+      ],
+      [
+        "33 to 45 minutes",
+        "Start W2 and distinguish observation from the expected answer; record device access."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Rerun with five packs and compare the two records."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 and the guided question to diagnose a first-line print in a fresh run."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before hints; observe whether each pupil can explain zero trays."
+      ],
+      [
+        "35 to 45 minutes",
+        "Complete W5 and the exit. Save source and records; identify pupils needing editor support."
+      ]
+    ],
+    "guidedAnswer": "The third line assigns total but does not call print, so nothing is displayed. A first-line print(total) raises NameError in a fresh run because total has not been assigned. Exit: 11 is wrong for five groups of six; addition is a likely cause, and multiplication should give 30. Retain the old result and check the repaired file with both pack counts. Record whether the work was executed or traced.",
+    "misconceptions": [
+      [
+        "An equals sign displays the answer",
+        "Assignment binds a name; print produces the displayed output."
+      ],
+      [
+        "A successful run means the requirement was met",
+        "Compare the output with the paper rule and expected result."
+      ],
+      [
+        "Python guesses the intended order",
+        "A name must be assigned before this script reads it."
+      ],
+      [
+        "Typing a program trains an AI model",
+        "These statements apply an explicit multiplication rule."
+      ]
+    ],
+    "assessment": "W4 must give a complete ordered script and explain outputs 21 and 0 using equal groups. Distinguish an independent paper trace from successful use of the editor; record both skills separately. After support, retry with 2 boxes of 9 pencils, then 0 boxes: 18 and 0. Ask for the print line and why it follows the calculation.",
+    "support": "Offer four separate line cards, a source/output label and a multiplication sketch. Allow a paper trace when devices are unavailable, with execution practice still pending. Do not supply the independent transfer numbers\u2019 answers. Extension: explain why a plus-sign version can accidentally agree with multiplication for two packs of two, and why one passing example is weak evidence.",
+    "next": "Week 2 studies values, variable names and types, including the difference between numeric data and text."
+  }
+}

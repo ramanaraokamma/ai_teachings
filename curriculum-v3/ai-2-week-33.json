@@ -1,0 +1,218 @@
+{
+  "level": "ai-2",
+  "week": 33,
+  "title": "Testing functions and interfaces",
+  "minutes": 90,
+  "goals": [
+    "Test functions and their connections",
+    "Keep expected results independent of the implementation",
+    "Check invalid and empty inputs"
+  ],
+  "prerequisite": {
+    "prompt": "Why can testing only valid_item miss a pipeline bug?",
+    "answer": "The later pipeline might still pass rejected rows to selection or mishandle its result."
+  },
+  "vocabulary": [
+    [
+      "Unit test",
+      "A check of one small component"
+    ],
+    [
+      "Integration test",
+      "A check of connected components"
+    ],
+    [
+      "Fixture",
+      "A controlled input used in a test"
+    ],
+    [
+      "Oracle",
+      "An independent source of the expected result"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Test the chooser at two scales. A unit test checks one validator or score calculation. An integration test runs validation through selection and reporting. Write expected outcomes from the specification, not by calling the same function twice."
+        }
+      ]
+    },
+    {
+      "title": "Work through the example",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "def score(item):\n    return 2 * item[\"fun\"] + item[\"learning\"]\n\ncases = [( {\"fun\": 0, \"learning\": 0}, 0),\n         ( {\"fun\": 3, \"learning\": 2}, 8),\n         ( {\"fun\": 5, \"learning\": 5}, 15)]\nfor item, expected in cases:\n    assert score(item) == expected\nprint(\"3 score cases passed\")"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow the evidence",
+          "columns": [
+            "Step or case",
+            "Evidence",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "Unit",
+              "Score 3 and 2",
+              "Expect 8"
+            ],
+            [
+              "Integration",
+              "Invalid high-score row",
+              "Must never win"
+            ],
+            [
+              "Report",
+              "No eligible rows",
+              "Explain no suggestion"
+            ]
+          ],
+          "caption": "Read each row from left to right and connect the evidence to the stated rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "The code prints its success message only if all assertions pass. It checks the scoring component but says nothing about duration filtering, malformed records, ties or reporting. Add focused cases for those requirements. Use the production functions from earlier weeks rather than rewriting a second copy just for tests."
+        }
+      ]
+    },
+    {
+      "title": "Predict before running",
+      "blocks": [
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "A test computes expected = score(item) then compares score(item) to expected. Why is it weak?",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Find and explain the failure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A test suite that only checks the winner name can miss wrong rejection counts. Check the full expected report: supplied, accepted, rejected, eligible, selected and reason. Avoid relying on dictionary display order when the contract concerns values."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Test results establish only the executed cases on the tested version. Retain failures and version information. Use explicit expected rejection behavior for invalid data instead of assuming every exception is acceptable."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "What expected result should an empty-input integration case specify?",
+          "lines": 6
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Choose test scale",
+      "prompt": "Classify testing score(3,2) versus running raw rows through the whole chooser.",
+      "answer": "The first is a unit check of scoring; the second is an integration check.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Calculate an oracle",
+      "prompt": "What expected score should a test use for fun 4 and learning 3?",
+      "answer": "11 from 2 * 4 + 3, calculated independently.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair a weak test",
+      "prompt": "A test compares recommend(items,10) to itself. Replace it with a useful assertion.",
+      "answer": "Use a controlled fixture and an independently specified expected winner, plus relevant report counts and reason.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Test independently",
+      "prompt": "Design an integration fixture: A valid (minutes 10, fun 2, learning 4), B valid (10,3,2), C invalid (5,9,1), limit 10. State winner, counts and a reversed-order expectation.",
+      "answer": "3 supplied, 2 accepted, 1 rejected, 2 eligible. A and B score 8; A wins alphabetically. Reversing order preserves A and the counts.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Cover absence",
+      "prompt": "What expected result should an empty-input integration case specify?",
+      "answer": "0 supplied/accepted/rejected/eligible, no selected item and a clear no-data or no-eligible explanation, without crashing.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach Week 33 as a two-session investigation using fictional data. Test the chooser at two scales. A unit test checks one validator or score calculation. An integration test runs validation through selection and reporting. Write expected outcomes from the specification, not by calling the same function twice. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+    "materials": [
+      "Python 3 editor with a fresh local practice file",
+      "Paper trace table and the student workbook",
+      "Fictional input records from this lesson; no real student identifiers"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and explain the purpose in the opening section."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the worked example and diagram; ask learners to trace each step aloud."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2, then compare predictions with observed results."
+      ],
+      [
+        "33 to 45 minutes",
+        "Collect the guided prediction before running; discuss a mismatch and its cause."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the main rule without showing the previous answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to diagnose and repair the stated failure; rerun an earlier case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including code or plan, predictions and explanations, before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit; use the fresh retry when support was needed."
+      ]
+    ],
+    "guidedAnswer": "The same defect can appear on both sides; it does not independently check the specified rule. Exit: 0 supplied/accepted/rejected/eligible, no selected item and a clear no-data or no-eligible explanation, without crashing.",
+    "misconceptions": [
+      [
+        "A successful run proves the conclusion",
+        "Test results establish only the executed cases on the tested version. Retain failures and version information. Use explicit expected rejection behavior for invalid data instead of assuming every exception is acceptable."
+      ],
+      [
+        "Matching the example is enough",
+        "Require the new W4 case, explicit predictions and an explanation. Fresh retry: X valid (minutes 8, fun 3, learning 3), Y valid (9,4,1), Z invalid missing fun, limit 9. X/Y tie at 9; X wins; counts 3/2/1/2."
+      ],
+      [
+        "A convenient shortcut preserves meaning",
+        "A test suite that only checks the winner name can miss wrong rejection counts. Check the full expected report: supplied, accepted, rejected, eligible, selected and reason. Avoid relying on dictionary display order when the contract concerns values."
+      ]
+    ],
+    "assessment": "Independent W4 evidence: 3 supplied, 2 accepted, 1 rejected, 2 eligible. A and B score 8; A wins alphabetically. Reversing order preserves A and the counts. Record whether the learner needed no help, a hint or explanation. Fresh retry: X valid (minutes 8, fun 3, learning 3), Y valid (9,4,1), Z invalid missing fun, limit 9. X/Y tie at 9; X wins; counts 3/2/1/2.",
+    "support": "Provide a requirements-to-tests table. Extension: deliberately change the scoring multiplier and confirm a revealing test fails before restoring the implementation.",
+    "next": "Next week: Evaluating varied cases. Reuse this week's explicit contracts and evidence."
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "level": "ai-2",
+  "week": 35,
+  "title": "Improving without hiding failures",
+  "minutes": 90,
+  "goals": [
+    "Repair a specific observed failure",
+    "Check that earlier behavior still works",
+    "Keep a truthful change and failure record"
+  ],
+  "prerequisite": {
+    "prompt": "Why rerun old passing cases after a fix?",
+    "answer": "The change may introduce a regression elsewhere."
+  },
+  "vocabulary": [
+    [
+      "Regression suite",
+      "Earlier cases rerun after a change"
+    ],
+    [
+      "Change log",
+      "A record of what changed and why"
+    ],
+    [
+      "Root cause",
+      "The underlying reason for a failure"
+    ],
+    [
+      "Residual risk",
+      "A limitation or possible failure remaining after a repair"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A fictional chooser wrongly excludes an activity at the exact time limit because it uses minutes < limit. The requirement says at most, so equality must qualify. Repair that condition, then test below, at and above the boundary plus earlier tie and invalid-input behavior."
+        }
+      ]
+    },
+    {
+      "title": "Work through the example",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "def eligible(minutes, limit):\n    return minutes <= limit\n\nfor minutes, expected in [(9, True), (10, True), (11, False)]:\n    actual = eligible(minutes, 10)\n    assert actual == expected\n    print(minutes, actual)"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow the evidence",
+          "columns": [
+            "Step or case",
+            "Evidence",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "Before fix",
+              "10 < 10 is False",
+              "Violates at most rule"
+            ],
+            [
+              "After fix",
+              "10 <= 10 is True",
+              "Boundary accepted"
+            ],
+            [
+              "Neighbor check",
+              "11 <= 10 is False",
+              "Over-limit still excluded"
+            ]
+          ],
+          "caption": "Read each row from left to right and connect the evidence to the stated rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "The repaired predicate prints 9 True, 10 True and 11 False. It assumes validated numeric durations; it is not a replacement for the schema validator. A focused change is easier to explain and evaluate than unrelated edits made at the same time."
+        }
+      ]
+    },
+    {
+      "title": "Predict before running",
+      "blocks": [
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Would changing the condition to minutes <= limit + 1 correctly repair the boundary? Explain with a revealing input.",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Find and explain the failure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Changing the expected boundary result to False would make the test pass while violating the requirement. Keep the requirement and independently calculated expectation; repair the implementation. If requirements truly change, document that as a policy change."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A clean regression run does not erase the earlier failure. Keep before/after evidence and remaining limitations. If a fix was informed by reserved evaluation cases, report that contamination and obtain new independent cases."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Record the bug, change, evidence and one remaining limit without claiming all bugs are gone.",
+          "lines": 6
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Locate the cause",
+      "prompt": "Why does minutes < limit reject a valid exactly-at-limit activity?",
+      "answer": "Strict less-than excludes equality; at most requires <=.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Test neighbors",
+      "prompt": "For limit 15, give expected eligibility at 14, 15 and 16.",
+      "answer": "True, True, False.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Reject a bad fix",
+      "prompt": "A proposed fix accepts minutes <= limit + 1. Give a counterexample at limit 15.",
+      "answer": "It accepts 16, which should be excluded.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Repair independently",
+      "prompt": "Write the eligibility predicate for at most 12 minutes and a regression set including 11,12,13 and 0. Add one chooser tie case and one invalid-data case to rerun.",
+      "answer": "Use minutes <= limit after validation. Expectations True, True, False, True. Include a deterministic tie case and a schema-invalid row that never reaches selection; state expected outcomes.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Write the change log",
+      "prompt": "Record the bug, change, evidence and one remaining limit without claiming all bugs are gone.",
+      "answer": "The strict comparison excluded the boundary; changed < to <=; below/at/above and prior checks rerun; finite tests and untested situations remain. Accept equivalent specific records.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach Week 35 as a two-session investigation using fictional data. A fictional chooser wrongly excludes an activity at the exact time limit because it uses minutes < limit. The requirement says at most, so equality must qualify. Repair that condition, then test below, at and above the boundary plus earlier tie and invalid-input behavior. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+    "materials": [
+      "Python 3 editor with a fresh local practice file",
+      "Paper trace table and the student workbook",
+      "Fictional input records from this lesson; no real student identifiers"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and explain the purpose in the opening section."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the worked example and diagram; ask learners to trace each step aloud."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2, then compare predictions with observed results."
+      ],
+      [
+        "33 to 45 minutes",
+        "Collect the guided prediction before running; discuss a mismatch and its cause."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the main rule without showing the previous answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to diagnose and repair the stated failure; rerun an earlier case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including code or plan, predictions and explanations, before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit; use the fresh retry when support was needed."
+      ]
+    ],
+    "guidedAnswer": "No. It would incorrectly accept 11 when the limit is 10. Exit: The strict comparison excluded the boundary; changed < to <=; below/at/above and prior checks rerun; finite tests and untested situations remain. Accept equivalent specific records.",
+    "misconceptions": [
+      [
+        "A successful run proves the conclusion",
+        "A clean regression run does not erase the earlier failure. Keep before/after evidence and remaining limitations. If a fix was informed by reserved evaluation cases, report that contamination and obtain new independent cases."
+      ],
+      [
+        "Matching the example is enough",
+        "Require the new W4 case, explicit predictions and an explanation. Fresh retry: rating validity should include 0 through 5 but a bug uses 0 < rating < 5. Repair to inclusive bounds; test -1,0,1,5,6 giving False,True,True,True,False."
+      ],
+      [
+        "A convenient shortcut preserves meaning",
+        "Changing the expected boundary result to False would make the test pass while violating the requirement. Keep the requirement and independently calculated expectation; repair the implementation. If requirements truly change, document that as a policy change."
+      ]
+    ],
+    "assessment": "Independent W4 evidence: Use minutes <= limit after validation. Expectations True, True, False, True. Include a deterministic tie case and a schema-invalid row that never reaches selection; state expected outcomes. Record whether the learner needed no help, a hint or explanation. Fresh retry: rating validity should include 0 through 5 but a bug uses 0 < rating < 5. Repair to inclusive bounds; test -1,0,1,5,6 giving False,True,True,True,False.",
+    "support": "Compare a requirement sentence and one condition side by side. Extension: introduce one deliberate mutation and explain which regression case detects it.",
+    "next": "Next week: Defending the data application. Reuse this week's explicit contracts and evidence."
+  }
+}

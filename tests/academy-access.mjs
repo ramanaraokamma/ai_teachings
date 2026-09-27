@@ -127,7 +127,10 @@ try {
   const html=(await (await request('/learn/student/curriculum',session('student'))).text()).replace(/<!--.*?-->/gs,'');
   assert.ok(html.includes(`${Object.keys(v3).length} of 252 weekly packages released`));assert.equal((html.match(/class="v3-level"/g)||[]).length,7);
   assert.equal((html.match(/class="v3-status v3-planned"/g)||[]).length,252-Object.keys(v3).length);
-  for(const path of ['/learn/student/curriculum/ai-2/1','/learn/student/curriculum/ai-7/1','/learn/student/curriculum/ai-1/01','/learn/student/curriculum/ai-1/1?resource=bad'])assert.equal((await request(path,session('student'))).status,404);
+  const progression=JSON.parse(await readFile('curriculum-v3/progression.json','utf8'));
+  const planned=progression.levels.flatMap(level=>level.weeks.map((_,i)=>`${level.slug}/${i+1}`)).filter(id=>!v3[id]);
+  const unavailable=[...new Set([planned[0],planned.at(-1)].filter(Boolean))].map(id=>`/learn/student/curriculum/${id}`);
+  for(const path of [...unavailable,'/learn/student/curriculum/ai-1/01','/learn/student/curriculum/ai-1/1?resource=bad'])assert.equal((await request(path,session('student'))).status,404);
  });
  await check('All rebuilt pages contain canonical content and separate teacher answers',async()=>{
   const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#x27;');
@@ -138,7 +141,7 @@ try {
     const h=(await r.text()).replace(/<!--.*?-->/gs,'');assert.ok(h.includes(release.sourceHash));assert.ok(h.includes(esc(w.title)));assert.match(r.headers.get('cache-control'),/no-store/);
     if(resource==='guide'){for(const task of w.workbook)assert.ok(h.includes(esc(task.answer)),`${id}: answer missing`);}
     else {assert.doesNotMatch(h,/data-teacher-answers/);for(const task of w.workbook)assert.ok(!h.includes(esc(task.answer)),`${id}: teacher answer leaked`);}
-    if(resource==='lesson')for(const section of w.lesson)for(const b of section.blocks)if(b.type==='paragraph')assert.ok(h.includes(esc(b.text)),`${id}: lesson paragraph missing`);
+    if(resource==='lesson')for(const section of w.lesson)for(const b of section.blocks)if(b.type==='paragraph'||b.type==='code')assert.ok(h.includes(esc(b.text)),`${id}: lesson paragraph missing`);
     if(resource==='workbook')for(const task of w.workbook)assert.ok(h.includes(esc(task.prompt)),`${id}: prompt missing`);
     for(const ext of ['docx','pdf'])assert.ok(h.includes(release.documents[`${resource}.${ext}`].id));
    }

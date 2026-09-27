@@ -1,0 +1,218 @@
+{
+  "level": "ai-2",
+  "week": 27,
+  "title": "Exceptions and recovery",
+  "minutes": 90,
+  "goals": [
+    "Handle expected exceptions specifically",
+    "Keep parse failures distinct from valid zero",
+    "Return a clear outcome for every input path"
+  ],
+  "prerequisite": {
+    "prompt": "Which error can int(\"twelve\") raise?",
+    "answer": "ValueError."
+  },
+  "vocabulary": [
+    [
+      "Exception",
+      "A signal that an operation could not complete normally"
+    ],
+    [
+      "Handler",
+      "Code that responds to a specified exception"
+    ],
+    [
+      "Recovery",
+      "A defined next step after a failure"
+    ],
+    [
+      "Status",
+      "A label stating the outcome of a processing step"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A small parser receives duration text. Its contract permits a string representing a nonnegative integer up to 60. Invalid numeric text should return a clear status rather than crash or pretend that the duration was zero. Test both the successful and failing paths."
+        }
+      ]
+    },
+    {
+      "title": "Work through the example",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "def parse_minutes(text):\n    try:\n        value = int(text)\n    except ValueError:\n        return {\"status\": \"invalid text\", \"value\": None}\n    if value < 0 or value > 60:\n        return {\"status\": \"out of range\", \"value\": None}\n    return {\"status\": \"ok\", \"value\": value}\n\nfor text in [\"12\", \"zero\", \"0\", \"61\"]:\n    print(parse_minutes(text))"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow the evidence",
+          "columns": [
+            "Step or case",
+            "Evidence",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "\"12\" or \"0\"",
+              "Conversion and range pass",
+              "ok with numeric value"
+            ],
+            [
+              "\"zero\"",
+              "Conversion fails",
+              "invalid text with None"
+            ],
+            [
+              "\"61\"",
+              "Integer outside range",
+              "out of range with None"
+            ]
+          ],
+          "caption": "Read each row from left to right and connect the evidence to the stated rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "try covers the operation expected to fail; except ValueError handles that known conversion failure. Returning early ends the failing path. This contract expects a string: it does not claim to handle every possible object. Spaces around an integer are accepted by int, and that behavior should be documented."
+        }
+      ]
+    },
+    {
+      "title": "Predict before running",
+      "blocks": [
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Predict statuses and values for \"-1\", \" 5 \" and \"3.5\".",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Find and explain the failure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A bare except that returns 0 hides unrelated programming errors and corrupts missing values. Catch the expected exception, preserve an error status and keep the unknown value as None. If file reading is added, handle FileNotFoundError separately with an actionable message."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Recovery must fit the task. A caller may ask for corrected input or exclude the row with a recorded reason. It must not use None as a number or claim that rejected records were successfully processed."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A batch has 8 valid and 2 invalid lines. What should its report include?",
+          "lines": 6
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Trace success",
+      "prompt": "What does parse_minutes(\"0\") return, and why is zero allowed?",
+      "answer": "A record with status ok and value 0; zero meets the inclusive range.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Trace two failures",
+      "prompt": "Compare parse_minutes(\"abc\") and parse_minutes(\"70\").",
+      "answer": "abc gives invalid text/None; 70 gives out of range/None. Both fail but for different reasons.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair a handler",
+      "prompt": "An except block returns 0 for any failure. State two problems and a repair.",
+      "answer": "It confuses failure with observed zero and may hide unrelated bugs. Catch ValueError, return an explicit status and None, then validate range.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Build independently",
+      "prompt": "Adapt the function for count strings representing integers 0 through 10. Test \"4\", \"0\", \"11\", \"four\" and \"-1\" and record status/value.",
+      "answer": "4 and 0 give ok with 4 and 0; 11 and -1 give out of range/None; four gives invalid text/None. Use specific handling and explicit range checks.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Choose recovery",
+      "prompt": "A batch has 8 valid and 2 invalid lines. What should its report include?",
+      "answer": "Accepted count 8, rejected count 2 and reasons; summaries apply to accepted data. Preserve raw input for authorized correction.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach Week 27 as a two-session investigation using fictional data. A small parser receives duration text. Its contract permits a string representing a nonnegative integer up to 60. Invalid numeric text should return a clear status rather than crash or pretend that the duration was zero. Test both the successful and failing paths. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+    "materials": [
+      "Python 3 editor with a fresh local practice file",
+      "Paper trace table and the student workbook",
+      "Fictional input records from this lesson; no real student identifiers"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and explain the purpose in the opening section."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the worked example and diagram; ask learners to trace each step aloud."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2, then compare predictions with observed results."
+      ],
+      [
+        "33 to 45 minutes",
+        "Collect the guided prediction before running; discuss a mismatch and its cause."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the main rule without showing the previous answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to diagnose and repair the stated failure; rerun an earlier case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including code or plan, predictions and explanations, before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit; use the fresh retry when support was needed."
+      ]
+    ],
+    "guidedAnswer": "out of range/None, ok/5, invalid text/None. Exit: Accepted count 8, rejected count 2 and reasons; summaries apply to accepted data. Preserve raw input for authorized correction.",
+    "misconceptions": [
+      [
+        "A successful run proves the conclusion",
+        "Recovery must fit the task. A caller may ask for corrected input or exclude the row with a recorded reason. It must not use None as a number or claim that rejected records were successfully processed."
+      ],
+      [
+        "Matching the example is enough",
+        "Require the new W4 case, explicit predictions and an explanation. Fresh retry: integer score strings 0 through 5. \"5\" ok/5, \"6\" out of range/None, \"\" invalid text/None, \"0\" ok/0."
+      ],
+      [
+        "A convenient shortcut preserves meaning",
+        "A bare except that returns 0 hides unrelated programming errors and corrupts missing values. Catch the expected exception, preserve an error status and keep the unknown value as None. If file reading is added, handle FileNotFoundError separately with an actionable message."
+      ]
+    ],
+    "assessment": "Independent W4 evidence: 4 and 0 give ok with 4 and 0; 11 and -1 give out of range/None; four gives invalid text/None. Use specific handling and explicit range checks. Record whether the learner needed no help, a hint or explanation. Fresh retry: integer score strings 0 through 5. \"5\" ok/5, \"6\" out of range/None, \"\" invalid text/None, \"0\" ok/0.",
+    "support": "Use success and failure path cards. Extension: reject non-string input explicitly with a separate status before calling int.",
+    "next": "Next week: Versioned experiments. Reuse this week's explicit contracts and evidence."
+  }
+}

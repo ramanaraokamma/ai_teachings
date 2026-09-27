@@ -1,0 +1,248 @@
+{
+  "level": "ai-2",
+  "week": 3,
+  "title": "Expressions and operator order",
+  "minutes": 90,
+  "goals": [
+    "Evaluate numeric expressions using Python\u2019s grouping rules",
+    "Use parentheses to express the intended calculation",
+    "Distinguish ordinary division, whole groups and a remainder"
+  ],
+  "prerequisite": {
+    "prompt": "What is the difference between 8 + 2 and \"8\" + \"2\"?",
+    "answer": "Numeric addition gives 10; text concatenation gives the string 82. This week uses numeric values."
+  },
+  "vocabulary": [
+    [
+      "Expression",
+      "Code evaluated to produce a value"
+    ],
+    [
+      "Operator",
+      "A symbol such as + or * that specifies an operation"
+    ],
+    [
+      "Precedence",
+      "Rules that determine how an expression is grouped"
+    ],
+    [
+      "Parentheses",
+      "Symbols that make a grouping explicit"
+    ],
+    [
+      "Remainder",
+      "The amount left after forming whole groups"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Write the calculation the problem needs",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Three packs each contain eight counters, with two more loose counters. First count the packed counters, then add the loose ones. A program needs that structure, not just the right numbers. This week you will predict expressions, make grouping visible and check division against a physical interpretation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use numeric values in a fresh Python 3 script called expressions.py. Keep expected and observed results separate as before. Multiplication and division group more tightly than addition and subtraction. Parentheses let you state a different grouping. A correct calculation still depends on correct quantities and units."
+        }
+      ]
+    },
+    {
+      "title": "Read the grouping before calculating",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Two expressions with different meanings",
+          "columns": [
+            "Expression",
+            "First calculation",
+            "Final value"
+          ],
+          "rows": [
+            [
+              "3 * 8 + 2",
+              "3 * 8 is 24",
+              "24 + 2 is 26"
+            ],
+            [
+              "3 * (8 + 2)",
+              "8 + 2 is 10",
+              "3 * 10 is 30"
+            ],
+            [
+              "(3 * 8) + 2",
+              "3 * 8 is 24",
+              "24 + 2 is 26"
+            ]
+          ],
+          "caption": "Adding two inside every pack differs from adding two loose counters once."
+        },
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "packs = 3\nper_pack = 8\nloose = 2\ntotal = packs * per_pack + loose\nprint(total)"
+        },
+        {
+          "type": "paragraph",
+          "text": "The script displays 26. Replacing the total expression with packs * (per_pack + loose) displays 30, because it adds two to every pack. Parentheses are not decoration: they can change the represented situation. Write a brief phrase for each group before running."
+        }
+      ]
+    },
+    {
+      "title": "Work through equal-precedence operations",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "print(20 - 6 - 2)\nprint(20 - (6 - 2))\nprint(12 / 3 * 2)"
+        },
+        {
+          "type": "paragraph",
+          "text": "The first line groups subtraction from left to right: (20 - 6) - 2 gives 12. The second gives 16. Multiplication and division share a precedence level, so 12 / 3 * 2 groups as (12 / 3) * 2 and displays 8.0, not 2.0. Ordinary / division produces a float, even when the result is mathematically whole."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Explain why 18 - 4 * 3 gives 6 while (18 - 4) * 3 gives 42. Which operation is grouped first in each expression?",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "title": "Separate equal shares from whole groups",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "counters = 17\ngroup_size = 5\nprint(counters / group_size)\nprint(counters // group_size)\nprint(counters % group_size)"
+        },
+        {
+          "type": "paragraph",
+          "text": "The outputs are 3.4, 3 and 2. With nonnegative whole counters and a positive group size, // gives the number of complete groups and % gives the remainder: 17 = 3 * 5 + 2. Ordinary division answers a different question about a ratio; 3.4 complete five-counter groups cannot be built without splitting counters."
+        },
+        {
+          "type": "paragraph",
+          "text": "For nonnegative whole inputs, the remainder is at least zero and smaller than the group size. A group size of zero is invalid and division by zero raises an error. These whole-group interpretations assume nonnegative counts and positive group sizes; do not generalise them to negative quantities without examining Python\u2019s floor-division rule."
+        }
+      ]
+    },
+    {
+      "title": "Check the meaning and the result",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Keep the expression, substituted numbers, grouping, units and actual result. A bare number does not show why it answers the question. If an edit changes the grouping, preserve the old result and rerun a case where the expressions differ. Week 4 will turn comparisons into Boolean conditions."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A team has 23 whole tiles and puts 4 in each complete tray. Which operations find complete trays and leftover tiles? Predict both values and verify them by reconstructing 23. Explain why / alone does not answer both questions.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "State the intended grouping",
+      "prompt": "Write an expression for three packs of eight counters plus two loose counters. Explain why adding two within the parentheses for every pack describes a different situation.",
+      "answer": "3 * 8 + 2 or (3 * 8) + 2 gives 26. 3 * (8 + 2) gives 30 and adds two to each of three packs, not two once.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Predict then test expressions",
+      "prompt": "Predict 16 - 5 - 3, 16 - (5 - 3), and 18 / 3 * 2. Write the grouping, run each line and record actual results separately.",
+      "answer": "(16 - 5) - 3 is 8; 16 - (5 - 3) is 14; (18 / 3) * 2 is 12.0. Record any observed discrepancy and check the saved expression rather than copying expected results.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Explain whole groups",
+      "prompt": "For 17 counters in groups of 5, explain /, // and %. Show a multiplication-and-addition check for the complete groups and remainder.",
+      "answer": "/ gives 3.4; // gives 3; % gives 2. The reconstruction is 3 * 5 + 2 = 17, with remainder 2 less than group size 5. Only three complete groups can be made.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Translate a new situation independently",
+      "prompt": "Four trays hold six tiles each and five tiles are loose. Write and evaluate the total expression. Then pack the total into complete groups of four and find the remainder. Explain why 4 * (6 + 5) is wrong for this story.",
+      "answer": "4 * 6 + 5 gives 29 tiles; 29 // 4 gives 7 groups and 29 % 4 gives 1 left. 7 * 4 + 1 reconstructs 29. 4 * (6 + 5) gives 44, adding five to every tray instead of once.",
+      "lines": 7
+    },
+    {
+      "id": "W5",
+      "title": "Check a limit",
+      "prompt": "Explain why a group size of zero must be excluded. State the assumptions that let complete groups and a remainder describe the packing task.",
+      "answer": "A zero-size group cannot define how many groups consume the counters; Python division by zero raises ZeroDivisionError. The physical task uses whole nonnegative counters and a positive whole group size, so the remainder is between zero and one less than group size.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach grouping through meaning before mnemonic rules. Multiplication and division share precedence; addition and subtraction share precedence. This lesson deliberately limits whole-group examples to nonnegative integers and positive divisors. Reference: Python tutorial arithmetic, https://docs.python.org/3/tutorial/introduction.html, and expression precedence, https://docs.python.org/3/reference/expressions.html#operator-precedence.",
+    "materials": [
+      "Python 3 editor with expressions.py and separate source/output areas",
+      "Counters or sketches of packs with separate loose items",
+      "Blank expression, grouping, expected and observed columns"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve numeric addition versus text joining."
+      ],
+      [
+        "7 to 20 minutes",
+        "Model packs and loose counters with the diagram; complete W1."
+      ],
+      [
+        "20 to 33 minutes",
+        "Read equal-precedence expressions from left to right and predict W2."
+      ],
+      [
+        "33 to 45 minutes",
+        "Run W2, compare results and collect the guided explanation."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Revisit one grouping disagreement with counters or brackets."
+      ],
+      [
+        "8 to 20 minutes",
+        "Model 17 counters in groups of five and complete W3."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including the reconstruction check."
+      ],
+      [
+        "35 to 45 minutes",
+        "Complete W5 and the exit, recording input assumptions and units."
+      ]
+    ],
+    "guidedAnswer": "In 18 - 4 * 3 multiplication groups first, giving 18 - 12 = 6. In (18 - 4) * 3 the parentheses give 14 * 3 = 42. Exit: 23 // 4 gives 5 trays and 23 % 4 gives 3 tiles; 5 * 4 + 3 = 23. / gives 5.75, a ratio rather than both requested whole-number counts.",
+    "misconceptions": [
+      [
+        "All operations are read left to right regardless of precedence",
+        "Establish grouping first; only operations at the same applicable precedence level group left to right here."
+      ],
+      [
+        "Parentheses never change a value",
+        "Compare the two packs expressions and their different stories."
+      ],
+      [
+        "Ordinary division always returns an integer",
+        "/ produces a float for these integer operands."
+      ],
+      [
+        "A remainder can be as large as the group size",
+        "For this positive whole-group case, another complete group would then be possible."
+      ]
+    ],
+    "assessment": "W4 needs 29, 7 and 1 with the meaning of the extra five and a reconstruction. After support, retry three trays of seven plus four loose: 25 total; groups of six give 4 complete groups and 1 left. Require an expression and explanation before a device result.",
+    "support": "Colour the pack calculation and loose quantity separately, then use the same grouping in code. Provide an operation legend without doing W4. Extension: devise two different expressions that agree for one input and differ for another, and explain the testing consequence.",
+    "next": "Week 4 introduces comparisons and Boolean conditions that express whether requirements hold."
+  }
+}

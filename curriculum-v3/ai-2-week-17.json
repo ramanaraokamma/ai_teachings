@@ -1,0 +1,218 @@
+{
+  "level": "ai-2",
+  "week": 17,
+  "title": "Mean median and unusual values",
+  "minutes": 90,
+  "goals": [
+    "Calculate mean and median",
+    "Investigate an unusual value before deleting it",
+    "Explain how a summary can hide variation"
+  ],
+  "prerequisite": {
+    "prompt": "What is the total of 2, 3 and 4?",
+    "answer": "9."
+  },
+  "vocabulary": [
+    [
+      "Mean",
+      "Sum of numeric values divided by their count"
+    ],
+    [
+      "Median",
+      "The middle of sorted values or mean of the two middle values"
+    ],
+    [
+      "Unusual value",
+      "A value far from most others in a dataset"
+    ],
+    [
+      "Variation",
+      "Differences among recorded values"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Five fictional activity durations are 2, 3, 3, 4 and 18 minutes. Most are near 3, but one is much longer. Different summaries reveal different aspects. Keep all values while investigating whether 18 is a genuine long activity or a recording error."
+        }
+      ]
+    },
+    {
+      "title": "Work through the example",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "values = [2, 3, 3, 4, 18]\nordered = sorted(values)\nmean = sum(values) / len(values)\nmedian = ordered[len(ordered) // 2]\nprint(mean)\nprint(median)"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow the evidence",
+          "columns": [
+            "Step or case",
+            "Evidence",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "Sorted data",
+              "2, 3, 3, 4, 18",
+              "Middle is 3"
+            ],
+            [
+              "Mean",
+              "30 divided by 5",
+              "6.0"
+            ],
+            [
+              "Typical middle",
+              "Third of five values",
+              "3"
+            ]
+          ],
+          "caption": "Read each row from left to right and connect the evidence to the stated rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "The script prints 6.0 and 3. sorted returns a sorted list without changing the original. This median expression works for a nonempty odd-length list only. For four sorted values, average the second and third. Do not use this odd-length shortcut for every dataset."
+        }
+      ]
+    },
+    {
+      "title": "Predict before running",
+      "blocks": [
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Replace 18 with 8. Calculate the new mean and median.",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Find and explain the failure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Taking the middle item of an unsorted list can give the wrong median. For [18, 2, 4, 3, 3], the middle item is 4, but the sorted median is 3. Sort first. For an empty list, there is no mean or median under this lesson's rules."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Removing 18 merely because it raises the mean would hide evidence. Check collection notes, keep an audit trail and compare summaries with and without it only with a clear explanation."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A dataset is empty. Is reporting a mean of 0 justified?",
+          "lines": 6
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Compute a mean",
+      "prompt": "Find the mean of 4, 4, 6, 6 and 10.",
+      "answer": "Sum 30 divided by 5 gives 6.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Compute two medians",
+      "prompt": "Find medians of [9, 1, 3] and [8, 2, 4, 6].",
+      "answer": "Sorted first list 1, 3, 9 has median 3. Sorted second 2, 4, 6, 8 has median (4 + 6)/2 = 5.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair an explanation",
+      "prompt": "A learner deletes 18 because it is above the mean. What evidence is needed before correcting or excluding it?",
+      "answer": "Check original measurement and collection rules. Being above the mean alone is not an error. Retain the raw record and document any justified correction.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Compare summaries independently",
+      "prompt": "For 1, 2, 2, 3 and 12, calculate mean and median. Then replace 12 with 2 and recalculate. Explain the change.",
+      "answer": "Original sum 20, mean 4, median 2. Revised sum 10, mean 2, median 2. The large value changes mean more than median in this example.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Report missing evidence",
+      "prompt": "A dataset is empty. Is reporting a mean of 0 justified?",
+      "answer": "No. Zero would be a measured summary; no numeric observations are available.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach Week 17 as a two-session investigation using fictional data. Five fictional activity durations are 2, 3, 3, 4 and 18 minutes. Most are near 3, but one is much longer. Different summaries reveal different aspects. Keep all values while investigating whether 18 is a genuine long activity or a recording error. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+    "materials": [
+      "Python 3 editor with a fresh local practice file",
+      "Paper trace table and the student workbook",
+      "Fictional input records from this lesson; no real student identifiers"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and explain the purpose in the opening section."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the worked example and diagram; ask learners to trace each step aloud."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2, then compare predictions with observed results."
+      ],
+      [
+        "33 to 45 minutes",
+        "Collect the guided prediction before running; discuss a mismatch and its cause."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the main rule without showing the previous answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to diagnose and repair the stated failure; rerun an earlier case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including code or plan, predictions and explanations, before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit; use the fresh retry when support was needed."
+      ]
+    ],
+    "guidedAnswer": "Sum 20; mean 4; median remains 3. Exit: No. Zero would be a measured summary; no numeric observations are available.",
+    "misconceptions": [
+      [
+        "A successful run proves the conclusion",
+        "Removing 18 merely because it raises the mean would hide evidence. Check collection notes, keep an audit trail and compare summaries with and without it only with a clear explanation."
+      ],
+      [
+        "Matching the example is enough",
+        "Require the new W4 case, explicit predictions and an explanation. Fresh retry: 2, 4, 4, 5, 15 has sum 30, mean 6 and median 4. Replacing 15 with 5 gives sum 20, mean 4 and median 4."
+      ],
+      [
+        "A convenient shortcut preserves meaning",
+        "Taking the middle item of an unsorted list can give the wrong median. For [18, 2, 4, 3, 3], the middle item is 4, but the sorted median is 3. Sort first. For an empty list, there is no mean or median under this lesson's rules."
+      ]
+    ],
+    "assessment": "Independent W4 evidence: Original sum 20, mean 4, median 2. Revised sum 10, mean 2, median 2. The large value changes mean more than median in this example. Record whether the learner needed no help, a hint or explanation. Fresh retry: 2, 4, 4, 5, 15 has sum 30, mean 6 and median 4. Replacing 15 with 5 gives sum 20, mean 4 and median 4.",
+    "support": "Order number cards physically. Extension: write a median function with explicit empty, odd and even cases and test each.",
+    "next": "Next week: Graphs and honest scales. Reuse this week's explicit contracts and evidence."
+  }
+}

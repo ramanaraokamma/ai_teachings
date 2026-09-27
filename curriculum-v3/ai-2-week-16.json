@@ -1,0 +1,218 @@
+{
+  "level": "ai-2",
+  "week": 16,
+  "title": "Summaries with counts and proportions",
+  "minutes": 90,
+  "goals": [
+    "Count categories with a stated denominator",
+    "Compute proportions from eligible records",
+    "Report excluded and unknown responses"
+  ],
+  "prerequisite": {
+    "prompt": "If 3 of 12 responses are Yes, what fraction are Yes?",
+    "answer": "3/12, which is 1/4."
+  },
+  "vocabulary": [
+    [
+      "Count",
+      "The number of matching records"
+    ],
+    [
+      "Denominator",
+      "The total number used in a fraction"
+    ],
+    [
+      "Proportion",
+      "A part divided by its relevant whole"
+    ],
+    [
+      "Eligible",
+      "Included under a stated rule"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A fictional poll asks whether a short activity was useful. Responses are Yes, No or Unknown. We will report Yes among known responses and also disclose unknown responses. Choosing a denominator changes the question being answered."
+        }
+      ]
+    },
+    {
+      "title": "Work through the example",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "responses = [\"Yes\", \"No\", \"Yes\", \"Unknown\", \"Yes\"]\nyes = 0\nknown = 0\nfor response in responses:\n    if response == \"Yes\" or response == \"No\":\n        known = known + 1\n        if response == \"Yes\":\n            yes = yes + 1\nif known > 0:\n    print(yes / known)\nelse:\n    print(\"No known responses\")"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow the evidence",
+          "columns": [
+            "Step or case",
+            "Evidence",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "Yes",
+              "3",
+              "Numerator"
+            ],
+            [
+              "Yes or No",
+              "4",
+              "Known denominator"
+            ],
+            [
+              "All supplied",
+              "5",
+              "Includes one unknown"
+            ]
+          ],
+          "caption": "Read each row from left to right and connect the evidence to the stated rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "The printed proportion is 0.75, or 75 percent, among four known responses. Yes among all five supplied responses is 0.6, or 60 percent. Both calculations are correct when labelled; they describe different denominators. Unknown must not silently become No."
+        }
+      ]
+    },
+    {
+      "title": "Predict before running",
+      "blocks": [
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "For Yes, No, Unknown, Unknown, calculate Yes among known and Yes among all supplied.",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Find and explain the failure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Dividing by known when it equals 0 causes ZeroDivisionError. Test known > 0 before division and report no known responses if none exist. Reporting 0 percent would wrongly suggest known responses with no Yes answers."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A percentage from a few volunteers is not automatically representative of the whole class. Report counts, the question, who responded and exclusions alongside the percentage."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Three of five known volunteers said Yes. Can you say 60 percent of all students agree?",
+          "lines": 6
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "State the denominator",
+      "prompt": "In the worked poll, why is the known denominator 4 rather than 5?",
+      "answer": "Only Yes and No are included; one Unknown is excluded and must be disclosed.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Compare proportions",
+      "prompt": "Poll A has 2 Yes of 4 known and Poll B has 3 Yes of 6 known. Compare proportions and counts.",
+      "answer": "Both are 50 percent. Counts and sample sizes differ: 2/4 versus 3/6.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair zero division",
+      "prompt": "All three responses are Unknown. What should the program report?",
+      "answer": "No known responses, with 3 unknown. Do not divide by zero or report 0 percent as a measured proportion.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Summarize independently",
+      "prompt": "Process Yes, Yes, No, Unknown, No, Yes. Report Yes count, known count, unknown count and Yes proportion among known.",
+      "answer": "3 Yes, 5 known, 1 unknown; 3/5 = 0.6 = 60 percent.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Avoid overclaiming",
+      "prompt": "Three of five known volunteers said Yes. Can you say 60 percent of all students agree?",
+      "answer": "No. The denominator is known volunteers, and participation may not represent all students.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach Week 16 as a two-session investigation using fictional data. A fictional poll asks whether a short activity was useful. Responses are Yes, No or Unknown. We will report Yes among known responses and also disclose unknown responses. Choosing a denominator changes the question being answered. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+    "materials": [
+      "Python 3 editor with a fresh local practice file",
+      "Paper trace table and the student workbook",
+      "Fictional input records from this lesson; no real student identifiers"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and explain the purpose in the opening section."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the worked example and diagram; ask learners to trace each step aloud."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2, then compare predictions with observed results."
+      ],
+      [
+        "33 to 45 minutes",
+        "Collect the guided prediction before running; discuss a mismatch and its cause."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the main rule without showing the previous answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to diagnose and repair the stated failure; rerun an earlier case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including code or plan, predictions and explanations, before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit; use the fresh retry when support was needed."
+      ]
+    ],
+    "guidedAnswer": "1/2 = 50 percent among known; 1/4 = 25 percent among all supplied. Exit: No. The denominator is known volunteers, and participation may not represent all students.",
+    "misconceptions": [
+      [
+        "A successful run proves the conclusion",
+        "A percentage from a few volunteers is not automatically representative of the whole class. Report counts, the question, who responded and exclusions alongside the percentage."
+      ],
+      [
+        "Matching the example is enough",
+        "Require the new W4 case, explicit predictions and an explanation. Fresh retry: No, Yes, Unknown, No, Unknown gives 1 Yes of 3 known, about 33.3 percent, with 2 unknown. Accept 1/3 without rounding."
+      ],
+      [
+        "A convenient shortcut preserves meaning",
+        "Dividing by known when it equals 0 causes ZeroDivisionError. Test known > 0 before division and report no known responses if none exist. Reporting 0 percent would wrongly suggest known responses with no Yes answers."
+      ]
+    ],
+    "assessment": "Independent W4 evidence: 3 Yes, 5 known, 1 unknown; 3/5 = 0.6 = 60 percent. Record whether the learner needed no help, a hint or explanation. Fresh retry: No, Yes, Unknown, No, Unknown gives 1 Yes of 3 known, about 33.3 percent, with 2 unknown. Accept 1/3 without rounding.",
+    "support": "Use fraction bars with separate unknown cards. Extension: show both denominators side by side with explicit labels.",
+    "next": "Next week: Mean median and unusual values. Reuse this week's explicit contracts and evidence."
+  }
+}

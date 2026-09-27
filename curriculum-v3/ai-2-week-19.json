@@ -1,0 +1,218 @@
+{
+  "level": "ai-2",
+  "week": 19,
+  "title": "Questions populations and samples",
+  "minutes": 90,
+  "goals": [
+    "Define a question and target population",
+    "Describe how a sample was selected",
+    "Limit conclusions to supported groups"
+  ],
+  "prerequisite": {
+    "prompt": "If 6 of 10 responses choose Reading, what is the observed proportion?",
+    "answer": "6/10 = 60 percent among those responses."
+  },
+  "vocabulary": [
+    [
+      "Population",
+      "The full group a question concerns"
+    ],
+    [
+      "Sample",
+      "The observed subset of that group"
+    ],
+    [
+      "Sampling frame",
+      "The list or source from which a sample is selected"
+    ],
+    [
+      "Response",
+      "A recorded answer from a selected participant"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A fictional school wants to know which activity Grade 7 students prefer. Surveying only the coding club is easy, but the question concerns every Grade 7 student. First define the population, selection process, question and response options. No real student data is required for this exercise."
+        }
+      ]
+    },
+    {
+      "title": "Work through the example",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "rows = [{\"group\": \"club\", \"choice\": \"Code\"},\n        {\"group\": \"club\", \"choice\": \"Read\"},\n        {\"group\": \"club\", \"choice\": \"Code\"}]\ncode_votes = 0\nfor row in rows:\n    if row[\"choice\"] == \"Code\":\n        code_votes = code_votes + 1\nprint(code_votes, len(rows))"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow the evidence",
+          "columns": [
+            "Step or case",
+            "Evidence",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "Target",
+              "All Grade 7 students",
+              "Population"
+            ],
+            [
+              "Available data",
+              "Three club responses",
+              "Sample"
+            ],
+            [
+              "Observed result",
+              "2 of 3 choose Code",
+              "Describes respondents"
+            ]
+          ],
+          "caption": "Read each row from left to right and connect the evidence to the stated rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "The result 2 of 3 describes these fictional club responses. It cannot by itself estimate the whole grade reliably. A better plan starts from a complete grade roster, uses a fair selection method and records nonresponse. Random selection gives each listed student a chance; it does not guarantee every small sample is representative."
+        }
+      ]
+    },
+    {
+      "title": "Predict before running",
+      "blocks": [
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "If the school adds 20 more club responses, which coverage problem remains?",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Find and explain the failure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Changing the report heading from club responses to all students does not fix sampling. Change the collection plan or narrow the claim. Avoid collecting names when anonymous counts are sufficient; a teacher can manage selection without publishing identities."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Selection and response are separate. Even a fair invitation sample can be distorted if only interested students respond. Report numbers invited and responding and explain who may be absent."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Twenty students are selected fairly but only 8 answer. Does fair selection remove the need to report nonresponse?",
+          "lines": 6
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Define the population",
+      "prompt": "The question is whether all Grade 7 students prefer a longer lunch. Name the population and one unsuitable sample.",
+      "answer": "Population: all Grade 7 students. Only lunch-club members or one friend group is an unsuitable basis for a whole-grade claim.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Read the sample result",
+      "prompt": "Seven of 12 fictional respondents prefer longer lunch. State the result without generalizing.",
+      "answer": "7/12 of these respondents prefer longer lunch, about 58.3 percent.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair a claim",
+      "prompt": "A report says all Grade 7 prefers coding after surveying only the coding club. Rewrite it.",
+      "answer": "Among surveyed coding-club respondents, the observed choices favored coding; the result does not establish the whole grade preference.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Plan independently",
+      "prompt": "Design an anonymous sample plan to ask all Grade 7 about three activity choices. State population, sampling frame, selection method, question, and how you will report nonresponse.",
+      "answer": "Use the full grade roster, teacher-managed random selection or a clearly described balanced plan, neutral identical options, anonymous response records and invited/responded counts. Explain limits of nonresponse and small samples.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Separate invitation and response",
+      "prompt": "Twenty students are selected fairly but only 8 answer. Does fair selection remove the need to report nonresponse?",
+      "answer": "No. The 12 nonrespondents may differ. Report 8 of 20 and the limitation.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach Week 19 as a two-session investigation using fictional data. A fictional school wants to know which activity Grade 7 students prefer. Surveying only the coding club is easy, but the question concerns every Grade 7 student. First define the population, selection process, question and response options. No real student data is required for this exercise. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+    "materials": [
+      "Python 3 editor with a fresh local practice file",
+      "Paper trace table and the student workbook",
+      "Fictional input records from this lesson; no real student identifiers"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and explain the purpose in the opening section."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the worked example and diagram; ask learners to trace each step aloud."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2, then compare predictions with observed results."
+      ],
+      [
+        "33 to 45 minutes",
+        "Collect the guided prediction before running; discuss a mismatch and its cause."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the main rule without showing the previous answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to diagnose and repair the stated failure; rerun an earlier case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including code or plan, predictions and explanations, before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit; use the fresh retry when support was needed."
+      ]
+    ],
+    "guidedAnswer": "Students outside the club are still not represented by the selection process. Exit: No. The 12 nonrespondents may differ. Report 8 of 20 and the limitation.",
+    "misconceptions": [
+      [
+        "A successful run proves the conclusion",
+        "Selection and response are separate. Even a fair invitation sample can be distorted if only interested students respond. Report numbers invited and responding and explain who may be absent."
+      ],
+      [
+        "Matching the example is enough",
+        "Require the new W4 case, explicit predictions and an explanation. Fresh retry: plan a sample about library opening times for the whole grade. A library-club-only survey fails coverage; require a full-grade frame and nonresponse plan."
+      ],
+      [
+        "A convenient shortcut preserves meaning",
+        "Changing the report heading from club responses to all students does not fix sampling. Change the collection plan or narrow the claim. Avoid collecting names when anonymous counts are sufficient; a teacher can manage selection without publishing identities."
+      ]
+    ],
+    "assessment": "Independent W4 evidence: Use the full grade roster, teacher-managed random selection or a clearly described balanced plan, neutral identical options, anonymous response records and invited/responded counts. Explain limits of nonresponse and small samples. Record whether the learner needed no help, a hint or explanation. Fresh retry: plan a sample about library opening times for the whole grade. A library-club-only survey fails coverage; require a full-grade frame and nonresponse plan.",
+    "support": "Use fictional roster cards. Extension: draw several small random samples from a known fictional population and compare their proportions.",
+    "next": "Next week: Selection bias and coverage. Reuse this week's explicit contracts and evidence."
+  }
+}

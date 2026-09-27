@@ -1,0 +1,213 @@
+{
+  "level": "ai-2",
+  "week": 13,
+  "title": "Rows columns and schemas",
+  "minutes": 90,
+  "goals": [
+    "Specify a table schema",
+    "Check types and units as well as names",
+    "Distinguish structural validity from truth"
+  ],
+  "prerequisite": {
+    "prompt": "What does row[\"used\"] mean?",
+    "answer": "Look up the value associated with the key \"used\" in that record."
+  },
+  "vocabulary": [
+    [
+      "Schema",
+      "Rules for the fields and values in records"
+    ],
+    [
+      "Type",
+      "A category such as integer or text"
+    ],
+    [
+      "Unit",
+      "The quantity scale attached to a number"
+    ],
+    [
+      "Constraint",
+      "A rule a valid record must satisfy"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A fictional classroom logs the duration of each activity. Before comparing durations, define a schema: activity is nonempty text, minutes is an integer from 0 through 60, and each row describes one activity session. These decisions make data interpretable."
+        }
+      ]
+    },
+    {
+      "title": "Work through the example",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "rows = [{\"activity\": \"Reading\", \"minutes\": 12},\n        {\"activity\": \"Sorting\", \"minutes\": 0}]\nfor row in rows:\n    valid = (type(row[\"activity\"]) is str\n             and len(row[\"activity\"]) > 0\n             and type(row[\"minutes\"]) is int\n             and 0 <= row[\"minutes\"] <= 60)\n    print(valid)"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow the evidence",
+          "columns": [
+            "Step or case",
+            "Evidence",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "activity",
+              "Nonempty text",
+              "Names the session activity"
+            ],
+            [
+              "minutes",
+              "Integer 0 through 60",
+              "Duration in minutes"
+            ]
+          ],
+          "caption": "Read each row from left to right and connect the evidence to the stated rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "The worked script prints True twice. type(value) is int checks the exact type here and avoids accepting a Boolean as a count. The chained comparison checks both boundaries. The example assumes both keys exist; next week handles missing fields. A zero duration is allowed by this written schema."
+        }
+      ]
+    },
+    {
+      "title": "Predict before running",
+      "blocks": [
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Would minutes of 61, \"12\" and 12 each pass? Explain the type distinction.",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Find and explain the failure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "If one row records 120 seconds in the minutes field, a simple numeric total becomes misleading. Correct the source or explicitly convert and document it; renaming a column alone does not convert values."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A row can satisfy every schema rule and still be a wrong observation. Schema validation checks our stated structure and constraints, not whether someone measured honestly or selected a representative sample."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A row says Reading, 12 and passes. Does that establish the session really lasted 12 minutes?",
+          "lines": 6
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "State a schema",
+      "prompt": "List the required fields, types and duration boundaries for the worked table.",
+      "answer": "activity: nonempty text; minutes: integer from 0 to 60 inclusive.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Classify records",
+      "prompt": "Classify minutes values 0, 60, -1 and 61 under this schema.",
+      "answer": "0 and 60 pass; -1 and 61 fail.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair a unit problem",
+      "prompt": "A source says 180 seconds but the row says minutes: 180. Give a documented correction.",
+      "answer": "Divide by 60 to record 3 minutes and retain the source value and conversion note.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Design a schema independently",
+      "prompt": "For a fictional shelf audit, define label and book_count fields. Require a nonempty text label and an integer count from 0 to 40. Give two valid and two invalid records with reasons.",
+      "answer": "Examples: A/0 and B/40 valid; empty label/5 invalid label; C/41 invalid range. Text \"5\" also fails the count type. Accept alternatives meeting the written rules.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Separate validity and truth",
+      "prompt": "A row says Reading, 12 and passes. Does that establish the session really lasted 12 minutes?",
+      "answer": "No. The value has a permitted structure but still needs trustworthy collection evidence.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach Week 13 as a two-session investigation using fictional data. A fictional classroom logs the duration of each activity. Before comparing durations, define a schema: activity is nonempty text, minutes is an integer from 0 through 60, and each row describes one activity session. These decisions make data interpretable. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+    "materials": [
+      "Python 3 editor with a fresh local practice file",
+      "Paper trace table and the student workbook",
+      "Fictional input records from this lesson; no real student identifiers"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and explain the purpose in the opening section."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the worked example and diagram; ask learners to trace each step aloud."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2, then compare predictions with observed results."
+      ],
+      [
+        "33 to 45 minutes",
+        "Collect the guided prediction before running; discuss a mismatch and its cause."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the main rule without showing the previous answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to diagnose and repair the stated failure; rerun an earlier case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including code or plan, predictions and explanations, before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit; use the fresh retry when support was needed."
+      ]
+    ],
+    "guidedAnswer": "61 fails the range; \"12\" fails the integer type; 12 passes. Exit: No. The value has a permitted structure but still needs trustworthy collection evidence.",
+    "misconceptions": [
+      [
+        "A successful run proves the conclusion",
+        "A row can satisfy every schema rule and still be a wrong observation. Schema validation checks our stated structure and constraints, not whether someone measured honestly or selected a representative sample."
+      ],
+      [
+        "Matching the example is enough",
+        "Require the new W4 case, explicit predictions and an explanation. Fresh retry: define a tray label and integer count 0 through 20. Require tests at 0, 20, -1 and 21 and a text count."
+      ],
+      [
+        "A convenient shortcut preserves meaning",
+        "If one row records 120 seconds in the minutes field, a simple numeric total becomes misleading. Correct the source or explicitly convert and document it; renaming a column alone does not convert values."
+      ]
+    ],
+    "assessment": "Independent W4 evidence: Examples: A/0 and B/40 valid; empty label/5 invalid label; C/41 invalid range. Text \"5\" also fails the count type. Accept alternatives meeting the written rules. Record whether the learner needed no help, a hint or explanation. Fresh retry: define a tray label and integer count 0 through 20. Require tests at 0, 20, -1 and 21 and a text count.",
+    "support": "Use a schema card beside each record. Extension: explain how allowing decimal durations would change both type and rounding rules.",
+    "next": "Next week: Missing values and validation. Reuse this week's explicit contracts and evidence."
+  }
+}

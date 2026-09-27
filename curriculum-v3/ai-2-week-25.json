@@ -1,0 +1,218 @@
+{
+  "level": "ai-2",
+  "week": 25,
+  "title": "File input and output",
+  "minutes": 90,
+  "goals": [
+    "Read a small local data file",
+    "Close files reliably with a context manager",
+    "Separate raw text from parsed numbers"
+  ],
+  "prerequisite": {
+    "prompt": "Is \"12\" immediately usable as an integer count?",
+    "answer": "It is text; conversion and validation are needed."
+  },
+  "vocabulary": [
+    [
+      "File",
+      "Stored data with a name and location"
+    ],
+    [
+      "Path",
+      "A location used to find a file"
+    ],
+    [
+      "Encoding",
+      "A rule for representing text as bytes"
+    ],
+    [
+      "Context manager",
+      "A with block that manages a resource such as closing a file"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Use a teacher-provided local sandbox folder, never a real personal file. Create durations.txt with two lines: 12 and 8. The goal is to read the text, convert it to integers and report the total. Keep the original file unchanged for this activity."
+        }
+      ]
+    },
+    {
+      "title": "Work through the example",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "with open(\"durations.txt\", \"r\", encoding=\"utf-8\") as handle:\n    lines = handle.read().splitlines()\nvalues = []\nfor line in lines:\n    values.append(int(line))\nprint(sum(values))"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow the evidence",
+          "columns": [
+            "Step or case",
+            "Evidence",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "Local file",
+              "12 then 8 on separate lines",
+              "Read as text"
+            ],
+            [
+              "Conversion",
+              "\"12\" to 12 and \"8\" to 8",
+              "Integer values"
+            ],
+            [
+              "Summary",
+              "12 + 8",
+              "Print 20"
+            ]
+          ],
+          "caption": "Read each row from left to right and connect the evidence to the stated rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "The mode r means read. with closes the file when the block finishes, including when an error occurs. splitlines separates lines without retaining newline characters. This example assumes each line is a valid integer text; an empty line or twelve raises ValueError during int conversion."
+        }
+      ]
+    },
+    {
+      "title": "Predict before running",
+      "blocks": [
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "If the file contains 0, 3 and 7 on separate lines, predict the values and total.",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Find and explain the failure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "If Python cannot find durations.txt, it raises FileNotFoundError. Check the current working folder and exact filename. Do not switch to write mode to solve a missing input: opening an existing file with w would replace its contents."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "File reading does not establish that the values are valid durations. After conversion, apply the schema and record any rejected lines. Do not upload personal records to an external tool for this exercise."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "The file contains twelve on one line. Why should the program not silently turn it into zero?",
+          "lines": 6
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Trace types",
+      "prompt": "Before and after int(\"8\"), identify the types and values.",
+      "answer": "Before: text \"8\". After: integer 8.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Predict the total",
+      "prompt": "A sandbox file has lines 5, 0 and 2. What total does the worked reader print?",
+      "answer": "The parsed values sum to 5 + 0 + 2 = 7.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair a path issue",
+      "prompt": "The file is in the class-data folder but the script looks in its working folder. Give a safe repair.",
+      "answer": "Use the correct path to class-data/durations.txt or run from the intended folder. Keep read mode and do not overwrite the input.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Read independently",
+      "prompt": "In a fresh sandbox file counters.txt put 4, 6 and 0 on separate lines. Adapt the reader, print the number of values and total. State the expected results.",
+      "answer": "Read counters.txt as UTF-8 text, convert three lines to integers; count 3 and total 10. Keep the raw file unchanged.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Handle malformed data",
+      "prompt": "The file contains twelve on one line. Why should the program not silently turn it into zero?",
+      "answer": "It is a parse failure, not a measured zero. Flag the line and report the problem; silently substituting changes the evidence.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach Week 25 as a two-session investigation using fictional data. Use a teacher-provided local sandbox folder, never a real personal file. Create durations.txt with two lines: 12 and 8. The goal is to read the text, convert it to integers and report the total. Keep the original file unchanged for this activity. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+    "materials": [
+      "Python 3 editor with a fresh local practice file",
+      "Paper trace table and the student workbook",
+      "Fictional input records from this lesson; no real student identifiers"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and explain the purpose in the opening section."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the worked example and diagram; ask learners to trace each step aloud."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2, then compare predictions with observed results."
+      ],
+      [
+        "33 to 45 minutes",
+        "Collect the guided prediction before running; discuss a mismatch and its cause."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the main rule without showing the previous answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to diagnose and repair the stated failure; rerun an earlier case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including code or plan, predictions and explanations, before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit; use the fresh retry when support was needed."
+      ]
+    ],
+    "guidedAnswer": "Values [0, 3, 7], total 10. Exit: It is a parse failure, not a measured zero. Flag the line and report the problem; silently substituting changes the evidence.",
+    "misconceptions": [
+      [
+        "A successful run proves the conclusion",
+        "File reading does not establish that the values are valid durations. After conversion, apply the schema and record any rejected lines. Do not upload personal records to an external tool for this exercise."
+      ],
+      [
+        "Matching the example is enough",
+        "Require the new W4 case, explicit predictions and an explanation. Fresh retry: sandbox values 2, 7, 1, 0 give count 4 and total 10. An empty file yields count 0 and sum 0, which must be labelled no observations."
+      ],
+      [
+        "A convenient shortcut preserves meaning",
+        "If Python cannot find durations.txt, it raises FileNotFoundError. Check the current working folder and exact filename. Do not switch to write mode to solve a missing input: opening an existing file with w would replace its contents."
+      ]
+    ],
+    "assessment": "Independent W4 evidence: Read counters.txt as UTF-8 text, convert three lines to integers; count 3 and total 10. Keep the raw file unchanged. Record whether the learner needed no help, a hint or explanation. Fresh retry: sandbox values 2, 7, 1, 0 give count 4 and total 10. An empty file yields count 0 and sum 0, which must be labelled no observations.",
+    "support": "Provide the exact file and folder path. Extension: retain line numbers alongside parsed values to make corrections traceable.",
+    "next": "Next week: JSON and interface contracts. Reuse this week's explicit contracts and evidence."
+  }
+}

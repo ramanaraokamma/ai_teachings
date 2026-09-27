@@ -1,0 +1,218 @@
+{
+  "level": "ai-2",
+  "week": 31,
+  "title": "Planning the application",
+  "minutes": 90,
+  "goals": [
+    "Define a small application purpose",
+    "Turn requirements into checkable acceptance cases",
+    "Plan a feasible pipeline and human review"
+  ],
+  "prerequisite": {
+    "prompt": "Why must a recommendation show no eligible option when every item fails a hard constraint?",
+    "answer": "Otherwise it would silently violate the stated requirement."
+  },
+  "vocabulary": [
+    [
+      "Requirement",
+      "A statement of behavior the application must provide"
+    ],
+    [
+      "Acceptance case",
+      "An input and expected behavior used to judge a requirement"
+    ],
+    [
+      "Non-goal",
+      "Something intentionally outside project scope"
+    ],
+    [
+      "Prototype",
+      "A limited implementation for testing a design"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Plan a fictional activity chooser for a teacher-supervised 20-minute session. It will validate a small local dataset, exclude over-limit items, rank eligible items using 2 * fun + learning and break ties alphabetically. It will explain the result for human review. It will not book, message or collect personal student profiles."
+        }
+      ]
+    },
+    {
+      "title": "Work through the example",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "requirements = {\"limit\": 20, \"fun_weight\": 2,\n                \"learning_weight\": 1, \"tie\": \"name ascending\"}\nprint(requirements[\"limit\"])\nprint(requirements[\"tie\"])"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow the evidence",
+          "columns": [
+            "Step or case",
+            "Evidence",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "Input",
+              "Local fictional records",
+              "Validate schema"
+            ],
+            [
+              "Decision",
+              "Filter then score then tie rule",
+              "Explain selected item"
+            ],
+            [
+              "Output",
+              "Suggestion or no eligible item",
+              "Teacher reviews"
+            ]
+          ],
+          "caption": "Read each row from left to right and connect the evidence to the stated rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "Define fields name, minutes, fun and learning. Require a nonempty text name, integer minutes 0 through 60 and integer ratings 0 through 5. Reject duplicate names because the tie rule uses names as identifiers. Write cases before implementing so requirements do not drift to fit outputs."
+        }
+      ]
+    },
+    {
+      "title": "Predict before running",
+      "blocks": [
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Write an acceptance case for the duration boundary and one for no eligible option.",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Find and explain the failure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A requirement such as make a smart choice cannot be tested precisely. Replace it with a stated score, limit, tie rule and output explanation. If real feedback later changes the policy, record a versioned change rather than rewriting previous evidence."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The scope is a rule-based prototype using fictional ratings. It does not demonstrate personalized learning impact or a trained AI model. A clear non-goal protects students from building an untestable or overly broad project."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Name two capabilities excluded from this prototype and explain why.",
+          "lines": 6
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Name the user need",
+      "prompt": "State the purpose and decision owner of the worked chooser.",
+      "answer": "Suggest a suitable eligible activity for a teacher-supervised session; the teacher reviews and decides.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Write an acceptance case",
+      "prompt": "Give a tie case for A and B with score 8 each and valid durations.",
+      "answer": "With both eligible, choose A alphabetically regardless of input order.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair vague scope",
+      "prompt": "Replace the requirement always choose the best activity with a checkable one.",
+      "answer": "Choose the highest 2 * fun + learning score among valid items within the limit, using alphabetical ties; return no eligible option if none qualify.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Plan independently",
+      "prompt": "Plan a 15-minute fictional club chooser. Specify schema, score, duration limit, tie rule, invalid-data behavior, output and three acceptance cases.",
+      "answer": "Retain the stated schema and scoring or justify an explicit alternative. Require boundary 15/16, tie/order and no-match cases with expected results, rejection reasons and human review.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "State non-goals",
+      "prompt": "Name two capabilities excluded from this prototype and explain why.",
+      "answer": "Examples: real student profiling, automatic booking or claims of proven learning benefit. They need separate evidence, permissions and scope.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach Week 31 as a two-session investigation using fictional data. Plan a fictional activity chooser for a teacher-supervised 20-minute session. It will validate a small local dataset, exclude over-limit items, rank eligible items using 2 * fun + learning and break ties alphabetically. It will explain the result for human review. It will not book, message or collect personal student profiles. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+    "materials": [
+      "Python 3 editor with a fresh local practice file",
+      "Paper trace table and the student workbook",
+      "Fictional input records from this lesson; no real student identifiers"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and explain the purpose in the opening section."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the worked example and diagram; ask learners to trace each step aloud."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2, then compare predictions with observed results."
+      ],
+      [
+        "33 to 45 minutes",
+        "Collect the guided prediction before running; discuss a mismatch and its cause."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the main rule without showing the previous answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to diagnose and repair the stated failure; rerun an earlier case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including code or plan, predictions and explanations, before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit; use the fresh retry when support was needed."
+      ]
+    ],
+    "guidedAnswer": "An otherwise valid 20-minute item qualifies; a 21-minute-only dataset yields no eligible option under limit 20. Exit: Examples: real student profiling, automatic booking or claims of proven learning benefit. They need separate evidence, permissions and scope.",
+    "misconceptions": [
+      [
+        "A successful run proves the conclusion",
+        "The scope is a rule-based prototype using fictional ratings. It does not demonstrate personalized learning impact or a trained AI model. A clear non-goal protects students from building an untestable or overly broad project."
+      ],
+      [
+        "Matching the example is enough",
+        "Require the new W4 case, explicit predictions and an explanation. Fresh retry: plan a 10-minute chooser with boundary 10/11, duplicate-name rejection and an empty-input case. Collect the plan before implementation."
+      ],
+      [
+        "A convenient shortcut preserves meaning",
+        "A requirement such as make a smart choice cannot be tested precisely. Replace it with a stated score, limit, tie rule and output explanation. If real feedback later changes the policy, record a versioned change rather than rewriting previous evidence."
+      ]
+    ],
+    "assessment": "Independent W4 evidence: Retain the stated schema and scoring or justify an explicit alternative. Require boundary 15/16, tie/order and no-match cases with expected results, rejection reasons and human review. Record whether the learner needed no help, a hint or explanation. Fresh retry: plan a 10-minute chooser with boundary 10/11, duplicate-name rejection and an empty-input case. Collect the plan before implementation.",
+    "support": "Use a one-page requirements card. Extension: trace each requirement to a specific acceptance case and identify uncovered requirements.",
+    "next": "Next week: Building the data pipeline. Reuse this week's explicit contracts and evidence."
+  }
+}

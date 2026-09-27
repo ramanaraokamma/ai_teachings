@@ -1,6 +1,6 @@
-# Curriculum 3 foundation unit
+# Curriculum 3 learning sequence
 
-Curriculum 3 is a new seven-level progression beginning in Grade 6. This release contains **AI 1 Weeks 1–36**, each authored as a complete student lesson, workbook and teacher guide. It does not claim to complete all seven levels. The other **216 week positions are a proposed sequence**, explicitly labelled Planned with no lesson links. The existing four-level, 144-week edition remains available.
+Curriculum 3 is a new seven-level progression beginning in Grade 6. This release contains **AI 1 Weeks 1–36, AI 2 Weeks 1–36 and AI 3 Week 1**, each authored as a complete student lesson, workbook and teacher guide. It does not claim to complete all seven levels. The other **179 week positions are a proposed sequence**, explicitly labelled Planned with no lesson links. The existing four-level, 144-week edition remains available.
 
 ## Released packages
 
@@ -50,8 +50,8 @@ Each package has a prerequisite check, three outcomes, five explanatory sections
 | Level | Typical grade | Focus | Rebuilt packages |
 | --- | --- | --- | --- |
 | AI 1 | 6 | Foundations | 36 of 36 |
-| AI 2 | 7 | Programming and Data | 0 of 36 |
-| AI 3 | 8 | Machine Learning | 0 of 36 |
+| AI 2 | 7 | Programming and Data | 36 of 36 |
+| AI 3 | 8 | Machine Learning | 1 of 36 |
 | AI 4 | 9 | Neural Networks | 0 of 36 |
 | AI 5 | 10 | Generative AI Systems | 0 of 36 |
 | AI 6 | 11 | AI Engineering | 0 of 36 |
@@ -99,7 +99,7 @@ Do not update a source hash simply to suppress the mismatch check. It protects s
 - All 18 web resources were printed to PDF for browser-print inspection. Downloadable PDFs are the reviewed, paginated print editions.
 - A deliberate source change was rejected by the stale-download guard, then the source was restored.
 
-Grade 6 AI 1 Foundations is complete with all 36 weekly packages. The next package is Grade 7 AI 2 Week 1, continuing one week at a time. The remaining six levels require individually authored chapters, exercises, solutions and print review; the progression map is not a substitute for that work.
+Grade 6 AI 1 Foundations and Grade 7 AI 2 Programming and Data are complete with 36 weekly packages each. Grade 8 AI 3 Week 1 is also complete. Grade 8 Weeks 2–36 and the remaining four levels require individually authored chapters, exercises, solutions and print review; the progression map is not a substitute for that work.
 
 ## Week 7 completion (2026-09-15)
 
@@ -344,3 +344,68 @@ Evaluating and explaining your project is a complete 90-minute package with 5 le
 The Cloudflare build, TypeScript check and all 31 access-test groups passed with 36 released packages, 108 rebuilt routes and 216 matching document downloads. All 2,425 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–36 are complete in the repository; 216 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
+
+## Grade 7 AI 2 Weeks 1–6 completion (2026-09-26)
+
+Six 90-minute packages now have aligned student lessons, workbooks, teacher guides, explanatory diagrams and protected Word/PDF downloads. The programming renderer preserves Python indentation and uses the Grade 7 level identity.
+
+| Week | Chapter |
+| --- | --- |
+| 1 | From a paper algorithm to Python |
+| 2 | Values variables and types |
+| 3 | Expressions and operator order |
+| 4 | Boolean conditions |
+| 5 | Branching and boundary tests |
+| 6 | Loops and trace tables |
+
+Every canonical print page and each browser print layout was visually reviewed. Text checks confirm lesson, workbook and guide alignment. Executed examples and independent cases cover arithmetic, copied values, Boolean boundaries, branch selection and loop accumulation. All six weeks passed desktop/mobile checks for the three resources and protected maps.
+
+The Cloudflare build, TypeScript check and all 31 access-test groups passed. The release contains 42 rebuilt packages, 126 resource pages and 252 matching document downloads; all 2,467 protected resources decrypted. Student sessions cannot access teacher guides or teacher downloads. Hosting configuration and session controls are preserved.
+
+Grade 7 Weeks 7–36 remain planned. These changes have not been deployed; classroom pacing and learning outcomes have not been validated with students.
+
+## Grade 7 AI 2 Week 7 completion (2026-09-26)
+
+Lists and indexing includes a five-page student lesson, three-page workbook, four-page teacher guide and a position-to-value diagram. Every canonical print page and all three browser print layouts were inspected. Executable checks cover worked examples, intentional IndexError, repaired access, list updates, repeated values, independent running totals, empty lists and fresh retry cases.
+
+The build, TypeScript check and all 31 access-test groups passed with 43 rebuilt packages and 258 matching document downloads. All 2,474 protected resources decrypted. Six desktop/mobile resource checks and both protected maps passed. Browser print text matches the source and workbook prompts stay with response spaces.
+
+Grade 7 Weeks 1–7 are complete; Weeks 8–36 remain planned. Cloudflare hosting and student/teacher controls are preserved. Changes are not deployed, and classroom effectiveness remains untested.
+
+## Grade 7 AI 2 Week 8 completion (2026-09-26)
+
+Functions and arguments includes a five-page student lesson, three-page workbook, four-page teacher guide and an argument-to-parameter diagram. Every canonical print page and all three browser print layouts were inspected. Executable checks cover definition versus call, positional arguments, zero results, missing-argument TypeError, ignored-argument repairs, independent functions, swapped inputs, fresh retry cases and the limits of input validation.
+
+The build, TypeScript check and all 31 access-test groups passed with 44 rebuilt packages and 264 matching document downloads. All 2,481 protected resources decrypted. Six desktop/mobile resource checks and both protected maps passed. Browser print text matches the source and workbook prompts stay with response spaces.
+
+Grade 7 Weeks 1–8 are complete; Weeks 9–36 remain planned. Cloudflare hosting and student/teacher controls are preserved. Changes are not deployed, and classroom effectiveness remains untested.
+
+## Grade 7 AI 2 Week 9 completion (2026-09-26)
+
+Return values and local state includes a five-page student lesson, three-page workbook, four-page teacher guide and a call-to-return diagram. Every canonical print page and all three browser print layouts were inspected. Executable checks cover worked examples, missing returns, None arithmetic TypeError, local-name NameError, repaired returns, independent calculations, repeated calls, zero results, unreachable statements and fresh retry cases.
+
+The build, TypeScript check and all 31 access-test groups passed with 45 rebuilt packages and 270 matching document downloads. All 2,488 protected resources decrypted. Six desktop/mobile resource checks and both protected maps passed. Browser print text matches the source and workbook prompts stay with response spaces.
+
+Grade 7 Weeks 1–9 are complete; Weeks 10–36 remain planned. Cloudflare hosting and student/teacher controls are preserved. Changes are not deployed, and classroom effectiveness remains untested.
+
+
+## Grade 7 AI 2 Weeks 10–36 completion (2026-09-26)
+
+All 27 remaining weeks now have individually authored student lessons, workbooks, teacher guides and explanatory diagrams. The sequence develops records, validation, data interpretation, rule-based recommendations, files, privacy and a tested capstone application. Each package includes an independent task, explained teacher answers and a fresh retry case.
+
+The continuation print renderer produces three-page lessons, three-page workbooks and four-page guides. All 270 downloadable print pages were visually inspected; canonical text and teacher-answer separation passed. All 81 web resources were also printed and their 263 browser-print pages inspected. Workbook prompts remain with response space. All 162 desktop/mobile resource checks passed without broken images or horizontal page overflow; representative screen layouts were visually reviewed.
+
+All 27 worked Python examples were executed against expected outputs. Additional checks cover independent and retry calculations, boundaries, invalid types, missing data, parsing, empty inputs, tie order and capstone integration. These checks verify the executed cases, not every possible input.
+
+The production build, TypeScript check and all 31 access-test groups passed. The repository now contains 72 rebuilt weekly packages and 432 matching Word/PDF downloads across Grades 6 and 7. All 2,677 protected resources decrypted successfully. Grade 7 alone has 36 lessons, 36 workbooks, 36 teacher guides and 216 Word/PDF downloads.
+
+Grade 7 Weeks 1–36 are complete in the repository; 180 weekly positions across the other five levels remain planned. Cloudflare hosting and student/teacher access controls are preserved. No live deployment was performed. Classroom pacing and learning effectiveness still require student use and teacher feedback.
+
+
+## Grade 8 AI 3 Week 1 completion (2026-09-26)
+
+The machine learning lifecycle introduces fitting a threshold from labelled training examples, freezing the choice, evaluating separate cards and reporting limited evidence. The complete 90-minute package includes a four-page student lesson, three-page workbook, four-page teacher guide, a lifecycle diagram, independent assessment and a fresh retry. A vocabulary table split was corrected during visual review. Every final downloadable print page and all 12 browser-print pages were inspected; canonical text and answer separation passed.
+
+Executable checks verified the exact worked Python output, independent and retry calculations, threshold equality, declared tie handling and reversed input order. Six desktop/mobile resource checks and both role maps passed. The production build, TypeScript check and all 31 access-test groups passed. The unreleased-route test now derives its examples from the progression and release manifest instead of treating Grade 8 Week 1 as permanently unavailable.
+
+There are now 73 rebuilt packages and 438 matching Word/PDF downloads. All 2,684 protected resources decrypted successfully. Grade 8 has 1 of 36 weeks complete; Weeks 2–36 remain planned. The seven-level sequence has 179 remaining planned positions. Cloudflare hosting and student/teacher access controls are preserved. Changes have not been deployed; classroom pacing and effectiveness remain untested.

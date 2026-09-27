@@ -1,0 +1,213 @@
+{
+  "level": "ai-2",
+  "week": 23,
+  "title": "Weighted scores and constraints",
+  "minutes": 90,
+  "goals": [
+    "Compute a weighted score",
+    "Apply hard constraints before ranking",
+    "Explain how weight choices change outcomes"
+  ],
+  "prerequisite": {
+    "prompt": "Which is closer under absolute-gap distance: a gap of 2 or a gap of 5?",
+    "answer": "A gap of 2."
+  },
+  "vocabulary": [
+    [
+      "Weight",
+      "A multiplier expressing the importance assigned to a feature"
+    ],
+    [
+      "Score",
+      "A number calculated to compare options"
+    ],
+    [
+      "Constraint",
+      "A requirement an option must meet"
+    ],
+    [
+      "Tradeoff",
+      "Improving one preference while giving up another"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A fictional activity chooser uses enjoyment and learning ratings from 0 to 5. Its score is 2 times enjoyment plus learning. The activity must also take at most 20 minutes. Duration is a hard requirement; a high score cannot compensate for exceeding it."
+        }
+      ]
+    },
+    {
+      "title": "Work through the example",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "options = [{\"name\": \"A\", \"fun\": 4, \"learning\": 2, \"minutes\": 15},\n           {\"name\": \"B\", \"fun\": 3, \"learning\": 5, \"minutes\": 25}]\nfor item in options:\n    if item[\"minutes\"] <= 20:\n        score = 2 * item[\"fun\"] + item[\"learning\"]\n        print(item[\"name\"], score)"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow the evidence",
+          "columns": [
+            "Step or case",
+            "Evidence",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "A",
+              "2 * 4 + 2 = 10",
+              "Eligible at 15 minutes"
+            ],
+            [
+              "B",
+              "2 * 3 + 5 = 11",
+              "Excluded at 25 minutes"
+            ]
+          ],
+          "caption": "Read each row from left to right and connect the evidence to the stated rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "Only A is printed, with score 10. If B took 20 minutes it would qualify and have the higher score 11. The inclusive boundary matters. Ratings and weights are invented for practice and require justification before use in a real decision."
+        }
+      ]
+    },
+    {
+      "title": "Predict before running",
+      "blocks": [
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "If enjoyment weight becomes 1 and learning weight becomes 2, find both scores before applying the same duration limit.",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Find and explain the failure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Choosing the highest score and only then ignoring its duration breaks the requirement. Filter for eligibility first. If no item qualifies, report no eligible option instead of relaxing a requirement silently."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Weights represent preferences, not a discovered truth. Explain who chose them and test whether small changes alter the recommendation. Avoid claiming that a larger score proves greater educational value."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "For eligible A (fun 4, learning 1) and B (fun 2, learning 4), compare weights (2,1) with (1,2).",
+          "lines": 6
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Calculate a score",
+      "prompt": "An eligible activity has fun 2 and learning 4. Use 2 * fun + learning.",
+      "answer": "Score 8.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Check a boundary",
+      "prompt": "Which durations 19, 20, 21 qualify under at most 20?",
+      "answer": "19 and 20 qualify; 21 does not.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair selection",
+      "prompt": "An ineligible item scores 15 and an eligible item scores 9. Which should be offered under the stated policy?",
+      "answer": "Offer the eligible item with score 9. The constraint is applied before ranking.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Choose independently",
+      "prompt": "Limit is 15 minutes. A has fun 3, learning 4, minutes 15; B has 5, 1, 16; C has 2, 5, 12. Calculate scores with 2 * fun + learning and choose.",
+      "answer": "Scores A 10, B 11, C 9. B is excluded. A is highest among eligible options.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Test sensitivity",
+      "prompt": "For eligible A (fun 4, learning 1) and B (fun 2, learning 4), compare weights (2,1) with (1,2).",
+      "answer": "First scores A 9, B 8 so A wins. Second scores A 6, B 10 so B wins. Explain the preference change.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach Week 23 as a two-session investigation using fictional data. A fictional activity chooser uses enjoyment and learning ratings from 0 to 5. Its score is 2 times enjoyment plus learning. The activity must also take at most 20 minutes. Duration is a hard requirement; a high score cannot compensate for exceeding it. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+    "materials": [
+      "Python 3 editor with a fresh local practice file",
+      "Paper trace table and the student workbook",
+      "Fictional input records from this lesson; no real student identifiers"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and explain the purpose in the opening section."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the worked example and diagram; ask learners to trace each step aloud."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2, then compare predictions with observed results."
+      ],
+      [
+        "33 to 45 minutes",
+        "Collect the guided prediction before running; discuss a mismatch and its cause."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the main rule without showing the previous answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to diagnose and repair the stated failure; rerun an earlier case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including code or plan, predictions and explanations, before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit; use the fresh retry when support was needed."
+      ]
+    ],
+    "guidedAnswer": "A scores 8 and B scores 13. B remains excluded at 25 minutes. Exit: First scores A 9, B 8 so A wins. Second scores A 6, B 10 so B wins. Explain the preference change.",
+    "misconceptions": [
+      [
+        "A successful run proves the conclusion",
+        "Weights represent preferences, not a discovered truth. Explain who chose them and test whether small changes alter the recommendation. Avoid claiming that a larger score proves greater educational value."
+      ],
+      [
+        "Matching the example is enough",
+        "Require the new W4 case, explicit predictions and an explanation. Fresh retry: limit 10, X (fun 1, learning 5, minutes 9), Y (3,2,10), Z (5,5,11). Scores 7, 8, 15; choose Y, exclude Z."
+      ],
+      [
+        "A convenient shortcut preserves meaning",
+        "Choosing the highest score and only then ignoring its duration breaks the requirement. Filter for eligibility first. If no item qualifies, report no eligible option instead of relaxing a requirement silently."
+      ]
+    ],
+    "assessment": "Independent W4 evidence: Scores A 10, B 11, C 9. B is excluded. A is highest among eligible options. Record whether the learner needed no help, a hint or explanation. Fresh retry: limit 10, X (fun 1, learning 5, minutes 9), Y (3,2,10), Z (5,5,11). Scores 7, 8, 15; choose Y, exclude Z.",
+    "support": "Use separate eligibility and score columns. Extension: add a documented tie rule and test tied eligible items.",
+    "next": "Next week: Implementing a recommender. Reuse this week's explicit contracts and evidence."
+  }
+}

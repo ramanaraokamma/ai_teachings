@@ -1,0 +1,213 @@
+{
+  "level": "ai-2",
+  "week": 24,
+  "title": "Implementing a recommender",
+  "minutes": 90,
+  "goals": [
+    "Implement a deterministic recommender",
+    "Handle ties and no eligible options",
+    "Explain recommendations with their limits"
+  ],
+  "prerequisite": {
+    "prompt": "An option violates a hard duration limit but has the best score. Should it win?",
+    "answer": "No. Filter by the hard constraint before ranking."
+  },
+  "vocabulary": [
+    [
+      "Recommender",
+      "A procedure that suggests options using a stated policy"
+    ],
+    [
+      "Tie",
+      "Two options have the same comparison score"
+    ],
+    [
+      "Deterministic",
+      "The same inputs and rules produce the same result"
+    ],
+    [
+      "Explanation",
+      "Evidence describing how a result was obtained"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Build a fictional activity recommender using last week's score. Require duration at most a supplied limit. On a tie choose the alphabetically first name. This makes the outcome reproducible rather than dependent on input order. Assume unique names and validated numeric fields."
+        }
+      ]
+    },
+    {
+      "title": "Work through the example",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "def recommend(items, limit):\n    best = None\n    best_score = None\n    for item in items:\n        if item[\"minutes\"] <= limit:\n            score = 2 * item[\"fun\"] + item[\"learning\"]\n            if (best is None or score > best_score\n                or (score == best_score and item[\"name\"] < best)):\n                best = item[\"name\"]\n                best_score = score\n    return best\n\nitems = [{\"name\": \"B\", \"fun\": 3, \"learning\": 2, \"minutes\": 10},\n         {\"name\": \"A\", \"fun\": 2, \"learning\": 4, \"minutes\": 9}]\nprint(recommend(items, 10))"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Follow the evidence",
+          "columns": [
+            "Step or case",
+            "Evidence",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "B",
+              "Eligible score 8",
+              "Temporary best B"
+            ],
+            [
+              "A",
+              "Eligible score 8",
+              "Alphabetical tie gives A"
+            ]
+          ],
+          "caption": "Read each row from left to right and connect the evidence to the stated rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "The function prints nothing; the caller prints A. best starts as None to mean no eligible option found. Python short-circuits or: when best is None, later comparisons in that condition need not run. After selecting an item, best_score is numeric. An empty list or no eligible item returns None."
+        }
+      ]
+    },
+    {
+      "title": "Predict before running",
+      "blocks": [
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Predict the result if the list order is reversed, and if the limit is 8.",
+          "lines": 6
+        }
+      ]
+    },
+    {
+      "title": "Find and explain the failure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Updating best on score >= best_score makes the last tied item win, so reordering can change results. Use the explicit name comparison for ties. Test both orders and a no-match case after the repair."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The recommendation follows a written scoring policy. It does not learn preferences, prove learning benefit or authorize an action. Display the chosen rule and let a person review whether an option is suitable."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Write a one-sentence explanation of X winning without calling it objectively best.",
+          "lines": 6
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Trace selection",
+      "prompt": "Why does A win the worked example even though B is processed first?",
+      "answer": "Both score 8 and qualify; A is alphabetically first under the tie rule.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Handle no match",
+      "prompt": "State recommend([], 10) and the worked items with limit 8.",
+      "answer": "Both return None; the caller should display no eligible option.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair order dependence",
+      "prompt": "A tied selection changes after reversing input order. Identify the likely missing policy and test.",
+      "answer": "An explicit deterministic tie rule is missing or incorrect. Apply alphabetical name order and rerun both orders.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Implement independently",
+      "prompt": "Use the function with X (fun 4, learning 1, minutes 12), Y (3,3,10), Z (5,5,13), limit 12. Predict the winner, reverse the list and retest. Also test limit 9.",
+      "answer": "X and Y score 9; Z is excluded. X wins alphabetically in either order. Limit 9 returns None.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Explain the result",
+      "prompt": "Write a one-sentence explanation of X winning without calling it objectively best.",
+      "answer": "X meets the 12-minute limit and ties for highest eligible score 9; the alphabetical tie rule selects X.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach Week 24 as a two-session investigation using fictional data. Build a fictional activity recommender using last week's score. Require duration at most a supplied limit. On a tie choose the alphabetically first name. This makes the outcome reproducible rather than dependent on input order. Assume unique names and validated numeric fields. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+    "materials": [
+      "Python 3 editor with a fresh local practice file",
+      "Paper trace table and the student workbook",
+      "Fictional input records from this lesson; no real student identifiers"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and explain the purpose in the opening section."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the worked example and diagram; ask learners to trace each step aloud."
+      ],
+      [
+        "20 to 33 minutes",
+        "Complete W1 and W2, then compare predictions with observed results."
+      ],
+      [
+        "33 to 45 minutes",
+        "Collect the guided prediction before running; discuss a mismatch and its cause."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the main rule without showing the previous answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to diagnose and repair the stated failure; rerun an earlier case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including code or plan, predictions and explanations, before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit; use the fresh retry when support was needed."
+      ]
+    ],
+    "guidedAnswer": "Reversing still returns A. Limit 8 leaves no eligible item and returns None. Exit: X meets the 12-minute limit and ties for highest eligible score 9; the alphabetical tie rule selects X.",
+    "misconceptions": [
+      [
+        "A successful run proves the conclusion",
+        "The recommendation follows a written scoring policy. It does not learn preferences, prove learning benefit or authorize an action. Display the chosen rule and let a person review whether an option is suitable."
+      ],
+      [
+        "Matching the example is enough",
+        "Require the new W4 case, explicit predictions and an explanation. Fresh retry: B (2,4,8), C (3,2,8), A (5,5,9), limit 8. B/C tie at 8; B wins. Limit 7 returns None."
+      ],
+      [
+        "A convenient shortcut preserves meaning",
+        "Updating best on score >= best_score makes the last tied item win, so reordering can change results. Use the explicit name comparison for ties. Test both orders and a no-match case after the repair."
+      ]
+    ],
+    "assessment": "Independent W4 evidence: X and Y score 9; Z is excluded. X wins alphabetically in either order. Limit 9 returns None. Record whether the learner needed no help, a hint or explanation. Fresh retry: B (2,4,8), C (3,2,8), A (5,5,9), limit 8. B/C tie at 8; B wins. Limit 7 returns None.",
+    "support": "Trace best and best_score row by row. Extension: return a record with name, score and reason while retaining the same selection policy.",
+    "next": "Next week: File input and output. Reuse this week's explicit contracts and evidence."
+  }
+}

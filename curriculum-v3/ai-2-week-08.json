@@ -1,0 +1,263 @@
+{
+  "level": "ai-2",
+  "week": 8,
+  "title": "Functions and arguments",
+  "minutes": 90,
+  "goals": [
+    "Distinguish a function definition from a function call",
+    "Match positional arguments to parameters in order",
+    "Reuse one function and test that it uses the supplied values"
+  ],
+  "prerequisite": {
+    "prompt": "A script sets capacity = 12 and used = 4. What does print(capacity - used) display?",
+    "answer": "8. Subtraction is ordered: reversing these values would produce -8."
+  },
+  "vocabulary": [
+    [
+      "Function",
+      "A named block of reusable instructions that runs when called"
+    ],
+    [
+      "Definition",
+      "Code that creates a function and specifies its body"
+    ],
+    [
+      "Call",
+      "An instruction that runs a function with supplied arguments"
+    ],
+    [
+      "Parameter",
+      "A name in a function definition that receives an argument"
+    ],
+    [
+      "Argument",
+      "A value supplied when calling a function"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Name a calculation you need again",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A fictional supply cupboard records capacity and the number of occupied spaces. The remaining-space calculation is capacity minus used. Instead of copying the same instructions for every cupboard, define one function and call it with different values. A function makes a procedure reusable; its name alone does not guarantee that its instructions are correct."
+        },
+        {
+          "type": "paragraph",
+          "text": "Our input contract requires nonnegative integer counts with used no greater than capacity. The example assumes these conditions; it does not validate them. This week the function prints its result. Week 9 will show how to return a value for later calculations."
+        }
+      ]
+    },
+    {
+      "title": "Define once and call with new values",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "def show_remaining(capacity, used):\n    remaining = capacity - used\n    print(remaining)\n\nshow_remaining(12, 4)\nshow_remaining(10, 7)"
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Arguments matched in order",
+          "columns": [
+            "Call",
+            "Parameter values",
+            "Printed output"
+          ],
+          "rows": [
+            [
+              "show_remaining(12, 4)",
+              "capacity 12; used 4",
+              "8"
+            ],
+            [
+              "show_remaining(10, 7)",
+              "capacity 10; used 7",
+              "3"
+            ]
+          ],
+          "caption": "Each call runs the same body with the values supplied for that call."
+        },
+        {
+          "type": "paragraph",
+          "text": "def introduces the definition. The function name is followed by parameter names in parentheses and a colon. Four-space indentation marks the body. Executing the definition creates the function but does not run its body. The two unindented calls then run it, producing 8 and 3 on separate lines. A blank line helps readability; indentation determines the block."
+        }
+      ]
+    },
+    {
+      "title": "Trace the call before running it",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Execution event",
+            "What happens"
+          ],
+          "rows": [
+            [
+              "Execute the definition",
+              "Create the function; no output yet"
+            ],
+            [
+              "Call with 12 and 4",
+              "Match parameters; subtract; print 8"
+            ],
+            [
+              "Call with 10 and 7",
+              "Match new values; subtract; print 3"
+            ],
+            [
+              "After the second call",
+              "Continue with the next statement"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "In show_remaining(12, 4), 12 and 4 are arguments; capacity and used are parameters. Positional arguments match from left to right. show_remaining(4, 12) produces -8, showing why order matters; it also violates our written input contract. Use a fresh file with the definition before its calls."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Predict the output of show_remaining(9, 9) followed by show_remaining(9, 0). Name the parameter receiving each argument. What would be printed if both calls were removed?",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "title": "Check whether the function uses its arguments",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "def show_remaining(capacity, used):\n    remaining = 12 - 4\n    print(remaining)\n\nshow_remaining(12, 4)\nshow_remaining(10, 7)"
+        },
+        {
+          "type": "paragraph",
+          "text": "This faulty function prints 8 twice. Its fixed numbers ignore the arguments. Replace 12 - 4 with capacity - used, then rerun both calls. Testing only the first call would miss the bug because its expected answer happens to be 8."
+        },
+        {
+          "type": "paragraph",
+          "text": "For this two-parameter definition, show_remaining(12) raises TypeError because an argument is missing. Correct the call to supply both values. Naming a function without calling it does not execute the body: the parentheses in show_remaining(12, 4) are part of the call."
+        }
+      ]
+    },
+    {
+      "title": "Write a small test record",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For each call, record the supplied arguments, expected printed output and observed output. Include different values that produce different answers, plus a valid zero-result case. Call order controls output order; it does not change the subtraction rule. These functions use supplied data and written instructions, not a pattern learned from examples."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A learner tests only show_remaining(12, 4) and says the function works for every cupboard. Give a second valid call that exposes the fixed-number bug, state its expected output and explain what passing two tests still cannot prove.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Label the parts",
+      "prompt": "In def show_remaining(capacity, used), identify the function name and parameters. In show_remaining(15, 6), identify the arguments and their matching parameters.",
+      "answer": "Name show_remaining; parameters capacity and used. Arguments 15 and 6 match capacity = 15 and used = 6. Expected printed result 9.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Follow the execution order",
+      "prompt": "Using the correct definition, predict show_remaining(8, 3), show_remaining(8, 8) and show_remaining(8, 0) in that order. Explain what happens if the file contains only the definition.",
+      "answer": "The calls print 5, 0 and 8 on separate lines. A definition alone creates the function but prints nothing because its body has not been called.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair ignored arguments",
+      "prompt": "The faulty body calculates 12 - 4 regardless of the call. State the output and expected output for show_remaining(11, 2). Repair the expression and name an earlier call to rerun.",
+      "answer": "Faulty output 8; expected 9. Use capacity - used. Rerun show_remaining(12, 4), expecting 8, as well as the revealing call.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Create a new function independently",
+      "prompt": "Each sealed box contains 6 counters. Define show_stock(boxes, loose) to print the total counters using its two parameters. Assume nonnegative integer arguments. Call it with (3, 2), (0, 2) and (3, 0). Predict each output and explain why show_stock(2, 3) is a different case.",
+      "answer": "The body prints boxes * 6 + loose. Outputs are 20, 2 and 18. show_stock(2, 3) gives 15 because boxes and loose have different roles. Define once and use three calls; do not hard-code one answer.",
+      "lines": 8
+    },
+    {
+      "id": "W5",
+      "title": "State the input assumption",
+      "prompt": "The correct subtraction function prints -1 for show_remaining(4, 5). Does successful execution make this a valid cupboard record? Explain what the function assumes and what needs checking.",
+      "answer": "No. used exceeds capacity and violates the contract. The function calculates with supplied values but does not check the contract. A separate validation check or guarded function is needed to reject invalid records.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach definition, call, parameter and positional argument as distinct ideas. Keep inputs scalar and avoid mutable-list aliasing in this first function lesson. Reference: https://docs.python.org/3/tutorial/controlflow.html#defining-functions. These functions print results; reusable return values and local state are taught in Week 9.",
+    "materials": [
+      "Python 3 editor and functions.py",
+      "Parameter cards labelled capacity and used",
+      "Call cards and a table for expected and observed output"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve ordered subtraction with the prerequisite."
+      ],
+      [
+        "7 to 20 minutes",
+        "Read the contract and label the definition and calls for W1."
+      ],
+      [
+        "20 to 33 minutes",
+        "Match argument cards to parameters and trace the worked calls."
+      ],
+      [
+        "33 to 45 minutes",
+        "Complete W2 and the guided question before running the file."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve why a definition alone prints nothing."
+      ],
+      [
+        "8 to 20 minutes",
+        "Run the fixed-number bug, complete W3 and rerun the earlier case after repair."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect the independent W4 function and predictions before hints."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and use the exit to assess the limits of passing tests."
+      ]
+    ],
+    "guidedAnswer": "The calls print 0 then 9. capacity receives 9 in both calls; used receives 9 then 0. Removing both calls leaves a definition with no printed output. Exit: show_remaining(10, 7) should print 3 but the faulty version prints 8. Passing two cases does not establish correctness for all allowed inputs or validate the input contract.",
+    "misconceptions": [
+      [
+        "Writing def runs the body immediately",
+        "The definition creates the function; a call runs its body."
+      ],
+      [
+        "Arguments and parameters are interchangeable labels",
+        "Parameters are names in the definition; arguments supply values at a call."
+      ],
+      [
+        "Swapping arguments never matters",
+        "Different parameter roles can give different results when values are swapped."
+      ],
+      [
+        "A correct first example proves the function is reusable",
+        "Fixed numbers can match one case while ignoring later arguments."
+      ]
+    ],
+    "assessment": "W4 must define one function, use both parameters, call it three times and predict 20, 2, 18; the swapped case must give 15. After support, retry show_tiles(packs, singles) with 4 tiles per pack: calls (2, 3), (0, 3), (2, 0) print 11, 3, 8; swapped (3, 2) prints 14. Record assistance and collect new predictions before execution.",
+    "support": "Use two labelled parameter spaces and place argument cards left to right. Permit an oral execution trace alongside code. Extension: add an if check inside show_remaining that prints Invalid when used exceeds capacity, otherwise prints the difference; test (4, 5) and (4, 4). This checks only that one constraint.",
+    "next": "Week 9 returns results to the caller and explains local variables and fresh state on each call."
+  }
+}

@@ -14,3 +14,7 @@
 @media print{.v3-chapter[data-resource="guide"]{line-height:1.4!important}.v3-chapter[data-resource="guide"] h3{margin:10pt 0 6pt}.v3-chapter[data-resource="guide"] p{margin:6pt 0 8pt}.v3-chapter[data-resource="guide"] .v3-chapter-section{padding:6pt 0}}
 
 @media print{.v3-chapter[data-resource="guide"] .v3-chapter-section:last-child{break-inside:avoid}}
+
+.v3-code{white-space:pre;overflow-x:auto;max-width:100%;padding:1rem;background:#f2f5f8;border:1px solid #cbd5e1;border-radius:.5rem;font: .95rem/1.65 monospace;tab-size:4;}
+@media print{.v3-code{white-space:pre-wrap;overflow-wrap:anywhere;font-size:9pt;break-inside:avoid;}}
+.v3-chapter p,.v3-chapter li{overflow-wrap:anywhere;}

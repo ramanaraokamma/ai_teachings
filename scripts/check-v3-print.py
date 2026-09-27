@@ -22,7 +22,7 @@ for source in sorted(Path('curriculum-v3').glob('ai-*-week-*.json')):
    for section in w['lesson']:
     expected.append(section['title'])
     for b in section['blocks']:
-     expected+=([b['text']] if b['type']=='paragraph' else [b['label']] if b['type']=='response' else [b['title'],b['caption']] if b['type']=='diagram' else b['headers']+[v for row in b['rows'] for v in row])
+     expected+=([b['text']] if b['type'] in ['paragraph','code'] else [b['label']] if b['type']=='response' else [b['title'],b['caption']] if b['type']=='diagram' else b['headers']+[v for row in b['rows'] for v in row])
    expected +=[v for row in w['vocabulary'] for v in row]
   elif role=='workbook':expected+=[x for t in w['workbook'] for x in [t['title'],t['prompt']]]
   else:
