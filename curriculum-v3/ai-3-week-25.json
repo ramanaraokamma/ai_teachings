@@ -1,0 +1,222 @@
+{
+  "level": "ai-3",
+  "week": 25,
+  "title": "Overfitting and model capacity",
+  "minutes": 90,
+  "goals": [
+    "Compare training and validation evidence for model capacity",
+    "Explain overfitting without assuming every gap proves it",
+    "Use a declared selection rule instead of perfect training fit"
+  ],
+  "prerequisite": {
+    "prompt": "Can a zero training error guarantee good validation performance?",
+    "answer": "No; it may fit peculiarities of the training sample."
+  },
+  "vocabulary": [
+    [
+      "Capacity",
+      "Flexibility of a model to represent patterns"
+    ],
+    [
+      "Overfitting",
+      "Learning details that fail to generalize well"
+    ],
+    [
+      "Underfitting",
+      "Failing to capture useful structure"
+    ],
+    [
+      "Generalization",
+      "Performance on relevant unseen examples"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A more flexible model can represent complicated relationships and accidental details. Capacity can help when there is enough relevant evidence, but perfect training performance is not the goal. Compare training and validation using the same metric while checking leakage and representativeness."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use fictional classroom data throughout this investigation. Keep the task, units, reference labels and data split visible as you reason. Earlier weeks supplied the model-building process; this week examines overfitting and model capacity."
+        }
+      ]
+    },
+    {
+      "title": "Work through the evidence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On the same regression split, a constant has training MAE 5 and validation 6, a line has training 2 and validation 3, and a highly flexible curve has training 0 and validation 8. Under smallest validation MAE, choose the line. The curve has the lowest training loss but the worst validation result."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before continuing, underline the decision rule and circle the evidence that supports the conclusion. Explain the example to a partner without replacing the counts or conditions with a stronger claim. Keep the distinction between an observed result and a proposed next step."
+        }
+      ]
+    },
+    {
+      "title": "Explain the visual",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Overfitting and model capacity at a glance",
+          "columns": [
+            "Part",
+            "Evidence or action",
+            "Interpretation"
+          ],
+          "rows": [
+            [
+              "Constant",
+              "Training 5",
+              "Validation 6"
+            ],
+            [
+              "Line",
+              "Training 2",
+              "Validation 3"
+            ],
+            [
+              "Flexible curve",
+              "Training 0",
+              "Validation 8"
+            ]
+          ],
+          "caption": "The curve result is consistent with overfitting, but a gap alone does not prove its cause. A changed population, bad labels or a split error could also produce a gap. Inspect the procedure before claiming a diagnosis. The constant may miss useful structure, but these numbers alone do not identify the true relationship."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Does a training-validation gap alone prove overfitting? Explain the steps or evidence behind your response.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Apply the idea carefully",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Change one development factor at a time: simplify the candidate, improve data coverage or adjust a declared regularization setting. Refit on training and compare on validation. Do not remove difficult valid examples or repeatedly search the test for a favorable result."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A simpler model is not always better. If a flexible candidate has better valid evidence under the declared rule, keep that evidence visible. Model capacity is one part of an experiment, alongside features, sample size, label quality and the split."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "What extra evidence would you inspect before concluding a model memorized noise?",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Select from evidence",
+      "prompt": "Choose among the three worked candidates and explain the training trap.",
+      "answer": "Teacher explanation: Choose the line with validation MAE 3. The curve training MAE 0 does not compensate for validation MAE 8.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Interpret a gap",
+      "prompt": "Does a training-validation gap alone prove overfitting?",
+      "answer": "Teacher explanation: No. It is consistent with overfitting but may also reflect shift, data quality or split problems.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Propose a controlled change",
+      "prompt": "Describe one fair next development comparison.",
+      "answer": "Teacher explanation: Compare a simpler curve against the current curve on the same validation rows, retaining the same metric and training-only fitting; log the change.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Apply independently",
+      "prompt": "Models A training 4 validation 5, B training 1 validation 2, C training 0 validation 2. Lowest validation MAE then simpler; B is simpler than C. Choose and justify.",
+      "answer": "Teacher explanation: B wins the validation tie by the declared simplicity rule. C is not selected merely for its zero training error.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Limit a diagnosis",
+      "prompt": "What extra evidence would you inspect before concluding a model memorized noise?",
+      "answer": "Teacher explanation: Check data provenance, split grouping, label quality and repeated development results; inspect representative residuals without using final test feedback to tune.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions. This week focuses on overfitting and model capacity. Model the worked example first, collect the new W 4 case independently before feedback, and use the fresh retry to check transfer. Award credit for traceable reasoning and bounded claims, including justified uncertainty.",
+    "materials": [
+      "Printed student lesson and workbook",
+      "Paper, pencils and a calculator for fractions",
+      "The fictional examples and a blank evidence table",
+      "Saved classroom project records for critique; no personal student dataset required"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Use the prerequisite question: Can a zero training error guarantee good validation performance? Check the explanation before proceeding."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read the opening and model the worked evidence. Ask students to identify capacity in context."
+      ],
+      [
+        "18 to 32 minutes",
+        "Complete W 1 and W 2 with support: select from evidence; interpret a gap. Require the evidence, not only the final response."
+      ],
+      [
+        "32 to 45 minutes",
+        "Read the visual row by row. Collect the guided explanation and compare reasoning in pairs. Connect each conclusion to the stated evidence."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the distinction between capacity and overfitting. Invite a counterexample to an overconfident claim."
+      ],
+      [
+        "8 to 20 minutes",
+        "Discuss the application and complete W 3: Describe one fair next development comparison."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before giving hints. Assess these outcomes: Compare training and validation evidence for model capacity; Explain overfitting without assuming every gap proves it. Record any support used."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W 5 and the exit response to assess limits. Give targeted feedback, then the fresh retry. Save evidence of independent understanding."
+      ]
+    ],
+    "guidedAnswer": "Guided response: No. It is consistent with overfitting but may also reflect shift, data quality or split problems. Exit response: Check data provenance, split grouping, label quality and repeated development results; inspect representative residuals without using final test feedback to tune.",
+    "misconceptions": [
+      [
+        "A final answer is enough",
+        "Ask for the relevant counts, units, procedure or saved record. For this week: Choose the line with validation MAE 3. The curve training MAE 0 does not compensate for validation MAE 8."
+      ],
+      [
+        "A stronger claim makes a stronger project",
+        "Check data provenance, split grouping, label quality and repeated development results; inspect representative residuals without using final test feedback to tune."
+      ],
+      [
+        "The new case can be copied from the example",
+        "The independent task changes the evidence. Require a fresh explanation: B wins the validation tie by the declared simplicity rule. C is not selected merely for its zero training error."
+      ]
+    ],
+    "assessment": "For independent W 4, require: B wins the validation tie by the declared simplicity rule. C is not selected merely for its zero training error. Fresh retry training/validation D 3/4 E 0/7 F 2/3: choose F under lowest validation loss. Explain why E is not automatically best. Mark each criterion as independent, supported or not yet demonstrated. Reassess the reasoning after feedback; do not replace the first attempt silently.",
+    "support": "Provide a blank evidence table and allow a verbal explanation before writing. Highlight the given conditions without supplying the W 4 conclusion. Use capacity and overfitting in full sentences. Extension: alter one condition in the worked example and explain which conclusion changes and which remains supported.",
+    "next": "Next week: Learning curves and variability. Carry forward the saved evidence and the distinction between development choices and justified claims."
+  }
+}

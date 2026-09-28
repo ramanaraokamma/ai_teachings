@@ -1,0 +1,222 @@
+{
+  "level": "ai-3",
+  "week": 32,
+  "title": "Model cards and review",
+  "minutes": 90,
+  "goals": [
+    "Write a model card whose claims match evidence",
+    "Separate intended use from unsupported use",
+    "Review a card for missing evaluation details"
+  ],
+  "prerequisite": {
+    "prompt": "What should remain visible after an evaluation?",
+    "answer": "Data provenance, model version, full results, limitations and decision history."
+  },
+  "vocabulary": [
+    [
+      "Model card",
+      "A concise structured account of a model and its limits"
+    ],
+    [
+      "Intended use",
+      "The purpose and conditions the evidence supports"
+    ],
+    [
+      "Out-of-scope use",
+      "A purpose for which the model is not supported"
+    ],
+    [
+      "Review status",
+      "The current state of checks and unresolved issues"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A model card helps another person understand what was built and what evidence exists. It is a record, not a certificate of safety. Link statements to saved data and run records. Use unknown or not evaluated where evidence is absent instead of filling gaps with optimistic language."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use fictional classroom data throughout this investigation. Keep the task, units, reference labels and data split visible as you reason. Earlier weeks supplied the model-building process; this week examines model cards and review."
+        }
+      ]
+    },
+    {
+      "title": "Work through the evidence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Example card: classroom parcel classifier v 1; purpose: compare toy classification methods on fictional clear/blocked labels. Training 40, validation 20, test 12 with separate record groups. Frozen test TN 7 FP 1 FN 2 TP 2, blocked positive: accuracy 9/12, precision 2/3, recall 2/4. Always-clear baseline scores 8/12. No real parcel or student decision is supported."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before continuing, underline the decision rule and circle the evidence that supports the conclusion. Explain the example to a partner without replacing the counts or conditions with a stronger claim. Keep the distinction between an observed result and a proposed next step."
+        }
+      ]
+    },
+    {
+      "title": "Explain the visual",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Model cards and review at a glance",
+          "columns": [
+            "Part",
+            "Evidence or action",
+            "Interpretation"
+          ],
+          "rows": [
+            [
+              "Purpose and version",
+              "Toy classifier v 1",
+              "Fictional data only"
+            ],
+            [
+              "Evidence",
+              "12 held-out cases",
+              "Full matrix and baseline"
+            ],
+            [
+              "Limits and review",
+              "No real decisions",
+              "List unresolved coverage"
+            ]
+          ],
+          "caption": "The model card should name feature availability, preprocessing fitted on training, model settings, reference-label rules and test date. Include subgroup coverage if evaluated; otherwise say it was not assessed. Describe relevant failure examples without exposing personal information."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Verify the worked accuracy, precision and recall. Explain the steps or evidence behind your response.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Apply the idea carefully",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A peer reviewer traces one headline number back to the saved predictions, checks denominators and looks for mismatches between intended use and evidence. Record requested changes and whether each was resolved. A card must be updated when its model, data or intended use changes."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Do not claim a synthetic classroom dataset represents every school or age group. Missing calibration, subgroup or shift evidence must remain explicit. A useful card may conclude that the model should stay a classroom demonstration."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "What should change in a card after a threshold revision?",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Draft a purpose",
+      "prompt": "Write an intended-use and non-use statement for the worked card.",
+      "answer": "Teacher explanation: Intended: compare toy classifiers on the documented fictional task. Not supported: real parcel handling, student assessment or decisions outside the evaluated setup.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Check arithmetic",
+      "prompt": "Verify the worked accuracy, precision and recall.",
+      "answer": "Teacher explanation: TN 7 TP 2 give 9/12 accuracy; TP 2/(TP 2+FP 1)=2/3 precision; TP 2/(TP 2+FN 2)=2/4 recall.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Find missing evidence",
+      "prompt": "A card says fair and reliable but provides only accuracy. Request three additions.",
+      "answer": "Teacher explanation: Request full error counts and denominators, relevant subgroup coverage/results, data provenance and limits; remove unsupported fairness/reliability claims.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Apply independently",
+      "prompt": "Review this card: model v 2, 90 percent accurate, works for every school. No dataset size, split or baseline is given. Write a correction request with a bounded replacement claim.",
+      "answer": "Teacher explanation: Request evaluated counts, split history, reference labels, baseline, errors and supported use. Replace the universal claim with: performance scope is not established from the supplied evidence; the reported 90 percent cannot yet be audited.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Maintain the record",
+      "prompt": "What should change in a card after a threshold revision?",
+      "answer": "Teacher explanation: Record a new version, threshold, reason, affected evaluations and review status; retain prior results and distinguish new independent evidence from reused development data.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions. This week focuses on model cards and review. Model the worked example first, collect the new W 4 case independently before feedback, and use the fresh retry to check transfer. Award credit for traceable reasoning and bounded claims, including justified uncertainty.",
+    "materials": [
+      "Printed student lesson and workbook",
+      "Paper, pencils and a calculator for fractions",
+      "The fictional examples and a blank evidence table",
+      "Saved classroom project records for critique; no personal student dataset required"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Use the prerequisite question: What should remain visible after an evaluation? Check the explanation before proceeding."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read the opening and model the worked evidence. Ask students to identify model card in context."
+      ],
+      [
+        "18 to 32 minutes",
+        "Complete W 1 and W 2 with support: draft a purpose; check arithmetic. Require the evidence, not only the final response."
+      ],
+      [
+        "32 to 45 minutes",
+        "Read the visual row by row. Collect the guided explanation and compare reasoning in pairs. Connect each conclusion to the stated evidence."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the distinction between model card and intended use. Invite a counterexample to an overconfident claim."
+      ],
+      [
+        "8 to 20 minutes",
+        "Discuss the application and complete W 3: A card says fair and reliable but provides only accuracy. Request three additions."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before giving hints. Assess these outcomes: Write a model card whose claims match evidence; Separate intended use from unsupported use. Record any support used."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W 5 and the exit response to assess limits. Give targeted feedback, then the fresh retry. Save evidence of independent understanding."
+      ]
+    ],
+    "guidedAnswer": "Guided response: TN 7 TP 2 give 9/12 accuracy; TP 2/(TP 2+FP 1)=2/3 precision; TP 2/(TP 2+FN 2)=2/4 recall. Exit response: Record a new version, threshold, reason, affected evaluations and review status; retain prior results and distinguish new independent evidence from reused development data.",
+    "misconceptions": [
+      [
+        "A final answer is enough",
+        "Ask for the relevant counts, units, procedure or saved record. For this week: Intended: compare toy classifiers on the documented fictional task. Not supported: real parcel handling, student assessment or decisions outside the evaluated setup."
+      ],
+      [
+        "A stronger claim makes a stronger project",
+        "Record a new version, threshold, reason, affected evaluations and review status; retain prior results and distinguish new independent evidence from reused development data."
+      ],
+      [
+        "The new case can be copied from the example",
+        "The independent task changes the evidence. Require a fresh explanation: Request evaluated counts, split history, reference labels, baseline, errors and supported use. Replace the universal claim with: performance scope is not established from the supplied evidence; the reported 90 percent cannot yet be audited."
+      ]
+    ],
+    "assessment": "For independent W 4, require: Request evaluated counts, split history, reference labels, baseline, errors and supported use. Replace the universal claim with: performance scope is not established from the supplied evidence; the reported 90 percent cannot yet be audited. Fresh retry: a card lists test accuracy 18/20 but omits positive-class recall and intended use. Ask for full matrix, class definition and bounded use; do not infer recall from accuracy. Mark each criterion as independent, supported or not yet demonstrated. Reassess the reasoning after feedback; do not replace the first attempt silently.",
+    "support": "Provide a blank evidence table and allow a verbal explanation before writing. Highlight the given conditions without supplying the W 4 conclusion. Use model card and intended use in full sentences. Extension: alter one condition in the worked example and explain which conclusion changes and which remains supported.",
+    "next": "Next week: Capstone data and requirements. Carry forward the saved evidence and the distinction between development choices and justified claims."
+  }
+}

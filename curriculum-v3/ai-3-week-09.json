@@ -1,0 +1,293 @@
+{
+  "level": "ai-3",
+  "week": 9,
+  "title": "Fitting a decision tree",
+  "minutes": 90,
+  "goals": [
+    "Fit a root question and leaf predictions from training examples",
+    "Trace a new example through the learned tree",
+    "Compare a shallow tree with a baseline and state its limits"
+  ],
+  "prerequisite": {
+    "prompt": "Why does a cutoff with zero training errors still need validation on separate examples?",
+    "answer": "The cutoff was selected using training labels. Matching those examples does not establish performance on new examples; validation can expose mistakes and support a baseline comparison."
+  },
+  "vocabulary": [
+    [
+      "Root",
+      "The first question asked by a tree"
+    ],
+    [
+      "Branch",
+      "A path selected by the answer to a question"
+    ],
+    [
+      "Leaf",
+      "An endpoint that stores a prediction"
+    ],
+    [
+      "Depth",
+      "The largest number of question steps from root to leaf"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Learn the question and its answers",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A decision tree asks a feature question and follows a branch to a prediction. A tree with one question has depth one and is sometimes called a stump. Unlike Week 8, where the two output labels were fixed in advance, this week we fit both the question and the label stored at each leaf."
+        },
+        {
+          "type": "paragraph",
+          "text": "Our six fictional training rows have two binary sensor flags available before prediction: near and tall. A value of 1 means that flag is present; 0 means absent. The reviewed scene label is separate. Each row represents a different trip on a familiar route, including rows with identical values. Similar readings can have different scene labels. These are teaching examples, not robot control instructions."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Row",
+            "Near",
+            "Tall",
+            "Label"
+          ],
+          "rows": [
+            [
+              "1",
+              "1",
+              "0",
+              "blocked"
+            ],
+            [
+              "2",
+              "1",
+              "1",
+              "blocked"
+            ],
+            [
+              "3",
+              "1",
+              "0",
+              "blocked"
+            ],
+            [
+              "4",
+              "0",
+              "1",
+              "clear"
+            ],
+            [
+              "5",
+              "0",
+              "0",
+              "clear"
+            ],
+            [
+              "6",
+              "0",
+              "1",
+              "blocked"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Try near first and tall second. For each question, group the training rows by 0 and 1, then predict each group\u2019s majority label; choose clear for tied label counts. Count all training mistakes and keep the first question if scores tie. Stop after one question. This is our stated classroom fitting procedure."
+        }
+      ]
+    },
+    {
+      "title": "Fit the root and both leaves",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "rows = [(1, 0, \"blocked\"), (1, 1, \"blocked\"),\n        (1, 0, \"blocked\"), (0, 1, \"clear\"),\n        (0, 0, \"clear\"), (0, 1, \"blocked\")]\ndef majority(labels):\n    if labels.count(\"blocked\") > labels.count(\"clear\"):\n        return \"blocked\"\n    return \"clear\"\nbest_errors = len(rows) + 1\nfor feature in [0, 1]:\n    leaves = {}\n    for value in [0, 1]:\n        labels = [row[2] for row in rows\n                  if row[feature] == value]\n        leaves[value] = majority(labels)\n    errors = 0\n    for row in rows:\n        if leaves[row[feature]] != row[2]:\n            errors = errors + 1\n    print(feature, errors)\n    if errors < best_errors:\n        best_errors = errors\n        tree = (feature, leaves)\nprint(tree[0], tree[1][0], tree[1][1])"
+        },
+        {
+          "type": "paragraph",
+          "text": "Feature 0 is near; feature 1 is tall; row[2] is the label. Output is 0 1, then 1 2, then 0 clear blocked. Near makes one training mistake: near=0 contains two clear labels and one blocked, so that leaf predicts clear. Near=1 contains three blocked labels. Tall makes two mistakes because both its groups have a blocked majority."
+        },
+        {
+          "type": "paragraph",
+          "text": "The stored tree contains the chosen feature and its two learned leaves. The code assumes nonempty data, binary flags, allowed labels and examples on both branches of each candidate. An empty branch would need a declared fallback; this small example does not implement one. The score is total training mistakes, not an average giving small and large branches equal weight."
+        },
+        {
+          "type": "paragraph",
+          "text": "This is an explicitly limited depth-one learner. General tree algorithms can repeat split selection within branches and often use impurity criteria such as Gini. Our code does not implement that full procedure. Keeping the scope small lets you inspect every decision."
+        }
+      ]
+    },
+    {
+      "title": "Trace the fitted tree on new rows",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Two paths through the learned tree",
+          "columns": [
+            "Root question",
+            "Branch answer",
+            "Learned leaf"
+          ],
+          "rows": [
+            [
+              "Is near equal to 1",
+              "No near is 0",
+              "Predict clear"
+            ],
+            [
+              "Is near equal to 1",
+              "Yes near is 1",
+              "Predict blocked"
+            ]
+          ],
+          "caption": "Both paths start at the same root. Tall is not used by this fitted tree; the leaf labels came from training counts."
+        },
+        {
+          "type": "paragraph",
+          "text": "Validation rows are (near=1,tall=1,blocked), (0,0,clear), (0,1,blocked), (1,0,clear). Follow only near: predictions are blocked, clear, clear, blocked. Two of four match. The training-majority baseline predicts blocked, since training has four blocked and two clear; it also matches two of four validation labels."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Which validation rows does the tree miss, and which does the baseline miss? Explain why the tall value cannot change this tree\u2019s prediction.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep the fitted root and leaves unchanged while scoring. Equal accuracy does not mean identical errors, and five correct training predictions out of six is not the validation result."
+        }
+      ]
+    },
+    {
+      "title": "Distinguish a learned leaf from a fixed label",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Do not assume near=1 must always predict blocked. If a new training set gives that branch a clear majority, this same learner will store clear there. A feature name is not the answer. Use the training labels belonging to that branch."
+        },
+        {
+          "type": "paragraph",
+          "text": "Adding more questions can fit finer training details but does not guarantee better new-case performance. Record any depth choice made during development, and keep final test data separate. A leaf majority describes this training group; it is not a promise about every future example."
+        }
+      ]
+    },
+    {
+      "title": "Explain the model you actually fitted",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Record the two candidate questions, branch label counts, total errors, tie rules, depth limit, stored tree and validation predictions. Retain all rows, including the blocked example in the near=0 branch; removing a disagreement would change the evidence."
+        },
+        {
+          "type": "paragraph",
+          "text": "Our tree uses a single feature because that question scored better under this procedure. This neither establishes that near causes blockage nor that tall is useless in every dataset. Next week a nearest-neighbour method will predict by comparing examples instead of following learned questions."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A learner says the tree is reliable because near=1 has only blocked training labels. Rewrite this claim using the leaf evidence, validation score and one limitation.",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Name the parts and decisions",
+      "prompt": "Identify the root, its two branches, leaf predictions and depth of the worked fitted tree. Which parts were selected using training labels?",
+      "answer": "The root asks near, with branches 0 and 1. Leaves predict clear for 0 and blocked for 1. Depth is one. Training labels determined both leaf majorities and the error comparison that selected near rather than tall.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Verify the candidate scores",
+      "prompt": "For each near branch and each tall branch, count blocked and clear labels and choose a leaf. Give the total errors for each candidate question.",
+      "answer": "Near=0 has 1 blocked and 2 clear, predicts clear with 1 error; near=1 has 3 blocked and 0 clear, predicts blocked with 0 errors. Tall=0 has 2 blocked and 1 clear; tall=1 also has 2 blocked and 1 clear. Both tall leaves predict blocked with 1 error each. Totals are near 1 and tall 2.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Separate fitting from prediction",
+      "prompt": "A learner sees a blocked validation case with near=0 and changes that leaf to blocked before reporting the score. Explain what changed and how to report the original fitted tree fairly.",
+      "answer": "The leaf was changed using validation evidence, so it is no longer the original training-fitted tree. Score the original stored leaves on all the same validation rows and record any later development change separately. Preserve a separate final test for final evaluation.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Fit a new tree independently",
+      "prompt": "New training rows (near,tall,label) are (1,0,clear),(1,1,clear),(1,0,clear),(0,1,blocked),(0,0,blocked),(0,1,clear). Use the same candidate order and tie policies. Give both candidates\u2019 leaves and errors, then select the tree. Validation rows are (1,1,clear),(0,0,blocked),(0,1,clear),(1,0,blocked). List tree predictions and compare accuracy with the training-majority baseline.",
+      "answer": "Near=0 predicts blocked from 2 blocked and 1 clear; near=1 predicts clear from 3 clear. Near has 1 error. Both tall groups have 2 clear and 1 blocked, so both leaves predict clear and total errors are 2. Choose near with reversed leaf labels compared with the worked example. Validation predictions clear,blocked,blocked,clear match rows 1,2: 2/4. Baseline clear matches rows 1,3: 2/4. Both are 50 percent but errors differ.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Audit a tie and a claim",
+      "prompt": "If near and tall make the same training error count, which question does this code retain and why? Does retaining that question prove it will be better on future trips?",
+      "answer": "It retains near because near is tried first and strict < replaces only for fewer errors. This is a declared tie convention, not evidence of better future performance. Separate evaluation and relevant examples are still needed.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions. Students fit a depth-one decision tree by learning branch majorities and selecting the question with the fewest total training mistakes. This transparent classroom algorithm is not a claim to reproduce CART or a library default. Explain tuple positions, list comprehension and the leaves dictionary; offer the full paper route for students who need it.",
+    "materials": [
+      "Printed lesson and workbook",
+      "Six training row cards and four validation cards",
+      "Two branch areas labelled 0 and 1",
+      "Optional Python 3 editor with no packages required"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve training search versus validation. Introduce root, branch, leaf and depth with one question."
+      ],
+      [
+        "7 to 18 minutes",
+        "Sort the six cards by near. Count labels within each branch and assign its majority without using validation."
+      ],
+      [
+        "18 to 32 minutes",
+        "Repeat for tall and complete W1 and W2. Add branch mistakes to score the full training set."
+      ],
+      [
+        "32 to 45 minutes",
+        "Trace code and the diagram. Predict all four validation rows, complete the guided question and compare the baseline."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve why a leaf label is learned rather than dictated by the feature name."
+      ],
+      [
+        "8 to 20 minutes",
+        "Complete W3 and discuss depth limits, tied questions and the assumptions required by the short code."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before hints. Require branch counts, both candidate scores, learned leaves and validation comparison."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit claim. Give the fresh retry after feedback and record support."
+      ]
+    ],
+    "guidedAnswer": "Guided: tree predictions blocked,clear,clear,blocked miss rows 3 and 4. Baseline blocked misses rows 2 and 4. Both get 2/4 or 50 percent. Tall cannot affect prediction because the stored root uses near only. Exit: the near=1 leaf contains three blocked training examples, but the whole tree gets 2/4 on this tiny validation set and misses one near=1 validation case. This does not establish reliability on future trips.",
+    "misconceptions": [
+      [
+        "A near branch must predict blocked",
+        "The branch label is learned from its training labels; W4 deliberately reverses that relationship."
+      ],
+      [
+        "Every feature is used during prediction",
+        "Only questions in the stored tree are followed. Candidate questions rejected during fitting do not affect this tree\u2019s output."
+      ],
+      [
+        "A deeper tree must work better",
+        "More questions can fit training detail. Future performance needs separate evaluation; depth choices must be documented."
+      ]
+    ],
+    "assessment": "Require W4 near error 1, tall error 2, near=0 blocked and near=1 clear, with both validation scores 2/4. Fresh retry: training (0,0,clear),(0,1,blocked),(1,0,clear),(1,1,blocked). Near branches each tie and predict clear, giving 2 errors. Tall=0 predicts clear and tall=1 blocked with 0 errors; choose tall. Validation (0,1,blocked),(1,0,clear),(1,1,clear) gives blocked,clear,blocked: 2/3. The tied training baseline predicts clear and also gets 2/3, with different missed rows. Require the learned feature and both tie policies.",
+    "support": "Use physical sorting before code. Explain row[feature] as selecting a flag and row[2] as reading its label. Supply empty branch-count tables. Extension: explain why an empty branch needs a fallback, and why this code would silently return clear if given an empty label list.",
+    "next": "Week 10 introduces nearest neighbours and distances. Carry forward the training/validation split and baseline. Teacher reference: https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html (reviewed 2026-09-27); its library criteria differ from our stated classroom mistake-count procedure."
+  }
+}

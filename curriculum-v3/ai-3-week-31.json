@@ -1,0 +1,222 @@
+{
+  "level": "ai-3",
+  "week": 31,
+  "title": "Proxy features and fairness",
+  "minutes": 90,
+  "goals": [
+    "Identify possible proxy features",
+    "Explain why removing one field does not guarantee fairness",
+    "Propose a contextual review with concrete evidence"
+  ],
+  "prerequisite": {
+    "prompt": "Does equal overall accuracy prove fair treatment?",
+    "answer": "No; examine errors, consequences, data and context."
+  },
+  "vocabulary": [
+    [
+      "Proxy feature",
+      "A variable that can stand in for another characteristic"
+    ],
+    [
+      "Correlation",
+      "An observed association, not proof of cause"
+    ],
+    [
+      "Sensitive attribute",
+      "A characteristic requiring particular care in a context"
+    ],
+    [
+      "Ablation",
+      "A comparison that removes a feature or component"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "An input can carry information about a characteristic without naming it. In a fictional school-device dataset, device code may be associated with building or access to newer equipment. Removing a building field does not remove all related information. Do not infer a real student identity or protected characteristic in this exercise."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use fictional classroom data throughout this investigation. Keep the task, units, reference labels and data split visible as you reason. Earlier weeks supplied the model-building process; this week examines proxy features and fairness."
+        }
+      ]
+    },
+    {
+      "title": "Work through the evidence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Fictional records show device code X on 8 of 10 north-building examples and 2 of 10 south-building examples. Device and building are associated in this sample. This does not prove device causes model errors or that every X device comes from north. The remaining cases contradict such a universal rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before continuing, underline the decision rule and circle the evidence that supports the conclusion. Explain the example to a partner without replacing the counts or conditions with a stronger claim. Keep the distinction between an observed result and a proposed next step."
+        }
+      ]
+    },
+    {
+      "title": "Explain the visual",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Proxy features and fairness at a glance",
+          "columns": [
+            "Part",
+            "Evidence or action",
+            "Interpretation"
+          ],
+          "rows": [
+            [
+              "North examples",
+              "8 X of 10",
+              "2 other devices"
+            ],
+            [
+              "South examples",
+              "2 X of 10",
+              "8 other devices"
+            ],
+            [
+              "Review question",
+              "What does code represent?",
+              "Check context and errors"
+            ]
+          ],
+          "caption": "A feature may be legitimate for one purpose and inappropriate for another. Ask what is measured, when it is available, why it predicts and who might be disadvantaged. A correlation alone neither authorizes use nor proves harm. Talk through the intended decision and available alternatives."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Why might removing building but keeping device code leave related information? Explain the steps or evidence behind your response.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Apply the idea carefully",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Compare versions with and without device code on the same validation cases, while checking subgroup errors and useful task performance. This ablation measures a change in that experiment; correlated inputs may still carry similar information. Retain group definitions and denominators, and avoid using the final test for repeated feature decisions."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Do not advertise fairness through unawareness merely because names or a sensitive field were removed. A classroom audit should state unresolved questions, intended non-use and a human review path. Never collect sensitive student information simply to fill this exercise."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Does unchanged accuracy after removing a proxy prove fairness?",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Read an association",
+      "prompt": "What do the device counts support, and what do they not support?",
+      "answer": "Teacher explanation: X occurs 8/10 north and 2/10 south in this sample. This supports an association, not a deterministic identity rule or a causal explanation.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Find a proxy risk",
+      "prompt": "Why might removing building but keeping device code leave related information?",
+      "answer": "Teacher explanation: Device code is associated with building in the sample and may carry some of that information indirectly.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Plan an ablation",
+      "prompt": "Describe a controlled with/without-code comparison.",
+      "answer": "Teacher explanation: Use the same validation rows and metric, fit both versions only on training, and report overall and relevant subgroup errors with denominators.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Apply independently",
+      "prompt": "A team removes postcode but retains school code and claims all location-related information is gone. Evaluate the claim and request evidence.",
+      "answer": "Teacher explanation: The claim is unsupported: school code may be associated with location. Review provenance and associations, compare ablations and group errors, and state unresolved proxy risks.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Limit the result",
+      "prompt": "Does unchanged accuracy after removing a proxy prove fairness?",
+      "answer": "Teacher explanation: No. Other features can retain information and accuracy can hide different errors and consequences.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions. This week focuses on proxy features and fairness. Model the worked example first, collect the new W 4 case independently before feedback, and use the fresh retry to check transfer. Award credit for traceable reasoning and bounded claims, including justified uncertainty.",
+    "materials": [
+      "Printed student lesson and workbook",
+      "Paper, pencils and a calculator for fractions",
+      "The fictional examples and a blank evidence table",
+      "Saved classroom project records for critique; no personal student dataset required"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Use the prerequisite question: Does equal overall accuracy prove fair treatment? Check the explanation before proceeding."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read the opening and model the worked evidence. Ask students to identify proxy feature in context."
+      ],
+      [
+        "18 to 32 minutes",
+        "Complete W 1 and W 2 with support: read an association; find a proxy risk. Require the evidence, not only the final response."
+      ],
+      [
+        "32 to 45 minutes",
+        "Read the visual row by row. Collect the guided explanation and compare reasoning in pairs. Connect each conclusion to the stated evidence."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the distinction between proxy feature and correlation. Invite a counterexample to an overconfident claim."
+      ],
+      [
+        "8 to 20 minutes",
+        "Discuss the application and complete W 3: Describe a controlled with/without-code comparison."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before giving hints. Assess these outcomes: Identify possible proxy features; Explain why removing one field does not guarantee fairness. Record any support used."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W 5 and the exit response to assess limits. Give targeted feedback, then the fresh retry. Save evidence of independent understanding."
+      ]
+    ],
+    "guidedAnswer": "Guided response: Device code is associated with building in the sample and may carry some of that information indirectly. Exit response: No. Other features can retain information and accuracy can hide different errors and consequences.",
+    "misconceptions": [
+      [
+        "A final answer is enough",
+        "Ask for the relevant counts, units, procedure or saved record. For this week: X occurs 8/10 north and 2/10 south in this sample. This supports an association, not a deterministic identity rule or a causal explanation."
+      ],
+      [
+        "A stronger claim makes a stronger project",
+        "No. Other features can retain information and accuracy can hide different errors and consequences."
+      ],
+      [
+        "The new case can be copied from the example",
+        "The independent task changes the evidence. Require a fresh explanation: The claim is unsupported: school code may be associated with location. Review provenance and associations, compare ablations and group errors, and state unresolved proxy risks."
+      ]
+    ],
+    "assessment": "For independent W 4, require: The claim is unsupported: school code may be associated with location. Review provenance and associations, compare ablations and group errors, and state unresolved proxy risks. Fresh retry: removing a device-brand field while retaining model number may leave brand-related information. Require a contextual association check and no automatic fairness claim. Mark each criterion as independent, supported or not yet demonstrated. Reassess the reasoning after feedback; do not replace the first attempt silently.",
+    "support": "Provide a blank evidence table and allow a verbal explanation before writing. Highlight the given conditions without supplying the W 4 conclusion. Use proxy feature and correlation in full sentences. Extension: alter one condition in the worked example and explain which conclusion changes and which remains supported.",
+    "next": "Next week: Model cards and review. Carry forward the saved evidence and the distinction between development choices and justified claims."
+  }
+}

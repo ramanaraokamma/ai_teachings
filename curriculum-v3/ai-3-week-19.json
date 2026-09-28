@@ -1,0 +1,227 @@
+{
+  "level": "ai-3",
+  "week": 19,
+  "title": "Regression and residuals",
+  "minutes": 90,
+  "goals": [
+    "Distinguish numeric prediction from classification",
+    "Calculate signed residuals with a stated convention",
+    "Use residual patterns to question a model"
+  ],
+  "prerequisite": {
+    "prompt": "What does a class label predict?",
+    "answer": "A category; regression predicts a numeric target instead."
+  },
+  "vocabulary": [
+    [
+      "Regression",
+      "Prediction of a numeric target"
+    ],
+    [
+      "Residual",
+      "Observed target minus predicted target in this course"
+    ],
+    [
+      "Underprediction",
+      "A prediction below the observed value"
+    ],
+    [
+      "Overprediction",
+      "A prediction above the observed value"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A school garden example predicts plant height in cm from recorded conditions. The target is numeric, so a prediction can be too high or too low by different amounts. Define residual as observed minus predicted. Keep units and the sign convention visible; some software uses the opposite error convention."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use fictional classroom data throughout this investigation. Keep the task, units, reference labels and data split visible as you reason. Earlier weeks supplied the model-building process; this week examines regression and residuals."
+        }
+      ]
+    },
+    {
+      "title": "Work through the evidence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Observed heights [4, 7, 9] cm and predictions [5, 6, 9] cm give residuals [-1, 1, 0] cm. The first prediction is too high, the second too low and the third exact. Mean signed residual is zero, yet two predictions are wrong. Opposite errors can cancel."
+        },
+        {
+          "type": "code",
+          "title": "Python 3 check",
+          "text": "observed = [4, 7, 9]\npredicted = [5, 6, 9]\nresiduals = [y - p for y, p in zip(observed, predicted)]\nprint(residuals)\nprint(sum(residuals) / len(residuals))\n# Output: [-1, 1, 0] and 0.0.\n# Opposite signed errors can cancel."
+        },
+        {
+          "type": "paragraph",
+          "text": "Trace the calculation on paper before running this optional Python check. Use the stated fictional inputs and compare intermediate values. The code checks this example; your independent workbook case uses different evidence."
+        }
+      ]
+    },
+    {
+      "title": "Explain the visual",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Regression and residuals at a glance",
+          "columns": [
+            "Part",
+            "Evidence or action",
+            "Interpretation"
+          ],
+          "rows": [
+            [
+              "Observed 4 predicted 5",
+              "Residual minus 1",
+              "Overprediction"
+            ],
+            [
+              "Observed 7 predicted 6",
+              "Residual plus 1",
+              "Underprediction"
+            ],
+            [
+              "Observed 9 predicted 9",
+              "Residual zero",
+              "Exact on this record"
+            ]
+          ],
+          "caption": "To inspect a residual plot, place a feature or prediction on the horizontal axis and residual on the vertical axis. A trend can suggest a missed relationship. It does not by itself identify the cause or validate a new model. Use development data for analysis and preserve an independent final test."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Why does mean residual zero not imply perfect predictions? Explain the steps or evidence behind your response.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Apply the idea carefully",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "If predictions for early, middle and late growth have residuals -2, 0, 3 cm, the model moves from overpredicting to underpredicting across those records. Investigate whether a straight-line assumption or a missing condition could explain it. Check measurement consistency before adding complexity."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A residual of zero is an agreement with the measured target, not proof that the measurement is perfect. Do not compare errors measured in cm directly with errors measured in metres. Keep the same row pairing, unit and sign convention throughout."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A report combines 2 cm and .02 m as if they were different magnitudes. Repair it.",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Calculate residuals",
+      "prompt": "Compute the worked residuals and identify overprediction.",
+      "answer": "Teacher explanation: Residuals -1, 1, 0 cm; the first record is overpredicted.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Explain cancellation",
+      "prompt": "Why does mean residual zero not imply perfect predictions?",
+      "answer": "Teacher explanation: Negative and positive residuals cancel even when individual errors are nonzero.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Read a pattern",
+      "prompt": "Interpret residuals -2, 0, 3 ordered by growth stage.",
+      "answer": "Teacher explanation: They shift from overprediction to underprediction; investigate a missed relationship without claiming a proven cause.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Apply independently",
+      "prompt": "Observed [6, 10, 13], predicted [8, 9, 11] cm. Give residuals, mean residual and error directions.",
+      "answer": "Teacher explanation: Residuals [-2, 1, 2] cm; mean 1/3 cm. First overpredicted, others underpredicted.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Check units",
+      "prompt": "A report combines 2 cm and .02 m as if they were different magnitudes. Repair it.",
+      "answer": "Teacher explanation: Convert to a shared unit; both represent 2 cm. Document units before comparing or aggregating errors.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions. This week focuses on regression and residuals. Model the worked example first, collect the new W 4 case independently before feedback, and use the fresh retry to check transfer. Award credit for traceable reasoning and bounded claims, including justified uncertainty.",
+    "materials": [
+      "Printed student lesson and workbook",
+      "Paper, pencils and a calculator for fractions",
+      "The fictional examples and a blank evidence table",
+      "Optional Python 3 editor; no external packages or AI accounts required"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Use the prerequisite question: What does a class label predict? Check the explanation before proceeding."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read the opening and model the worked evidence. Ask students to identify regression in context."
+      ],
+      [
+        "18 to 32 minutes",
+        "Complete W 1 and W 2 with support: calculate residuals; explain cancellation. Require the evidence, not only the final response."
+      ],
+      [
+        "32 to 45 minutes",
+        "Read the visual row by row. Collect the guided explanation and compare reasoning in pairs. Trace the Python check after the paper calculation."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the distinction between regression and residual. Invite a counterexample to an overconfident claim."
+      ],
+      [
+        "8 to 20 minutes",
+        "Discuss the application and complete W 3: Interpret residuals -2, 0, 3 ordered by growth stage."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before giving hints. Assess these outcomes: Distinguish numeric prediction from classification; Calculate signed residuals with a stated convention. Record any support used."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W 5 and the exit response to assess limits. Give targeted feedback, then the fresh retry. Save evidence of independent understanding."
+      ]
+    ],
+    "guidedAnswer": "Guided response: Negative and positive residuals cancel even when individual errors are nonzero. Exit response: Convert to a shared unit; both represent 2 cm. Document units before comparing or aggregating errors.",
+    "misconceptions": [
+      [
+        "A final answer is enough",
+        "Ask for the relevant counts, units, procedure or saved record. For this week: Residuals -1, 1, 0 cm; the first record is overpredicted."
+      ],
+      [
+        "A stronger claim makes a stronger project",
+        "Convert to a shared unit; both represent 2 cm. Document units before comparing or aggregating errors."
+      ],
+      [
+        "The new case can be copied from the example",
+        "The independent task changes the evidence. Require a fresh explanation: Residuals [-2, 1, 2] cm; mean 1/3 cm. First overpredicted, others underpredicted."
+      ]
+    ],
+    "assessment": "For independent W 4, require: Residuals [-2, 1, 2] cm; mean 1/3 cm. First overpredicted, others underpredicted. Fresh retry observed [3, 8, 12], predicted [4, 8, 10]: residuals [-1, 0, 2], mean 1/3 in the target unit. Require sign interpretations. Mark each criterion as independent, supported or not yet demonstrated. Reassess the reasoning after feedback; do not replace the first attempt silently.",
+    "support": "Provide a blank evidence table and allow a verbal explanation before writing. Highlight the given conditions without supplying the W 4 conclusion. Use regression and residual in full sentences. Extension: alter one condition in the worked example and explain which conclusion changes and which remains supported.",
+    "next": "Next week: Constant prediction baselines. Carry forward the saved evidence and the distinction between development choices and justified claims."
+  }
+}

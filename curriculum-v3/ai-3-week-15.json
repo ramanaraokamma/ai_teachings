@@ -1,0 +1,227 @@
+{
+  "level": "ai-3",
+  "week": 15,
+  "title": "Precision recall and denominators",
+  "minutes": 90,
+  "goals": [
+    "Choose the denominator that answers the question",
+    "Calculate precision and recall with a declared positive class",
+    "Report undefined ratios honestly"
+  ],
+  "prerequisite": {
+    "prompt": "Why can 80 percent accuracy hide missed blocked cases?",
+    "answer": "The common class can dominate the total; inspect the full confusion matrix and class counts."
+  },
+  "vocabulary": [
+    [
+      "Precision",
+      "True positives divided by all predicted positives"
+    ],
+    [
+      "Recall",
+      "True positives divided by all reference positives"
+    ],
+    [
+      "Denominator",
+      "The group counted in the bottom of a fraction"
+    ],
+    [
+      "Undefined",
+      "A ratio with no valid value because its denominator is zero"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Blocked remains positive. Precision asks: of the cases flagged blocked, how many were actually blocked according to the reference? Recall asks: of all reference-blocked cases, how many were found? Both use true positives, but they answer different questions. Keep reference rows and prediction columns ordered clear then blocked."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use fictional classroom data throughout this investigation. Keep the task, units, reference labels and data split visible as you reason. Earlier weeks supplied the model-building process; this week examines precision recall and denominators."
+        }
+      ]
+    },
+    {
+      "title": "Work through the evidence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For matrix [[12, 4],[1, 3]], TN=12, FP=4, FN=1, TP=3. There are seven predicted positives and four reference positives. Precision is 3/7, about 42.9 percent. Recall is 3/4=75 percent. Accuracy is 15/20=75 percent. A correct denominator matters more than memorizing a percentage."
+        },
+        {
+          "type": "code",
+          "title": "Python 3 check",
+          "text": "tn, fp, fn, tp = 12, 4, 1, 3\nprecision = tp / (tp + fp) if tp + fp else None\nrecall = tp / (tp + fn) if tp + fn else None\naccuracy = (tn + tp) / (tn + fp + fn + tp)\nprint(precision, recall, accuracy)\n# None means unavailable, not zero or perfect."
+        },
+        {
+          "type": "paragraph",
+          "text": "Trace the calculation on paper before running this optional Python check. Use the stated fictional inputs and compare intermediate values. The code checks this example; your independent workbook case uses different evidence."
+        }
+      ]
+    },
+    {
+      "title": "Explain the visual",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Precision recall and denominators at a glance",
+          "columns": [
+            "Part",
+            "Evidence or action",
+            "Interpretation"
+          ],
+          "rows": [
+            [
+              "Precision",
+              "3 correct flags",
+              "7 total flags"
+            ],
+            [
+              "Recall",
+              "3 found blocked cases",
+              "4 reference blocked"
+            ],
+            [
+              "Accuracy",
+              "15 correct labels",
+              "20 total records"
+            ]
+          ],
+          "caption": "Draw a box around the predicted-blocked column for precision and around the reference-blocked row for recall. Their overlap is TP. A model can flag nearly everything and find most blocked cases while producing many false alarms. Conversely, a model can flag very few cases accurately while missing many positives."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Calculate precision, recall and accuracy for the worked matrix. Explain the steps or evidence behind your response.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Apply the idea carefully",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "With [[16, 0],[4, 0]], there are no predicted positives. Precision is undefined because its denominator is zero; recall is 0/4=0. With [[16, 4],[0, 0]], recall is undefined because no reference positives were evaluated. Record counts and the undefined result instead of calling it perfect."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Ratios describe this evaluation set, not a guarantee for an individual case. Library zero-division policies differ; document yours. Do not select a metric only after seeing which one makes a model look best."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A team reports recall 100 percent but hides precision and counts. What is missing?",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Identify the groups",
+      "prompt": "For the worked matrix, give predicted-positive and reference-positive totals.",
+      "answer": "Teacher explanation: Predicted positives TP+FP=7; reference positives TP+FN=4.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Calculate both ratios",
+      "prompt": "Calculate precision, recall and accuracy for the worked matrix.",
+      "answer": "Teacher explanation: Precision 3/7 about 42.9 percent, recall 3/4=75 percent, accuracy 15/20=75 percent.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Handle no flags",
+      "prompt": "Explain precision and recall for [[16, 0],[4, 0]].",
+      "answer": "Teacher explanation: Precision is undefined, with no flags; recall is 0/4=0. This does not mean excellent detection.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Apply independently",
+      "prompt": "Use [[8, 2],[3, 6]]. Give TP, FP, FN, precision, recall and accuracy.",
+      "answer": "Teacher explanation: TP=6, FP=2, FN=3. Precision 6/8=75 percent; recall 6/9 about 66.7 percent; accuracy 14/19 about 73.7 percent.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Limit a claim",
+      "prompt": "A team reports recall 100 percent but hides precision and counts. What is missing?",
+      "answer": "Teacher explanation: Request TP, FP, FN, sample size, positive class and precision. Finding every positive can coexist with many false alarms.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions. This week focuses on precision recall and denominators. Model the worked example first, collect the new W 4 case independently before feedback, and use the fresh retry to check transfer. Award credit for traceable reasoning and bounded claims, including justified uncertainty.",
+    "materials": [
+      "Printed student lesson and workbook",
+      "Paper, pencils and a calculator for fractions",
+      "The fictional examples and a blank evidence table",
+      "Optional Python 3 editor; no external packages or AI accounts required"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Use the prerequisite question: Why can 80 percent accuracy hide missed blocked cases? Check the explanation before proceeding."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read the opening and model the worked evidence. Ask students to identify precision in context."
+      ],
+      [
+        "18 to 32 minutes",
+        "Complete W 1 and W 2 with support: identify the groups; calculate both ratios. Require the evidence, not only the final response."
+      ],
+      [
+        "32 to 45 minutes",
+        "Read the visual row by row. Collect the guided explanation and compare reasoning in pairs. Trace the Python check after the paper calculation."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the distinction between precision and recall. Invite a counterexample to an overconfident claim."
+      ],
+      [
+        "8 to 20 minutes",
+        "Discuss the application and complete W 3: Explain precision and recall for [[16, 0],[4, 0]]."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before giving hints. Assess these outcomes: Choose the denominator that answers the question; Calculate precision and recall with a declared positive class. Record any support used."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W 5 and the exit response to assess limits. Give targeted feedback, then the fresh retry. Save evidence of independent understanding."
+      ]
+    ],
+    "guidedAnswer": "Guided response: Precision 3/7 about 42.9 percent, recall 3/4=75 percent, accuracy 15/20=75 percent. Exit response: Request TP, FP, FN, sample size, positive class and precision. Finding every positive can coexist with many false alarms.",
+    "misconceptions": [
+      [
+        "A final answer is enough",
+        "Ask for the relevant counts, units, procedure or saved record. For this week: Predicted positives TP+FP=7; reference positives TP+FN=4."
+      ],
+      [
+        "A stronger claim makes a stronger project",
+        "Request TP, FP, FN, sample size, positive class and precision. Finding every positive can coexist with many false alarms."
+      ],
+      [
+        "The new case can be copied from the example",
+        "The independent task changes the evidence. Require a fresh explanation: TP=6, FP=2, FN=3. Precision 6/8=75 percent; recall 6/9 about 66.7 percent; accuracy 14/19 about 73.7 percent."
+      ]
+    ],
+    "assessment": "For independent W 4, require: TP=6, FP=2, FN=3. Precision 6/8=75 percent; recall 6/9 about 66.7 percent; accuracy 14/19 about 73.7 percent. Fresh retry [[5, 1],[2, 4]]: precision 4/5=80 percent, recall 4/6 about 66.7 percent, accuracy 9/12=75 percent. Require both denominators. Mark each criterion as independent, supported or not yet demonstrated. Reassess the reasoning after feedback; do not replace the first attempt silently.",
+    "support": "Provide a blank evidence table and allow a verbal explanation before writing. Highlight the given conditions without supplying the W 4 conclusion. Use precision and recall in full sentences. Extension: alter one condition in the worked example and explain which conclusion changes and which remains supported.",
+    "next": "Next week: Thresholds and consequences. Carry forward the saved evidence and the distinction between development choices and justified claims."
+  }
+}

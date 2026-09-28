@@ -1,0 +1,222 @@
+{
+  "level": "ai-3",
+  "week": 24,
+  "title": "Final testing and honest claims",
+  "minutes": 90,
+  "goals": [
+    "Freeze the full evaluation procedure before testing",
+    "Report a held-out result with counts and limitations",
+    "Recognize when test feedback has become development"
+  ],
+  "prerequisite": {
+    "prompt": "Why is validation not an untouched final test?",
+    "answer": "It influenced choices during development."
+  },
+  "vocabulary": [
+    [
+      "Freeze",
+      "Record a fixed model and procedure before testing"
+    ],
+    [
+      "Held out",
+      "Kept separate from development decisions"
+    ],
+    [
+      "Provenance",
+      "A record of where data and results came from"
+    ],
+    [
+      "Claim",
+      "A statement whose scope must match its evidence"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A final test is valuable because it did not guide model choices. Freeze the model, training preprocessing, threshold, metric, missing-prediction policy and test membership. Record the version before opening test labels. A classroom result is evidence about a small chosen set, not approval for deployment."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use fictional classroom data throughout this investigation. Keep the task, units, reference labels and data split visible as you reason. Earlier weeks supplied the model-building process; this week examines final testing and honest claims."
+        }
+      ]
+    },
+    {
+      "title": "Work through the evidence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A frozen classifier is tested on 20 fictional cases: TN 12 FP 2 FN 3 TP 3, blocked positive. Accuracy is 15/20=75 percent, precision 3/5=60 percent and recall 3/6=50 percent. Its previously fitted always-clear baseline gets 14/20=70 percent. The candidate improves accuracy here but misses half the blocked cases."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before continuing, underline the decision rule and circle the evidence that supports the conclusion. Explain the example to a partner without replacing the counts or conditions with a stronger claim. Keep the distinction between an observed result and a proposed next step."
+        }
+      ]
+    },
+    {
+      "title": "Explain the visual",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Final testing and honest claims at a glance",
+          "columns": [
+            "Part",
+            "Evidence or action",
+            "Interpretation"
+          ],
+          "rows": [
+            [
+              "Before labels",
+              "Freeze version and rules",
+              "Record test membership"
+            ],
+            [
+              "During evaluation",
+              "Keep every planned case",
+              "Count failures explicitly"
+            ],
+            [
+              "After evaluation",
+              "Publish full results",
+              "Restrict the claim"
+            ]
+          ],
+          "caption": "The test comparison must use the same cases and consistent rules. Report the denominator, reference-label process and sampling limitations. If the software fails on one case, report that failure; do not silently drop the case and keep the original headline denominator."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Why does 75 percent versus 70 percent not settle deployment? Explain the steps or evidence behind your response.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Apply the idea carefully",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "After seeing three missed blocked cases, the team changes its threshold. The old test has now informed development. Preserve the first result and label later scores as post-test development. A new independent test is needed for a new untouched-test claim; repeatedly splitting the same inspected rows does not erase what was learned."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A report can honestly say 15 of 20 correct on this fictional held-out set. It cannot say the model is 75 percent reliable for every child, school or future input. Do not fabricate more examples to make a result sound decisive."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "One planned case returns no prediction. What must the report retain?",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Calculate a final report",
+      "prompt": "Calculate the worked accuracy, precision and recall with denominators.",
+      "answer": "Teacher explanation: Accuracy 15/20, precision 3/5, recall 3/6. Report TN 12 FP 2 FN 3 TP 3 and blocked positive.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Compare a baseline",
+      "prompt": "Why does 75 percent versus 70 percent not settle deployment?",
+      "answer": "Teacher explanation: The difference is one correct case on 20; error consequences, limited coverage and missed blocked cases remain.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Handle a revision",
+      "prompt": "The team changes a threshold after reading test errors. How should it label later results?",
+      "answer": "Teacher explanation: Post-test development on an inspected set, with the first frozen test retained; a fresh independent set is needed for another untouched-test claim.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Apply independently",
+      "prompt": "A new frozen test has TN 7 FP 1 FN 2 TP 2. Calculate accuracy, precision and recall and state a bounded claim.",
+      "answer": "Teacher explanation: Accuracy 9/12=75 percent; precision 2/3 about 66.7 percent; recall 2/4=50 percent. These describe these 12 held-out examples only.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Report a failure",
+      "prompt": "One planned case returns no prediction. What must the report retain?",
+      "answer": "Teacher explanation: Retain the planned denominator and report the failed case and predefined scoring policy; disclose any metric denominator change.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions. This week focuses on final testing and honest claims. Model the worked example first, collect the new W 4 case independently before feedback, and use the fresh retry to check transfer. Award credit for traceable reasoning and bounded claims, including justified uncertainty.",
+    "materials": [
+      "Printed student lesson and workbook",
+      "Paper, pencils and a calculator for fractions",
+      "The fictional examples and a blank evidence table",
+      "Saved classroom project records for critique; no personal student dataset required"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Use the prerequisite question: Why is validation not an untouched final test? Check the explanation before proceeding."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read the opening and model the worked evidence. Ask students to identify freeze in context."
+      ],
+      [
+        "18 to 32 minutes",
+        "Complete W 1 and W 2 with support: calculate a final report; compare a baseline. Require the evidence, not only the final response."
+      ],
+      [
+        "32 to 45 minutes",
+        "Read the visual row by row. Collect the guided explanation and compare reasoning in pairs. Connect each conclusion to the stated evidence."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the distinction between freeze and held out. Invite a counterexample to an overconfident claim."
+      ],
+      [
+        "8 to 20 minutes",
+        "Discuss the application and complete W 3: The team changes a threshold after reading test errors. How should it label later results?"
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before giving hints. Assess these outcomes: Freeze the full evaluation procedure before testing; Report a held-out result with counts and limitations. Record any support used."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W 5 and the exit response to assess limits. Give targeted feedback, then the fresh retry. Save evidence of independent understanding."
+      ]
+    ],
+    "guidedAnswer": "Guided response: The difference is one correct case on 20; error consequences, limited coverage and missed blocked cases remain. Exit response: Retain the planned denominator and report the failed case and predefined scoring policy; disclose any metric denominator change.",
+    "misconceptions": [
+      [
+        "A final answer is enough",
+        "Ask for the relevant counts, units, procedure or saved record. For this week: Accuracy 15/20, precision 3/5, recall 3/6. Report TN 12 FP 2 FN 3 TP 3 and blocked positive."
+      ],
+      [
+        "A stronger claim makes a stronger project",
+        "Retain the planned denominator and report the failed case and predefined scoring policy; disclose any metric denominator change."
+      ],
+      [
+        "The new case can be copied from the example",
+        "The independent task changes the evidence. Require a fresh explanation: Accuracy 9/12=75 percent; precision 2/3 about 66.7 percent; recall 2/4=50 percent. These describe these 12 held-out examples only."
+      ]
+    ],
+    "assessment": "For independent W 4, require: Accuracy 9/12=75 percent; precision 2/3 about 66.7 percent; recall 2/4=50 percent. These describe these 12 held-out examples only. Fresh retry TN 8 FP 2 FN 1 TP 1: accuracy 9/12=75 percent, precision 1/3, recall 1/2. Require counts and a scope-limited statement. Mark each criterion as independent, supported or not yet demonstrated. Reassess the reasoning after feedback; do not replace the first attempt silently.",
+    "support": "Provide a blank evidence table and allow a verbal explanation before writing. Highlight the given conditions without supplying the W 4 conclusion. Use freeze and held out in full sentences. Extension: alter one condition in the worked example and explain which conclusion changes and which remains supported.",
+    "next": "Next week: Overfitting and model capacity. Carry forward the saved evidence and the distinction between development choices and justified claims."
+  }
+}

@@ -1,0 +1,228 @@
+{
+  "level": "ai-3",
+  "week": 33,
+  "title": "Capstone data and requirements",
+  "minutes": 90,
+  "goals": [
+    "Define a feasible capstone question and acceptance criteria",
+    "Create a data and split plan before modelling",
+    "Specify evidence, privacy and a fallback"
+  ],
+  "prerequisite": {
+    "prompt": "Which evaluation choices should precede model selection?",
+    "answer": "Task, data roles, metric, baseline, tie policy and intended use."
+  },
+  "vocabulary": [
+    [
+      "Requirement",
+      "A concrete condition the project must meet"
+    ],
+    [
+      "Acceptance criterion",
+      "Evidence that decides whether a requirement is met"
+    ],
+    [
+      "Data dictionary",
+      "Definitions and units for dataset fields"
+    ],
+    [
+      "Milestone",
+      "A review point with a stated deliverable"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The capstone is a classroom investigation, not a product launch. Choose the supplied fictional clear/blocked parcel task or an equally bounded teacher-approved synthetic task. Write a question that can be answered by comparing a simple model against a baseline. Do not use private student records or real safety decisions."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use fictional classroom data throughout this investigation. Keep the task, units, reference labels and data split visible as you reason. Earlier weeks supplied the model-building process; this week examines capstone data and requirements."
+        }
+      ]
+    },
+    {
+      "title": "Work through the evidence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Example proposal: can a small classifier improve validation accuracy over the training-majority baseline on fictional parcel measurements? Before modelling, assign 40 training, 20 validation and 12 final-test records, with related parcel groups kept together. Define blocked as positive, keep a fixed label rule, and reserve test labels with the teacher until Week 35."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before continuing, underline the decision rule and circle the evidence that supports the conclusion. Explain the example to a partner without replacing the counts or conditions with a stronger claim. Keep the distinction between an observed result and a proposed next step."
+        },
+        {
+          "type": "paragraph",
+          "text": "Your teacher can prepare the 72-record fictional grid described in the teacher guide, or approve another documented synthetic dataset. Each supplied record has an ID, group ID, width and height in cm. Training and validation labels are released for development; final-test labels stay with the teacher until the model is frozen. The numerical results in later worked examples are illustrative and are not expected scores for your project."
+        }
+      ]
+    },
+    {
+      "title": "Explain the visual",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Capstone data and requirements at a glance",
+          "columns": [
+            "Part",
+            "Evidence or action",
+            "Interpretation"
+          ],
+          "rows": [
+            [
+              "Week 33",
+              "Task data and split plan",
+              "Teacher checks feasibility"
+            ],
+            [
+              "Week 34",
+              "Baseline and candidate",
+              "Validation decision recorded"
+            ],
+            [
+              "Weeks 35 and 36",
+              "Frozen test and defense",
+              "Evidence plus limitations"
+            ]
+          ],
+          "caption": "The data dictionary lists record ID, group ID, width in cm, height in cm and reference class. IDs track provenance and splitting; they are not automatic predictive inputs. Check uniqueness, units, missing values, class coverage and group separation. Fit imputation or scaling only on training."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Explain why record ID, group ID and measured width have different roles. Explain the steps or evidence behind your response.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Apply the idea carefully",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Acceptance criteria describe the process even if the model loses: no split leakage; predictions for every planned case or documented failures; the same metric for baseline and candidate; precision/recall with denominators; a model card with limits. Improvement is a research outcome, not a grade requirement."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Submit a one-page proposal, data dictionary, split-membership record and risk/limitations note. The teacher approves feasibility and synthetic-data scope before modelling. If there are too few valid records for an independent test, use a clearly labelled demonstration and explicitly limit the claim rather than inventing evidence."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "What should the team do if it cannot obtain a valid untouched final test?",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "State a question",
+      "prompt": "Write a bounded question and a non-use statement for the supplied task.",
+      "answer": "Teacher explanation: Compare a simple classifier with a training-majority baseline on the fictional parcel evaluation; no real handling or student decisions are supported.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Define fields",
+      "prompt": "Explain why record ID, group ID and measured width have different roles.",
+      "answer": "Teacher explanation: Record ID tracks rows, group ID keeps related records together, and width is a potential measured feature available before prediction; IDs are not automatic inputs.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Set criteria",
+      "prompt": "Name three acceptance criteria that do not require the candidate to win.",
+      "answer": "Teacher explanation: Examples: no group overlap, all planned predictions accounted for, matched baseline comparison and documented limitations with denominators.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Apply independently",
+      "prompt": "A proposed 80-row dataset has 40 related pairs, and the team splits individual rows randomly then uses pair ID as a feature. Revise its plan.",
+      "answer": "Teacher explanation: Keep both members of each pair in one split, exclude pair ID from predictive inputs, check group/class coverage and record split membership before training. Reserve final-test labels.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Prepare a fallback",
+      "prompt": "What should the team do if it cannot obtain a valid untouched final test?",
+      "answer": "Teacher explanation: Label the work as development or a demonstration, report the limitation and avoid an untouched-test claim; do not fabricate test data or results.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions. This week focuses on capstone data and requirements. Model the worked example first, collect the new W 4 case independently before feedback, and use the fresh retry to check transfer. Award credit for traceable reasoning and bounded claims, including justified uncertainty.",
+    "materials": [
+      "Printed student lesson and workbook",
+      "Paper, pencils and a calculator for fractions",
+      "The fictional examples and a blank evidence table",
+      "Saved classroom project records for critique; no personal student dataset required",
+      "Optional reproducible data kit: create IDs i=0 through 71, width=2+(i mod 9) cm, height=2+floor(i/9) cm, and group ID equal to i. Each record is a distinct fictional parcel. Reference label is blocked when width+height is at least 12, otherwise clear. These are invented operational labels, not real parcel safety labels.",
+      "Split by (5*i) mod 18: values 0–9 go to training, 10–14 to validation, 15–17 to final test. This gives 40/20/12 rows. Prepare the kit before class, check both classes in each split, and distribute final-test features without labels. Keep the final key in teacher materials. The constructed split is not a random sample; students must report that limitation."
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Use the prerequisite question: Which evaluation choices should precede model selection? Check the explanation before proceeding."
+      ],
+      [
+        "7 to 18 minutes",
+        "Model the worked proposal, then introduce the prepared fictional dataset and its data dictionary. Students choose the supplied task or a bounded approved alternative."
+      ],
+      [
+        "18 to 32 minutes",
+        "Teams draft their question, non-use statement and three process acceptance criteria. Use W1–W3 as prompts while preparing the proposal."
+      ],
+      [
+        "32 to 45 minutes",
+        "Teams check IDs, units, missing values and split membership. Collect the proposal and identify repairs before any model fitting."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the distinction between requirement and acceptance criterion. Invite a counterexample to an overconfident claim."
+      ],
+      [
+        "8 to 20 minutes",
+        "Complete the independent W4 split critique first. Then teams revise their own data plan and document group separation."
+      ],
+      [
+        "20 to 35 minutes",
+        "Review each team proposal and data dictionary for feasibility. Confirm synthetic-data scope, task metric and baseline; reserve final-test labels before approving modelling."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W 5 and the exit response to assess limits. Give targeted feedback, then the fresh retry. Save evidence of independent understanding."
+      ]
+    ],
+    "guidedAnswer": "Guided response: Record ID tracks rows, group ID keeps related records together, and width is a potential measured feature available before prediction; IDs are not automatic inputs. Exit response: Label the work as development or a demonstration, report the limitation and avoid an untouched-test claim; do not fabricate test data or results.",
+    "misconceptions": [
+      [
+        "A final answer is enough",
+        "Ask for the relevant counts, units, procedure or saved record. For this week: Compare a simple classifier with a training-majority baseline on the fictional parcel evaluation; no real handling or student decisions are supported."
+      ],
+      [
+        "A stronger claim makes a stronger project",
+        "Label the work as development or a demonstration, report the limitation and avoid an untouched-test claim; do not fabricate test data or results."
+      ],
+      [
+        "The new case can be copied from the example",
+        "The independent task changes the evidence. Require a fresh explanation: Keep both members of each pair in one split, exclude pair ID from predictive inputs, check group/class coverage and record split membership before training. Reserve final-test labels."
+      ]
+    ],
+    "assessment": "For independent W 4, require: Keep both members of each pair in one split, exclude pair ID from predictive inputs, check group/class coverage and record split membership before training. Reserve final-test labels. Fresh retry: three images of the same fictional parcel must stay in one split. Ask the learner to identify the group and record a split-level check before modelling. Mark each criterion as independent, supported or not yet demonstrated. Reassess the reasoning after feedback; do not replace the first attempt silently.",
+    "support": "Provide a blank evidence table and allow a verbal explanation before writing. Highlight the given conditions without supplying the W 4 conclusion. Use requirement and acceptance criterion in full sentences. Extension: alter one condition in the worked example and explain which conclusion changes and which remains supported.",
+    "next": "Next week: Capstone models and baselines. Carry forward the saved evidence and the distinction between development choices and justified claims."
+  }
+}

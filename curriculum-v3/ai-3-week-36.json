@@ -1,0 +1,222 @@
+{
+  "level": "ai-3",
+  "week": 36,
+  "title": "Machine learning project defense",
+  "minutes": 90,
+  "goals": [
+    "Defend the project using traceable evidence",
+    "Explain errors and limits to a non-specialist audience",
+    "Respond to critique and propose an evidence-based next step"
+  ],
+  "prerequisite": {
+    "prompt": "What is the difference between a result and a claim?",
+    "answer": "A result describes observed evidence; a claim must not extend beyond what that evidence supports."
+  },
+  "vocabulary": [
+    [
+      "Defense",
+      "An explanation of decisions supported by inspectable evidence"
+    ],
+    [
+      "Traceability",
+      "Ability to follow a claim back to its source"
+    ],
+    [
+      "Limitation",
+      "A boundary on interpretation or supported use"
+    ],
+    [
+      "Reflection",
+      "An account of learning and justified next steps"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The final defense tells a coherent story: question, data, method, comparison, errors and limits. A strong project may conclude that the baseline is preferable or evidence is insufficient. The aim is sound reasoning and a reproducible investigation, not an impressive headline or polished unsupported claim."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use fictional classroom data throughout this investigation. Keep the task, units, reference labels and data split visible as you reason. Earlier weeks supplied the model-building process; this week examines machine learning project defense."
+        }
+      ]
+    },
+    {
+      "title": "Work through the evidence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Example opening: We compared a simple classifier with an always-clear training baseline on fictional parcels. We froze the procedure before a 12-case test. Candidate accuracy was 9/12 versus baseline 8/12; candidate FP 1 FN 2. These small synthetic results support a classroom comparison, not real parcel decisions. We would next investigate dim-condition coverage using new development data."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before continuing, underline the decision rule and circle the evidence that supports the conclusion. Explain the example to a partner without replacing the counts or conditions with a stronger claim. Keep the distinction between an observed result and a proposed next step."
+        }
+      ]
+    },
+    {
+      "title": "Explain the visual",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Machine learning project defense at a glance",
+          "columns": [
+            "Part",
+            "Evidence or action",
+            "Interpretation"
+          ],
+          "rows": [
+            [
+              "Show the process",
+              "Task data splits versions",
+              "Explain one prediction"
+            ],
+            [
+              "Show the evidence",
+              "Baseline metrics errors",
+              "Trace one reported number"
+            ],
+            [
+              "Show the limits",
+              "Unsupported uses next step",
+              "Answer peer questions"
+            ]
+          ],
+          "caption": "Prepare a five-minute presentation with a one-page evidence summary and linked project files. Include the data dictionary, split record, run record, prediction ledger, model card and revision history. Demonstrate one prediction or arithmetic calculation live so the audience can follow the reasoning."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Name the files needed to audit one reported accuracy figure. Explain the steps or evidence behind your response.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Apply the idea carefully",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Peers ask three questions: what influenced model selection, which cases failed, and what evidence would change the conclusion? Respond using saved records. If an answer is unknown, say so and name the evidence needed. Record feedback as resolved, deferred with reason, or requiring new data."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The teacher rubric has four dimensions scored 0, 1, 2: valid data/splits, reproducible method, complete evaluation, and honest communication. Two means evidence is complete and explainable; one means partial evidence with identified gaps; zero means absent or materially incorrect. Report dimensions separately; a serious leakage problem cannot be hidden by presentation points."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Write one next investigation tied to an observed limitation, and identify what must stay held out.",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Write an opening",
+      "prompt": "Draft a three-sentence opening with purpose, a result and a limit.",
+      "answer": "Teacher explanation: A valid response names the fictional task, reports an auditable baseline/candidate comparison with denominator, and restricts the claim to the evaluated setup.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Trace evidence",
+      "prompt": "Name the files needed to audit one reported accuracy figure.",
+      "answer": "Teacher explanation: Prediction ledger with references and outputs, split membership, frozen model/run record and metric definition; count correct rows over all scored rows under the saved policy.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Answer critique",
+      "prompt": "A peer asks whether your model works for every school. Give a supported response.",
+      "answer": "Teacher explanation: No universal conclusion is supported. State the actual synthetic dataset and conditions, missing coverage and what additional appropriate evidence would be needed.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Apply independently",
+      "prompt": "Review a defense claiming 95 percent success on 20 cases but omitting the baseline, split history and errors. Give three revision requests and explain why polish is insufficient.",
+      "answer": "Teacher explanation: Request the baseline on the same cases, split/development history and full error counts/limits. A polished presentation cannot establish validity or supported use without auditable evidence.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Plan the next step",
+      "prompt": "Write one next investigation tied to an observed limitation, and identify what must stay held out.",
+      "answer": "Teacher explanation: A valid response links a documented limitation to new development evidence, records any revised version, and reserves fresh independent final-test evidence for a later frozen evaluation.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions. This week focuses on machine learning project defense. Model the worked example first, collect the new W 4 case independently before feedback, and use the fresh retry to check transfer. Award credit for traceable reasoning and bounded claims, including justified uncertainty.",
+    "materials": [
+      "Printed student lesson and workbook",
+      "Paper, pencils and a calculator for fractions",
+      "The fictional examples and a blank evidence table",
+      "Saved classroom project records for critique; no personal student dataset required"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Use the prerequisite question: What is the difference between a result and a claim? Check the explanation before proceeding."
+      ],
+      [
+        "7 to 18 minutes",
+        "Review the four rubric dimensions. Use W1–W3 to prepare a bounded opening and an auditable evidence summary."
+      ],
+      [
+        "18 to 32 minutes",
+        "Teams prepare a five-minute defense and one-page summary. Check every claim against the saved project files and rehearse one prediction trace."
+      ],
+      [
+        "32 to 45 minutes",
+        "Run peer rehearsals in pairs. Each reviewer records a question about data roles, a failure and the claim limits."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete W4 independently as a short critique of unsupported claims. Use the result to target final feedback."
+      ],
+      [
+        "8 to 20 minutes",
+        "Begin defenses in parallel small groups: five minutes presenting plus two minutes of questions per team. Teacher samples evidence and collects all records."
+      ],
+      [
+        "20 to 35 minutes",
+        "Continue defenses and record scores separately for data/splits, reproducibility, evaluation and communication. Use written evidence as well as the live explanation."
+      ],
+      [
+        "35 to 45 minutes",
+        "Complete W5 as an individual reflection. Resolve or record peer feedback, identify a justified next step and use the fresh retry for learners who confuse model improvement with project success."
+      ]
+    ],
+    "guidedAnswer": "Guided response: Prediction ledger with references and outputs, split membership, frozen model/run record and metric definition; count correct rows over all scored rows under the saved policy. Exit response: A valid response links a documented limitation to new development evidence, records any revised version, and reserves fresh independent final-test evidence for a later frozen evaluation.",
+    "misconceptions": [
+      [
+        "A final answer is enough",
+        "Ask for the relevant counts, units, procedure or saved record. For this week: A valid response names the fictional task, reports an auditable baseline/candidate comparison with denominator, and restricts the claim to the evaluated setup."
+      ],
+      [
+        "A stronger claim makes a stronger project",
+        "A valid response links a documented limitation to new development evidence, records any revised version, and reserves fresh independent final-test evidence for a later frozen evaluation."
+      ],
+      [
+        "The new case can be copied from the example",
+        "The independent task changes the evidence. Require a fresh explanation: Request the baseline on the same cases, split/development history and full error counts/limits. A polished presentation cannot establish validity or supported use without auditable evidence."
+      ]
+    ],
+    "assessment": "For independent W 4, require: Request the baseline on the same cases, split/development history and full error counts/limits. A polished presentation cannot establish validity or supported use without auditable evidence. Fresh retry: a learner says our baseline won, so the project failed. Ask for a defense explaining the valid comparison, retained baseline, limits and an evidence-based next investigation; do not reward invented improvement. Mark each criterion as independent, supported or not yet demonstrated. Reassess the reasoning after feedback; do not replace the first attempt silently.",
+    "support": "Provide a blank evidence table and allow a verbal explanation before writing. Highlight the given conditions without supplying the W 4 conclusion. Use defense and traceability in full sentences. Extension: alter one condition in the worked example and explain which conclusion changes and which remains supported.",
+    "next": "Grade 8 is complete. Use the project defense and independent work to assess readiness for the next level. Revisit split integrity, model fitting and evaluation before advancing if those foundations are not yet secure."
+  }
+}

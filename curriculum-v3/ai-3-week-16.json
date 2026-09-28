@@ -1,0 +1,227 @@
+{
+  "level": "ai-3",
+  "week": 16,
+  "title": "Thresholds and consequences",
+  "minutes": 90,
+  "goals": [
+    "Apply a declared score threshold including equality",
+    "Compare false alarms and misses at two thresholds",
+    "Separate validation choices from final testing"
+  ],
+  "prerequisite": {
+    "prompt": "Which denominator defines recall?",
+    "answer": "All reference positives, TP+FN."
+  },
+  "vocabulary": [
+    [
+      "Score",
+      "A model output used to rank or decide"
+    ],
+    [
+      "Threshold",
+      "A boundary that converts a score to a label"
+    ],
+    [
+      "False alarm",
+      "A positive prediction for a negative reference"
+    ],
+    [
+      "Cost rule",
+      "A declared way to value different mistakes"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A classifier score is not automatically a probability. Declare blocked positive and predict blocked when score is at least the threshold. Changing this boundary changes decisions without necessarily retraining the model. Select it using development evidence and a task-relevant rule, not final-test answers."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use fictional classroom data throughout this investigation. Keep the task, units, reference labels and data split visible as you reason. Earlier weeks supplied the model-building process; this week examines thresholds and consequences."
+        }
+      ]
+    },
+    {
+      "title": "Work through the evidence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Six records have score/reference pairs A .9/blocked, B .7/clear, C .6/blocked, D .4/blocked, E .3/clear, F .1/clear. At threshold .5, TP=2, FP=1, FN=1, TN=2. At .3, TP=3, FP=2, FN=0, TN=1. Equality is positive, so E is flagged at .3."
+        },
+        {
+          "type": "code",
+          "title": "Python 3 check",
+          "text": "scores = [0.9, 0.7, 0.6, 0.4, 0.3, 0.1]\nactual = [True, False, True, True, False, False]\nfor threshold in [0.5, 0.3]:\n    predicted = [s >= threshold for s in scores]\n    fp = sum(p and not a for p, a in zip(predicted, actual))\n    fn = sum(not p and a for p, a in zip(predicted, actual))\n    print(threshold, fp, fn, fp + 4 * fn)\n# Output rows: 0.5 1 1 5, then 0.3 2 0 2."
+        },
+        {
+          "type": "paragraph",
+          "text": "Trace the calculation on paper before running this optional Python check. Use the stated fictional inputs and compare intermediate values. The code checks this example; your independent workbook case uses different evidence."
+        }
+      ]
+    },
+    {
+      "title": "Explain the visual",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Thresholds and consequences at a glance",
+          "columns": [
+            "Part",
+            "Evidence or action",
+            "Interpretation"
+          ],
+          "rows": [
+            [
+              "Threshold .5",
+              "One false alarm one miss",
+              "Four of six correct"
+            ],
+            [
+              "Threshold .3",
+              "Two false alarms no misses",
+              "Four of six correct"
+            ],
+            [
+              "Decision rule",
+              "Include equality",
+              "Record before evaluation"
+            ]
+          ],
+          "caption": "Lowering the threshold here finds D but adds E as a false alarm. The two accuracies are equal while consequences differ. Precision is 2/3 at .5 and 3/5 at .3; recall rises from 2/3 to 1. This behavior follows these fixed scores and records, not a promise of future performance."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Give TP, FP, FN, TN at both thresholds. Explain the steps or evidence behind your response.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Apply the idea carefully",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Suppose the classroom cost is one point per false alarm and four per miss. Total costs are 5 at .5 and 2 at .3, so .3 wins among these two candidates under this rule. If false alarms cost four and misses cost one, costs are 5 and 8, reversing the choice."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "These invented costs support arithmetic practice, not real robot deployment. Stakeholders must justify actual consequences. Record every tried threshold and retain a separate final test; a threshold is part of the selected method."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Why not select the threshold with the lowest final-test cost?",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Apply the boundary",
+      "prompt": "Which IDs are positive at .5 and .3?",
+      "answer": "Teacher explanation: At .5: A, B, C. At .3: A, B, C, D, E, including equality.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Count the consequences",
+      "prompt": "Give TP, FP, FN, TN at both thresholds.",
+      "answer": "Teacher explanation: At .5: 2, 1, 1, 2. At .3: 3, 2, 0, 1.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Use the declared cost",
+      "prompt": "Calculate costs with FP cost 1 and FN cost 4.",
+      "answer": "Teacher explanation: Costs are 1+4=5 and 2+0=2; .3 is preferred among these candidates.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Apply independently",
+      "prompt": "Scores/references are .8/blocked,.5/clear,.2/blocked,.1/clear. Compare thresholds .5 and .2 using the same cost.",
+      "answer": "Teacher explanation: At .5 TP 1 FP 1 FN 1 TN 1 cost 5. At .2 TP 2 FP 1 FN 0 TN 1 cost 1. Equality is positive at both boundaries.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Protect the final test",
+      "prompt": "Why not select the threshold with the lowest final-test cost?",
+      "answer": "Teacher explanation: Selection uses the test answers, turning the test into development data and weakening its independent evaluation role.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions. This week focuses on thresholds and consequences. Model the worked example first, collect the new W 4 case independently before feedback, and use the fresh retry to check transfer. Award credit for traceable reasoning and bounded claims, including justified uncertainty.",
+    "materials": [
+      "Printed student lesson and workbook",
+      "Paper, pencils and a calculator for fractions",
+      "The fictional examples and a blank evidence table",
+      "Optional Python 3 editor; no external packages or AI accounts required"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Use the prerequisite question: Which denominator defines recall? Check the explanation before proceeding."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read the opening and model the worked evidence. Ask students to identify score in context."
+      ],
+      [
+        "18 to 32 minutes",
+        "Complete W 1 and W 2 with support: apply the boundary; count the consequences. Require the evidence, not only the final response."
+      ],
+      [
+        "32 to 45 minutes",
+        "Read the visual row by row. Collect the guided explanation and compare reasoning in pairs. Trace the Python check after the paper calculation."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the distinction between score and threshold. Invite a counterexample to an overconfident claim."
+      ],
+      [
+        "8 to 20 minutes",
+        "Discuss the application and complete W 3: Calculate costs with FP cost 1 and FN cost 4."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before giving hints. Assess these outcomes: Apply a declared score threshold including equality; Compare false alarms and misses at two thresholds. Record any support used."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W 5 and the exit response to assess limits. Give targeted feedback, then the fresh retry. Save evidence of independent understanding."
+      ]
+    ],
+    "guidedAnswer": "Guided response: At .5: 2, 1, 1, 2. At .3: 3, 2, 0, 1. Exit response: Selection uses the test answers, turning the test into development data and weakening its independent evaluation role.",
+    "misconceptions": [
+      [
+        "A final answer is enough",
+        "Ask for the relevant counts, units, procedure or saved record. For this week: At .5: A, B, C. At .3: A, B, C, D, E, including equality."
+      ],
+      [
+        "A stronger claim makes a stronger project",
+        "Selection uses the test answers, turning the test into development data and weakening its independent evaluation role."
+      ],
+      [
+        "The new case can be copied from the example",
+        "The independent task changes the evidence. Require a fresh explanation: At .5 TP 1 FP 1 FN 1 TN 1 cost 5. At .2 TP 2 FP 1 FN 0 TN 1 cost 1. Equality is positive at both boundaries."
+      ]
+    ],
+    "assessment": "For independent W 4, require: At .5 TP 1 FP 1 FN 1 TN 1 cost 5. At .2 TP 2 FP 1 FN 0 TN 1 cost 1. Equality is positive at both boundaries. Fresh retry .9/clear,.6/blocked,.4/clear,.2/blocked at threshold .4: TP 1 FP 2 FN 1 TN 0, cost 6 under FP 1 FN 4. Require equality and all counts. Mark each criterion as independent, supported or not yet demonstrated. Reassess the reasoning after feedback; do not replace the first attempt silently.",
+    "support": "Provide a blank evidence table and allow a verbal explanation before writing. Highlight the given conditions without supplying the W 4 conclusion. Use score and threshold in full sentences. Extension: alter one condition in the worked example and explain which conclusion changes and which remains supported.",
+    "next": "Next week: Calibration as a group property. Carry forward the saved evidence and the distinction between development choices and justified claims."
+  }
+}

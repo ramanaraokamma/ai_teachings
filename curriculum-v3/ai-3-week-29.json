@@ -1,0 +1,222 @@
+{
+  "level": "ai-3",
+  "week": 29,
+  "title": "Distribution shift",
+  "minutes": 90,
+  "goals": [
+    "Recognize changes between development and later data",
+    "Compare errors across conditions with denominators",
+    "Plan monitoring and a response without tuning on an old test"
+  ],
+  "prerequisite": {
+    "prompt": "Why does a test score need a population description?",
+    "answer": "Performance may differ when inputs, labels or conditions change."
+  },
+  "vocabulary": [
+    [
+      "Distribution shift",
+      "A change in the data-generating conditions"
+    ],
+    [
+      "Monitoring",
+      "Repeated checks of inputs, outputs and later outcomes"
+    ],
+    [
+      "Reference labels",
+      "The labels used to evaluate predictions"
+    ],
+    [
+      "Fallback",
+      "A planned alternative when the model is unsuitable"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A model trained on one set of conditions may encounter another. Lighting, measuring tools, class frequency and the relationship between inputs and labels can change. A shift does not automatically imply failure, but it challenges the assumption that old evidence represents current use."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use fictional classroom data throughout this investigation. Keep the task, units, reference labels and data split visible as you reason. Earlier weeks supplied the model-building process; this week examines distribution shift."
+        }
+      ]
+    },
+    {
+      "title": "Work through the evidence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On development-like bright images, a frozen classroom classifier makes 2 errors in 20 cases:10 percent. On a separate dim set it makes 6 errors in 20:30 percent. The pooled result is 8/40=20 percent error. The pooled score hides a 20-percentage-point difference between conditions."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before continuing, underline the decision rule and circle the evidence that supports the conclusion. Explain the example to a partner without replacing the counts or conditions with a stronger claim. Keep the distinction between an observed result and a proposed next step."
+        }
+      ]
+    },
+    {
+      "title": "Explain the visual",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Distribution shift at a glance",
+          "columns": [
+            "Part",
+            "Evidence or action",
+            "Interpretation"
+          ],
+          "rows": [
+            [
+              "Bright condition",
+              "2 errors of 20",
+              "10 percent error"
+            ],
+            [
+              "Dim condition",
+              "6 errors of 20",
+              "30 percent error"
+            ],
+            [
+              "Combined",
+              "8 errors of 40",
+              "20 percent error"
+            ]
+          ],
+          "caption": "The comparison identifies an observed weakness, not its cause. Check how images and labels were collected and whether other factors changed with lighting. An input shift can be detected before labels arrive, but performance cannot be measured from predictions alone."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Why is 8/40 incomplete by itself? Explain the steps or evidence behind your response.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Apply the idea carefully",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For a supervised classroom prototype, define a review trigger before use, such as a new unsupported input range or a documented increase in labelled error. Pause the affected use, provide a human or non-model fallback, and investigate with new development evidence. Version any revision."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Do not normalize away a shift by silently changing preprocessing during evaluation. Treat a revised transformation or retrained model as a new version. Use fresh appropriate evidence for its claims and retain earlier results."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "State a safe classroom response to inputs outside the supported range.",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Compare conditions",
+      "prompt": "Calculate each worked error rate and the difference.",
+      "answer": "Teacher explanation: Bright 2/20=10 percent; dim 6/20=30 percent; dim is 20 percentage points higher.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Read pooled evidence",
+      "prompt": "Why is 8/40 incomplete by itself?",
+      "answer": "Teacher explanation: It combines conditions and hides the higher observed dim-condition error.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Wait for labels",
+      "prompt": "Can changed predictions alone prove an accuracy drop?",
+      "answer": "Teacher explanation: No. Prediction patterns can change without known correctness; valid reference labels are needed to measure error.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Apply independently",
+      "prompt": "Old-like data has 3 errors/30 and new-condition data 5/10. Give both rates and the pooled rate.",
+      "answer": "Teacher explanation: Rates 10 percent and 50 percent; pooled 8/40=20 percent. Report both denominators and the 40-point condition gap.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Plan a response",
+      "prompt": "State a safe classroom response to inputs outside the supported range.",
+      "answer": "Teacher explanation: Flag unsupported inputs, pause the affected model decision, use the declared human or non-model fallback, and gather appropriate evidence before revision.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions. This week focuses on distribution shift. Model the worked example first, collect the new W 4 case independently before feedback, and use the fresh retry to check transfer. Award credit for traceable reasoning and bounded claims, including justified uncertainty.",
+    "materials": [
+      "Printed student lesson and workbook",
+      "Paper, pencils and a calculator for fractions",
+      "The fictional examples and a blank evidence table",
+      "Saved classroom project records for critique; no personal student dataset required"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Use the prerequisite question: Why does a test score need a population description? Check the explanation before proceeding."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read the opening and model the worked evidence. Ask students to identify distribution shift in context."
+      ],
+      [
+        "18 to 32 minutes",
+        "Complete W 1 and W 2 with support: compare conditions; read pooled evidence. Require the evidence, not only the final response."
+      ],
+      [
+        "32 to 45 minutes",
+        "Read the visual row by row. Collect the guided explanation and compare reasoning in pairs. Connect each conclusion to the stated evidence."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the distinction between distribution shift and monitoring. Invite a counterexample to an overconfident claim."
+      ],
+      [
+        "8 to 20 minutes",
+        "Discuss the application and complete W 3: Can changed predictions alone prove an accuracy drop?"
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before giving hints. Assess these outcomes: Recognize changes between development and later data; Compare errors across conditions with denominators. Record any support used."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W 5 and the exit response to assess limits. Give targeted feedback, then the fresh retry. Save evidence of independent understanding."
+      ]
+    ],
+    "guidedAnswer": "Guided response: It combines conditions and hides the higher observed dim-condition error. Exit response: Flag unsupported inputs, pause the affected model decision, use the declared human or non-model fallback, and gather appropriate evidence before revision.",
+    "misconceptions": [
+      [
+        "A final answer is enough",
+        "Ask for the relevant counts, units, procedure or saved record. For this week: Bright 2/20=10 percent; dim 6/20=30 percent; dim is 20 percentage points higher."
+      ],
+      [
+        "A stronger claim makes a stronger project",
+        "Flag unsupported inputs, pause the affected model decision, use the declared human or non-model fallback, and gather appropriate evidence before revision."
+      ],
+      [
+        "The new case can be copied from the example",
+        "The independent task changes the evidence. Require a fresh explanation: Rates 10 percent and 50 percent; pooled 8/40=20 percent. Report both denominators and the 40-point condition gap."
+      ]
+    ],
+    "assessment": "For independent W 4, require: Rates 10 percent and 50 percent; pooled 8/40=20 percent. Report both denominators and the 40-point condition gap. Fresh retry condition A 1/10 errors and B 3/10:10 and 30 percent, pooled 4/20=20 percent. Require separate counts and no causal claim from the table alone. Mark each criterion as independent, supported or not yet demonstrated. Reassess the reasoning after feedback; do not replace the first attempt silently.",
+    "support": "Provide a blank evidence table and allow a verbal explanation before writing. Highlight the given conditions without supplying the W 4 conclusion. Use distribution shift and monitoring in full sentences. Extension: alter one condition in the worked example and explain which conclusion changes and which remains supported.",
+    "next": "Next week: Subgroup evaluation. Carry forward the saved evidence and the distinction between development choices and justified claims."
+  }
+}

@@ -1,0 +1,298 @@
+{
+  "level": "ai-3",
+  "week": 13,
+  "title": "Confusion matrices",
+  "minutes": 90,
+  "goals": [
+    "Build a labelled confusion matrix from matched reference and prediction pairs",
+    "Distinguish false positives from false negatives using a declared positive class",
+    "Check matrix totals and explain why equal accuracy can hide different errors"
+  ],
+  "prerequisite": {
+    "prompt": "Why should a reproducible run save predictions linked to example IDs rather than only an accuracy score?",
+    "answer": "IDs preserve which reference belongs to each prediction and which examples were wrong. The same accuracy can come from different predictions and error patterns."
+  },
+  "vocabulary": [
+    [
+      "Confusion matrix",
+      "A table counting reference and prediction combinations"
+    ],
+    [
+      "Positive class",
+      "The class chosen as the condition of interest"
+    ],
+    [
+      "False positive",
+      "A positive prediction when the reference is negative"
+    ],
+    [
+      "False negative",
+      "A negative prediction when the reference is positive"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Keep each prediction with its reference",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A confusion matrix shows which labels a classifier mixes up. It counts examples after predictions are made; it does not fit or repair the classifier. Week 12 had reference/prediction pairs clear/clear, blocked/blocked, clear/blocked. A labelled table can preserve the type of that error as well as the total score."
+        },
+        {
+          "type": "paragraph",
+          "text": "This week uses eight new fictional evaluation records from a frozen classifier. They are not extra predictions from the Week 12 code. Each ID appears once with a reviewed reference and one prediction. The grouped table below lists every ID. Keep reference and prediction paired by ID before counting."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Evaluation IDs",
+            "Reference",
+            "Prediction"
+          ],
+          "rows": [
+            [
+              "V1 V2",
+              "clear",
+              "clear"
+            ],
+            [
+              "V3",
+              "clear",
+              "blocked"
+            ],
+            [
+              "V4 V5",
+              "blocked",
+              "clear"
+            ],
+            [
+              "V6 V7 V8",
+              "blocked",
+              "blocked"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Use reference labels for rows and predicted labels for columns. On both axes the order is clear, then blocked. Declare blocked as the positive class and clear as negative. Positive means the condition of interest, not good or safe. A missed blocked case and a false alarm are different errors."
+        }
+      ]
+    },
+    {
+      "title": "Count into a labelled table",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "pairs = [(\"V1\", \"clear\", \"clear\"),\n         (\"V2\", \"clear\", \"clear\"),\n         (\"V3\", \"clear\", \"blocked\"),\n         (\"V4\", \"blocked\", \"clear\"),\n         (\"V5\", \"blocked\", \"clear\"),\n         (\"V6\", \"blocked\", \"blocked\"),\n         (\"V7\", \"blocked\", \"blocked\"),\n         (\"V8\", \"blocked\", \"blocked\")]\nlabels = [\"clear\", \"blocked\"]\nindex = {label: i for i, label in enumerate(labels)}\ncounts = [[0, 0], [0, 0]]\nfor item_id, reference, prediction in pairs:\n    counts[index[reference]][index[prediction]] += 1\nprint(counts)\ncorrect = counts[0][0] + counts[1][1]\nprint(correct, len(pairs))"
+        },
+        {
+          "type": "paragraph",
+          "text": "index maps clear to 0 and blocked to 1. Each paired record adds one to its reference row and prediction column. The script prints [[2, 1], [2, 3]] then 5 8. It assumes unique IDs and only these two labels. Check IDs and missing or unresolved references before counting; the code does not validate all those conditions."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Reference rows",
+            "Predicted clear",
+            "Predicted blocked"
+          ],
+          "rows": [
+            [
+              "Reference clear",
+              "2",
+              "1"
+            ],
+            [
+              "Reference blocked",
+              "2",
+              "3"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The diagonal cells count correct predictions: 2+3=5. Off-diagonal cells count mistakes: 1+2=3. Every record must contribute exactly once. This is a count matrix, not percentages or probabilities. Keep the axis labels even when copying the numbers."
+        }
+      ]
+    },
+    {
+      "title": "Name each cell using the positive class",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Blocked is the positive class",
+          "columns": [
+            "Reference and prediction",
+            "Cell name",
+            "IDs and count"
+          ],
+          "rows": [
+            [
+              "clear then clear",
+              "True negative TN",
+              "V1 V2 count 2"
+            ],
+            [
+              "clear then blocked",
+              "False positive FP",
+              "V3 count 1"
+            ],
+            [
+              "blocked then clear",
+              "False negative FN",
+              "V4 V5 count 2"
+            ],
+            [
+              "blocked then blocked",
+              "True positive TP",
+              "V6 V7 V8 count 3"
+            ]
+          ],
+          "caption": "Read reference first and prediction second. Here a false positive is a false blocked alarm; a false negative is a missed blocked case."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Place V3 and V4 in the matrix. Explain which is a false positive and which is a false negative when blocked is positive.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "True means prediction agrees with the reference. It does not prove that the reference annotation is infallible. Resolve disputed labels with the documented review policy rather than silently changing them to match predictions."
+        }
+      ]
+    },
+    {
+      "title": "Check totals before comparing models",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Row totals are 3 reference-clear and 5 reference-blocked. Column totals are 4 predicted-clear and 4 predicted-blocked. All four cells sum to 8. Accuracy is the diagonal total divided by the total: 5/8, or 62.5 percent. The Week 12 three-record matrix was [[1,1],[0,1]] in this same axis order, giving 2/3."
+        },
+        {
+          "type": "paragraph",
+          "text": "Another classifier on these same eight reference-labelled records could have matrix [[3,0],[3,2]]. It also gets 5/8 correct, but has zero false positives and three false negatives. Our worked classifier has one false positive and two false negatives. Equal accuracy does not settle which error pattern is preferable; consider the task and evidence before choosing."
+        }
+      ]
+    },
+    {
+      "title": "Preserve meaning when presenting a matrix",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Always report the evaluated split, number of records, reference and prediction axes, label order and positive class. Reversing the axis order changes positions, not the underlying outcomes. Transposing rows and columns swaps the two kinds of error unless the labels are corrected. Read the headers before interpreting a diagram from another source."
+        },
+        {
+          "type": "paragraph",
+          "text": "A zero cell means no such event in this evaluated set, not that it is impossible. A confusion matrix does not show the cause of errors, label quality or performance on future data. Keep the ID-level records for investigation. Next week examines accuracy when class counts are unequal."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Two classifiers have accuracy 5/8. One misses two blocked records and the other misses three. Explain how both statements can be true and what must accompany their matrices for a fair comparison.",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Build the count matrix",
+      "prompt": "Use all eight worked IDs. Draw a matrix with reference rows and prediction columns, both ordered clear then blocked. Place the IDs in cells before writing the counts.",
+      "answer": "Reference clear/predicted clear contains V1,V2: 2. Clear/blocked contains V3: 1. Blocked/clear contains V4,V5: 2. Blocked/blocked contains V6,V7,V8: 3. Matrix [[2,1],[2,3]].",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Explain the two error types",
+      "prompt": "Declare blocked positive. Give TP,TN,FP,FN counts and explain V3 and V4 in plain language. Does positive mean a desirable outcome?",
+      "answer": "TP=3, TN=2, FP=1, FN=2. V3 predicts blocked for a reference-clear case, a false alarm or FP. V4 predicts clear for a reference-blocked case, a missed blocked case or FN. Positive names the chosen class; it does not mean desirable.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Audit totals and equal accuracy",
+      "prompt": "Give the worked row totals, column totals, total count and accuracy. Compare its errors with [[3,0],[3,2]] using the same axes and eight reference records.",
+      "answer": "Rows total 3,5; columns total 4,4; total 8; accuracy (2+3)/8=5/8=62.5 percent. The comparison matrix also scores 5/8, but has FP=0 and FN=3 rather than FP=1 and FN=2. Same accuracy can hide different error types.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Count a fresh evaluation independently",
+      "prompt": "Each pair below is reference then prediction: R1 clear/clear, R2 clear/blocked, R3 clear/blocked, R4 blocked/blocked, R5 blocked/clear, R6 blocked/blocked. Use clear then blocked on both axes and reference rows. Build the matrix, give row and column totals, name TP,TN,FP,FN with blocked positive, and calculate accuracy.",
+      "answer": "Matrix [[1,2],[1,2]]. Row totals 3,3; column totals 2,4; total 6. TP=2,TN=1,FP=2,FN=1. Accuracy (1+2)/6=3/6=50 percent. False alarms are R2,R3; the missed blocked case is R5.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Interpret a zero count carefully",
+      "prompt": "A report gives zero false positives but omits the evaluated sample size, axes and class definitions. What information is missing, and why does zero not prove that future false alarms are impossible?",
+      "answer": "Request split and sample size, labelled reference/prediction axes, class order and positive-class definition, plus the remaining counts. Zero describes only the observed evaluation cases; limited coverage or few negative cases may hide future errors. It is not a guarantee.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions. Start with ID cards and a physical two-by-two table so students count matched pairs before learning abbreviations. Use blocked as positive consistently. Keep raw counts visible and postpone precision and recall formulas to later weeks.",
+    "materials": [
+      "Printed lesson and workbook",
+      "Eight ID cards carrying the worked reference and prediction pairs",
+      "Two-by-two sorting mat labelled reference rows and prediction columns",
+      "Optional Python 3 editor with no packages required"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the three Week 12 reference/prediction pairs and explain why accuracy loses error detail."
+      ],
+      [
+        "7 to 18 minutes",
+        "Sort all eight new ID cards into labelled cells. Complete W1 before showing code output."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace the counting code. Connect each increment to a cell and check the diagonal."
+      ],
+      [
+        "32 to 45 minutes",
+        "Declare blocked positive, read the visual and complete W2 and the guided question."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve row versus column meaning and the positive class without relying on cell position alone."
+      ],
+      [
+        "8 to 20 minutes",
+        "Check totals and compare equal-accuracy matrices in W3. Explain the different error tradeoffs."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before support. Require labelled axes, totals and ID-level error explanations."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit question to limit claims. Offer the fresh retry after feedback and record support."
+      ]
+    ],
+    "guidedAnswer": "Guided: V3 belongs at reference clear/predicted blocked, FP. V4 belongs at reference blocked/predicted clear, FN. Exit: both have five diagonal matches, but distribute three mistakes differently: FP=1,FN=2 versus FP=0,FN=3. Report identical evaluation records, axes, label order, positive class, totals and task consequences before comparing.",
+    "misconceptions": [
+      [
+        "Positive means good",
+        "Positive is the chosen condition of interest; blocked is positive in this exercise."
+      ],
+      [
+        "A matrix has one universal visual orientation",
+        "Check whether rows are references or predictions and inspect class order. Our convention uses reference rows and prediction columns."
+      ],
+      [
+        "Zero errors in a cell means no future risk",
+        "It is an observed count on one evaluation set. Coverage, sample size and future conditions still matter."
+      ]
+    ],
+    "assessment": "Require W4 [[1,2],[1,2]], row totals 3,3, column totals 2,4, TP=2,TN=1,FP=2,FN=1 and accuracy 3/6. Fresh retry: S1 blocked/blocked, S2 blocked/clear, S3 clear/clear, S4 clear/clear, S5 clear/blocked, always reference first. Matrix [[2,1],[1,1]], rows 3,2, columns 3,2, TP=1,TN=2,FP=1,FN=1, accuracy 3/5. Require labelled axes and blocked positive before accepting abbreviations.",
+    "support": "Give a blank labelled matrix and move one ID card at a time. Ask for reference first, prediction second before naming a cell. Extension: declare clear positive without changing the worked records. Then TP=2,TN=3,FP=2,FN=1; explain why the original matrix counts and accuracy remain unchanged if axis order stays clear then blocked.",
+    "next": "Week 14 covers accuracy and class imbalance. Carry forward row totals, class definitions and the full confusion matrix. Teacher reference: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html (reference rows, prediction columns and label order; reviewed 2026-09-28)."
+  }
+}

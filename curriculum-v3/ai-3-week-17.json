@@ -1,0 +1,227 @@
+{
+  "level": "ai-3",
+  "week": 17,
+  "title": "Calibration as a group property",
+  "minutes": 90,
+  "goals": [
+    "Interpret calibration using groups of forecasts",
+    "Compare average predicted probability with observed frequency",
+    "Distinguish calibration from individual correctness"
+  ],
+  "prerequisite": {
+    "prompt": "Does a score necessarily represent a probability?",
+    "answer": "No. Its interpretation must be established; a threshold can act on a score without making it a calibrated probability."
+  },
+  "vocabulary": [
+    [
+      "Calibration",
+      "Agreement between predicted probabilities and outcome frequencies across comparable groups"
+    ],
+    [
+      "Bin",
+      "A declared interval grouping predictions"
+    ],
+    [
+      "Observed frequency",
+      "Positive outcomes divided by cases in a group"
+    ],
+    [
+      "Reliability diagram",
+      "A plot comparing group average prediction with observed frequency"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "If many comparable cases receive probability .8, a calibrated model should produce positives in roughly 80 percent of those cases over adequate data. It does not mean every case is 80 percent correct or that exactly eight of each next ten must be positive. Calibration is assessed across groups."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use fictional classroom data throughout this investigation. Keep the task, units, reference labels and data split visible as you reason. Earlier weeks supplied the model-building process; this week examines calibration as a group property."
+        }
+      ]
+    },
+    {
+      "title": "Work through the evidence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "In a fictional held-out check, ten cases all have predicted probability .2 and two are positive. Another ten all have probability .8 and six are positive. Average predictions are .2 and .8; observed frequencies are 2/10=.2 and 6/10=.6. The second group is overconfident for positives in this sample."
+        },
+        {
+          "type": "code",
+          "title": "Python 3 check",
+          "text": "groups = [(0.2, 10, 2), (0.8, 10, 6)]\nfor score, count, positives in groups:\n    if count == 0:\n        print(\"No evidence in this group\")\n    else:\n        print(score, positives / count)\n# Compare each score with its observed fraction.\n# A group fraction is not an individual guarantee."
+        },
+        {
+          "type": "paragraph",
+          "text": "Trace the calculation on paper before running this optional Python check. Use the stated fictional inputs and compare intermediate values. The code checks this example; your independent workbook case uses different evidence."
+        }
+      ]
+    },
+    {
+      "title": "Explain the visual",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Calibration as a group property at a glance",
+          "columns": [
+            "Part",
+            "Evidence or action",
+            "Interpretation"
+          ],
+          "rows": [
+            [
+              "Low probability group",
+              "Average .2",
+              "Observed 2 of 10"
+            ],
+            [
+              "High probability group",
+              "Average .8",
+              "Observed 6 of 10"
+            ],
+            [
+              "Compare groups",
+              "Prediction versus frequency",
+              "Keep group sizes visible"
+            ]
+          ],
+          "caption": "Plot average prediction on the horizontal axis and observed frequency on the vertical axis. The two points are (.2,.2) and (.8,.6). Agreement lies along the diagonal. Use the average score within a bin, not automatically the bin midpoint. Small groups make frequencies uncertain."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Which worked group overstates positive frequency and by how much? Explain the steps or evidence behind your response.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Apply the idea carefully",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "If every case gets .5 and exactly half are positive, overall calibration can look good while the model cannot rank easy and difficult cases. Conversely, useful ranking can coexist with poor probabilities. Report discrimination and calibration separately. Fit any calibration adjustment on development data reserved for that purpose, then evaluate on separate data."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Bin boundaries, group sizes and dataset coverage affect the picture. Do not fit adjustments on the final test or claim certainty from a small bin. Real distributions can change, and a calibrated model on one population may not remain so elsewhere."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "What is wrong with calibrating and reporting success on the same final-test records?",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Compute frequencies",
+      "prompt": "Give the observed frequencies for the two worked groups.",
+      "answer": "Teacher explanation: 2/10=.2 and 6/10=.6.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Locate the discrepancy",
+      "prompt": "Which worked group overstates positive frequency and by how much?",
+      "answer": "Teacher explanation: The .8 group exceeds observed .6 by .2, or 20 percentage points in this sample.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Separate ranking",
+      "prompt": "Why can constant .5 predictions look calibrated but rank poorly?",
+      "answer": "Teacher explanation: When half the cases are positive, the overall fraction agrees, but every case has the same score and no ranking is provided.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Apply independently",
+      "prompt": "Twenty cases all predict .3 with eight positives; ten all predict .7 with seven positives. Give plot points and interpret.",
+      "answer": "Teacher explanation: Points (.3,.4) and (.7,.7). The first understates observed frequency by .1; the second agrees on this sample. Group sizes still limit claims.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Protect evaluation",
+      "prompt": "What is wrong with calibrating and reporting success on the same final-test records?",
+      "answer": "Teacher explanation: The reported improvement reuses the answers used for adjustment; evaluate the frozen adjustment on separate data.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions. This week focuses on calibration as a group property. Model the worked example first, collect the new W 4 case independently before feedback, and use the fresh retry to check transfer. Award credit for traceable reasoning and bounded claims, including justified uncertainty.",
+    "materials": [
+      "Printed student lesson and workbook",
+      "Paper, pencils and a calculator for fractions",
+      "The fictional examples and a blank evidence table",
+      "Optional Python 3 editor; no external packages or AI accounts required"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Use the prerequisite question: Does a score necessarily represent a probability? Check the explanation before proceeding."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read the opening and model the worked evidence. Ask students to identify calibration in context."
+      ],
+      [
+        "18 to 32 minutes",
+        "Complete W 1 and W 2 with support: compute frequencies; locate the discrepancy. Require the evidence, not only the final response."
+      ],
+      [
+        "32 to 45 minutes",
+        "Read the visual row by row. Collect the guided explanation and compare reasoning in pairs. Trace the Python check after the paper calculation."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the distinction between calibration and bin. Invite a counterexample to an overconfident claim."
+      ],
+      [
+        "8 to 20 minutes",
+        "Discuss the application and complete W 3: Why can constant .5 predictions look calibrated but rank poorly?"
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before giving hints. Assess these outcomes: Interpret calibration using groups of forecasts; Compare average predicted probability with observed frequency. Record any support used."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W 5 and the exit response to assess limits. Give targeted feedback, then the fresh retry. Save evidence of independent understanding."
+      ]
+    ],
+    "guidedAnswer": "Guided response: The .8 group exceeds observed .6 by .2, or 20 percentage points in this sample. Exit response: The reported improvement reuses the answers used for adjustment; evaluate the frozen adjustment on separate data.",
+    "misconceptions": [
+      [
+        "A final answer is enough",
+        "Ask for the relevant counts, units, procedure or saved record. For this week: 2/10=.2 and 6/10=.6."
+      ],
+      [
+        "A stronger claim makes a stronger project",
+        "The reported improvement reuses the answers used for adjustment; evaluate the frozen adjustment on separate data."
+      ],
+      [
+        "The new case can be copied from the example",
+        "The independent task changes the evidence. Require a fresh explanation: Points (.3,.4) and (.7,.7). The first understates observed frequency by .1; the second agrees on this sample. Group sizes still limit claims."
+      ]
+    ],
+    "assessment": "For independent W 4, require: Points (.3,.4) and (.7,.7). The first understates observed frequency by .1; the second agrees on this sample. Group sizes still limit claims. Fresh retry: five .6 predictions with two positives give (.6,.4), an overstatement of .2 in a very small group. Require a small-sample limitation. Mark each criterion as independent, supported or not yet demonstrated. Reassess the reasoning after feedback; do not replace the first attempt silently.",
+    "support": "Provide a blank evidence table and allow a verbal explanation before writing. Highlight the given conditions without supplying the W 4 conclusion. Use calibration and bin in full sentences. Extension: alter one condition in the worked example and explain which conclusion changes and which remains supported.",
+    "next": "Next week: Error analysis and controlled follow-up. Carry forward the saved evidence and the distinction between development choices and justified claims."
+  }
+}

@@ -1,0 +1,227 @@
+{
+  "level": "ai-3",
+  "week": 18,
+  "title": "Error analysis and controlled follow-up",
+  "minutes": 90,
+  "goals": [
+    "Categorize development errors using evidence",
+    "Design a controlled change with a stated hypothesis",
+    "Preserve failures and test boundaries"
+  ],
+  "prerequisite": {
+    "prompt": "What does a confusion matrix omit?",
+    "answer": "It counts outcome combinations but does not explain the causes of individual errors."
+  },
+  "vocabulary": [
+    [
+      "Error analysis",
+      "Inspection of mistakes to propose explanations"
+    ],
+    [
+      "Hypothesis",
+      "A testable proposed explanation"
+    ],
+    [
+      "Controlled comparison",
+      "A comparison that changes one planned factor while holding relevant conditions fixed"
+    ],
+    [
+      "Regression",
+      "A new failure introduced by a change"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Error analysis begins with prediction IDs and reference labels. Inspect features, collection conditions and the labelling policy. Do not assume every surprising prediction proves the reference is wrong. Use development errors to propose a change and specify what outcome would support the explanation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use fictional classroom data throughout this investigation. Keep the task, units, reference labels and data split visible as you reason. Earlier weeks supplied the model-building process; this week examines error analysis and controlled follow-up."
+        }
+      ]
+    },
+    {
+      "title": "Work through the evidence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A validation audit has 12 dim-light cases with 4 errors and 18 bright-light cases with 3 errors. Rates are 4/12=1/3 and 3/18=1/6. Dim lighting is a useful lead, not proof of causation: camera, route or labels may also differ. A planned change uses a training-fitted brightness normalization while keeping split and classifier settings fixed."
+        },
+        {
+          "type": "code",
+          "title": "Python 3 check",
+          "text": "old_errors = [4, 3]\nnew_errors = [2, 4]\ncounts = [12, 18]\nfor old, new, n in zip(old_errors, new_errors, counts):\n    print(old / n, new / n)\nprint(sum(old_errors), sum(new_errors))\n# Total errors fall from 7 to 6; one group worsens."
+        },
+        {
+          "type": "paragraph",
+          "text": "Trace the calculation on paper before running this optional Python check. Use the stated fictional inputs and compare intermediate values. The code checks this example; your independent workbook case uses different evidence."
+        }
+      ]
+    },
+    {
+      "title": "Explain the visual",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Error analysis and controlled follow-up at a glance",
+          "columns": [
+            "Part",
+            "Evidence or action",
+            "Interpretation"
+          ],
+          "rows": [
+            [
+              "Inspect",
+              "IDs and conditions",
+              "Propose a hypothesis"
+            ],
+            [
+              "Change",
+              "One planned factor",
+              "Keep comparison fixed"
+            ],
+            [
+              "Evaluate",
+              "All validation records",
+              "Report gains and regressions"
+            ]
+          ],
+          "caption": "After the change, the same validation groups have 2/12 and 4/18 errors. Total errors fall from 7 to 6, but bright-light errors increase from 3 to 4. Report both results. A net improvement does not mean every part improved, and repeated experiments can overfit validation."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Does the difference prove dim light causes model errors? Explain the steps or evidence behind your response.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Apply the idea carefully",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Write a change record: hypothesis, exact code/data version, controlled factors, predicted effect, full before/after results and decision. Review disagreements using a consistent annotation policy. If labels are corrected, version the data and rerun all candidates on the same corrected evaluation set."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Do not delete difficult cases to raise the score or reuse final-test errors for an unreported revision. Once test feedback guides a change, treat it as development evidence and obtain a new independent evaluation for a fresh final claim."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A team removes all disputed records only from the new model report. Why is the comparison invalid?",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Find the rates",
+      "prompt": "Calculate the original error rates by lighting condition.",
+      "answer": "Teacher explanation: Dim 4/12 about 33.3 percent; bright 3/18 about 16.7 percent.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Explain the limit",
+      "prompt": "Does the difference prove dim light causes model errors?",
+      "answer": "Teacher explanation: No. Other conditions and label quality may differ; it motivates a hypothesis.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Track regressions",
+      "prompt": "Summarize the changed results without hiding a regression.",
+      "answer": "Teacher explanation: Total errors 7 to 6; dim 4 to 2 improves, bright 3 to 4 worsens.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Apply independently",
+      "prompt": "Old errors are 5/10 on route A and 2/20 on B. New errors are 3/10 and 5/20. State total and group changes and a justified next step.",
+      "answer": "Teacher explanation: Total worsens 7/30 to 8/30. A improves 50 to 30 percent, B worsens 10 to 25 percent. Investigate B and keep the original as a comparison; do not claim overall improvement.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Repair a misleading audit",
+      "prompt": "A team removes all disputed records only from the new model report. Why is the comparison invalid?",
+      "answer": "Teacher explanation: The models are evaluated on different selected records. Apply one documented review policy and compare both on the same versioned set.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions. This week focuses on error analysis and controlled follow-up. Model the worked example first, collect the new W 4 case independently before feedback, and use the fresh retry to check transfer. Award credit for traceable reasoning and bounded claims, including justified uncertainty.",
+    "materials": [
+      "Printed student lesson and workbook",
+      "Paper, pencils and a calculator for fractions",
+      "The fictional examples and a blank evidence table",
+      "Optional Python 3 editor; no external packages or AI accounts required"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Use the prerequisite question: What does a confusion matrix omit? Check the explanation before proceeding."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read the opening and model the worked evidence. Ask students to identify error analysis in context."
+      ],
+      [
+        "18 to 32 minutes",
+        "Complete W 1 and W 2 with support: find the rates; explain the limit. Require the evidence, not only the final response."
+      ],
+      [
+        "32 to 45 minutes",
+        "Read the visual row by row. Collect the guided explanation and compare reasoning in pairs. Trace the Python check after the paper calculation."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the distinction between error analysis and hypothesis. Invite a counterexample to an overconfident claim."
+      ],
+      [
+        "8 to 20 minutes",
+        "Discuss the application and complete W 3: Summarize the changed results without hiding a regression."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before giving hints. Assess these outcomes: Categorize development errors using evidence; Design a controlled change with a stated hypothesis. Record any support used."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W 5 and the exit response to assess limits. Give targeted feedback, then the fresh retry. Save evidence of independent understanding."
+      ]
+    ],
+    "guidedAnswer": "Guided response: No. Other conditions and label quality may differ; it motivates a hypothesis. Exit response: The models are evaluated on different selected records. Apply one documented review policy and compare both on the same versioned set.",
+    "misconceptions": [
+      [
+        "A final answer is enough",
+        "Ask for the relevant counts, units, procedure or saved record. For this week: Dim 4/12 about 33.3 percent; bright 3/18 about 16.7 percent."
+      ],
+      [
+        "A stronger claim makes a stronger project",
+        "The models are evaluated on different selected records. Apply one documented review policy and compare both on the same versioned set."
+      ],
+      [
+        "The new case can be copied from the example",
+        "The independent task changes the evidence. Require a fresh explanation: Total worsens 7/30 to 8/30. A improves 50 to 30 percent, B worsens 10 to 25 percent. Investigate B and keep the original as a comparison; do not claim overall improvement."
+      ]
+    ],
+    "assessment": "For independent W 4, require: Total worsens 7/30 to 8/30. A improves 50 to 30 percent, B worsens 10 to 25 percent. Investigate B and keep the original as a comparison; do not claim overall improvement. Fresh retry: old groups 2/8 and 4/12; new 3/8 and 2/12. Total improves 6/20 to 5/20 while the first group regresses. Require both statements. Mark each criterion as independent, supported or not yet demonstrated. Reassess the reasoning after feedback; do not replace the first attempt silently.",
+    "support": "Provide a blank evidence table and allow a verbal explanation before writing. Highlight the given conditions without supplying the W 4 conclusion. Use error analysis and hypothesis in full sentences. Extension: alter one condition in the worked example and explain which conclusion changes and which remains supported.",
+    "next": "Next week: Regression and residuals. Carry forward the saved evidence and the distinction between development choices and justified claims."
+  }
+}

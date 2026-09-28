@@ -1,0 +1,276 @@
+{
+  "level": "ai-3",
+  "week": 12,
+  "title": "A reproducible classifier pipeline",
+  "minutes": 90,
+  "goals": [
+    "Connect training-only scaling and neighbour prediction in one pipeline",
+    "Reproduce predictions from recorded data settings and fitted values",
+    "Audit a pipeline for refitting feature-order errors and evaluation leakage"
+  ],
+  "prerequisite": {
+    "prompt": "Which values does min-max scaling learn, and which values should be reused for a validation query?",
+    "answer": "It learns each feature minimum and range from training. Reuse the same minima, ranges, feature order and units to transform training and validation examples."
+  },
+  "vocabulary": [
+    [
+      "Pipeline",
+      "An ordered sequence of data transformations and prediction steps"
+    ],
+    [
+      "Fitted state",
+      "The learned values and stored examples needed to make predictions"
+    ],
+    [
+      "Reproduce",
+      "Obtain the same result using the same recorded inputs and procedure"
+    ],
+    [
+      "Input contract",
+      "The documented feature names order units and accepted values"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Keep preparation and prediction together",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A pipeline connects steps so a new query receives the same preparation as the training examples. This week combines the scale from Week 11 with a one-neighbour classifier. We will fit once, keep the fitted state, and call one prediction function for every raw query."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use the same fictional trip data. Each feature pair is ordered (distance in cm, brightness in sensor units). Training IDs are A,B,C. Validation IDs V1,V2,V3 belong to separate trips; related trips were grouped before splitting. Use min-max scaling, sum of absolute scaled differences, k=1 and alphabetical ID order for exact distance ties."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Training ID",
+            "Feature pair",
+            "Label"
+          ],
+          "rows": [
+            [
+              "A",
+              "(10,200)",
+              "clear"
+            ],
+            [
+              "B",
+              "(20,100)",
+              "blocked"
+            ],
+            [
+              "C",
+              "(20,200)",
+              "blocked"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The input contract requires two finite numeric features in the stated order and units, with no missing values. Training also needs unique IDs, known labels, at least one row and nonzero ranges. These assumptions must be checked before this short classroom program is used; its explicit guard only checks zero ranges."
+        }
+      ]
+    },
+    {
+      "title": "Read the complete classroom pipeline",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "def scale(x, low, span):\n    return tuple((x[j] - low[j]) / span[j] for j in range(2))\n\ndef fit(rows):\n    xs = [x for item_id, x, label in rows]\n    low = tuple(min(x[j] for x in xs) for j in range(2))\n    span = tuple(max(x[j] for x in xs) - low[j]\n                 for j in range(2))\n    if 0 in span:\n        raise ValueError(\"Review a constant training feature\")\n    stored = tuple((i, scale(x, low, span), y) for i, x, y in rows)\n    return low, span, stored\n\ndef predict(x, model):\n    low, span, stored = model\n    q = scale(x, low, span)\n    ranked = sorted((sum(abs(a - b) for a, b in zip(q, v)), i, y)\n                    for i, v, y in stored)\n    return ranked[0][1], ranked[0][2]\n\ntrain = [(\"A\", (10, 200), \"clear\"),\n         (\"B\", (20, 100), \"blocked\"),\n         (\"C\", (20, 200), \"blocked\")]\nmodel = fit(train)\nqueries = [(11, 120), (19, 190), (12, 80)]\nfor x in queries:\n    print(predict(x, model))"
+        },
+        {
+          "type": "paragraph",
+          "text": "fit returns minima (10,100), ranges (10,100) and scaled training examples. predict transforms a raw query with that state, ranks distances, then returns the selected ID and label. zip pairs matching features; sum adds their absolute differences. sorted uses distance first and unique ID second."
+        },
+        {
+          "type": "paragraph",
+          "text": "Run the whole script in Python 3. It prints ('A', 'clear'), ('C', 'blocked'), ('B', 'blocked') on separate lines. No validation labels enter fit or predict. This is a small pipeline written with functions, not the scikit-learn Pipeline class."
+        }
+      ]
+    },
+    {
+      "title": "Trace what is fitted and what is reused",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Two stages with one fitted state",
+          "columns": [
+            "Stage",
+            "Input and action",
+            "Result"
+          ],
+          "rows": [
+            [
+              "Fit once",
+              "Training rows only",
+              "Scale plus stored rows"
+            ],
+            [
+              "Predict each query",
+              "Raw pair plus state",
+              "Neighbour ID and label"
+            ],
+            [
+              "Evaluate afterward",
+              "Prediction plus reference",
+              "Recorded match or error"
+            ]
+          ],
+          "caption": "Reference labels are used after prediction to score results. They do not enter the fitted scale or stored neighbour pool."
+        },
+        {
+          "type": "paragraph",
+          "text": "For raw query (11,120), scale gives (0.1,0.2). Distances to A,B,C are 0.9,1.1,1.7, so the function returns A and clear. It does not recalculate minima or add the query to stored rows. The returned ID is useful for checking the reasoning, but it is not evidence that the label is true."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Trace (11,120) through both functions. What does fit store, what does predict reuse, and at which point may a validation reference label be compared?",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Store the fitted state together with the input contract and method settings. A model without its scale or feature order is incomplete. Swapping the raw pair to (120,11) produces B and blocked here; the function cannot detect that the caller swapped the meanings."
+        }
+      ]
+    },
+    {
+      "title": "Record and reproduce the whole run",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Record dataset and code versions, training IDs A B C, validation IDs V1 V2 V3, feature order and units, fitted minima and ranges, k=1, distance and tie policy, zero-range policy and the actual Python version. Save the predictions in validation ID order. This script has no random step; a seed would not fix changed data or swapped features."
+        },
+        {
+          "type": "paragraph",
+          "text": "References for V1,V2,V3 are clear,blocked,clear. The printed predictions clear,blocked,blocked match V1 and V2: 2/3. The training-majority blocked baseline matches only V2: 1/3. Rerunning the same code and inputs should reproduce these outputs, including the V3 mistake. Reproducibility does not establish correctness or performance on new data."
+        },
+        {
+          "type": "paragraph",
+          "text": "Changing the scaling, k or feature list creates a new development run to record. Keep a separate final test for the final evaluation. Next week a confusion matrix will show which kinds of label errors the predictions make."
+        }
+      ]
+    },
+    {
+      "title": "Audit the boundaries before trusting the output",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Check that fit receives training rows only, predict receives raw features in the correct order, and the fitted state stays unchanged during prediction. Do not scale a query twice, fit again on validation, or add labelled validation rows to the neighbour pool. A pipeline still leaks if the wrong rows are passed to its fit step."
+        },
+        {
+          "type": "paragraph",
+          "text": "The tuple state groups the learned numbers and stored examples. Keep the associated data and code versions with it, and compare stored values and outputs when repeating a run. Do not accept a matching score alone: two different prediction lists can have the same score."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A learner gets the same 2/3 score twice after fitting on training plus validation rows. They claim the pipeline must be valid because the result repeats. Explain why the claim fails and describe the repair.",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Separate fit predict and evaluate",
+      "prompt": "List what fit learns or stores, what predict takes as input, and what evaluation compares. State where the validation reference labels belong.",
+      "answer": "fit learns training minima and ranges and stores scaled training rows with IDs and labels. predict takes a raw feature pair and the fitted state. Evaluation compares a prediction with its reference label afterward. Validation references belong only in evaluation, not in fitting or the neighbour pool.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Trace and score the saved run",
+      "prompt": "Give the IDs and labels printed for V1,V2,V3. Use references clear,blocked,clear to calculate accuracy and the training-majority baseline. Which error should repeat in an unchanged rerun?",
+      "answer": "V1 selects A clear, V2 C blocked, V3 B blocked. Accuracy is 2/3. The training-majority blocked baseline is correct only for V2, scoring 1/3. V3 is the repeatable error; repeated output does not turn it into a correct prediction.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair an incomplete run record",
+      "prompt": "A classmate saves only k=1 and a score of 2/3. Name the information needed to reproduce this run. Explain why the same score alone is insufficient.",
+      "answer": "Record the data and code versions, exact split IDs, feature names order and units, fitted minima and ranges, stored training rows, distance and tie policy, zero-range policy, runtime version and predictions linked to validation IDs. A score hides which examples were correct; different predictions can have equal accuracy.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Build and trace a fresh fitted state",
+      "prompt": "Use P (0,60) blocked, Q (20,20) clear, R (20,60) clear as new training rows. Fit the same pipeline. Predict validation queries (2,28),(18,56),(4,12) with references blocked,clear,blocked. Give fitted minima and ranges, transformed queries, selected IDs, predictions, accuracy and training-majority baseline.",
+      "answer": "Minima (0,20), ranges (20,40). Scaled queries are (0.1,0.2),(0.9,0.9),(0.2,-0.2). Selected IDs P,R,Q give blocked,clear,clear. Accuracy is 2/3; the training-majority clear baseline gets 1/3. The third query remains wrong. Validation rows do not change the fitted state.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Diagnose pipeline misuse",
+      "prompt": "Explain and repair three mistakes: predict receives an already scaled query; fit receives training plus validation rows; a query uses brightness before distance. Does repeating each mistaken run make it valid?",
+      "answer": "predict expects raw features, so a pre-scaled query is scaled again; pass the raw pair. Fitting on validation leaks evaluation information; refit on training only and reevaluate. Swapped features violate the input contract; restore distance then brightness in the stated units. Repeating a mistake shows repeatability, not validity.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions. Assemble the two previous ideas into a complete runnable program, while keeping hand tracing available without devices. Distinguish a fitted state from settings and a run record. Require students to reproduce individual predictions, including errors, rather than merely quote a score.",
+    "materials": [
+      "Printed lesson and workbook",
+      "Optional Python 3 editor with no packages required",
+      "Three cards labelled Fit Predict and Evaluate",
+      "Blank run record with split IDs feature order settings and outputs"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve training-only scaling and the stored minima and ranges. State the input contract."
+      ],
+      [
+        "7 to 18 minutes",
+        "Use the three cards to place data and labels at the correct stage. Complete W1."
+      ],
+      [
+        "18 to 32 minutes",
+        "Run or trace the complete script. Unpack fitted state and explain zip sum and sorted."
+      ],
+      [
+        "32 to 45 minutes",
+        "Use the diagram and guided question, then complete W2 from the printed outputs."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve why predict must reuse the fitted state and receive raw feature pairs."
+      ],
+      [
+        "8 to 20 minutes",
+        "Complete W3 and compare two run records. Discuss why equal scores can hide different predictions."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before support. Require transformed queries and ID-linked predictions."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit question to audit misuse. Offer the fresh retry after feedback and record support."
+      ]
+    ],
+    "guidedAnswer": "Guided: fit stores minima (10,100), ranges (10,100) and A (0,1) clear, B (1,0) blocked, C (1,1) blocked. predict transforms (11,120) to (0.1,0.2), measures 0.9,1.1,1.7 and returns A clear. Compare the reference only afterward. Exit: reproducible leakage is still leakage. Restore the split, fit on training only, use the frozen state for every raw validation query, then score and record all outputs.",
+    "misconceptions": [
+      [
+        "A pipeline prevents every leak automatically",
+        "Correct sequencing cannot fix a fit call that receives held-out rows or features unavailable at prediction time."
+      ],
+      [
+        "A seed is the whole reproducibility record",
+        "This program is deterministic. Data code split feature order settings and runtime still matter; a seed cannot repair changed inputs."
+      ],
+      [
+        "Same score means same predictions",
+        "Compare predictions by example ID. Different error patterns can produce the same accuracy."
+      ]
+    ],
+    "assessment": "Require W4 minima (0,20), ranges (20,40), scaled queries (0.1,0.2),(0.9,0.9),(0.2,-0.2), IDs P,R,Q, predictions blocked,clear,clear and scores 2/3 versus 1/3. Fresh retry: L (5,80) clear, M (15,40) blocked, N (15,80) blocked. Fit gives minima (5,40), ranges (10,40). Queries (6,48),(14,76) scale to (0.1,0.2),(0.9,0.9), selecting L clear and N blocked. Require the input contract and a statement that prediction does not refit.",
+    "support": "Label each tuple field and use one query at a time. Provide a blank fit/predict/evaluate diagram without answers. Extension: use query (10,100) in the worked model. A and B both have scaled distance 1, C has 2; alphabetical ID order selects A clear. Explain why this convention must be recorded.",
+    "next": "Week 13 introduces confusion matrices. Keep the ID-linked reference and prediction pairs from this week. Teacher reference: https://scikit-learn.org/stable/common_pitfalls.html (consistent preprocessing and training-only fitting; reviewed 2026-09-27)."
+  }
+}

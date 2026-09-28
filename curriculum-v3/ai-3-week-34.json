@@ -1,0 +1,227 @@
+{
+  "level": "ai-3",
+  "week": 34,
+  "title": "Capstone models and baselines",
+  "minutes": 90,
+  "goals": [
+    "Fit and compare a baseline and a simple candidate",
+    "Keep an auditable validation prediction table",
+    "Freeze a justified choice without requiring improvement"
+  ],
+  "prerequisite": {
+    "prompt": "What must be fixed before the capstone comparison?",
+    "answer": "Task, features, group-aware splits, metric, baseline and selection policy."
+  },
+  "vocabulary": [
+    [
+      "Baseline",
+      "A simple reference method fitted or chosen from training"
+    ],
+    [
+      "Prediction ledger",
+      "A per-record table of reference and predicted outputs"
+    ],
+    [
+      "Frozen artifact",
+      "A saved model and procedure that will not change during testing"
+    ],
+    [
+      "Decision record",
+      "A written reason for a development choice"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Build the baseline before the candidate. For classification, use the most common training class, with a declared tie policy. Choose one simple candidate using techniques already learned, such as k-nearest neighbours with training-only scaling and a fixed k. Record every development attempt; complexity earns no automatic credit."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use fictional classroom data throughout this investigation. Keep the task, units, reference labels and data split visible as you reason. Earlier weeks supplied the model-building process; this week examines capstone models and baselines."
+        }
+      ]
+    },
+    {
+      "title": "Work through the evidence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Illustrative training has 30 clear and 10 blocked cases, so the baseline always predicts clear. On 20 validation cases with 14 clear and 6 blocked, its matrix is[[14, 0],[6, 0]], accuracy 70 percent. Candidate matrix[[12, 2],[2, 4]] gives accuracy 80 percent, precision 4/6 and recall 4/6. These are example results, not the student team results."
+        },
+        {
+          "type": "code",
+          "title": "Python 3 check",
+          "text": "# A check of the illustrative validation matrix.\n# Replace with your own saved counts; do not invent results.\ntn, fp, fn, tp = 12, 2, 2, 4\nn = tn + fp + fn + tp\nprint(\"accuracy\", (tn + tp) / n)\nprint(\"precision\", tp / (tp + fp))\nprint(\"recall\", tp / (tp + fn))\n# Compare with the training-majority baseline: 14 / 20."
+        },
+        {
+          "type": "paragraph",
+          "text": "Trace the calculation on paper before running this optional Python check. Use the stated fictional inputs and compare intermediate values. The code checks this example; your independent workbook case uses different evidence."
+        }
+      ]
+    },
+    {
+      "title": "Explain the visual",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Capstone models and baselines at a glance",
+          "columns": [
+            "Part",
+            "Evidence or action",
+            "Interpretation"
+          ],
+          "rows": [
+            [
+              "Training",
+              "Baseline always clear",
+              "30 clear and 10 blocked"
+            ],
+            [
+              "Validation baseline",
+              "14 correct of 20",
+              "6 blocked cases missed"
+            ],
+            [
+              "Validation candidate",
+              "16 correct of 20",
+              "2 false alarms 2 misses"
+            ]
+          ],
+          "caption": "The candidate gains two correct cases while introducing two false alarms and reducing misses from six to two. Whether that tradeoff is acceptable depends on the predeclared classroom criteria. Do not choose a threshold or metric after the final test. If using a regression alternative, compare with a training-derived constant and report MAE in target units."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Compute the worked candidate accuracy, precision and recall. Explain the steps or evidence behind your response.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Apply the idea carefully",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Save the data version, feature order, preprocessing values, model settings, tie policy and predictions. A prediction ledger includes row ID, split, reference, baseline output, candidate output and error type. Test labels remain held by the teacher. A peer should be able to reproduce one row by hand."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The deliverable is a runnable or fully traceable baseline/candidate comparison, a validation table and a signed-off freeze record. If the baseline wins, retain it and explain why. If a pipeline fails, record the failure and fix it on development data before requesting final testing."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "List what must be saved before the teacher releases final-test labels.",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Build the baseline",
+      "prompt": "State the worked training-majority rule and validation accuracy.",
+      "answer": "Teacher explanation: Always predict clear from the 30/10 training counts; validation accuracy 14/20=70 percent.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Evaluate the candidate",
+      "prompt": "Compute the worked candidate accuracy, precision and recall.",
+      "answer": "Teacher explanation: Accuracy 16/20=80 percent; precision 4/6 and recall 4/6, both about 66.7 percent; FP 2 FN 2.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Explain the tradeoff",
+      "prompt": "Compare errors rather than only headline accuracy.",
+      "answer": "Teacher explanation: Baseline FP 0 FN 6; candidate FP 2 FN 2. Candidate finds four more blocked cases while falsely flagging two clear cases.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Apply independently",
+      "prompt": "Training 18 clear/6 blocked; validation baseline[[9, 0],[3, 0]], candidate[[8, 1],[1, 2]]. Calculate accuracy for each and candidate precision/recall.",
+      "answer": "Teacher explanation: Baseline 9/12=75 percent; candidate 10/12 about 83.3 percent; precision 2/3 and recall 2/3. Candidate FP 1 FN 1 versus baseline FP 0 FN 3.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Freeze evidence",
+      "prompt": "List what must be saved before the teacher releases final-test labels.",
+      "answer": "Teacher explanation: Model and preprocessing version, settings, feature order, split IDs, prediction/scoring rules, validation comparison, metric and decision record.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions. This week focuses on capstone models and baselines. Model the worked example first, collect the new W 4 case independently before feedback, and use the fresh retry to check transfer. Award credit for traceable reasoning and bounded claims, including justified uncertainty.",
+    "materials": [
+      "Printed student lesson and workbook",
+      "Paper, pencils and a calculator for fractions",
+      "The fictional examples and a blank evidence table",
+      "Optional Python 3 editor; no external packages or AI accounts required"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Use the prerequisite question: What must be fixed before the capstone comparison? Check the explanation before proceeding."
+      ],
+      [
+        "7 to 18 minutes",
+        "Trace the worked baseline/candidate comparison and check W1–W3 briefly. State that its numbers are illustrative, not target results."
+      ],
+      [
+        "18 to 32 minutes",
+        "Teams fit their baseline from training only. Save training class counts, split IDs and baseline validation predictions."
+      ],
+      [
+        "32 to 45 minutes",
+        "Teams build one candidate using the earlier k-nearest-neighbour procedure or an approved simple alternative. Check preprocessing and trace one prediction."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the distinction between baseline and prediction ledger. Invite a counterexample to an overconfident claim."
+      ],
+      [
+        "8 to 20 minutes",
+        "Teams evaluate on validation, record the full comparison and explain gains and regressions. Log every attempted setting."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, then review team freeze records. Resolve pipeline failures on development data before requesting final-test labels."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W 5 and the exit response to assess limits. Give targeted feedback, then the fresh retry. Save evidence of independent understanding."
+      ]
+    ],
+    "guidedAnswer": "Guided response: Accuracy 16/20=80 percent; precision 4/6 and recall 4/6, both about 66.7 percent; FP 2 FN 2. Exit response: Model and preprocessing version, settings, feature order, split IDs, prediction/scoring rules, validation comparison, metric and decision record.",
+    "misconceptions": [
+      [
+        "A final answer is enough",
+        "Ask for the relevant counts, units, procedure or saved record. For this week: Always predict clear from the 30/10 training counts; validation accuracy 14/20=70 percent."
+      ],
+      [
+        "A stronger claim makes a stronger project",
+        "Model and preprocessing version, settings, feature order, split IDs, prediction/scoring rules, validation comparison, metric and decision record."
+      ],
+      [
+        "The new case can be copied from the example",
+        "The independent task changes the evidence. Require a fresh explanation: Baseline 9/12=75 percent; candidate 10/12 about 83.3 percent; precision 2/3 and recall 2/3. Candidate FP 1 FN 1 versus baseline FP 0 FN 3."
+      ]
+    ],
+    "assessment": "For independent W 4, require: Baseline 9/12=75 percent; candidate 10/12 about 83.3 percent; precision 2/3 and recall 2/3. Candidate FP 1 FN 1 versus baseline FP 0 FN 3. Fresh retry baseline[[8, 0],[4, 0]], candidate[[7, 1],[2, 2]]: accuracy 8/12 versus 9/12, candidate precision 2/3 and recall 2/4. Require the tradeoff and frozen settings. Mark each criterion as independent, supported or not yet demonstrated. Reassess the reasoning after feedback; do not replace the first attempt silently.",
+    "support": "Provide a blank evidence table and allow a verbal explanation before writing. Highlight the given conditions without supplying the W 4 conclusion. Use baseline and prediction ledger in full sentences. Extension: alter one condition in the worked example and explain which conclusion changes and which remains supported.",
+    "next": "Next week: Capstone evaluation and revision. Carry forward the saved evidence and the distinction between development choices and justified claims."
+  }
+}

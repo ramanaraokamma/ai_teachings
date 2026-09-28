@@ -1,0 +1,273 @@
+{
+  "level": "ai-3",
+  "week": 14,
+  "title": "Accuracy and class imbalance",
+  "minutes": 90,
+  "goals": [
+    "Explain why overall accuracy can hide failure on a less common class",
+    "Compare a training-majority baseline with class-specific results",
+    "Calculate an equal-class average and report its limits alongside the confusion matrix"
+  ],
+  "prerequisite": {
+    "prompt": "With reference rows and prediction columns ordered clear then blocked, where are false negatives when blocked is positive?",
+    "answer": "They are in the blocked-reference row and clear-prediction column: the lower-left cell. These are missed blocked cases."
+  },
+  "vocabulary": [
+    [
+      "Class imbalance",
+      "Unequal numbers of examples in different classes"
+    ],
+    [
+      "Majority baseline",
+      "A rule that always predicts the most common training label"
+    ],
+    [
+      "Class-specific correct fraction",
+      "Correct predictions for one reference class divided by the number of examples of that class"
+    ],
+    [
+      "Balanced accuracy",
+      "The average of the class-specific correct fractions with equal weight for each class"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Ask what the accuracy score leaves out",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Accuracy counts all correct predictions and divides by all evaluated examples. Each example has equal weight, so a common class contributes more to the score. A high result can hide failure on a rare class. This week keeps the confusion matrix visible and checks both classes separately."
+        },
+        {
+          "type": "paragraph",
+          "text": "New fictional training data has 16 clear and 4 blocked labels. Its majority baseline predicts clear for every query; choose that rule from training, not evaluation labels. A separate evaluation set also contains 16 clear and 4 blocked cases. A frozen candidate and the baseline are evaluated on the same 20 records."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Method and reference row",
+            "Predicted clear",
+            "Predicted blocked"
+          ],
+          "rows": [
+            [
+              "Baseline reference clear",
+              "16",
+              "0"
+            ],
+            [
+              "Baseline reference blocked",
+              "4",
+              "0"
+            ],
+            [
+              "Candidate reference clear",
+              "12",
+              "4"
+            ],
+            [
+              "Candidate reference blocked",
+              "0",
+              "4"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Rows are references and columns are predictions, ordered clear then blocked. Blocked is positive. Both methods get 16/20=80 percent accuracy. The baseline misses all four blocked cases. The candidate finds all four but falsely flags four clear cases. The same score conceals a different tradeoff."
+        }
+      ]
+    },
+    {
+      "title": "Calculate two summaries from the same counts",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "def scores(counts):\n    clear_n = sum(counts[0])\n    blocked_n = sum(counts[1])\n    if clear_n == 0 or blocked_n == 0:\n        raise ValueError(\"Need evaluation examples of both classes\")\n    correct = counts[0][0] + counts[1][1]\n    accuracy = correct / (clear_n + blocked_n)\n    clear_fraction = counts[0][0] / clear_n\n    blocked_fraction = counts[1][1] / blocked_n\n    balanced = (clear_fraction + blocked_fraction) / 2\n    return accuracy, balanced\n\nbaseline = [[16, 0], [4, 0]]\ncandidate = [[12, 4], [0, 4]]\nfor name, counts in [(\"baseline\", baseline), (\"candidate\", candidate)]:\n    accuracy, balanced = scores(counts)\n    print(name, round(100 * accuracy, 1), round(100 * balanced, 1))"
+        },
+        {
+          "type": "paragraph",
+          "text": "The output is baseline 80.0 50.0, then candidate 80.0 87.5. In each output line the first percentage is ordinary accuracy and the second is balanced accuracy. For the candidate, the clear-class correct fraction is 12/16=75 percent and the blocked-class fraction is 4/4=100 percent. Their equal average is 87.5 percent."
+        },
+        {
+          "type": "paragraph",
+          "text": "For the baseline, those fractions are 16/16=100 percent and 0/4=0 percent, averaging 50 percent. The code assumes a two-by-two table of nonnegative integer counts in the stated order. It stops when either reference class is absent. Then report the observed counts and the unavailable class result; do not invent a denominator or silently substitute zero."
+        }
+      ]
+    },
+    {
+      "title": "Read the denominators before the percentage",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Same overall score different class results",
+          "columns": [
+            "Summary",
+            "Always clear baseline",
+            "Frozen candidate"
+          ],
+          "rows": [
+            [
+              "Overall correct",
+              "16 of 20 is 80 percent",
+              "16 of 20 is 80 percent"
+            ],
+            [
+              "Reference clear correct",
+              "16 of 16 is 100 percent",
+              "12 of 16 is 75 percent"
+            ],
+            [
+              "Reference blocked correct",
+              "0 of 4 is 0 percent",
+              "4 of 4 is 100 percent"
+            ]
+          ],
+          "caption": "Overall accuracy weights classes by their number of evaluation examples. Balanced accuracy gives the two class-specific fractions equal weight."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Both methods score 80 percent. Explain which cases the baseline fails, how the candidate changes the errors, and why their balanced accuracies differ.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Balanced accuracy is a metric choice, not a repair to the classifier or a guarantee of safety. It gives classes equal influence in this summary; it does not encode the actual consequences of false alarms and missed cases. Four blocked evaluation examples are also too few for a strong general claim."
+        }
+      ]
+    },
+    {
+      "title": "Keep the evaluation population visible",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Consider a separate illustrative set with 8 clear and 8 blocked cases. Suppose the same within-class fractions hold: the baseline matrix is [[8,0],[8,0]] and the candidate matrix is [[6,2],[0,8]]. Ordinary accuracy is now 50 percent versus 87.5 percent. Balanced accuracy remains 50 percent versus 87.5 percent. The class mix changed the overall score even though the within-class fractions stayed fixed."
+        },
+        {
+          "type": "paragraph",
+          "text": "This is an arithmetic comparison, not proof that a real classifier keeps the same behavior after a population change. Report sample size, class counts, full matrix and how the evaluation data was chosen. Do not remove inconvenient cases or duplicate rare evaluation cases just to improve a headline number. If training is resampled, keep that separate from evaluation and document it."
+        }
+      ]
+    },
+    {
+      "title": "Make a comparison with honest limits",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Compare methods on the same appropriate evaluation examples and report the training-derived baseline. Include ordinary accuracy, each class denominator, false positives and false negatives. An equal-class summary adds information but cannot choose the acceptable tradeoff for the task. Keep development decisions separate from a final test."
+        },
+        {
+          "type": "paragraph",
+          "text": "A result of 4/4 correct blocked cases is 100 percent on those four examples, not proof of perfect future detection. If the evaluated set contains no blocked cases, it cannot measure blocked-case performance at all. Next week separates precision and recall by asking which denominator answers each question."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A team advertises 80 percent accuracy but its classifier predicts clear on every record. What additional evidence would you request, and what can you already conclude about the four blocked cases in our worked evaluation?",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Score the majority baseline",
+      "prompt": "Training has 16 clear and 4 blocked labels. State the majority rule. On the worked evaluation, give its matrix, accuracy, false positives and false negatives with blocked positive. Explain why 80 percent is incomplete.",
+      "answer": "The training-majority rule always predicts clear. Matrix [[16,0],[4,0]] gives 16/20=80 percent, FP=0,FN=4. It misses all four blocked cases, so the overall score hides complete failure on that evaluated class.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Compare both class fractions",
+      "prompt": "For the worked candidate [[12,4],[0,4]], give ordinary accuracy, both class-specific correct fractions, balanced accuracy, false positives and false negatives. Compare with the baseline.",
+      "answer": "Accuracy 16/20=80 percent. Clear fraction 12/16=75 percent; blocked fraction 4/4=100 percent; balanced accuracy (75+100)/2=87.5 percent. FP=4,FN=0. Baseline accuracy is also 80 percent but balanced accuracy is 50 percent with FP=0,FN=4.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Explain a changed class mix",
+      "prompt": "For the illustrative 8-clear 8-blocked set, use baseline [[8,0],[8,0]] and candidate [[6,2],[0,8]]. Calculate ordinary and balanced accuracy for each. Explain what stayed fixed and what this example does not prove.",
+      "answer": "Baseline ordinary 8/16=50 percent and balanced (100+0)/2=50 percent. Candidate ordinary 14/16=87.5 percent and balanced (75+100)/2=87.5 percent. Within-class fractions stayed fixed while class counts changed. This arithmetic assumption does not prove unchanged real-world behavior on a new population.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Assess a new comparison independently",
+      "prompt": "New training labels have a clear majority. A separate evaluation has 18 clear and 2 blocked records. The always-clear baseline is [[18,0],[2,0]] and candidate is [[15,3],[1,1]], with reference rows and clear then blocked on both axes. Calculate ordinary accuracy, both class fractions and balanced accuracy for each. Give candidate FP and FN, then explain why the metrics do not choose an automatic winner.",
+      "answer": "Baseline accuracy 18/20=90 percent; class fractions 100 percent and 0 percent; balanced accuracy 50 percent. Candidate accuracy 16/20=80 percent; clear fraction 15/18=5/6 about 83.3 percent, blocked fraction 1/2=50 percent; balanced accuracy (5/6+1/2)/2=2/3 about 66.7 percent. Candidate FP=3,FN=1. It finds one blocked case but adds three false alarms; task consequences and the small sample matter.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Limit claims from missing classes",
+      "prompt": "An evaluation contains ten clear cases and no blocked cases. All predictions are clear. State ordinary accuracy, explain why blocked performance is unavailable, and describe how our code handles the missing class.",
+      "answer": "Ordinary accuracy is 10/10=100 percent on the observed clear cases. The blocked-class fraction has denominator zero, so it cannot be measured. Our two-class summary function stops with ValueError; report the missing coverage instead of claiming perfect performance on both classes.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions. Begin with a majority guess that looks successful under overall accuracy, then keep both class denominators visible. Introduce balanced accuracy as an equal average of two correct fractions, without treating it as a universal replacement for task-specific evaluation.",
+    "materials": [
+      "Printed lesson and workbook",
+      "Twenty counters with sixteen labelled clear and four blocked",
+      "Blank confusion matrices and fraction strips",
+      "Optional Python 3 editor with no packages required"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve false negatives and reference-row totals from Week 13."
+      ],
+      [
+        "7 to 18 minutes",
+        "Use counters to score the always-clear baseline and complete W1."
+      ],
+      [
+        "18 to 32 minutes",
+        "Compare the candidate matrix. Calculate ordinary and class-specific correct fractions in W2."
+      ],
+      [
+        "32 to 45 minutes",
+        "Trace the code and read the visual. Answer the guided question and explain equal class weighting."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve each denominator and why a high overall score can hide rare-class failure."
+      ],
+      [
+        "8 to 20 minutes",
+        "Complete W3 with a changed class mix. Separate the arithmetic assumption from claims about deployment."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before support. Require fractions before rounded percentages and the error tradeoff."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit question to discuss missing classes. Offer the fresh retry after feedback and record support."
+      ]
+    ],
+    "guidedAnswer": "Guided: baseline has FP=0,FN=4, finding none of four blocked cases. Candidate has FP=4,FN=0, finding all four but adding four false alarms. Both have sixteen correct predictions. Equal averaging gives baseline (100+0)/2=50 percent and candidate (75+100)/2=87.5 percent. Exit: request the full labelled matrix, class counts, sampling method, training-derived baseline and task consequences. The worked always-clear rule misses all four blocked cases.",
+    "misconceptions": [
+      [
+        "High accuracy means both classes work well",
+        "A common class can dominate the overall count. Inspect each reference-class denominator and its errors."
+      ],
+      [
+        "Balanced accuracy fixes the model",
+        "It changes the summary weighting, not any prediction or underlying error."
+      ],
+      [
+        "An absent class has zero measured performance",
+        "Its fraction has a zero denominator and is unavailable. Report missing coverage rather than inventing a value."
+      ]
+    ],
+    "assessment": "Require W4 baseline ordinary 90 percent and balanced 50 percent; candidate ordinary 80 percent and balanced 2/3 about 66.7 percent, with FP=3,FN=1. Fresh retry: evaluation 12 clear and 4 blocked, baseline [[12,0],[4,0]], candidate [[9,3],[1,3]], training majority clear. Baseline ordinary 75 percent, class fractions 100 and 0 percent, balanced 50 percent. Candidate ordinary 12/16=75 percent, both class fractions 75 percent, balanced 75 percent, FP=3,FN=1. Require both denominators and no automatic-winner claim.",
+    "support": "Use counters and write each fraction with its reference-class total before converting to a percentage. Supply blank denominator boxes rather than answers. Extension: express ordinary accuracy as the class-size-weighted average of the two correct fractions; for the candidate use (16/20)(12/16)+(4/20)(4/4)=16/20.",
+    "next": "Week 15 covers precision recall and denominators. Carry forward the matrix and the question answered by each fraction. Teacher reference: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html (equal average of class recalls; reviewed 2026-09-28)."
+  }
+}

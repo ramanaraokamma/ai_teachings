@@ -1,0 +1,272 @@
+{
+  "level": "ai-3",
+  "week": 11,
+  "title": "Scaling without leakage",
+  "minutes": 90,
+  "goals": [
+    "Calculate feature scales from training data only",
+    "Apply the same stored transformation to training and new examples",
+    "Explain how scaling changes distance and how leakage invalidates evaluation"
+  ],
+  "prerequisite": {
+    "prompt": "What determines the nearest training neighbour, and which examples belong in the stored neighbour pool?",
+    "answer": "The selected features, distance measure and declared tie rule determine the nearest neighbour. Only training examples belong in the stored pool; validation reference labels must not enter it."
+  },
+  "vocabulary": [
+    [
+      "Range",
+      "The largest training value minus the smallest for one feature"
+    ],
+    [
+      "Fit",
+      "Learn and store values from training data"
+    ],
+    [
+      "Transform",
+      "Apply a stored calculation to feature values"
+    ],
+    [
+      "Leakage",
+      "Use information that should be unavailable while developing or evaluating a prediction method"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Make the distance choice visible",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Last week we compared one numeric feature. With two features, their numerical ranges can give one feature much more influence. Scaling changes those contributions. We will learn a minimum and range for each feature from training only, then reuse them for every example."
+        },
+        {
+          "type": "paragraph",
+          "text": "These fictional trips have a distance reading in cm, a brightness reading in sensor units and a reviewed lane label. Features are available before prediction; labels are separate evidence. Related trips have already been grouped before splitting. For this exercise use k=1, add absolute differences across the two features, and break equal distances by alphabetical ID."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "ID and label",
+            "Distance cm",
+            "Brightness units"
+          ],
+          "rows": [
+            [
+              "A clear",
+              "10",
+              "200"
+            ],
+            [
+              "B blocked",
+              "20",
+              "100"
+            ],
+            [
+              "C blocked",
+              "20",
+              "200"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "For query (11,120), raw distances to A,B,C are 1+80=81, 9+20=29 and 9+80=89. B wins and predicts blocked. Adding these different units is an unscaled numerical choice; the large brightness range strongly affects it. Scaling offers another explicit distance choice, not proof of which features matter."
+        }
+      ]
+    },
+    {
+      "title": "Fit once and reuse the same calculation",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "train = [(10, 200), (20, 100), (20, 200)]\nlow = [min(row[j] for row in train) for j in range(2)]\nspan = [max(row[j] for row in train) - low[j]\n        for j in range(2)]\nif 0 in span:\n    raise ValueError(\"Review a constant training feature\")\n\ndef transform(row):\n    return tuple((row[j] - low[j]) / span[j]\n                 for j in range(2))\n\nscaled_train = [transform(row) for row in train]\nquery = (11, 120)\nprint(low, span)\nprint(scaled_train)\nprint(transform(query))"
+        },
+        {
+          "type": "paragraph",
+          "text": "For each feature use scaled value = (value minus training minimum) divided by training range. range(2) visits feature positions 0 and 1. The code prints [10, 100] [10, 100], then [(0.0, 1.0), (1.0, 0.0), (1.0, 1.0)], then (0.1, 0.2). Each minimum becomes 0 and each maximum becomes 1."
+        },
+        {
+          "type": "paragraph",
+          "text": "The first calculations fit low and span from train. transform uses those stored values without learning new ones. The code assumes nonempty training rows with exactly two finite numeric features; it does not check all inputs. Its explicit zero-range guard stops division by zero so a constant feature can be reviewed. This is a classroom policy, not a claim that every library stops this way."
+        }
+      ]
+    },
+    {
+      "title": "Compare neighbours after scaling",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "One stored scale for every split",
+          "columns": [
+            "Examples",
+            "Operation",
+            "Stored values"
+          ],
+          "rows": [
+            [
+              "Training only",
+              "Fit minima and ranges",
+              "low 10 100 span 10 100"
+            ],
+            [
+              "Training examples",
+              "Transform each row",
+              "Reuse low and span"
+            ],
+            [
+              "Validation and new",
+              "Transform each row",
+              "Reuse low and span"
+            ]
+          ],
+          "caption": "Only training examples determine the scale. Transform validation and new examples using the same stored feature order, minima and ranges."
+        },
+        {
+          "type": "paragraph",
+          "text": "The scaled query is (0.1,0.2). Distances to scaled A,B,C are 0.1+0.8=0.9, 0.9+0.2=1.1 and 0.9+0.8=1.7. A now wins and predicts clear. We changed feature contributions; we did not change any reference label. Compare scaled queries with scaled training rows, never with raw training rows."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Show why raw distance selects B but scaled distance selects A for (11,120). Which stored numbers must remain fixed when the next query arrives?",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Equal training ranges after scaling do not establish equal real-world importance. Outliers affect minima and ranges. Scaling does not repair wrong labels, missing information or an unsuitable distance measure."
+        }
+      ]
+    },
+    {
+      "title": "Evaluate without refitting the scale",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Keep the training scale and k=1 fixed. Validation rows are (11,120,clear), (19,190,blocked), (12,80,clear). Their scaled feature pairs are (0.1,0.2), (0.9,0.9), (0.2,-0.2). Nearest IDs are A,C,B, so predictions clear,blocked,blocked score 2/3. The training-majority blocked baseline gets 1/3. These three examples do not establish general superiority."
+        },
+        {
+          "type": "paragraph",
+          "text": "The last brightness value scales to -0.2 because 80 is below the training minimum 100. New values can fall outside 0 to 1; do not refit or silently clip them. Including validation features in minima or ranges leaks evaluation information even without labels. Fitting a separate scale on validation also changes coordinates and breaks the intended comparison."
+        }
+      ]
+    },
+    {
+      "title": "Record a reproducible preprocessing decision",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Record the split, feature names and units, feature order, minima, ranges, constant-feature policy, distance, k and tie rule. Keep the scale with the stored training examples. New data uses the same calculation. If development choices change, document them and reserve a separate final test. Next week combines these steps into one reproducible classifier pipeline."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a feature is constant in training, its range is zero. This example stops for review. One documented option is to omit that feature everywhere and update the recorded feature list; do not divide by zero or invent a scale using validation values. Library policies differ, so inspect and record the one actually used."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A learner finds minima and ranges using all rows, then splits them and says there is no leakage because labels were never used. Explain the error and give the correct order of operations.",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Learn the scale from training",
+      "prompt": "Using A,B,C, give the minimum, maximum and range for each feature. Transform all three training rows and query (11,120). Explain which rows supplied the scale.",
+      "answer": "Distance minimum 10 maximum 20 range 10; brightness minimum 100 maximum 200 range 100. A becomes (0,1), B (1,0), C (1,1), and query (0.1,0.2). Only A,B,C supplied the scale; the query did not.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Trace the changed prediction",
+      "prompt": "For query (11,120), calculate raw and scaled distances to A,B,C. Give both k=1 predictions. Does this prove that scaling always improves predictions?",
+      "answer": "Raw distances 81,29,89 select B blocked. Scaled distances 0.9,1.1,1.7 select A clear. The feature contributions changed. This single changed prediction does not establish better performance; evaluate separately and report limits.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Keep one coordinate system",
+      "prompt": "Transform (12,80) using the stored training scale. Explain the negative value and why validation must not fit its own scale. Give the worked validation and baseline scores.",
+      "answer": "(12,80) becomes (0.2,-0.2). Brightness is below the training minimum, so the negative result is valid under this formula. Refitting validation creates different coordinates; use the stored training transformation. Scaled k=1 scores 2/3 and the blocked baseline 1/3.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Scale a fresh dataset independently",
+      "prompt": "New training rows are P (20,1000) clear, Q (40,600) blocked, R (40,1000) blocked. Fit minima and ranges. For query (22,680), show transformed features, raw and scaled distances to P,Q,R, and both k=1 predictions. Transform new row (50,520) with the same scale.",
+      "answer": "Minima (20,600), ranges (20,400). P,Q,R become (0,1),(1,0),(1,1); query becomes (0.1,0.2). Raw distances 322,98,338 select Q blocked. Scaled distances 0.9,1.1,1.7 select P clear. New row (50,520) becomes (1.5,-0.2); keep the fitted scale and do not silently clip.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Repair two preprocessing mistakes",
+      "prompt": "A learner fits scales using training plus validation features but no labels. Another divides by a zero training range. Explain both problems and give a recorded repair for each.",
+      "answer": "Evaluation features influenced the first learned transformation, causing leakage even without labels. Split first, fit only on training and reuse those values for validation. A zero range causes division by zero. This code stops for review; one documented repair is to omit that feature consistently from every split and update the feature list.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions. Keep the two feature columns distinct and require students to state which rows supplied each fitted number. First compare hand calculations, then trace optional Python. Explain that min-max scaling is one preprocessing choice; a small demonstration cannot establish the best method for a real task.",
+    "materials": [
+      "Printed lesson and workbook",
+      "Two coloured number lines for the feature columns",
+      "Optional Python 3 editor with no packages required",
+      "Blank table for minima ranges transformed pairs and distances"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve k=1 prediction and training-only neighbour storage. Introduce two features with different ranges."
+      ],
+      [
+        "7 to 18 minutes",
+        "Calculate raw distances and discuss how units affect contributions. Complete W1 minima and ranges."
+      ],
+      [
+        "18 to 32 minutes",
+        "Transform A,B,C and the query. Trace fit versus transform in code and finish W1."
+      ],
+      [
+        "32 to 45 minutes",
+        "Complete W2 and the guided question. Use the diagram to follow the same stored scale across splits."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the stored feature order, minima and ranges without recalculating from validation."
+      ],
+      [
+        "8 to 20 minutes",
+        "Transform and score all three validation rows. Complete W3 and explain values outside 0 to 1."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before giving support. Require raw and scaled arithmetic plus the new row."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit question. Use the fresh retry after feedback and record support."
+      ]
+    ],
+    "guidedAnswer": "Guided: raw distances A,B,C are 81,29,89 so B predicts blocked; scaled distances are 0.9,1.1,1.7 so A predicts clear. Keep minima (10,100), ranges (10,100), feature order and method settings fixed. Exit: even unlabelled evaluation features affected the fitted transformation. Split first, fit minima and ranges on training, transform every split with those values, then evaluate frozen predictions.",
+    "misconceptions": [
+      [
+        "Every transformed value must lie between 0 and 1",
+        "Only the fitted training range maps to 0 through 1. New values outside that range can transform below 0 or above 1."
+      ],
+      [
+        "No labels means no leakage",
+        "Held-out feature values can leak into a learned transformation. Fit preprocessing on the training split only."
+      ],
+      [
+        "Scale each split separately",
+        "Separate fits create different coordinates. Apply the same stored scale to training examples and queries."
+      ]
+    ],
+    "assessment": "Require W4 minima (20,600), ranges (20,400), query (0.1,0.2), raw distances 322,98,338 and scaled distances 0.9,1.1,1.7. Predictions Q blocked and P clear; new row (1.5,-0.2). Fresh retry: L (5,80) blocked, M (15,40) clear, N (15,80) clear; query (6,48). Minima (5,40), ranges (10,40), query (0.1,0.2). Raw distances 33,17,41 select M clear; scaled distances 0.9,1.1,1.7 select L blocked. Require training-only fitting and consistent transformation.",
+    "support": "Colour each feature column separately and supply the formula with spaces for the training minimum and range. Let students use fractions before decimals. Extension: convert one entire feature to a different positive unit, refit on training only, and explain why the scaled values remain the same.",
+    "next": "Week 12 builds a reproducible classifier pipeline. Carry forward the fitted scale, feature order and distance settings. Teacher reference: https://scikit-learn.org/stable/common_pitfalls.html (consistent preprocessing and leakage; reviewed 2026-09-27)."
+  }
+}

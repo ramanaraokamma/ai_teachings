@@ -1,0 +1,222 @@
+{
+  "level": "ai-3",
+  "week": 23,
+  "title": "Validation and model selection",
+  "minutes": 90,
+  "goals": [
+    "Select a model using a declared validation rule",
+    "Keep training, validation and test roles separate",
+    "Recognize repeated validation as development"
+  ],
+  "prerequisite": {
+    "prompt": "Which data fitted the line last week?",
+    "answer": "Training rows fitted parameters; separate validation rows compared performance."
+  },
+  "vocabulary": [
+    [
+      "Validation",
+      "Development evidence used to choose between options"
+    ],
+    [
+      "Hyperparameter",
+      "A model setting chosen outside its fitted parameters"
+    ],
+    [
+      "Selection rule",
+      "A declared method for choosing an option"
+    ],
+    [
+      "Test set",
+      "Held-out evidence reserved for a final evaluation"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Fitting and selecting answer different questions. Training adjusts parameters. Validation helps choose settings or model families. A final test estimates the performance of the frozen development process on held-out examples. Keep related records in the same split when separate rows could reveal the same source."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use fictional classroom data throughout this investigation. Keep the task, units, reference labels and data split visible as you reason. Earlier weeks supplied the model-building process; this week examines validation and model selection."
+        }
+      ]
+    },
+    {
+      "title": "Work through the evidence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Three candidates have training MAE A=1, B=0, C=2 and validation MAE A=3, B=5, C=3. The declared rule is smallest validation MAE, then simpler model, with A simpler than C. Choose A. B fits training perfectly but does worse on validation. The final test remains unopened."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before continuing, underline the decision rule and circle the evidence that supports the conclusion. Explain the example to a partner without replacing the counts or conditions with a stronger claim. Keep the distinction between an observed result and a proposed next step."
+        }
+      ]
+    },
+    {
+      "title": "Explain the visual",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Validation and model selection at a glance",
+          "columns": [
+            "Part",
+            "Evidence or action",
+            "Interpretation"
+          ],
+          "rows": [
+            [
+              "Training",
+              "Fit each candidate",
+              "No test labels"
+            ],
+            [
+              "Validation",
+              "Choose A by rule",
+              "Record every attempt"
+            ],
+            [
+              "Final test",
+              "Frozen model only",
+              "Report after selection"
+            ]
+          ],
+          "caption": "A tie policy prevents a convenient choice after inspecting results. Equal validation scores do not prove equal future performance. Record candidate settings, split identifiers, preprocessing and the full comparison, including rejected options."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Where should parameter fitting, setting selection and final reporting occur? Explain the steps or evidence behind your response.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Apply the idea carefully",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "If you inspect validation errors and invent candidate D, that is another development attempt. Log it. Repeated experiments can adapt to peculiarities of validation. Do not rename validation as an untouched test. More rows alone do not repair duplicated groups or future information leaking into inputs."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A low score is meaningful only with its unit, metric, evaluated population and baseline. Decide how to handle ties and missing predictions before comparison. If no appropriate final test exists, state that limitation and keep claims about validation."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Why is the winning validation score not a guaranteed future score?",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Choose a candidate",
+      "prompt": "Apply the worked selection rule. Explain why B is not chosen.",
+      "answer": "Teacher explanation: Choose A: validation MAE 3 ties C, and A wins the simplicity tie. B has validation MAE 5 despite training MAE 0.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Assign data roles",
+      "prompt": "Where should parameter fitting, setting selection and final reporting occur?",
+      "answer": "Teacher explanation: Fit on training, select on validation, evaluate the frozen choice on held-out test; fit preprocessing only on training.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Record another attempt",
+      "prompt": "A team creates D after reading validation mistakes. What changes in the record?",
+      "answer": "Teacher explanation: Add D and its motivation to development history. Validation influenced D and is not untouched test evidence.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Apply independently",
+      "prompt": "Training errors P 2 Q 0 R 1; validation errors P 4 Q 6 R 4. Rule: smallest validation MAE, then simpler; P is simpler than R. Choose and state the test action.",
+      "answer": "Teacher explanation: Choose P with validation MAE 4; Q loses with 6. Keep the test unopened until settings and reporting rules are frozen.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Limit a claim",
+      "prompt": "Why is the winning validation score not a guaranteed future score?",
+      "answer": "Teacher explanation: Selection used this sample, repeated attempts can adapt to it, and future conditions and sampling may differ.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions. This week focuses on validation and model selection. Model the worked example first, collect the new W 4 case independently before feedback, and use the fresh retry to check transfer. Award credit for traceable reasoning and bounded claims, including justified uncertainty.",
+    "materials": [
+      "Printed student lesson and workbook",
+      "Paper, pencils and a calculator for fractions",
+      "The fictional examples and a blank evidence table",
+      "Saved classroom project records for critique; no personal student dataset required"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Use the prerequisite question: Which data fitted the line last week? Check the explanation before proceeding."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read the opening and model the worked evidence. Ask students to identify validation in context."
+      ],
+      [
+        "18 to 32 minutes",
+        "Complete W 1 and W 2 with support: choose a candidate; assign data roles. Require the evidence, not only the final response."
+      ],
+      [
+        "32 to 45 minutes",
+        "Read the visual row by row. Collect the guided explanation and compare reasoning in pairs. Connect each conclusion to the stated evidence."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the distinction between validation and hyperparameter. Invite a counterexample to an overconfident claim."
+      ],
+      [
+        "8 to 20 minutes",
+        "Discuss the application and complete W 3: A team creates D after reading validation mistakes. What changes in the record?"
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before giving hints. Assess these outcomes: Select a model using a declared validation rule; Keep training, validation and test roles separate. Record any support used."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W 5 and the exit response to assess limits. Give targeted feedback, then the fresh retry. Save evidence of independent understanding."
+      ]
+    ],
+    "guidedAnswer": "Guided response: Fit on training, select on validation, evaluate the frozen choice on held-out test; fit preprocessing only on training. Exit response: Selection used this sample, repeated attempts can adapt to it, and future conditions and sampling may differ.",
+    "misconceptions": [
+      [
+        "A final answer is enough",
+        "Ask for the relevant counts, units, procedure or saved record. For this week: Choose A: validation MAE 3 ties C, and A wins the simplicity tie. B has validation MAE 5 despite training MAE 0."
+      ],
+      [
+        "A stronger claim makes a stronger project",
+        "Selection used this sample, repeated attempts can adapt to it, and future conditions and sampling may differ."
+      ],
+      [
+        "The new case can be copied from the example",
+        "The independent task changes the evidence. Require a fresh explanation: Choose P with validation MAE 4; Q loses with 6. Keep the test unopened until settings and reporting rules are frozen."
+      ]
+    ],
+    "assessment": "For independent W 4, require: Choose P with validation MAE 4; Q loses with 6. Keep the test unopened until settings and reporting rules are frozen. Fresh retry: validation L 2 M 2 N 3, simplicity M before L. Choose M under the declared tie policy; do not use test scores to break the tie. Mark each criterion as independent, supported or not yet demonstrated. Reassess the reasoning after feedback; do not replace the first attempt silently.",
+    "support": "Provide a blank evidence table and allow a verbal explanation before writing. Highlight the given conditions without supplying the W 4 conclusion. Use validation and hyperparameter in full sentences. Extension: alter one condition in the worked example and explain which conclusion changes and which remains supported.",
+    "next": "Next week: Final testing and honest claims. Carry forward the saved evidence and the distinction between development choices and justified claims."
+  }
+}

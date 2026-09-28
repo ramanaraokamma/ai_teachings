@@ -1,0 +1,222 @@
+{
+  "level": "ai-3",
+  "week": 30,
+  "title": "Subgroup evaluation",
+  "minutes": 90,
+  "goals": [
+    "Calculate subgroup results with sample sizes",
+    "Distinguish missing evidence from equal performance",
+    "Report differences without assigning causes from a table"
+  ],
+  "prerequisite": {
+    "prompt": "What can a pooled error rate hide?",
+    "answer": "Different error patterns in different evaluated conditions or groups."
+  },
+  "vocabulary": [
+    [
+      "Subgroup",
+      "A defined subset of the evaluated examples"
+    ],
+    [
+      "Disaggregation",
+      "Reporting results separately for defined groups"
+    ],
+    [
+      "Coverage",
+      "Which groups and conditions are represented"
+    ],
+    [
+      "Disparity",
+      "An observed difference between group results"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Understand the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A single overall score can hide different experiences. Define relevant groups before evaluation and report counts as well as rates. This classroom exercise uses fictional sensor conditions, not personal identities. Real evaluations involving people require appropriate permissions, privacy and contextual expertise."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use fictional classroom data throughout this investigation. Keep the task, units, reference labels and data split visible as you reason. Earlier weeks supplied the model-building process; this week examines subgroup evaluation."
+        }
+      ]
+    },
+    {
+      "title": "Work through the evidence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Sensor group A has 2 errors in 20 examples and group B has 3 in 5. Error rates are 10 and 60 percent; pooled error is 5/25=20 percent. The group difference is 50 percentage points. B has only five examples, so its rate is sensitive to each individual result."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before continuing, underline the decision rule and circle the evidence that supports the conclusion. Explain the example to a partner without replacing the counts or conditions with a stronger claim. Keep the distinction between an observed result and a proposed next step."
+        }
+      ]
+    },
+    {
+      "title": "Explain the visual",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Subgroup evaluation at a glance",
+          "columns": [
+            "Part",
+            "Evidence or action",
+            "Interpretation"
+          ],
+          "rows": [
+            [
+              "Group A",
+              "2 errors of 20",
+              "10 percent"
+            ],
+            [
+              "Group B",
+              "3 errors of 5",
+              "60 percent"
+            ],
+            [
+              "Pooled",
+              "5 errors of 25",
+              "20 percent"
+            ]
+          ],
+          "caption": "Changing one B error to a correct result changes its rate from 60 to 40 percent. Small samples can be unstable without making the observed errors unimportant. A missing group has no measured rate, not zero error. Intersections of conditions may be even smaller."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "How does correcting one B error affect its rate? Explain the steps or evidence behind your response.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Apply the idea carefully",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Choose group definitions for a reason connected to use and possible harm. Retain error types, reference-label quality and sampling method. Avoid searching many groupings merely to find a dramatic or reassuring number. Report exploratory checks as exploratory."
+        }
+      ]
+    },
+    {
+      "title": "State what the evidence supports",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Equal error rates alone do not establish fairness, and unequal rates alone do not identify discrimination or a cause. Groups may differ in base rates, label quality or conditions. Use results to ask better questions and plan review rather than label a group as inherently difficult."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Why does equal accuracy not settle whether use is fair?",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Calculate group rates",
+      "prompt": "Calculate the worked group and pooled rates.",
+      "answer": "Teacher explanation: A 2/20=10 percent; B 3/5=60 percent; pooled 5/25=20 percent, a 50-point group gap.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Check sensitivity",
+      "prompt": "How does correcting one B error affect its rate?",
+      "answer": "Teacher explanation: B becomes 2/5=40 percent, a 20-percentage-point change from one case.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Report missing coverage",
+      "prompt": "Group C has no evaluated cases. What is its measured error rate?",
+      "answer": "Teacher explanation: Unavailable because the denominator is zero; report missing coverage and do not substitute zero.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Apply independently",
+      "prompt": "Groups X 1 error/10 and Y 2/4: calculate separate and pooled rates, then state one limit.",
+      "answer": "Teacher explanation: X 10 percent; Y 50 percent; pooled 3/14 about 21.4 percent. Y has only four examples, and the table does not establish a cause.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Avoid a fairness shortcut",
+      "prompt": "Why does equal accuracy not settle whether use is fair?",
+      "answer": "Teacher explanation: Error types, consequences, access, labels and context can differ; a single equality does not establish acceptable treatment.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions. This week focuses on subgroup evaluation. Model the worked example first, collect the new W 4 case independently before feedback, and use the fresh retry to check transfer. Award credit for traceable reasoning and bounded claims, including justified uncertainty.",
+    "materials": [
+      "Printed student lesson and workbook",
+      "Paper, pencils and a calculator for fractions",
+      "The fictional examples and a blank evidence table",
+      "Saved classroom project records for critique; no personal student dataset required"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Use the prerequisite question: What can a pooled error rate hide? Check the explanation before proceeding."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read the opening and model the worked evidence. Ask students to identify subgroup in context."
+      ],
+      [
+        "18 to 32 minutes",
+        "Complete W 1 and W 2 with support: calculate group rates; check sensitivity. Require the evidence, not only the final response."
+      ],
+      [
+        "32 to 45 minutes",
+        "Read the visual row by row. Collect the guided explanation and compare reasoning in pairs. Connect each conclusion to the stated evidence."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the distinction between subgroup and disaggregation. Invite a counterexample to an overconfident claim."
+      ],
+      [
+        "8 to 20 minutes",
+        "Discuss the application and complete W 3: Group C has no evaluated cases. What is its measured error rate?"
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before giving hints. Assess these outcomes: Calculate subgroup results with sample sizes; Distinguish missing evidence from equal performance. Record any support used."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W 5 and the exit response to assess limits. Give targeted feedback, then the fresh retry. Save evidence of independent understanding."
+      ]
+    ],
+    "guidedAnswer": "Guided response: B becomes 2/5=40 percent, a 20-percentage-point change from one case. Exit response: Error types, consequences, access, labels and context can differ; a single equality does not establish acceptable treatment.",
+    "misconceptions": [
+      [
+        "A final answer is enough",
+        "Ask for the relevant counts, units, procedure or saved record. For this week: A 2/20=10 percent; B 3/5=60 percent; pooled 5/25=20 percent, a 50-point group gap."
+      ],
+      [
+        "A stronger claim makes a stronger project",
+        "Error types, consequences, access, labels and context can differ; a single equality does not establish acceptable treatment."
+      ],
+      [
+        "The new case can be copied from the example",
+        "The independent task changes the evidence. Require a fresh explanation: X 10 percent; Y 50 percent; pooled 3/14 about 21.4 percent. Y has only four examples, and the table does not establish a cause."
+      ]
+    ],
+    "assessment": "For independent W 4, require: X 10 percent; Y 50 percent; pooled 3/14 about 21.4 percent. Y has only four examples, and the table does not establish a cause. Fresh retry X 2/8 and Y 1/2:25 and 50 percent, pooled 3/10=30 percent. Require denominators, the small Y sample and no causal inference. Mark each criterion as independent, supported or not yet demonstrated. Reassess the reasoning after feedback; do not replace the first attempt silently.",
+    "support": "Provide a blank evidence table and allow a verbal explanation before writing. Highlight the given conditions without supplying the W 4 conclusion. Use subgroup and disaggregation in full sentences. Extension: alter one condition in the worked example and explain which conclusion changes and which remains supported.",
+    "next": "Next week: Proxy features and fairness. Carry forward the saved evidence and the distinction between development choices and justified claims."
+  }
+}

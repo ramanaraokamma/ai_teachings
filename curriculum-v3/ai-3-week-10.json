@@ -1,0 +1,286 @@
+{
+  "level": "ai-3",
+  "week": 10,
+  "title": "Nearest neighbours and distances",
+  "minutes": 90,
+  "goals": [
+    "Compute absolute distances and rank training neighbours",
+    "Apply a declared neighbour count and distance tie rule",
+    "Evaluate neighbour predictions without using validation labels as neighbours"
+  ],
+  "prerequisite": {
+    "prompt": "What does a fitted depth-one tree store, and what does it do with a new example?",
+    "answer": "It stores a root question and leaf predictions learned from training. A new example follows the appropriate branch to a stored leaf prediction."
+  },
+  "vocabulary": [
+    [
+      "Distance",
+      "A numerical measure of difference between selected feature values"
+    ],
+    [
+      "Neighbour",
+      "A stored training example close under the chosen distance"
+    ],
+    [
+      "k",
+      "The number of neighbours selected for a prediction"
+    ],
+    [
+      "Vote",
+      "A contribution of a selected neighbour\u2019s label to the predicted class"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Predict by comparing stored examples",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A nearest-neighbour classifier predicts using nearby training examples rather than following a fitted tree. This week we store labelled examples, measure how different their feature values are from a new query, and let selected neighbours vote. Nearby means close under our chosen feature and distance, not necessarily similar in every real-world way."
+        },
+        {
+          "type": "paragraph",
+          "text": "Our new fictional dataset has a distance reading in centimetres and a separately reviewed lane label. Each row comes from a distinct trip, and validation trips are separate. Only the numeric reading measures similarity. IDs identify rows and break distance ties; they are not numeric features. These invented readings are not a robot safety system."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "ID",
+            "Reading in cm",
+            "Label"
+          ],
+          "rows": [
+            [
+              "A",
+              "2",
+              "blocked"
+            ],
+            [
+              "B",
+              "4",
+              "clear"
+            ],
+            [
+              "C",
+              "8",
+              "clear"
+            ],
+            [
+              "D",
+              "10",
+              "blocked"
+            ],
+            [
+              "E",
+              "12",
+              "clear"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "For this one-dimensional feature, distance is abs(training reading minus query reading). abs removes the sign. Set k=3 and give each selected neighbour one vote. Order equal distances by ID alphabetically, declared before scoring. In this binary, three-vote exercise the label vote cannot tie, but the distances can."
+        }
+      ]
+    },
+    {
+      "title": "Rank distances before voting",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Python 3 code",
+          "text": "train = [(\"A\", 2, \"blocked\"), (\"B\", 4, \"clear\"),\n         (\"C\", 8, \"clear\"), (\"D\", 10, \"blocked\"),\n         (\"E\", 12, \"clear\")]\nquery = 3\nranked = sorted((abs(x - query), item_id, label)\n                for item_id, x, label in train)\nnear = ranked[:3]\nlabels = [row[2] for row in near]\nprediction = \"clear\"\nif labels.count(\"blocked\") > labels.count(\"clear\"):\n    prediction = \"blocked\"\nprint([row[1] for row in near])\nprint(prediction)"
+        },
+        {
+          "type": "paragraph",
+          "text": "For query 3, distances to A through E are 1,1,5,7,9 cm. sorted orders tuples by distance first, then the unique ID. ranked[:3] takes the first three rows. The output is ['A', 'B', 'C'] then clear: one blocked vote and two clear votes."
+        },
+        {
+          "type": "paragraph",
+          "text": "If k were 1 under the same distance tie rule, A would win and predict blocked. Changing k can change a prediction. We declared k=3 for this exercise; do not choose k after seeing the desired answer and pretend the method was unchanged."
+        },
+        {
+          "type": "paragraph",
+          "text": "The code assumes unique IDs, numeric readings, only clear or blocked labels and at least three training rows. It does not validate those conditions. A larger k than the stored row count would not produce the promised number of votes. Keep unresolved review labels under a separate documented policy."
+        }
+      ]
+    },
+    {
+      "title": "Separate feature distance from label evidence",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Three selected neighbours for query 3",
+          "columns": [
+            "Stored example",
+            "Feature distance",
+            "One label vote"
+          ],
+          "rows": [
+            [
+              "A at 2 cm",
+              "abs 2 minus 3 is 1",
+              "blocked"
+            ],
+            [
+              "B at 4 cm",
+              "abs 4 minus 3 is 1",
+              "clear"
+            ],
+            [
+              "C at 8 cm",
+              "abs 8 minus 3 is 5",
+              "clear"
+            ]
+          ],
+          "caption": "Select neighbours by feature distance and the declared ID tie rule. Read their training labels to vote only after selecting them."
+        },
+        {
+          "type": "paragraph",
+          "text": "Store the training examples and the method settings. At prediction time, compare the query only with stored training examples. Do not add the query\u2019s reference label or other validation labels to the neighbour pool. No cutoff or tree is fitted here, but retaining training examples is still part of the learning method."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Why do A and B tie for distance to query 3? Which wins for k=1 under our rule, and why does k=3 predict differently? Does the ID rule establish which label is true?",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "A vote share of two out of three describes these neighbours. It is not a verified two-thirds probability that the new scene is clear. A prediction can be wrong even when the nearest examples agree."
+        }
+      ]
+    },
+    {
+      "title": "Score queries without changing the pool",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Keep k=3 and the original five training rows. Validation queries with reference labels are (3,blocked), (9,blocked), (11,clear). Their selected neighbour IDs are A B C, C D E, and D E C respectively. Each group votes clear. Only the last prediction matches, so accuracy is 1/3, about 33.3 percent."
+        },
+        {
+          "type": "paragraph",
+          "text": "The training-majority baseline also predicts clear because three training labels are clear and two are blocked. It gets the same 1/3 on these validation rows. Record all distances, selected IDs and errors. Trying more k values is a development choice to document; preserve a separate final test for a final evaluation."
+        }
+      ]
+    },
+    {
+      "title": "State what closeness leaves out",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "All distances here use one feature measured in the same unit. With multiple features, their units and scales affect which examples appear close. A large numerical range can dominate a distance calculation. Next week we will address scaling and learn any scaling values from training data only."
+        },
+        {
+          "type": "paragraph",
+          "text": "Identical readings from different trips can have different labels, and an exact match does not certify truth. Keep related examples grouped across splits as in Week 6. Testing an example against a pool containing itself can make a one-neighbour score misleadingly high; it does not show performance on a new trip."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A learner adds each labelled validation query to the stored pool, then uses k=1 and reports perfect predictions. Explain what the result fails to test and how to restore the intended comparison.",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Calculate feature distances",
+      "prompt": "For query 3 cm, calculate distances to all five training rows. Explain why A and B tie even though their labels differ.",
+      "answer": "Distances to A,B,C,D,E are 1,1,5,7,9 cm. A and B are equally far from 3 on the numeric feature; their labels do not enter the distance calculation.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Apply neighbour and tie rules",
+      "prompt": "For query 3, list the selected IDs and predictions for k=1 and k=3 using alphabetical ID order on equal distances. Explain what changes and what remains the same.",
+      "answer": "For k=1 select A and predict blocked. For k=3 select A,B,C and predict clear from two clear votes. Training data, distance and ID tie rule stay the same; the number of voting neighbours changes.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Keep evaluation examples separate",
+      "prompt": "Why must the three validation reference labels not enter the neighbour pool? Give the fixed k=3 score and baseline score on the worked validation examples.",
+      "answer": "Adding validation labels uses evaluation answers to make predictions and changes the intended comparison with unseen trips. The fixed k=3 method predicts clear three times and gets 1/3. The training-majority clear baseline also gets 1/3.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Find neighbours independently",
+      "prompt": "New training rows are P at 1 cm clear, Q at 5 blocked, R at 7 blocked, S at 11 clear, T at 13 blocked. For query 6, give all distances, order the IDs by distance then alphabetically, and predict with k=1 and k=3. Using the same training pool and k=3, score validation (6,blocked),(10,clear),(12,blocked). Compare the training-majority baseline.",
+      "answer": "Query 6 distances P,Q,R,S,T are 5,1,1,5,7. Order Q,R,P,S,T. k=1 predicts blocked from Q; k=3 uses Q,R,P and also predicts blocked. For queries 6,10,12, selected triples are Q R P, S R T, S T R. All predict blocked, matching validation rows 1 and 3: 2/3. Training-majority blocked also scores 2/3.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Interpret a vote and a match",
+      "prompt": "Two of three neighbours vote clear. Does that prove a two-thirds chance of a correct prediction? Does an exact feature match guarantee a correct label? Explain both limits.",
+      "answer": "The vote fraction describes the selected training labels, not a verified probability of correctness. An exact match on one feature can still differ in omitted conditions or have a wrong or conflicting label. Separate evaluation and relevant features remain necessary.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach two 45-minute sessions. Use a single numeric feature to make distance arithmetic visible, then distinguish neighbour selection from voting. Store only training rows. Alphabetical IDs settle equal distances for this classroom method; explain that it is a convention and other implementations can use different tie behavior.",
+    "materials": [
+      "Printed lesson and workbook",
+      "Number line from 0 to 14 cm and five labelled training markers",
+      "Optional Python 3 editor with no packages required",
+      "Blank table for distances ordered IDs votes and predictions"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve tree storage and prediction. Introduce prediction from stored examples with a declared distance."
+      ],
+      [
+        "7 to 18 minutes",
+        "Place A through E on the number line. Calculate absolute distances to query 3 and complete W1."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace tuple sorting and list slicing. Complete W2; distinguish tied distances from a tied label vote."
+      ],
+      [
+        "32 to 45 minutes",
+        "Read the diagram and answer the guided question. Explain why ID order is not evidence of truth."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the training-only neighbour pool. Ask why validation labels must remain outside it."
+      ],
+      [
+        "8 to 20 minutes",
+        "Compute the three validation predictions and complete W3. Compare the fixed training-majority baseline."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before support. Require ordered IDs, both k predictions and the full validation score."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit question. Offer the fresh retry after feedback and record support."
+      ]
+    ],
+    "guidedAnswer": "Guided: abs(2-3) and abs(4-3) both equal 1. For k=1 alphabetical tie order chooses A, blocked. k=3 adds B and C, whose clear votes win 2 to 1. ID order is a deterministic convention, not evidence of the query\u2019s true label. Exit: using labelled validation examples in the neighbour pool leaks evaluation answers and may let a query select itself. Restore the original training-only pool and score every validation query without adding its label.",
+    "misconceptions": [
+      [
+        "A negative difference is a negative distance",
+        "Take the absolute difference; in this example distance is nonnegative regardless of which reading is larger."
+      ],
+      [
+        "Odd k prevents every kind of tie",
+        "Three binary votes avoid a label tie, but neighbours can still tie in distance, including at the selection boundary."
+      ],
+      [
+        "An exact match proves the label",
+        "It matches the selected feature only. Other conditions, annotation errors or contradictory examples can remain."
+      ]
+    ],
+    "assessment": "Require W4 distances 5,1,1,5,7, order Q,R,P,S,T, both predictions blocked, and validation plus baseline scores 2/3. Fresh retry: L at 0 blocked, M at 4 clear, N at 6 clear, O at 10 blocked, P at 12 clear; query 5. Distances are 5,1,1,5,7; order M,N,L,O,P. k=1 is clear from M; k=3 is clear from M,N,L. Ask why L wins the third-place distance tie over O: alphabetical ID policy. Require a training-only pool and no probability claim.",
+    "support": "Use physical steps on a number line before abs. Supply an empty distance table without the order. Extension: explain how renaming tied IDs can change a prediction under this policy while the measured features remain unchanged, and why the policy must be recorded.",
+    "next": "Week 11 covers scaling without leakage. Carry forward training-only storage and explicit distance choices. Teacher reference: https://scikit-learn.org/stable/modules/neighbors.html (nearest-neighbour classification and tie considerations; reviewed 2026-09-27)."
+  }
+}
