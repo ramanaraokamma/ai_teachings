@@ -1,0 +1,263 @@
+{
+  "level": "ai-4",
+  "week": 1,
+  "title": "Representing inputs as vectors",
+  "minutes": 90,
+  "goals": [
+    "Encode a record using a fixed feature order and units",
+    "Distinguish a vector dimension from the number of examples",
+    "Detect missing values and target leakage before computation"
+  ],
+  "prerequisite": {
+    "prompt": "A parcel classifier uses width and height to predict a class. Why must its final class label stay outside the input features?",
+    "answer": "The class is the target being predicted. Supplying that answer as an input leaks information that would not be available for a new prediction."
+  },
+  "vocabulary": [
+    [
+      "Vector",
+      "An ordered list of numerical components"
+    ],
+    [
+      "Component",
+      "One value at a specified position in a vector"
+    ],
+    [
+      "Dimension",
+      "The number of components in a vector"
+    ],
+    [
+      "Schema",
+      "The recorded feature order, units and validity rules"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Give each position a meaning",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A neural network receives numbers in a specified order. Before learning how it computes, we need to represent one example without losing the meaning of its fields. A vector is an ordered list: [4, 2] can mean width 4 cm and height 2 cm if that is the declared order. Reversing the two numbers describes a different rectangle under the same schema."
+        },
+        {
+          "type": "paragraph",
+          "text": "For this fictional parcel investigation, use [width in cm, height in cm]. Width and height must both be present and greater than zero. The vector has dimension 2 because it contains two components. Record IDs identify examples; they do not measure the parcel. The target class is stored separately."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Record",
+            "Width and height in cm",
+            "Input vector"
+          ],
+          "rows": [
+            [
+              "A",
+              "4 and 2",
+              "[4, 2]"
+            ],
+            [
+              "B",
+              "2 and 4",
+              "[2, 4]"
+            ],
+            [
+              "C",
+              "3 and 3",
+              "[3, 3]"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "There are three examples, each with two features. Stacking their vectors makes a table with three rows and two columns. Do not confuse the number of rows with the dimension of one input."
+        }
+      ]
+    },
+    {
+      "title": "Trace an encoding procedure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Read fields by name, convert to the declared units, validate, and only then write the vector. Parcel D has width 50 mm and height 30 mm. Because 10 mm equals 1 cm, its encoded vector is [5, 3]. Writing [50, 30] would preserve the numbers while changing the physical meaning by a factor of ten."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "def encode(width_mm, height_mm):\n    if width_mm is None or height_mm is None:\n        raise ValueError(\"Missing measurement\")\n    if width_mm <= 0 or height_mm <= 0:\n        raise ValueError(\"Measurements must be positive\")\n    return [width_mm / 10, height_mm / 10]\n\nprint(encode(50, 30))  # [5.0, 3.0]"
+        },
+        {
+          "type": "paragraph",
+          "text": "This short function assumes each supplied value is a number in mm or None for missing. It is a classroom example, not a complete input validator. Trace the conversion before running it. The function represents data; it does not fit a model or predict a class."
+        }
+      ]
+    },
+    {
+      "title": "Read the same record through three stages",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "An input vector keeps an agreed order",
+          "columns": [
+            "Source record",
+            "Encoding action",
+            "Model input"
+          ],
+          "rows": [
+            [
+              "D width 50 mm",
+              "Divide width by 10",
+              "First component 5"
+            ],
+            [
+              "D height 30 mm",
+              "Divide height by 10",
+              "Second component 3"
+            ],
+            [
+              "Schema width then height",
+              "Keep named positions",
+              "Vector [5, 3] in cm"
+            ]
+          ],
+          "caption": "Read each row left to right, then assemble the final ordered pair. The schema explains the numbers; the vector alone does not."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Parcel E has width 20 mm and height 70 mm. Encode it and explain why [7, 2] is not the same input under this schema.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Repair a representation before using it",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A missing height is unknown, not zero. Under this schema zero is also invalid, so reject the incomplete record and request the measurement. A different project might use a documented training-fitted replacement plus a missingness flag; that would be a different schema that must be applied consistently."
+        },
+        {
+          "type": "paragraph",
+          "text": "A changed field order must also change every consumer that reads positions. A vector can have the expected length and still be wrong because its order, units or meaning changed. A class label appended as a third component causes target leakage even if the software accepts three values."
+        }
+      ]
+    },
+    {
+      "title": "Recognise the limits of an encoding",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Two parcels can share width and height yet differ in material or weight. Their vectors are identical in this representation, so a deterministic model receiving only these features cannot distinguish them. Adding a feature changes the schema and dimension; it does not automatically improve predictions. Keep data splits and evaluation discipline from Grade 8."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Two records both encode as [4, 2] but have different target classes. What can this representation reveal, and what can it not reveal?",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Next week, we will multiply each component by a matching weight and add the results. The computation is meaningful only if the feature order stays fixed."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Encode the records",
+      "prompt": "Write A, B and C as ordered pairs from the lesson. State the dimension of each and the shape of the stacked table.",
+      "answer": "Teacher explanation: A [4, 2], B [2, 4], C [3, 3]. Each has dimension 2. The table has 3 rows and 2 columns.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Convert before encoding",
+      "prompt": "A new record has width 60 mm and height 10 mm. Give its vector in the agreed cm schema, and name one error in [60, 10].",
+      "answer": "Teacher explanation: The vector is [6, 1]. [60, 10] uses mm numbers where cm numbers are expected, scaling both measurements tenfold.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Handle missing information",
+      "prompt": "Width is 4 cm and height is missing. A teammate writes [4, 0]. Explain why this is invalid and give the action required by this schema.",
+      "answer": "Teacher explanation: Missing is not measured zero. Height must be present and positive; reject the record and request a valid measurement before encoding.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Apply a new schema independently",
+      "prompt": "A new toy battery task uses [temperature in degrees C, voltage in V, age in days]. Record K has voltage 5, age 12, temperature 18. Record L has temperature 20, voltage 4, age 0. Encode both; state the vector dimension and table shape. Age zero is valid. The future failure label is also supplied in the data file: should it be appended?",
+      "answer": "Teacher explanation: K [18, 5, 12], L [20, 4, 0]. Dimension 3, table 2 rows by 3 columns. Age zero is a valid known value. Exclude the future failure target from inputs; it is not available at prediction time.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Explain a collision",
+      "prompt": "Two parcels have the same width and height but different material and target class. Explain why adding more examples alone cannot let this deterministic two-feature model tell these two inputs apart.",
+      "answer": "Teacher explanation: The two input vectors are identical, so the fixed deterministic computation returns the same output. Additional rows do not create a missing distinction in these two vectors; a relevant available feature or an explicit uncertainty policy may be needed.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Begin Grade 9 by connecting the Grade 8 feature table to an ordered numerical input. Students should name every component before calculating. Use two 45-minute sessions. Avoid treating a vector as a mysterious neural object: the learning target is a precise data contract, including order, units, missing values and the distinction between inputs and targets.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Ask the prerequisite question. Retrieve the distinction between a feature and a target; require a prediction-time explanation."
+      ],
+      [
+        "7 to 18 minutes",
+        "Place A, B and C on paper. Students label horizontal width and vertical height, then write vectors with the schema above them."
+      ],
+      [
+        "18 to 32 minutes",
+        "Complete W1 and W2. Contrast three examples with two components per example. Model the mm-to-cm conversion explicitly."
+      ],
+      [
+        "32 to 45 minutes",
+        "Trace the Python function or its paper equivalent. Complete the guided E case and compare the swapped vector."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the schema without looking. Ask how two correctly sized vectors can have different meanings."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 and the identical-input example. Discuss valid zero in another schema without changing the parcel rule."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before giving hints. Check field order, dimensions, valid age zero and the excluded future target."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit response. Give targeted feedback, then administer the fresh retry and retain both attempts."
+      ]
+    ],
+    "guidedAnswer": "Guided E: [2, 7]. The reversed [7, 2] means width 7 cm and height 2 cm, a different measurement pair. Exit: [4, 2] reveals only width and height under the schema. It cannot reveal the omitted distinction causing different labels; the same deterministic input receives the same output.",
+    "misconceptions": [
+      [
+        "Order does not matter",
+        "A and B use the same numbers but assign them to different features. Read each position by name."
+      ],
+      [
+        "More rows increase vector dimension",
+        "Rows count examples; components count features of one example."
+      ],
+      [
+        "A missing value is zero",
+        "Whether zero is valid depends on the field. Missing means unknown, and is not interchangeable with a measured zero."
+      ]
+    ],
+    "assessment": "Assess W4 for named order, all values retained, dimension 3, two-row shape and exclusion of the future label. Fresh retry: schema [mass in g, length in cm]; two records (length 4, mass 12) and (mass 9, length 6) encode as [12, 4] and [9, 6], dimension 2, table 2 by 2. Ask why an absent mass must not become zero without a declared policy.",
+    "support": "Provide empty boxes labelled with feature names and units. Accept a correct spoken explanation before written notation. Extension: propose two different real objects that share the same two-feature vector, then identify an additional measurable feature available before prediction.",
+    "next": "Week 2 uses the ordered components in dot products. Revisit order and signed multiplication before introducing weights."
+  }
+}

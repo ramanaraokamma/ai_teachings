@@ -1,6 +1,6 @@
 # Curriculum 3 learning sequence
 
-Curriculum 3 is a new seven-level progression beginning in Grade 6. This release contains **AI 1 Weeks 1–36, AI 2 Weeks 1–36 and AI 3 Weeks 1–36**, each authored as a complete student lesson, workbook and teacher guide. It does not claim to complete all seven levels. The other **144 week positions are a proposed sequence**, explicitly labelled Planned with no lesson links. The existing four-level, 144-week edition remains available.
+Curriculum 3 is a new seven-level progression beginning in Grade 6. This release contains **AI 1 Weeks 1–36, AI 2 Weeks 1–36, AI 3 Weeks 1–36 and AI 4 Weeks 1–4**, each authored as a complete student lesson, workbook and teacher guide. It does not claim to complete all seven levels. The other **140 week positions are a proposed sequence**, explicitly labelled Planned with no lesson links. The existing four-level, 144-week edition remains available.
 
 ## Released packages
 
@@ -52,7 +52,7 @@ Each package has a prerequisite check, three outcomes, five explanatory sections
 | AI 1 | 6 | Foundations | 36 of 36 |
 | AI 2 | 7 | Programming and Data | 36 of 36 |
 | AI 3 | 8 | Machine Learning | 36 of 36 |
-| AI 4 | 9 | Neural Networks | 0 of 36 |
+| AI 4 | 9 | Neural Networks | 4 of 36 |
 | AI 5 | 10 | Generative AI Systems | 0 of 36 |
 | AI 6 | 11 | AI Engineering | 0 of 36 |
 | AI 7 | 12 | Research and Advanced Projects | 0 of 36 |
@@ -65,13 +65,13 @@ Sign in through the existing student or teacher passcode flow. The role dashboar
 
 The existing Cloudflare Worker, ASSETS binding, signed sessions and protected resource endpoint are preserved. Teacher guides and their Word/PDF downloads require a teacher session. Student URLs requesting a guide return 404. Planned chapters return 404. Unauthenticated chapter/map requests redirect to sign-in; unauthenticated downloads return 401. Protected responses remain private and no-store.
 
-Canonical JSON and answer keys are imported only by server code. The 252 new public blobs are encrypted: 108 DOCX files, 108 PDFs and 36 diagram PNGs. No plaintext teacher documents are placed under `public/`. The source repository itself contains private teacher material and must be shared accordingly.
+Canonical JSON and answer keys are imported only by server code. The 784 Curriculum 3 public blobs are encrypted: 336 DOCX files, 336 PDFs and 112 diagram PNGs. No plaintext teacher documents are placed under `public/`. The source repository itself contains private teacher material and must be shared accordingly.
 
 This revision has been tested locally. It has not been deployed to the live Cloudflare site.
 
 ## One source for web and print
 
-`curriculum-v3/ai-1-week-*.json` holds the content. The web renderer and document generator read the same source. `curriculum-v3/releases.json` records the exact source hash and protected document/diagram references. `print-review.json` binds the print review to the source, renderer scripts and rendered artifact bytes.
+`curriculum-v3/ai-*-week-*.json` holds the content. The web renderer and document generator read the same source. `curriculum-v3/releases.json` records the exact source hash and protected document/diagram references. `print-review.json` binds the print review to the source, renderer scripts and rendered artifact bytes.
 
 `npm run build` now rejects released packages whose source no longer matches their reviewed downloads. It also verifies role assignments and decrypts/hash-checks all new resources. This is an alignment check, not an automated judgment of educational quality.
 
@@ -99,7 +99,7 @@ Do not update a source hash simply to suppress the mismatch check. It protects s
 - All 18 web resources were printed to PDF for browser-print inspection. Downloadable PDFs are the reviewed, paginated print editions.
 - A deliberate source change was rejected by the stale-download guard, then the source was restored.
 
-Grade 6 AI 1 Foundations, Grade 7 AI 2 Programming and Data, and Grade 8 AI 3 Machine Learning are complete with 36 weekly packages each. The remaining four levels require individually authored chapters, exercises, solutions and print review; the progression map is not a substitute for that work.
+Grade 6 AI 1 Foundations, Grade 7 AI 2 Programming and Data, and Grade 8 AI 3 Machine Learning are complete with 36 weekly packages each. Grade 9 AI 4 has Weeks 1–4 complete. Grade 9 Weeks 5–36 and Grades 10–12 require individually authored chapters, exercises, solutions and print review; the progression map is not a substitute for that work.
 
 ## Week 7 completion (2026-09-15)
 
@@ -543,3 +543,13 @@ Validation completed:
 - Production build, TypeScript check and all 31 access-test groups passed. All 2,929 protected resources decrypted successfully.
 
 Grades 6–8 are complete in the repository: 108 weekly packages with 648 matching Word/PDF downloads. The 144 weeks across Grades 9–12 remain planned. Cloudflare hosting and student/teacher access controls are preserved. No live deployment was performed. Classroom pacing and learning outcomes still require student use and teacher feedback.
+
+## Grade 9 opening — Weeks 1–4 (2026-09-28)
+
+Completed four Neural Networks packages: Representing inputs as vectors; Dot products and weighted sums; Bias terms and decision boundaries; Activation functions. Each has an original student lesson, workbook, teacher guide, explanatory visual, independent transfer task and fresh assessment retry. The progression connects Grade 8 feature schemas to explicit numerical computations before introducing training.
+
+Checked feature ordering and unit conversion, missing-value rejection, guarded dot products, signed contributions, equality at decision boundaries, bias shifts, nonlinear chains and stable sigmoid calculations including extreme inputs. The activation visual shows separate functions receiving the same input, avoiding an implied sequence between ReLU and sigmoid. Examples use fictional data and optional standard-library Python without external accounts.
+
+All 44 canonical document pages and 40 browser-print pages were visually inspected. Text audits verified canonical content and answer separation across all 12 documents and browser resources. A Grade 9 print rule keeps explanatory paragraphs intact across page boundaries. All 24 chapter viewport checks passed at 1280 and 390 pixels, along with both protected maps, production build, TypeScript and all 31 access-check groups. All 2,957 protected resources decrypted successfully.
+
+There are now 112 complete rebuilt weekly packages and 672 matching Word/PDF downloads. Grade 9 has 4 of 36 weeks complete; the seven-level progression has 140 planned positions remaining. Next: AI 4 Week 5, Composing layers. Cloudflare configuration and student/teacher controls are preserved. These changes have not been deployed. Classroom pacing and learning effectiveness still require student trials.

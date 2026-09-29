@@ -1,0 +1,267 @@
+{
+  "level": "ai-4",
+  "week": 4,
+  "title": "Activation functions",
+  "minutes": 90,
+  "goals": [
+    "Trace identity ReLU and sigmoid on a numerical score",
+    "Explain how a nonlinear activation changes a computation",
+    "Distinguish an activation output from a final class or verified probability"
+  ],
+  "prerequisite": {
+    "prompt": "For z = 2 times width - height - 3 at [3, 3], what are the score and class under z >= 0?",
+    "answer": "The score is zero and the class is 1 because equality is included."
+  },
+  "vocabulary": [
+    [
+      "Activation function",
+      "A function applied to a computed score"
+    ],
+    [
+      "ReLU",
+      "The function max(0, z), retaining positive scores and replacing negative scores with zero"
+    ],
+    [
+      "Sigmoid",
+      "The function 1 / (1 + exp(-z)), mapping finite real scores into the interval between 0 and 1"
+    ],
+    [
+      "Nonlinear function",
+      "A function that cannot be represented by one fixed slope and offset over its entire domain"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Transform the score with a stated function",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "First compute an affine score z = w dot x + b. An activation then returns a = f(z). In a network this value may become an input to another layer; it is not automatically a class prediction. We will compare three functions using the same incoming scores so that only the activation changes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Identity returns z unchanged. ReLU, pronounced ree-loo, returns the larger of zero and z. Thus ReLU(-2) = 0, ReLU(0) = 0 and ReLU(2) = 2. Positive scores keep their magnitude; ReLU does not turn every positive value into 1."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Incoming z",
+            "Identity output",
+            "ReLU output"
+          ],
+          "rows": [
+            [
+              "-2",
+              "-2",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "0"
+            ],
+            [
+              "2",
+              "2",
+              "2"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "These are fixed arithmetic functions. Selecting a function or changing its input is not itself a training procedure. Later weeks will introduce losses and parameter updates."
+        }
+      ]
+    },
+    {
+      "title": "Read a smooth bounded activation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Sigmoid is 1 / (1 + exp(-z)). Here exp(t) means e raised to power t, where e is approximately 2.718. A calculator or the supplied Python code can evaluate it; no calculus is required this week. For z = -2, 0 and 2, sigmoid outputs are approximately 0.1192, 0.5 and 0.8808."
+        },
+        {
+          "type": "paragraph",
+          "text": "For every finite mathematical input, sigmoid is strictly between 0 and 1, though computer rounding can produce an endpoint for extreme scores. Negative inputs produce values below 0.5, zero gives 0.5, and positive inputs give values above 0.5. A class rule still needs to be stated: if class 1 means sigmoid(z) >= 0.5, these three predictions are 0, 1 and 1."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "from math import exp\n\ndef sigmoid(z):\n    if z >= 0:\n        return 1 / (1 + exp(-z))\n    e = exp(z)\n    return e / (1 + e)\n\nfor z in [-2, 0, 2]:\n    print(z, max(0, z), round(sigmoid(z), 4))"
+        },
+        {
+          "type": "paragraph",
+          "text": "The two algebraically equivalent branches avoid taking exp of a large positive number. A value within [0, 1] is not automatically a reliable probability: its interpretation depends on the fitted task and evaluation evidence."
+        }
+      ]
+    },
+    {
+      "title": "Compare transformations without mixing the rules",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Three functions receive the same score",
+          "columns": [
+            "Same incoming score",
+            "Apply one function",
+            "Activation output"
+          ],
+          "rows": [
+            [
+              "z is -2",
+              "Identity of z",
+              "-2"
+            ],
+            [
+              "z is -2",
+              "ReLU of z",
+              "0"
+            ],
+            [
+              "z is -2",
+              "Sigmoid of z",
+              "About 0.1192"
+            ]
+          ],
+          "caption": "Each row starts again from the same score -2 and applies one function. The functions are alternatives here, not successive steps. These outputs are activation values, not class labels."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "For z = -1 and z = 1, give identity and ReLU outputs. Using sigmoid(-1) = 0.2689 and sigmoid(1) = 0.7311, give classes under the rule a >= 0.5.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "See why a bend matters",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "An affine function has one fixed slope. ReLU has slope zero on the negative side and slope one on the positive side, so no single straight line fits the whole function. For a concrete check, inputs -2, 0, 2 give outputs 0, 0, 2. The average of the endpoint outputs is 1, but the output at the midpoint 0 is 0. This differs from an affine function, which preserves midpoints."
+        },
+        {
+          "type": "paragraph",
+          "text": "For a one-input chain with identity between stages, h = 2x + 1 followed by y = 3h - 2 collapses to y = 6x + 1. Insert ReLU instead: h = max(0, 2x + 1), y = 3h - 2. At x = -1, the identity chain gives -5 while the ReLU chain gives -2. At x = 1, both give 7. The nonlinear step can change the overall family of functions."
+        }
+      ]
+    },
+    {
+      "title": "Separate computation from model quality",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A nonlinear activation allows a network to represent relationships that a chain of affine operations alone cannot express. It does not guarantee that training will find a useful model or that more layers will help. ReLU can erase differences between negative scores; sigmoid can compress very large scores into nearly identical values. The architecture, data and training procedure still matter."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A learner reports sigmoid(2) is about 0.8808 and concludes the system will be correct 88 percent of the time for every future case. What does the calculation establish, and what evidence is still missing?",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Next week, we will compose layers while keeping every intermediate value and its role visible."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Trace three activations",
+      "prompt": "For scores -2, 0, 2, list identity and ReLU outputs. Explain why ReLU(2) is not 1.",
+      "answer": "Teacher explanation: Identity gives -2, 0, 2; ReLU gives 0, 0, 2. ReLU retains the positive score itself; it is not a step classifier.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Apply a declared class rule",
+      "prompt": "Use the lesson sigmoid values for -2, 0, 2. Predict classes under a >= 0.5, then explain the zero-score case.",
+      "answer": "Teacher explanation: Classes are 0, 1, 1. Sigmoid(0) equals 0.5 and the declared >= comparison includes equality.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Check the midpoint",
+      "prompt": "Compare ReLU at inputs -2, 0, 2. Give the average of the two endpoint outputs and the output at the midpoint; explain what this shows.",
+      "answer": "Teacher explanation: Endpoint outputs 0 and 2 average to 1; the midpoint input 0 produces 0. The mismatch shows ReLU is not one affine function over these inputs.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Trace a new chain independently",
+      "prompt": "Let z = x - 2, a = ReLU(z), y = 2a + 1. For x = 0, 2, 5, record every z, a and y. Then replace ReLU with identity and give all three y values. Which inputs have the same ReLU output, and why?",
+      "answer": "Teacher explanation: For x = 0, 2, 5: z = -2, 0, 3; a = 0, 0, 3; y = 1, 1, 7. Identity gives y = -3, 1, 7. Inputs 0 and 2 both give a = 0 because ReLU maps negative and zero scores to zero.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Limit a probability claim",
+      "prompt": "A model returns a sigmoid value 0.9 on one case. Does the numerical range alone establish a calibrated 90 percent probability? Explain what needs checking.",
+      "answer": "Teacher explanation: No. It establishes only the computed activation value. Probability interpretation requires a suitable fitted model and evaluation, including checking predicted probabilities against outcome frequencies on relevant separate data; one value does not establish calibration.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions to compare activation functions before network training. Students should trace z, activation a and any later output separately. Sigmoid arithmetic may use the supplied approximations. Focus on the change in function shape and the distinction between an activation, class decision and probability claim.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite boundary example. Introduce z as the score and a as the transformed value."
+      ],
+      [
+        "7 to 18 minutes",
+        "Trace identity and ReLU for -2, 0 and 2. Complete W1, checking that positive values keep magnitude."
+      ],
+      [
+        "18 to 32 minutes",
+        "Introduce the sigmoid formula and supplied values. Trace or run the stable code; complete W2 using the explicit equality policy."
+      ],
+      [
+        "32 to 45 minutes",
+        "Compare the visual rows and complete the guided -1 and 1 case. Keep activation values separate from classes."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve ReLU at one negative and one positive input. Ask whether one line covers both sides."
+      ],
+      [
+        "8 to 20 minutes",
+        "Complete W3 and trace the two worked chains at x = -1 and x = 1. Show the identity-chain simplification by substitution."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, requiring a three-stage table. Do not award full credit for final y values without the intermediate trace."
+      ],
+      [
+        "35 to 45 minutes",
+        "Complete W5 and the exit response. Use the fresh retry after feedback; connect to composing layers next week."
+      ]
+    ],
+    "guidedAnswer": "Guided: identity outputs -1 and 1; ReLU outputs 0 and 1. Sigmoid class predictions under >= 0.5 are 0 and 1. Exit: the computation establishes an activation of about 0.8808 for score 2. It does not establish calibrated probabilities, correctness on this individual case or reliability on future populations.",
+    "misconceptions": [
+      [
+        "ReLU returns a class label",
+        "Positive scores retain magnitude, so ReLU(2) is 2. A final class rule is separate."
+      ],
+      [
+        "A bounded number is a calibrated probability",
+        "A range restriction comes from the formula. Calibration needs appropriate evidence."
+      ],
+      [
+        "Nonlinearity guarantees a better result",
+        "It changes which functions can be represented; data, fitting and valid evaluation still determine model quality."
+      ]
+    ],
+    "assessment": "Assess W4 for z values -2, 0, 3, ReLU values 0, 0, 3, final outputs 1, 1, 7 and identity outputs -3, 1, 7. Fresh retry: z = 2x - 3, a = ReLU(z), y = a - 1 at x = 1, 1.5, 3. The triples (z, a, y) are (-1, 0, -1), (0, 0, -1), (3, 3, 2). Require an explanation of which distinctions were erased.",
+    "support": "Use a number line and a three-column z, a, y table. Supply sigmoid values rather than requiring exponent calculations from memory. Extension: use several inputs to verify that sigmoid(z) and sigmoid(-z) sum to 1 within rounding error, while noting that this symmetry is not evidence of calibration.",
+    "next": "Week 5 composes layers and traces how activations become inputs to the next computation."
+  }
+}

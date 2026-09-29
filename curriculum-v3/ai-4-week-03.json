@@ -1,0 +1,267 @@
+{
+  "level": "ai-4",
+  "week": 3,
+  "title": "Bias terms and decision boundaries",
+  "minutes": 90,
+  "goals": [
+    "Calculate a weighted score with a bias term",
+    "Locate and test a two-feature decision boundary",
+    "Explain how changing the bias shifts a boundary without training"
+  ],
+  "prerequisite": {
+    "prompt": "For w = [2, -1] and x = [3, 5], what are the contributions and dot product?",
+    "answer": "The contributions are 6 and -5, giving dot product 1."
+  },
+  "vocabulary": [
+    [
+      "Bias term",
+      "An additive parameter applied after a weighted sum"
+    ],
+    [
+      "Decision boundary",
+      "Input locations where the declared classification rule changes class"
+    ],
+    [
+      "Affine function",
+      "A weighted sum plus a constant offset"
+    ],
+    [
+      "Threshold rule",
+      "A stated comparison that converts a score into a class"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Add an offset to a weighted score",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Use the fictional parcel schema [width in cm, height in cm]. Our model computes z = 2 times width - height - 3. The weights are [2, -1]; the bias b is -3. Compute the weighted sum first, then add the bias once. The result is an affine score: a weighted sum plus a constant offset."
+        },
+        {
+          "type": "paragraph",
+          "text": "Now declare a classification rule: predict class 1 when z is at least 0, and class 0 when z is below 0. Equality belongs to class 1. These are invented categories for arithmetic practice, not a real parcel decision. The weights and bias are supplied, so this is a forward calculation, not training."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Input [width, height]",
+            "Score z",
+            "Prediction"
+          ],
+          "rows": [
+            [
+              "[4, 2]",
+              "8 - 2 - 3 = 3",
+              "1"
+            ],
+            [
+              "[2, 4]",
+              "4 - 4 - 3 = -3",
+              "0"
+            ],
+            [
+              "[3, 3]",
+              "6 - 3 - 3 = 0",
+              "1 at equality"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A bias is a mathematical parameter. It is not the same use of the word as unfair treatment; numerical offset alone does not establish whether a system is fair."
+        }
+      ]
+    },
+    {
+      "title": "Find where the prediction changes",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Set z to zero to locate the boundary: 2 times width - height - 3 = 0, so height = 2 times width - 3. Plot width on the horizontal axis and height on the vertical axis. Boundary points include (2, 1), (3, 3) and (4, 5). Join them with a straight line and label the axes in cm."
+        },
+        {
+          "type": "paragraph",
+          "text": "At width 3, height 2 gives score 1 and class 1; height 3 gives score 0 and class 1; height 4 gives score -1 and class 0. Under this axis convention class 1 lies on or below the boundary. One point on each side checks that orientation."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "def classify(width, height, bias=-3):\n    score = 2 * width - height + bias\n    return score, int(score >= 0)\n\nfor height in [2, 3, 4]:\n    print(classify(3, height))\n# (1, 1), (0, 1), (-1, 0)"
+        },
+        {
+          "type": "paragraph",
+          "text": "The code assumes valid numerical measurements in the agreed units. Changing >= to > changes the equality case, even though the drawn line remains in the same place."
+        }
+      ]
+    },
+    {
+      "title": "Track the effect of the bias",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Hold the weights fixed while shifting the boundary",
+          "columns": [
+            "Bias",
+            "Score at [3, 3]",
+            "Boundary equation"
+          ],
+          "rows": [
+            [
+              "b is -3",
+              "6 - 3 - 3 gives 0",
+              "height = 2 width - 3"
+            ],
+            [
+              "b is -1",
+              "6 - 3 - 1 gives 2",
+              "height = 2 width - 1"
+            ],
+            [
+              "Increase b by 2",
+              "Every score rises by 2",
+              "Slope remains 2"
+            ]
+          ],
+          "caption": "The boundary moves parallel to itself because the weights stay fixed. An increased score does not always change a class: only inputs crossing the declared threshold change."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "For [3, 4], compare z and prediction with bias -3 and bias -1. Explain which parameter changed.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Separate a parameter change from evidence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Without a bias, this score would be z = 2 times width - height and its zero line would pass through (0, 0). The offset lets the boundary move away from the origin. In this parcel schema zero dimensions are invalid measurements; the origin is still useful as a point on the extended mathematical graph."
+        },
+        {
+          "type": "paragraph",
+          "text": "Changing bias from -3 to -1 increases every score by 2, but does not rotate the line. Changing a weight can rotate or otherwise change the boundary. Neither change is automatically an improvement. To compare models, retain labels, a declared metric, the same evaluation records and the separate training, validation and test roles."
+        }
+      ]
+    },
+    {
+      "title": "Interpret a boundary honestly",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The boundary states what this particular formula predicts. It does not establish the true classes of all possible inputs. A point very far from the line need not have a reliable prediction when the model, features or data are inappropriate. The raw score is not calibrated confidence or a physical distance from the line."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A team changes b after seeing final-test mistakes and reports the same cases as an untouched test of the new model. Explain the error and the next step.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Next week, we transform scores with activation functions before discussing layers."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Trace the bias once",
+      "prompt": "Use z = 2 times width - height - 3 at [5, 4]. Give the weighted sum, bias, final score and prediction under z >= 0.",
+      "answer": "Teacher explanation: Weighted sum 10 - 4 = 6; bias -3; score 3; prediction 1. Add the bias once after summing.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Plot and label the boundary",
+      "prompt": "For the worked model, find boundary points at width 2 and width 4. Test [4, 4] and [4, 6] to identify the class on each side.",
+      "answer": "Teacher explanation: Boundary points (2, 1) and (4, 5). [4, 4] has z = 1 and class 1; [4, 6] has z = -1 and class 0. With height vertical, class 1 is on or below the line.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Check the equality rule",
+      "prompt": "At [3, 3], compare prediction under z >= 0 with prediction under z > 0. Does changing this comparison move the zero line?",
+      "answer": "Teacher explanation: Score is zero. The >= rule predicts 1; the > rule predicts 0. The zero line remains height = 2 width - 3, but its assigned class changes.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Analyse a new model independently",
+      "prompt": "A new model has w = [-1, 2], b = -2, inputs [u, v] and class 1 when z >= 0. Calculate scores and classes for [2, 1], [2, 2], [2, 3]. Write the boundary as v in terms of u. Then change only b to 0 and recompute [2, 1].",
+      "answer": "Teacher explanation: Scores -2, 0, 2 give classes 0, 1, 1. Boundary -u + 2v - 2 = 0 gives v = u/2 + 1. With b = 0, [2, 1] scores 0 and class 1. The score rose 2 and the boundary moved to v = u/2.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Require evidence of improvement",
+      "prompt": "A teammate says that raising b must improve the model because all scores rise. What information is needed before accepting an improvement claim?",
+      "answer": "Teacher explanation: Higher scores can fix some missed class-1 cases while creating false alarms. Compare with observed labels on the same valid evaluation set under a declared metric, keeping fitting and model choices separate from final testing.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions to connect signed arithmetic, linear equations and graph regions. Require the explicit equality policy each time. The classroom formula is hand-selected; it demonstrates prediction and parameter effects, not evidence of successful training.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the dot product in the prerequisite question and review adding a negative constant."
+      ],
+      [
+        "7 to 18 minutes",
+        "Trace all three table rows. Students circle the one addition of b and identify the equality case."
+      ],
+      [
+        "18 to 32 minutes",
+        "Complete W1 and derive height = 2 width - 3. Plot the three boundary points on labelled axes."
+      ],
+      [
+        "32 to 45 minutes",
+        "Use W2 and the guided bias comparison. Check both sides numerically before shading a class region."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the rule z >= 0. Run or trace the optional code and compare it with the plotted points."
+      ],
+      [
+        "8 to 20 minutes",
+        "Complete W3. Distinguish moving the boundary from changing the class assigned at equality; discuss the extended origin."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently. Check scores, classes, rearranged equation and the effect of changing only b."
+      ],
+      [
+        "35 to 45 minutes",
+        "Complete W5 and the exit response. Offer the fresh retry after feedback to assess the same ideas with a new boundary."
+      ]
+    ],
+    "guidedAnswer": "Guided [3, 4]: with b = -3, z = -1 and class 0; with b = -1, z = 1 and class 1. Only b changed. Exit: test labels influenced the new bias, so the reused cases are development evidence for the revision. Preserve the original result and evaluate a frozen revision on fresh independent cases.",
+    "misconceptions": [
+      [
+        "Add bias to each contribution",
+        "Compute the dot product, then add one b. Adding b twice implements a different formula."
+      ],
+      [
+        "Higher scores mean more correct",
+        "Correctness also needs target labels. A shifted boundary can trade one error type for another."
+      ],
+      [
+        "The bias term measures unfairness",
+        "This b is an additive parameter. Evaluating unfairness requires context and evidence about outcomes and use."
+      ]
+    ],
+    "assessment": "W4 should include all three scores and the equality class, with v = u/2 + 1 before the change. Fresh retry: z = u + v - 5, class 1 if z >= 0. [2, 2], [2, 3], [2, 4] give -1, 0, 1 and classes 0, 1, 1; boundary v = 5 - u. With b changed from -5 to -4, [2, 2] reaches zero and class 1.",
+    "support": "Provide graph paper and a partially labelled contribution table. If rearranging equations is difficult, find three zero-score points by substitution first. Extension: multiply all weights and b by positive 2 and explain why scores double while classifications under >= 0 stay the same.",
+    "next": "Week 4 compares identity, ReLU and sigmoid transforms of the score."
+  }
+}
