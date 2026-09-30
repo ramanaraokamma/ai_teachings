@@ -1,0 +1,259 @@
+{
+  "level": "ai-4",
+  "week": 11,
+  "title": "Updating parameters",
+  "minutes": 90,
+  "goals": [
+    "Apply a learning rate to an ordered gradient",
+    "Update all parameters from the same saved state",
+    "Verify the new loss and identify overshooting"
+  ],
+  "prerequisite": {
+    "prompt": "For x = 2, target 3, w = 1 and b = 0, what is the squared-loss gradient in order [w, b]?",
+    "answer": "The residual is -1 and the gradient is [-4, -2]."
+  },
+  "vocabulary": [
+    [
+      "Learning rate",
+      "A multiplier that controls the size of a gradient update"
+    ],
+    [
+      "Gradient descent",
+      "Updating parameters in the direction opposite the gradient"
+    ],
+    [
+      "Simultaneous update",
+      "Computing all new parameter values from the same old state"
+    ],
+    [
+      "Overshoot",
+      "A step that moves too far and can increase the objective"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Specify the entire update",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Gradient descent uses new parameter = old parameter - learning rate times its gradient entry. The minus sign chooses the locally downhill direction for a positive learning rate. A negative gradient therefore increases the corresponding parameter."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep the Week 10 example: x = 2, target 3, y = 2w + b and L = (y - 3) squared. At [w, b] = [1, 0], the loss is 1 and gradient is [-4, -2]. With learning rate 0.1, new w = 1 - 0.1 times -4 = 1.4 and new b = 0 - 0.1 times -2 = 0.2."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Quantity",
+            "Before update",
+            "After update"
+          ],
+          "rows": [
+            [
+              "Parameters [w, b]",
+              "[1, 0]",
+              "[1.4, 0.2]"
+            ],
+            [
+              "Prediction",
+              "2",
+              "3"
+            ],
+            [
+              "Squared loss",
+              "1",
+              "0"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "This particular step reaches zero loss on one example. It does not establish a unique parameter solution, successful learning on other examples or a generally ideal learning rate."
+        }
+      ]
+    },
+    {
+      "title": "Save the old state before assignment",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "def step(w, b, rate):\n    residual = 2 * w + b - 3\n    dw, db = 4 * residual, 2 * residual\n    new_w = w - rate * dw\n    new_b = b - rate * db\n    new_loss = (2 * new_w + new_b - 3) ** 2\n    return new_w, new_b, new_loss\n\nfor rate in [0.0, 0.05, 0.1, 0.3]:\n    print(rate, tuple(round(v, 6)\n                      for v in step(1, 0, rate)))"
+        },
+        {
+          "type": "paragraph",
+          "text": "Predict the rows: unchanged parameters and loss 1 at rate 0; [1.2, 0.1] and loss 0.25 at rate 0.05; [1.4, 0.2] and loss 0 at rate 0.1; [2.2, 0.6] and loss 4 at rate 0.3. The helper performs one step on this fixed example; it assumes numeric inputs and does not choose a learning rate for you."
+        }
+      ]
+    },
+    {
+      "title": "Separate the update stages",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Use one gradient for one parameter snapshot",
+          "columns": [
+            "Stage",
+            "Saved values",
+            "Action"
+          ],
+          "rows": [
+            [
+              "Before the step",
+              "w is 1 and b is 0",
+              "Compute gradient [-4, -2]"
+            ],
+            [
+              "Apply rate 0.1",
+              "Use both old parameters",
+              "Produce [1.4, 0.2]"
+            ],
+            [
+              "After the step",
+              "Use both new parameters",
+              "Recompute loss 0"
+            ]
+          ],
+          "caption": "Read top to bottom. All gradient entries come from the same old model. The final row evaluates the fully updated model rather than mixing old and new coordinates."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Starting again from [1, 0], use learning rate 0.05. Show both new parameters, the new prediction and the new loss.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Diagnose a mixed-state update",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Suppose a program first changes w to 1.4, then recomputes the bias gradient using new w and old b. Its residual is now -0.2, so its bias gradient is -0.4 and new b becomes 0.04. Prediction becomes 2.84 and loss 0.0256. That is a different procedure from the declared simultaneous step, even though it also lowered this loss."
+        },
+        {
+          "type": "paragraph",
+          "text": "An excessive rate can increase loss. At rate 0.3, both coordinates move in the locally suggested direction but prediction jumps to 5 and loss rises from 1 to 4. Always evaluate and record the result. Later lessons compare learning-rate behaviour across repeated updates."
+        }
+      ]
+    },
+    {
+      "title": "Keep the interpretation narrow",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A lower loss after a step supports progress on the objective and examples used for that step. It does not show that a model is safe, calibrated or better on unseen data. Keep the data split fixed and never use final-test labels to compute training gradients."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A teammate says any update that lowers loss is a correct implementation of simultaneous gradient descent. Use the mixed-state example to evaluate that claim.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Next week repeats the forward, loss, gradient and update cycle in a small network with a clearly stated stopping budget."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Apply a negative gradient",
+      "prompt": "Starting with parameter a = 2, gradient -3 and learning rate 0.2, calculate the new a.",
+      "answer": "Teacher explanation: New a = 2 - 0.2 times -3 = 2.6.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Detect overshooting",
+      "prompt": "For the lesson start [1, 0], apply rate 0.3 and calculate prediction and loss.",
+      "answer": "Teacher explanation: Gradient [-4, -2] gives [2.2, 0.6], prediction 5 and loss 4, larger than the starting loss 1.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Preserve one snapshot",
+      "prompt": "Explain why recomputing the bias gradient after changing w is not the simultaneous update specified here.",
+      "answer": "Teacher explanation: The two gradient entries then belong to different parameter vectors. Save the full old gradient and use it for both assignments.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Update a new model independently",
+      "prompt": "Use x = 1, target 4, w = 1, b = 1, squared loss and learning rate 0.1. Compute prediction, residual, gradient [2 times residual times x, 2 times residual], new parameters and new loss.",
+      "answer": "Teacher explanation: Prediction 2, residual -2, gradient [-4, -4]. New parameters [1.4, 1.4] give prediction 2.8, residual -1.2 and loss 1.44, down from 4.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Evaluate a zero gradient",
+      "prompt": "At a point with gradient [0, 0], what does this update do? Does that alone prove a global minimum on any loss surface?",
+      "answer": "Teacher explanation: It leaves parameters unchanged for a finite learning rate. Zero gradient alone does not establish a global minimum; stationary points can have other meanings.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions and keep old and new parameter boxes separate. This lesson checks one update, not a full optimiser. Treat the mixed-state procedure as different from the stated algorithm, rather than claiming all sequential methods are invalid.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the Week 10 gradient and write the update rule with parentheses around negative entries."
+      ],
+      [
+        "7 to 18 minutes",
+        "Calculate the rate 0.1 worked step and recompute the loss from the new parameters."
+      ],
+      [
+        "18 to 32 minutes",
+        "Complete W1 and the guided rate 0.05 calculation."
+      ],
+      [
+        "32 to 45 minutes",
+        "Run or trace all four code rows and complete W2."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Rebuild the old-state snapshot and compare it with the mixed-state example."
+      ],
+      [
+        "8 to 20 minutes",
+        "Complete W3 and discuss zero gradient with W5."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including old loss, both new parameters and new loss."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use the exit response and a fresh retry. Keep the model-quality claim separate from implementation correctness."
+      ]
+    ],
+    "guidedAnswer": "Guided: [1.2, 0.1] gives prediction 2.5, residual -0.5 and loss 0.25. Exit: no. The mixed-state procedure lowers this loss but does not implement the specified simultaneous gradient step; compare states and gradients, not just whether loss decreased.",
+    "misconceptions": [
+      [
+        "Subtracting a negative gradient decreases the parameter",
+        "Subtracting a negative adds a positive amount; show the signed calculation."
+      ],
+      [
+        "A downhill direction allows any rate",
+        "A finite step can overshoot and increase loss."
+      ],
+      [
+        "Recompute each gradient after its assignment",
+        "For this algorithm, all entries are computed at the same saved state."
+      ]
+    ],
+    "assessment": "W4 requires gradient [-4, -4], parameters [1.4, 1.4] and loss 1.44. Fresh retry: x = 1, target 1, w = 1, b = 1, rate 0.25 gives residual 1, gradient [2, 2], new parameters [0.5, 0.5] and loss 0. Require both updates to use the original residual.",
+    "support": "Use separate old, gradient and new columns. Extension: for the lesson example, show that the new residual is the old residual multiplied by (1 - 10 times rate). Explain why rates 0 and 0.2 preserve loss while 0.3 raises it for a nonzero residual.",
+    "next": "Week 12 repeats the training cycle for a small network."
+  }
+}

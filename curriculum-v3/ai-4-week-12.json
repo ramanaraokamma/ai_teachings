@@ -1,0 +1,273 @@
+{
+  "level": "ai-4",
+  "week": 12,
+  "title": "Training a small network",
+  "minutes": 90,
+  "goals": [
+    "Trace repeated forward loss gradient and update steps",
+    "Keep frozen parameters distinct from the trained parameter",
+    "Report training results with their evaluation limits"
+  ],
+  "prerequisite": {
+    "prompt": "Why should all parameters in one simultaneous update use the same saved gradient?",
+    "answer": "The gradient describes one parameter snapshot. Mixing snapshots changes the stated update procedure."
+  },
+  "vocabulary": [
+    [
+      "Training loop",
+      "A repeated sequence of prediction, loss calculation, gradient calculation and parameter update"
+    ],
+    [
+      "Frozen parameter",
+      "A model value intentionally held fixed during fitting"
+    ],
+    [
+      "Training budget",
+      "A declared limit on updates or other training resources"
+    ],
+    [
+      "Learning curve",
+      "A record of a performance measure across training steps or time"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Start with a deliberately small training problem",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Use one hidden ReLU unit h = ReLU(x) and an output y = vh. The hidden input weight is fixed at 1, its bias is fixed at 0, and the output bias is fixed at 0. Only output weight v is trained. This is a restricted two-layer network, not training every parameter of a general network."
+        },
+        {
+          "type": "paragraph",
+          "text": "Training pairs are (x, target) = (1, 2) and (2, 4). Both x values are positive, so hidden activations are 1 and 2. Define ordinary MSE over both rows. Start at v = 0 and use learning rate 0.1 for exactly four full-data updates. The declared budget prevents stopping only when a preferred result appears."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Update count",
+            "v",
+            "Training MSE"
+          ],
+          "rows": [
+            [
+              "0",
+              "0",
+              "10"
+            ],
+            [
+              "1",
+              "1",
+              "2.5"
+            ],
+            [
+              "2",
+              "1.5",
+              "0.625"
+            ],
+            [
+              "3",
+              "1.75",
+              "0.15625"
+            ],
+            [
+              "4",
+              "1.875",
+              "0.0390625"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Each row evaluates the parameter value after that many updates. Row zero records the starting model. The loss decreases in this specific experiment; that pattern is not a promise for all networks or rates."
+        }
+      ]
+    },
+    {
+      "title": "Compute the whole cycle",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Let errors be v - 2 and 2v - 4. MSE is their squared sum divided by 2, which simplifies to 2.5 times (v - 2) squared. Its gradient with respect to v is 5 times (v - 2). At v = 0 the gradient is -10, so the first update gives v = 0 - 0.1 times -10 = 1."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "train = [(1.0, 2.0), (2.0, 4.0)]\nv = 0.0\nrate = 0.1\nfor step in range(5):\n    hs = [max(0.0, x) for x, target in train]\n    errors = [v * h - target\n              for h, (x, target) in zip(hs, train)]\n    loss = sum(e * e for e in errors) / len(train)\n    print(step, v, loss)\n    if step == 4:\n        break\n    gradient = 2 * sum(e * h for e, h in zip(errors, hs)) / len(train)\n    v = v - rate * gradient"
+        },
+        {
+          "type": "paragraph",
+          "text": "The factor 2 comes from squared error; division by the number of rows makes this the gradient of the mean, not the sum. The code uses every training row for each update. It prints five states but performs only four updates. All data are supplied fictional numbers."
+        }
+      ]
+    },
+    {
+      "title": "Trace one iteration completely",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "One full-data update from v is 1",
+          "columns": [
+            "Stage",
+            "Compute with current v",
+            "Result"
+          ],
+          "rows": [
+            [
+              "Forward and loss",
+              "Predictions [1, 2] for targets [2, 4]",
+              "Errors [-1, -2], MSE 2.5"
+            ],
+            [
+              "Gradient",
+              "2 times (-1 times 1 - 2 times 2) / 2",
+              "Gradient -5"
+            ],
+            [
+              "Update with rate 0.1",
+              "1 - 0.1 times -5",
+              "Next v is 1.5"
+            ]
+          ],
+          "caption": "Each row depends on the preceding calculation. Recompute predictions and loss on the next iteration; do not keep using the first gradient after parameters change."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Starting from v = 1.5, calculate both training predictions, errors, MSE, gradient and the next v.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Evaluate after freezing the result",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "After four updates, freeze v = 1.875. A reserved demonstration pair (3, 6), not used in the updates, receives prediction 5.625 and squared error 0.140625. Report it separately from training MSE 0.0390625. One synthetic held-out example is a small demonstration, not evidence of broad real-world reliability."
+        },
+        {
+          "type": "paragraph",
+          "text": "The frozen representation has a limit: for any negative x, ReLU gives h = 0 and the output is always 0. If the intended task were y = 2x for all real inputs, x = -1 would need target -2, so this model would fail there regardless of v. Training cannot recover distinctions that the fixed hidden representation removes."
+        }
+      ]
+    },
+    {
+      "title": "Keep a reproducible experiment record",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Save the model formulas, frozen values, trained parameter, initial value, data pairs, loss definition, learning rate, update budget and the printed trace. State that these numbers are a classroom experiment. Changing a setting after seeing reserved outcomes makes those outcomes development evidence for that revision."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A team reports that its training MSE fell each step and concludes the network learned y = 2x for every real x. Give one numerical counterexample and a more accurate conclusion.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Next week separates an update, a batch and an epoch when training uses more than one group of examples."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Trace the first update",
+      "prompt": "At v = 0, calculate both predictions, errors, MSE and gradient, then update at rate 0.1.",
+      "answer": "Teacher explanation: Predictions [0, 0], errors [-2, -4], MSE 10, gradient -10 and new v = 1.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Check the mean convention",
+      "prompt": "At v = 1, the sum of squared errors is 5. A learner uses gradient -10 with rate 0.1. Explain the mismatch with this lesson and give the next v under MSE.",
+      "answer": "Teacher explanation: The stated objective averages two rows. Its gradient is -5, giving v = 1.5. Gradient -10 corresponds to the sum objective and changes the effective update size.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Freeze before checking",
+      "prompt": "At final v = 1.875, calculate the prediction and squared error on reserved pair (3, 6). May its target be included in the four reported training updates?",
+      "answer": "Teacher explanation: Prediction 5.625, residual -0.375, squared error 0.140625. Its target must stay outside those updates if the pair is described as reserved evaluation.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Run a new training case independently",
+      "prompt": "Keep h = ReLU(x), train only v, and use one pair (2, 2), v = 0 and rate 0.125. Use squared error and gradient 2 times (2v - 2) times 2. Perform two updates, reporting each new v and loss. Explain why the second update changes nothing.",
+      "answer": "Teacher explanation: At start loss 4 and gradient -8. First update gives v = 1 and loss 0. The next gradient is 0, so second update keeps v = 1 with loss 0. This is an exact fit on the one training pair, not proof for every input.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Expose a frozen representation limit",
+      "prompt": "For the lesson architecture at x = -1, give h and prediction for any finite v. If target is -2, calculate squared error and explain why changing v cannot fix it.",
+      "answer": "Teacher explanation: h = 0, prediction 0, squared error 4. Every v is multiplied by zero. A representation or architecture change is needed for that target at this input.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions to connect earlier ideas into one reproducible training loop. Be explicit that only the output weight is trained; backpropagation through all hidden parameters is not implemented here. Keep the reserved pair outside training and do not oversell its evidential value.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the simultaneous update rule and identify fixed versus trained values."
+      ],
+      [
+        "7 to 18 minutes",
+        "Compute hidden activations for both training rows, then W1 and the first update."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace the next iteration with the diagram; use W2 to distinguish mean from sum."
+      ],
+      [
+        "32 to 45 minutes",
+        "Run or trace the code, marking five printed states and four actual updates."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete the guided v = 1.5 iteration and reconstruct the learning curve."
+      ],
+      [
+        "8 to 20 minutes",
+        "Freeze the final model, complete W3 and discuss the negative-input limit in W5."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently with both iterations and the reason for no second change."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use the exit response and fresh retry; save the experiment record for the next week."
+      ]
+    ],
+    "guidedAnswer": "Guided: predictions [1.5, 3], errors [-0.5, -1], MSE 0.625, gradient -2.5, next v = 1.75. Exit: x = -1 produces 0 rather than -2 for every v. The recorded training loss fell on two positive synthetic pairs; the model did not establish the rule over all real inputs.",
+    "misconceptions": [
+      [
+        "Every parameter was trained",
+        "Only v changes. Hidden weight, hidden bias and output bias were explicitly frozen."
+      ],
+      [
+        "Five printed rows mean five updates",
+        "The initial state is row zero; the loop performs four updates."
+      ],
+      [
+        "Falling training loss proves generalisation",
+        "Report reserved evidence and representation limits separately."
+      ]
+    ],
+    "assessment": "W4 requires v values 1 and 1, both losses 0, and a zero second gradient. Fresh retry: one pair (1, 3), v = 1, rate 0.25. First residual -2 and gradient -4 give v = 2 with loss 1. Next gradient -2 gives v = 2.5 with loss 0.25. Require a recomputed gradient on the second step.",
+    "support": "Provide the hidden activations so students can focus on errors and updates; allow a calculator for decimals. Extension: show that v - 2 is halved each step at rate 0.1, so MSE is quartered. Explain why this is a property of this particular quadratic training problem.",
+    "next": "Week 13 introduces batching and epochs with explicit update counts."
+  }
+}

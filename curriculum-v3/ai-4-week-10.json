@@ -1,0 +1,261 @@
+{
+  "level": "ai-4",
+  "week": 10,
+  "title": "Gradients with a numerical check",
+  "minutes": 90,
+  "goals": [
+    "Estimate one partial derivative while other parameters stay fixed",
+    "Assemble a gradient in a declared parameter order",
+    "Compare numerical and formula based gradients with a tolerance"
+  ],
+  "prerequisite": {
+    "prompt": "Why is the symmetric-slope denominator twice the step?",
+    "answer": "The two evaluation points lie one step on either side of the centre, so their separation is two steps."
+  },
+  "vocabulary": [
+    [
+      "Partial derivative",
+      "A local slope with respect to one parameter while others are held fixed"
+    ],
+    [
+      "Gradient",
+      "The ordered vector of partial derivatives of a scalar function"
+    ],
+    [
+      "Finite difference",
+      "An estimate of change computed from nearby function values"
+    ],
+    [
+      "Tolerance",
+      "A stated allowance for numerical disagreement"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Vary one parameter at a time",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Use one example with input x = 2 and target t = 3. The model predicts y = wx + b, and loss L(w, b) = (2w + b - 3) squared. At w = 1, b = 0, prediction is 2, residual is -1 and loss is 1. There are two parameters in order [w, b]."
+        },
+        {
+          "type": "paragraph",
+          "text": "To estimate the partial slope for w, change w only and keep b = 0. To estimate the partial slope for b, change b only and keep w = 1. Moving both at once measures change along a combined direction; it does not isolate either partial derivative."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Perturbation from [1, 0]",
+            "Loss at minus step",
+            "Loss at plus step",
+            "Symmetric slope"
+          ],
+          "rows": [
+            [
+              "w only with step 0.1",
+              "1.44",
+              "0.64",
+              "-4"
+            ],
+            [
+              "b only with step 0.1",
+              "1.21",
+              "0.81",
+              "-2"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The gradient is [-4, -2] in order [w, b]. Both entries refer to the same original parameter vector, not to a partially updated model."
+        }
+      ]
+    },
+    {
+      "title": "Check a gradient numerically",
+      "blocks": [
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "def loss(w, b):\n    return (2 * w + b - 3) ** 2\n\ndef gradient_check(w, b, step=0.001):\n    dw = (loss(w + step, b) - loss(w - step, b)) / (2 * step)\n    db = (loss(w, b + step) - loss(w, b - step)) / (2 * step)\n    residual = 2 * w + b - 3\n    formula = [4 * residual, 2 * residual]\n    numerical = [dw, db]\n    assert all(abs(a - n) < 1e-6\n               for a, n in zip(formula, numerical))\n    return numerical\n\nprint([round(g, 6) for g in gradient_check(1, 0)])\n# [-4.0, -2.0]"
+        },
+        {
+          "type": "paragraph",
+          "text": "The helper assumes finite numerical inputs and a positive nonzero step. The formula follows the squared-loss rule: local loss change is twice the residual times the prediction sensitivity. Changing w by a small amount changes prediction twice as much here; changing b changes prediction by the same amount."
+        },
+        {
+          "type": "paragraph",
+          "text": "Exact floating-point equality is not required. Record the step and a tolerance, then try more than one parameter setting. A passing numerical check supports agreement for those tested points; it does not prove all possible inputs."
+        }
+      ]
+    },
+    {
+      "title": "Keep the coordinate order visible",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Two separate probes at one parameter vector",
+          "columns": [
+            "Parameter being probed",
+            "Held fixed",
+            "Gradient entry"
+          ],
+          "rows": [
+            [
+              "w near 1",
+              "b is 0 and x is 2",
+              "First entry -4"
+            ],
+            [
+              "b near 0",
+              "w is 1 and x is 2",
+              "Second entry -2"
+            ],
+            [
+              "Assemble in order [w, b]",
+              "Same original model",
+              "Gradient [-4, -2]"
+            ]
+          ],
+          "caption": "The first two rows are independent local probes, not successive parameter updates. The final row records both results in the declared order."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "At w = 0, b = 1, find prediction, residual, loss and the gradient using [4 times residual, 2 times residual].",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Choose checks away from sharp corners",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "ReLU is not differentiable exactly at zero. A symmetric difference across that corner can average two different behaviours. When checking a network gradient, use points whose relevant scores are safely away from zero, and check that the small perturbations do not cross a corner. Document any derivative convention used at zero."
+        },
+        {
+          "type": "paragraph",
+          "text": "At the centre of the simple scalar ReLU function, [ReLU(0.1) - ReLU(-0.1)] / 0.2 equals 0.5. This symmetric number does not make the function differentiable at zero. Also avoid assuming an ever-smaller step is always better: subtraction and rounding can spoil numerical differences."
+        }
+      ]
+    },
+    {
+      "title": "Use the gradient as local evidence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The gradient describes how the stated loss changes near the current parameters. For a differentiable function, moving a sufficiently small distance opposite a nonzero gradient decreases the function locally. The gradient alone does not choose a safe finite step, establish a global minimum or demonstrate generalisation."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A numerical checker moves w and b together, gets one slope and copies it into both gradient entries. What is wrong with this check?",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Next week combines a gradient with an explicit learning rate to update parameters together."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Recover a gradient",
+      "prompt": "For the lesson model at w = 1 and b = 1, calculate prediction, residual, loss and gradient.",
+      "answer": "Teacher explanation: Prediction 3, residual 0, loss 0, gradient [0, 0].",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Catch a denominator error",
+      "prompt": "A w probe has losses 1.44 and 0.64 at 0.9 and 1.1 with b fixed. A learner divides their difference by 0.1. Correct the result.",
+      "answer": "Teacher explanation: The interval is 0.2. (0.64 - 1.44) / 0.2 = -4, not -8.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Separate a direction from a coordinate",
+      "prompt": "Starting at [w, b] = [1, 0], both coordinates move by plus or minus 0.1 together. Compute the symmetric slope and explain why it is not either partial derivative.",
+      "answer": "Teacher explanation: Residuals are -1.3 and -0.7; losses 1.69 and 0.49. Slope is -6. It measures the combined direction [1, 1], equal here to the sum of partials -4 and -2.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Check a new example independently",
+      "prompt": "Use x = 3, target 2 and y = wx + b at w = 0, b = 1. With step 0.1, calculate both numerical partials. Compare with [2 times residual times x, 2 times residual].",
+      "answer": "Teacher explanation: Residual -1 and loss 1. w probes give predictions 0.7 and 1.3, losses 1.69 and 0.49, partial -6. b probes give predictions 0.9 and 1.1, losses 1.21 and 0.81, partial -2. Formula gradient is [-6, -2].",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Recognise a corner",
+      "prompt": "Compute the symmetric difference of ReLU at zero with step 0.1. Explain why this does not prove a derivative exists there.",
+      "answer": "Teacher explanation: The value is 0.5. The left slope is 0 and right slope is 1, so the slopes disagree and the derivative at zero does not exist.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions to separate coordinate probes from combined changes. The first gradient check is deliberately an affine model with squared loss, avoiding hidden-layer calculus. Introduce the chain-rule reasoning in words before showing the compact formula.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the symmetric denominator and compute the initial prediction and residual."
+      ],
+      [
+        "7 to 18 minutes",
+        "Probe w alone with b fixed; record the two losses and slope."
+      ],
+      [
+        "18 to 32 minutes",
+        "Probe b alone and assemble [-4, -2]. Complete W1 and W2."
+      ],
+      [
+        "32 to 45 minutes",
+        "Trace the optional numerical checker and the guided [0, 1] case."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Use W3 to distinguish a combined direction from two partial derivatives."
+      ],
+      [
+        "8 to 20 minutes",
+        "Discuss the ReLU corner in W5 and a stated numerical tolerance."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, requiring both pairs of losses and coordinate order."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use the exit response and fresh retry, then connect local gradient evidence to next week."
+      ]
+    ],
+    "guidedAnswer": "Guided: prediction 1, residual -2, loss 4, gradient [-8, -4]. Exit: changing both parameters measures a directional change; each partial must vary just its own coordinate while holding the others fixed.",
+    "misconceptions": [
+      [
+        "The gradient is one scalar",
+        "It has one entry per parameter for a scalar loss, in a stated order."
+      ],
+      [
+        "Use the updated weight for the bias probe",
+        "Both entries must refer to the same current parameter vector."
+      ],
+      [
+        "A symmetric value defines the derivative at any corner",
+        "Left and right slopes can differ; the ReLU example exposes this."
+      ]
+    ],
+    "assessment": "W4 requires numerical and formula gradients [-6, -2] with losses shown. Fresh retry: x = 1, target 4, w = 2, b = 1 gives residual -1 and gradient [-2, -2]. Step 0.1 in either coordinate gives losses 1.21 and 0.81. Require the fixed coordinate to be named.",
+    "support": "Provide separate w-probe and b-probe tables. Extension: at the lesson model [1, 0], test steps 0.1, 0.01 and 0.001 and report absolute disagreements from [-4, -2], without claiming universal tolerance guarantees.",
+    "next": "Week 11 applies gradients to simultaneous parameter updates."
+  }
+}

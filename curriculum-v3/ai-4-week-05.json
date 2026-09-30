@@ -1,0 +1,266 @@
+{
+  "level": "ai-4",
+  "week": 5,
+  "title": "Composing layers",
+  "minutes": 90,
+  "goals": [
+    "Trace how one layer supplies the next layer inputs",
+    "Check that connected layer dimensions and feature order agree",
+    "Explain why intermediate activations are not automatically class predictions"
+  ],
+  "prerequisite": {
+    "prompt": "For z = -2 and z = 3, what does ReLU return? Does this operation itself assign a class?",
+    "answer": "ReLU returns 0 and 3. It transforms a numerical score. A class prediction requires a separate declared output rule."
+  },
+  "vocabulary": [
+    [
+      "Layer",
+      "A group of computations that maps an input vector to an output vector"
+    ],
+    [
+      "Hidden activation",
+      "An intermediate value computed inside a network"
+    ],
+    [
+      "Composition",
+      "Applying one function to the output of another"
+    ],
+    [
+      "Forward calculation",
+      "Computing successive values from an input using fixed parameters"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Connect computations with an explicit contract",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A network connects layers so that the output vector of one layer becomes the input vector of the next. Use a fictional numerical input x = [x1, x2]. The first layer computes z1 = x1 - x2 and z2 = x1 + x2 - 2, then applies ReLU separately: h1 = max(0, z1), h2 = max(0, z2). Its output is the ordered vector h = [h1, h2]."
+        },
+        {
+          "type": "paragraph",
+          "text": "The next layer computes y = 2h1 - h2 + 1. It receives h, not the original x. It uses weights [2, -1] and bias 1, with identity as its output activation. This is a two-layer computation when counting the layers with weights; an input placeholder is not counted here. All parameters are supplied, so this lesson performs no training."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Stage",
+            "Input size",
+            "Output size"
+          ],
+          "rows": [
+            [
+              "First layer with ReLU",
+              "2 components",
+              "2 components"
+            ],
+            [
+              "Output layer with identity",
+              "2 components",
+              "1 component"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The two first-layer units both receive the same original x. They can be calculated in either order. Only after both activations are available do we evaluate the output layer."
+        }
+      ]
+    },
+    {
+      "title": "Trace a complete worked input",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Take x = [3, 1]. First compute z1 = 3 - 1 = 2 and z2 = 3 + 1 - 2 = 2. ReLU gives h = [2, 2]. The output layer receives exactly this ordered pair and returns y = 2 times 2 - 2 + 1 = 3. Record z, h and y separately so that a correct final number cannot hide an incorrect intermediate step."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "def forward(x):\n    if len(x) != 2:\n        raise ValueError(\"Expected two input components\")\n    x1, x2 = x\n    z = [x1 - x2, x1 + x2 - 2]\n    h = [max(0, value) for value in z]\n    y = 2 * h[0] - h[1] + 1\n    return z, h, y\n\nprint(forward([3, 1]))  # ([2, 2], [2, 2], 3)\nprint(forward([1, 3]))  # ([-2, 2], [0, 2], -1)"
+        },
+        {
+          "type": "paragraph",
+          "text": "The code assumes numeric inputs with the agreed meaning. Its length check does not validate units or field order. Python indices 0 and 1 correspond to the first and second hidden components. There is no feedback from y into h during this forward calculation."
+        }
+      ]
+    },
+    {
+      "title": "Follow the layer connections",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Complete each stage before using its output",
+          "columns": [
+            "Available input",
+            "Computation",
+            "Value passed on"
+          ],
+          "rows": [
+            [
+              "x is [3, 1]",
+              "Both first layer scores",
+              "z is [2, 2]"
+            ],
+            [
+              "z is [2, 2]",
+              "ReLU on each component",
+              "h is [2, 2]"
+            ],
+            [
+              "h is [2, 2]",
+              "2h1 - h2 + 1",
+              "y is 3"
+            ]
+          ],
+          "caption": "Read the rows from top to bottom. The first two rows together form the hidden layer; the final row is the output layer. Each row shows the values actually passed to the next stage."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Trace x = [1, 1]. Record z1, z2, h1, h2 and y. Explain why using x directly in the output formula would be a different model.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Check connections before calculating",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The output layer expects two inputs because its two weights match h1 and h2. If the hidden layer is redesigned to return three activations, the output layer needs a compatible three-input definition. Silently dropping an activation or inventing a third weight does not preserve the stated model."
+        },
+        {
+          "type": "paragraph",
+          "text": "Order matters even when lengths match. For x = [4, 1], h = [3, 3] happens to be unchanged by swapping, so that case cannot reveal an order bug. For x = [3, 0], h = [3, 1] gives y = 6. Swapping only those hidden values gives 2 times 1 - 3 + 1 = 0. Swapping both the values and their matching weights would preserve the dot product."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keeping the output layer fixed, replacing ReLU with identity changes the model. For x = [1, 3], identity gives h = [-2, 2] and y = -5; ReLU gives h = [0, 2] and y = -1. More layers or a different activation do not establish better predictions without valid evaluation."
+        }
+      ]
+    },
+    {
+      "title": "State what the output means",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The computed y is a numerical output, not a verified probability or a class by itself. If we separately declare class 1 when y >= 0 and class 0 otherwise, the worked inputs [3, 1] and [1, 3] receive classes 1 and 0. Their true labels are not supplied, so these calculations do not measure accuracy."
+        },
+        {
+          "type": "paragraph",
+          "text": "A hidden value is a computed feature. We should not name h1 as confidence or h2 as danger without evidence for that interpretation. Distinct inputs may also produce the same hidden vector: [0, 1] and [0, 2] both give h = [0, 0] and y = 1. A later deterministic layer seeing only h cannot recover the lost distinction."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A team says its output is correct because all layers connect and its code runs. Which claim has it checked, and what evidence is still missing?",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Next week uses longer forward-pass tables to locate the first incorrect intermediate value and check complete network calculations."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Trace the second worked case",
+      "prompt": "For x = [1, 3], write both scores, both ReLU activations and y using the lesson model.",
+      "answer": "Teacher explanation: Scores are -2 and 2; activations are 0 and 2; y = 0 - 2 + 1 = -1.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Repair a dimension mismatch",
+      "prompt": "A revised hidden layer returns [h1, h2, h3]. The output layer still has weights [2, -1]. Explain the mismatch and what must be specified before calculation.",
+      "answer": "Teacher explanation: Three hidden values need three matching weights under this dense output definition. Specify all three coefficients and the bias or explicitly design a documented selection operation. Do not silently drop the third value.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Use a revealing order check",
+      "prompt": "Compare hidden vectors for x = [4, 1] and x = [3, 0]. Which input reveals a bug that swaps h1 and h2 but keeps output weights unchanged? Give correct and swapped outputs for that input.",
+      "answer": "Teacher explanation: The first gives [3, 3] and cannot expose a swap. The second gives [3, 1]; correct output 6 becomes 0 when values alone are swapped.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Compose a new network independently",
+      "prompt": "A new model takes [u, v]. Compute a = ReLU(u + v - 3), b = ReLU(u - v), then q = a + 2b - 1. Trace both inputs [2, 1] and [1, 2], including scores before ReLU. Apply class 1 when q >= 0. State the hidden and output vector sizes.",
+      "answer": "Teacher explanation: For [2, 1], scores 0 and 1 give [a, b] = [0, 1], q = 1 and class 1. For [1, 2], scores 0 and -1 give [0, 0], q = -1 and class 0. Hidden dimension is 2; output dimension is 1. The equality at hidden score zero produces activation zero, not an automatic final class.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Explain information loss",
+      "prompt": "Use the lesson model to verify h and y for [0, 1] and [0, 2]. Could a fixed later layer receiving only h distinguish the two original inputs?",
+      "answer": "Teacher explanation: Scores are [-1, -1] and [-2, 0]. Both produce h = [0, 0] and y = 1. A deterministic later computation given the same h produces the same result; additional original-input information would require a changed architecture.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach composition through explicit numerical traces in two 45-minute sessions. Keep the layer definition, order and activation visible. The aim is to understand which values each computation receives, not to memorise a network drawing or claim successful training.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve ReLU at negative, zero and positive scores. Ask students to distinguish an activation from a class."
+      ],
+      [
+        "7 to 18 minutes",
+        "Write both first-layer formulas side by side. Draw arrows from the same x to both; label the ordered hidden output."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace [3, 1] together, then use W1. Require scores before ReLU and output contributions after ReLU."
+      ],
+      [
+        "32 to 45 minutes",
+        "Run or trace the optional Python and complete the guided [1, 1] case. Ask why directly substituting x into the output formula is incorrect."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Retrieve the two layer input/output sizes. Let students describe composition in one sentence."
+      ],
+      [
+        "8 to 20 minutes",
+        "Complete W2 and W3. Compare a swap-insensitive case with a revealing case before discussing bug coverage."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently before hints. Check both pre-activation scores, both activations, q and class under the declared threshold."
+      ],
+      [
+        "35 to 45 minutes",
+        "Complete W5 and the exit response. Give targeted feedback and the fresh retry without replacing the original assessment record."
+      ]
+    ],
+    "guidedAnswer": "Guided: x = [1, 1] gives z = [0, 0], h = [0, 0], y = 1. Using x directly would give 2, skipping the hidden transformation. Exit: compatible shapes and execution check whether the specified computation can run, not whether predictions match real labels. Accuracy requires appropriate labelled examples, a metric and independent evaluation.",
+    "misconceptions": [
+      [
+        "The second hidden unit receives the first hidden unit output",
+        "Both units in this hidden layer receive x. The next layer receives the pair of activations after both are computed."
+      ],
+      [
+        "Two numbers mean the connection must be correct",
+        "Matching lengths do not establish matching order or meaning. Trace a case with unequal hidden activations."
+      ],
+      [
+        "A hidden unit is already a class prediction",
+        "Its activation is an intermediate numerical feature. A declared output rule assigns the final class."
+      ]
+    ],
+    "assessment": "W4 requires both complete traces, correct classes and sizes. Fresh retry: a = ReLU(u - 1), b = ReLU(v - 2), q = 2a - b. Inputs [0, 3] and [2, 2] give pre-activation scores [-1, 1] and [1, 0], hidden vectors [0, 1] and [1, 0], and q values -1 and 2. Under q >= 0 their classes are 0 and 1. Ask which vector the output layer actually receives.",
+    "support": "Provide a five-column trace table labelled x, z, h, output contributions and y. Allow arithmetic support while requiring the student to name each connection. Extension: replace hidden ReLU with identity and simplify the lesson network to y = x1 - 3x2 + 3. Test [1, 3] to show that the simplified affine model differs from the ReLU model.",
+    "next": "Week 6 develops forward passes by hand and systematic checking of intermediate values."
+  }
+}

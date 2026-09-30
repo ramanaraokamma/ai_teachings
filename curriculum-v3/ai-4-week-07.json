@@ -1,0 +1,267 @@
+{
+  "level": "ai-4",
+  "week": 7,
+  "title": "Parameters and architecture",
+  "minutes": 90,
+  "goals": [
+    "Distinguish architectural choices from parameter values",
+    "Count weights and biases in a small dense network",
+    "Explain why parameter count alone cannot establish quality"
+  ],
+  "prerequisite": {
+    "prompt": "In the Week 6 network, which quantities change when x changes while the model stays fixed?",
+    "answer": "Scores, activations and outputs may change. The weights, biases, connections and activation choices stay fixed."
+  },
+  "vocabulary": [
+    [
+      "Parameter",
+      "A numerical model value that a fitting procedure may adjust"
+    ],
+    [
+      "Architecture",
+      "The arrangement of layers, connections and activation choices"
+    ],
+    [
+      "Dense layer",
+      "A layer in which each output unit has a weight for every input component"
+    ],
+    [
+      "Hyperparameter",
+      "A setting chosen for a model or training procedure rather than fitted as an ordinary weight"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Separate the plan from its numbers",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Consider a dense network with 2 inputs, 3 hidden units using ReLU, and 1 output unit using identity. We call its widths 2 to 3 to 1. These widths, connectivity and activation choices describe its architecture. The weights and biases supply the numerical values used by that architecture."
+        },
+        {
+          "type": "paragraph",
+          "text": "A fully connected hidden unit receiving 2 inputs needs 2 weights plus 1 bias. Three such units need 6 weights and 3 biases. The output receives 3 activations and needs 3 weights plus 1 bias. Total: 13 parameters. Input values and computed activations are not additional parameters."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Layer",
+            "Weights",
+            "Biases",
+            "Total"
+          ],
+          "rows": [
+            [
+              "2 inputs to 3 hidden units",
+              "2 times 3 = 6",
+              "3",
+              "9"
+            ],
+            [
+              "3 hidden values to 1 output",
+              "3 times 1 = 3",
+              "1",
+              "4"
+            ],
+            [
+              "Whole network",
+              "9",
+              "4",
+              "13"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "This counting rule assumes one separate bias per output unit and no shared or tied weights. Other architectures can use different rules."
+        }
+      ]
+    },
+    {
+      "title": "Apply a counting rule carefully",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For a dense layer with n input components and m output units, each output has n weights and one bias. The count is n times m plus m, or (n + 1) times m. Count each layer separately before adding."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "def dense_count(inputs, outputs):\n    return inputs * outputs + outputs\n\nprint(dense_count(2, 3))   # 9\nprint(dense_count(3, 1))   # 4\nprint(dense_count(2, 3) + dense_count(3, 1))  # 13"
+        },
+        {
+          "type": "paragraph",
+          "text": "The helper assumes positive integer widths and the bias convention stated above. It is a counting aid, not a model trainer. A ReLU has no fitted numerical parameters in this example."
+        }
+      ]
+    },
+    {
+      "title": "Classify proposed changes",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Decide what a change alters",
+          "columns": [
+            "Proposed change",
+            "Type of change",
+            "Consequence"
+          ],
+          "rows": [
+            [
+              "Change one weight 2 to 3",
+              "Parameter value",
+              "Same architecture"
+            ],
+            [
+              "Use 4 hidden units",
+              "Architecture width",
+              "Different parameter count"
+            ],
+            [
+              "Use learning rate 0.1",
+              "Training setting",
+              "No extra model weight"
+            ]
+          ],
+          "caption": "Each row is a separate proposed change. A parameter value, an architectural choice and a training setting answer different questions about the system."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "For a dense 2 to 4 to 1 network with one bias per unit, count each layer and the total. How many more parameters does it have than 2 to 3 to 1?",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Keep comparisons meaningful",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Two networks can share an architecture and still make different predictions because their parameter values differ. Conversely, two architectures can happen to produce identical outputs on the few cases tested. A count describes the model, not how well it has learned."
+        },
+        {
+          "type": "paragraph",
+          "text": "When comparing widths, keep the task, feature schema, training data, validation cases and evaluation rule fixed. Record the training budget and seed as well. More parameters can increase flexibility, but they can also increase resource use and overfitting risk. Neither outcome follows from counting alone."
+        }
+      ]
+    },
+    {
+      "title": "Document a reproducible model description",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A reproducible description needs ordered input features, layer widths, connections, activations and the exact parameter values or a way to recover them. A description of training also needs the data split and training settings. The label small neural network does not specify a computation."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Two teams both report 13 parameters. What would you request before claiming they built the same model?",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Next week defines a loss so that we can measure how a particular set of parameters performs on labelled examples."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Count a single layer",
+      "prompt": "A dense layer has 4 inputs and 2 outputs with one bias per output. Count weights, biases and total.",
+      "answer": "Teacher explanation: There are 8 weights and 2 biases, total 10.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Sort the quantities",
+      "prompt": "Classify hidden activation 0.7, weight -2, hidden width 3 and learning rate 0.1 as computed value, parameter, architecture choice or training setting.",
+      "answer": "Teacher explanation: Activation 0.7 is computed; weight -2 is a parameter; width 3 is an architecture choice; learning rate 0.1 is a training setting.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Change the bias convention",
+      "prompt": "Recount the 2 to 3 to 1 model if every bias is omitted. State what the original count assumed.",
+      "answer": "Teacher explanation: There are 6 + 3 = 9 weights and no biases. The original 13 assumed three hidden biases plus one output bias.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Count a new architecture independently",
+      "prompt": "A dense 3 to 2 to 2 network uses ReLU in the hidden layer and identity in the output layer, with one bias per unit. Give each layer count and the total. If hidden width becomes 4, recount and explain why activation values are excluded.",
+      "answer": "Teacher explanation: Original: 3 times 2 + 2 = 8, then 2 times 2 + 2 = 6, total 14. Wider: 3 times 4 + 4 = 16, then 4 times 2 + 2 = 10, total 26. Activations are computed from inputs and parameters, not separately fitted values.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Limit a size claim",
+      "prompt": "A team says its 26-parameter model must outperform a 14-parameter model. Give a fair check and one reason the claim is unsupported.",
+      "answer": "Teacher explanation: Compare on the same valid evaluation task and cases after a documented fitting process. Count alone does not establish suitable features, successful optimisation or generalisation.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Teach counting through one drawn unit before using a formula. Explicitly state the dense connectivity and bias assumptions. Architecture is chosen by a designer; this does not imply it can never be selected using a separate search procedure.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve fixed parameters versus changing activations from a forward pass."
+      ],
+      [
+        "7 to 18 minutes",
+        "Draw three hidden units, each with two input weights and a bias. Count without a formula first."
+      ],
+      [
+        "18 to 32 minutes",
+        "Complete W1 and the 13-parameter worked table. Derive (n + 1) times m."
+      ],
+      [
+        "32 to 45 minutes",
+        "Trace the optional counting code, classify changes and complete W2."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Recall the assumptions behind the count, then discuss omitted biases in W3."
+      ],
+      [
+        "8 to 20 minutes",
+        "Complete the guided 2 to 4 to 1 count; compare size without assuming quality."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently with separate layer totals and the wider variant."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit response to define the evidence needed for a model comparison."
+      ]
+    ],
+    "guidedAnswer": "Guided: hidden layer 12, output layer 5, total 17, four more than 13. Exit: ask for architecture, activations, ordered input schema and exact weights/biases; equal parameter counts do not establish matching computations.",
+    "misconceptions": [
+      [
+        "Count one bias per input",
+        "Here each output unit has its own bias. A layer with m outputs has m biases."
+      ],
+      [
+        "Count the activation values as parameters",
+        "Activations change with the input; the network computes them."
+      ],
+      [
+        "More weights prove better learning",
+        "Capacity and performance differ. Compare measured outcomes with controlled conditions."
+      ]
+    ],
+    "assessment": "W4 must show 8 + 6 = 14 and 16 + 10 = 26. Fresh retry: dense 2 to 2 to 3 with biases has 6 + 9 = 15 parameters. Without biases it has 4 + 6 = 10. Require the bias convention explicitly.",
+    "support": "Use a connection grid and a separate bias box per output. Extension: for 2 to h to 1, derive 3h + h + 1 = 4h + 1; test h = 1 and h = 5. Explain why this rule is specific to the stated architecture.",
+    "next": "Week 8 introduces losses for comparing predictions with targets."
+  }
+}

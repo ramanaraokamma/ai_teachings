@@ -1,0 +1,267 @@
+{
+  "level": "ai-4",
+  "week": 6,
+  "title": "Forward passes by hand",
+  "minutes": 90,
+  "goals": [
+    "Record scores and activations in dependency order",
+    "Locate the first incorrect value in a forward trace",
+    "Separate a final output from evidence of model accuracy"
+  ],
+  "prerequisite": {
+    "prompt": "In Week 5, what does the output layer receive?",
+    "answer": "It receives the ordered hidden activation vector, rather than the original input or the scores before activation."
+  },
+  "vocabulary": [
+    [
+      "Trace",
+      "A record of intermediate values in a computation"
+    ],
+    [
+      "Preactivation",
+      "A weighted score before an activation function"
+    ],
+    [
+      "Dependency",
+      "An earlier value needed to compute a later value"
+    ],
+    [
+      "Regression check",
+      "A retained test rerun after a change to detect a new error"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Make every dependency visible",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Use a new one-input network with two hidden units. Its scores are z1 = 2x - 1 and z2 = -x + 2. Apply ReLU to obtain h1 and h2. The output is y = h1 - 2h2 + 1. Parameters stay fixed while the input changes. The input x is an abstract number; these are arithmetic examples, not measurements of children."
+        },
+        {
+          "type": "paragraph",
+          "text": "A forward pass evaluates this network in dependency order. Compute both scores from x, then both activations, then the output contributions h1 and -2h2, and finally add bias 1. A trace table makes an omitted bias or a sign error easier to locate than a final answer alone."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "x",
+            "z1 and z2",
+            "h1 and h2",
+            "y"
+          ],
+          "rows": [
+            [
+              "0",
+              "-1 and 2",
+              "0 and 2",
+              "-3"
+            ],
+            [
+              "1",
+              "1 and 1",
+              "1 and 1",
+              "0"
+            ],
+            [
+              "3",
+              "5 and -1",
+              "5 and 0",
+              "6"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "At x = 1 the output is exactly zero. If we later declare class 1 for y >= 0, equality belongs to class 1. Applying ReLU in the hidden layer does not make the final output nonnegative."
+        }
+      ]
+    },
+    {
+      "title": "Calculate before running code",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For x = 0, the first score is -1, which ReLU changes to 0. The second score is 2, which ReLU leaves at 2. Therefore y = 0 - 4 + 1 = -3. Negative output is allowed because this output layer uses identity."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "def trace(x):\n    z = [2 * x - 1, -x + 2]\n    h = [max(0, value) for value in z]\n    y = h[0] - 2 * h[1] + 1\n    return z, h, y\n\nfor x in [0, 1, 3]:\n    print(x, trace(x))"
+        },
+        {
+          "type": "paragraph",
+          "text": "This optional Python uses only numeric inputs. Compare every returned component against the table. The same code being run twice is a repeatability check; comparing it with a separately calculated expectation is a stronger check of correctness."
+        }
+      ]
+    },
+    {
+      "title": "Find the first divergence",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Correct a trace from the earliest error",
+          "columns": [
+            "Trace stage at x is 0",
+            "Expected value",
+            "Submitted value"
+          ],
+          "rows": [
+            [
+              "Scores",
+              "[-1, 2]",
+              "[-1, 2]"
+            ],
+            [
+              "ReLU activations",
+              "[0, 2]",
+              "[-1, 2]"
+            ],
+            [
+              "Output",
+              "-3",
+              "-4"
+            ]
+          ],
+          "caption": "The columns compare expected and submitted traces. The first disagreement is the activation of -1, not the final addition. Recompute all dependent values after repairing it."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Trace x = 2, recording both scores, both activations and y. What happens to the second unit at its zero-score boundary?",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Choose checks that can reveal a defect",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A test where both scores are positive cannot reveal a missing ReLU. Include x = 0, where the first score is negative, and x = 3, where the second score is negative. Include x = 0.5 and x = 2 to exercise each hidden zero-score boundary. Neither a few examples nor an attractive diagram proves every implementation case is correct."
+        },
+        {
+          "type": "paragraph",
+          "text": "A missing output bias shifts every output by -1. A swapped hidden order may pass a case where h1 equals h2; x = 1 has this limitation. Keep several checks with different intermediate values, and retain them when repairing code."
+        }
+      ]
+    },
+    {
+      "title": "Report the claim that was checked",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A forward trace verifies what specified parameters calculate for one input. It does not show how those parameters were learned or whether the output is useful. Classification accuracy also needs a declared class rule, true labels and suitable independent examples."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A program matches y at x = 1 but its hidden activations are wrong. Is the implementation verified? Explain what evidence to retain after fixing it.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Next week separates the network architecture from its numerical parameters and counts the values that training could change."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Complete a fresh row",
+      "prompt": "Trace x = -1 through the lesson network. Record z, h and y.",
+      "answer": "Teacher explanation: z = [-3, 3], h = [0, 3], y = -5.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Locate a bias omission",
+      "prompt": "At x = 3 a trace gives z = [5, -1], h = [5, 0] and y = 5. Identify the first incorrect stage and repair it.",
+      "answer": "Teacher explanation: Scores and activations are correct. The output omitted bias 1; y should be 6.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Check both boundaries",
+      "prompt": "Trace x = 0.5 and x = 2. Which hidden score is zero in each case?",
+      "answer": "Teacher explanation: At 0.5, z = [0, 1.5], h = [0, 1.5], y = -2. At 2, z = [3, 0], h = [3, 0], y = 4. Zero maps to zero under ReLU.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Audit a different network independently",
+      "prompt": "Use z1 = x + 1, z2 = 2 - 2x, h = ReLU(z) component by component, and y = 2h1 + h2 - 3. Trace x = 0 and x = 2. A submitted x = 2 trace uses h = [3, -2] and y = 1. Find its first error and correct all later values.",
+      "answer": "Teacher explanation: At 0: z = [1, 2], h = [1, 2], y = 1. At 2: z = [3, -2], h = [3, 0], y = 3. The first submitted error is h2 = -2 rather than 0; the corrected output is 3.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Limit a passing test",
+      "prompt": "Explain why testing only x = 1 in the lesson model may miss a hidden-order swap.",
+      "answer": "Teacher explanation: Both hidden values equal 1, so exchanging them changes nothing. Use unequal hidden values, such as x = 0, and compare intermediate values as well as y.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions to build a habit of recording intermediate values. Students should identify the first disagreement, then propagate the correction. Do not award full credit for a correct final value supported by an incorrect trace.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the distinction between scores, hidden activations and output inputs."
+      ],
+      [
+        "7 to 18 minutes",
+        "Trace x = 0 on the board. Label every column and identify the output bias."
+      ],
+      [
+        "18 to 32 minutes",
+        "Complete W1 and compare the x = 1 and x = 3 worked rows. Discuss negative final outputs."
+      ],
+      [
+        "32 to 45 minutes",
+        "Run or trace Python; complete the guided x = 2 case and W2."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Reconstruct a trace from memory, then check its dependencies against the formula."
+      ],
+      [
+        "8 to 20 minutes",
+        "Complete W3 and discuss which cases detect missing activation and which detect order errors."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including the first erroneous stage and corrected descendants."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit question, then offer the fresh retry after feedback."
+      ]
+    ],
+    "guidedAnswer": "Guided: x = 2 gives z = [3, 0], h = [3, 0], y = 4; the zero score remains zero. Exit: no; final agreement can hide compensating errors. Retain correct intermediate expectations and varied regression cases, not only the single final output.",
+    "misconceptions": [
+      [
+        "ReLU means the output cannot be negative",
+        "Only the hidden scores receive ReLU here. The output formula can be negative."
+      ],
+      [
+        "Fix just the final number",
+        "Repair the earliest incorrect operation and recompute every dependent value."
+      ],
+      [
+        "One passing case proves the network",
+        "Cases with equal activations or positive scores can hide specific defects."
+      ]
+    ],
+    "assessment": "Assess W4 for both full traces and the activation error. Fresh retry: h = ReLU(x - 2), y = -3h + 2. For x = 1 and x = 4, preactivations are -1 and 2, activations 0 and 2, outputs 2 and -4. A submitted x = 1 activation -1 is the first error, even if later arithmetic compensates.",
+    "support": "Provide blank trace columns and allow a calculator for signed arithmetic. Extension: show that for 0.5 <= x <= 2 the lesson output is 4x - 4; verify both endpoints without applying that expression outside its stated interval.",
+    "next": "Week 7 names architectural choices and counts dense-layer parameters."
+  }
+}
