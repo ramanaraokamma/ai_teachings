@@ -1,0 +1,283 @@
+{
+  "level": "ai-4",
+  "week": 15,
+  "title": "Training and validation curves",
+  "minutes": 90,
+  "goals": [
+    "Compute comparable training and validation losses at saved checkpoints",
+    "Choose among observed checkpoints using a declared validation rule",
+    "Distinguish development evidence from final test evidence"
+  ],
+  "prerequisite": {
+    "prompt": "Why does the lowest training loss in a learning-rate experiment not establish the best performance on new examples?",
+    "answer": "Training loss measures fit to the examples used for updates. Independent performance needs suitable separate evidence, and settings selected using validation must not be presented as independent final testing."
+  },
+  "vocabulary": [
+    [
+      "Checkpoint",
+      "Saved model parameters and the information needed to identify a training state"
+    ],
+    [
+      "Training curve",
+      "A record of a training measure at successive saved states"
+    ],
+    [
+      "Validation curve",
+      "A record of a development measure on separate examples at those states"
+    ],
+    [
+      "Selection rule",
+      "A declared procedure for choosing among candidate models or checkpoints"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Evaluate both splits at one saved state",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Keep the restricted network h = ReLU(x), y = vh, with only v trained. Training pairs remain (1, 2) and (2, 4). Start v = 0 and make four full-data updates at rate 0.1. Save states v = 0, 1, 1.5, 1.75 and 1.875. At each saved state, evaluate both splits without changing v during evaluation."
+        },
+        {
+          "type": "paragraph",
+          "text": "For this deliberately constructed demonstration, validation pairs are (3, 4.5) and (4, 6). Their targets follow a different slope from the training pairs. This makes the two trends disagree visibly; it is not evidence that these few rows represent a real population. Validation labels do not enter the gradient."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Updates",
+            "v",
+            "Training MSE",
+            "Validation MSE"
+          ],
+          "rows": [
+            [
+              "0",
+              "0",
+              "10",
+              "28.125"
+            ],
+            [
+              "1",
+              "1",
+              "2.5",
+              "3.125"
+            ],
+            [
+              "2",
+              "1.5",
+              "0.625",
+              "0"
+            ],
+            [
+              "3",
+              "1.75",
+              "0.15625",
+              "0.78125"
+            ],
+            [
+              "4",
+              "1.875",
+              "0.0390625",
+              "1.7578125"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Both columns use ordinary MSE in the same target units, evaluated on their own fixed rows. Training MSE is 2.5(v - 2) squared; validation MSE is 12.5(v - 1.5) squared. Different input values and target rules affect the loss levels. A gap alone does not identify its cause."
+        }
+      ]
+    },
+    {
+      "title": "Reproduce the curve values",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For checkpoint 3, v = 1.75. Training predictions are [1.75, 3.5], residuals [-0.25, -0.5], and MSE 0.15625. Validation predictions are [5.25, 7], residuals [0.75, 1], and MSE 0.78125. All four predictions must use the same saved value."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "def mse(v, rows):\n    if not rows:\n        raise ValueError(\"Need evaluation rows\")\n    return sum((v * max(0.0, x) - target) ** 2\n               for x, target in rows) / len(rows)\n\ntrain = [(1.0, 2.0), (2.0, 4.0)]\nvalid = [(3.0, 4.5), (4.0, 6.0)]\ncheckpoints = [0.0, 1.0, 1.5, 1.75, 1.875]\nvalidation_losses = []\nfor step, v in enumerate(checkpoints):\n    validation_losses.append(mse(v, valid))\n    print(step, mse(v, train), mse(v, valid))\nbest = min(range(len(checkpoints)),\n           key=lambda i: (validation_losses[i], i))\nprint(\"Selected checkpoint\", best)  # 2"
+        },
+        {
+          "type": "paragraph",
+          "text": "The code evaluates supplied checkpoints; it does not train on validation data. It assumes finite numeric pairs and selects the lowest observed validation MSE, breaking exact ties in favour of the earlier checkpoint. The rule is chosen before inspecting the values."
+        }
+      ]
+    },
+    {
+      "title": "Follow each curve on a shared scale",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "curves",
+          "title": "Later updates improve only one split",
+          "axis": "Mean squared error",
+          "xLabel": "Completed updates",
+          "xValues": [
+            2,
+            3,
+            4
+          ],
+          "max": 2,
+          "series": [
+            {
+              "label": "Training solid line",
+              "values": [
+                0.625,
+                0.15625,
+                0.0390625
+              ]
+            },
+            {
+              "label": "Validation dashed line",
+              "values": [
+                0,
+                0.78125,
+                1.7578125
+              ]
+            }
+          ],
+          "caption": "This chart shows checkpoints 2 to 4 only, on one MSE scale from 0 to 2. Circles and a solid line mark training; squares and a dashed line mark validation. Lines connect measured checkpoints, not additional evaluations. The full table includes checkpoints 0 and 1."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Using the table, calculate the training and validation loss changes from checkpoint 2 to checkpoint 4. Which saved parameter does the selection rule choose?",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Investigate a widening gap",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Falling training loss with rising validation loss can be consistent with overfitting, but it is not a complete diagnosis. In this example the split-specific target rules are known to differ. In another dataset, inspect representativeness, preprocessing, leakage, label quality and evaluation settings before attributing the pattern to model capacity alone."
+        },
+        {
+          "type": "paragraph",
+          "text": "Evaluate comparable quantities: do not compare a training sum with a validation mean, or a training objective containing a penalty with unpenalised validation MSE. Keep the row sets fixed across checkpoints. Do not mix losses recorded before each batch update with a full-split evaluation of the final checkpoint."
+        }
+      ]
+    },
+    {
+      "title": "Separate selection from final reporting",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Restore checkpoint 2, v = 1.5, if following the declared rule. Its zero validation MSE is a result on two constructed development examples. Choosing this checkpoint using those examples makes them part of model selection. After all choices are frozen, a separate untouched test set can provide final evidence within its own coverage limits."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A team calls checkpoint 2 independently proven because its validation MSE is zero, then uses the test results to choose another checkpoint. Identify both reporting problems and propose a clean procedure.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Next week adds a weight penalty and an early-stopping policy, keeping their roles distinct."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Recover a plotted point",
+      "prompt": "At v = 1, compute both validation predictions, residuals and MSE on (3, 4.5) and (4, 6).",
+      "answer": "Teacher explanation: Predictions [3, 4], residuals [-1.5, -2], squares [2.25, 4], MSE 3.125.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Use the declared rule",
+      "prompt": "Observed validation MSE at checkpoints 0 to 4 is [5, 2, 1, 1, 1.2]. Lowest loss wins with earlier exact ties. Which checkpoint is selected? What if training loss is lowest at checkpoint 4?",
+      "answer": "Teacher explanation: Select checkpoint 2. The tie at 3 does not replace the earlier checkpoint. Lower training loss at 4 does not change a validation-based rule.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Repair incompatible measures",
+      "prompt": "A training report shows sum of squared errors 12 over six rows. Validation shows mean squared error 3 over two rows in the same target units. A learner says training error is four times larger. Repair the comparison.",
+      "answer": "Teacher explanation: Training MSE is 12 / 6 = 2. Compare 2 with validation MSE 3, not sum 12 with mean 3. The split sizes and examples still limit interpretation.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Evaluate new checkpoints independently",
+      "prompt": "Use h = ReLU(x), y = vh, candidate v values 1, 1.5 and 2. Training pairs are (1, 2), (2, 4); validation pairs are (1, 1), (2, 2). Calculate both MSE columns and select by minimum validation MSE. Explain the disagreement with selection by training loss.",
+      "answer": "Teacher explanation: For v = 1, train MSE 2.5 and validation MSE 0. For v = 1.5, both MSE values are 0.625. For v = 2, train MSE 0 and validation MSE 2.5. Validation chooses v = 1; training chooses v = 2. These constructed splits favour different slopes.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Limit a curve diagnosis",
+      "prompt": "Training loss falls while validation loss rises. Give two checks before declaring model complexity the cause, and explain why repeatedly selecting with validation makes it development evidence.",
+      "answer": "Teacher explanation: Possible checks include comparable loss definitions, unchanged preprocessing and evaluation settings, split representativeness, leakage and label quality. Repeated selection uses validation outcomes to guide choices, so final evaluation needs separate untouched examples.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. Have students draw checkpoint number horizontally and MSE vertically, using one clearly labelled scale for both curves. Explicitly name the differing target rules in this synthetic example so the picture is not misrepresented as proof of a single overfitting mechanism. Keep checkpoint selection separate from parameter updates.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve why training performance alone cannot select for independent performance."
+      ],
+      [
+        "7 to 18 minutes",
+        "Identify the two fixed splits and trace checkpoint 1; complete W1."
+      ],
+      [
+        "18 to 32 minutes",
+        "Calculate checkpoint 3 by hand and plot all supplied points on one MSE scale."
+      ],
+      [
+        "32 to 45 minutes",
+        "Run or trace the evaluation code, then use W2 to practise the exact tie rule."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete the guided comparison of checkpoints 2 and 4; identify the parameter to restore."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 and W5 to examine metric comparability and alternative causes of a widening gap."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently with both loss columns and the explicit selection rule."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use the exit question and fresh retry; require a distinction between selection and untouched final testing."
+      ]
+    ],
+    "guidedAnswer": "Guided: training changes by 0.0390625 - 0.625 = -0.5859375; validation changes by 1.7578125 - 0 = 1.7578125. Select checkpoint 2 with v = 1.5. Exit: zero on selected validation examples is limited development evidence, and choosing with test results turns that test into development data. Freeze choices using training/validation, then evaluate once on suitable untouched test examples and report the scope.",
+    "misconceptions": [
+      [
+        "The last checkpoint is always best",
+        "Choose by the stated validation criterion and restore the saved parameters."
+      ],
+      [
+        "A gap proves one specific cause",
+        "Check split composition, metrics and evaluation procedures; this demonstration has deliberately different target rules."
+      ],
+      [
+        "Validation is untouched final evidence",
+        "Once used to choose settings or checkpoints, it is development evidence."
+      ]
+    ],
+    "assessment": "W4 requires all six MSE values and the validation choice v = 1. Fresh retry: candidates v = 0.5, 1, 1.5 and validation pairs (2, 2), (4, 4). MSE values are 2.5, 0 and 2.5, so choose v = 1. Ask what the result establishes and why it is not final test evidence after selection.",
+    "support": "Provide squared-error columns and labelled axes, allowing calculators. Extension: derive the two quadratic loss expressions and locate their different minima. Explain why this constructed mismatch makes the validation optimum occur before the training optimum.",
+    "next": "Week 16 introduces a weight penalty and a precise early-stopping policy."
+  }
+}

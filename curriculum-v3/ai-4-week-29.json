@@ -1,0 +1,281 @@
+{
+  "level": "ai-4",
+  "week": 29,
+  "title": "Uncertainty and failure analysis",
+  "minutes": 90,
+  "goals": [
+    "Distinguish a predicted class, confidence score and observed correctness",
+    "Calculate accuracy and coverage for a review policy",
+    "Investigate failure patterns without claiming an untested cause"
+  ],
+  "prerequisite": {
+    "prompt": "Last week a model was correct on two constructed validation examples. Why did that not prove it would work reliably on new examples?",
+    "answer": "Two constructed cases provide very limited evidence. New inputs can differ, and validation used to choose settings is not untouched final evaluation. Performance needs representative independent testing."
+  },
+  "vocabulary": [
+    [
+      "Confidence score",
+      "The model\u2019s score for its selected class, which may not match observed reliability"
+    ],
+    [
+      "Calibration",
+      "Agreement between predicted probabilities and observed frequencies across many comparable cases"
+    ],
+    [
+      "Abstention",
+      "Withholding an automatic prediction and following a declared alternative process"
+    ],
+    [
+      "Coverage",
+      "The fraction of all cases on which a system makes an automatic prediction"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Read a score without treating it as proof",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A model can be confidently wrong. Use these supplied outputs for a fictional image classifier: class 1 means a triangle is present; class 0 means it is absent. The values p1 are probability estimates for class 1, invented for this exercise rather than produced by a trained model. Predict 1 when p1 >= 0.5 and 0 otherwise. The selected-class confidence is max(p1, 1 - p1)."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Case and image",
+            "p1",
+            "Reference label"
+          ],
+          "rows": [
+            [
+              "A clear",
+              "0.95",
+              "1"
+            ],
+            [
+              "B blurred",
+              "0.90",
+              "0"
+            ],
+            [
+              "C clear",
+              "0.80",
+              "1"
+            ],
+            [
+              "D blurred",
+              "0.60",
+              "0"
+            ],
+            [
+              "E clear",
+              "0.45",
+              "0"
+            ],
+            [
+              "F blurred",
+              "0.10",
+              "1"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A predicts 1 with confidence 0.95 and is correct. F predicts 0 with confidence 0.90 and is wrong: p1 = 0.10 is not low confidence in the selected class. Reference labels are supplied for this exercise; real investigations must check their quality too."
+        },
+        {
+          "type": "paragraph",
+          "text": "A score alone cannot establish reliability. Calibration asks whether, across many comparable cases, predictions assigned a probability such as 0.90 are correct about 90 percent of the time. One correct or incorrect case cannot answer that question."
+        }
+      ]
+    },
+    {
+      "title": "Count mistakes and retained cases",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The predictions for A through F are 1, 1, 1, 1, 0, 0. A, C and E are correct, so overall accuracy is 3 / 6 = 50 percent. There are two false positives (B and D), one false negative (F), two true positives and one true negative. Different errors can matter differently; a single accuracy number hides that distinction."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "rows = [(0.95, 1), (0.90, 0), (0.80, 1),\n        (0.60, 0), (0.45, 0), (0.10, 1)]\n\ndef report(rows, cutoff):\n    if not rows or not 0.5 <= cutoff <= 1:\n        raise ValueError(\"Need rows and cutoff in [0.5, 1]\")\n    correct = accepted = accepted_correct = 0\n    for p1, label in rows:\n        if not 0 <= p1 <= 1 or label not in (0, 1):\n            raise ValueError(\"Invalid score or label\")\n        pred = int(p1 >= 0.5)\n        ok = int(pred == label)\n        correct += ok\n        if max(p1, 1 - p1) >= cutoff:\n            accepted += 1\n            accepted_correct += ok\n    return (correct / len(rows), accepted / len(rows),\n            accepted_correct / accepted if accepted else None)\n\nprint(report(rows, 0.8))  # (0.5, 4/6, 0.5) approximately"
+        },
+        {
+          "type": "paragraph",
+          "text": "The function returns overall accuracy, coverage and accuracy among accepted cases. It assumes numeric scores and binary labels. None means no cases were accepted, so accepted-case accuracy is undefined, not zero or perfect. Keep counts with proportions and declare the comparison at the boundary."
+        }
+      ]
+    },
+    {
+      "title": "Make review a complete policy",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Confidence does not remove every error",
+          "columns": [
+            "Cases",
+            "At cutoff 0.80",
+            "Observed result"
+          ],
+          "rows": [
+            [
+              "A, B, C, F",
+              "Accept automatically",
+              "2 correct, 2 wrong"
+            ],
+            [
+              "D, E",
+              "Defer for review",
+              "1 correct, 1 wrong"
+            ]
+          ],
+          "caption": "The policy accepts confidence at least 0.80. Coverage is 4 / 6 and accepted-case accuracy is 2 / 4. The confident errors B and F remain."
+        },
+        {
+          "type": "paragraph",
+          "text": "Deferred cases are not automatically repaired. A review workflow needs an assigned reviewer, suitable evidence, a decision record and an outcome check. Report review workload and the final system\u2019s results separately; we have no reviewer outcomes here. Do not erase deferred cases from the report or count them as correct."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Raise the cutoff to 0.95 for the same six cases. Which cases are accepted, what are coverage and accepted-case accuracy, and why does that result not guarantee perfect future predictions?",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Turn a failure pattern into a testable question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "All three clear images are correct; all three blurred images are wrong in this constructed set. Blur is a candidate explanation, not an established cause: other differences, reference-label errors or preprocessing bugs could be involved. Record case ID, input conditions, model and preprocessing version, score, prediction and checked reference label."
+        },
+        {
+          "type": "paragraph",
+          "text": "First inspect B, D and F and check input order, resizing and label quality. Then plan new examples that vary blur while keeping the underlying image and label fixed. Keep related versions of the same source image in one data split; compare both versions within the reserved group. Do not repair cases and report scores on those same cases as independent evidence."
+        },
+        {
+          "type": "paragraph",
+          "text": "Uncertainty can arise from ambiguous inputs, limited training evidence or unfamiliar conditions. A single confidence score does not identify the cause and may stay high on unfamiliar inputs. Collect evidence before selecting a remedy."
+        }
+      ]
+    },
+    {
+      "title": "Report the limits of a confidence rule",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Choose review thresholds and model changes using training and validation evidence, before final evaluation. Report total cases, overall errors, accepted errors, coverage, deferred workload and subgroup results. For tiny groups, give counts and avoid strong claims about future rates. Higher cutoffs do not guarantee higher observed accuracy or safe decisions."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A teammate reports \u201c100 percent accurate\u201d after accepting only A at cutoff 0.95. Rewrite the claim honestly and name the evidence still needed before trusting this policy.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep a baseline and record unsuccessful changes too. Next week examines dataset shift: performance can change when the inputs or relationships encountered in use differ from those seen during development."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Separate confidence from correctness",
+      "prompt": "For B, E and F, give the predicted class, selected-class confidence and correctness. Explain why p1 = 0.10 does not mean F has low confidence in its predicted class.",
+      "answer": "Teacher explanation: B predicts 1 with confidence 0.90 and is wrong. E predicts 0 with confidence 0.55 and is correct. F predicts 0 with confidence 0.90 and is wrong. F\u2019s low score for class 1 corresponds to a high score for class 0, the class selected.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Count both types of error",
+      "prompt": "For all six cases, list false positives and false negatives, count true positives and true negatives, and calculate overall accuracy. Why might a single accuracy hide useful information?",
+      "answer": "Teacher explanation: False positives are B and D; the false negative is F. A and C are the two true positives; E is the one true negative. Accuracy is 3 of 6, or 50 percent. It hides which errors occur and how their consequences differ.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Audit the review policy",
+      "prompt": "At cutoff 0.80, list accepted and deferred cases, coverage and accepted-case accuracy. Can you calculate final accuracy after human review from the supplied data? What does the report function return for accepted-case accuracy at cutoff 0.99?",
+      "answer": "Teacher explanation: Accepted cases are A, B, C, F; deferred cases are D and E. Coverage is 4 of 6 and accepted accuracy is 2 of 4. No reviewer outcomes are supplied, so final system accuracy is unknown. At 0.99 no case is accepted; accepted accuracy is undefined and the function returns None.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Analyse new outputs independently",
+      "prompt": "Four new cases have (p1, reference label): K (0.85, 0), L (0.70, 1), M (0.30, 0), N (0.05, 0). Give predictions and confidences, overall accuracy, and accepted cases at cutoff 0.80. Calculate coverage and accepted-case accuracy. Does this policy improve accuracy on the accepted subset here?",
+      "answer": "Teacher explanation: Predictions are 1, 1, 0, 0; confidences are 0.85, 0.70, 0.70, 0.95. L, M and N are correct, so overall accuracy is 3 of 4. K and N are accepted; coverage is 2 of 4 and accepted accuracy is 1 of 2. Accepted accuracy is lower than overall accuracy in this example.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Design a failure investigation",
+      "prompt": "All three blurred cases are wrong. A team claims blur caused the errors and plans to put clear images in training and their blurred copies in final evaluation. Identify the unsupported claim and the split problem; propose a better investigation.",
+      "answer": "Teacher explanation: Three failures show a pattern, not a proven cause. Related clear and blurred copies across splits can leak source-image information. Check labels and preprocessing, then hold related versions together in reserved source groups and compare controlled blur variants within those groups. Choose changes before new final evaluation and report the small sample limitation.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. These are supplied classifier outputs for arithmetic and reasoning, not calibrated probabilities from a trained model. Keep overall accuracy, accepted-case accuracy and coverage visible together. Do not imply that review guarantees correction or that model confidence diagnoses the cause of uncertainty.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the limits of the two-case validation result from Week 28. Define the triangle-present label."
+      ],
+      [
+        "7 to 18 minutes",
+        "Trace A and F, then complete W1 with selected-class confidence distinct from p1."
+      ],
+      [
+        "18 to 32 minutes",
+        "Build the error tally and complete W2. Trace the report function and its three returned quantities."
+      ],
+      [
+        "32 to 45 minutes",
+        "Use the visual and W3 to retain deferred cases in workload reporting and handle an empty accepted set."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete the guided cutoff 0.95 case and critique a perfect-accuracy claim."
+      ],
+      [
+        "8 to 20 minutes",
+        "Inspect the blur pattern and design a controlled comparison with source-grouped splits."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including denominators and the worse accepted-subset result."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit response to evaluate causal and reliability claims. Give feedback, then the fresh retry."
+      ]
+    ],
+    "guidedAnswer": "Guided: only A is accepted. Coverage is 1 of 6; accepted accuracy is 1 of 1. This single constructed success, selected by a rule examined on these data, does not establish future reliability. Exit: report one correct automatic prediction out of one accepted, with five of six deferred and no reviewer outcomes. Require representative untouched evaluation, subgroup and calibration evidence, measured reviewer outcomes and workload, and a comparison with a declared baseline.",
+    "misconceptions": [
+      [
+        "A low p1 always means low confidence",
+        "For a binary model, p1 = 0.10 selects class 0 with confidence 0.90."
+      ],
+      [
+        "Reviewing uncertain cases fixes all errors",
+        "B and F remain confidently wrong; deferred outcomes also need measurement."
+      ],
+      [
+        "A shared condition proves the cause",
+        "A small error pattern motivates investigation; label checks, controlled examples and independent evaluation are still needed."
+      ]
+    ],
+    "assessment": "W4 requires predictions 1, 1, 0, 0; confidences 0.85, 0.70, 0.70, 0.95; accuracy 3 of 4; accepted K and N, coverage 2 of 4 and accepted accuracy 1 of 2. Fresh retry: (p1, label) values (0.90, 1), (0.65, 0), (0.35, 1), (0.10, 0). Predictions are 1, 1, 0, 0; confidences 0.90, 0.65, 0.65, 0.90. Overall accuracy is 2 of 4. At cutoff 0.80 accept first and fourth: coverage 2 of 4 and accepted accuracy 2 of 2. Require a limitation despite the perfect accepted subset.",
+    "support": "Provide separate boxes for p1, predicted class, confidence, reference label and correctness. Use fractions before percentages. Extension: for A, B, C and F, mean confidence is 0.8875 while observed accuracy is 0.5. Discuss why this small grouped discrepancy motivates calibration study but cannot establish a population-wide calibration rate.",
+    "next": "Week 30 studies dataset shift, comparing development and new-use conditions without assuming a familiar confidence score implies familiar data."
+  }
+}

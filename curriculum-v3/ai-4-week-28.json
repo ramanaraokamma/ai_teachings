@@ -1,0 +1,266 @@
+{
+  "level": "ai-4",
+  "week": 28,
+  "title": "Transfer learning",
+  "minutes": 90,
+  "goals": [
+    "Trace a reused feature extractor and a newly fitted output head",
+    "Fit a small target-task head using training data and compare a baseline",
+    "Identify when a frozen representation cannot support a new task"
+  ],
+  "prerequisite": {
+    "prompt": "If two different records become the same feature vector, can a deterministic output head receiving only that vector distinguish them?",
+    "answer": "No. Identical inputs to a fixed deterministic head produce identical outputs. Information lost by the representation cannot be recovered from that representation alone."
+  },
+  "vocabulary": [
+    [
+      "Transfer learning",
+      "Reusing knowledge learned on a source task or dataset to help a target task"
+    ],
+    [
+      "Feature extractor",
+      "The part of a model that maps an input to a representation"
+    ],
+    [
+      "Output head",
+      "The part that maps a representation to the current task\u2019s output"
+    ],
+    [
+      "Fine tuning",
+      "Training some or all previously learned parameters on the target task"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Reuse a representation for a new task",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A source model may learn useful features before we have many labels for a new target task. Transfer learning reuses those learned features or parameters. One approach freezes the feature extractor and fits a new output head. Fine tuning instead updates some or all of the reused parameters, usually together with the head."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use a transparent stand-in for a source-trained extractor: f(x) = ReLU(x1 + x2), with supplied weights [1, 1] and bias 0. ReLU keeps a positive value and replaces a negative value with zero. Here x1 and x2 are nonnegative fictional event counts, so f(x) is their sum. We did not train this extractor on a source dataset; this exercise demonstrates the mechanics of reuse, not measured transfer benefits."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Part",
+            "Operation",
+            "During this exercise"
+          ],
+          "rows": [
+            [
+              "Input",
+              "[count of type 1, count of type 2]",
+              "Keep order and units"
+            ],
+            [
+              "Extractor",
+              "h = max(0, x1 + x2)",
+              "Freeze weights and bias"
+            ],
+            [
+              "New head",
+              "Predict 1 if h >= threshold",
+              "Fit the threshold on target training data"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The target is a high-activity label. The extractor returns a single number h, not a class label or probability. A new head converts h into the target prediction."
+        }
+      ]
+    },
+    {
+      "title": "Fit the target head on training data",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Use target training records T1 [1, 1] with label 0, T2 [1, 3] with label 0, T3 [4, 2] with label 1 and T4 [5, 3] with label 1. Their extracted values are 2, 4, 6 and 8. Fit the head by trying thresholds 3, 5 and 7 and counting training mistakes. Fitting can use a small search; it need not use gradients."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "train = [([1, 1], 0), ([1, 3], 0),\n         ([4, 2], 1), ([5, 3], 1)]\n\ndef feature(x):\n    if len(x) != 2 or any(v < 0 for v in x):\n        raise ValueError(\"Need two nonnegative counts\")\n    return max(0, x[0] + x[1])\n\ndef predict(x, threshold):\n    return int(feature(x) >= threshold)\n\ndef mistakes(threshold):\n    return sum(predict(x, threshold) != y\n               for x, y in train)\n\ncandidates = [3, 5, 7]\nbest = min(candidates, key=lambda t: (mistakes(t), t))\nassert best == 5\nprint([mistakes(t) for t in candidates])  # [1, 0, 1]"
+        },
+        {
+          "type": "paragraph",
+          "text": "The tie rule prefers the smaller threshold if training mistake counts match; there is no tie here. The extractor remains unchanged. The code assumes finite numeric counts and valid binary labels. A constant baseline predicts the most frequent training label; with two of each, our declared tie rule chooses 0."
+        }
+      ]
+    },
+    {
+      "title": "Compare on held out target examples",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Freeze the fitted head before validation",
+          "columns": [
+            "Validation input",
+            "Frozen feature",
+            "Head at threshold 5"
+          ],
+          "rows": [
+            [
+              "V1 [2, 1], label 0",
+              "h = 3",
+              "Predict 0, correct"
+            ],
+            [
+              "V2 [3, 4], label 1",
+              "h = 7",
+              "Predict 1, correct"
+            ]
+          ],
+          "caption": "The fitted head is correct on 2 of 2 validation records; the constant-0 baseline is correct on 1 of 2. This tiny constructed comparison is not evidence of general transfer performance."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use the same validation records for both methods. These records were not used to fit the threshold. If validation guides later choices, reserve separate untouched final evaluation data. We have not compared with a full model trained from scratch or measured training time, so this result cannot establish either advantage."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "A new input [2, 3] uses the fitted threshold 5. Give h and the predicted class, including the equality rule. Which parameters changed during fitting?",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Find a task that the features cannot solve",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Now change the target: predict 1 when the first count is greater than the second, otherwise 0. U [1, 3] has label 0 and V [3, 1] has label 1, but both become h = 4. Every fixed deterministic head receiving only this h must give both the same prediction. At least one of the two will be wrong, regardless of how many extra head parameters we add."
+        },
+        {
+          "type": "paragraph",
+          "text": "Fine tuning could change the extractor to retain relevant distinctions; it does not guarantee success. To see a possible change, hand-set the weights to [1, -1], keep bias 0 and use threshold 1. U then gives ReLU(-2) = 0 and predicts 0; V gives ReLU(2) = 2 and predicts 1. This hand-chosen repair is not a trained result or an independent evaluation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keeping the original input alongside h is another possible representation change. Any such change needs a new training and evaluation plan. Normalising the inputs also changes the pipeline; last week showed why that can remove useful magnitude information."
+        }
+      ]
+    },
+    {
+      "title": "Record what was actually transferred",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For a real source-trained model, record the checkpoint version, source task and data provenance, permitted use, input order and preprocessing, frozen and trainable parts, target splits, baseline and resource budget. Check for source-data overlap with target evaluation records; a different filename is not proof of independence. If source history is unknown, report that limitation."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A team says its reused extractor must outperform training from scratch because it scored 2 of 2 here. Give two reasons this conclusion is unsupported and propose a fair next comparison.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Evaluate methods on the same target examples under a declared training budget, with choices made before final evaluation. Record errors as well as totals. Next week examines uncertainty and failure analysis, including confident predictions that can still be wrong."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Trace the reused pipeline",
+      "prompt": "For input [4, 2], compute h using the original extractor and the class at threshold 5. Identify the frozen weights and bias, the fitted quantity, and why h is not a probability.",
+      "answer": "Teacher explanation: The extractor gives h = 6 and the head predicts 1. Weights [1, 1] and bias 0 stay frozen; only the threshold is fitted. h is a nonnegative sum of counts, with no probability mapping or calibration.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Fit and compare",
+      "prompt": "For the four target training records, give the number of mistakes at thresholds 3, 5 and 7 and choose the fitted threshold. Then score that head and the declared constant baseline on V1 and V2. Explain which data fitted the head.",
+      "answer": "Teacher explanation: Training mistake counts are 1, 0 and 1, selecting threshold 5. Validation predictions are 0 and 1, so the head scores 2 of 2. The constant-0 baseline scores 1 of 2. Only T1 through T4 fit the head; validation evaluates the fitted choice.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Diagnose a lost distinction",
+      "prompt": "For the first-count-greater target, explain why the original extractor cannot distinguish U [1, 3] from V [3, 1]. Trace the hand-chosen [1, -1] extractor and threshold 1. Does this show that fine tuning has been trained and independently validated?",
+      "answer": "Teacher explanation: Both original features are 4, so a deterministic head must give the same answer despite labels 0 and 1. The changed features are 0 and 2, giving predictions 0 and 1. This is a hand-chosen change on the examples being inspected, not training or independent validation.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Fit a new head independently",
+      "prompt": "A separate frozen extractor is h = 2*x1 + x2. Training inputs [1, 0], [1, 2], [2, 1], [3, 1] have labels 0, 0, 1, 1. Compare thresholds 2, 4 and 6 using prediction 1 when h >= threshold; choose the fewest mistakes, breaking ties toward the smaller threshold. Score it on validation [2, 0] with label 1 and [0, 2] with label 0. Compare with the training-majority baseline, whose tie rule chooses 0.",
+      "answer": "Teacher explanation: Training features are 2, 4, 5 and 7. Mistakes at thresholds 2, 4 and 6 are 2, 1 and 1, so the tie rule selects 4. Validation features are 4 and 2, predictions 1 and 0, scoring 2 of 2. The constant-0 baseline scores 1 of 2. Equality at threshold 4 gives class 1.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Plan credible evidence",
+      "prompt": "A report omits the source checkpoint and preprocessing, claims faster learning without timing, and repeatedly chooses settings using the final evaluation set. Name the missing records and propose a fair comparison with a model trained from scratch.",
+      "answer": "Teacher explanation: Record source version, provenance and permitted use, preprocessing, frozen/trainable parts, splits, baseline and resource budget. Measure time or computation before claiming speed. Use training/validation for choices and new untouched final evaluation after repeated final-set tuning, or report that independent evidence is unavailable. Compare both methods on the same target cases and declared budget.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. Keep three claims separate: real transfer reuses previously learned knowledge; this supplied extractor is a transparent stand-in; the reported scores concern tiny constructed target examples. No external model, student account or personal dataset is needed. Require students to mark frozen versus fitted quantities before computing.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the collision principle: a head cannot reconstruct distinctions absent from its input."
+      ],
+      [
+        "7 to 18 minutes",
+        "Trace the input, extractor and head. Complete W1 and label frozen weights and fitted threshold."
+      ],
+      [
+        "18 to 32 minutes",
+        "Count training mistakes for each threshold. Trace the optional code and declared tie rule."
+      ],
+      [
+        "32 to 45 minutes",
+        "Use the validation visual and W2 to compare with the constant baseline on identical records."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete the guided boundary example and check equality at the threshold."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to expose the new-task collision. Distinguish a hand-chosen repair from fine tuning."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently; require the training tie and its declared resolution before validation."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit response to audit evidence. Give feedback, then administer the fresh retry."
+      ]
+    ],
+    "guidedAnswer": "Guided: h = 5 and prediction is 1 because equality is included. The threshold was fitted; weights [1, 1] and bias 0 stayed frozen. Exit: two constructed validation cases provide limited evidence, the extractor was supplied rather than source-trained here, and no from-scratch comparison was run. Compare both methods on the same target cases with a declared training budget and untouched final evaluation after all choices.",
+    "misconceptions": [
+      [
+        "Frozen means the whole model cannot learn",
+        "The extractor stays fixed while the new head is fitted on target training examples."
+      ],
+      [
+        "A larger head can undo any lost information",
+        "Identical representations remain indistinguishable to a fixed deterministic head, regardless of its size."
+      ],
+      [
+        "Transfer guarantees better or faster results",
+        "The source representation may not suit the target. Accuracy and resource benefits require fair measured comparisons."
+      ]
+    ],
+    "assessment": "W4 requires features 2, 4, 5, 7; mistake counts 2, 1, 1; tie-selected threshold 4; and validation scores 2 of 2 versus 1 of 2. Fresh retry: frozen h = x1 + 2*x2; training inputs [0, 1], [2, 1], [1, 2], [1, 3], labels 0, 0, 1, 1. Thresholds 2, 4, 6 again give 2, 1, 1 mistakes, selecting 4. Validation [0, 2] label 1 and [2, 0] label 0 yield features 4 and 2 and both correct; constant 0 gets one correct. Ask which parameter was fitted.",
+    "support": "Provide separate input, feature, threshold and prediction boxes. Allow calculators and mark frozen parameters with a lock symbol on the board. Extension: on U and V, consider thresholds at or below 4 and thresholds above 4; show that neither case classifies both correctly. Discuss why source performance does not establish target suitability.",
+    "next": "Week 29 studies uncertainty and failure analysis, using specific errors and limitations rather than assuming a confident output is correct."
+  }
+}

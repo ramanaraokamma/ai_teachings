@@ -1,0 +1,287 @@
+{
+  "level": "ai-4",
+  "week": 26,
+  "title": "Embeddings and neighbourhoods",
+  "minutes": 90,
+  "goals": [
+    "Look up a vector using a token ID and preserve sequence shape",
+    "Calculate nearest neighbours with an explicit distance and tie rule",
+    "Distinguish constructed vectors from learned features and limit similarity claims"
+  ],
+  "prerequisite": {
+    "prompt": "Why should numerical differences between token IDs not be treated as differences in meaning?",
+    "answer": "IDs are assigned identifiers. Their numerical order and spacing have no declared semantic meaning; a consistent relabelling can change those differences without changing the symbols."
+  },
+  "vocabulary": [
+    [
+      "Embedding table",
+      "A table assigning a fixed-length numerical vector to each token ID"
+    ],
+    [
+      "Embedding dimension",
+      "The number of components in each embedding vector"
+    ],
+    [
+      "Neighbourhood",
+      "Nearby candidates under a stated representation and distance rule"
+    ],
+    [
+      "Squared Euclidean distance",
+      "The sum of squared component differences between two vectors"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Use an ID to select a vector",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Continue the fictional robot vocabulary and add WAIT as ID 5. Use the table below, chosen by the lesson author for arithmetic practice. These coordinates are not measured robot properties and were not learned from data. Each token ID selects one row; the resulting two-component vector is its embedding in this example."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Symbol",
+            "ID",
+            "Vector"
+          ],
+          "rows": [
+            [
+              "PAD",
+              "0",
+              "[0, 0]"
+            ],
+            [
+              "UNK",
+              "1",
+              "[-1, -1]"
+            ],
+            [
+              "GO",
+              "2",
+              "[2, 0]"
+            ],
+            [
+              "TURN",
+              "3",
+              "[1, 1]"
+            ],
+            [
+              "STOP",
+              "4",
+              "[0, 2]"
+            ],
+            [
+              "WAIT",
+              "5",
+              "[0, 1]"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The table shape is 6 by 2: six vocabulary entries and embedding dimension 2. The ID sequence [2, 4, 0, 0] becomes [[2, 0], [0, 2], [0, 0], [0, 0]], with shape 4 by 2. Its mask remains [1, 1, 0, 0]. The vector dimension is not the sequence length or vocabulary size."
+        },
+        {
+          "type": "paragraph",
+          "text": "A zero PAD vector does not remove the need for masking. Averaging all four vectors above gives [0.5, 0.5]; averaging only the two real vectors gives [1, 1]. UNK is a real position when it replaces an unknown symbol, so its vector is not automatically excluded."
+        }
+      ]
+    },
+    {
+      "title": "Compute a neighbourhood explicitly",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Use squared Euclidean distance: square each component difference and add. From GO [2, 0] to TURN [1, 1], the distance is (2 - 1) squared + (0 - 1) squared = 2. To STOP it is 8; to WAIT it is 5. TURN is therefore the nearest of those three under this table and metric."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "table = [[0, 0], [-1, -1], [2, 0],\n         [1, 1], [0, 2], [0, 1]]\nknown = {\"GO\": 2, \"TURN\": 3, \"STOP\": 4, \"WAIT\": 5}\n\ndef distance2(a, b):\n    if len(a) != len(b) or not a:\n        raise ValueError(\"Need equal nonempty dimensions\")\n    return sum((x - y)**2 for x, y in zip(a, b))\n\ndef nearest(query, candidates):\n    if not candidates:\n        raise ValueError(\"Need candidates\")\n    scores = {name: distance2(query, vector)\n              for name, vector in candidates.items()}\n    best = min(scores.values())\n    return sorted(name for name, d in scores.items() if d == best)\n\ncandidates = {name: table[i] for name, i in known.items()\n              if name != \"GO\"}\nassert nearest(table[2], candidates) == [\"TURN\"]"
+        },
+        {
+          "type": "paragraph",
+          "text": "The candidate set excludes PAD, UNK and the query token itself. Otherwise a query would normally retrieve itself at distance zero. This code assumes finite numeric components and uses exact ties, appropriate for these integer examples. Floating-point comparisons in other experiments need a declared precision policy."
+        }
+      ]
+    },
+    {
+      "title": "Preserve tied neighbours",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "One query can have two closest candidates",
+          "columns": [
+            "Candidate vector",
+            "Query vector",
+            "Squared distance"
+          ],
+          "rows": [
+            [
+              "GO [2, 0]",
+              "[1, 0]",
+              "1"
+            ],
+            [
+              "TURN [1, 1]",
+              "[1, 0]",
+              "1"
+            ],
+            [
+              "WAIT [0, 1]",
+              "[1, 0]",
+              "2"
+            ],
+            [
+              "STOP [0, 2]",
+              "[1, 0]",
+              "5"
+            ]
+          ],
+          "caption": "The nearest set is GO and TURN. Alphabetical display order does not break the mathematical tie or make one candidate more similar."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Using STOP [0, 2] as the query, calculate distances to GO, TURN and WAIT. Exclude STOP itself and both reserved entries. Which candidate is nearest?",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Explain what changes during learning",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "An embedding table can be trainable: an optimisation procedure adjusts its entries to reduce a declared objective. To isolate one update, let the GO row e start at [2, 0] and use the classroom loss J(e) = (e1 - 0) squared + (e2 - 2) squared. The target vector [0, 2] is chosen for this arithmetic demonstration, not discovered evidence about the word GO."
+        },
+        {
+          "type": "paragraph",
+          "text": "The gradient at the start is [4, -4]. With learning rate 0.25, subtract the step to obtain e = [1, 1]. Loss decreases from 8 to 2. Keep every other table row frozen in this isolated example. GO now has the same vector as TURN, so a downstream rule receiving only this vector cannot distinguish those two tokens."
+        },
+        {
+          "type": "paragraph",
+          "text": "This update proves only that the declared objective decreased. It does not prove that the new neighbourhood reflects useful meaning. Learned neighbourhoods depend on the training data, objective and model. A nearby token need not be a safe substitute, have the same label, or be interchangeable in a sentence or command."
+        }
+      ]
+    },
+    {
+      "title": "Check information beyond distance",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "In the original table, the masked average for GO STOP is [1, 1], and STOP GO has the same average. It also equals the single TURN vector. Averaging discarded order and can collide across different sequence lengths unless additional information is retained. Keeping the sequence of vectors makes order available; a later model must still use it."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A teammate says TURN must mean the same as GO because it is the closest candidate, and says a lower embedding-training loss proves this. Explain what the calculations establish and what evidence is missing.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Save the vocabulary-to-row mapping, table version, mask convention, distance rule and candidate policy with the model. Compare embedding choices using training and validation discipline, and keep final evaluation reserved. Next week examines how normalisation and similarity measures can change neighbour rankings."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Trace the lookup shape",
+      "prompt": "Using the original table, embed TURN WAIT STOP with one right-padding slot. Give the vector sequence, mask and shape.",
+      "answer": "Teacher explanation: Vectors are [[1, 1], [0, 1], [0, 2], [0, 0]], mask [1, 1, 1, 0] and shape 4 by 2.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Calculate distances and a tie",
+      "prompt": "For query [1, 0], compute squared distances to GO, TURN, STOP and WAIT in the original table. Return all nearest candidates.",
+      "answer": "Teacher explanation: Distances are 1, 1, 5 and 2 respectively. The nearest set is GO and TURN; ordering their names does not remove the tie.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Trace a trainable row",
+      "prompt": "For the isolated GO-row update, give the gradient, updated vector, starting loss and new loss. Which other token now shares the vector?",
+      "answer": "Teacher explanation: Gradient [4, -4], updated vector [1, 1], loss 8 before and 2 after. TURN already has [1, 1]. This collision does not establish equivalent meaning.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Find a neighbourhood independently",
+      "prompt": "A separate table contains A [0, 0], B [2, 0] and C [1, 2]. For query [1, 0], give all squared distances and every nearest candidate. Then calculate the mean of A and B and compare it with the query. Can that mean identify which ordered pair produced it?",
+      "answer": "Teacher explanation: Distances to A, B and C are 1, 1 and 4. A and B tie. Their mean is [1, 0], equal to the query. Reversing A B to B A gives the same mean, so the mean alone cannot identify the order.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Keep the lookup consistent",
+      "prompt": "A developer swaps the IDs of GO and STOP but leaves the embedding rows unchanged. What goes wrong, and what must be saved or changed together?",
+      "answer": "Teacher explanation: Each token now selects the other token\u2019s old row, changing the encoded input. Save and update the vocabulary-to-row mapping and table together, along with version and downstream model. ID relabelling is harmless only when every lookup and consumer stays consistent.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. Begin with the difference between an identifier and its looked-up vector. The original table is authored, not learned; the separate one-row update demonstrates optimisation under a stated artificial objective. Do not attach invented semantic labels to the two coordinate axes. Keep original and updated table versions separate.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve arbitrary IDs and label vocabulary size, sequence length and vector dimension."
+      ],
+      [
+        "7 to 18 minutes",
+        "Trace table lookups and masks, then complete W1."
+      ],
+      [
+        "18 to 32 minutes",
+        "Compute GO distances by hand and run or trace the nearest-neighbour code."
+      ],
+      [
+        "32 to 45 minutes",
+        "Use W2 and the visual to preserve ties under an explicit candidate policy."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete the guided STOP query before changing any table row."
+      ],
+      [
+        "8 to 20 minutes",
+        "Trace the isolated learning update and complete W3, noting the resulting collision."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, requiring distances, the full nearest set and an order-loss explanation."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit response to audit interpretation and version consistency, then administer the fresh retry."
+      ]
+    ],
+    "guidedAnswer": "Guided: STOP distances to GO, TURN and WAIT are 8, 2 and 1, so WAIT is nearest. Exit: the original table and squared Euclidean rule place TURN nearest to GO among the stated candidates. That is not proof of equivalent meaning or substitutability. A lower artificial training objective only supports improvement on that objective; useful task behaviour requires appropriate independent evaluation and error analysis.",
+    "misconceptions": [
+      [
+        "Token ID differences define embedding distances",
+        "The ID selects a row; distances are computed between row vectors."
+      ],
+      [
+        "Nearest always means interchangeable",
+        "Closeness depends on representation, metric and candidates, and need not preserve task labels or meaning."
+      ],
+      [
+        "A learned embedding cannot lose identity",
+        "Two rows can coincide, and sequence aggregation can create additional collisions."
+      ]
+    ],
+    "assessment": "W4 requires distances 1, 1, 4, both A and B, mean [1, 0] and a reversed-order collision. Fresh retry: query [0, 1], candidates D [0, 0], E [0, 2], F [3, 1]. Distances are 1, 1, 9; D and E tie. Their mean is [0, 1], and swapping their order leaves it unchanged.",
+    "support": "Provide separate columns for token, ID and vector. Use a distance ledger with two differences, two squares and a sum; allow calculators. Extension: consistently permute all table row IDs and show that token-level neighbour results stay unchanged, then deliberately omit the table permutation to expose the mismatch.",
+    "next": "Week 27 explores similarity and normalisation, including changes in neighbour ranking."
+  }
+}

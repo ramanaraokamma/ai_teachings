@@ -1,0 +1,276 @@
+{
+  "level": "ai-4",
+  "week": 27,
+  "title": "Similarity and normalisation",
+  "minutes": 90,
+  "goals": [
+    "Calculate vector length and normalise a nonzero vector",
+    "Compare squared distance with cosine similarity and explain a changed ranking",
+    "Handle zero vectors explicitly and justify what information a comparison keeps"
+  ],
+  "prerequisite": {
+    "prompt": "For query [3, 4] and candidate [3, 0], calculate squared Euclidean distance. Does a smaller distance prove equivalent meaning?",
+    "answer": "The squared distance is (3 - 3) squared + (4 - 0) squared = 16. It describes closeness under this representation and rule; it does not prove equivalent meaning."
+  },
+  "vocabulary": [
+    [
+      "Vector length",
+      "The square root of the sum of squared components, also called the L2 norm"
+    ],
+    [
+      "L2 normalisation",
+      "Dividing every component of a nonzero vector by its length"
+    ],
+    [
+      "Cosine similarity",
+      "The dot product of two nonzero vectors divided by the product of their lengths"
+    ],
+    [
+      "Unit vector",
+      "A vector with length one"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Separate direction from length",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Last week, a neighbourhood depended on a chosen distance rule. This week, compare the same fictional vectors in two ways. Squared distance rewards nearby coordinates. Cosine similarity compares direction and ignores positive changes in length. Neither rule is automatically right for every task."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Vector",
+            "Coordinates",
+            "Length"
+          ],
+          "rows": [
+            [
+              "Query Q",
+              "[3, 4]",
+              "5"
+            ],
+            [
+              "Candidate A",
+              "[6, 8]",
+              "10"
+            ],
+            [
+              "Candidate B",
+              "[3, 0]",
+              "3"
+            ],
+            [
+              "Candidate C",
+              "[-3, -4]",
+              "5"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "For Q, length = square root of (3 squared + 4 squared) = square root of 25 = 5. Divide both components by 5 to get its unit vector [0.6, 0.8]. Its length is one because 0.6 squared + 0.8 squared = 1. A becomes the same unit vector. C becomes [-0.6, -0.8], pointing in the opposite direction."
+        },
+        {
+          "type": "paragraph",
+          "text": "These supplied coordinates are for arithmetic practice. They are not learned language embeddings. Normalising each row keeps its direction but removes its original length unless that length is saved separately."
+        }
+      ]
+    },
+    {
+      "title": "Calculate cosine similarity",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Multiply matching components and add to obtain the dot product. Cosine similarity equals dot(Q, candidate) divided by (length(Q) times length(candidate)). Higher cosine means a closer direction. For A, the dot product is 3 times 6 + 4 times 8 = 50, so cosine = 50 / (5 times 10) = 1. For B it is 9 / 15 = 0.6; for C it is -25 / 25 = -1."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "from math import sqrt\n\ndef unit(v):\n    if not v:\n        raise ValueError(\"Need a nonempty vector\")\n    length = sqrt(sum(x*x for x in v))\n    if length == 0:\n        raise ValueError(\"Zero vector has no direction\")\n    return [x / length for x in v]\n\ndef cosine(a, b):\n    if len(a) != len(b):\n        raise ValueError(\"Need matching dimensions\")\n    ua, ub = unit(a), unit(b)\n    return sum(x*y for x, y in zip(ua, ub))\n\nq = [3, 4]\nfor name, v in [(\"A\", [6, 8]), (\"B\", [3, 0]),\n                (\"C\", [-3, -4])]:\n    print(name, round(cosine(q, v), 6))"
+        },
+        {
+          "type": "paragraph",
+          "text": "Trace before running: A gives 1, B gives 0.6 and C gives -1. This classroom code assumes finite, moderate numeric inputs. It rejects empty, unequal-length and zero vectors. Keep full precision for decisions; rounding here is only for display. Cosine lies between -1 and 1 in exact arithmetic and is not a probability."
+        }
+      ]
+    },
+    {
+      "title": "See a ranking change",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Compare the same candidates using two rules",
+          "columns": [
+            "Candidate",
+            "Raw squared distance",
+            "Cosine similarity"
+          ],
+          "rows": [
+            [
+              "A [6, 8]",
+              "25",
+              "1"
+            ],
+            [
+              "B [3, 0]",
+              "16",
+              "0.6"
+            ],
+            [
+              "C [-3, -4]",
+              "100",
+              "-1"
+            ]
+          ],
+          "caption": "For Q [3, 4], raw squared distance selects B by minimising the score. Cosine selects A by maximising the score. The candidates stayed the same; the comparison rule changed."
+        },
+        {
+          "type": "paragraph",
+          "text": "After normalising both Q and every candidate, squared distances to A, B and C are 0, 0.8 and 4. For unit vectors, squared distance = 2 - 2 times cosine. Thus the smallest normalised distance and largest cosine produce the same ranking, including ties, in exact arithmetic."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Add candidate D [0, 5]. Calculate its raw squared distance and cosine from Q [3, 4]. Compare D with A under each rule.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Choose what to retain",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Suppose [3, 4] records counts of two event types, while [6, 8] records twice as many of each. Both have the same proportions and direction, but totals are 7 and 14. Normalisation makes their vectors identical. That may suit a question about proportions, but it removes information needed to compare total activity. For learned embeddings, the usefulness of length must be tested for the task."
+        },
+        {
+          "type": "paragraph",
+          "text": "The zero vector [0, 0] has no direction, so its cosine is undefined. Do not silently assign zero similarity: zero cosine already means perpendicular nonzero vectors. This lesson rejects a zero query and excludes zero candidates with an explicit report. If no valid candidates remain, return no comparison. PAD entries stay excluded by the mask; a real zero input needs its own policy."
+        },
+        {
+          "type": "paragraph",
+          "text": "Positive scaling preserves cosine: Q and 2 times Q have the same direction. Negative scaling reverses direction; Q and -Q have cosine -1. Candidate labels, self-exclusion and a stated floating-point tie tolerance are still required when retrieving neighbours."
+        }
+      ]
+    },
+    {
+      "title": "Keep evaluation honest",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "L2 normalisation divides each individual vector by its own length; it does not estimate a mean or scale from a dataset. Feature standardisation is a different operation and must fit its statistics on training data only. Choose between raw distance and cosine using the task, training and validation evidence. Do not repeatedly change the rule after seeing final evaluation results."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A teammate says a cosine of 1 proves two records mean the same thing, and normalisation always improves a model. Use A and Q to challenge both claims. What must be checked before adopting the rule?",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Record the representation version, comparison rule, normalisation, zero-vector handling, candidate set and tie tolerance. Preserve a baseline and evaluate on the same reserved examples. Next week, transfer learning asks when a representation learned for one task can help another."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Trace the unit vectors",
+      "prompt": "For Q [3, 4], A [6, 8] and C [-3, -4], give each length and unit vector. Explain one distinction that normalisation removes and one that it preserves.",
+      "answer": "Teacher explanation: Lengths are 5, 10 and 5. Unit vectors are [0.6, 0.8], [0.6, 0.8] and [-0.6, -0.8]. The length difference between Q and A disappears; the opposite direction of C is preserved.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Compare the rankings",
+      "prompt": "For query Q, write the raw squared distances and cosines to A, B and C from the lesson. Name the winner under each rule. Calculate squared distances after normalising both sides and check the relationship to cosine.",
+      "answer": "Teacher explanation: Raw squared distances are 25, 16, 100, so B wins. Cosines are 1, 0.6, -1, so A wins. Unit-vector squared distances are 0, 0.8, 4, matching 2 - 2 times each cosine and selecting A.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Handle a vector without direction",
+      "prompt": "A candidate set contains Z [0, 0] and B [3, 0]. With nonzero query Q, what happens under this lesson\u2019s zero-vector policy? What if Q is zero, or Z is the only candidate? Explain why replacing an undefined cosine with zero is misleading.",
+      "answer": "Teacher explanation: Exclude Z and report it; compare B normally. Reject a zero query. If only Z exists, report no comparison. Zero cosine represents perpendicular nonzero directions, whereas the zero vector has no direction.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Compare a new case independently",
+      "prompt": "Use query [5, 0] and candidates P [10, 0], R [4, 3] and S [0, 5]. Calculate all raw squared distances and cosines, name each winner, and give squared distances after normalising both query and candidates. Explain the changed ranking.",
+      "answer": "Teacher explanation: Raw squared distances to P, R and S are 25, 10, 50, selecting R. Cosines are 1, 0.8, 0, selecting P. Normalised squared distances are 0, 0.4, 2. P shares the query direction despite its greater length; raw distance also reflects that length difference.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Audit a proposed improvement",
+      "prompt": "For event-count vectors [3, 4] and [6, 8], what useful information can normalisation remove? A team chooses cosine because it improves results on the final evaluation set, then calls that same set independent evidence. Explain how to repair the evaluation plan.",
+      "answer": "Teacher explanation: Normalisation removes magnitude: totals 7 and 14 become indistinguishable in the unit vectors. Choose the rule using task needs and training/validation evidence, preserving a baseline. A final set used to choose the rule is no longer independent final evidence; reserve new untouched evaluation data or explicitly report the limitation.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. Supply calculators and connect vector length to the right-triangle calculation 3 squared plus 4 squared equals 5 squared. Students should justify a rule by the information it retains. The supplied vectors are constructed examples; no semantic or accuracy claim is established by their geometry.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve squared distance and explain why a geometric score alone does not establish meaning."
+      ],
+      [
+        "7 to 18 minutes",
+        "Compute lengths and unit vectors. Complete W1 with both positive and opposite directions."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace the cosine formula and optional code, checking which score is maximised."
+      ],
+      [
+        "32 to 45 minutes",
+        "Use the diagram and W2 to contrast raw and normalised distance rankings."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete the guided D comparison, retaining the same query and candidate A."
+      ],
+      [
+        "8 to 20 minutes",
+        "Discuss event counts and zero vectors. Complete W3 and require an explicit no-comparison outcome."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, including raw scores, cosines, normalised distances and an explanation."
+      ],
+      [
+        "35 to 45 minutes",
+        "Complete W5 and the exit response. Give feedback before administering the fresh retry."
+      ]
+    ],
+    "guidedAnswer": "Guided: D has squared distance 9 + 1 = 10 and cosine 20 / 25 = 0.8. Raw distance prefers D over A (10 versus 25); cosine prefers A (1 versus 0.8). Exit: Q and A share direction but have different lengths and may represent different totals. Cosine 1 proves aligned nonzero vectors, not equivalent meaning. Check the task, retained information, zero and tie policies, and validation performance against a baseline; reserve final evaluation.",
+    "misconceptions": [
+      [
+        "Cosine is a probability",
+        "Its possible negative values and geometric definition show that it is not a calibrated probability."
+      ],
+      [
+        "Normalisation keeps all information",
+        "Positive multiples collapse to the same unit vector; preserve length separately if the task needs it."
+      ],
+      [
+        "Any scaling leaves cosine unchanged",
+        "Positive scaling preserves direction. Multiplying only one vector by a negative number reverses the cosine sign; zero scaling makes it undefined."
+      ]
+    ],
+    "assessment": "W4 requires raw scores 25, 10, 50; cosines 1, 0.8, 0; normalised distances 0, 0.4, 2; and winners R then P. Fresh retry: query [0, 5], candidates D [0, 10], E [3, 4], F [5, 0]. Raw squared distances are 25, 10, 50; cosines 1, 0.8, 0; unit distances 0, 0.4, 2. Raw distance selects E; cosine selects D. Ask students to explain why a zero query is rejected.",
+    "support": "Provide a ledger for squared components, length, unit components and score. Allow a calculator and separate lower-is-better distance from higher-is-better similarity. Extension: expand the squared distance between two unit vectors to derive 2 - 2 times their dot product. For floating-point retrieval, declare a tolerance and retain all scores within it of the best; show that rounding first can create false ties.",
+    "next": "Week 28 examines transfer learning, comparing a reused representation with a baseline and testing what can transfer to a new task."
+  }
+}

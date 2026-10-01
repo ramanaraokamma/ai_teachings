@@ -1,0 +1,280 @@
+{
+  "level": "ai-4",
+  "week": 30,
+  "title": "Dataset shift in neural models",
+  "minutes": 90,
+  "goals": [
+    "Explain how a changed input mix can change overall accuracy",
+    "Calculate group and overall results with the correct denominators",
+    "Plan a shift investigation while preserving independent evaluation"
+  ],
+  "prerequisite": {
+    "prompt": "Can a high confidence score establish that a new input resembles the development data or that its prediction is correct?",
+    "answer": "No. Confidence is a model output, not a guarantee of familiarity or correctness. Check input conditions and independently verified outcomes rather than treating confidence as proof."
+  },
+  "vocabulary": [
+    [
+      "Dataset shift",
+      "A change in the distribution of inputs, labels or their relationship between settings"
+    ],
+    [
+      "Subgroup",
+      "A declared subset of examples sharing a relevant condition"
+    ],
+    [
+      "Group mix",
+      "The proportions of examples belonging to different groups"
+    ],
+    [
+      "Monitoring",
+      "Repeatedly checking recorded inputs, outputs and available outcomes against a reference"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Keep the model fixed while the setting changes",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A neural image classifier developed using mostly clear pictures may later receive mostly dim pictures. Its learned weights can stay unchanged while its overall results change. Dataset shift concerns changes in the data encountered, including inputs, label frequencies or the relationship between inputs and labels. A shift does not always reduce accuracy, and an accuracy change alone does not identify its cause."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use the fictional audit below. Clear and dim are disjoint groups defined before the audit, and every case belongs to exactly one group. The same model checkpoint, preprocessing and prediction threshold are used throughout. Counts are constructed teaching data, not results from a deployed model. Both cohorts have checked reference labels."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Cohort",
+            "Group",
+            "Cases",
+            "Correct"
+          ],
+          "rows": [
+            [
+              "Development audit",
+              "Clear",
+              "80",
+              "72"
+            ],
+            [
+              "Development audit",
+              "Dim",
+              "20",
+              "10"
+            ],
+            [
+              "New-use audit",
+              "Clear",
+              "20",
+              "18"
+            ],
+            [
+              "New-use audit",
+              "Dim",
+              "80",
+              "40"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Clear accuracy is 72 / 80 = 90 percent in development and 18 / 20 = 90 percent in new use. Dim accuracy is 10 / 20 = 50 percent and 40 / 80 = 50 percent. The observed group rates are unchanged, but the group proportions are different."
+        }
+      ]
+    },
+    {
+      "title": "Combine counts before computing a rate",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Development accuracy is (72 + 10) / (80 + 20) = 82 percent. New-use accuracy is (18 + 40) / (20 + 80) = 58 percent. The drop is 24 percentage points. Taking the unweighted mean of 90 and 50 gives 70 percent, which is not either cohort\u2019s overall accuracy because neither cohort has equal group sizes."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "def accuracy(groups):\n    if not groups:\n        raise ValueError(\"Need at least one group\")\n    total = correct = 0\n    for n, k in groups:\n        if n <= 0 or not 0 <= k <= n:\n            raise ValueError(\"Invalid group counts\")\n        total += n\n        correct += k\n    return correct / total\n\ndevelopment = [(80, 72), (20, 10)]\nnew_use = [(20, 18), (80, 40)]\nold = accuracy(development)\nnew = accuracy(new_use)\nprint(round(100 * old, 1))  # 82.0\nprint(round(100 * new, 1))  # 58.0\nprint(round(100 * (old - new), 1))  # 24.0"
+        },
+        {
+          "type": "paragraph",
+          "text": "Each pair is (cases, correct), and the function assumes integer counts for non-overlapping groups. It rejects empty inputs, groups with no cases and impossible correct counts. A group with no observed cases has an undefined empirical accuracy, not zero accuracy. Do not count the same example in two groups when forming an overall total."
+        },
+        {
+          "type": "paragraph",
+          "text": "Equivalently, weight each group accuracy by its share of cases: development is 0.80 times 0.90 + 0.20 times 0.50 = 0.82; new use is 0.20 times 0.90 + 0.80 times 0.50 = 0.58."
+        }
+      ]
+    },
+    {
+      "title": "Read the mix and the errors together",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "The same group rates meet a different mix",
+          "columns": [
+            "Group",
+            "Development share",
+            "New-use share"
+          ],
+          "rows": [
+            [
+              "Clear, 90% correct",
+              "80 of 100",
+              "20 of 100"
+            ],
+            [
+              "Dim, 50% correct",
+              "20 of 100",
+              "80 of 100"
+            ]
+          ],
+          "caption": "The weaker group becomes more common. Overall mistakes rise from 18 of 100 to 42 of 100 without any change in these observed within-group accuracy rates."
+        },
+        {
+          "type": "paragraph",
+          "text": "The arithmetic explains this constructed aggregate difference. It does not prove that dim lighting caused each real error or that these group rates will stay fixed in future samples. Report group counts and uncertainty about generalisation. Review specific errors and reference labels as in Week 29."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "If a new cohort has 50 clear and 50 dim cases, and exactly 90 percent and 50 percent are correct respectively, how many correct cases and what overall accuracy result? State the assumption behind this calculation.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Investigate before changing the network",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Start with model and input-pipeline version checks. A changed resize operation, channel order or unit conversion is an implementation change, not evidence that the input population itself shifted. Compare image conditions, missing values, source groups and label definitions. A neural network may have learned a shortcut tied to a background or capture condition; that is a hypothesis to test, not a conclusion from a histogram."
+        },
+        {
+          "type": "paragraph",
+          "text": "Input monitoring without new reference labels can reveal a changed group mix. It cannot calculate current accuracy or prove that the relationship between inputs and labels stayed the same. Conversely, stable input summaries can miss a changed labelling policy. Obtain a representative, correctly labelled audit sample and document unresolved label quality."
+        },
+        {
+          "type": "paragraph",
+          "text": "For a controlled lighting study, keep scene identity and the label fixed while varying lighting. Keep related images together in one split. If new data guide retraining or threshold choices, they are development data; reserve separate source groups or a later appropriate time period for final evaluation. More data alone do not guarantee that a shortcut is removed."
+        }
+      ]
+    },
+    {
+      "title": "Evaluate a response under the new conditions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Possible responses include fixing a confirmed pipeline bug, gathering missing training coverage, changing a representation or routing some cases for review. Choose a response based on evidence. Compare the original and revised model on identical reserved cases, report both group and overall results, and measure review workload if a review policy is used. Preserve the original checkpoint for comparison."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A team sees more dim images but has no new reference labels. It announces accuracy has fallen, retrains, and claims success using the same cases that guided its changes. Identify what is known, what is missing and how to repair the evaluation.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Record the reference period, group definitions, model and pipeline versions, counts, available labels, decisions and follow-up outcomes. Avoid silently replacing the baseline or the evaluation set. Next week measures efficiency and resource use alongside model quality."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Audit the two cohorts",
+      "prompt": "From the table, calculate clear and dim accuracy in each cohort and the clear/dim proportions. Which observed quantities change, and which remain the same?",
+      "answer": "Teacher explanation: Clear accuracy is 90 percent in both cohorts; dim accuracy is 50 percent in both. Development has 80 percent clear and 20 percent dim; new use has 20 percent clear and 80 percent dim. The mix changes while observed group rates remain the same.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Use the right denominator",
+      "prompt": "Calculate overall correct counts, accuracy and errors in both cohorts, plus the percentage-point drop. Explain why averaging 90 percent and 50 percent without weights gives the wrong overall result here.",
+      "answer": "Teacher explanation: Development has 82 correct and 18 errors out of 100, or 82 percent accuracy. New use has 58 correct and 42 errors out of 100, or 58 percent. The drop is 24 percentage points. An unweighted mean gives 70 percent and ignores the unequal group sizes.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Separate an alert from an outcome",
+      "prompt": "New-use monitoring shows more dim images but reference labels have not arrived. What can you report now, what can you not calculate, and what checks should precede blaming the neural network?",
+      "answer": "Teacher explanation: Report the observed change in group proportions with counts and period. Current accuracy and error patterns need verified outcomes. Check checkpoint and preprocessing versions, group definitions, input quality and label policy; collect a representative labelled audit sample before concluding how performance changed.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Analyse a new mixture independently",
+      "prompt": "A separate audit has development groups P: 60 cases, 48 correct and Q: 40 cases, 20 correct. New-use groups are P: 20 cases, 16 correct and Q: 80 cases, 40 correct. Compute each group rate, both overall accuracies, and the percentage-point change. Under the same group rates, what accuracy would equal-sized P and Q groups have?",
+      "answer": "Teacher explanation: P is 80 percent correct and Q is 50 percent correct in both cohorts. Development accuracy is 68 of 100, or 68 percent; new-use accuracy is 56 of 100, or 56 percent. The drop is 12 percentage points. Equal-sized groups at those rates give 65 percent accuracy.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Protect the comparison",
+      "prompt": "A team retrains using new-use errors, then evaluates on those same images and their brightened copies. Explain why the score is not independent evidence and propose a comparison that includes the original model.",
+      "answer": "Teacher explanation: The evaluated cases influenced training, and transformed copies share source content. Keep related images in one split and reserve untouched source groups or an appropriate later period. Evaluate original and revised models on identical reserved examples, with checked labels, group counts and rates, overall accuracy, and documented preprocessing.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. Work from counts before percentages and keep the frozen model separate from the changing sample mix. The exact equal group rates are constructed for arithmetic; they do not establish a population law. A monitoring alert should lead to evidence gathering rather than an automatic causal claim or retraining decision.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve Week 29\u2019s warning that confident outputs can be wrong on unfamiliar inputs."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read the cohort table and complete W1. Mark fixed checkpoint and pipeline versus changed mix."
+      ],
+      [
+        "18 to 32 minutes",
+        "Compute totals and W2. Compare the weighted result with the tempting unweighted average."
+      ],
+      [
+        "32 to 45 minutes",
+        "Trace the optional count function and the visual; explain why group sizes affect overall accuracy."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete the guided balanced cohort and name the fixed-rate assumption."
+      ],
+      [
+        "8 to 20 minutes",
+        "Complete W3 and discuss missing labels, pipeline changes and possible learned shortcuts."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, requiring counts, group rates, both totals and percentage points."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit response to protect independent evaluation. Give feedback, then a fresh retry."
+      ]
+    ],
+    "guidedAnswer": "Guided: 45 clear plus 25 dim cases are correct, giving 70 of 100 or 70 percent. This assumes exactly the stated group rates hold in that cohort. Exit: the mix change is observed, but accuracy is unknown without checked labels. Gather a labelled audit and check model/pipeline versions. Cases used to choose or fit a change cannot also provide independent final evidence. Reserve new appropriate cases and compare original and revised models on the same cases with group and overall results.",
+    "misconceptions": [
+      [
+        "Average the percentages regardless of group sizes",
+        "Overall accuracy is total correct divided by total cases; group accuracies need weights proportional to group size."
+      ],
+      [
+        "A shift alert proves a loss of accuracy",
+        "Input changes may help, hurt or leave accuracy unchanged; verified outcomes are needed to measure performance."
+      ],
+      [
+        "An unchanged input summary proves nothing changed",
+        "A summary can miss relevant differences, and the input-label relationship or labelling policy can change without an obvious input shift."
+      ]
+    ],
+    "assessment": "W4 requires group rates 80 and 50 percent, overall accuracies 68 and 56 percent, a 12-percentage-point drop, and equal-group accuracy 65 percent. Fresh retry: development P has 75 cases with 60 correct; Q has 25 with 10 correct. New use P has 25 with 20 correct; Q has 75 with 30 correct. Group rates are 80 and 40 percent in both. Overall accuracy changes from 70 to 50 percent, a 20-percentage-point drop. Equal-sized groups at those rates give 60 percent.",
+    "support": "Provide separate columns for cases, correct, errors and group share. Use 100 counters or a drawn 100-cell grid to change the mix while keeping group rates fixed. Extension: with clear share s and fixed rates 0.90 and 0.50, overall accuracy is 0.50 + 0.40*s. Test s = 0, 0.5 and 1, and explain why observed data need not keep those rates fixed.",
+    "next": "Week 31 measures efficiency and resource use while keeping task quality, hardware and comparison conditions explicit."
+  }
+}

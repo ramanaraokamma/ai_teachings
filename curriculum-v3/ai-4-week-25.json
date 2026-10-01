@@ -1,0 +1,276 @@
+{
+  "level": "ai-4",
+  "week": 25,
+  "title": "Sequence representations",
+  "minutes": 90,
+  "goals": [
+    "Encode an ordered sequence with an explicit vocabulary",
+    "Use padding and a mask without inventing real events",
+    "Identify information lost by counts unknown symbols and truncation"
+  ],
+  "prerequisite": {
+    "prompt": "Why can two different image regions have the same pooled maximum?",
+    "answer": "Pooling discards detail. A maximum can preserve the largest value while losing its location and the other values; identical summaries do not imply identical inputs."
+  },
+  "vocabulary": [
+    [
+      "Sequence",
+      "An ordered list of elements in which positions can matter"
+    ],
+    [
+      "Token ID",
+      "A numerical identifier assigned to a symbol by a vocabulary"
+    ],
+    [
+      "Padding",
+      "Placeholder positions added to make stored sequences the same length"
+    ],
+    [
+      "Mask",
+      "A list marking which stored positions are real inputs and which are placeholders"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Keep the event order",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Use fictional robot event logs whose symbols are GO, TURN and STOP. The task asks whether the final real event is STOP. This is a representation exercise, not a claim that an event log proves a robot is safe. GO then STOP and STOP then GO contain the same symbols but have different final events."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Log",
+            "Counts in GO TURN STOP order",
+            "Final event",
+            "Task answer"
+          ],
+          "rows": [
+            [
+              "GO STOP",
+              "[1, 0, 1]",
+              "STOP",
+              "Yes"
+            ],
+            [
+              "STOP GO",
+              "[1, 0, 1]",
+              "GO",
+              "No"
+            ],
+            [
+              "GO TURN STOP",
+              "[1, 1, 1]",
+              "STOP",
+              "Yes"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A count vector discards order, so no deterministic rule using only the first two count vectors can distinguish their answers. A sequence of IDs preserves order if we retain each position. Declare the vocabulary: PAD = 0, UNK = 1, GO = 2, TURN = 3 and STOP = 4. PAD is reserved for added storage positions; UNK represents a real but unrecognised symbol."
+        },
+        {
+          "type": "paragraph",
+          "text": "IDs are names, not measured amounts. STOP having ID 4 does not make it twice as much as GO with ID 2. Changing the vocabulary requires changing every consumer consistently. Do not interpret numerical distance between IDs as semantic similarity."
+        }
+      ]
+    },
+    {
+      "title": "Encode without silently dropping events",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Store each log in four positions, padding on the right. A mask value 1 marks a real position and 0 marks padding. The encoder rejects empty logs, logs longer than four, and literal reserved markers. Other unrecognised symbols become UNK and still receive mask 1."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "VOCAB = {\"GO\": 2, \"TURN\": 3, \"STOP\": 4}\n\ndef encode(events):\n    if not 1 <= len(events) <= 4:\n        raise ValueError(\"Need one to four real events\")\n    if any(e in (\"PAD\", \"UNK\") for e in events):\n        raise ValueError(\"Reserved markers are not events\")\n    ids = [VOCAB.get(e, 1) for e in events]\n    n = len(ids)\n    return ids + [0] * (4 - n), [1] * n + [0] * (4 - n)\n\nassert encode([\"GO\", \"STOP\"]) == ([2, 4, 0, 0], [1, 1, 0, 0])\nassert encode([\"WAIT\", \"STOP\"]) == ([1, 4, 0, 0], [1, 1, 0, 0])\nassert encode([\"STOP\", \"GO\"]) == ([4, 2, 0, 0], [1, 1, 0, 0])"
+        },
+        {
+          "type": "paragraph",
+          "text": "The code assumes a list of symbol strings and uses exact spelling. It does not fit a vocabulary from data. If a future project fits vocabulary choices or frequency cutoffs, derive those choices from training data and apply the saved encoding consistently to validation and final cases."
+        }
+      ]
+    },
+    {
+      "title": "Read the mask before the final position",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "A padded log still has two real events",
+          "columns": [
+            "Stored position",
+            "Token ID",
+            "Mask"
+          ],
+          "rows": [
+            [
+              "0",
+              "2 meaning GO",
+              "1 real"
+            ],
+            [
+              "1",
+              "4 meaning STOP",
+              "1 real"
+            ],
+            [
+              "2",
+              "0 meaning PAD",
+              "0 placeholder"
+            ],
+            [
+              "3",
+              "0 meaning PAD",
+              "0 placeholder"
+            ]
+          ],
+          "caption": "The final stored slot is padding. For this right-padded contiguous mask, the real length is the mask sum, and the final real event is at length minus one. A different masking layout would need a different indexing rule."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Encode TURN STOP, give its mask and real length, then identify the final real position and its ID. Why would reading stored position 3 give the wrong event?",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Use masks in the actual computation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A mask must affect a calculation to protect it from padding. Suppose real sensor values are [2, 4], stored as [2, 4, 0, 0] with mask [1, 1, 0, 0]. The masked mean is (2 + 4) / 2 = 3. Averaging all four slots gives 1.5. Unlike arbitrary token IDs, these sensor values are measurements for which a mean is meaningful."
+        },
+        {
+          "type": "paragraph",
+          "text": "Measured zero must remain real: values [0, 4, 0, 0] with mask [1, 1, 0, 0] have mean 2. Removing every zero would incorrectly give 4. The mask distinguishes a measured zero from a storage placeholder. An all-zero mask has no real values; reject it or follow an explicitly defined empty-input policy instead of dividing by zero."
+        },
+        {
+          "type": "paragraph",
+          "text": "Storing ordered IDs makes order available but does not guarantee a later model uses it. A computation that sums token counts or averages position-independent vectors can lose order again. Trace what the whole procedure reads, not just what the input format could preserve."
+        }
+      ]
+    },
+    {
+      "title": "Make information loss explicit",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "WAIT STOP and PAUSE STOP both become [1, 4, 0, 0] with the same mask. UNK retains a real position but loses the identity of the unrecognised symbol. The final-event task can still answer Yes for both because the last real ID is STOP. A final real UNK would require an unknown result or another documented policy when the intended event cannot be determined."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A log GO TURN GO TURN STOP is cut to its first four events before encoding. What happens to the final-event answer? Explain why the lesson encoder rejects the original log instead of silently truncating it.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "The full log ends in STOP, while the retained prefix ends in TURN. Truncation changes the evidence needed for this task. Save the original length and any truncation policy in a real experiment, and test the consequences. Next week introduces embeddings while preserving the distinction between identifiers and learned vectors."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Encode and recover the final event",
+      "prompt": "Encode GO TURN STOP using the lesson vocabulary and four positions. Give its mask, real length and final real event.",
+      "answer": "Teacher explanation: IDs are [2, 3, 4, 0], mask [1, 1, 1, 0], real length 3 and final real event STOP at position 2.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Expose an order collision",
+      "prompt": "Give two logs made of exactly GO, TURN and STOP once each that have equal count vectors but different answers to whether the final event is STOP.",
+      "answer": "Teacher explanation: For example GO TURN STOP and STOP TURN GO both have count vector [1, 1, 1]. The first answer is Yes and the second No. Counts alone cannot distinguish them.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Separate unknown from padding",
+      "prompt": "Encode WAIT GO. Which positions are real? Compare it with PAUSE GO, and state what information the encoding loses.",
+      "answer": "Teacher explanation: Both encode as [1, 2, 0, 0] with mask [1, 1, 0, 0]. Positions 0 and 1 are real. UNK at position 0 loses whether the symbol was WAIT or PAUSE; padding is only at positions 2 and 3.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Apply a fresh schema independently",
+      "prompt": "Use PAD = 0, UNK = 1, OPEN = 2, CLOSE = 3, CHECK = 4 and five stored positions. Encode OPEN CHECK CLOSE and give its mask and final real position. Separately, sensor values [0, 6, 3, 0, 0] have that same mask. Calculate their masked mean and the incorrect mean over all five slots.",
+      "answer": "Teacher explanation: IDs [2, 4, 3, 0, 0], mask [1, 1, 1, 0, 0]; final real position 2 contains CLOSE. Masked sensor mean is (0 + 6 + 3) / 3 = 3. Unmasked mean is 9 / 5 = 1.8. The measured zero must count in the denominator.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Audit length and empty input",
+      "prompt": "The encoder receives five events ending in STOP, then an empty log. What should it do under the lesson contract? Why should a program not simply crop the first and assume a final event for the second?",
+      "answer": "Teacher explanation: It rejects both: one exceeds four real events and the other has none. Cropping can remove the final event and change the task answer. An empty log has no final real position; the program needs an explicit policy rather than an invented event.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. Arrange event cards physically before using IDs. Keep token identifiers separate from the sensor measurements used for meaningful mean calculations. The encoder is a fixed classroom schema, not a learned language model. All indexing is zero-based and all masks in the examples are contiguous right-padding masks.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve representation collisions and compare GO STOP with STOP GO."
+      ],
+      [
+        "7 to 18 minutes",
+        "Declare the vocabulary and task, then complete W1 and W2."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace the encoder, including a real unknown event and its mask."
+      ],
+      [
+        "32 to 45 minutes",
+        "Use W3 to distinguish lost unknown identity from artificial padding."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete the guided final-position calculation and compare stored versus real length."
+      ],
+      [
+        "8 to 20 minutes",
+        "Calculate masked sensor means, including a measured zero, and explain the empty-mask boundary."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, checking the new vocabulary and five-position layout."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit response to audit truncation, then administer the fresh retry."
+      ]
+    ],
+    "guidedAnswer": "Guided: TURN STOP becomes IDs [3, 4, 0, 0] and mask [1, 1, 0, 0]. Length is 2, so final real position is 1 with ID 4, STOP. Position 3 is PAD. Exit: the full five-event log answers Yes, but its first four events end in TURN and answer No. Rejection makes the unsupported length visible and avoids silently changing the question.",
+    "misconceptions": [
+      [
+        "Larger token IDs mean more of a concept",
+        "IDs identify symbols; their arithmetic sizes have no declared semantic meaning."
+      ],
+      [
+        "Zero always means missing data",
+        "A measured zero can be real; the mask determines which positions contribute."
+      ],
+      [
+        "A mask automatically fixes every model computation",
+        "The relevant operation must actually use the mask, and later aggregation can still discard order."
+      ]
+    ],
+    "assessment": "W4 requires IDs [2, 4, 3, 0, 0], mask [1, 1, 1, 0, 0], final index 2, masked mean 3 and unmasked mean 1.8. Fresh retry: use the same five-position vocabulary for CHECK OPEN. IDs are [4, 2, 0, 0, 0], mask [1, 1, 0, 0, 0], final index 1 is OPEN. Sensor values [8, 0, 0, 0, 0] with that mask have mean 4, not 8 or 1.6.",
+    "support": "Provide a ledger with position, original symbol, ID and mask. Use separate coloured or labelled cards for real unknowns and placeholders without relying on colour alone. Extension: enumerate all logs of length one through four over GO, TURN and STOP, verify encode-and-decode recovery, and find count-vector collisions with different final-event answers.",
+    "next": "Week 26 explores embeddings and neighbourhoods, including why a vector representation is different from an arbitrary token ID."
+  }
+}

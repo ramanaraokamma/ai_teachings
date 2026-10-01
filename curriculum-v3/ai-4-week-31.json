@@ -1,0 +1,275 @@
+{
+  "level": "ai-4",
+  "week": 31,
+  "title": "Efficiency and resource measurement",
+  "minutes": 90,
+  "goals": [
+    "Calculate throughput and amortised time per example from repeated timings",
+    "Count dense-network parameters and distinguish storage from peak memory",
+    "Compare resource use under fixed quality and measurement conditions"
+  ],
+  "prerequisite": {
+    "prompt": "Why should two models be evaluated on the same examples and subgroup mix before comparing their accuracy and speed?",
+    "answer": "Different examples or group proportions can change accuracy and workload. Shared cases and declared conditions help isolate model differences rather than differences in the evaluation sample."
+  },
+  "vocabulary": [
+    [
+      "Latency",
+      "Elapsed time for one request from a declared start to completed response"
+    ],
+    [
+      "Throughput",
+      "The number of completed examples processed per unit time"
+    ],
+    [
+      "Parameter storage",
+      "The bytes used to store model weights and biases at a declared precision"
+    ],
+    [
+      "Peak memory",
+      "The largest amount of memory in use during a measured operation"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Define the measurement before comparing models",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A neural model can be faster yet fail the task\u2019s accuracy requirement. Training cost and prediction cost are different: training updates parameters, while inference uses the fitted model. Compare quality and resources together under a declared test, rather than calling a model efficient from one small number."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use these invented classroom timings for models A and B. Each timed pass processes the same 100 preprocessed examples sequentially, one at a time, on the same device and precision. Start before the first prediction and stop after the final prediction completes. Loading and preprocessing are excluded for both. One untimed warm-up pass precedes three timed passes; the warm-up work must still be reported."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Measurement",
+            "Model A",
+            "Model B"
+          ],
+          "rows": [
+            [
+              "Pass 1 seconds",
+              "2.0",
+              "1.2"
+            ],
+            [
+              "Pass 2 seconds",
+              "2.2",
+              "1.1"
+            ],
+            [
+              "Pass 3 seconds",
+              "1.8",
+              "1.3"
+            ],
+            [
+              "Correct on 100 validation cases",
+              "92",
+              "90"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The validation cases are the same for both models and are scored once each; repeating timing passes does not create 300 independent quality examples. No actual benchmark was run to produce this table."
+        }
+      ]
+    },
+    {
+      "title": "Calculate rates with units",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Sort each set of three times and take the middle value. A\u2019s median is 2.0 seconds per 100 examples; B\u2019s is 1.2 seconds. Dividing by 100 gives amortised times of 0.020 and 0.012 seconds per example, or 20 and 12 milliseconds. Median-pass throughput is 100 / 2.0 = 50 examples per second for A and about 83.33 for B."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "from math import isfinite\nfrom statistics import median\n\ndef timing_summary(seconds, count):\n    if count <= 0 or not seconds:\n        raise ValueError(\"Need examples and timed passes\")\n    if any(not isfinite(t) or t <= 0 for t in seconds):\n        raise ValueError(\"Times must be finite and positive\")\n    middle = median(seconds)\n    ms_per_example = 1000 * middle / count\n    examples_per_second = count / middle\n    return middle, ms_per_example, examples_per_second\n\nprint(timing_summary([2.0, 2.2, 1.8], 100))\nprint(timing_summary([1.2, 1.1, 1.3], 100))"
+        },
+        {
+          "type": "paragraph",
+          "text": "The code assumes a positive integer example count and numeric times. A outputs (2.0, 20.0, 50.0); B outputs approximately (1.2, 12.0, 83.33). Retain full precision until display. The time reduction is (20 - 12) / 20 = 40 percent, while throughput rises by about 66.67 percent. These are different denominators."
+        },
+        {
+          "type": "paragraph",
+          "text": "Amortised time does not reveal the slowest request or a latency percentile. In a batched or concurrent workload, total time divided by count is not an individual request\u2019s waiting time. Record per-request timings if the requirement concerns latency; keep batch size and concurrency explicit."
+        }
+      ]
+    },
+    {
+      "title": "Apply a quality requirement first",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "A faster result can miss the requirement",
+          "columns": [
+            "Model",
+            "Quality requirement",
+            "Time requirement"
+          ],
+          "rows": [
+            [
+              "A: 92 of 100",
+              "At least 91 correct: pass",
+              "At most 25 ms average: pass"
+            ],
+            [
+              "B: 90 of 100",
+              "At least 91 correct: fail",
+              "At most 25 ms average: pass"
+            ]
+          ],
+          "caption": "For this declared validation rule, only A meets both requirements. The time requirement uses amortised time from the median pass, not a per-request latency guarantee."
+        },
+        {
+          "type": "paragraph",
+          "text": "The requirements were set before inspecting these results. B is faster under this measurement but is not eligible under the quality rule. One hundred validation cases do not establish future accuracy; reserve independent final evaluation after choosing a model, and inspect relevant subgroup results."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "If the quality requirement had instead been set in advance to at least 90 correct, with the same time limit, which models would qualify? Which would you choose if lower measured amortised time is the declared tie-breaker?",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Count what parameters can tell you",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A fully connected layer with m inputs and n outputs has m times n weights and n biases, assuming every output has one bias. A network with dimensions 4 to 3 to 2 has (4 times 3 + 3) + (3 times 2 + 2) = 23 parameters. At four bytes per parameter, its raw parameter payload is 92 bytes."
+        },
+        {
+          "type": "paragraph",
+          "text": "That is not the saved file size or peak runtime memory. A file can contain metadata, and inference also needs activations and buffers. Training may additionally store gradients and optimiser state. Record whether a memory measurement refers to the model, the process, an accelerator or the whole device. Parameter count alone does not establish speed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Runtime alone does not establish energy use or carbon emissions either. Those require additional measurements and declared assumptions, such as power over time and the electricity source. Report what you measured rather than converting fewer parameters into an unsupported energy claim."
+        }
+      ]
+    },
+    {
+      "title": "Make the benchmark repeatable",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Record model and code versions, input size, device, precision, batch size, concurrency, warm-up, timed boundary, repetitions and raw results. Alternate model order where practical, check background load and wait for computation to finish before stopping a timer; queued accelerator work may finish after the host call returns. Report cold-start behaviour separately when it matters."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A report calls B \u201cbest and greener\u201d because it is faster, compares B\u2019s batched device run with A\u2019s unbatched run on a different device, and omits B\u2019s quality result. Name the unsupported claims and design a fair comparison.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep training and inference costs separate, and include unsuccessful trials in the total experiment budget. Changes chosen using validation need untouched final evaluation. Next week assembles a network experiment record so another person can understand and repeat the comparison."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Summarise repeated timings",
+      "prompt": "For A and B, calculate median pass time, amortised milliseconds per example and median-pass throughput. State the measured boundary and one latency claim these numbers cannot support.",
+      "answer": "Teacher explanation: A: 2.0 seconds, 20 ms per example, 50 examples per second. B: 1.2 seconds, 12 ms per example, about 83.33 examples per second. The boundary covers 100 completed sequential predictions on preprocessed inputs, excluding loading and preprocessing. It does not establish worst-case or percentile request latency.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Compare under requirements",
+      "prompt": "With at least 91 correct out of 100 and at most 25 ms amortised time required, which model qualifies? Calculate B\u2019s time reduction relative to A and explain why the percentage throughput increase differs.",
+      "answer": "Teacher explanation: Only A qualifies; B misses the quality requirement. B reduces time by 8 / 20 = 40 percent. Throughput rises from 50 to about 83.33, an increase of about 66.67 percent relative to 50. Time and throughput use different baseline denominators and are reciprocal for this fixed workload.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Separate storage and memory",
+      "prompt": "Count weights, biases and total parameters in the 4 to 3 to 2 network. Calculate raw parameter bytes at four bytes each. Explain why this cannot be reported as peak training memory or an energy measurement.",
+      "answer": "Teacher explanation: There are 12 + 6 = 18 weights and 3 + 2 = 5 biases, totalling 23 parameters and 92 bytes. Activations, buffers, gradients, optimiser state and overhead can require additional memory. Energy needs power-and-time evidence; parameter bytes alone provide neither peak training memory nor energy.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Evaluate a new case independently",
+      "prompt": "For 50 shared validation cases, P has times 0.6, 0.5, 0.4 seconds and 47 correct; Q has 0.3, 0.4, 0.5 seconds and 45 correct. Require at least 92 percent accuracy and at most 12 ms amortised time. Give median times, amortised times, throughput, accuracy and eligible models. A separate dense network has dimensions 3 to 2 to 1 with one bias per output: find its parameter count and raw bytes at four bytes each.",
+      "answer": "Teacher explanation: P: median 0.5 s, 10 ms, 100 examples/s, accuracy 47 / 50 = 94 percent. Q: median 0.4 s, 8 ms, 125 examples/s, accuracy 45 / 50 = 90 percent. Only P qualifies. The separate network has (3*2 + 2) + (2*1 + 1) = 11 parameters, or 44 raw bytes.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Repair an unfair benchmark",
+      "prompt": "A runs on one device with batch size 1; B runs on another with batch size 32. Only B\u2019s fastest trial and the winning training run are reported. Explain how to compare and report the results fairly.",
+      "answer": "Teacher explanation: Control device, precision, workload, batch size, concurrency and timed boundary for a model-only comparison, or explicitly compare whole systems without attributing the result to the model alone. Use the same quality cases, report repetitions and raw timings rather than one best trial, and count all training trials and warm-up work in their appropriate budgets.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. The timings are invented for arithmetic and do not describe a particular device or trained model. Keep units and denominators visible. Separate a validation choice from a general performance claim, and separate raw parameter payload from file size, runtime memory and energy.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve why shared examples and group proportions matter for comparisons."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read the timing protocol and table. Label training, warm-up and inference work separately."
+      ],
+      [
+        "18 to 32 minutes",
+        "Complete W1 and trace the timing code, including milliseconds and examples per second."
+      ],
+      [
+        "32 to 45 minutes",
+        "Use W2 and the visual to apply the quality and time requirements before choosing a model."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete the guided alternative requirement without retroactively changing the original rule."
+      ],
+      [
+        "8 to 20 minutes",
+        "Count weights and biases and complete W3; discuss what memory and energy require beyond counts."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, requiring units, accuracy fractions, eligibility and parameter bytes."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit response to repair benchmark claims. Give feedback before the fresh retry."
+      ]
+    ],
+    "guidedAnswer": "Guided: under the alternative rule set in advance, A and B both qualify. B wins the declared lower-amortised-time tie-breaker, 12 versus 20 ms. Exit: best depends on requirements and B fails the original quality rule; greener is unsupported without energy evidence. Use identical workload and declared conditions or label a whole-system comparison, measure completed work, repeat timings, retain raw results and quality outcomes, and reserve final evaluation after selection.",
+    "misconceptions": [
+      [
+        "Fewer parameters always means faster",
+        "Hardware, operations, memory access, precision and implementation affect runtime; measure the declared workload."
+      ],
+      [
+        "Total time divided by count is every request\u2019s latency",
+        "It is an amortised quantity. Individual requests can vary, and batching or concurrency changes waiting time."
+      ],
+      [
+        "Only the winning run consumed resources",
+        "Unsuccessful trials and warm-up also consume resources; record them in the appropriate experiment budget."
+      ]
+    ],
+    "assessment": "W4 requires P: 0.5 s, 10 ms, 100/s, 94 percent; Q: 0.4 s, 8 ms, 125/s, 90 percent; only P eligible; 11 parameters and 44 bytes. Fresh retry: 40 shared cases, R times 0.8, 1.0, 0.6 seconds with 38 correct; S times 0.4, 0.6, 0.5 with 36 correct. Require 95 percent accuracy and at most 25 ms. R gives 0.8 s, 20 ms, 50/s and 95 percent; S gives 0.5 s, 12.5 ms, 80/s and 90 percent. Only R qualifies. A 2 to 3 to 1 dense network has 13 parameters and 52 bytes at four bytes each.",
+    "support": "Use a units ledger: seconds per pass, examples per pass, milliseconds per example and examples per second. Draw every dense connection and one bias per output. Extension: compare median-pass throughput with total examples divided by total elapsed time; explain why these can differ when pass durations vary. Neither alone measures a latency percentile.",
+    "next": "Week 32 documents a network experiment, preserving methods, data splits, versions, raw results, resource measurements and limitations."
+  }
+}

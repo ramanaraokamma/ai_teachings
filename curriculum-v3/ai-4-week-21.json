@@ -1,0 +1,277 @@
+{
+  "level": "ai-4",
+  "week": 21,
+  "title": "Convolution as a local operation",
+  "minutes": 90,
+  "goals": [
+    "Compute a local weighted sum at each valid image position",
+    "Explain shared weights and predict output dimensions",
+    "Check how stride boundaries and activation affect the result"
+  ],
+  "prerequisite": {
+    "prompt": "Why must an image schema record axis order as well as shape?",
+    "answer": "The same dimensions can describe different coordinate meanings. A correct computation must know which axis is row, column or channel."
+  },
+  "vocabulary": [
+    [
+      "Kernel",
+      "A small array of weights applied to a local input neighbourhood"
+    ],
+    [
+      "Feature map",
+      "The spatial array of outputs produced by applying a filter"
+    ],
+    [
+      "Stride",
+      "The distance between successive window starting positions"
+    ],
+    [
+      "Padding",
+      "Values added around an input boundary under a declared rule"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Reuse one local rule across an image",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Use a fictional single-channel image with rows [1, 2, 0], [0, 1, 3] and [2, 0, 1]. Coordinates are zero-based row then column. Our kernel has rows [1, -1] and [0, 1]. At each position, multiply matching entries of a 2 by 2 window and the kernel, then add the four products. Use bias 0, stride 1 and no padding."
+        },
+        {
+          "type": "paragraph",
+          "text": "At the top-left window, the sum is 1 times 1 plus 2 times -1 plus 0 times 0 plus 1 times 1 = 0. Slide the same kernel right, then down. Only use windows that fit entirely inside the image; this is the valid boundary rule."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Window start",
+            "Four products",
+            "Sum"
+          ],
+          "rows": [
+            [
+              "[0, 0]",
+              "1, -2, 0, 1",
+              "0"
+            ],
+            [
+              "[0, 1]",
+              "2, 0, 0, 3",
+              "5"
+            ],
+            [
+              "[1, 0]",
+              "0, -1, 0, 0",
+              "-1"
+            ],
+            [
+              "[1, 1]",
+              "1, -3, 0, 1",
+              "-1"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The feature map has rows [0, 5] and [-1, -1]. This neural-network convention keeps the kernel orientation fixed; mathematically it is cross-correlation. Mathematical convolution reverses the kernel along both spatial axes. We use the fixed-orientation convention throughout, so every hand calculation and program agrees."
+        }
+      ]
+    },
+    {
+      "title": "Trace all valid windows",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The following function assumes nonempty rectangular numeric arrays and a positive integer stride. It rejects a kernel larger than the image. It computes one input channel, one output map, zero bias and no padding; no activation is applied inside the function."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "def local_filter(image, kernel, stride=1):\n    h, w = len(image), len(image[0])\n    kh, kw = len(kernel), len(kernel[0])\n    if kh > h or kw > w:\n        raise ValueError(\"Kernel does not fit\")\n    out = []\n    for r in range(0, h - kh + 1, stride):\n        row = []\n        for c in range(0, w - kw + 1, stride):\n            value = sum(image[r+i][c+j] * kernel[i][j]\n                        for i in range(kh) for j in range(kw))\n            row.append(value)\n        out.append(row)\n    return out\n\nx = [[1, 2, 0], [0, 1, 3], [2, 0, 1]]\nk = [[1, -1], [0, 1]]\nassert local_filter(x, k) == [[0, 5], [-1, -1]]\nassert local_filter(x, k, 2) == [[0]]"
+        },
+        {
+          "type": "paragraph",
+          "text": "The kernel weights are reused at all four positions. There are four kernel parameters, not sixteen separate weights. If we add one shared bias for this output map, there are five parameters. The number of multiply operations grows with the number of windows even though the parameter count stays fixed."
+        }
+      ]
+    },
+    {
+      "title": "Separate the window from the output position",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "One shared kernel produces four local sums",
+          "columns": [
+            "Window start",
+            "Kernel rows",
+            "Output value"
+          ],
+          "rows": [
+            [
+              "Row 0 column 0",
+              "[1 -1] and [0 1]",
+              "0"
+            ],
+            [
+              "Row 0 column 1",
+              "[1 -1] and [0 1]",
+              "5"
+            ],
+            [
+              "Row 1 column 0",
+              "[1 -1] and [0 1]",
+              "-1"
+            ],
+            [
+              "Row 1 column 1",
+              "[1 -1] and [0 1]",
+              "-1"
+            ]
+          ],
+          "caption": "Read windows in row order. Each output summarizes one neighbourhood. With stride 1, adjacent windows overlap, but their output values occupy separate cells."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Change only input[0][0] from 1 to 4. Which valid windows include it? Compute the changed feature map and explain why the other three outputs stay the same.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "State the stride and boundary rule",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For no padding and a kernel that fits, output height is floor((H - Kh) / s) + 1 and width is floor((W - Kw) / s) + 1, where s is the positive integer stride. Floor means round down. Count allowed start positions before using the formula. With a 3 by 3 image, 2 by 2 kernel and stride 2, the only row and column start is 0, so the output is 1 by 1."
+        },
+        {
+          "type": "paragraph",
+          "text": "Padding changes which windows exist and what they contain. Adding one border of zeros on every side changes this 3 by 3 input to 5 by 5. At stride 1 with our 2 by 2 kernel, output shape becomes 4 by 4. Its top-left window is [[0, 0], [0, 1]] and its output is 1. Zero padding is a chosen boundary assumption, not a measured black region outside the picture."
+        },
+        {
+          "type": "paragraph",
+          "text": "If ReLU is applied after the unpadded sums, the feature map becomes [[0, 5], [0, 0]]. Negative responses are valid weighted sums before activation; they are not necessarily a software error. Keep raw sums available when debugging so ReLU does not hide a mistake."
+        }
+      ]
+    },
+    {
+      "title": "Limit claims about the filter",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "These kernel weights were chosen for arithmetic practice, not fitted from data. A response of 5 is neither a probability nor proof that an object was recognised. A trainable convolutional layer adjusts shared parameters using training examples. Additional channels require summing contributions across channels; that is beyond this single-channel calculation."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A teammate reports a 3 by 3 output for the unpadded lesson image and calls its largest number a probability. Identify the missing or incorrect assumptions and give the expected shape and meaning under our declared setup.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Sharing weights applies the same local rule at each allowed position. It does not guarantee that a whole image classifier ignores object location, especially when strides, boundaries or later layers change the result. Next week studies pooling and the spatial information it can discard."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Trace a local sum",
+      "prompt": "Use the lesson image and kernel at window start [0, 1]. List the window rows, four products and output before activation.",
+      "answer": "Teacher explanation: Window rows are [2, 0] and [1, 3]. Products are 2, 0, 0 and 3, giving output 5.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Separate parameters and operations",
+      "prompt": "How many shared kernel weights does the lesson use? How many products are computed over all four valid windows? What changes if one shared bias is added?",
+      "answer": "Teacher explanation: There are four shared weights and sixteen products across four windows. One shared bias raises the parameter count to five and adds the same bias once to each output.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Check stride and padding",
+      "prompt": "For the lesson image and kernel, give the output shape with no padding and stride 2. Then give the shape with one zero border on each side and stride 1, and calculate that padded map\u2019s top-left output.",
+      "answer": "Teacher explanation: Stride 2 without padding gives shape 1 by 1. The padded input is 5 by 5, giving output 4 by 4. Its top-left window [[0, 0], [0, 1]] gives output 1.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Filter a new image independently",
+      "prompt": "Use image rows [2, 1, 0], [1, 3, 2] and kernel rows [0, 1], [-1, 2]. Use no padding, stride 1 and bias 0. Give the output shape, both four-product sums and the feature map. Then add a shared bias of -5 and apply ReLU.",
+      "answer": "Teacher explanation: Shape is 1 by 2. First products are 0, 1, -1, 6, summing to 6. Second products are 0, 0, -3, 4, summing to 1. Map is [[6, 1]]. Bias gives [[1, -4]]; ReLU gives [[1, 0]].",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Test a convention error",
+      "prompt": "A program reverses both axes of the lesson kernel to [[1, 0], [-1, 1]]. Compute the top-left output. Does it agree with our declared convention? Explain what the test checks.",
+      "answer": "Teacher explanation: The top-left output becomes 1 + 0 + 0 + 1 = 2 instead of 0. It does not follow the declared fixed-orientation convention. The asymmetric kernel and known window expose a kernel-orientation mismatch.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. Prepare a 2 by 2 paper window and a labelled 3 by 3 grid. Keep kernel orientation fixed and distinguish raw sums, bias and ReLU. Explain that neural-network convolution commonly uses cross-correlation; the exercise explicitly declares this convention. Technical reference: https://docs.pytorch.org/docs/stable/generated/torch.nn.modules.conv.Conv2d.html . No library installation is needed.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve row and column axes, then label the input and fixed-orientation kernel."
+      ],
+      [
+        "7 to 18 minutes",
+        "Compute the four products at the top-left position and complete W1 at the next window."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace the remaining windows and run or hand-trace the optional code."
+      ],
+      [
+        "32 to 45 minutes",
+        "Use W2 to distinguish shared parameter count from repeated arithmetic work."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete the guided changed-pixel case and explain its local influence."
+      ],
+      [
+        "8 to 20 minutes",
+        "Count stride positions and padded windows, then complete W3."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, requiring separate raw, biased and activated maps."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit response to check conventions and claims, then administer the fresh retry."
+      ]
+    ],
+    "guidedAnswer": "Guided: only the window starting [0, 0] includes input[0][0]. Its weight is 1, so adding 3 changes that output from 0 to 3. The map becomes [[3, 5], [-1, -1]]. Exit: the declared unpadded stride-1 setup gives 2 by 2, not 3 by 3. A different padding or kernel setup would need documentation. Values are local weighted sums, not probabilities.",
+    "misconceptions": [
+      [
+        "Each window has its own set of learned weights",
+        "The same kernel parameters are reused at every position for this output map."
+      ],
+      [
+        "A negative feature-map value means the code failed",
+        "Signed weighted sums are valid; an activation may later change them."
+      ],
+      [
+        "A local response proves an object was recognised",
+        "The authored filter only computes a local sum; object recognition and probability claims require additional modelling and evidence."
+      ]
+    ],
+    "assessment": "W4 requires shape 1 by 2, raw outputs 6 and 1, biased outputs 1 and -4 and ReLU outputs 1 and 0. Fresh retry: image rows [1, 2, 4], [3, 0, 1]; kernel rows [1, 0], [-1, 1]. Products at the two starts are [1, 0, -3, 0] and [2, 0, 0, 1], giving [[-2, 3]]. Add shared bias 1 to get [[-1, 4]], then ReLU gives [[0, 4]].",
+    "support": "Provide a four-cell product ledger and move a paper window one position at a time. Use labelled coordinates rather than colour alone. Extension: compare a numerical implementation with an independent explicit four-term formula across rectangular inputs, and show how changing stride alters the sampled start positions.",
+    "next": "Week 22 explores pooling and spatial information, including distinct inputs that share a pooled output."
+  }
+}

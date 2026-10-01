@@ -1,0 +1,272 @@
+{
+  "level": "ai-4",
+  "week": 18,
+  "title": "Debugging shapes and gradients",
+  "minutes": 90,
+  "goals": [
+    "Check dimension contracts before computing a layer",
+    "Locate the first wrong value in a forward or gradient trace",
+    "Verify a repair with independent checks and limited claims"
+  ],
+  "prerequisite": {
+    "prompt": "Why does running the same code twice and getting the same answer not establish correctness?",
+    "answer": "A deterministic error can repeat perfectly. Independent expected values and checks of intermediate computations are needed."
+  },
+  "vocabulary": [
+    [
+      "Shape",
+      "The sizes of an array along its declared axes"
+    ],
+    [
+      "Contract",
+      "A stated condition that inputs and outputs must satisfy"
+    ],
+    [
+      "Partial gradient",
+      "The change rate of a scalar loss with respect to one parameter while others are fixed"
+    ],
+    [
+      "Regression check",
+      "A saved check rerun after a repair to detect the return of a defect"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Declare axes before multiplying",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For this lesson, a dense layer stores one output unit per weight-matrix row. If an input has two features and the layer has three units, W has three rows and two columns, b has length 3, and one input x has length 2. Compute z for each unit, then apply ReLU to each component."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use W rows [1, 0], [0, 1], [1, -1] and b = [0, 0, 1]. For x = [1, 2], the scores are [1, 2, 0] and the activations are [1, 2, 0]. A batch stores examples in rows: inputs [[1, 2], [3, 1]] have shape 2 by 2, and outputs have shape 2 by 3."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Object",
+            "Declared shape",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "One input x",
+              "Length 2",
+              "Two features"
+            ],
+            [
+              "Weights W",
+              "3 by 2",
+              "Three units each reading two features"
+            ],
+            [
+              "Bias b",
+              "Length 3",
+              "One bias per unit"
+            ],
+            [
+              "Batch output",
+              "2 by 3",
+              "Two examples each with three activations"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Other software may use a transposed weight convention. The key is to record and follow one contract. An array with the right number of values can still be wrong if features or axes are swapped."
+        }
+      ]
+    },
+    {
+      "title": "Reject incompatible inputs visibly",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Python zip stops when its shortest input ends. Without a length check, a missing feature can silently remove a contribution. Reject malformed dimensions before computing: do not pad, truncate or reshape a mismatched input just to make the calculation run."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "def dense_relu(x, weights, bias):\n    if not x or not weights:\n        raise ValueError(\"Need input features and units\")\n    if len(bias) != len(weights):\n        raise ValueError(\"One bias per unit required\")\n    if any(len(row) != len(x) for row in weights):\n        raise ValueError(\"Each unit needs one weight per feature\")\n    scores = [sum(w * value for w, value in zip(row, x)) + b\n              for row, b in zip(weights, bias)]\n    return scores, [max(0.0, z) for z in scores]\n\nweights = [[1, 0], [0, 1], [1, -1]]\nbias = [0, 0, 1]\nfor x in [[1, 2], [3, 1]]:\n    print(dense_relu(x, weights, bias))\n# ([1, 2, 0], [1, 2, 0])\n# ([3, 1, 3], [3, 1, 3])"
+        },
+        {
+          "type": "paragraph",
+          "text": "The function assumes finite numeric values; it checks dimensions, not every possible input fault. Evaluate the two batch rows independently and stack their outputs. Retain tests that reject a missing input feature, a short weight row and an incorrect bias count."
+        }
+      ]
+    },
+    {
+      "title": "Find the first broken contract",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Repair from the first disagreement",
+          "columns": [
+            "Trace stage for x [1 2]",
+            "Expected result",
+            "Submitted result"
+          ],
+          "rows": [
+            [
+              "Input and dimensions",
+              "x length 2 W 3 by 2 b length 3",
+              "Dimensions match"
+            ],
+            [
+              "Scores before ReLU",
+              "[1, 2, 0]",
+              "[1, 2, -1]"
+            ],
+            [
+              "Hidden activations",
+              "[1, 2, 0]",
+              "[1, 2, 0]"
+            ]
+          ],
+          "caption": "The submitted third score omits bias 1. ReLU hides the error for this input, so matching final activations are not enough. At x = [3, 1], the same omission changes the third activation from 3 to 2."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Trace x = [0, 2] with the correct layer. Then omit the third bias. Which scores differ, and why do the activation vectors still agree?",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Check gradient coordinates separately",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Use a separate scalar diagnostic model y = 2w + b, target 3, loss (y - 3) squared, and parameter order [w, b]. At [1, 0], prediction is 2, residual -1 and gradient [-4, -2]. A submitted gradient [-2, -4] has the correct length but swapped meanings."
+        },
+        {
+          "type": "paragraph",
+          "text": "With symmetric step 0.1, probe w while b stays 0: losses at w = 0.9 and 1.1 are 1.44 and 0.64. Their difference divided by 0.2 is -4. Probe b while w stays 1: losses at b = -0.1 and 0.1 are 1.21 and 0.81, giving -2. Use original parameters for both probes and compare by coordinate with a stated tolerance."
+        },
+        {
+          "type": "paragraph",
+          "text": "A gradient check must include the actual loss convention and any penalty. For ReLU, avoid probes crossing its corner at zero; a symmetric value there need not be a derivative. A passing numerical check at selected points is evidence about those points, not a proof for every input."
+        }
+      ]
+    },
+    {
+      "title": "Verify update direction and retain the repair",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "At [w, b] = [1, 0], use the verified gradient [-4, -2] and rate 0.05. Subtracting rate times gradient gives [1.2, 0.1], prediction 2.5 and loss 0.25. A sign bug that adds it gives [0.8, -0.1], prediction 1.5 and loss 2.25. Recompute loss after the complete update instead of trusting an intended direction."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A repair makes one final output match but leaves the third score wrong. Another repair makes loss decrease but has swapped gradient entries. Are either of these sufficient implementation checks? Describe the evidence needed.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Lower loss alone cannot prove a correct gradient or update; some wrong steps also improve loss. Retain shape rejections, hand-computed intermediate traces, numerical coordinate checks and update checks. Next week investigates the representations produced by hidden layers."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Reject a shape mismatch",
+      "prompt": "The layer expects W shape 3 by 2, b length 3 and x length 2. A submitted x has length 3. Should the last feature be silently ignored? State the failed contract and repair process.",
+      "answer": "Teacher explanation: No. Each weight row must have the same length as x. Confirm the intended feature schema, then supply a valid two-feature input or deliberately redesign and retrain the layer; do not silently discard a value.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Expose a hidden bias error",
+      "prompt": "Compute scores and activations for x = [3, 1] with the lesson layer, then omit the third bias. Identify the first discrepancy and the resulting activation error.",
+      "answer": "Teacher explanation: Correct scores and activations are [3, 1, 3]. Omitting the third bias produces [3, 1, 2]. The third score is the first discrepancy and now survives ReLU.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Check an update sign",
+      "prompt": "For the diagnostic model at [1, 0], gradient [-4, -2] and rate 0.05, calculate the correct new parameters and loss. Compare with adding the gradient step.",
+      "answer": "Teacher explanation: Correct subtraction gives [1.2, 0.1], prediction 2.5 and loss 0.25. Addition gives [0.8, -0.1], prediction 1.5 and loss 2.25, compared with starting loss 1.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Debug a new gradient independently",
+      "prompt": "Use y = 3a + c, target 2, loss (y - 2) squared, at [a, c] = [0, 1]. A program returns gradient [-2, -6] in order [a, c]. Use symmetric step 0.1 to check each coordinate, then update both with the corrected gradient and rate 0.05. Report new parameters and loss.",
+      "answer": "Teacher explanation: For a, losses at -0.1 and 0.1 are 1.69 and 0.49, giving -6. For c, losses at 0.9 and 1.1 are 1.21 and 0.81, giving -2. The entries were swapped. Correct update gives [0.3, 1.1], prediction 2 and loss 0.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Keep independent regression checks",
+      "prompt": "A program passes only the x = [1, 2] final-activation test. Propose one intermediate-value check, one malformed-input check and one additional input that exposes the bias omission.",
+      "answer": "Teacher explanation: Check scores [1, 2, 0] before ReLU; reject a wrong input length or bias count; test x = [3, 1], whose third activation must be 3. These checks address different defects rather than repeating the same final output.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. Start with an axis contract and a deliberately wrong intermediate value. Keep the dense-layer example separate from the scalar gradient diagnostic. The central assessment is locating the first error and preserving meaningful regression checks, not merely getting a program to execute.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the difference between repeated and independently checked results; label all axes."
+      ],
+      [
+        "7 to 18 minutes",
+        "Trace both batch examples and use W1 to reject a dimension mismatch."
+      ],
+      [
+        "18 to 32 minutes",
+        "Run or trace the guarded dense-layer function and test invalid dimensions."
+      ],
+      [
+        "32 to 45 minutes",
+        "Use the visual and W2 to show how ReLU can hide a bias omission on one input."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete the guided x = [0, 2] trace, comparing scores with activations."
+      ],
+      [
+        "8 to 20 minutes",
+        "Probe w and b separately in the scalar diagnostic, then complete W3."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently with four probe losses, ordered gradients and the corrected update."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit response to retain a regression checklist; administer the fresh retry."
+      ]
+    ],
+    "guidedAnswer": "Guided: correct scores [0, 2, -1], activations [0, 2, 0]. With the third bias omitted, scores become [0, 2, -2], but activations stay [0, 2, 0]. Exit: neither check is sufficient. Verify the intermediate score, coordinate meanings and expected update, use multiple independent inputs and retain malformed-dimension checks.",
+    "misconceptions": [
+      [
+        "Matching output shape guarantees the computation",
+        "Correct dimensions can hide swapped features, missing biases or wrong axis meanings."
+      ],
+      [
+        "Matching final activations proves all scores",
+        "ReLU can map different negative scores to the same zero."
+      ],
+      [
+        "Decreasing loss proves a correct gradient",
+        "An incorrect direction can still improve one case; compare coordinate probes and exact update expectations."
+      ]
+    ],
+    "assessment": "W4 requires partials [-6, -2], new parameters [0.3, 1.1] and loss 0. Fresh retry: y = 2p + q, target 4, at [1, 1]. With step 0.1, p losses 1.44 and 0.64 give -4; q losses 1.21 and 0.81 give -2. Rate 0.1 gives [1.4, 1.2], prediction 4 and loss 0. Require parameter ordering to remain explicit.",
+    "support": "Provide labelled columns for inputs, scores, activations and parameter coordinates; allow calculators. Extension: test several positive and negative inputs against an independent explicit formula and explain why a test at a ReLU corner needs different reasoning from a smooth gradient check.",
+    "next": "Week 19 explores learned representations and the distinctions hidden activations preserve."
+  }
+}

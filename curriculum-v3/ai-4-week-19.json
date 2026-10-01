@@ -1,0 +1,267 @@
+{
+  "level": "ai-4",
+  "week": 19,
+  "title": "Learned representations",
+  "minutes": 90,
+  "goals": [
+    "Trace an input through a hidden representation and a decision rule",
+    "Identify distinctions that a representation preserves or loses",
+    "Separate a useful constructed feature from evidence of successful learning"
+  ],
+  "prerequisite": {
+    "prompt": "Why should a debugging trace inspect scores before ReLU as well as final activations?",
+    "answer": "Different negative scores all become zero. Matching activations can hide an earlier error, so intermediate values need independent checks."
+  },
+  "vocabulary": [
+    [
+      "Representation",
+      "An encoding of an example used by another computation"
+    ],
+    [
+      "Hidden activation",
+      "A value produced inside a network after applying an activation function"
+    ],
+    [
+      "Collision",
+      "Two different inputs receiving the same representation"
+    ],
+    [
+      "Learned feature",
+      "A feature whose computation depends on parameters adjusted using training data"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Make a useful distinction visible",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Consider fictional rectangles with input [width, height] in cm. The task is to identify rectangles whose width is strictly greater than height. The target is 1 for wider rectangles and 0 otherwise. A square therefore has target 0. This is an arithmetic teaching task, not a claim that a network is needed to measure rectangles."
+        },
+        {
+          "type": "paragraph",
+          "text": "Define two hidden units: h1 = ReLU(width - height) and h2 = ReLU(height - width). Their weight rows are [1, -1] and [-1, 1], with zero biases. The representation h = [h1, h2] records excess width or excess height. Predict 1 when h1 > 0; otherwise predict 0."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Input",
+            "Hidden representation",
+            "Prediction"
+          ],
+          "rows": [
+            [
+              "[4, 2]",
+              "[2, 0]",
+              "1"
+            ],
+            [
+              "[2, 4]",
+              "[0, 2]",
+              "0"
+            ],
+            [
+              "[3, 3]",
+              "[0, 0]",
+              "0"
+            ],
+            [
+              "[5, 3]",
+              "[2, 0]",
+              "1"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "These weights were chosen by the lesson author. They demonstrate a representation that could be implemented by a network, but no training run has established that a model learned it. Learning would require adjusting parameters using training data and recording the procedure."
+        }
+      ]
+    },
+    {
+      "title": "Trace the representation separately from the head",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A prediction head is the computation that reads the hidden vector and produces an output. Keeping it separate lets us inspect what information is available before making a decision. This example assumes two finite, positive measurements in cm; it is not a general input validator."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "def represent(width, height):\n    return [max(0, width - height),\n            max(0, height - width)]\n\ndef predict(hidden):\n    return int(hidden[0] > 0)\n\nexamples = [(4, 2), (2, 4), (3, 3), (5, 3)]\nfor width, height in examples:\n    hidden = represent(width, height)\n    print([width, height], hidden, predict(hidden))\n\nassert represent(4, 2) == represent(5, 3)\nassert predict(represent(3, 3)) == 0"
+        },
+        {
+          "type": "paragraph",
+          "text": "The raw difference width - height can be recovered as h1 - h2. The original width and height cannot in general be recovered: many rectangles share a difference. Two hidden components do not guarantee preservation of two input components."
+        }
+      ]
+    },
+    {
+      "title": "See a collision and its consequences",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Different rectangles can share a hidden vector",
+          "columns": [
+            "Input in cm",
+            "Hidden vector",
+            "Area in square cm"
+          ],
+          "rows": [
+            [
+              "Width 4 height 2",
+              "[2, 0]",
+              "8"
+            ],
+            [
+              "Width 5 height 3",
+              "[2, 0]",
+              "15"
+            ]
+          ],
+          "caption": "The representation preserves the wider-than-height answer for these examples but discards information needed to recover their different areas. A deterministic head receiving only this vector must give both examples the same output."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Encode [6, 4] and [7, 5]. Give their wider-than-height predictions and areas. Can a head that sees only h always recover the exact area? Explain using this pair.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Match the representation to the question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A representation can be sufficient for one task and insufficient for another. Our hidden vector supports the wider-than-height rule for every valid input under the stated formula. It fails to identify exact area for all rectangles because a collision can contain different areas. No more complicated deterministic head can recover information that is absent from its input."
+        },
+        {
+          "type": "paragraph",
+          "text": "Compare a second encoding s = width + height. Rectangles [4, 2] and [2, 4] both give s = 6 but have different wider-than-height targets. A head receiving only s must fail on at least one of them. Useful features depend on the question, not just the number of encoded values."
+        },
+        {
+          "type": "paragraph",
+          "text": "One repair for area is to retain the original measurements. Another is to append s to h. Since d = h1 - h2, width = (s + d) / 2 and height = (s - d) / 2. This works with exact valid measurements; it does not mean every added feature improves generalisation on noisy data."
+        }
+      ]
+    },
+    {
+      "title": "Evaluate claims about learning",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "In a trained network, hidden features depend on fitted weights and may not have simple human names. A strong output result does not by itself show that a unit represents a concept such as shape or fairness. Inspect activations on deliberately varied examples, compare with a baseline, and limit conclusions to the evidence."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A teammate calls the hand-chosen rectangle layer a learned area detector because all four wider-than-height predictions are correct. Identify two problems with this claim and propose one decisive area check.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "When testing a learned representation, fit preprocessing and parameters on training data, use validation data for choices, and reserve the final test for the declared final evaluation. Compare representations with matched data, head rules and training budgets, and report collisions and failures. Next week makes the axis and channel meanings of image tensors explicit."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Trace new inputs",
+      "prompt": "Encode [8, 3], [3, 8] and [4, 4] with the lesson layer. Apply its prediction rule and explain the square boundary.",
+      "answer": "Teacher explanation: The vectors are [5, 0], [0, 5] and [0, 0]. Predictions are 1, 0 and 0. Equal width and height does not satisfy strictly greater.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Prove an information loss",
+      "prompt": "Give the hidden vectors and areas for [4, 2] and [5, 3]. Explain why increasing only the complexity of a deterministic area head cannot make both exact predictions correct.",
+      "answer": "Teacher explanation: Both hidden vectors are [2, 0], while areas are 8 and 15 square cm. Identical inputs to a deterministic head yield identical outputs, so the head cannot return both required values.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Compare another encoding",
+      "prompt": "The alternative representation is s = width + height. Use [4, 2] and [2, 4] to decide whether s alone always supports the wider-than-height task.",
+      "answer": "Teacher explanation: Both have s = 6, but their targets are 1 and 0. This collision prevents any deterministic head using only s from getting both right.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Audit a new representation independently",
+      "prompt": "A different layer uses g = [ReLU(width - height - 1), ReLU(height - width - 1)]. Encode [4, 3] and [3, 4]. State their targets for width strictly greater than height. Can any deterministic head receiving only g classify both correctly?",
+      "answer": "Teacher explanation: Both encode as [0, 0]: the scores are [0, -2] and [-2, 0]. Targets are 1 and 0. No deterministic head receiving only this shared vector can distinguish the pair. The added threshold erased a distinction required by this task.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Repair and qualify a claim",
+      "prompt": "For h = [2, 0] and s = 8, recover width, height and area. Does this algebra prove that a training program learned the representation or that it will work well on noisy measurements?",
+      "answer": "Teacher explanation: Difference d is 2. Width is (8 + 2) / 2 = 5 and height is (8 - 2) / 2 = 3; area is 15 square cm. The algebra establishes recovery under the formula, not a training history or performance with noisy measurements.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. Begin with rectangle measurements and the explicit strict comparison. Distinguish the constructed layer from a genuinely fitted layer throughout. The key reasoning is the collision argument: identical representations force identical deterministic outputs. No calculus, external AI account or full training framework is required.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve how ReLU can hide distinctions and establish the rectangle schema and target."
+      ],
+      [
+        "7 to 18 minutes",
+        "Trace the four lesson examples, including a square, before naming the hidden features."
+      ],
+      [
+        "18 to 32 minutes",
+        "Complete W1 and trace the optional code, separating the representation from its head."
+      ],
+      [
+        "32 to 45 minutes",
+        "Use the visual and W2 to explain why identical hidden inputs cannot yield two exact areas."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete the guided pair and compare the sum-only encoding using W3."
+      ],
+      [
+        "8 to 20 minutes",
+        "Derive recovery from sum and difference, then discuss the limited conclusion in W5."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, requiring both score vectors, hidden vectors and target labels."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use the exit response and fresh retry to distinguish learning evidence from an authored formula."
+      ]
+    ],
+    "guidedAnswer": "Guided: [6, 4] and [7, 5] both encode as [2, 0], predict 1 and have areas 24 and 35 square cm. A deterministic head using only h cannot recover both exact areas. Exit: hand-chosen weights are not evidence of learning, and correct comparison labels do not establish area prediction. Test the collision [4, 2] versus [5, 3], with areas 8 and 15.",
+    "misconceptions": [
+      [
+        "Two hidden values preserve both input measurements",
+        "Dimension alone does not guarantee recovery; distinct inputs can collide."
+      ],
+      [
+        "A more complex head can always fix lost information",
+        "A deterministic head cannot distinguish identical representations without additional input."
+      ],
+      [
+        "Correct outputs prove human concepts were learned",
+        "The layer here was constructed, and a task score alone does not establish a hidden concept."
+      ]
+    ],
+    "assessment": "W4 requires scores [0, -2] and [-2, 0], hidden vector [0, 0] for both, targets 1 and 0 and an impossibility explanation. Fresh retry: use g = [ReLU(width - height - 2), ReLU(height - width - 2)] for [5, 3] and [3, 5]. Scores are [0, -4] and [-4, 0]; both hidden vectors are [0, 0], but targets are 1 and 0. No deterministic head using only g can classify both correctly.",
+    "support": "Provide paper rectangles and columns for signed difference, two scores, activations and target. Allow calculators and ask for verbal collision explanations before algebra. Extension: show that adding the same positive amount to width and height preserves h while changing area; derive exact recovery when the sum is also retained.",
+    "next": "Week 20 introduces image tensors and channels, with explicit axis order and value scales."
+  }
+}

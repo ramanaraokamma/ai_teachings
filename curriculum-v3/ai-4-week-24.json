@@ -1,0 +1,271 @@
+{
+  "level": "ai-4",
+  "week": 24,
+  "title": "Augmentation and leakage",
+  "minutes": 90,
+  "goals": [
+    "Check whether a transformation preserves the task label",
+    "Keep related examples in one split using source groups",
+    "Compare augmentation fairly without inflating independent evidence"
+  ],
+  "prerequisite": {
+    "prompt": "Why must a checkpoint be chosen before inspecting final evaluation results?",
+    "answer": "Using final outcomes to choose parameters or settings makes that set part of model selection rather than unseen evidence for the selected model."
+  },
+  "vocabulary": [
+    [
+      "Augmentation",
+      "Creating transformed training examples under a declared procedure"
+    ],
+    [
+      "Label preservation",
+      "A transformation leaving the correct target unchanged for the stated task"
+    ],
+    [
+      "Source group",
+      "An identifier joining records that must stay together when splitting"
+    ],
+    [
+      "Leakage",
+      "Information crossing an evaluation boundary in a way that undermines the intended independent check"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Ask what the label means before transforming",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Return to the binary image task: class 1 means the left column sum is strictly larger than the right column sum; equal sums belong to class 0. Let d be left sum minus right sum. An augmentation is useful only under a stated task and transformation rule. More image files do not automatically mean more independent evidence."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Operation on rows [1, 0] and [0, 0]",
+            "Result rows",
+            "d",
+            "Class"
+          ],
+          "rows": [
+            [
+              "Original",
+              "[1, 0] and [0, 0]",
+              "1",
+              "1"
+            ],
+            [
+              "Swap top and bottom rows",
+              "[0, 0] and [1, 0]",
+              "1",
+              "1"
+            ],
+            [
+              "Swap left and right columns",
+              "[0, 1] and [0, 0]",
+              "-1",
+              "0"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Swapping rows preserves each column sum, so it preserves this task label for every valid image. Swapping columns changes d to -d. For nonzero d the class changes; for d = 0 it stays class 0. Blindly copying the original label after every flip would create incorrect training targets."
+        },
+        {
+          "type": "paragraph",
+          "text": "A transformation may be valid for one task and invalid for another. A crop can remove the evidence needed for a label. Choose allowed transformations using the task definition and training evidence, document the assumptions, and evaluate the choice on validation data."
+        }
+      ]
+    },
+    {
+      "title": "Trace transformations and label checks",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "This code assumes valid 2 by 2 binary lists. It constructs new lists instead of changing the input. The label function encodes the classroom task rule, not a general method for recovering unknown real-world labels."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "def difference(x):\n    return x[0][0] + x[1][0] - x[0][1] - x[1][1]\n\ndef label(x):\n    return int(difference(x) > 0)\n\ndef swap_rows(x):\n    return [x[1][:], x[0][:]]\n\ndef swap_columns(x):\n    return [row[::-1] for row in x]\n\nx = [[1, 0], [0, 0]]\nassert label(x) == label(swap_rows(x)) == 1\nassert label(swap_columns(x)) == 0\ntie = [[1, 0], [0, 1]]\nassert label(tie) == label(swap_columns(tie)) == 0\nassert x == [[1, 0], [0, 0]]"
+        },
+        {
+          "type": "paragraph",
+          "text": "If an allowed transformation changes a known target, the transformed example needs a justified new label. Do not invent labels for ambiguous cases. Keep the source ID, transformation and resulting label with every derived image so a teacher can audit what happened."
+        }
+      ]
+    },
+    {
+      "title": "Split source groups before making variants",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Every variant stays with its source group",
+          "columns": [
+            "Source group",
+            "Assigned split",
+            "Derived records"
+          ],
+          "rows": [
+            [
+              "A",
+              "Training",
+              "A original and A row swap"
+            ],
+            [
+              "B",
+              "Validation",
+              "B original only"
+            ],
+            [
+              "C",
+              "Final test",
+              "C original only"
+            ]
+          ],
+          "caption": "Assign source groups before generating training variants. A new filename does not make a derived image independent. Evaluation examples follow a fixed declared protocol, not random training augmentation."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "A training image has source ID A. Its row-swapped copy is called A2 and placed in validation. No filenames match across splits. Is the split valid for evaluating unseen source images? Describe the repair.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Audit both lineage and duplicate content",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Week 23 used deliberately constructed toy images. Its validation E is exactly a row-swapped version of training A, and F is a row-swapped version of C. They had different pixel arrays, but the transformation relation means they are a weak independence test for an experiment that trains on row-swapped variants. If those variants are added, they become exact training-validation duplicates. Preserve the original narrow claim and design a new grouped split for the augmentation experiment."
+        },
+        {
+          "type": "paragraph",
+          "text": "Source groups should match the evaluation question. If the goal is generalisation to new objects or people, several photographs of the same object or person may need one group even when they have different original file IDs. A lineage audit catches recorded relationships; an exact-pixel audit catches duplicates with inconsistent IDs. Neither audit alone proves that all dependence has been removed."
+        },
+        {
+          "type": "paragraph",
+          "text": "When a leak is discovered after validation has influenced choices, repair the split and rerun training and selection. Do not merely rename or remove the overlapping files and keep claiming the old score evaluates the repaired experiment. Final data that influenced decisions is no longer reserved."
+        }
+      ]
+    },
+    {
+      "title": "Count sources and control the comparison",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Suppose 12 training source images each produce an original plus two variants. That creates 36 records but still only 12 source groups. Keep validation and final groups separate. Report source counts as well as record counts; repeated variants are correlated observations, not new independent subjects."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "An augmented run uses 36 records for five epochs while a baseline uses 12 records for five epochs. Both use one-example batches. Are their update budgets matched? Propose a controlled comparison and explain what 36 records does not establish.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "With one-example batches the runs use 180 and 60 updates. A declared comparison could give both 180 updates, cycle the baseline data and record the exposure policy. Keep starting parameters, architecture and evaluation cases matched where possible. Select augmentation settings using validation evidence and report the limits of the chosen budget. Next week moves from images to sequence representations."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Check the label after a transformation",
+      "prompt": "For rows [0, 1], [0, 1], compute d and class before and after swapping rows and after swapping columns.",
+      "answer": "Teacher explanation: Original d = -2 and class 0. Row swapping leaves d = -2 and class 0. Column swapping gives rows [1, 0], [1, 0], d = 2 and class 1.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Keep the equality boundary",
+      "prompt": "For rows [1, 0], [0, 1], compute d and class before and after a column swap. Why is always replacing a label by 1 minus the label incorrect?",
+      "answer": "Teacher explanation: Both differences are 0 and both labels are class 0. Complementing class 0 would give class 1, which is wrong for ties.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Audit related records",
+      "prompt": "Training contains P original and Q original. Validation contains P crop and R original. Final test contains S original. P crop is derived from P original. Identify the overlap and explain what must be rerun if this validation set already selected a model.",
+      "answer": "Teacher explanation: Source P crosses training and validation. Keep all P records in one split and choose distinct evaluation groups. Rerun training and model selection on the corrected plan; the old validation score does not describe the repaired experiment.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Design a grouped split independently",
+      "prompt": "Six fictional source groups J, K, L, M, N and O each have one original and three derived records. Assign J, K and L to training, M to validation and N, O to final test. Keep all four records per training group but only originals for evaluation. Give source and retained-record counts per split, total retained records and excluded derived records.",
+      "answer": "Teacher explanation: Training: 3 groups and 12 records. Validation: 1 group and 1 record. Final test: 2 groups and 2 records. Total retained records are 15. Nine derived evaluation records are excluded. No group crosses splits; the small group counts still limit evaluation evidence.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Match a training budget",
+      "prompt": "Eight source images each have an original plus two variants. Compare four epochs of these 24 records with four epochs of the eight originals, using one-example batches. Give both update counts and one way to match budgets without using final outcomes.",
+      "answer": "Teacher explanation: Augmented run uses 96 updates; original-only run uses 32. Predeclare 96 updates for both, equivalent to 12 passes over the originals for the baseline. Record repetition and augmentation policies, use validation for choices and keep final evaluation reserved.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. This chapter explicitly revisits Week 23: different pixel arrays do not guarantee independent augmentation evaluation. Keep its original toy-domain claim narrow and use a new grouped plan for the new experiment. Use fictional source IDs rather than student photos. No new training framework is needed.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve frozen evaluation and restate the strict left-column task label."
+      ],
+      [
+        "7 to 18 minutes",
+        "Trace row and column swaps, then complete W1 and W2 including the equality boundary."
+      ],
+      [
+        "18 to 32 minutes",
+        "Run or hand-trace the transformation code and inspect source preservation."
+      ],
+      [
+        "32 to 45 minutes",
+        "Use the visual and guided case to keep lineage groups together before augmentation."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Audit the Week 23 transformation relationships and complete W3."
+      ],
+      [
+        "8 to 20 minutes",
+        "Distinguish source counts from record counts and work through the update-budget example."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, requiring source counts, retained counts and exclusions."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit response to propose a fair comparison, then administer the fresh retry."
+      ]
+    ],
+    "guidedAnswer": "Guided: the split is invalid for unseen-source evaluation because A2 derives from A regardless of filename. Keep the entire A group in training and replace the validation group, then rerun any affected selection. Exit: budgets are 180 versus 60 updates, so they are not matched. Predeclare an equal update budget and record repetition policies; 36 records still represent only 12 original source groups.",
+    "misconceptions": [
+      [
+        "Every image flip preserves the label",
+        "Validity depends on the task; column swaps change non-tie labels here."
+      ],
+      [
+        "Different filenames prove independence",
+        "Lineage, shared subjects and identical content can connect different filenames."
+      ],
+      [
+        "More augmented files mean more independent examples",
+        "Variants retain dependence on their source; report both group and record counts."
+      ]
+    ],
+    "assessment": "W4 requires source counts 3, 1, 2 and retained counts 12, 1, 2, with 15 total records and 9 excluded derived records. Fresh retry: five groups A through E each have an original plus two variants. Train on A and B using all records, validate on C original and test on D and E originals. Source counts are 2, 1, 2; retained records are 6, 1, 2; total 9, with 6 derived evaluation records excluded. Three augmented epochs at batch size 1 use 18 updates, compared with 6 for three epochs over two originals.",
+    "support": "Use cards with source ID and variant ID in separate columns. Provide a split ledger and distinguish original count, variant count and total record count. Extension: enumerate all sixteen binary images to verify row-swap preservation, count column-swap label changes, and identify the equality cases that defeat automatic label complementation.",
+    "next": "Week 25 introduces sequence representations and the information preserved by order."
+  }
+}

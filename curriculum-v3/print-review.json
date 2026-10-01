@@ -1,9 +1,9 @@
 {
-  "checked": "2026-09-29",
-  "method": "Canonical DOCX/PDF text and student-answer separation audits, followed by visual inspection of every rendered page. Grade 8 Weeks 15\u201336: 242 pages across 66 documents. Grade 9 AI 4 Weeks 1\u20134: all 44 rendered pages inspected for pagination, diagrams, writing space and readable tables; canonical DOCX/PDF text and teacher-answer separation audited. AI 4 Week 5: all 11 rendered pages inspected; canonical text and student answer separation passed. AI 4 Weeks 6\u201312: all 77 rendered pages inspected, including the corrected Week 8 diagram heading; canonical text and answer-separation audits passed.",
+  "checked": "2026-10-01",
+  "method": "Canonical DOCX/PDF text and student-answer separation audits, followed by visual inspection of every rendered page. Grade 8 Weeks 15\u201336: 242 pages across 66 documents. Grade 9 AI 4 Weeks 1\u20134: all 44 rendered pages inspected for pagination, diagrams, writing space and readable tables; canonical DOCX/PDF text and teacher-answer separation audited. AI 4 Week 5: all 11 rendered pages inspected; canonical text and student answer separation passed. AI 4 Weeks 6\u201312: all 77 rendered pages inspected, including the corrected Week 8 diagram heading; canonical text and answer-separation audits passed. Grade 9 Weeks 13\u201314: all 22 rendered pages inspected. Grade 9 Weeks 15\u201316: all 22 rendered pages inspected; curve renderer added, previously reviewed diagram bytes verified unchanged. Grade 9 Weeks 17\u201318: all 22 rendered pages inspected, including the corrected Week 17 visual. Grade 9 Week 19: all 11 rendered pages inspected; canonical text and answer-separation audits passed. Grade 9 Week 20: all 11 rendered pages inspected; canonical text and answer-separation audits passed. Grade 9 Week 21: all 11 rendered pages inspected; canonical text and answer-separation audits passed. Grade 9 Week 22: all 11 rendered pages inspected; canonical text and answer-separation audits passed. Grade 9 Week 23: all 11 rendered pages inspected; canonical text and answer-separation audits passed. Grade 9 Week 24: all 11 rendered pages inspected; canonical text and answer-separation audits passed. Grade 9 Week 25: all 11 rendered pages inspected; canonical text and answer-separation audits passed. Grade 9 Week 26: all 11 rendered pages inspected; canonical text and answer-separation audits passed. Grade 9 Week 27: all 11 rendered pages inspected; canonical text and answer-separation audits passed. Grade 9 Week 28: all 11 rendered pages inspected; canonical text and answer-separation audits passed. Grade 9 Week 29: all 11 rendered pages inspected; canonical text and answer-separation audits passed. Grade 9 Week 30: all 11 rendered pages inspected; canonical text and answer-separation audits passed. Grade 9 Week 31: all 11 rendered pages inspected; canonical text and answer-separation audits passed. Grade 9 Week 32: all 11 rendered pages inspected; canonical text and answer-separation audits passed.",
   "renderers": {
     "scripts/build-v3-documents.py": "a78cbe729777e386cb3e0bcad3af06bc6b5de6ec71a60273f3f171e2959e3a23",
-    "scripts/render-v3-diagrams.cjs": "c35c03496d030dd9ea562e3af601147b854cf496630049a101f740594904220d",
+    "scripts/render-v3-diagrams.cjs": "641c2ae3409f6427ec979c07947803b0d9f9fd9ed56be02746eafc17e55d4444",
     "scripts/build-v3-programming-documents.py": "e61cd3ffee809ee7acb1997282828fc27b1cc142194d0dfce4404b1857caed2c",
     "scripts/build-v3-grade7-continuation-documents.py": "c306f5602743197bfaf6a9d8f5258b25a2137d6ddeda78b10f70d131d1966696",
     "scripts/build-v3-machine-learning-documents.py": "4a610ab27b13045ad059b98c1988fec93687feb15d6c8fc24450dc1a9244402f",
@@ -4587,6 +4587,766 @@
       },
       "diagrams": [
         "c83fc17eaf95c69be6a4787bacab4783a6c34e133138d79ecd3b5a48f8edcba0"
+      ]
+    },
+    "ai-4/13": {
+      "sourceHash": "b74f3fc9dbb7128e819462b8497fb48bb6b3d25ae5efbee1c6ac029edb5bf149",
+      "visualReview": "Every rendered page inspected",
+      "documents": {
+        "lesson": {
+          "docx": "6384a9e158655494b8ab40c9389d831ad6fcf1471bcf09d183eb5cf2caaeb229",
+          "pdf": "121803357e7790aa3dae37a45562781d20e9eb35b990390c683b0a7ef44fc993",
+          "pages": [
+            "990c063dda629b8ccf7c21663b5d3d1691566b139dd302ac4ed5b7b9aa2f692d",
+            "b0989f1b28e8a7239b1dd2f0b814e10dee4f948d0e6613724b7a03caf6f59cbc",
+            "bb0bc9993d581b6ba39aad43125158e27264df6aa5ba92c16440c7b51f5a1626",
+            "c12abdd6d8ab3e11c8f376abe7ac812db8aefc54326ccd63ab2cdeaecfef9597"
+          ]
+        },
+        "workbook": {
+          "docx": "fedde2f86bc50f0ead46618869c99a4a33e99fdf4475d6127aa77edd95a405b4",
+          "pdf": "c2e36f7f45500a78aadf0aac4ad3e08975457fe02705d1d1e856a9baa0d0a245",
+          "pages": [
+            "fd48abcd6295ed2160aae9252a29fa49fb0aba7d64d5e047caf24f7e80323230",
+            "431f003b9d9308f7a0ae31420e5d65523034ec024151198117653cfca9e6e9a0",
+            "90b17b39d06850456793748a7554ff54347e792cac168909a3f3c5d35ce38779"
+          ]
+        },
+        "guide": {
+          "docx": "076c8d227f77fdb24ee274f1dc8088a499d89db5ac5333dcd42c330d5dd782d3",
+          "pdf": "ddeabaee051579cf9a0a741609c2250bd342b85b5811d1b1392611c921ec99a0",
+          "pages": [
+            "93a23b430d7b7b1815568112708066933be38b2e59e4efe09c5a8b60768c6513",
+            "4b6ee725b494490dc66ca73d16bf6abb0607555e004a8eaefd110dcd7a089a26",
+            "13f9fab4fad4fdd1060ba84aa2a22fa7ed297978e6e934a7a921bb32d8bbc944",
+            "4a63aad2a2282d040277e99945aa46b1d1003554bf72b0e9760abe23cd2dafe6"
+          ]
+        }
+      },
+      "diagrams": [
+        "9a36a2cc30b303aa391357e0c3eaca3506655ed709280759c393389e32e27541"
+      ]
+    },
+    "ai-4/14": {
+      "sourceHash": "023275d6dadee0f68e17f8452d54a4c8fd0bea1b170aae7200cc6f24ce4f0887",
+      "visualReview": "Every rendered page inspected",
+      "documents": {
+        "lesson": {
+          "docx": "d54bc4c9246c9fdfa65285de4f7ae315990f49864492921c77c981756c4e2d65",
+          "pdf": "68ad9f097713a6ce80c5e891b8de3ff7149e6e6e0fff609e087672d8ffbbf3d5",
+          "pages": [
+            "be941bb8976e9821c1454ce0f2d455fca47e99f8b4315beac245868f57cce205",
+            "cff68c3e59fd15a915301d8bcb3b6f5636fc5a7334dd6d1a6f12a649f0f3721a",
+            "1011b26ecb265a3d97d1c12a41753e0ddb2d943c81eb8d7481b0b08c55d749d5",
+            "d521c498967accaaf46665c55d313e0e04d41965bb1b493fce9dddaafbc2023e"
+          ]
+        },
+        "workbook": {
+          "docx": "2f4223a241250affa685120183e81c4be859305e45ba8a43de0f9f12d149a514",
+          "pdf": "8b92c6aa3f88314e27d951e53763724dc73dd885198505771f8c2bf2df966b07",
+          "pages": [
+            "3a72f216068a95a18389c7522cf09852071ab85db4608a4fce7858916b3a7833",
+            "29bdf535e8aed903cfcf37a0c5ec145805a777f7d8aa1c605f355a3f3ea4dddc",
+            "314cc6d63c26ab817daec15ab777f3df75e3014961da5556990606848fbaf21e"
+          ]
+        },
+        "guide": {
+          "docx": "970c55349082e143da8c4f45b26e9363eebfaa35dd6d98260f9901cb84636671",
+          "pdf": "d970d9af6b2264a41d224a42ead14d6f80b4c49c2545293106b2b0a83b62de23",
+          "pages": [
+            "618bb52f02905c99ac0b670a323abd919d03fad09a73d107ae8c6f465a05e308",
+            "626a66cc59abfedade2bca0d74ac95be0df63644325f16034f110c26d23cdf32",
+            "b367944b329906f571adc213fe13320b24943d77b374be180ceb4114e528e0ff",
+            "4411fc258c97d8b8f2496f948ed932393a6e2b35e9a4da408e64b4041881b138"
+          ]
+        }
+      },
+      "diagrams": [
+        "20af3f98320f15305e446947b11299305d3878530cf7efcdaeac0ca2c0e7ee29"
+      ]
+    },
+    "ai-4/15": {
+      "sourceHash": "e2fc859225733f6b9a4dea243a6886fc6c0d2f69ac82f592a1232cd70dc60c5d",
+      "visualReview": "Every rendered page inspected",
+      "documents": {
+        "lesson": {
+          "docx": "2aaa837b9ffb396040ca87146c5f6fb6d586496eabeb9b7bf7e1d7747191211d",
+          "pdf": "1986498748f4c455e8e40392efb0ca8a0e8e855423fb80052f4444e4c1788948",
+          "pages": [
+            "0b65e45a5d9a71ef28e532226b451d37c404b29c43127e906db34c32dba113b6",
+            "82e7dd8cabf0595e5c049ff9255d0e4ef6a9b39390d1066681572dd5346d1531",
+            "eacd6095b081bcea20025190c919a6fad94265bfc44ed16a73daa9e4f88746fb",
+            "678ae9fe927ed737890e042709132800d3db752ed739de783041ecc89dde5bcb"
+          ]
+        },
+        "workbook": {
+          "docx": "c22e624e71972d7d320ebea09b9daa409576684c300dd2c0495ea0fdd278ccef",
+          "pdf": "b6b5508b5dd5d52a346502e999de4b6cf79e100c3e4ce44b4a1559054313d097",
+          "pages": [
+            "4ef86b27b56057ddfc580db58353c05ed10d3e56f4f1dd7ce3990cbda2e56ceb",
+            "8afa34333a65f3221806201446a167a9b00d60160bbd420d4d8b05b347c35ae9",
+            "d85dbe2ee2fbc62b8df7687bff2664b1c588c7c65fde7f3171695be3a19daa68"
+          ]
+        },
+        "guide": {
+          "docx": "5499b918dcb59d0c0da5d2766f2d91003830a8458636bc613260cfb4479dbb72",
+          "pdf": "6d4bdc8832039fbb6bd809cb866c9bbe77acd7e2ba4817f5e68a1401887f5e79",
+          "pages": [
+            "66e0d2cbafdb3a9b268c1cf14de51dc16faa3c4f1656bb1a246fe783da3fbe94",
+            "a64b0d63a7cefa1cf4208365f0f2c998019bca58ea654b7a9a4e4a0f77557c04",
+            "54b54ff59449cd56e4a671a5d104f6b55a2ae954c2120b0a9721a38d3c1dd738",
+            "391f16c03be1681506854d365a346fd8ca85275e581d289fbd70494fb0f77ad8"
+          ]
+        }
+      },
+      "diagrams": [
+        "29eefba4bdc5cb1731f25d35d098d071af20a74a3196565d26e393a76d5a3e29"
+      ]
+    },
+    "ai-4/16": {
+      "sourceHash": "fc5901f2fa066cd0f1ff81c1704231f50de54cc8b1be2d054b13728a80f25c58",
+      "visualReview": "Every rendered page inspected",
+      "documents": {
+        "lesson": {
+          "docx": "0079d540a7627d3b865b689602de22aebe30b89d7418e6c7b7ac9e4db35900bc",
+          "pdf": "b7d08c79bfc44b4e3613f4caa54645aa9c3873ae6a41e7ba219e08d748481b99",
+          "pages": [
+            "1a8f5d886e3ee04b5f411edbb221c7df229933fc687bd5c7494df68988242efc",
+            "b0ccd34f5ec9468d86899c1b1ae73a59a0e8750d14e699e59781d1a18481e07a",
+            "24327df6ab0ddc68140bad803e1c8eafe6906644f13ad80889b1f387ef9b6335",
+            "d52d11522eae56493e480d836ca023cdf9bb4422d57c6c34c4f854557e037113"
+          ]
+        },
+        "workbook": {
+          "docx": "1202e0fd48a7fa1e700d24e24fc601a5a3df838e55405732641be36799ab8f73",
+          "pdf": "b810ae32b1b9e10b54cb92b59f3f9e7de322b113c3fece04f1a28dd134705321",
+          "pages": [
+            "95f138c8a323e95dd3c10f804132b20d04f999aa0d72022ec052c915dec4f983",
+            "8ee406ec27f382f0fa4bb9619789747ce9cd77cf95f4ccc47d5d30c5d12381da",
+            "d3640bbad59a1d4ea757d82aaff5aa7f59861a1a6861f885f4dec9107303dad1"
+          ]
+        },
+        "guide": {
+          "docx": "0e66d48ff3263ee7c6e1204c750b42768f02e390c9ef9396714676463a8f9804",
+          "pdf": "a6ea13b56e6de7bbbf4664c8a44b6623f1d02755f34bf80fb5d10485cced8253",
+          "pages": [
+            "e695a6a1757178bc56391bc3cec9da4c125e17696cec530d3be5efa469293599",
+            "c71269341389319e1d7fd216ecdc395f3676eac0a6d456cf68756ae3e770a7a0",
+            "d305cd9a29c80847da236b3a4a3c5db19d5b40b3c96c108bcb51cdf0e3ef932b",
+            "40fd7fb1d57156a954c32f603dd671bd8c3d6617e11821d5b8e33bde685734b6"
+          ]
+        }
+      },
+      "diagrams": [
+        "49a23110529101562d05a389890864fba62c170cc3ec25c64101916b009a6f76"
+      ]
+    },
+    "ai-4/17": {
+      "sourceHash": "da6dd8bc95263d333fa14d5a7bf1457af5dce145aa0c9ea5e34d458f63ff61c6",
+      "visualReview": "Every rendered page inspected",
+      "documents": {
+        "lesson": {
+          "docx": "25b1790dc1d0ff2780e4b2f37aa165d0ec02d0aa7fbc1d17cb1ea5ff0692e472",
+          "pdf": "2a8bef63198af3ba3aac975d99c8a62c9411773aea4d72b9f072d2646a29d340",
+          "pages": [
+            "4474fd5a0d232c00a8ef8edc453c087abf464b2774615fbcfd0216eca6176f91",
+            "8b11c7e6123d62fe8f06e5240b650bbee8a62622d1a8822b812341ff513c88b9",
+            "189cf5b1a02c9a1d302dfa6a6a2c55e38e8fc555b27e31fe07e142379a2d1f4b",
+            "b263ef127c52dc694bcf490da950759128bf1d23df239cb24f9b71f1b3eaf90f"
+          ]
+        },
+        "workbook": {
+          "docx": "ce325268b61f8901c0dc0a3ba3ddcbc0e7235ed5b09400ae991df99b53c3134f",
+          "pdf": "ed281a9476ec2a5f1657612a7c16d3086c2c021877ee55ee1e953e1b7be53de7",
+          "pages": [
+            "99265b634e12ce7bd7d34042733222d89b98e216e044c84fcdb50a9b1dbe69bd",
+            "57878992a93387b1f4e7326cb7c00a7a18dbf0ac3c336532cdc09e5b0daf2ff1",
+            "77cf943fbda970a51575dbd47ec2270c8b10751cb62ccad3ba3a4a0af6011296"
+          ]
+        },
+        "guide": {
+          "docx": "0c2142285ef8121dc0a3196a349ffa10acf3ab96f6d10db4b8a861754135bcf1",
+          "pdf": "c798d6678357cde8d901cb5f6475601fdde25c49a8390471e437a24e30ae15fb",
+          "pages": [
+            "8d4fe7038bd578dc3f21a27d2760e460db67c3b602cafa32ddc96bd9aa062eb4",
+            "b6291d4f504bf8210a68f6d108086ddf60c423fe8e347a401e3d8bbd20fce655",
+            "affa089607146dbc9922a89e2a6c29dd3443b9131257c20afdf9f4f342b6374f",
+            "47e78341d7c204088730c9e93a6b484a362592301f9338b88e706f5f6b596f44"
+          ]
+        }
+      },
+      "diagrams": [
+        "582582d4302adb227e3b57eaccecb8457af9dab759526684fe6b65e6062dd30c"
+      ]
+    },
+    "ai-4/18": {
+      "sourceHash": "2c1525829e2792ea1ab04ebeb53db9e919b4f2d7ed360c3bfa0debd7ffa1bf52",
+      "visualReview": "Every rendered page inspected",
+      "documents": {
+        "lesson": {
+          "docx": "9eca0b984b2815f33daafcb8db9f226e24a10a6805aeb449b60e5ff9f886bbb3",
+          "pdf": "462c2abbe7f78fe63cbadb035af79a4d857e21f8421ac876964464476fa47fc5",
+          "pages": [
+            "da3ce047e07665ae3a4c4c6e14513db4bcd35624544cff8c26216c32f5bf7efe",
+            "343cdb16f88c294990dfc4ea6e2ca23037ec54c562ac521f886c48a1aa3545ba",
+            "30e6b745fc3a5281d64198196931ad51528922bdacf551983e7630b66458a140",
+            "b5b0ac53cc733d1e428608b736fc583248847847ef05777d351becd8a75a0b09"
+          ]
+        },
+        "workbook": {
+          "docx": "c47602655942bbf603d180da21ca389ed4ea1a436d214c5a5c11ecbf34e97fed",
+          "pdf": "3247d7b486958f45589b4f8ed48b8a4f3c7296625db0ac732b93263042bdd6d6",
+          "pages": [
+            "7ec54add7812e214321453ab8544b2c545f6285d467050973c5d80774597f3d5",
+            "4863566967961b3fb35cc06db937306e3e7875ee6bbb715ad142566e00f13763",
+            "399d73aad7766d12c8afd1352c4877adacf269c96e45247a73ad8618c46eb00f"
+          ]
+        },
+        "guide": {
+          "docx": "f78413586b58824dab7668f7c862bc47e1b24371189a755144189fe158c66e98",
+          "pdf": "4a54eb3b2e7767bb793a1460e59489f612808736e4666c79fb31cc0a8828600d",
+          "pages": [
+            "fef243852a15945aad9a8d9a9d9615639eb5141dd7901a2fcf545ba21665a893",
+            "d85e857b8df34acb1a6c4834f53dbb46927d7ca1326e5a4f8064000fa88a0d55",
+            "3077d0c99835e428f653de6033ec0930af46d46501e07a6ffdd2a5fb8b4c2a93",
+            "897e78bdc01113de9b49ae08eb55b696e69dcad5bad768389818373d09075c1b"
+          ]
+        }
+      },
+      "diagrams": [
+        "627b074729bdedbaa54e4b12c3df20e4cb5f5ece90bb456435cb531b68205246"
+      ]
+    },
+    "ai-4/19": {
+      "sourceHash": "86a8c8ee34987f3df8511d512a39039495d4b766103b1159a5403b03557a5266",
+      "visualReview": "Every rendered page inspected",
+      "documents": {
+        "lesson": {
+          "docx": "d21e2be53baae5485ce8e066b8aedc37a599e3c78d21c836088c8840afd430ee",
+          "pdf": "45fef7c6c71c9d8d1da8262a546fad16877b66724933fbaf0a6a96a70d02755e",
+          "pages": [
+            "92c13da31a3bb447c1463e01addd23cbfaeca08a0681681211c1a7d1c35fb764",
+            "9a41d353a4d09c4189494a1c086a7ddea9288b44a93a27ca6eaa570bccd1d81f",
+            "68c25b4db530a03d46cd649688a97dba0e9ab1215adedfbd2b274d84a9822f2c",
+            "402b78e384be94a24e69c66aafbb5f047f645b4698a50f3b5f3172f2bd1d479c"
+          ]
+        },
+        "workbook": {
+          "docx": "8e4eb1c0d0ce73850d2a9d92aba6763e435f9a6c8f1ab2e26185486a50df8856",
+          "pdf": "2f3e50e606b4bdd7ae6d47ce0539f499767fb58d76aafd1a2a3aa21227ca011c",
+          "pages": [
+            "119d4a225fa5e4264165caa89fd101bc0b9c4a9307676ea2851e244656070cd2",
+            "c06d61da1414d2db1a5c6521603ff84e0d1006ceda4ca624cd93be4404bda833",
+            "6cd5c4a3c129147cc24e408f2f4c0b9050915d374a0cb9b0fbd8895e9e27e663"
+          ]
+        },
+        "guide": {
+          "docx": "973d46cf3c81a93385c4c298054e166169dc1a2b027d6e5a681cfe9bd6d35a6c",
+          "pdf": "91d43efadb8b944d384044925363bb77850c91436e7b238bc10274ba0abcccb2",
+          "pages": [
+            "bee52ecad7cef088920c9545d316d1944b0700d678903dd29b823aac87520ace",
+            "1dc5c3088437ded0e8824917cb5b4348597317540d0b3cafb44ef6efa781db3b",
+            "614e506cab6690b7fe30fe7c17aa4d766ddeba22628e46c11f30e7155183d0ed",
+            "abcc572bd88c0570ac613ff08d0b9550dcefe4686707b0d139470127eb928bf0"
+          ]
+        }
+      },
+      "diagrams": [
+        "3c7c2c7ab0cc3fa4f92b5ef71d40d42d4ef340e5462ebaf8d3ca1d8de2c0bcaa"
+      ]
+    },
+    "ai-4/20": {
+      "sourceHash": "4169a9f8a866cd661c62ee1f1182ce0f25b77aef3ccb74aa748ffa5afa42ffef",
+      "visualReview": "Every rendered page inspected",
+      "documents": {
+        "lesson": {
+          "docx": "7bedaa14b1c3036b3c2629185f3f9462d592d4c61b265f5a45ef0dc3e733feea",
+          "pdf": "bf3bbc5c318177becddda2163a677b62ad9b1a97afcdfc3051ee81f5bbea62a0",
+          "pages": [
+            "cdf9299611dc0650689b3488f1555d3b3c2b9f7494d6f501176a4e10638240bc",
+            "2227e6f672500c8cba2f60eccd96f0972f8b081a4065682e7f8042ff0b96c00e",
+            "30d273092c7e4f58efb2b831a66252e7fc22c8ae072b5ae584437b6785b398bb",
+            "df69873756f25aad22c4e4501a80e34c451680bc4a5e8c1316fd6fd70a720af9"
+          ]
+        },
+        "workbook": {
+          "docx": "420f68826c73cb06e21db700dfbb4437c7635b4811db2f741d043813c5839932",
+          "pdf": "227dc8c1dd5108de8136f3b0cd3fe8d4e7e71abe7ea87c88c2952ad8975d0e70",
+          "pages": [
+            "cf59c6cc31382cdaa1762009414cb5505b2ee625e1a95a4b2ad180596f721ded",
+            "531c4bece1d2975e6c6bcca3ba5e2d55405eed8f6513dbd348abbde9ac92f10c",
+            "94a22088b68a1f1206fe6d8ed79c7b0809a00e952dc66d5c5e50a70f27d8b36c"
+          ]
+        },
+        "guide": {
+          "docx": "4dab804edf6ff05c449d6dfed1d3d4920b9c858c0bfcc734f00422367a316983",
+          "pdf": "3c93da9231a5ee7f2c1fa0041cb5dd8534892091db60370e14ff72b23675ae05",
+          "pages": [
+            "960d9b14be29577b9e06e4094afafabee3171c8f512e9373aa294e72e4230373",
+            "34dc303bddcfd32eb404e01d061811f47e228a00c1c983a38c66545515073690",
+            "0ac895d8036f6c3afc7be52fb00a8066f67f720daa72ceae0ba299dd9801dd56",
+            "b78f64c0f9f8c376d1dd34d6b40e988f2c1e2c1e8c22d1f8d088e7b4a7ddfae7"
+          ]
+        }
+      },
+      "diagrams": [
+        "b97de04543d461bb04a3e892b12001a3aa28ee60b68117081106e135c7d1fa15"
+      ]
+    },
+    "ai-4/21": {
+      "sourceHash": "af4ff721031929057cf15ac62e27faf84b57e258e27a1c38dfa6a9896767e9c0",
+      "visualReview": "Every rendered page inspected",
+      "documents": {
+        "lesson": {
+          "docx": "c84d33221b8d2f5b6dbe7431b126d4535d326e88f7539217e16493c814d532ec",
+          "pdf": "867efcb9e03655a3f4acf5ddd884d011a7ff14663b70e8ae04892b93433b646f",
+          "pages": [
+            "33e9c555136cce4ef3264d4ddc91a38875b028232803e9db5482e2c4e762f31a",
+            "a4d07ae606b235c9d88d818d379c4fd2e53731b568e3e12ed0c554014c796468",
+            "9c54e46b6d4434ad542795e15d7a058377fd30d52df3ce2a6503850be0bcbf68",
+            "d0c4c9b0231eb15ef316c478e07291b6a1aa9ae014959afee1d5381f65775762"
+          ]
+        },
+        "workbook": {
+          "docx": "012b9b6daccc1bad3c8d4f91fabbca2f52fd3c2b5b8dff999282d6134e303356",
+          "pdf": "83bf84ff19623274ea3802cecdf2831694c87b5b79663928decbfd3884fa0ff6",
+          "pages": [
+            "00e7b23d808d21bda8b7cb93f0ea1bf3c33b4619277d2943ce94270401139fef",
+            "7d948e5a61e25f8fab40e48d9dfbdac7e1bb7cb9923292161b03ebca901dddbb",
+            "b616b2244c7f28e918fe6cc1e45ca1f86ea9985180b7011fb0f10f659241b8c6"
+          ]
+        },
+        "guide": {
+          "docx": "d8ae19aac8dd85eb38479f645976f3ef19d4eded752e80e9a1629d17bcbbf1c9",
+          "pdf": "334066478390e89294ca94a3bf405879e3575c9981c7dba3a950b75863628768",
+          "pages": [
+            "6a7ede746d0f4e04ef8a294d6d5eb20add35bbf3eebf28603cdc61161b4d41fc",
+            "2f314078c25a29ea7ba1b45fe12df66fa87aa721ffb85d420f9c250ff589cdce",
+            "f6939b633f6ab929ba907b29d4008ccdc4d019cbb702393f817728dfaab0a8a6",
+            "8fb30dc2e12a283c6a3adf98ad18cb8a72aa8c58c089a37aa446e49cf7207a7d"
+          ]
+        }
+      },
+      "diagrams": [
+        "39b484309fbbc3d77271cb384d6af95b47e6b147c0c3274399cbcdf2a6c69956"
+      ]
+    },
+    "ai-4/22": {
+      "sourceHash": "43c877c26287709cbac4b3d125d7a6553da967c240c668d044fd88c4a1054259",
+      "visualReview": "Every rendered page inspected",
+      "documents": {
+        "lesson": {
+          "docx": "eaa43907409af6483294fce1e052e4314653f8aa7b06b684e049aea2da66b92a",
+          "pdf": "50d64aab6b96633c5c3a084df666c77452f71bed6243a9661865c2e42fa5cd25",
+          "pages": [
+            "29ecc51adab5f57db7600b4f88120b10d9b659046166b049cda7b539f13a76f6",
+            "356961b4720772605a7ef5141b0b111d307c09678d576c6523467b0e71343735",
+            "2a13bd222ae94b0b16873d4be679c9e8f47ac03ce58827bf92b3ae8b35bf1441",
+            "11afb9d1f496514533afcaf38db46691107d2536d2344e0da807682299f40314"
+          ]
+        },
+        "workbook": {
+          "docx": "e05079c3d4fb34311721ce36d8a797cc32e7df86f2eafaca349d13ece6f5cf13",
+          "pdf": "4fb518cedc1f896dc2465035339ed0a6a5482a8781079c269d126e25b5822138",
+          "pages": [
+            "592060366d2327840545d496621082b52decf8bbd01a55335af52e215393262a",
+            "7e7986840568dc488188bb99a1eab207d3349b481ba97756365039b21be7347f",
+            "123e9687083a3c74b69afbcbd42d648623856beeaeca5fe890b0ca114bb54306"
+          ]
+        },
+        "guide": {
+          "docx": "29118005daadbb4967713aaf2d50c989d5edd051f529c0248431f08db7efe537",
+          "pdf": "bd1490bb7e44abbff5d183015bd2e5950d5aadf8d3a583c3286661a00a555a9c",
+          "pages": [
+            "031527793f8cbed383357719a824af173fa5ded1c524c82ddfaa456398c44dc5",
+            "725ecf29c86aeac966d4a3f7563788c49abd63b9b900f3cb468bb45b4bd3131f",
+            "5c74a2d9375de1015e8db53b432f6a621f8082fc091509ba6e3d34ce9811b9c9",
+            "e4baeb28fd296eb573c57da833e76933761345ef83efdaa9f38d5f34a3ae404e"
+          ]
+        }
+      },
+      "diagrams": [
+        "9b2da874f1b8080047ded8687ecf94644a0a6fb4723613f850e9d6a03fc08749"
+      ]
+    },
+    "ai-4/23": {
+      "sourceHash": "d6cd97462dc93da52ad384b14d38c8e24a9c69948d54e69b4b3706a37cf96a16",
+      "visualReview": "Every rendered page inspected",
+      "documents": {
+        "lesson": {
+          "docx": "3bafa365e6f6d18c660a6d01da4fab55ba8a4750028c0beb076d031eeba0674c",
+          "pdf": "6e4f7e497a8f713dc5db318099c5bec39e8bb151ae82314e49f9883049a77bbc",
+          "pages": [
+            "e63bc6df64ebd04e8fe4dd38a134a79b29f4047e3bc87f86308e8ef3f6d61964",
+            "84c24d028098aa6e4a61524b64488bbcafc4e41969ea83e7a51eaae200e1dc2e",
+            "d73dd089e1cf3d24d18e71879b3f81fb8b781dba84f100f28b5f5edc66367800",
+            "e2d7fc8375eb1e11435eff97c084cc9aaa3a2be8d6de8cf2a0e9955fb5c2f166"
+          ]
+        },
+        "workbook": {
+          "docx": "1c428758cdda4ec6f86e2341f4cdeed8e16ba920fe089c8be33f08e7cece5b14",
+          "pdf": "52adfd733d9501177e65406bc08701b39f0cdf29a8bafa68ff02e57d19e5480a",
+          "pages": [
+            "fae676c42c21cca85bf6aa586212d57a6fff954c7f387aa96e8bba3ff30de679",
+            "985ed041872ecb8e98bab3a4cebafce18ea08d8c56267a423497cce316e3723c",
+            "1ccaea4f9b1649a2d5ac8913068ccbf8ed933b52912654390228f1bc1f278e93"
+          ]
+        },
+        "guide": {
+          "docx": "51a57cb70361a68c4ae5c7f074a3cd9f96770b59366b285413fc1d2c2084a440",
+          "pdf": "fd5c2d602cd6775ac8290f8bc21353844f018affce18f6a7bfc5482e5752768a",
+          "pages": [
+            "2062b8fcc282375012e13444fe2a604a5e92f8be85d7238be1cf9e69d23c6fc5",
+            "456e393fae3de243d1a7587391c966158039710c47b405a6ae64d3a60e6a9f19",
+            "21cf39e148a8a8028ea82809e15ac0bab0a30f8adffcd3741d3b339d381d5cf8",
+            "bf2a2dbcb39bc92ffe144c7fb0c58c04cfb4db6cdd9da3c7c7a13905f2062e08"
+          ]
+        }
+      },
+      "diagrams": [
+        "fa453a8ea7d778262871b8bcd06914abf7b15e85bc4ca3591657d593bdfd2e2d"
+      ]
+    },
+    "ai-4/24": {
+      "sourceHash": "c2be23fec59e1f3c5377591f274ced22fde923c3d2d02b0830ecafc2c5aa5c44",
+      "visualReview": "Every rendered page inspected",
+      "documents": {
+        "lesson": {
+          "docx": "7a6221b54029472958b78033adab6aa4243d963b745ff933271155a68a2ec9a7",
+          "pdf": "a3b37980f788885c7e480568f99c53177658a490a03e98dceebcf445445b6314",
+          "pages": [
+            "6d11575a12af446f038cce84ffb07902b9b2946b6a1918722c5d4f87e17c51ed",
+            "c282596f373633109a816277b0c1fa86cf5951fc72a06a7b8739b3d221f57bce",
+            "dcf7707f5b0d77f766c9b4440ef585caa8d3267649ef4b2926497b62a8457475",
+            "1ad5a61c498e464382f84e8ce6ca503a3adcd7e185a09785f526edaacaf81f45"
+          ]
+        },
+        "workbook": {
+          "docx": "7fa7ec935a61ad710cee7c372a7cc51eeb177854935ce18a432d5e6fbea22ef5",
+          "pdf": "1912213359c0ad3f2b88f6c40180f4757ce078f1aedc084b9f034605f8b65c49",
+          "pages": [
+            "3bea7f0307af09460c900bd163f953e61cb4c1536b26c0b591c2b09c9292789d",
+            "d270ffc616e72635c7a728ad53ff9b9e1f608e0c95741837d3be33b8dd4391fd",
+            "7f9caec018a7e43aa0bafd97ede7abc1bfe6649197ee0248aadc6b548197d420"
+          ]
+        },
+        "guide": {
+          "docx": "22cc448a057f0ec5871fdd50cc35891fb5ab48c27ebc37d88107f05033641ce1",
+          "pdf": "00cbf75e93d14eabe52881236038832200c36b4ce489ef1b02763678274bf71f",
+          "pages": [
+            "babb2289770abfebb09d727b0073ce7ba91308d6f41af8a8182d834fd2d01c76",
+            "2b9bb4e88200a726d3f9ff5436d3565dd92201b8d7795fe268ed3f959b536007",
+            "93d1b47e626a37868ea5613e2a1427a70d8131ba56270e548ee78b32e200f50f",
+            "14fc46a97fde26c717d0add87f0571bf599cd018fd92468a677e8d4b4f637502"
+          ]
+        }
+      },
+      "diagrams": [
+        "be739551dfaf4da3a943a9791850f9e0dbaeb6bd6a75aad9c243bba8ad886311"
+      ]
+    },
+    "ai-4/25": {
+      "sourceHash": "40ac82ece2fab19eecfc9746c4a1597d3aed51f70672da74dd0e44d7d56af523",
+      "visualReview": "Every rendered page inspected",
+      "documents": {
+        "lesson": {
+          "docx": "135add0fb017ae8d6918716d70442a7b5b0160b555974614f00cfdbb8ecc653e",
+          "pdf": "a22c777cd76a34ea2cfa2336ff084550213334451cca220eebda16581bf4bae9",
+          "pages": [
+            "2af89972f9dae05a9dbb420b03067c6518cbd0aef40358d5614eceffc4557218",
+            "c57496001d2eccee29e9b8ec25712d6a4885fd06528e6868da60806e647a0c5c",
+            "182065f7e2d999a855c88b3eb3239c1675f5d20efcd0ec3ef5cbefcdcdf0fcb4",
+            "2b7c2585dd544b81464e2ceae60df860caa380314706ee471c1865da24e13688"
+          ]
+        },
+        "workbook": {
+          "docx": "6714242f71a17aea40bbd3b980a2055d3bdc38092e6a369793b9e0f889cb51db",
+          "pdf": "292f39749451455ce219300dfa56d4e5526ed6e9dac857c5b8288052767aa02c",
+          "pages": [
+            "d6cc22e43994518b94277419781f16d2606b4f50f0e2d918e543a452afeddf9a",
+            "e9b7c9d0aa8e16aaa148b4c06f125c3f4764893dd807a04b190d193704ef6d73",
+            "e5fb085ac2224c3b6adfbf457d1b95d8451cc5f3aad18d5f76b63ce70b1a393d"
+          ]
+        },
+        "guide": {
+          "docx": "3f98ab47892d3fa69bab004ffa5ac7cceed680818d5d03e0f3d62fd001b9b689",
+          "pdf": "c8cf4b09df4ca72d34656cd81b7237c031dd53f1df92944b7c2dc7028eb7c525",
+          "pages": [
+            "04e20491bd8b1bd79fa82d194e58f6259963e83d5bce7ddd8fdff859c27f6b63",
+            "61d2e1fe62b536bd771a29b10f95d4fb000ee22e5b13b55843fc15bde580dd95",
+            "17ea7c6c22730cf6efc19595ae98a91ec8f9f38fc72454b56f5876aad06dea91",
+            "0b8c00cfb8f88ac23352099e26afdb20780f66e365e7e706db52a9e5dfd916f1"
+          ]
+        }
+      },
+      "diagrams": [
+        "79dd9e1770f797677e2e15f4276841c8171c84b597c2c6d25f7ada1ff1e20495"
+      ]
+    },
+    "ai-4/26": {
+      "sourceHash": "8cfe26f96bc743fe6c29640a34cc2396d050c249fffd1b03297a01d1cd7bf0e7",
+      "visualReview": "Every rendered page inspected",
+      "documents": {
+        "lesson": {
+          "docx": "ecd8def41d012bca0c6e7978ad1c8bd762e2f69a3b16b3ebcac61766984c4543",
+          "pdf": "651825f4111ab6b282d57a40518821f27adcb164da5e66c64bc19bd8cf727374",
+          "pages": [
+            "da735182b8f7d9c40a8479a64a7c55d7eec7127664576c6a824d2f329a446cde",
+            "f55c0d97ed60758ab83288f21ec0a4a5398b20571f3f5172457e61db15b023c1",
+            "4f03441c242b3c8f6ed5aa9144301d7b47b937d4925ed4f9d54d669597657f18",
+            "e22cc1a05b6e6af30cf22bb9f20282b8f4eaacb5e03a828710599d2e706102bc"
+          ]
+        },
+        "workbook": {
+          "docx": "fdc9360855609104ab46d97462dafbcbc4ab39b07d4635fdcaf810db70025a6a",
+          "pdf": "275ddb816219c74cb6796f793a1e0c19ed69cc96cc2a9356e5cc33f708ddda9b",
+          "pages": [
+            "444cb6957d45447886109ae64da9e3be92368bc492a1815ac8c26bb01bbba83d",
+            "51cae9d3f5c3264631ccfd88d097014f0bd15ae5c258570e232e38e1705fb65a",
+            "17668172ab75503c30302bd758cb57c3e63e41b5c219429d74d2ca4394f62ea1"
+          ]
+        },
+        "guide": {
+          "docx": "2e56545bbf1d2f8aa1cbb3e9e8b52bdd5d610da1a14179d5d1eaa35ea50fd79e",
+          "pdf": "4a407257e4a807051c4d566868f54bfeea44c20567a206584c7c3e37d08425a2",
+          "pages": [
+            "caddfa6d84d3b84c6dad641a7980f8e1b8374f0eab27b66cc44dde7561d83ef9",
+            "850afa04dd82382bb5aab7f48f926a01d6bb4911e2b1b33edf834b3001d68dfa",
+            "ee58ac2e2d22bf1d5f0bf56a72a1305b790845e257357d3bb030cf268ac8aafb",
+            "5fa0665b1630c8bcfb7a1e9129608137bca06ce0a9223cfdd3772593d9e85fce"
+          ]
+        }
+      },
+      "diagrams": [
+        "2eba8f0f8c613d39774671cf63390c2efce9c91a14a9e65a94cc6f9548312690"
+      ]
+    },
+    "ai-4/27": {
+      "sourceHash": "4d95e30ae6cba7cc53c34eb2a733038552485b819aea7638d6cfb07ae5c3b3f9",
+      "visualReview": "Every rendered page inspected",
+      "documents": {
+        "lesson": {
+          "docx": "868642bb898a582405aab8cd19602e13de50b1030219d0122d0ea9b92a067c3b",
+          "pdf": "ccbac6c51ecf1e52cb46ded43fa6751cbc0d72506942297994e6108e705371d6",
+          "pages": [
+            "83e2d421419d8b36cd29d1e8623e5b6365cc24e631b591e196cc9ad79cfec7fd",
+            "a8d2af2ad86c4a7e090e88a8137c94ac9d8b4c8898d844a240251693b1110cb4",
+            "44afa078eb4a914fe573d20779cde0f905069d4746fad537c539e61a605a0847",
+            "cef421db1e2ef77704cc8b778039ab9c185d7b3e2a9b43a625c609d52580c9ba"
+          ]
+        },
+        "workbook": {
+          "docx": "b42241dde49536edcc78d65c444192cee8f2d36e83efdb07de819753c9ce3573",
+          "pdf": "71926c4b6bd31bb1c50cdad168552c5eb5e9cc39686ce5be2f69019e1ff44c19",
+          "pages": [
+            "29b2a0f71e9a2eadb67728bfbc586e229a01fdc0a5ec8ad57e746ca805f3b0b0",
+            "adeefa3e23f727ab595a465082898f468bb36ce7663eef426dded735c4357c1d",
+            "8dfc4cdbffb73a306b9f160ee29dcd817d0cbe3eff9f5ab5183fce35a504e34b"
+          ]
+        },
+        "guide": {
+          "docx": "210366295c469cdde81af29ab1e54a4cdcede42a33bf4455d7b0572bb5d61fa6",
+          "pdf": "0fb48ff9a15cf2f3e45ad8a6204818736a6602ce830b7f3fe34bc9e18b894215",
+          "pages": [
+            "791305c38d9f4d83517da157e702d03ff613f351f842d55c95d39a6808db9334",
+            "d817cba5e7b05a0affb94f5c97f0e1f93d3d2dc63816f4dddbf883bf8b843d6c",
+            "cb9b9ab772cd00aeba74f79165c71e26295a5ed802e972927a12b1a718f89faf",
+            "f441dc0fbe04805f0389fa956097f6d3036d479738725f230ada67cac13e2f8d"
+          ]
+        }
+      },
+      "diagrams": [
+        "d871fd7b570bfec86970ba6119fcc2e4c1ca8a3e6578fc72c343283635c8fc45"
+      ]
+    },
+    "ai-4/28": {
+      "sourceHash": "54f1e4b2e6559245c086f2e5bb778c82493f8b370b418da8ff2e35087c43b3a8",
+      "visualReview": "Every rendered page inspected",
+      "documents": {
+        "lesson": {
+          "docx": "d49895d964f8c56c9148f9a704d5ad7a80d383e55a5befdd5ed2e43d38338ec7",
+          "pdf": "6934222e5a047d821e83265f21a4fe3f31f1f32e2ba7c177db42c6896b76d4eb",
+          "pages": [
+            "200c8779827b2a2e63c1f3f241f1d378968387df21b52f5ed3728c1683782641",
+            "81504454028ab71605f1a6aa1c67c4301a8e0b0505b3a837467aad8925580799",
+            "69ff438c58efe5fce1b5810009750dbb28c59c9df312a2640ca2db66581c3ad1",
+            "33d24048e97457f35b3cdfd8e3983f128eb0786ee4b517d31e0a35c613e74b86"
+          ]
+        },
+        "workbook": {
+          "docx": "3676d4cbf4cd3762857c775ea88a53def62b139548db1996e66cbc286979c4d6",
+          "pdf": "076571d332a34e403a803d86a006c857048ef21ef6bc30007b670c14d86e113d",
+          "pages": [
+            "a78aa4a96806ac3f67cc085c136869ba57242b38b1119da2cf72deca0c0d52c6",
+            "1ce663c573852dac029d292d70547fddd2f9efb175482b928eb5b9f49fcad10b",
+            "1490277f181ab03cdf0d3778719b0b214a3a1d86e868d2c851583f7d6bbab8de"
+          ]
+        },
+        "guide": {
+          "docx": "64af09edc6dfb837bcf0dab3b945af4b4c3f863dfd669d81b815f233627ba0f8",
+          "pdf": "d01f4c04eb839adf197d7dd48ff6272c85b9b60b06500da7d8a92e923453ff3b",
+          "pages": [
+            "cbb1a6d1f3706efc99bfae3106c953285abde61a6051b42d1247ae86fe2c953b",
+            "af09f390d004f4288baa444d8cee55272a649417ca9f33bfa36794ef79949daf",
+            "b54036508e87b51ad1246fe59626b4aa38a03408c64d92112b30421ab994d3ef",
+            "3b4508c39d3bfe645ff0028bd38b222f98b17a877a2629f27b95b1b3e873492e"
+          ]
+        }
+      },
+      "diagrams": [
+        "b8fbb7b90dcb720333a7ddd814d9d847a9bfee1a1ceb7515d7c5fa18124723f1"
+      ]
+    },
+    "ai-4/29": {
+      "sourceHash": "cefafd6d87b1693648fe919b704d461961f55f4e40e87da5cfe587b33b69cc04",
+      "visualReview": "Every rendered page inspected",
+      "documents": {
+        "lesson": {
+          "docx": "da0e2a45de410cef425406b8aec0de1a1250abaffb9394b3668aeccadd379bee",
+          "pdf": "913a6521618bafa709331040eeb5812f5534bdf691a82221b5a68a7bd8b3351f",
+          "pages": [
+            "c99f3af2d6d13edbf8fa2a8b5609c1226d8fd76ac3998c361d3e49bf1bb6b85f",
+            "dd966ccea25c33995efdebfc5ab365867542057ef4ca0a9604509371e7b8576f",
+            "f634a1da86b63835e2fa07b5f5f9a2e5a4f47f8e16edf7fc6d3d1669714605dc",
+            "571361827764b917c1adf40380c2c4beef06145b51118e9f77a98564818a4602"
+          ]
+        },
+        "workbook": {
+          "docx": "9fc3e958d33211ef055601c8770c67bbb82aa620e973768ddd56e947cd24c40d",
+          "pdf": "ab80663ec83eaaecc2dc62b04eee22ebb341af17612792e7eebcaab8b5254982",
+          "pages": [
+            "79349f50585031d6ed282cea399bb9c27d102317de1f6acf350264ddea5a1031",
+            "fa1deab56cebe36259a031f4ef07f07289d4dd2b7afe05bfa3739dac0a573add",
+            "fb7638feb0d859921bc464dd3d294e877b48885060867454c81973dbfb604fe5"
+          ]
+        },
+        "guide": {
+          "docx": "c51d98078250df6492af6ded1677551928510598e599b15a0bed8ec4c8cb769b",
+          "pdf": "bcc6d07f4708d04993e52a8355f049362dd832b414cd3dd3d36907132089d0c0",
+          "pages": [
+            "786ae0432aae3c2fecf98f56c5da9e678879010698501bc628ac0c2042818a36",
+            "997beccd027da96e3a7ecf507b6dc32ebb96abbc83e2ad1af729bcceb44d6e7b",
+            "161089a00d84f96df4ed62701542765ec8f48cac2e5ef71526feae094ec08845",
+            "c607136e0e2f391611c5fe525e8c4d2769f27a1931cad028a49e364ea7be70a6"
+          ]
+        }
+      },
+      "diagrams": [
+        "2acdcc6a8a1f4b49f7637b5d0bd6e11e2365fae04a8d5985d212406dd7607617"
+      ]
+    },
+    "ai-4/30": {
+      "sourceHash": "42b95605c25d7e42db3204712d93e22689f4823b66d6e71a142474e5eb590260",
+      "visualReview": "Every rendered page inspected",
+      "documents": {
+        "lesson": {
+          "docx": "66de5a35b29bd1b28731850909b6f5173aa1121c5b3c1a499bd6c97538b3cc52",
+          "pdf": "4fbd26d4ce47e0c484da773380c849b4b6d1dba235fca6accca7f326cf727097",
+          "pages": [
+            "0ee6d9965ad5902714b552d5380307a0dfac22c17322d91c6e3cfff4c2d1664f",
+            "bfd03b52c048ad7f21df874006cdc26782cba9e26d6d1322c39b26e8b48e96dd",
+            "5ecc66816b27f75416f6772cb938a0cf1689c203a1bad60d8a45331f36990144",
+            "4e9ae05a10e8778216e8cb1729094b135bef2d5cb0b4c7a9d0246958034adda3"
+          ]
+        },
+        "workbook": {
+          "docx": "22338dd0863b83c9718e62222032a911100e11c2f84abe7625288530a35bdf1d",
+          "pdf": "7336fb0ea6756424d73758c578b72c805794078a9ec10eb700cd23a285cf3f27",
+          "pages": [
+            "96cd9a91afa5277b79d01de96772359822953d277a793bc38a0bc9c27d612847",
+            "42dfd241fdab7bb260f98de912d2d8cdfd2b80a2f669620a29d79191dc50e78f",
+            "1dce2a2fd3d9f40799f98cca68718df1bb3a7e60004751edfce56bc2a0ba4d73"
+          ]
+        },
+        "guide": {
+          "docx": "9284b9e4cb0a5f6025e5cac59863cc762a3e1c96839327dbd0e09df394a8e4a7",
+          "pdf": "69d56b018afaa322887e257acf3b8f57664347036ce2318e719d510d934ebb6e",
+          "pages": [
+            "c2eee82ab0a37bbd504eb0a53364a2ec9578c0da29ce7df4b8be00d7c93d0b2d",
+            "68144ed08d62fb531d061f213ac9d24e44513e4eded1bc869d9f563457c0a84b",
+            "d9f9489fc8b7d428c2bd5a153549983e3df6523386ba6ebde56bfea5574b9517",
+            "aca22f10d76d7bad23aeda476fa4707ff35baad362d9d5879d3910356fa3958c"
+          ]
+        }
+      },
+      "diagrams": [
+        "c243bc7ee01f03d9406898ebef299712d141d280decbb0818a2b6abca6c58d5d"
+      ]
+    },
+    "ai-4/31": {
+      "sourceHash": "538bfc71c5e7638dffe15e9939162be813775070cb933cb011082646e0a02029",
+      "visualReview": "Every rendered page inspected",
+      "documents": {
+        "lesson": {
+          "docx": "4fdf2b46a0d3206f7ffb77d081dfcb544b6c25c968b30ff6219d9d946a06d603",
+          "pdf": "5256c7960d24df0a75a3988dfc123507a088c0bab5c595669af89246e5ddf06b",
+          "pages": [
+            "22dcacffc8a41f444fbf7df2d8345de101e02ff3db10f63401f4e92cdaf83954",
+            "6dac46c9c5b4281133f7c9ae81bc202785a272a259b3f0fb189718031f0390b3",
+            "602bd585c081922cea7a244174b43f05cab23c27cd4d79d983751e5e92b008cc",
+            "5d7a336e30567d3a5bded38d63be44edb15477e7da515c317a15f21aac277722"
+          ]
+        },
+        "workbook": {
+          "docx": "c0a19d13f8bfa8f1d17b98e18e99820d53920f07bee3ec3f43510287f7c990e4",
+          "pdf": "74233660159b07b50df87d6fd0458777f18258af738e6a4d34425553addd2516",
+          "pages": [
+            "3ec59ac6731da5904a404fa661a61c7c6d99093ed82e9a9d3900c10a9d99ff80",
+            "258a7fec5fbff285e81f7b98f0ad5fe605f104f33d31e1824d2067050ca066db",
+            "c027472330dd2e0f1f78e552b057567111c60ecd420ebb97e57cc5170a72049e"
+          ]
+        },
+        "guide": {
+          "docx": "0d31fe6372061915da431853aadf8467501844edb76af881c38656fc5434e29e",
+          "pdf": "cf97a1bfaf5d4efb98024c633a60bfb6a5fceb50c183f88ea59fcbbc3f03cf09",
+          "pages": [
+            "d7df8eae2f20e642e5545412f7c098544e29687b67d112f4e7b9bdc55536fb86",
+            "c650dc13b2398eaa7cae8fa1beb5a6a5658cd17ba474762cfd0dc67e4dbe09a3",
+            "90808e1279e1b8d86e5685aedb0f00ae8a6611fa2c24fcd8629c17e704f7f0ca",
+            "6869d556a89030e4e3469a0d9460124224ee19da3931244e7fde7e0e71e2f7cc"
+          ]
+        }
+      },
+      "diagrams": [
+        "4cf5b0a4a7633a824230885600c2100a88cd7b1953dc0858e18300d4c214d86a"
+      ]
+    },
+    "ai-4/32": {
+      "sourceHash": "8fac0fbd3b101a3bfb9a7dafc7b57fc8c1206850d1de3b6a9fcbc5c5baec0119",
+      "visualReview": "Every rendered page inspected",
+      "documents": {
+        "lesson": {
+          "docx": "a332ce48b55f2185c17a93dc486d03924748f3ba099b6a1500bdf96addda1e9f",
+          "pdf": "c93a3ffb6e51311e45496d5de27fab41262411a178a47b3190a9821626b8b8e6",
+          "pages": [
+            "48fdaa65ad345e35922f7a111bafd99870f2f5d7cff9d178b71474cbd55b2114",
+            "fea978cf1db0c3c2f0b9b53b940477ea485d1d36cb28ffe14bf4a7fb5cae5986",
+            "44f286bd836e0a3357757c0d7e5feb083b5986382cd8c7d37f8d85e47aa9eb1e",
+            "e6de1222a526a96705299978d2c4319abaa7be130be88b613de7c030a5829801"
+          ]
+        },
+        "workbook": {
+          "docx": "74e0c272324f6ec4a7ac98415d48592cf17d037a2b416fcba0c88dc49ab7df2b",
+          "pdf": "3587dda77e8c84fe63ab8e442f19cf25c2778c321285c374249bb74889523cd3",
+          "pages": [
+            "0cb5c2575411b793fa96c8d1a923cc7420445224322c807b0135a73427bea4c2",
+            "e991faa2717f1ff445eadc7ae70ca5d389264c6dd5506a608c480980270dc59c",
+            "3944c8258adf627ae8ec4ec9bb0c9fbeef81c577dbb46ed96780ab46ef7ab385"
+          ]
+        },
+        "guide": {
+          "docx": "7fb2d2ce61f137f3b4c161baa8f8f9caae4ed0a007d2f8750520893f3eb68490",
+          "pdf": "84eb9e878fb34f54ed4059ad73970e7976ecaa253aee16fc81e9e9c943d51fd7",
+          "pages": [
+            "018da7bdadaeda019dd7a08c00e7b4a50b07eb7481c47b61297406e43cc88dee",
+            "6d69fcf95aca41147a618a1e47cf34d29cb8579fa1affa33287b19d763f5e429",
+            "d7725d422b452dfd146106183441d5446555918b239796977671193567632b43",
+            "f08396eaf25bc254f95dfa3a204d558dcde9ff7634e881e7f1c33dbf2e1c1f4f"
+          ]
+        }
+      },
+      "diagrams": [
+        "ba3a5b5765a4702a824904256f9cdfdc8d874d1d850e6e3b0cd3a25d9b0bf4f8"
       ]
     }
   }

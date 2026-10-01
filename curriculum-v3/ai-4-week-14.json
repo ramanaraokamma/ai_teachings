@@ -1,0 +1,279 @@
+{
+  "level": "ai-4",
+  "week": 14,
+  "title": "Learning rate experiments",
+  "minutes": 90,
+  "goals": [
+    "Run a controlled comparison of learning rates",
+    "Explain slow progress oscillation and increasing loss in a toy model",
+    "Report the limits of a training experiment"
+  ],
+  "prerequisite": {
+    "prompt": "Why can equal epochs give different update counts when batch size changes?",
+    "answer": "An epoch visits the data once, but each batch causes an update. More batches mean more updates under the stated rule."
+  },
+  "vocabulary": [
+    [
+      "Learning rate",
+      "The multiplier controlling the size of a gradient update"
+    ],
+    [
+      "Controlled comparison",
+      "An experiment changing a named factor while holding other stated conditions fixed"
+    ],
+    [
+      "Oscillation",
+      "Repeated movement from one side of a value to the other"
+    ],
+    [
+      "Divergence",
+      "Movement away from a target solution with growing error in this experiment"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Change one setting at a time",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Use the same restricted network h = ReLU(x), y = vh, with only v trained. Keep the fictional training pairs (1, 2) and (2, 4), start v = 0, and use one full-data batch per update. Compare rates 0.05, 0.2, 0.3, 0.4 and 0.5 for exactly four updates each. Restart at zero for every run."
+        },
+        {
+          "type": "paragraph",
+          "text": "The training objective is ordinary MSE: L(v) = 2.5 times (v - 2) squared. Its gradient is 5 times (v - 2). A step is new v = v - rate times 5 times (v - 2). This small quadratic lets us explain each result rather than treating the rate as a magic setting."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Rate",
+            "v after first update",
+            "First training MSE",
+            "v after four updates"
+          ],
+          "rows": [
+            [
+              "0.05",
+              "0.5",
+              "5.625",
+              "1.3671875"
+            ],
+            [
+              "0.2",
+              "2",
+              "0",
+              "2"
+            ],
+            [
+              "0.3",
+              "3",
+              "2.5",
+              "1.875"
+            ],
+            [
+              "0.4",
+              "4",
+              "10",
+              "0"
+            ],
+            [
+              "0.5",
+              "5",
+              "22.5",
+              "-8.125"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The same rate need not behave this way for another model, input scale, loss convention or batch rule. Rate 0.2 is an exact one-step solution here because of this particular gradient formula."
+        }
+      ]
+    },
+    {
+      "title": "Predict the trajectory before running it",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Write d = v - 2, the signed distance from this objective minimum. Substituting the update gives new d = (1 - 5 times rate) times old d. At rate 0.05 the factor is 0.75: distance shrinks without changing sign. At rate 0.3 it is -0.5: distance changes sign and halves. Both can reduce loss."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "def run(rate, updates=4):\n    v = 0.0\n    history = [v]\n    for _ in range(updates):\n        gradient = 5 * (v - 2)\n        v = v - rate * gradient\n        history.append(v)\n    losses = [2.5 * (value - 2) ** 2 for value in history]\n    return history, losses\n\nfor rate in [0.05, 0.2, 0.3, 0.4, 0.5]:\n    values, losses = run(rate)\n    print(rate, values, losses)"
+        },
+        {
+          "type": "paragraph",
+          "text": "The helper assumes a finite rate and nonnegative integer update count. Its five logged states include the initial value. At 0.3 the parameter sequence is [0, 3, 1.5, 2.25, 1.875] and loss is [10, 2.5, 0.625, 0.15625, 0.0390625]. Crossing the minimum does not itself mean training failed."
+        }
+      ]
+    },
+    {
+      "title": "Relate a factor to a loss pattern",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "The update factor explains three behaviours",
+          "columns": [
+            "Rate and factor",
+            "Signed distance behaviour",
+            "Training loss behaviour"
+          ],
+          "rows": [
+            [
+              "0.05 gives 0.75",
+              "Same side and shrinking",
+              "Multiplied by 0.5625"
+            ],
+            [
+              "0.3 gives -0.5",
+              "Alternating and shrinking",
+              "Multiplied by 0.25"
+            ],
+            [
+              "0.5 gives -1.5",
+              "Alternating and growing",
+              "Multiplied by 2.25"
+            ]
+          ],
+          "caption": "For this objective, loss is 2.5 times squared distance. Therefore the loss multiplier is the square of the distance multiplier."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "For rate 0.4, calculate its distance multiplier, the first two new v values and both losses. Does a changing parameter guarantee progress?",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Keep the objective scale visible",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For a nonzero starting distance, loss strictly decreases on each step of this quadratic when the absolute value of 1 - 5 times rate is below 1. For positive rates this means 0 < rate < 0.4. At 0 the model does not move. At 0.4 it oscillates with unchanged loss. Above 0.4 its distance grows. These bounds belong to this model and objective, not to neural networks generally."
+        },
+        {
+          "type": "paragraph",
+          "text": "If we switch from mean squared error to the sum over the same two examples, the gradient doubles from 5(v - 2) to 10(v - 2). Keeping the old rate changes the update. To reproduce the original steps, halve the rate. Likewise, rescaling features can change gradient magnitudes. Record the loss and units alongside the rate."
+        }
+      ]
+    },
+    {
+      "title": "Report the result within its limits",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Record the initial state, data, frozen values, objective, batch rule, update budget, candidate rates, parameter traces and loss traces. These runs compare training behaviour on two examples. They do not establish which setting performs best on independent data. Keep the final test set out of rate selection; later lessons use validation curves to make development choices."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A team says rate 0.2 is the best rate for every neural network because it reached zero training loss here. Replace this claim with a precise experimental conclusion and one limitation.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Next week compares training and validation curves, including when their trends disagree."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Trace slow progress",
+      "prompt": "For rate 0.05, start v = 0 and compute two updates and their training MSE values using the lesson objective.",
+      "answer": "Teacher explanation: First v = 0.5 with MSE 5.625. Second gradient -7.5 gives v = 0.875 and MSE 3.1640625. Distance is multiplied by 0.75 each step.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Explain a crossing",
+      "prompt": "At rate 0.3 the first update gives v = 3, past the minimum at 2. Calculate the next v and loss. Has the first crossing proved divergence?",
+      "answer": "Teacher explanation: Next gradient 5 gives v = 1.5 and loss 0.625. No. Signed distance changes side but shrinks by half each update; loss decreases.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Preserve an update after rescaling loss",
+      "prompt": "Replace MSE by the sum of squared errors on the two training pairs. Which rate reproduces the MSE run at rate 0.3? Explain using gradients.",
+      "answer": "Teacher explanation: The sum gradient is twice the mean gradient, so rate 0.15 reproduces the original steps. Rate 0.3 would double each step from the same state.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Compare a new objective independently",
+      "prompt": "Use J(a) = (a - 1) squared with gradient 2(a - 1), start a = 0 and two updates. Restart for each rate 0.25, 0.5 and 1. Compute the two new a values and losses for each run. Identify the result supported after two updates.",
+      "answer": "Teacher explanation: At 0.25: a = 0.5 then 0.75; losses 0.25 then 0.0625. At 0.5: a = 1 then 1; losses 0 then 0. At 1: a = 2 then 0; losses 1 then 1. Rate 0.5 attains the lowest objective in this comparison. The useful rate differs from the lesson model.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Find an unfair comparison",
+      "prompt": "Run A starts v = 0 with full-data batches for four updates. Run B starts at the final A value, changes both rate and batch size, then compares final training losses. Can the difference be attributed only to rate? Propose a repair.",
+      "answer": "Teacher explanation: No. Initial state and batch rule also changed. Restart every run at the same v, hold data, loss, batch rule and update budget fixed, and vary only rate. Report the traces and separate any later experiment with a different factor.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions and connect signed distance to squared loss before introducing the factor formula. This is a fully explained quadratic experiment with a frozen hidden representation. Avoid general prescriptions about rate values. Students should distinguish an oscillating parameter from increasing loss.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve epoch and update counts; agree on one full-data batch and four updates per run."
+      ],
+      [
+        "7 to 18 minutes",
+        "Calculate the first row of each rate run and keep all resets visible."
+      ],
+      [
+        "18 to 32 minutes",
+        "Derive new d from the update rule using substitution; complete W1."
+      ],
+      [
+        "32 to 45 minutes",
+        "Run or trace Python and compare rate 0.3 with W2, marking sign and magnitude separately."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete the guided rate 0.4 example and explain why changing values can leave loss unchanged."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to connect the loss scale with the gradient and an equivalent rate."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect the three independent W4 traces with a fresh reset before each."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit response, then administer the fresh retry and record the experimental limits."
+      ]
+    ],
+    "guidedAnswer": "Guided: multiplier -1; v becomes 4 then 0, with MSE 10 at both states. Parameter change does not guarantee decreasing loss. Exit: for the fixed two-example objective, start and four-update budget, rate 0.2 reached zero training MSE after one update. This does not demonstrate an optimal rate or generalisation for other networks or data.",
+    "misconceptions": [
+      [
+        "Crossing the minimum means divergence",
+        "Compare distance magnitudes or losses; alternating sides can converge."
+      ],
+      [
+        "A larger rate is always faster",
+        "The tested 0.5 rate increases this objective; 0.4 keeps it unchanged."
+      ],
+      [
+        "The best rate is independent of loss scaling",
+        "Scaling the loss scales its gradient and changes the step at a fixed rate."
+      ]
+    ],
+    "assessment": "W4 must include all six new states and losses with no carry-over between runs. Fresh retry: J(c) = 2(c - 3) squared, gradient 4(c - 3), start c = 1. At rate 0.125, c becomes 2 then 2.5 with losses 2 then 0.5. At rate 0.25, c becomes 3 then 3 with losses 0 then 0. Ask for a conclusion limited to these runs.",
+    "support": "Provide a number line with the minimum marked and a table for old value, gradient, new value and loss. Extension: derive 0 < rate < 1 for strict loss decrease on J(a) = (a - 1) squared away from the minimum, and compare with the lesson bound 0.4.",
+    "next": "Week 15 separates training and validation curves."
+  }
+}

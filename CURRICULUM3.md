@@ -1,6 +1,6 @@
 # Curriculum 3 learning sequence
 
-Curriculum 3 is a new seven-level progression beginning in Grade 6. This release contains **AI 1 Weeks 1–36, AI 2 Weeks 1–36, AI 3 Weeks 1–36 and AI 4 Weeks 1–12**, each authored as a complete student lesson, workbook and teacher guide. It does not claim to complete all seven levels. The other **132 week positions are a proposed sequence**, explicitly labelled Planned with no lesson links. The existing four-level, 144-week edition remains available.
+Curriculum 3 is a new seven-level progression beginning in Grade 6. This release contains **AI 1 Weeks 1–36, AI 2 Weeks 1–36, AI 3 Weeks 1–36 and AI 4 Weeks 1–32**, each authored as a complete student lesson, workbook and teacher guide. It does not claim to complete all seven levels. The other **112 week positions are a proposed sequence**, explicitly labelled Planned with no lesson links. The existing four-level, 144-week edition remains available.
 
 ## Released packages
 
@@ -52,7 +52,7 @@ Each package has a prerequisite check, three outcomes, five explanatory sections
 | AI 1 | 6 | Foundations | 36 of 36 |
 | AI 2 | 7 | Programming and Data | 36 of 36 |
 | AI 3 | 8 | Machine Learning | 36 of 36 |
-| AI 4 | 9 | Neural Networks | 12 of 36 |
+| AI 4 | 9 | Neural Networks | 32 of 36 |
 | AI 5 | 10 | Generative AI Systems | 0 of 36 |
 | AI 6 | 11 | AI Engineering | 0 of 36 |
 | AI 7 | 12 | Research and Advanced Projects | 0 of 36 |
@@ -65,7 +65,7 @@ Sign in through the existing student or teacher passcode flow. The role dashboar
 
 The existing Cloudflare Worker, ASSETS binding, signed sessions and protected resource endpoint are preserved. Teacher guides and their Word/PDF downloads require a teacher session. Student URLs requesting a guide return 404. Planned chapters return 404. Unauthenticated chapter/map requests redirect to sign-in; unauthenticated downloads return 401. Protected responses remain private and no-store.
 
-Canonical JSON and answer keys are imported only by server code. The 840 Curriculum 3 public blobs are encrypted: 360 DOCX files, 360 PDFs and 120 diagram PNGs. No plaintext teacher documents are placed under `public/`. The source repository itself contains private teacher material and must be shared accordingly.
+Canonical JSON and answer keys are imported only by server code. The 980 Curriculum 3 public blobs are encrypted: 420 DOCX files, 420 PDFs and 140 diagram PNGs. No plaintext teacher documents are placed under `public/`. The source repository itself contains private teacher material and must be shared accordingly.
 
 This revision has been tested locally. It has not been deployed to the live Cloudflare site.
 
@@ -99,7 +99,7 @@ Do not update a source hash simply to suppress the mismatch check. It protects s
 - All 18 web resources were printed to PDF for browser-print inspection. Downloadable PDFs are the reviewed, paginated print editions.
 - A deliberate source change was rejected by the stale-download guard, then the source was restored.
 
-Grade 6 AI 1 Foundations, Grade 7 AI 2 Programming and Data, and Grade 8 AI 3 Machine Learning are complete with 36 weekly packages each. Grade 9 AI 4 has Weeks 1–12 complete. Grade 9 Weeks 13–36 and Grades 10–12 require individually authored chapters, exercises, solutions and print review; the progression map is not a substitute for that work.
+Grade 6 AI 1 Foundations, Grade 7 AI 2 Programming and Data, and Grade 8 AI 3 Machine Learning are complete with 36 weekly packages each. Grade 9 AI 4 has Weeks 1–32 complete. Grade 9 Weeks 33–36 and Grades 10–12 require individually authored chapters, exercises, solutions and print review; the progression map is not a substitute for that work.
 
 ## Week 7 completion (2026-09-15)
 
@@ -572,3 +572,156 @@ All seven Python lesson examples and independent workbook/retry calculations pas
 Production build, TypeScript and all 31 access-test groups passed. All 3,013 protected resources decrypted successfully. There are now 120 complete weekly packages and 720 matching Word/PDF downloads. Grade 9 has 12 of 36 weeks complete; Weeks 13–36 remain planned. Across the seven-level curriculum, 132 weekly positions remain planned. Next: Week 13, Batching and epochs.
 
 Cloudflare hosting and student/teacher access controls are preserved. No live deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
+
+
+## Grade 9 Weeks 13–14 — Batches and learning rates (2026-09-29)
+
+Completed Batching and epochs and Learning rate experiments with student lessons, five-task workbooks, teacher guides, explanatory visuals and matching Word/PDF downloads. Week 13 distinguishes example visits, batches, updates and epochs, handles incomplete batches and weighted loss aggregation, and uses an independent counterexample to demonstrate order effects. Week 14 compares five rates under one fixed training setup, explains shrinking versus growing oscillations, and connects loss scaling to equivalent update sizes.
+
+Both executable lesson examples, 140 batch-count cases, worked calculations, independent exercises and fresh retry traces passed. All 22 canonical document pages and 21 browser-print pages were visually reviewed. Canonical-text, answer-separation and workbook response-placement audits passed. Twelve desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 31 access-test groups passed; all 3,027 protected resources decrypted successfully.
+
+Grade 9 now has 14 of 36 weeks complete. Overall, 122 of 252 rebuilt weekly packages are complete, with 732 matching Word/PDF downloads; 130 weeks remain planned. Next: Week 15, Training and validation curves. Cloudflare hosting and student/teacher controls are preserved. No deployment was performed. Classroom pacing and effectiveness still require student trials and teacher feedback.
+
+
+## Grade 9 Weeks 15–16 — Validation and regularisation (2026-09-29)
+
+Completed Training and validation curves and Regularisation and early stopping with student lessons, workbooks, teacher guides, explanatory visuals and matching Word/PDF editions. Week 15 uses fixed checkpoints and explicitly constructed split differences, with a two-line loss chart and exact table values. Week 16 separates prediction error from a weight penalty, computes regularised updates, and applies a strict-improvement stopping rule with patience, ties, restoration and no future-value peeking.
+
+Both executable lesson examples, 35 numerical penalty-gradient checks, 729 stopping-policy cases, chart values and independent/retry arithmetic passed. All 22 canonical document pages and 22 browser-print pages were visually inspected. Canonical-text, answer-separation and workbook response-placement audits passed. Twelve desktop/mobile chapter checks and both protected maps passed. The curve-rendering addition preserves every previously reviewed diagram byte.
+
+Production build, TypeScript and all 31 access-test groups passed. All 3,041 protected resources decrypted successfully. Grade 9 now has 16 of 36 weeks complete. Overall, 124 of 252 weekly packages are complete with 744 matching Word/PDF downloads; 128 weeks remain planned. Next: Week 17, Initialisation and reproducibility. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
+
+
+## Grade 9 Weeks 17–18 — Reproducibility and debugging (2026-09-29)
+
+Completed Initialisation and reproducibility and Debugging shapes and gradients with student lessons, five-task workbooks, teacher guides, explanatory visuals and matching Word/PDF editions. Week 17 compares starting values under a fixed budget, demonstrates hidden-unit symmetry and explains why seeds need accompanying experiment records. Week 18 checks dimension contracts, exposes an omitted bias hidden by ReLU, diagnoses swapped gradient coordinates and verifies update direction.
+
+Both executable lesson examples, 49 dense-layer input cases, six malformed-shape rejections, hidden-unit numerical gradient probes, seeded replay checks and independent/retry calculations passed. All 22 canonical document pages and 22 browser-print pages were visually inspected. Canonical-text, answer-separation and workbook response-placement audits passed. Twelve desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 31 access-test groups passed; all 3,055 protected resources decrypted successfully.
+
+Grade 9 now has 18 of 36 weeks complete. Overall, 126 of 252 rebuilt weekly packages are complete with 756 matching Word/PDF downloads; 126 weeks remain planned. Next: Week 19, Learned representations. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
+
+
+## Grade 9 Week 19 — Learned representations (2026-09-30)
+
+Completed the student lesson, five-task workbook, teacher guide, explanatory visual and six matching Word/PDF downloads. Rectangle examples trace hidden activations, expose task-dependent information loss, distinguish constructed features from learned ones, and demonstrate recovery when an additional measurement is retained. Independent assessment and a fresh retry use new activation thresholds.
+
+The executable lesson and 400 input cases passed checks of classification, collisions and reconstruction, with independent and retry calculations verified. All 11 canonical document pages and 11 browser-print pages were visually inspected; canonical-text, answer-separation and response-placement audits passed. Six desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 31 access-test groups passed; all 3,062 protected resources decrypted successfully. The access suite was rerun after the build completed to check the current release rather than the previous build.
+
+Grade 9 has 19 of 36 weeks complete. Overall, 127 of 252 weekly packages are complete, with 762 matching Word/PDF downloads; 125 remain planned. Next: Week 20, Image tensors and channels. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
+
+
+## Grade 9 Week 20 — Image tensors and channels (2026-09-30)
+
+Completed the student lesson, five-task workbook, teacher guide, labelled channel visual and six matching Word/PDF downloads. Examples establish zero-based HWC and CHW indexing, distinguish axis permutation from naive regrouping, separate pixels from channel values, and audit fixed scaling, colour averaging and batch axes. The independent assessment uses a one-row image and the fresh retry uses a one-column image.
+
+The executable lesson, 36 rectangular image round trips with all coordinates checked, 256 exact scaling cases, independent exercise and retry passed. All 11 downloadable document pages and 11 browser-print pages were visually reviewed. Canonical-text, answer-separation and response-placement audits passed. Six desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 31 access-test groups passed; all 3,069 protected resources decrypted successfully.
+
+Grade 9 has 20 of 36 weeks complete. Overall, 128 of 252 weekly packages are complete, with 768 matching Word/PDF downloads; 124 remain planned. Next: Week 21, Convolution as a local operation. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
+
+
+## Grade 9 Week 21 — Convolution as a local operation (2026-09-30)
+
+Completed the student lesson, five-task workbook, teacher guide, explanatory visual and six Word/PDF downloads. The chapter declares the fixed-kernel cross-correlation convention used in neural-network convolution, traces all four valid windows, separates shared parameters from arithmetic operations, and compares stride, zero padding, bias and ReLU. Independent and retry examples use different images and kernels. The teacher guide includes the official PyTorch convention reference.
+
+The executable lesson and 147 rectangular-input and stride cases passed independent local-sum and shape checks, alongside the oversized-kernel rejection, worked examples, independent task and retry. All 11 downloadable pages and 11 browser-print pages were visually reviewed. Canonical-text, answer-separation and response-placement audits passed. Six desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 31 access-test groups passed; all 3,076 protected resources decrypted successfully.
+
+Grade 9 has 21 of 36 weeks complete. Overall, 129 of 252 weekly packages are complete, with 774 matching Word/PDF downloads; 123 remain planned. Next: Week 22, Pooling and spatial information. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
+
+
+## Grade 9 Week 22 — Pooling and spatial information (2026-09-30)
+
+Completed the student lesson, five-task workbook, teacher guide, explanatory visual and six matching Word/PDF downloads. The chapter compares max and mean pooling under an explicit complete-window rule, demonstrates collisions and retained coarse spatial structure, exposes omitted borders and signed-value mistakes, and uses movement across a window boundary to limit invariance claims. Independent and retry assessments use new signed maps.
+
+The executable lesson, 64 rectangular map cases, all 16 binary windows, worked calculations, movement counterexamples, negative-value checks and independent/retry cases passed. All 11 downloadable pages and 11 browser-print pages were visually reviewed. Canonical-text, answer-separation and response-placement audits passed. Six desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 31 access-test groups passed; all 3,083 protected resources decrypted successfully.
+
+Grade 9 has 22 of 36 weeks complete. Overall, 130 of 252 weekly packages are complete, with 780 matching Word/PDF downloads; 122 remain planned. Next: Week 23, Training a small image model. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
+
+
+## Grade 9 Week 23 — Training a small image model (2026-09-30)
+
+Completed the student lesson, five-task workbook, teacher guide, explanatory visual and six matching Word/PDF downloads. The experiment trains one scalar output weight over explicitly frozen image filters, uses signed targets and a strict class threshold, selects among three saved checkpoints by validation MSE, and compares a frozen model with a constant baseline. Three reserved final cases and their answers remain in the teacher guide. Independent and retry exercises select an earlier checkpoint despite decreasing training loss.
+
+Both updates, 41 numerical gradient checks, all 16 binary images, split uniqueness, final accuracy and MSE, and independent/retry selection calculations passed. All 11 downloadable pages and 12 browser-print pages were visually inspected. Canonical-text, answer-separation and response-placement audits passed. Six desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 31 access-test groups passed; all 3,090 protected resources decrypted successfully.
+
+Grade 9 has 23 of 36 weeks complete. Overall, 131 of 252 weekly packages are complete, with 786 matching Word/PDF downloads; 121 remain planned. Next: Week 24, Augmentation and leakage. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
+
+
+## Grade 9 Week 24 — Augmentation and leakage (2026-09-30)
+
+Completed the student lesson, five-task workbook, teacher guide, explanatory visual and six matching Word/PDF downloads. The chapter tests task-specific label preservation, handles ties correctly, assigns source groups before augmentation, audits lineage and exact duplicates, distinguishes source counts from record counts, and matches update budgets. It explicitly revisits Week 23: row-swapped training variants would duplicate its toy validation examples, requiring a new split for an augmentation experiment.
+
+All sixteen binary images passed transformation and source-preservation checks, including ten column-swap label changes and six unchanged ties. Grouped record counts, exclusions, known duplicate relationships, update budgets and independent/retry calculations passed. All 11 downloadable pages and 11 browser-print pages were visually reviewed. Canonical-text, answer-separation and response-placement audits passed. Six desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 31 access-test groups passed; all 3,097 protected resources decrypted successfully.
+
+Grade 9 has 24 of 36 weeks complete. Overall, 132 of 252 weekly packages are complete, with 792 matching Word/PDF downloads; 120 remain planned. Next: Week 25, Sequence representations. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
+
+
+## Grade 9 Week 25 — Sequence representations (2026-09-30)
+
+Completed the student lesson, five-task workbook, teacher guide, explanatory visual and six matching Word/PDF downloads. The chapter compares ordered event logs with count vectors, declares a token vocabulary and right-padding mask, distinguishes unknown symbols from placeholders, protects measured zeros in masked calculations, and exposes truncation and empty-input boundaries. Independent and retry tasks use a new vocabulary and storage length.
+
+All 120 known-token sequences of lengths one through four passed encoding, decoding and final-position checks. Four rejection cases, unknown collisions, masked means, truncation and independent/retry arithmetic passed. All 11 downloadable pages and 11 browser-print pages were visually reviewed. Canonical-text, answer-separation and response-placement audits passed. Six desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 31 access-test groups passed; all 3,104 protected resources decrypted successfully.
+
+Grade 9 has 25 of 36 weeks complete. Overall, 133 of 252 weekly packages are complete, with 798 matching Word/PDF downloads; 119 remain planned. Next: Week 26, Embeddings and neighbourhoods. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
+
+
+### 2026-09-30 — Grade 9 Week 26 complete
+
+Embeddings and neighbourhoods now has matching student lesson, workbook and teacher guide, an explanatory visual, and six protected Word/PDF downloads. Students trace token-to-vector lookup and sequence shape, calculate squared distances while preserving ties, trace one trainable-row update, and explain why closeness or reduced training loss does not establish equivalent meaning. The guide includes worked answers, two 45-minute sessions, misconceptions, support, extension and a fresh independent retry.
+
+Validation passed: 2,401 distance cases, 720 consistent ID permutations, tied neighbours, numerical gradients, invalid-input checks, and independent/retry cases. All 11 canonical print pages and 11 browser print pages were visually inspected; canonical text and student/teacher answer separation passed. Six chapter viewport checks and both protected maps passed, alongside the production build, TypeScript, all 31 access test groups, and decryption of all 3,111 protected resources.
+
+Grade 9 has 26 of 36 weeks complete. Overall, 134 of 252 weekly packages are complete, with 804 matching Word/PDF downloads; 118 remain planned. Next: Week 27, Similarity and normalisation. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
+
+
+### 2026-09-30 — Grade 9 Week 27 complete
+
+Similarity and normalisation now has matching student lesson, workbook and teacher guide, an explanatory visual, and six protected Word/PDF downloads. Students compute vector lengths and unit vectors, compare raw squared distance with cosine similarity, explain changed neighbour rankings, handle zero vectors explicitly, and audit magnitude loss and evaluation leakage. The guide includes worked answers, two 45-minute sessions, misconceptions, support, extension and a fresh independent retry.
+
+Validation passed across 2,304 nonzero vector pairs: unit lengths, cosine bounds and symmetry, positive and negative scaling, and the unit-vector distance identity. Worked, guided, independent, retry and invalid-input cases passed. All 11 canonical print pages and 12 browser print pages were visually inspected; canonical text and student/teacher answer separation passed. Six chapter viewport checks and both protected maps passed, alongside the production build, TypeScript, all 31 access test groups, and decryption of all 3,118 protected resources.
+
+Grade 9 has 27 of 36 weeks complete. Overall, 135 of 252 weekly packages are complete, with 810 matching Word/PDF downloads; 117 remain planned. Next: Week 28, Transfer learning. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
+
+
+### 2026-09-30 — Grade 9 Week 28 complete
+
+Transfer learning now has matching student lesson, workbook and teacher guide, an explanatory visual, and six protected Word/PDF downloads. Students trace a frozen feature extractor, fit a target head using training examples, compare a constant baseline on held-out examples, and identify a new-task collision that no deterministic head can undo. The supplied extractor is explicitly a transparent stand-in rather than a claimed source-trained model. Fine tuning is distinguished from the hand-chosen representation change, with evidence and provenance requirements for real transfer comparisons. The guide includes two 45-minute sessions, worked answers, misconceptions, support, extension and a fresh independent retry.
+
+Validation passed: 2,100 input/threshold cases, 61 collision thresholds, training searches, boundary and baseline checks, hand-changed features, independent/retry ties and invalid-input checks. All 11 canonical print pages and 12 browser print pages were visually inspected; canonical text and student/teacher answer separation passed. Six chapter viewport checks and both protected maps passed, alongside the production build, TypeScript, all 31 access test groups, and decryption of all 3,125 protected resources.
+
+Grade 9 has 28 of 36 weeks complete. Overall, 136 of 252 weekly packages are complete, with 816 matching Word/PDF downloads; 116 remain planned. Next: Week 29, Uncertainty and failure analysis. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
+
+
+### 2026-09-30 — Grade 9 Week 29 complete
+
+Uncertainty and failure analysis now has matching student lesson, workbook and teacher guide, an explanatory visual, and six protected Word/PDF downloads. Students separate selected-class confidence from correctness, tally false positives and false negatives, calculate overall accuracy, coverage and accepted-case accuracy, and handle an empty accepted set. The worked and independent examples show that review does not remove confident errors and that accepted-case accuracy can worsen. A controlled failure investigation distinguishes a blur pattern from a proven cause and keeps related source images in one split. The guide includes two 45-minute sessions, worked answers, misconceptions, support, extension and a fresh independent retry.
+
+Validation passed: 306 exact acceptance-boundary cases, confusion counts, coverage, empty accepted sets, confidence averages, guided/independent/retry cases and invalid inputs. All 11 canonical print pages and 13 browser print pages were visually inspected; canonical text and student/teacher answer separation passed. Six chapter viewport checks and both protected maps passed, alongside the production build, TypeScript, all 31 access test groups, and decryption of all 3,132 protected resources.
+
+Grade 9 has 29 of 36 weeks complete. Overall, 137 of 252 weekly packages are complete, with 822 matching Word/PDF downloads; 115 remain planned. Next: Week 30, Dataset shift in neural models. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
+
+
+### 2026-10-01 — Grade 9 Week 30 complete
+
+Dataset shift in neural models now has matching student lesson, workbook and teacher guide, an explanatory visual, and six protected Word/PDF downloads. Students distinguish a fixed model from changing input conditions, compute weighted group and overall results, and explain a drop from 82 to 58 percent under a changed group mix. They distinguish input alerts from measured accuracy, check pipeline versions and labels, and plan source-grouped independent evaluation of a proposed response. The guide includes two 45-minute sessions, worked answers, misconceptions, support, extension and a fresh independent retry.
+
+Validation passed: 4,225 group-count combinations, weighted-rate identities, group-order invariance, worked/guided/independent/retry totals, the mixture formula and invalid-count checks. All 11 canonical print pages and 12 browser print pages were visually inspected; canonical text and student/teacher answer separation passed. Six chapter viewport checks and both protected maps passed, alongside the production build, TypeScript, all 31 access test groups, and decryption of all 3,139 protected resources.
+
+Grade 9 has 30 of 36 weeks complete. Overall, 138 of 252 weekly packages are complete, with 828 matching Word/PDF downloads; 114 remain planned. Next: Week 31, Efficiency and resource measurement. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
+
+
+### 2026-10-01 — Grade 9 Week 31 complete
+
+Efficiency and resource measurement now has matching student lesson, workbook and teacher guide, an explanatory visual, and six protected Word/PDF downloads. Students calculate median timings, amortised time and throughput, apply quality requirements before selecting a faster model, and count dense-network weights, biases and raw storage. The lesson distinguishes request latency, peak memory and energy from the quantities actually calculated. Benchmark conditions and training, warm-up and inference budgets are explicit; timings are labelled invented classroom data. The guide includes two 45-minute sessions, worked answers, misconceptions, support, extension and a fresh independent retry.
+
+Validation passed: 512 timing triples, 36 example permutations, even-length median, unit conversions, quality eligibility, parameter enumeration and invalid-timing checks. All 11 canonical print pages and 12 browser print pages were visually inspected; canonical text and student/teacher answer separation passed. Six chapter viewport checks and both protected maps passed, alongside the production build, TypeScript, all 31 access test groups, and decryption of all 3,146 protected resources.
+
+Grade 9 has 31 of 36 weeks complete. Overall, 139 of 252 weekly packages are complete, with 834 matching Word/PDF downloads; 113 remain planned. Next: Week 32, Documenting a network experiment. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
+
+
+### Grade 9 Week 32 — 2026-10-01
+
+Completed Documenting a network experiment with aligned student lesson, workbook, teacher guide, explanatory visual and six protected Word/PDF downloads. Students replay a tiny ReLU regression experiment, trace two updates and validation errors, preserve settings and artifacts, audit incomplete records, and distinguish replay from independent evaluation. Independent and fresh-retry cases require bounded conclusions and explicit missing measurements.
+
+Validation passed: analytical losses and numerical gradients across 200 points, both updates, checkpoint selection and tie handling, validation isolation, independent/retry arithmetic and content-hash examples. All 11 canonical pages and 13 browser print pages were visually inspected; canonical text, response placement and student/teacher answer separation passed. Six desktop/mobile chapter checks and both protected maps passed, along with the production build, TypeScript, all 31 access test groups and decryption of all 3,153 protected resources.
+
+Grade 9 has 32 of 36 weeks complete. Overall, 140 of 252 weekly packages are complete, with 840 matching Word/PDF downloads; 112 remain planned. Next: Week 33, Capstone hypothesis and baseline. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.

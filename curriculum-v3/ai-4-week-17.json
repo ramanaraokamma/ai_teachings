@@ -1,0 +1,266 @@
+{
+  "level": "ai-4",
+  "week": 17,
+  "title": "Initialisation and reproducibility",
+  "minutes": 90,
+  "goals": [
+    "Trace how starting values affect a fixed training budget",
+    "Explain a simple hidden-unit symmetry",
+    "Record enough information to replay and audit a classroom experiment"
+  ],
+  "prerequisite": {
+    "prompt": "Why must an early-stopping report identify both the stop epoch and the restored checkpoint?",
+    "answer": "The stopping state can differ from the best observed state. Reproducing the reported model requires the actual saved parameters selected by the declared rule."
+  },
+  "vocabulary": [
+    [
+      "Initialisation",
+      "The procedure that assigns model parameter values before training"
+    ],
+    [
+      "Seed",
+      "A value used to initialise a pseudorandom generator"
+    ],
+    [
+      "Symmetry",
+      "An equivalence between parts of a model that can keep their computations identical"
+    ],
+    [
+      "Reproducibility record",
+      "Saved data settings code and results that let another person check how an experiment was performed"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Compare starts under the same budget",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Return to h = ReLU(x), y = vh, training pairs (1, 2) and (2, 4), ordinary MSE and a frozen hidden unit. Only v is trained. Keep full-data updates, learning rate 0.1 and exactly two updates. Compare initial v values 0, 1 and 3. This experiment changes only the start."
+        },
+        {
+          "type": "paragraph",
+          "text": "The gradient is 5(v - 2), so each step gives new v = 0.5v + 1. Signed distance from 2 halves on every update. Different starting distances therefore produce different losses after this finite budget, even though all three runs approach the same minimum if this exact procedure continues."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Initial v",
+            "After one update",
+            "After two updates",
+            "Final training MSE"
+          ],
+          "rows": [
+            [
+              "0",
+              "1",
+              "1.5",
+              "0.625"
+            ],
+            [
+              "1",
+              "1.5",
+              "1.75",
+              "0.15625"
+            ],
+            [
+              "3",
+              "2.5",
+              "2.25",
+              "0.15625"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The equal losses for starts 1 and 3 arise because they are equally distant from 2. They do not have equal final parameters. This simple convex example does not show the multiple solutions or inactive units that can occur in larger networks."
+        }
+      ]
+    },
+    {
+      "title": "Replay a pseudorandom starting procedure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A pseudorandom generator produces a sequence determined by its state. In the same Python setup, recreating a local generator with the same seed and making the same calls reproduces the sequence below. Saving the generated values also removes ambiguity about which draw became which parameter."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "from random import Random\n\ndef initial_values(seed):\n    rng = Random(seed)\n    return [rng.uniform(-1.0, 1.0) for _ in range(4)]\n\ndef train(v):\n    states = [v]\n    for _ in range(2):\n        v = v - 0.1 * 5 * (v - 2)\n        states.append(v)\n    return states\n\nfirst = initial_values(17)\nsecond = initial_values(17)\nassert first == second\nprint(first)\nfor start in [0.0, 1.0, 3.0]:\n    print(start, train(start))"
+        },
+        {
+          "type": "paragraph",
+          "text": "The four random numbers illustrate a saved initialisation sequence; they are not used in the three separate scalar training runs. The range [-1, 1] is a classroom choice, not a general recommendation for network initialisation. An extra random draw before assigning weights shifts which value is used, even if the seed stays the same."
+        }
+      ]
+    },
+    {
+      "title": "Recognise identical hidden units",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Identical units receive identical updates",
+          "columns": [
+            "Hidden unit",
+            "Before the update",
+            "After the update"
+          ],
+          "rows": [
+            [
+              "First ReLU unit",
+              "u is 1 and a is 1",
+              "u is 0.8 and a is 0.8"
+            ],
+            [
+              "Second ReLU unit",
+              "v is 1 and b is 1",
+              "v is 0.8 and b is 0.8"
+            ]
+          ],
+          "caption": "In this separate two-unit example there are no biases. At x = 1, output is 2 and target is 1. Each of the four squared-error partial gradients equals 2. A simultaneous update at rate 0.1 changes every weight from 1 to 0.8 and keeps the units identical."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "For x = 1, calculate the two-unit output and squared error before and after the shown simultaneous update. Have the units become different?",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Explain what symmetry hides",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For the two-unit example, y = a ReLU(ux) + b ReLU(vx). At x = 1, u = v = a = b = 1, output is 2 and target is 1. Because both ReLUs are in their positive region, changing any one parameter slightly changes y at rate 1. Squared-error gradient is twice residual times that sensitivity, so each gradient is 2. Students can check it with the symmetric numerical probe from Week 10."
+        },
+        {
+          "type": "paragraph",
+          "text": "With identical initial weights, identical data and deterministic symmetric updates, these units remain copies and cannot learn distinct roles through those updates alone. Different hidden weights can break the symmetry. For example, u = 1 and v = -1 give hidden activations [1, 0] at x = 1 and [0, 1] at x = -1. This demonstrates different responses, not a guarantee of successful training."
+        },
+        {
+          "type": "paragraph",
+          "text": "Zero is not always an invalid start: v = 0 worked in our single trained-output-weight model. But setting all four weights to zero in the two-unit product model leaves every single-coordinate loss probe unchanged, because each path still contains a zero factor. Do not generalise the success of one scalar start to every architecture."
+        }
+      ]
+    },
+    {
+      "title": "Save evidence beyond a seed",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Save actual initial parameters, their order, data and split IDs, preprocessing rules, model formulas, loss convention, learning rate, batch order, update budget, selection policy, code version, software environment and final checkpoint. A seed helps replay one source of randomness; it does not specify all of these choices or guarantee identical results across different numerical environments."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "Two runs use seed 17 but have different final losses. One run made an extra random draw and used a different batch order. Is either difference evidence that the network is broken? Describe a useful investigation.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Repeatability alone cannot prove correctness: a program can repeat the same mistake. Preserve hand-calculated checks as well as logs. When comparing starts, report every planned run instead of selecting a lucky result using final test outcomes. Next week locates shape and gradient errors."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Trace a fresh starting value",
+      "prompt": "For the scalar lesson model, start v = -2 and apply two updates at rate 0.1. Give all three v values and the final training MSE.",
+      "answer": "Teacher explanation: States are -2, 0 and 1. Final training MSE is 2.5. Each step halves the signed distance from 2.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Distinguish equality of loss and parameters",
+      "prompt": "The lesson runs starting at 1 and 3 finish with the same training MSE. Give their final v values and explain the equality without calling the models identical.",
+      "answer": "Teacher explanation: They finish at 1.75 and 2.25. Both are distance 0.25 from 2, so both have MSE 0.15625. Their predictions for nonzero positive inputs differ.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Audit a seed claim",
+      "prompt": "Both runs use the same seed and generator. Run A assigns the first four draws to its weights. Run B draws a preview number first, then assigns the next four. Must the initial weight arrays match? What should be saved?",
+      "answer": "Teacher explanation: No. Their positions in the generated sequence differ, though coincidental equality is not logically impossible. Save the actual initial arrays, parameter order and random-call procedure as well as the seed.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Transfer the starting-value experiment independently",
+      "prompt": "Use J(a) = (a - 3) squared, gradient 2(a - 3), rate 0.25 and two updates. Restart from a = 1, then restart from a = 5. Calculate both traces and final losses. Explain what can be concluded about these two runs.",
+      "answer": "Teacher explanation: Start 1 gives 1, 2, 2.5 and final loss 0.25. Start 5 gives 5, 4, 3.5 and final loss 0.25. Equal initial distances yield equal final losses under this rule, but the final parameters differ.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Test repeated correctness",
+      "prompt": "A forward-pass program returns the same wrong answer every run with a fixed seed. Has repeatability verified the implementation? Name two stronger checks.",
+      "answer": "Teacher explanation: No. Compare intermediate values with independent hand calculations, test shapes and boundary cases, or compare analytical gradients with numerical probes away from activation corners. Repeating the same result only checks consistency.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. Keep the scalar initial-value experiment separate from the four-parameter symmetry example. No full-network training library is needed. Derive the local gradients verbally from residual and output sensitivity, or verify them with numerical probes. Do not teach that all zero values are forbidden or that a seed proves correctness.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve checkpoint state and agree on the fixed two-update experiment."
+      ],
+      [
+        "7 to 18 minutes",
+        "Trace the three starts in the table and complete W1 with signed distances."
+      ],
+      [
+        "18 to 32 minutes",
+        "Use W2 to distinguish equal loss from identical model parameters."
+      ],
+      [
+        "32 to 45 minutes",
+        "Run or trace the local generator example and use W3 to discuss random-call order."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Trace the separate symmetric two-unit model and complete the guided output calculation."
+      ],
+      [
+        "8 to 20 minutes",
+        "Compare activations for hidden weights 1 and -1, then discuss the all-zero product example."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, requiring a reset and a complete trace for each start."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit response to build an experiment record, then administer the fresh retry."
+      ]
+    ],
+    "guidedAnswer": "Guided: initially output 2 and squared error 1. After all four weights become 0.8, hidden activations are [0.8, 0.8], output 1.28, residual 0.28 and squared error 0.0784. Both units still match. Exit: differing random-call and batch orders are changed conditions, not automatic proof of a defect. Compare saved initial arrays and intermediate traces under matched settings, then check against independent expectations.",
+    "misconceptions": [
+      [
+        "The same seed specifies the entire experiment",
+        "Data, call order, batching, code and numerical environment also matter."
+      ],
+      [
+        "Every parameter should start at zero",
+        "The scalar example permits zero, but identical or all-zero multi-unit initialisations can create different limitations."
+      ],
+      [
+        "Equal loss means equal models",
+        "Different parameters can be equally far from a minimum or give the same scalar loss."
+      ]
+    ],
+    "assessment": "W4 requires traces ending at 2.5 and 3.5, both with loss 0.25. Fresh retry: J(c) = 2(c - 1) squared, gradient 4(c - 1), rate 0.125 and two updates. Start -1 gives -1, 0, 0.5; start 3 gives 3, 2, 1.5. Both final losses are 0.5. Require a conclusion restricted to the declared runs.",
+    "support": "Provide a number line and a ledger for start, gradient and updated value. Save concrete arrays instead of relying on seed vocabulary alone. Extension: use symmetric differences with step 0.001 to check all four initial gradients in the positive-region two-unit example, then explain why identical computations preserve symmetry.",
+    "next": "Week 18 debugs dimension contracts, gradient order and update direction."
+  }
+}

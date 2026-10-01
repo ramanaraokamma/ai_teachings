@@ -1,0 +1,289 @@
+{
+  "level": "ai-4",
+  "week": 23,
+  "title": "Training a small image model",
+  "minutes": 90,
+  "goals": [
+    "Trace a complete image model with fixed features and one trained weight",
+    "Select a checkpoint using a declared validation rule",
+    "Evaluate a frozen model against a baseline and limit the conclusion"
+  ],
+  "prerequisite": {
+    "prompt": "Why could pooling all four pixels of a 2 by 2 image hide whether the bright pixels are on the left or right?",
+    "answer": "Moving the same values between left and right can preserve the maximum and mean. A summary of all four positions may discard the distinction the task needs."
+  },
+  "vocabulary": [
+    [
+      "Frozen feature",
+      "A feature computation whose parameters are kept unchanged during training"
+    ],
+    [
+      "Checkpoint",
+      "Saved model parameters at a particular training stage"
+    ],
+    [
+      "Selection metric",
+      "The quantity used under a declared rule to choose a model"
+    ],
+    [
+      "Baseline",
+      "A simple comparison method evaluated on the same cases"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Declare the image task and the split",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Use fictional 2 by 2 binary images, stored as two rows. Predict class 1 when the left column sum exceeds the right column sum; otherwise predict class 0. Equal sums belong to class 0. This known arithmetic task makes every step checkable; it does not establish real-world image recognition."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Split and ID",
+            "Image rows",
+            "Class",
+            "Difference d"
+          ],
+          "rows": [
+            [
+              "Train A",
+              "[1, 0] and [0, 0]",
+              "1",
+              "1"
+            ],
+            [
+              "Train B",
+              "[1, 0] and [1, 0]",
+              "1",
+              "2"
+            ],
+            [
+              "Train C",
+              "[0, 1] and [0, 0]",
+              "0",
+              "-1"
+            ],
+            [
+              "Train D",
+              "[0, 1] and [0, 1]",
+              "0",
+              "-2"
+            ],
+            [
+              "Validation E",
+              "[0, 0] and [1, 0]",
+              "1",
+              "1"
+            ],
+            [
+              "Validation F",
+              "[0, 0] and [0, 1]",
+              "0",
+              "-1"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Apply the fixed kernel [[1, -1], [1, -1]] to the entire image to obtain d. Its negative gives -d. ReLU produces h1 = max(0, d) and h2 = max(0, -d). The output score is a(h1 - h2) = ad. Only the shared scalar a is trained; both kernels stay frozen and there is no bias or pooling."
+        },
+        {
+          "type": "paragraph",
+          "text": "For squared-error training, map class 1 to target t = 1 and class 0 to t = -1. Predict class 1 only when score > 0; otherwise class 0. The score is not a probability. Keep the teacher-held final cases unseen until the checkpoint is selected and recorded."
+        }
+      ]
+    },
+    {
+      "title": "Train with a fixed update budget",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Start a = 0. Use all four training examples in each update, ordinary mean squared error and learning rate 0.1. Save checkpoints at updates 0, 1 and 2. The training loss is 2.5a squared - 3a + 1, with gradient 5a - 3. Subtract learning rate times gradient; this gives a = 0.3 then a = 0.45."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "def feature(image):\n    return image[0][0] + image[1][0] - image[0][1] - image[1][1]\n\ntrain = [([[1, 0], [0, 0]], 1),\n         ([[1, 0], [1, 0]], 1),\n         ([[0, 1], [0, 0]], -1),\n         ([[0, 1], [0, 1]], -1)]\nvalid = [([[0, 0], [1, 0]], 1),\n         ([[0, 0], [0, 1]], -1)]\n\ndef mse(a, rows):\n    return sum((a * feature(x) - t)**2 for x, t in rows) / len(rows)\n\na, checkpoints = 0.0, [0.0]\nfor _ in range(2):\n    gradient = sum(2 * (a * feature(x) - t) * feature(x)\n                   for x, t in train) / len(train)\n    a -= 0.1 * gradient\n    checkpoints.append(a)\nfor step, value in enumerate(checkpoints):\n    print(step, round(value, 6), round(mse(value, train), 6),\n          round(mse(value, valid), 6))"
+        },
+        {
+          "type": "paragraph",
+          "text": "The code assumes valid 2 by 2 numeric images and nonempty labelled lists. It prints update, weight, training MSE and validation MSE. Validation examples are scored but never used in the gradient. A single-channel filter spanning the whole image produces one value here, so no further spatial pooling is needed."
+        }
+      ]
+    },
+    {
+      "title": "Select using validation evidence",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Compare the saved checkpoints",
+          "columns": [
+            "Update and weight",
+            "Training MSE",
+            "Validation MSE"
+          ],
+          "rows": [
+            [
+              "0 with a 0",
+              "1",
+              "1"
+            ],
+            [
+              "1 with a 0.3",
+              "0.325",
+              "0.49"
+            ],
+            [
+              "2 with a 0.45",
+              "0.15625",
+              "0.3025"
+            ]
+          ],
+          "caption": "Before training, declare selection by lowest validation MSE among these three checkpoints, with the earliest checkpoint winning an exact tie. Checkpoint 2 is selected. Training loss alone does not define the selection rule."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "At a = 0.3 and a = 0.45, compute the validation scores for E and F and their predicted classes. Why can validation accuracy stay the same while validation MSE changes?",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Freeze the model and compare a baseline",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Save a = 0.45, both fixed kernels, the input schema, target mapping, strict decision threshold, split IDs, learning rate, update budget and selection rule. The baseline always predicts class 0: training classes are tied, and the declared tie rule chooses 0. It gets 2 of 4 training cases and 1 of 2 validation cases correct. The selected model gets all of those cases correct."
+        },
+        {
+          "type": "paragraph",
+          "text": "The teacher now supplies the three reserved final images. Record each score and prediction before comparing with the supplied labels. Report correct count and denominator for both the frozen model and the same constant baseline. Do not tune the threshold or retrain after viewing final errors and still call that same set unseen."
+        },
+        {
+          "type": "paragraph",
+          "text": "Because the images and target rule were constructed for this small exercise, even perfect results support only a narrow claim. Validation images differ from training pixels but reuse differences 1 and -1. This is a deliberately simple check of a procedure, not evidence of broad generalisation."
+        }
+      ]
+    },
+    {
+      "title": "Explain what was actually learned",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Training adjusted one weight in a model with hand-chosen features. It did not discover the left-versus-right kernel. The arithmetic rule itself would solve the declared task exactly; the trained model helps us study fitting and evaluation, not demonstrate that learning is necessary here."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A teammate claims the model learned its own image features and that choosing the best score on the final test would improve the experiment. Correct both claims and name the evidence needed in the final report.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Report the fixed and trained components separately, selected checkpoint, per-case final predictions, baseline results and limitations. If a final case fails, preserve that failure and design a new experiment with new reserved evaluation data. Next week examines augmentation and leakage between related images."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Trace features and a prediction",
+      "prompt": "For Train B, compute d, h1, h2 and the score at a = 0.45. Give the class prediction and squared error against its signed target.",
+      "answer": "Teacher explanation: d = 2, h1 = 2 and h2 = 0. Score is 0.9, prediction class 1 and squared error (0.9 - 1) squared = 0.01.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Check both updates",
+      "prompt": "Starting at a = 0, use gradient 5a - 3 and rate 0.1 for two updates. Give each gradient, new weight and training MSE.",
+      "answer": "Teacher explanation: First gradient -3 gives a = 0.3 and MSE 0.325. Second gradient -1.5 gives a = 0.45 and MSE 0.15625. Each gradient is computed at the current weight before the update.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Apply the selection rule",
+      "prompt": "Select among the three saved lesson checkpoints using validation MSE, with earliest update breaking a tie. Is selecting by training accuracy the same declared procedure?",
+      "answer": "Teacher explanation: Select update 2 with a = 0.45 and validation MSE 0.3025. Training accuracy is a different selection metric; both trained checkpoints have perfect training accuracy, so it does not establish the same choice.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Choose a checkpoint independently",
+      "prompt": "A separate model scores bd. Its training examples have d = 1 and -1 with signed targets 1 and -1. Start b = 0; gradient is 2(b - 1), rate 0.25 and budget two updates. Validation differences are 2 and -2 with targets 1 and -1. Calculate all three weights and their validation MSEs, then select by lowest validation MSE.",
+      "answer": "Teacher explanation: Weights are 0, 0.5 and 0.75. Validation scores are [0, 0], [1, -1] and [1.5, -1.5], so validation MSEs are 1, 0 and 0.25. Select update 1 with b = 0.5, even though a later update exists. Training MSE falls from 1 to 0.25 to 0.0625.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Audit a final evaluation",
+      "prompt": "After inspecting the final cases, a team changes the decision threshold and reports the best result as an unseen test score. Explain the problem and list two things the original report should preserve.",
+      "answer": "Teacher explanation: Final outcomes influenced the revised model, so that set is no longer unseen evidence for the revision. Preserve the original frozen checkpoint and threshold, per-case predictions and errors, baseline results, and split IDs. Evaluate the revision on new reserved cases.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. The model deliberately trains only one output scalar; do not present the fixed kernels as learned. Keep the final cases below teacher-only until students record the selected checkpoint and threshold. Supply each final image first for prediction, then reveal its label. No image download, account or external training library is needed.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the pooling collision and declare the binary image task, signed targets and separate splits."
+      ],
+      [
+        "7 to 18 minutes",
+        "Trace fixed kernels, ReLU features and the scalar head, then complete W1."
+      ],
+      [
+        "18 to 32 minutes",
+        "Compute both full-data updates and use W2 to check the loss arithmetic."
+      ],
+      [
+        "32 to 45 minutes",
+        "Run or trace the code and use W3 to select a saved checkpoint by validation MSE."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete the guided validation scores; record the frozen model and constant baseline."
+      ],
+      [
+        "8 to 20 minutes",
+        "Reveal final images G, H and I only after the record is complete; collect predictions before labels, then compare both methods."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, requiring validation calculations for every checkpoint."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit response to audit claims and administer the fresh retry."
+      ]
+    ],
+    "guidedAnswer": "Guided: at a = 0.3, E and F score 0.3 and -0.3; at a = 0.45 they score 0.45 and -0.45. Both checkpoints predict classes 1 and 0 correctly, while squared residuals change from 0.49 to 0.3025. Final cases: G rows [1, 1], [1, 0], class 1; H rows [1, 1], [0, 1], class 0; I rows [1, 0], [0, 1], class 0. Differences are 1, -1, 0; scores 0.45, -0.45, 0; predictions 1, 0, 0. Model accuracy is 3 of 3, baseline 2 of 3. Signed-target squared errors are 0.3025, 0.3025, 1, so final MSE is 0.535. The tie case is classified correctly despite nonzero regression error. Exit: only a was learned; using final results to choose a model contaminates final evaluation. Preserve setup, predictions, baseline and limits.",
+    "misconceptions": [
+      [
+        "All parameters in a trained model must have been learned",
+        "The declared experiment freezes the feature kernels and adjusts only a."
+      ],
+      [
+        "Perfect accuracy means zero MSE",
+        "Thresholded classes can all be correct while continuous scores differ from signed targets."
+      ],
+      [
+        "The last checkpoint must be best",
+        "Selection depends on the declared validation rule, not update order or training loss alone."
+      ]
+    ],
+    "assessment": "W4 requires weights 0, 0.5, 0.75 and validation MSEs 1, 0, 0.25; select update 1. Fresh retry: train on d = 2 and -2, signed targets 1 and -1; gradient 8b - 4, rate 0.0625, start 0 and two updates. Weights are 0, 0.25, 0.375. Validate on d = 4 and -4 with targets 1 and -1: MSEs are 1, 0, 0.25. Select update 1 with b = 0.25.",
+    "support": "Provide a ledger for image, difference, signed target, score, residual and class. Allow calculators and distinguish class 0 from signed target -1. Extension: enumerate all sixteen binary 2 by 2 images under the frozen model and exact task rule; label this exhaustive toy-domain audit separately from the three-case held-out evaluation.",
+    "next": "Week 24 examines augmentation and leakage, including how related image variants should remain in the same split."
+  }
+}

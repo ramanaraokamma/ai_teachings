@@ -1,0 +1,272 @@
+{
+  "level": "ai-4",
+  "week": 20,
+  "title": "Image tensors and channels",
+  "minutes": 90,
+  "goals": [
+    "Read a pixel using declared row column and channel axes",
+    "Convert channel layout without changing pixel meaning",
+    "Distinguish fixed value scaling from information losing transformations"
+  ],
+  "prerequisite": {
+    "prompt": "Why does a representation with two components not necessarily preserve two original measurements?",
+    "answer": "Different inputs can map to the same representation. The number of components alone does not guarantee that the original values can be recovered."
+  },
+  "vocabulary": [
+    [
+      "Tensor",
+      "A numerical array with a declared set of axes"
+    ],
+    [
+      "Channel",
+      "One component plane of an image such as red green or blue"
+    ],
+    [
+      "Axis order",
+      "The sequence of meanings assigned to array dimensions"
+    ],
+    [
+      "Value scaling",
+      "A declared numerical conversion applied to stored values"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Give every image axis a meaning",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A small fictional RGB image has height 2 pixels, width 2 pixels and three channels ordered red, green, blue. Store it as image[row][column][channel], abbreviated HWC. Use zero-based indices: the top row is 0, the left column is 0, and red, green and blue are channels 0, 1 and 2. Each stored component is an integer from 0 to 255."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Position",
+            "RGB triplet",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "Row 0 column 0",
+              "[255, 0, 0]",
+              "Red"
+            ],
+            [
+              "Row 0 column 1",
+              "[0, 255, 0]",
+              "Green"
+            ],
+            [
+              "Row 1 column 0",
+              "[0, 0, 255]",
+              "Blue"
+            ],
+            [
+              "Row 1 column 1",
+              "[255, 255, 255]",
+              "White"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The shape is 2 by 2 by 3. There are four pixels and twelve channel values. The blue component of the bottom-left pixel is image[1][0][2] = 255. A single channel is a plane of values across positions; it is not a separate photograph or a label."
+        },
+        {
+          "type": "paragraph",
+          "text": "Shape needs a schema. A grayscale image might be stored as H by W or H by W by 1. An RGB image uses three channels here; other formats can include additional channels. Declare the format instead of assuming every three-dimensional array means the same thing."
+        }
+      ]
+    },
+    {
+      "title": "Move axes without moving colours",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A channel-first layout uses image[channel][row][column], abbreviated CHW. Our image then has shape 3 by 2 by 2. A correct conversion preserves the rule chw[c][r][k] = hwc[r][k][c]. The code assumes a nonempty rectangular image with exactly three values per pixel."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "hwc = [\n    [[255, 0, 0], [0, 255, 0]],\n    [[0, 0, 255], [255, 255, 255]],\n]\nheight, width = len(hwc), len(hwc[0])\nchw = [[[hwc[r][k][c] for k in range(width)]\n        for r in range(height)] for c in range(3)]\nfor channel in chw:\n    print(channel)\nassert chw[2][1][0] == hwc[1][0][2] == 255\nrestored = [[[chw[c][r][k] for c in range(3)]\n             for k in range(width)] for r in range(height)]\nassert restored == hwc"
+        },
+        {
+          "type": "paragraph",
+          "text": "Reading nested values in order and merely regrouping them into a new shape does not perform this axis conversion. The first four flattened HWC values are [255, 0, 0, 0]. A naive regrouping makes these the first channel plane, but the correct red plane is [[255, 0], [0, 255]]. Shape agreement alone cannot detect this mistake."
+        }
+      ]
+    },
+    {
+      "title": "Separate position from colour",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "The same pixels in three channel planes",
+          "columns": [
+            "Channel",
+            "Top row",
+            "Bottom row"
+          ],
+          "rows": [
+            [
+              "Red c 0",
+              "[255, 0]",
+              "[0, 255]"
+            ],
+            [
+              "Green c 1",
+              "[0, 255]",
+              "[0, 255]"
+            ],
+            [
+              "Blue c 2",
+              "[0, 0]",
+              "[255, 255]"
+            ]
+          ],
+          "caption": "Each row describes one channel plane. Within a plane the first listed row is the image top and the second is the bottom. Combining the three values at the same position recovers its RGB triplet."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "Use the planes to reconstruct the top-right and bottom-right RGB pixels. Give both HWC and CHW indices for the top-right green value.",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Scale values under a stated contract",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For this lesson, divide every channel value by 255 to obtain floating-point values from 0 to 1. Thus [255, 128, 0] becomes [1, 128/255, 0], with the middle value approximately 0.502. This fixed conversion does not fit a statistic from data. Apply the same conversion during training and later use, and record whether an input is already scaled."
+        },
+        {
+          "type": "paragraph",
+          "text": "Dividing twice makes a raw value of 255 become 1/255, approximately 0.00392, instead of 1. Integer rounding after scaling can also erase distinctions. In exact arithmetic the declared division is reversible by multiplication; finite precision or deliberate rounding can limit exact recovery."
+        },
+        {
+          "type": "paragraph",
+          "text": "Averaging RGB channels is a different operation. The classroom mean gives red [255, 0, 0] and green [0, 255, 0] the same value 85, losing their colour distinction. It is a simple illustration, not a perceptual brightness formula. If preprocessing instead estimates means or spreads from a dataset, fit those statistics using training data only."
+        }
+      ]
+    },
+    {
+      "title": "Check batches and retained information",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Stacking five same-size HWC images adds a leading example axis N. This batch has shape 5 by 2 by 2 by 3 and contains 60 channel values. With channel-first images, its shape is 5 by 3 by 2 by 2. The example axis is not another colour channel. Every axis must keep its meaning through the model."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A loader returns the expected shape, but red and blue channels were exchanged and already scaled values were divided by 255 again. Does the shape check establish correctness? Name an exact pixel check and a value check that expose these faults.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Use a tiny known image, named axis meanings and expected channel values to check a pipeline. Keep original images when testing transformations. Flattening can be reversed if shape and traversal order are retained; averaging colours generally cannot. Next week reads small neighbourhoods with a convolution operation."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Read a pixel precisely",
+      "prompt": "For the lesson image, give image[1][0], image[1][0][2], the HWC shape, pixel count and number of channel values.",
+      "answer": "Teacher explanation: The RGB pixel is [0, 0, 255]; its blue value is 255. Shape is 2 by 2 by 3, with four pixels and twelve channel values.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Audit an axis conversion",
+      "prompt": "A program flattens the lesson HWC array and groups the first four values into a 2 by 2 red plane. Give that incorrect plane and the correct plane. Identify a position where they disagree.",
+      "answer": "Teacher explanation: The incorrect plane is [[255, 0], [0, 0]]. The correct red plane is [[255, 0], [0, 255]]. They disagree at row 1 column 1. Regrouping consecutive values does not transpose axes.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Check scaling and lost colour",
+      "prompt": "Scale [255, 128, 0] by 255, keeping the middle value as a fraction. Then calculate the classroom RGB means of pure red and pure green. Which operation loses the distinction between those colours?",
+      "answer": "Teacher explanation: Scaling gives [1, 128/255, 0]. Both RGB means are 85, so averaging loses the red versus green distinction. Exact fixed scaling preserves the triplet distinction.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Convert a new image independently",
+      "prompt": "A one-row two-column RGB image has pixels [10, 20, 30] then [40, 50, 60]. State its HWC shape and all three CHW planes. Give the green value at row 0 column 1 in both layouts. A batch contains four copies: give its NHWC shape and total channel-value count.",
+      "answer": "Teacher explanation: HWC shape is 1 by 2 by 3. CHW planes are [[10, 40]], [[20, 50]], [[30, 60]], giving shape 3 by 1 by 2. hwc[0][1][1] and chw[1][0][1] both equal 50. Batch shape is 4 by 1 by 2 by 3, containing 24 values.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Design revealing pipeline checks",
+      "prompt": "The lesson image is loaded with red and blue exchanged, then scaled twice. Give two expected checks that would expose these errors even though the shape is correct.",
+      "answer": "Teacher explanation: Before scaling, the top-left pixel must be [255, 0, 0], not [0, 0, 255]. A known raw component of 255 must become 1 after scaling once; approximately 0.00392 indicates division twice. Test named values and positions as well as dimensions.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. Draw the four-pixel image and label row, column and channel before writing nested brackets. Keep RGB ordering, zero-based indices and the 0 to 255 contract explicit. Distinguish an axis permutation from regrouping, and fixed scaling from fitted preprocessing. No external image files or student photographs are needed.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve information loss and label the four image positions with zero-based indices."
+      ],
+      [
+        "7 to 18 minutes",
+        "Count pixels and components, then use W1 to read a full pixel and one channel."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace the three channel planes and run or hand-trace the optional code."
+      ],
+      [
+        "32 to 45 minutes",
+        "Use W2 to expose naive regrouping with the bottom-right red component."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Reconstruct the guided pixels and locate the same green value in both layouts."
+      ],
+      [
+        "8 to 20 minutes",
+        "Use W3 to compare fixed scaling with colour averaging and discuss double scaling."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, checking the non-square shape and the leading batch axis."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit response to plan exact-value checks, then administer the fresh retry."
+      ]
+    ],
+    "guidedAnswer": "Guided: top-right is [0, 255, 0] and bottom-right is [255, 255, 255]. The top-right green value is hwc[0][1][1] or chw[1][0][1], both 255. Exit: shape alone misses both errors. Check the top-left RGB pixel is red before scaling and that a raw value 255 becomes exactly 1 under one declared division, rather than approximately 0.00392.",
+    "misconceptions": [
+      [
+        "Three channels mean three images",
+        "Channels are component planes at matching spatial positions in one image."
+      ],
+      [
+        "Reshaping automatically changes axis meanings correctly",
+        "Axis permutation must preserve coordinate correspondence; regrouping a flattened list can mix positions and colours."
+      ],
+      [
+        "Every conversion to a smaller number preserves information",
+        "Exact fixed scaling differs from rounding and channel averaging, which can collapse distinct values."
+      ]
+    ],
+    "assessment": "W4 requires three planes, both coordinate references to value 50, NHWC shape 4 by 1 by 2 by 3 and 24 values. Fresh retry: a two-row one-column image contains [3, 6, 9] above [12, 15, 18]. HWC shape is 2 by 1 by 3. CHW planes are [[3], [12]], [[6], [15]], [[9], [18]]. The bottom blue component is hwc[1][0][2] = chw[2][1][0] = 18. A batch of three has NHWC shape 3 by 2 by 1 by 3 and 18 values.",
+    "support": "Use three labelled paper grids and a coordinate ledger; provide colour names so success does not depend on colour vision. Allow fraction answers for scaling. Extension: convert a rectangular image HWC to CHW and back, checking every coordinate, then construct two different colours with the same classroom channel mean.",
+    "next": "Week 21 introduces convolution as a local operation with explicit neighbourhoods and boundary rules."
+  }
+}

@@ -17,6 +17,27 @@ function render(d){
  }else if(d.kind==='bars'){
   height=90+d.items.length*95;body+=text(d.axis,20,30,70,22);
   d.items.forEach(([label,value],i)=>{const y=68+i*95;body+=text(label,20,y,21,20);body+=`<rect x="270" y="${y-25}" width="600" height="35" fill="#edf1f5"/><rect x="270" y="${y-25}" width="${600*value/d.max}" height="35" fill="#315f87"/><text x="885" y="${y+1}" font-size="22">${value}</text>`;});body+=text(`Shared scale from 0 to ${d.max}`,270,height-15,55,20);
+ }else if(d.kind==='curves'){
+  height=420;
+  const left=100,right=875,top=85,bottom=335;
+  const xs=d.xValues;
+  if(xs.length<2||d.max<=0||d.series.some(s=>s.values.length!==xs.length||s.values.some(v=>!Number.isFinite(v)||v<0||v>d.max)))throw new Error('Invalid curve data');
+  const px=i=>left+i*(right-left)/(xs.length-1),py=v=>bottom-v*(bottom-top)/d.max;
+  body+=text(d.axis,left,28,55,22);
+  for(let i=0;i<=4;i++){
+   const v=d.max*i/4,y=py(v);
+   body+=`<path d="M${left} ${y} H${right}" stroke="#d4dde5"/><text x="${left-15}" y="${y+7}" text-anchor="end" font-size="20">${v}</text>`;
+  }
+  body+=`<path d="M${left} ${top} V${bottom} H${right}" fill="none" stroke="#17324f" stroke-width="2"/>`;
+  xs.forEach((x,i)=>{body+=`<text x="${px(i)}" y="${bottom+30}" text-anchor="middle" font-size="21">${esc(x)}</text>`;});
+  body+=text(d.xLabel,360,405,40,22);
+  d.series.forEach((s,j)=>{
+   const color=j===0?'#17324f':'#a44818';
+   body+=`<path d="${s.values.map((v,i)=>`${i?'L':'M'}${px(i)} ${py(v)}`).join(' ')}" fill="none" stroke="${color}" stroke-width="4" ${j?'stroke-dasharray="10 6"':''}/>`;
+   s.values.forEach((v,i)=>{body+=j?`<rect x="${px(i)-5}" y="${py(v)-5}" width="10" height="10" fill="${color}"/>`:`<circle cx="${px(i)}" cy="${py(v)}" r="5" fill="${color}"/>`;});
+   const lx=left+j*385;
+   body+=`<path d="M${lx} 55 h40" stroke="${color}" stroke-width="4" ${j?'stroke-dasharray="10 6"':''}/>`+text(s.label,lx+50,62,30,21);
+  });
  }else throw new Error('Unknown diagram '+d.kind);
  return `<svg xmlns="http://www.w3.org/2000/svg" width="960" height="${height}" viewBox="0 0 960 ${height}" role="img" aria-label="${esc(d.title)}"><rect width="960" height="${height}" fill="white"/><g font-family="Arial,sans-serif" fill="#17324f">${body}</g></svg>`;
 }

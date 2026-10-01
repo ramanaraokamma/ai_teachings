@@ -1,0 +1,271 @@
+{
+  "level": "ai-4",
+  "week": 16,
+  "title": "Regularisation and early stopping",
+  "minutes": 90,
+  "goals": [
+    "Separate a weight penalty from prediction error",
+    "Trace a regularised update under a stated objective",
+    "Apply a stopping rule and restore the best observed checkpoint"
+  ],
+  "prerequisite": {
+    "prompt": "If validation chooses an earlier checkpoint, which parameters should be used after selection?",
+    "answer": "Restore the parameters saved at the chosen checkpoint. The last parameters produced by training may have a different validation loss."
+  },
+  "vocabulary": [
+    [
+      "Regularisation",
+      "A constraint or training procedure intended to limit fitting choices and improve generalisation"
+    ],
+    [
+      "Weight penalty",
+      "An added objective term that discourages specified large parameter values"
+    ],
+    [
+      "Patience",
+      "The allowed run of consecutive non-improving evaluations before stopping under a stated rule"
+    ],
+    [
+      "Restore",
+      "Reload the parameters saved at the selected checkpoint"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "State exactly what receives a penalty",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Keep h = ReLU(x), y = vh, train only v on (1, 2) and (2, 4), and freeze all hidden parameters and the zero output bias. Training MSE is L(v) = 2.5(v - 2) squared. Define J(v) = L(v) + lambda times v squared, with lambda nonnegative. Only this one output weight is penalised here."
+        },
+        {
+          "type": "paragraph",
+          "text": "For lambda = 0.5, the penalty at v = 1.5 is 0.5 times 2.25 = 1.125. Prediction MSE is 0.625, so total objective J is 1.75. Keep these quantities separate in logs. A smaller total objective does not automatically mean a smaller prediction error."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "v",
+            "Prediction MSE",
+            "Penalty at lambda 0.5",
+            "Total J"
+          ],
+          "rows": [
+            [
+              "1",
+              "2.5",
+              "0.5",
+              "3"
+            ],
+            [
+              "1.5",
+              "0.625",
+              "1.125",
+              "1.75"
+            ],
+            [
+              "2",
+              "0",
+              "2",
+              "2"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Among these three candidates, the smallest penalised objective is at v = 1.5, whereas the smallest training MSE is at v = 2. Penalising a weight changes the tradeoff. It does not guarantee better validation performance or fair outcomes."
+        }
+      ]
+    },
+    {
+      "title": "Calculate a regularised update",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The data gradient is 5(v - 2). The penalty gradient is 2 times lambda times v, giving total gradient 5(v - 2) + 2 lambda v. At v = 1.5 and lambda = 0.5, these contributions are -2.5 and 1.5, so total gradient is -1. A rate 0.1 step gives v = 1.6."
+        },
+        {
+          "type": "code",
+          "title": "Optional Python check",
+          "text": "def terms(v, penalty):\n    data_loss = 2.5 * (v - 2) ** 2\n    weight_cost = penalty * v * v\n    gradient = 5 * (v - 2) + 2 * penalty * v\n    return data_loss, weight_cost, data_loss + weight_cost, gradient\n\nv = 1.5\npenalty = 0.5\nold = terms(v, penalty)\nv = v - 0.1 * old[3]\nprint(round(v, 6))  # 1.6\nprint([round(x, 6) for x in terms(v, penalty)])\n# [0.4, 1.28, 1.68, -0.4]"
+        },
+        {
+          "type": "paragraph",
+          "text": "Assume finite numeric values and nonnegative penalty. At the new v, data loss is 0.4, penalty 1.28 and total 1.68. Choose penalty strength using a declared validation prediction metric, not by comparing total objectives with different lambdas as if they were the same measure."
+        }
+      ]
+    },
+    {
+      "title": "Make the stopping policy executable on paper",
+      "blocks": [
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Patience two with strict improvement",
+          "columns": [
+            "Epoch",
+            "Validation MSE",
+            "Decision"
+          ],
+          "rows": [
+            [
+              "0 then 1 then 2",
+              "4 then 2 then 1.5",
+              "Save each improved state"
+            ],
+            [
+              "3 then 4",
+              "1.6 then 1.4",
+              "Wait once then reset"
+            ],
+            [
+              "5 then 6",
+              "1.45 then 1.46",
+              "Two misses so stop at 6"
+            ]
+          ],
+          "caption": "Initial checkpoint is epoch 0. Evaluate once after each epoch. A strict decrease is improvement; an exact tie is a miss. Reset the miss count after improvement and stop at two consecutive misses. Restore epoch 4, the best observed checkpoint."
+        },
+        {
+          "type": "response",
+          "id": "guided",
+          "label": "At epochs 3, 4, 5 and 6, record the miss count after evaluation. Which epoch stops training, and which epoch supplies the restored parameters?",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "title": "Distinguish stopping time from selected state",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Early stopping limits the training duration using development evidence; it does not add a weight term to the objective. For this policy, initialise the best checkpoint to epoch 0 and the miss count to zero. After each later evaluation, save and reset only on a strict improvement; otherwise increment the count. Stop as soon as the count reaches patience, then reload the best checkpoint."
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose a pre-recorded demonstration also lists epoch 7 loss 1.3. A live run following the rule has already stopped at 6 and does not observe 7. Do not use future values to rewrite the stopping decision. The policy can miss a later improvement; patience balances waiting against a training budget and must be specified in advance."
+        },
+        {
+          "type": "paragraph",
+          "text": "Save actual model parameters with the checkpoint, not just its epoch number or loss. With a fixed maximum epoch budget, stop when either limit is reached and restore the best observed state. An exact tie keeps the earlier checkpoint under our rule. Different minimum-improvement thresholds are possible, but would be different declared policies."
+        }
+      ]
+    },
+    {
+      "title": "Evaluate the choices as development decisions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Weight penalties and early stopping can be used together, but they act differently. Record which weights receive penalties, the objective convention, lambda, learning rate, checkpoint frequency, patience, tie rule and maximum budget. For this classroom model there are no extra learned preprocessing or running statistics; larger models may require more state to reproduce evaluation."
+        },
+        {
+          "type": "response",
+          "id": "exit",
+          "label": "A team stops at epoch 6, uses its final parameters instead of the saved best state, and chooses patience by looking at final test losses. Identify the two mistakes and explain how to repair the experiment.",
+          "lines": 4
+        },
+        {
+          "type": "paragraph",
+          "text": "Select these settings using validation, freeze the complete procedure, and reserve untouched final test data for reporting. Neither regularisation nor stopping makes a weak validation set representative. Next week studies initialisation and reproducibility."
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Separate the objective terms",
+      "prompt": "At v = 2 and lambda = 0.5 in the lesson, compute prediction MSE, penalty, total objective and total gradient. Does zero training MSE make this gradient zero?",
+      "answer": "Teacher explanation: MSE 0, penalty 2, total J 2, total gradient 2. Zero data gradient does not remove the penalty gradient.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Trace the next update",
+      "prompt": "Start v = 1.6 with lambda = 0.5 and rate 0.1. Calculate both gradient contributions, new v and new prediction MSE.",
+      "answer": "Teacher explanation: Data gradient -2, penalty gradient 1.6, total -0.4. New v = 1.64; prediction MSE is 2.5 times 0.36 squared = 0.324.",
+      "lines": 6
+    },
+    {
+      "id": "W3",
+      "title": "Apply patience without peeking",
+      "prompt": "Validation MSE at epochs 0 to 7 is [4, 2, 1.5, 1.6, 1.4, 1.45, 1.46, 1.3]. Apply the lesson policy with patience 2. Give the stop epoch, restored epoch and why the listed epoch 7 cannot change this decision.",
+      "answer": "Teacher explanation: Stop at epoch 6 after misses at 5 and 6; restore epoch 4 with MSE 1.4. A live run has stopped before observing epoch 7; hindsight cannot be included in that policy decision.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Transfer both rules independently",
+      "prompt": "For a new objective J(a) = (a - 2) squared + a squared, gradient 4a - 4, start a = 0 and take one step at rate 0.25. Give new a, prediction error term, penalty and total J. Separately apply patience 2 with strict improvement to validation values [3, 2, 2, 2, 1] at epochs 0 to 4; report the stop and restored epochs.",
+      "answer": "Teacher explanation: The update gives a = 1. Prediction error 1, penalty 1, total J 2. For the separate curve, epoch 1 is best at 2; ties at 2 and 3 are two misses, so stop at epoch 3 and restore epoch 1. Epoch 4 is not observed by that live policy.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Compare penalties fairly",
+      "prompt": "A team compares lambda 0 and lambda 0.5 by choosing whichever has the smaller penalised training objective. Explain why this does not establish the better prediction model and name a suitable development comparison.",
+      "answer": "Teacher explanation: The objectives use different penalties, and both are training quantities. Compare the candidates on the same fixed validation examples using the same declared prediction metric, such as ordinary MSE. Reserve final test examples from setting selection.",
+      "lines": 6
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. Keep prediction error, penalty and total objective in separate columns. Teach early stopping as a second mechanism with a precise state machine on paper. Cover future curve values until a decision is made; do not reward retrospective selection as if it were a live stopping rule.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 editor; no packages or AI accounts needed",
+      "Use the fictional examples supplied; prepare the fresh retry before class"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve checkpoint restoration and introduce the named penalised weight."
+      ],
+      [
+        "7 to 18 minutes",
+        "Calculate the objective table and W1, identifying the nonzero penalty gradient at v = 2."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace the worked regularised update and use W2 for the next step."
+      ],
+      [
+        "32 to 45 minutes",
+        "Run or trace the code and distinguish objective reduction from validation evidence."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Reveal the validation sequence one epoch at a time; complete the guided miss counts."
+      ],
+      [
+        "8 to 20 minutes",
+        "Complete W3 before revealing the future value; compare stopping and restored epochs."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, scoring the arithmetic and the tied-loss policy separately."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit response, then use the fresh retry and record the complete policy."
+      ]
+    ],
+    "guidedAnswer": "Guided: miss counts at epochs 3, 4, 5, 6 are 1, 0, 1, 2. Stop at 6 and restore 4. Exit: using final parameters ignores restoration; selecting patience with test losses uses test data for development. Restore the selected checkpoint, choose policy using validation, then freeze it before evaluating suitable untouched final examples.",
+    "misconceptions": [
+      [
+        "Zero prediction error means no regularised update",
+        "The penalty gradient can remain nonzero."
+      ],
+      [
+        "Early stopping adds a weight penalty",
+        "It limits training duration using a validation rule; a weight penalty changes the objective."
+      ],
+      [
+        "Restore the epoch where stopping happened",
+        "Restore the best observed checkpoint under the declared rule, which can be earlier."
+      ]
+    ],
+    "assessment": "W4 requires a = 1 and terms 1, 1, 2 plus stop epoch 3 and restored epoch 1. Fresh retry: J(b) = (b - 3) squared + 0.5b squared, gradient 3b - 6; start b = 0, rate 0.25. New b = 1.5, data term 2.25, penalty 1.125, total 3.375. On validation [5, 3, 3.2, 3.1] with patience 2, stop at 3 and restore 1.",
+    "support": "Use a ledger with columns epoch, metric, best epoch and miss count; cover future rows. Extension: solve 5(v - 2) + 2 lambda v = 0 to obtain v = 10 / (5 + 2 lambda). For nonnegative lambda, discuss why the optimum moves toward zero without claiming this always improves prediction.",
+    "next": "Week 17 investigates initialisation and reproducibility."
+  }
+}
