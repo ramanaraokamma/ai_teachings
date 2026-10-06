@@ -1,6 +1,5 @@
-import {readResource} from './resource-storage.mjs';
 import {readFile} from 'node:fs/promises';
-import {createHash} from 'node:crypto';
+import {createHash,createDecipheriv} from 'node:crypto';
 import assert from 'node:assert/strict';
 const json=async p=>JSON.parse(await readFile(p,'utf8'));
 const hash=b=>createHash('sha256').update(b).digest('hex');
@@ -14,7 +13,8 @@ for(const [i,l] of roadmap.levels.entries()){assert.equal(l.grade,6+i);assert.eq
 for(const [file,digest] of Object.entries(review.renderers))assert.equal(hash(await readFile(file)),digest,`Renderer changed; regenerate and review downloads: ${file}`);
 async function artifact(a,role,mime){
  assert.equal(manifest[a.id]?.role,role);assert.equal(manifest[a.id]?.mime,mime);
- const plain=await readResource(a.id,manifest[a.id],key);assert.equal(hash(plain),a.sha256,`Artifact changed: ${a.id}`);
+ const b=await readFile(`public/curriculum-blobs/${a.id}.bin`),d=createDecipheriv('aes-256-gcm',key,b.subarray(0,12));d.setAAD(Buffer.from(a.id));d.setAuthTag(b.subarray(-16));
+ const plain=Buffer.concat([d.update(b.subarray(12,-16)),d.final()]);assert.equal(hash(plain),a.sha256,`Artifact changed: ${a.id}`);
  if(mime==='application/pdf')assert.equal(plain.subarray(0,5).toString(),'%PDF-');
  return plain;
 }
@@ -35,4 +35,4 @@ for(const [id,r] of Object.entries(release)){
  assert.equal(Object.keys(r.documents).length,6);
  for(const task of w.workbook)assert.ok(task.prompt&&task.answer&&task.lines>=4);
 }
-console.log(`Curriculum 3 verified: ${Object.keys(release).length} released packages; seven levels and ${252-Object.keys(release).length} remaining planned positions. Source, reviewed downloads and protected roles match.`);
+console.log(`Curriculum 3 verified: ${Object.keys(release).length} released packages; seven levels and 252 planned positions. Source, reviewed downloads and protected roles match.`);

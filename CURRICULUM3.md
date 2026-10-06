@@ -1,8 +1,6 @@
 # Curriculum 3 learning sequence
 
-**Current completion:** All 252 weekly packages are registered and linked in the protected local portal. The final 112 packages add 336 Word files and 336 matching PDFs, with all 1,234 rendered pages inspected. Build, TypeScript, canonical-content checks and all 33 access-test groups pass. See [continuation artifacts and checks](curriculum-v3/DRAFTS.md). The current task is content preparation only; no deployment is requested.
-
-Curriculum 3 is a seven-level progression beginning in Grade 6. It contains **AI 1–AI 7 Weeks 1–36**, each authored as a student lesson, workbook and teacher guide, with matching Word and PDF downloads. All seven levels are complete in the repository; classroom pacing and learning effectiveness still require teacher feedback and student trials. The existing four-level, 144-week edition remains available. Dated entries below describe earlier release stages.
+Curriculum 3 is a new seven-level progression beginning in Grade 6. This release contains **AI 1 Weeks 1–36, AI 2 Weeks 1–36, AI 3 Weeks 1–36 and AI 4 Weeks 1–32**, each authored as a complete student lesson, workbook and teacher guide. It does not claim to complete all seven levels. The other **112 week positions are a proposed sequence**, explicitly labelled Planned with no lesson links. The existing four-level, 144-week edition remains available.
 
 ## Released packages
 
@@ -101,13 +99,13 @@ Do not update a source hash simply to suppress the mismatch check. It protects s
 - All 18 web resources were printed to PDF for browser-print inspection. Downloadable PDFs are the reviewed, paginated print editions.
 - A deliberate source change was rejected by the stale-download guard, then the source was restored.
 
-Grades 6–12 now each have 36 weekly packages. Sources, illustrations, exercises, teacher solutions, Word/PDF artifacts, print-review receipts and protected portal imports are present for all 252 weeks.
+Grade 6 AI 1 Foundations, Grade 7 AI 2 Programming and Data, and Grade 8 AI 3 Machine Learning are complete with 36 weekly packages each. Grade 9 AI 4 has Weeks 1–32 complete. Grade 9 Weeks 33–36 and Grades 10–12 require individually authored chapters, exercises, solutions and print review; the progression map is not a substitute for that work.
 
 ## Week 7 completion (2026-09-15)
 
 Categories and operational labels adds a complete 90-minute package: a five-page lesson, three-page workbook, four-page teacher guide, and ordered-check diagram. All 12 Word/PDF page images were visually reviewed; source text and teacher-answer separation passed.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with seven released packages: 21 rebuilt routes and 42 matching document downloads. All 2,222 protected resources decrypted successfully. Week 7 passed six desktop/mobile viewport checks plus both protected maps. Its three browser-print layouts were inspected; a print rule now keeps workbook questions with their response space. Word/PDF downloads remain the fixed, reviewed print editions.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with seven released packages: 21 rebuilt routes and 42 matching document downloads. All 2,222 protected resources decrypted successfully. Week 7 passed six desktop/mobile viewport checks plus both protected maps. Its three browser-print layouts were inspected; a print rule now keeps workbook questions with their response space. Word/PDF downloads remain the fixed, reviewed print editions.
 
 Weeks 1–7 are complete in the repository; 245 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed.
 
@@ -115,7 +113,7 @@ Weeks 1–7 are complete in the repository; 245 weekly packages remain planned. 
 
 Features and useful distinctions includes a five-page lesson, three-page workbook, four-page teacher guide and a four-row feature-selection diagram. Students construct counterexamples, separate features from targets and explain information leakage through an inspection timeline. Definitions were cross-checked against [Google feature representations](https://developers.google.com/machine-learning/crash-course/numerical-data/feature-vectors) and [scikit-learn data leakage guidance](https://scikit-learn.org/stable/common_pitfalls.html#data-leakage); the classroom scenarios and exercises are original.
 
-All 12 print pages were visually inspected and canonical text matched the Word/PDF editions. The Cloudflare build, TypeScript and all 33 access-test groups passed, including 24 rebuilt routes and 48 document downloads. All 2,229 resources decrypted. Week 8 passed six chapter viewport checks and both maps at desktop/mobile widths. All three browser-print layouts were reviewed and workbook prompts remain with their response areas.
+All 12 print pages were visually inspected and canonical text matched the Word/PDF editions. The Cloudflare build, TypeScript and all 31 access-test groups passed, including 24 rebuilt routes and 48 document downloads. All 2,229 resources decrypted. Week 8 passed six chapter viewport checks and both maps at desktop/mobile widths. All three browser-print layouts were reviewed and workbook prompts remain with their response areas.
 
 Weeks 1–8 are complete in the repository; 244 remain planned. Hosting and authentication code are unchanged. This revision has not been deployed.
 
@@ -123,7 +121,7 @@ Weeks 1–8 are complete in the repository; 244 remain planned. Hosting and auth
 
 Algorithms and changing state adds a five-page lesson, three-page workbook, four-page teacher guide and an annotated transition diagram. It introduces current-state updates, replacement versus addition, instruction order, number-value copying and the limits of a matching final result. Independent work traces two variables and a reordered procedure; the teacher guide includes an uncoached retry.
 
-All 12 print pages were visually reviewed and canonical text matched the Word/PDF editions. Production build, TypeScript and all 33 access-test groups passed with 27 rebuilt routes and 54 document downloads. All 2,236 protected resources decrypted. Six chapter viewport checks and both maps passed. Browser-print text matched every canonical section, and the three browser-print layouts were visually reviewed.
+All 12 print pages were visually reviewed and canonical text matched the Word/PDF editions. Production build, TypeScript and all 31 access-test groups passed with 27 rebuilt routes and 54 document downloads. All 2,236 protected resources decrypted. Six chapter viewport checks and both maps passed. Browser-print text matched every canonical section, and the three browser-print layouts were visually reviewed.
 
 Weeks 1–9 are complete in the repository; 243 remain planned. Cloudflare hosting and role controls are unchanged; no deployment has been performed.
 
@@ -131,7 +129,7 @@ Weeks 1–9 are complete in the repository; 243 remain planned. Cloudflare hosti
 
 Conditions and boundary cases adds a complete 90-minute package: a five-page lesson, three-page workbook, four-page teacher guide and a diagram comparing values below, at and above a threshold. Students distinguish current state from starting state, inclusive from strict comparisons, one selected branch from repeated testing, and unknown input from false. An independent brightness-display task and fresh retry check transfer. All 12 rendered page images were inspected, and canonical text and student/teacher answer separation passed.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with ten released packages: 30 rebuilt routes and 60 matching document downloads. All 2,243 protected resources decrypted successfully. Week 10 passed six desktop/mobile chapter checks plus both protected maps. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with ten released packages: 30 rebuilt routes and 60 matching document downloads. All 2,243 protected resources decrypted successfully. Week 10 passed six desktop/mobile chapter checks plus both protected maps. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–10 are complete in the repository; 242 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes still require student use and teacher feedback.
 
@@ -139,7 +137,7 @@ Weeks 1–10 are complete in the repository; 242 weekly packages remain planned.
 
 Loops and stopping rules is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: trace a countdown, include zero iterations and explain a loop that cannot stop.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 11 released packages, 33 rebuilt routes and 66 matching document downloads. All 2,250 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 11 released packages, 33 rebuilt routes and 66 matching document downloads. All 2,250 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–11 are complete in the repository; 241 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -147,7 +145,7 @@ Weeks 1–11 are complete in the repository; 241 weekly packages remain planned.
 
 Debugging with revealing tests is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: choose revealing boundary tests, repair a comparison and retain regression evidence.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 12 released packages, 36 rebuilt routes and 72 matching document downloads. All 2,257 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 12 released packages, 36 rebuilt routes and 72 matching document downloads. All 2,257 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–12 are complete in the repository; 240 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -155,7 +153,7 @@ Weeks 1–12 are complete in the repository; 240 weekly packages remain planned.
 
 Fitting a pattern from examples is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: fit a new distance task with fresh error counts and a justified limit on predictions.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 13 released packages, 39 rebuilt routes and 78 matching document downloads. All 2,264 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 13 released packages, 39 rebuilt routes and 78 matching document downloads. All 2,264 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–13 are complete in the repository; 239 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -165,7 +163,7 @@ Conceptual check for Week 13: evidence used to choose a model must be distinguis
 
 Constructing a classifier is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: construct and trace a new ribbon classifier with valid inputs, explicit rejection and recorded model version.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 14 released packages, 42 rebuilt routes and 84 matching document downloads. All 2,271 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 14 released packages, 42 rebuilt routes and 84 matching document downloads. All 2,271 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–14 are complete in the repository; 238 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -175,7 +173,7 @@ Teacher browser-print regression: all 14 released guides retained their complete
 
 Keeping final tests unseen is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: preserve predictions and distinguish an independent ribbon test from a revision informed by its results.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 15 released packages, 45 rebuilt routes and 90 matching document downloads. All 2,278 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 15 released packages, 45 rebuilt routes and 90 matching document downloads. All 2,278 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–15 are complete in the repository; 237 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -183,7 +181,7 @@ Weeks 1–15 are complete in the repository; 237 weekly packages remain planned.
 
 Uncertainty and review is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: comparing distance possibilities, matching review evidence to the missing fact, and preserving an unresolved outcome.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 16 released packages, 48 rebuilt routes and 96 matching document downloads. All 2,285 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 16 released packages, 48 rebuilt routes and 96 matching document downloads. All 2,285 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–16 are complete in the repository; 236 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -191,7 +189,7 @@ Weeks 1–16 are complete in the repository; 236 weekly packages remain planned.
 
 Predictions and observations is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: separating model outputs from observed outcomes, applying the exact boundary rule, and reporting assessed and unassessed cases honestly.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 17 released packages, 51 rebuilt routes and 102 matching document downloads. All 2,292 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 17 released packages, 51 rebuilt routes and 102 matching document downloads. All 2,292 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–17 are complete in the repository; 235 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -199,7 +197,7 @@ Weeks 1–17 are complete in the repository; 235 weekly packages remain planned.
 
 Confidence and correctness is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: separating score meanings from probabilities and checking confidence claims without hiding missing outcomes.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 18 released packages, 54 rebuilt routes and 108 matching document downloads. All 2,299 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 18 released packages, 54 rebuilt routes and 108 matching document downloads. All 2,299 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–18 are complete in the repository; 234 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -207,7 +205,7 @@ Weeks 1–18 are complete in the repository; 234 weekly packages remain planned.
 
 Similarity and selected features is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: computing feature contributions, preserving ties, and separating similarity from mandatory requirements.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 19 released packages, 57 rebuilt routes and 114 matching document downloads. All 2,306 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 19 released packages, 57 rebuilt routes and 114 matching document downloads. All 2,306 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–19 are complete in the repository; 233 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -215,7 +213,7 @@ Weeks 1–19 are complete in the repository; 233 weekly packages remain planned.
 
 Recommendations and feedback is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: eligibility before scoring, a tied activity recommendation, the inclusive time boundary, unknown availability and limits of click feedback.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 20 released packages, 60 rebuilt routes and 120 matching document downloads. All 2,313 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 20 released packages, 60 rebuilt routes and 120 matching document downloads. All 2,313 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–20 are complete in the repository; 232 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -223,7 +221,7 @@ Weeks 1–20 are complete in the repository; 232 weekly packages remain planned.
 
 Data quality and documented repair is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: source-backed repairs, distinct trial identity, preserved measured zero, explicit missing and conflicting records, and the corrected reporting denominator.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 21 released packages, 63 rebuilt routes and 126 matching document downloads. All 2,320 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 21 released packages, 63 rebuilt routes and 126 matching document downloads. All 2,320 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–21 are complete in the repository; 231 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -231,7 +229,7 @@ Weeks 1–21 are complete in the repository; 231 weekly packages remain planned.
 
 Sampling and coverage is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: target and sample distinctions, missing feature combinations, distinct-case counts, feasible coverage plans and seven assessed outcomes from eight selected cases.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 22 released packages, 66 rebuilt routes and 132 matching document downloads. All 2,327 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 22 released packages, 66 rebuilt routes and 132 matching document downloads. All 2,327 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–22 are complete in the repository; 230 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -239,7 +237,7 @@ Weeks 1–22 are complete in the repository; 230 weekly packages remain planned.
 
 Fractions and performance comparisons is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: exact fractions independently checked; all canonical and browser print pages visually inspected..
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 23 released packages, 69 rebuilt routes and 138 matching document downloads. All 2,334 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 23 released packages, 69 rebuilt routes and 138 matching document downloads. All 2,334 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–23 are complete in the repository; 229 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -247,7 +245,7 @@ Weeks 1–23 are complete in the repository; 229 weekly packages remain planned.
 
 Privacy and data minimisation is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: purpose-to-field choices, coded-record links and small-group disclosure examples checked independently; all print pages inspected..
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 24 released packages, 72 rebuilt routes and 144 matching document downloads. All 2,341 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 24 released packages, 72 rebuilt routes and 144 matching document downloads. All 2,341 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–24 are complete in the repository; 228 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -255,7 +253,7 @@ Weeks 1–24 are complete in the repository; 228 weekly packages remain planned.
 
 Generation retrieval and calculation is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: notice versions, unsupported claims and all four capacity calculations independently checked..
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 25 released packages, 75 rebuilt routes and 150 matching document downloads. All 2,348 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 25 released packages, 75 rebuilt routes and 150 matching document downloads. All 2,348 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–25 are complete in the repository; 227 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -263,7 +261,7 @@ Weeks 1–25 are complete in the repository; 227 weekly packages remain planned.
 
 Specifying and testing prompts is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: complete, missing and conflicting record cases checked against explicit criteria; fair prompt-comparison reasoning reviewed..
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 26 released packages, 78 rebuilt routes and 156 matching document downloads. All 2,355 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 26 released packages, 78 rebuilt routes and 156 matching document downloads. All 2,355 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–26 are complete in the repository; 226 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -271,7 +269,7 @@ Weeks 1–26 are complete in the repository; 226 weekly packages remain planned.
 
 Verifying claims and quantities is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: checking each claim against its source and recalculating length and mass with consistent units.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 27 released packages, 81 rebuilt routes and 162 matching document downloads. All 2,362 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 27 released packages, 81 rebuilt routes and 162 matching document downloads. All 2,362 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–27 are complete in the repository; 225 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -279,7 +277,7 @@ Weeks 1–27 are complete in the repository; 225 weekly packages remain planned.
 
 Human authority and permission is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: matching proposed actions to the approved actor, version, destination, time and quantity limits.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 28 released packages, 84 rebuilt routes and 168 matching document downloads. All 2,369 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 28 released packages, 84 rebuilt routes and 168 matching document downloads. All 2,369 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–28 are complete in the repository; 224 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -287,7 +285,7 @@ Weeks 1–28 are complete in the repository; 224 weekly packages remain planned.
 
 A problem worth solving is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: defining a bounded user problem and measuring useful matches alongside avoided errors.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 29 released packages, 87 rebuilt routes and 174 matching document downloads. All 2,376 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 29 released packages, 87 rebuilt routes and 174 matching document downloads. All 2,376 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–29 are complete in the repository; 223 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -295,7 +293,7 @@ Weeks 1–29 are complete in the repository; 223 weekly packages remain planned.
 
 Requirements and a simple baseline is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: applying complete compatibility requirements and comparing a prototype fairly with a credible manual baseline.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 30 released packages, 90 rebuilt routes and 180 matching document downloads. All 2,383 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 30 released packages, 90 rebuilt routes and 180 matching document downloads. All 2,383 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–30 are complete in the repository; 222 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -303,7 +301,7 @@ Weeks 1–30 are complete in the repository; 222 weekly packages remain planned.
 
 Designing a complete decision process is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: complete algorithm traces preserve validation, both compatibility conditions, first-match selection and finite termination; independent room cases distinguish no match from missing input.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 31 released packages, 93 rebuilt routes and 186 matching document downloads. All 2,390 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 31 released packages, 93 rebuilt routes and 186 matching document downloads. All 2,390 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–31 are complete in the repository; 221 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -311,7 +309,7 @@ Weeks 1–31 are complete in the repository; 221 weekly packages remain planned.
 
 Building and tracing a paper prototype is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: independent equipment traces cover first-fit selection, catalogue exhaustion and validation; saved instruction versions distinguish execution mistakes from design defects.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 32 released packages, 96 rebuilt routes and 192 matching document downloads. All 2,397 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 32 released packages, 96 rebuilt routes and 192 matching document downloads. All 2,397 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–32 are complete in the repository; 220 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -319,7 +317,7 @@ Weeks 1–32 are complete in the repository; 220 weekly packages remain planned.
 
 Testing routine cases is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: routine-case expectations and independent equipment results were checked; all 62 valid catalogue-B requests confirm that B3 and B4 cannot be first-match outputs.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 33 released packages, 99 rebuilt routes and 198 matching document downloads. All 2,404 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 33 released packages, 99 rebuilt routes and 198 matching document downloads. All 2,404 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–33 are complete in the repository; 219 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -327,7 +325,7 @@ Weeks 1–33 are complete in the repository; 219 weekly packages remain planned.
 
 Testing boundaries and varied conditions is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: inclusive boundaries, invalid-field responses and third- and fourth-row successes under labelled catalogue variations were independently checked.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 34 released packages, 102 rebuilt routes and 204 matching document downloads. All 2,411 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 34 released packages, 102 rebuilt routes and 204 matching document downloads. All 2,411 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–34 are complete in the repository; 218 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -335,7 +333,7 @@ Weeks 1–34 are complete in the repository; 218 weekly packages remain planned.
 
 Improving and checking regressions is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: distinguishing an equality repair from a new first-fit regression, preserving evidence and protecting reserved final evaluation cases.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 35 released packages, 105 rebuilt routes and 210 matching document downloads. All 2,418 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 35 released packages, 105 rebuilt routes and 210 matching document downloads. All 2,418 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–35 are complete in the repository; 217 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -343,7 +341,7 @@ Weeks 1–35 are complete in the repository; 217 weekly packages remain planned.
 
 Evaluating and explaining your project is a complete 90-minute package with 5 lesson pages, 3 workbook pages, 4 teacher-guide pages and a labelled explanatory diagram. All 12 rendered pages were visually inspected. Canonical text and student/teacher answer separation passed. The independent task checks: comparing final evidence with a manual baseline, rejecting unsupported reliability and speed claims, and distinguishing repair checks from unseen evaluation.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed with 36 released packages, 108 rebuilt routes and 216 matching document downloads. All 2,425 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed with 36 released packages, 108 rebuilt routes and 216 matching document downloads. All 2,425 protected resources decrypted successfully. Six desktop/mobile chapter checks and both protected maps passed. All three browser-print layouts were inspected, with canonical text present and workbook questions kept with their response spaces.
 
 Weeks 1–36 are complete in the repository; 216 weekly packages remain planned. Cloudflare hosting and role controls are preserved. These changes have not been deployed. Classroom pacing and learning outcomes require student use and teacher feedback.
 
@@ -362,7 +360,7 @@ Six 90-minute packages now have aligned student lessons, workbooks, teacher guid
 
 Every canonical print page and each browser print layout was visually reviewed. Text checks confirm lesson, workbook and guide alignment. Executed examples and independent cases cover arithmetic, copied values, Boolean boundaries, branch selection and loop accumulation. All six weeks passed desktop/mobile checks for the three resources and protected maps.
 
-The Cloudflare build, TypeScript check and all 33 access-test groups passed. The release contains 42 rebuilt packages, 126 resource pages and 252 matching document downloads; all 2,467 protected resources decrypted. Student sessions cannot access teacher guides or teacher downloads. Hosting configuration and session controls are preserved.
+The Cloudflare build, TypeScript check and all 31 access-test groups passed. The release contains 42 rebuilt packages, 126 resource pages and 252 matching document downloads; all 2,467 protected resources decrypted. Student sessions cannot access teacher guides or teacher downloads. Hosting configuration and session controls are preserved.
 
 Grade 7 Weeks 7–36 remain planned. These changes have not been deployed; classroom pacing and learning outcomes have not been validated with students.
 
@@ -370,7 +368,7 @@ Grade 7 Weeks 7–36 remain planned. These changes have not been deployed; class
 
 Lists and indexing includes a five-page student lesson, three-page workbook, four-page teacher guide and a position-to-value diagram. Every canonical print page and all three browser print layouts were inspected. Executable checks cover worked examples, intentional IndexError, repaired access, list updates, repeated values, independent running totals, empty lists and fresh retry cases.
 
-The build, TypeScript check and all 33 access-test groups passed with 43 rebuilt packages and 258 matching document downloads. All 2,474 protected resources decrypted. Six desktop/mobile resource checks and both protected maps passed. Browser print text matches the source and workbook prompts stay with response spaces.
+The build, TypeScript check and all 31 access-test groups passed with 43 rebuilt packages and 258 matching document downloads. All 2,474 protected resources decrypted. Six desktop/mobile resource checks and both protected maps passed. Browser print text matches the source and workbook prompts stay with response spaces.
 
 Grade 7 Weeks 1–7 are complete; Weeks 8–36 remain planned. Cloudflare hosting and student/teacher controls are preserved. Changes are not deployed, and classroom effectiveness remains untested.
 
@@ -378,7 +376,7 @@ Grade 7 Weeks 1–7 are complete; Weeks 8–36 remain planned. Cloudflare hostin
 
 Functions and arguments includes a five-page student lesson, three-page workbook, four-page teacher guide and an argument-to-parameter diagram. Every canonical print page and all three browser print layouts were inspected. Executable checks cover definition versus call, positional arguments, zero results, missing-argument TypeError, ignored-argument repairs, independent functions, swapped inputs, fresh retry cases and the limits of input validation.
 
-The build, TypeScript check and all 33 access-test groups passed with 44 rebuilt packages and 264 matching document downloads. All 2,481 protected resources decrypted. Six desktop/mobile resource checks and both protected maps passed. Browser print text matches the source and workbook prompts stay with response spaces.
+The build, TypeScript check and all 31 access-test groups passed with 44 rebuilt packages and 264 matching document downloads. All 2,481 protected resources decrypted. Six desktop/mobile resource checks and both protected maps passed. Browser print text matches the source and workbook prompts stay with response spaces.
 
 Grade 7 Weeks 1–8 are complete; Weeks 9–36 remain planned. Cloudflare hosting and student/teacher controls are preserved. Changes are not deployed, and classroom effectiveness remains untested.
 
@@ -386,7 +384,7 @@ Grade 7 Weeks 1–8 are complete; Weeks 9–36 remain planned. Cloudflare hostin
 
 Return values and local state includes a five-page student lesson, three-page workbook, four-page teacher guide and a call-to-return diagram. Every canonical print page and all three browser print layouts were inspected. Executable checks cover worked examples, missing returns, None arithmetic TypeError, local-name NameError, repaired returns, independent calculations, repeated calls, zero results, unreachable statements and fresh retry cases.
 
-The build, TypeScript check and all 33 access-test groups passed with 45 rebuilt packages and 270 matching document downloads. All 2,488 protected resources decrypted. Six desktop/mobile resource checks and both protected maps passed. Browser print text matches the source and workbook prompts stay with response spaces.
+The build, TypeScript check and all 31 access-test groups passed with 45 rebuilt packages and 270 matching document downloads. All 2,488 protected resources decrypted. Six desktop/mobile resource checks and both protected maps passed. Browser print text matches the source and workbook prompts stay with response spaces.
 
 Grade 7 Weeks 1–9 are complete; Weeks 10–36 remain planned. Cloudflare hosting and student/teacher controls are preserved. Changes are not deployed, and classroom effectiveness remains untested.
 
@@ -399,7 +397,7 @@ The continuation print renderer produces three-page lessons, three-page workbook
 
 All 27 worked Python examples were executed against expected outputs. Additional checks cover independent and retry calculations, boundaries, invalid types, missing data, parsing, empty inputs, tie order and capstone integration. These checks verify the executed cases, not every possible input.
 
-The production build, TypeScript check and all 33 access-test groups passed. The repository now contains 72 rebuilt weekly packages and 432 matching Word/PDF downloads across Grades 6 and 7. All 2,677 protected resources decrypted successfully. Grade 7 alone has 36 lessons, 36 workbooks, 36 teacher guides and 216 Word/PDF downloads.
+The production build, TypeScript check and all 31 access-test groups passed. The repository now contains 72 rebuilt weekly packages and 432 matching Word/PDF downloads across Grades 6 and 7. All 2,677 protected resources decrypted successfully. Grade 7 alone has 36 lessons, 36 workbooks, 36 teacher guides and 216 Word/PDF downloads.
 
 Grade 7 Weeks 1–36 are complete in the repository; 180 weekly positions across the other five levels remain planned. Cloudflare hosting and student/teacher access controls are preserved. No live deployment was performed. Classroom pacing and learning effectiveness still require student use and teacher feedback.
 
@@ -408,7 +406,7 @@ Grade 7 Weeks 1–36 are complete in the repository; 180 weekly positions across
 
 The machine learning lifecycle introduces fitting a threshold from labelled training examples, freezing the choice, evaluating separate cards and reporting limited evidence. The complete 90-minute package includes a four-page student lesson, three-page workbook, four-page teacher guide, a lifecycle diagram, independent assessment and a fresh retry. A vocabulary table split was corrected during visual review. Every final downloadable print page and all 12 browser-print pages were inspected; canonical text and answer separation passed.
 
-Executable checks verified the exact worked Python output, independent and retry calculations, threshold equality, declared tie handling and reversed input order. Six desktop/mobile resource checks and both role maps passed. The production build, TypeScript check and all 33 access-test groups passed. The unreleased-route test now derives its examples from the progression and release manifest instead of treating Grade 8 Week 1 as permanently unavailable.
+Executable checks verified the exact worked Python output, independent and retry calculations, threshold equality, declared tie handling and reversed input order. Six desktop/mobile resource checks and both role maps passed. The production build, TypeScript check and all 31 access-test groups passed. The unreleased-route test now derives its examples from the progression and release manifest instead of treating Grade 8 Week 1 as permanently unavailable.
 
 There are now 73 rebuilt packages and 438 matching Word/PDF downloads. All 2,684 protected resources decrypted successfully. Grade 8 has 1 of 36 weeks complete; Weeks 2–36 remain planned. The seven-level sequence has 179 remaining planned positions. Cloudflare hosting and student/teacher access controls are preserved. Changes have not been deployed; classroom pacing and effectiveness remain untested.
 
@@ -419,7 +417,7 @@ Features labels and prediction time adds a complete 90-minute package: a four-pa
 
 The exact worked Python output, feature order, unchanged source records, exclusion of later fields, missing-field behavior and assessment boundaries passed executable checks. Every downloadable print page and all 12 browser-print pages were inspected. Canonical text, workbook response spaces, six desktop/mobile resource checks and both protected maps passed.
 
-The production build, TypeScript check and all 33 access-test groups passed. There are now 74 rebuilt weekly packages with 444 matching Word/PDF downloads. All 2,691 protected resources decrypted successfully. Grade 8 Weeks 1–2 are complete; Weeks 3–36 remain planned. Across seven levels, 178 weekly positions remain planned. Cloudflare hosting and student/teacher access controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
+The production build, TypeScript check and all 31 access-test groups passed. There are now 74 rebuilt weekly packages with 444 matching Word/PDF downloads. All 2,691 protected resources decrypted successfully. Grade 8 Weeks 1–2 are complete; Weeks 3–36 remain planned. Across seven levels, 178 weekly positions remain planned. Cloudflare hosting and student/teacher access controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
 
 
 ## Grade 8 AI 3 Week 3 completion (2026-09-26)
@@ -428,7 +426,7 @@ Classification and regression includes a four-page lesson, three-page workbook, 
 
 The exact worked Python, guided fractional boundary, independent and retry categories, absolute errors, means and category recoding passed executable checks. All 11 downloadable print pages and 12 browser-print pages were visually inspected. Canonical text and workbook response spaces passed, as did six desktop/mobile resource checks and both protected maps.
 
-The production build, TypeScript check and all 33 access-test groups passed. There are 75 rebuilt weekly packages and 450 matching Word/PDF downloads. All 2,698 protected resources decrypted successfully. Grade 8 Weeks 1–3 are complete; Weeks 4–36 remain planned. Across seven levels, 177 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
+The production build, TypeScript check and all 31 access-test groups passed. There are 75 rebuilt weekly packages and 450 matching Word/PDF downloads. All 2,698 protected resources decrypted successfully. Grade 8 Weeks 1–3 are complete; Weeks 4–36 remain planned. Across seven levels, 177 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
 
 
 ## Grade 8 AI 3 Week 4 completion (2026-09-26)
@@ -437,7 +435,7 @@ Dataset inspection and cards includes a four-page lesson, three-page workbook, f
 
 The worked Python output, independent and retry counts, overlapping flags, zero versus unknown values, row reversal, repeated rows and empty-input counts passed executable checks. All 11 downloadable print pages and 12 browser-print pages were visually inspected. Canonical text, workbook response spaces, six desktop/mobile resource checks and both protected maps passed.
 
-The production build, TypeScript check and all 33 access-test groups passed. There are 76 rebuilt weekly packages and 456 matching Word/PDF downloads. All 2,705 protected resources decrypted successfully. Grade 8 Weeks 1–4 are complete; Weeks 5–36 remain planned. Across seven levels, 176 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
+The production build, TypeScript check and all 31 access-test groups passed. There are 76 rebuilt weekly packages and 456 matching Word/PDF downloads. All 2,705 protected resources decrypted successfully. Grade 8 Weeks 1–4 are complete; Weeks 5–36 remain planned. Across seven levels, 176 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
 
 
 ## Grade 8 AI 3 Week 5 completion (2026-09-27)
@@ -446,7 +444,7 @@ Label definitions and disagreement includes a four-page lesson, three-page workb
 
 The worked Python output, guided subset, independent and retry agreement counts, reversed pairs, empty-pair handling and shared-error example passed executable checks. All 11 downloadable print pages and 12 browser-print pages were visually inspected. Canonical text, workbook response spaces, six desktop/mobile resource checks and both protected maps passed.
 
-The production build, TypeScript check and all 33 access-test groups passed. There are 77 rebuilt weekly packages and 462 matching Word/PDF downloads. All 2,712 protected resources decrypted successfully. Grade 8 Weeks 1–5 are complete; Weeks 6–36 remain planned. Across seven levels, 175 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
+The production build, TypeScript check and all 31 access-test groups passed. There are 77 rebuilt weekly packages and 462 matching Word/PDF downloads. All 2,712 protected resources decrypted successfully. Grade 8 Weeks 1–5 are complete; Weeks 6–36 remain planned. Across seven levels, 175 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
 
 
 ## Grade 8 AI 3 Week 6 completion (2026-09-27)
@@ -455,7 +453,7 @@ Splits and related examples includes a four-page lesson, three-page workbook, fo
 
 The worked Python output, all three overlap pairs, guided counts, independent and retry repairs, source-row coverage and deliberately injected overlaps passed executable checks. All 11 downloadable print pages and 12 browser-print pages were visually inspected. Canonical text, workbook response spaces, six desktop/mobile resource checks and both protected maps passed.
 
-The production build, TypeScript check and all 33 access-test groups passed. There are 78 rebuilt weekly packages and 468 matching Word/PDF downloads. All 2,719 protected resources decrypted successfully. Grade 8 Weeks 1–6 are complete; Weeks 7–36 remain planned. Across seven levels, 174 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
+The production build, TypeScript check and all 31 access-test groups passed. There are 78 rebuilt weekly packages and 468 matching Word/PDF downloads. All 2,719 protected resources decrypted successfully. Grade 8 Weeks 1–6 are complete; Weeks 7–36 remain planned. Across seven levels, 174 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
 
 
 ## Grade 8 AI 3 Week 7 completion (2026-09-27)
@@ -464,7 +462,7 @@ A baseline before a model includes a four-page lesson, three-page workbook, four
 
 The worked code, all 126 nonempty binary training sequences through six rows with three validation variants, tie handling, validation-independent predictions, equal-accuracy counterexample and assessment calculations passed executable checks. All 11 downloadable print pages and 12 browser-print pages were visually inspected. Canonical text, workbook response spaces, six desktop/mobile resource checks and both protected maps passed.
 
-The production build, TypeScript check and all 33 access-test groups passed. There are 79 rebuilt weekly packages and 474 matching Word/PDF downloads. All 2,726 protected resources decrypted successfully. Grade 8 Weeks 1–7 are complete; Weeks 8–36 remain planned. Across seven levels, 173 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
+The production build, TypeScript check and all 31 access-test groups passed. There are 79 rebuilt weekly packages and 474 matching Word/PDF downloads. All 2,726 protected resources decrypted successfully. Grade 8 Weeks 1–7 are complete; Weeks 8–36 remain planned. Across seven levels, 173 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
 
 
 ## Grade 8 AI 3 Week 8 completion (2026-09-27)
@@ -473,7 +471,7 @@ Searching candidate rules includes a four-page lesson, three-page workbook, four
 
 The exact worked code, all 16 binary labelings of four training rows, row-order invariance, threshold equality and nearby values, reversed candidate order and assessment scores passed executable checks. All 11 downloadable print pages and 12 browser-print pages were visually inspected. Canonical text, workbook response spaces, six desktop/mobile resource checks and both protected maps passed.
 
-The production build, TypeScript check and all 33 access-test groups passed. There are 80 rebuilt weekly packages and 480 matching Word/PDF downloads. All 2,733 protected resources decrypted successfully. Grade 8 Weeks 1–8 are complete; Weeks 9–36 remain planned. Across seven levels, 172 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
+The production build, TypeScript check and all 31 access-test groups passed. There are 80 rebuilt weekly packages and 480 matching Word/PDF downloads. All 2,733 protected resources decrypted successfully. Grade 8 Weeks 1–8 are complete; Weeks 9–36 remain planned. Across seven levels, 172 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
 
 
 ## Grade 8 AI 3 Week 9 completion (2026-09-27)
@@ -482,7 +480,7 @@ Fitting a decision tree includes a four-page lesson, three-page workbook, four-p
 
 The worked code, all 64 binary labelings of the six feature rows, row-order invariance, root and leaf tie policies, branch counts and assessment scores passed executable checks. All 11 downloadable print pages and 12 browser-print pages were visually inspected. Canonical text, workbook response spaces, six desktop/mobile resource checks and both protected maps passed.
 
-The production build, TypeScript check and all 33 access-test groups passed. There are 81 rebuilt weekly packages and 486 matching Word/PDF downloads. All 2,740 protected resources decrypted successfully. Grade 8 Weeks 1–9 are complete; Weeks 10–36 remain planned. Across seven levels, 171 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
+The production build, TypeScript check and all 31 access-test groups passed. There are 81 rebuilt weekly packages and 486 matching Word/PDF downloads. All 2,740 protected resources decrypted successfully. Grade 8 Weeks 1–9 are complete; Weeks 10–36 remain planned. Across seven levels, 171 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
 
 
 ## Grade 8 AI 3 Week 10 completion (2026-09-27)
@@ -491,7 +489,7 @@ Nearest neighbours and distances includes a four-page lesson, three-page workboo
 
 The exact worked code, assessment rankings and predictions, validation and baseline scores, all 120 row permutations for each example query, and positive unit conversions passed executable checks. All 11 downloadable print pages and 12 browser-print pages were visually inspected. Canonical text, workbook response spaces, six desktop/mobile resource checks and both protected maps passed.
 
-The production build, TypeScript check and all 33 access-test groups passed. There are 82 rebuilt weekly packages and 492 matching Word/PDF downloads. All 2,747 protected resources decrypted successfully. Grade 8 Weeks 1–10 are complete; Weeks 11–36 remain planned. Across seven levels, 170 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
+The production build, TypeScript check and all 31 access-test groups passed. There are 82 rebuilt weekly packages and 492 matching Word/PDF downloads. All 2,747 protected resources decrypted successfully. Grade 8 Weeks 1–10 are complete; Weeks 11–36 remain planned. Across seven levels, 170 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
 
 
 ## Grade 8 AI 3 Week 11 completion (2026-09-27)
@@ -500,7 +498,7 @@ Scaling without leakage includes a four-page lesson, three-page workbook, four-p
 
 The exact worked code, independent and retry calculations, validation and baseline scores, training row permutations, positive unit conversions, outside-range values, zero-range guards and unchanged fitted values during prediction passed executable checks. All 11 downloadable print pages and 12 browser-print pages were visually inspected. Canonical text, workbook response spaces, six desktop/mobile resource checks and both protected maps passed.
 
-The production build, TypeScript check and all 33 access-test groups passed. There are 83 rebuilt weekly packages and 498 matching Word/PDF downloads. All 2,754 protected resources decrypted successfully. Grade 8 Weeks 1–11 are complete; Weeks 12–36 remain planned. Across seven levels, 169 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
+The production build, TypeScript check and all 31 access-test groups passed. There are 83 rebuilt weekly packages and 498 matching Word/PDF downloads. All 2,754 protected resources decrypted successfully. Grade 8 Weeks 1–11 are complete; Weeks 12–36 remain planned. Across seven levels, 169 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
 
 
 ## Grade 8 AI 3 Week 12 completion (2026-09-27)
@@ -509,7 +507,7 @@ A reproducible classifier pipeline includes a four-page lesson, three-page workb
 
 The exact complete program, worked and independent predictions, retry calculations, fitted values, validation and baseline scores, training and query order invariance, unchanged prediction-time state, swapped-feature counterexample, alphabetical distance tie and both zero-range guards passed executable checks. All 11 downloadable print pages and 12 browser-print pages were visually inspected. Canonical text, workbook response spaces, six desktop/mobile resource checks and both protected maps passed.
 
-The production build, TypeScript check and all 33 access-test groups passed. There are 84 rebuilt weekly packages and 504 matching Word/PDF downloads. All 2,761 protected resources decrypted successfully. Grade 8 Weeks 1–12 are complete; Weeks 13–36 remain planned. Across seven levels, 168 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
+The production build, TypeScript check and all 31 access-test groups passed. There are 84 rebuilt weekly packages and 504 matching Word/PDF downloads. All 2,761 protected resources decrypted successfully. Grade 8 Weeks 1–12 are complete; Weeks 13–36 remain planned. Across seven levels, 168 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
 
 
 ## Grade 8 AI 3 Week 13 completion (2026-09-28)
@@ -518,7 +516,7 @@ Confusion matrices includes a four-page lesson, three-page workbook, four-page t
 
 The exact worked code, all 256 prediction combinations for eight reference records, independent and retry matrices, Week 12 continuity, row and column totals, reversed record order, transposed axes, equal-accuracy comparison and empty/absent-class counts passed executable checks. All 11 downloadable print pages and 11 browser-print pages were visually inspected. Canonical text, workbook response spaces, six desktop/mobile resource checks and both protected maps passed.
 
-The production build, TypeScript check and all 33 access-test groups passed. There are 85 rebuilt weekly packages and 510 matching Word/PDF downloads. All 2,768 protected resources decrypted successfully. Grade 8 Weeks 1–13 are complete; Weeks 14–36 remain planned. Across seven levels, 167 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
+The production build, TypeScript check and all 31 access-test groups passed. There are 85 rebuilt weekly packages and 510 matching Word/PDF downloads. All 2,768 protected resources decrypted successfully. Grade 8 Weeks 1–13 are complete; Weeks 14–36 remain planned. Across seven levels, 167 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
 
 
 ## Grade 8 AI 3 Week 14 completion (2026-09-28)
@@ -527,7 +525,7 @@ Accuracy and class imbalance includes a four-page lesson, three-page workbook, f
 
 The exact worked code, independent and retry calculations, changed-class-mix comparison, all 625 small count matrices, missing-class guards, weighted accuracy identity and class-order invariance passed executable checks. All 11 downloadable print pages and 13 browser-print pages were visually inspected. Canonical text, workbook response spaces, six desktop/mobile resource checks and both protected maps passed.
 
-The production build, TypeScript check and all 33 access-test groups passed. There are 86 rebuilt weekly packages and 516 matching Word/PDF downloads. All 2,775 protected resources decrypted successfully. Grade 8 Weeks 1–14 are complete; Weeks 15–36 remain planned. Across seven levels, 166 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
+The production build, TypeScript check and all 31 access-test groups passed. There are 86 rebuilt weekly packages and 516 matching Word/PDF downloads. All 2,775 protected resources decrypted successfully. Grade 8 Weeks 1–14 are complete; Weeks 15–36 remain planned. Across seven levels, 166 weekly positions remain planned. Cloudflare hosting and student/teacher controls are preserved. No live deployment was performed; classroom pacing and effectiveness remain untested.
 
 
 ## Grade 8 completion — Weeks 15–36 (2026-09-28)
@@ -542,7 +540,7 @@ Validation completed:
 - All 66 new Word documents and 66 matching PDF downloads passed canonical-text and student-answer-separation audits. Every one of their 242 rendered pages was visually reviewed.
 - All 66 browser print resources passed canonical-text checks, nonblank-page checks and workbook response-placement checks; every one of their 218 pages was visually reviewed.
 - 132 chapter viewport checks passed across 390px and 1280px layouts; all new mobile lesson headers were visually reviewed. Both protected seven-level maps passed and show 144 planned positions.
-- Production build, TypeScript check and all 33 access-test groups passed. All 2,929 protected resources decrypted successfully.
+- Production build, TypeScript check and all 31 access-test groups passed. All 2,929 protected resources decrypted successfully.
 
 Grades 6–8 are complete in the repository: 108 weekly packages with 648 matching Word/PDF downloads. The 144 weeks across Grades 9–12 remain planned. Cloudflare hosting and student/teacher access controls are preserved. No live deployment was performed. Classroom pacing and learning outcomes still require student use and teacher feedback.
 
@@ -571,7 +569,7 @@ Completed seven packages covering forward passes, parameter counts and architect
 
 All seven Python lesson examples and independent workbook/retry calculations passed, including 60 numerical gradient settings. Every one of the 77 canonical document pages and 71 browser-print pages was visually reviewed. Text and answer-separation audits passed across all 21 Word/PDF pairs and browser resources. All 42 desktop/mobile chapter checks and both protected maps passed; mobile lesson headers were visually inspected.
 
-Production build, TypeScript and all 33 access-test groups passed. All 3,013 protected resources decrypted successfully. There are now 120 complete weekly packages and 720 matching Word/PDF downloads. Grade 9 has 12 of 36 weeks complete; Weeks 13–36 remain planned. Across the seven-level curriculum, 132 weekly positions remain planned. Next: Week 13, Batching and epochs.
+Production build, TypeScript and all 31 access-test groups passed. All 3,013 protected resources decrypted successfully. There are now 120 complete weekly packages and 720 matching Word/PDF downloads. Grade 9 has 12 of 36 weeks complete; Weeks 13–36 remain planned. Across the seven-level curriculum, 132 weekly positions remain planned. Next: Week 13, Batching and epochs.
 
 Cloudflare hosting and student/teacher access controls are preserved. No live deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
 
@@ -580,7 +578,7 @@ Cloudflare hosting and student/teacher access controls are preserved. No live de
 
 Completed Batching and epochs and Learning rate experiments with student lessons, five-task workbooks, teacher guides, explanatory visuals and matching Word/PDF downloads. Week 13 distinguishes example visits, batches, updates and epochs, handles incomplete batches and weighted loss aggregation, and uses an independent counterexample to demonstrate order effects. Week 14 compares five rates under one fixed training setup, explains shrinking versus growing oscillations, and connects loss scaling to equivalent update sizes.
 
-Both executable lesson examples, 140 batch-count cases, worked calculations, independent exercises and fresh retry traces passed. All 22 canonical document pages and 21 browser-print pages were visually reviewed. Canonical-text, answer-separation and workbook response-placement audits passed. Twelve desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 33 access-test groups passed; all 3,027 protected resources decrypted successfully.
+Both executable lesson examples, 140 batch-count cases, worked calculations, independent exercises and fresh retry traces passed. All 22 canonical document pages and 21 browser-print pages were visually reviewed. Canonical-text, answer-separation and workbook response-placement audits passed. Twelve desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 31 access-test groups passed; all 3,027 protected resources decrypted successfully.
 
 Grade 9 now has 14 of 36 weeks complete. Overall, 122 of 252 rebuilt weekly packages are complete, with 732 matching Word/PDF downloads; 130 weeks remain planned. Next: Week 15, Training and validation curves. Cloudflare hosting and student/teacher controls are preserved. No deployment was performed. Classroom pacing and effectiveness still require student trials and teacher feedback.
 
@@ -591,14 +589,14 @@ Completed Training and validation curves and Regularisation and early stopping w
 
 Both executable lesson examples, 35 numerical penalty-gradient checks, 729 stopping-policy cases, chart values and independent/retry arithmetic passed. All 22 canonical document pages and 22 browser-print pages were visually inspected. Canonical-text, answer-separation and workbook response-placement audits passed. Twelve desktop/mobile chapter checks and both protected maps passed. The curve-rendering addition preserves every previously reviewed diagram byte.
 
-Production build, TypeScript and all 33 access-test groups passed. All 3,041 protected resources decrypted successfully. Grade 9 now has 16 of 36 weeks complete. Overall, 124 of 252 weekly packages are complete with 744 matching Word/PDF downloads; 128 weeks remain planned. Next: Week 17, Initialisation and reproducibility. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
+Production build, TypeScript and all 31 access-test groups passed. All 3,041 protected resources decrypted successfully. Grade 9 now has 16 of 36 weeks complete. Overall, 124 of 252 weekly packages are complete with 744 matching Word/PDF downloads; 128 weeks remain planned. Next: Week 17, Initialisation and reproducibility. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
 
 
 ## Grade 9 Weeks 17–18 — Reproducibility and debugging (2026-09-29)
 
 Completed Initialisation and reproducibility and Debugging shapes and gradients with student lessons, five-task workbooks, teacher guides, explanatory visuals and matching Word/PDF editions. Week 17 compares starting values under a fixed budget, demonstrates hidden-unit symmetry and explains why seeds need accompanying experiment records. Week 18 checks dimension contracts, exposes an omitted bias hidden by ReLU, diagnoses swapped gradient coordinates and verifies update direction.
 
-Both executable lesson examples, 49 dense-layer input cases, six malformed-shape rejections, hidden-unit numerical gradient probes, seeded replay checks and independent/retry calculations passed. All 22 canonical document pages and 22 browser-print pages were visually inspected. Canonical-text, answer-separation and workbook response-placement audits passed. Twelve desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 33 access-test groups passed; all 3,055 protected resources decrypted successfully.
+Both executable lesson examples, 49 dense-layer input cases, six malformed-shape rejections, hidden-unit numerical gradient probes, seeded replay checks and independent/retry calculations passed. All 22 canonical document pages and 22 browser-print pages were visually inspected. Canonical-text, answer-separation and workbook response-placement audits passed. Twelve desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 31 access-test groups passed; all 3,055 protected resources decrypted successfully.
 
 Grade 9 now has 18 of 36 weeks complete. Overall, 126 of 252 rebuilt weekly packages are complete with 756 matching Word/PDF downloads; 126 weeks remain planned. Next: Week 19, Learned representations. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
 
@@ -607,7 +605,7 @@ Grade 9 now has 18 of 36 weeks complete. Overall, 126 of 252 rebuilt weekly pack
 
 Completed the student lesson, five-task workbook, teacher guide, explanatory visual and six matching Word/PDF downloads. Rectangle examples trace hidden activations, expose task-dependent information loss, distinguish constructed features from learned ones, and demonstrate recovery when an additional measurement is retained. Independent assessment and a fresh retry use new activation thresholds.
 
-The executable lesson and 400 input cases passed checks of classification, collisions and reconstruction, with independent and retry calculations verified. All 11 canonical document pages and 11 browser-print pages were visually inspected; canonical-text, answer-separation and response-placement audits passed. Six desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 33 access-test groups passed; all 3,062 protected resources decrypted successfully. The access suite was rerun after the build completed to check the current release rather than the previous build.
+The executable lesson and 400 input cases passed checks of classification, collisions and reconstruction, with independent and retry calculations verified. All 11 canonical document pages and 11 browser-print pages were visually inspected; canonical-text, answer-separation and response-placement audits passed. Six desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 31 access-test groups passed; all 3,062 protected resources decrypted successfully. The access suite was rerun after the build completed to check the current release rather than the previous build.
 
 Grade 9 has 19 of 36 weeks complete. Overall, 127 of 252 weekly packages are complete, with 762 matching Word/PDF downloads; 125 remain planned. Next: Week 20, Image tensors and channels. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
 
@@ -616,7 +614,7 @@ Grade 9 has 19 of 36 weeks complete. Overall, 127 of 252 weekly packages are com
 
 Completed the student lesson, five-task workbook, teacher guide, labelled channel visual and six matching Word/PDF downloads. Examples establish zero-based HWC and CHW indexing, distinguish axis permutation from naive regrouping, separate pixels from channel values, and audit fixed scaling, colour averaging and batch axes. The independent assessment uses a one-row image and the fresh retry uses a one-column image.
 
-The executable lesson, 36 rectangular image round trips with all coordinates checked, 256 exact scaling cases, independent exercise and retry passed. All 11 downloadable document pages and 11 browser-print pages were visually reviewed. Canonical-text, answer-separation and response-placement audits passed. Six desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 33 access-test groups passed; all 3,069 protected resources decrypted successfully.
+The executable lesson, 36 rectangular image round trips with all coordinates checked, 256 exact scaling cases, independent exercise and retry passed. All 11 downloadable document pages and 11 browser-print pages were visually reviewed. Canonical-text, answer-separation and response-placement audits passed. Six desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 31 access-test groups passed; all 3,069 protected resources decrypted successfully.
 
 Grade 9 has 20 of 36 weeks complete. Overall, 128 of 252 weekly packages are complete, with 768 matching Word/PDF downloads; 124 remain planned. Next: Week 21, Convolution as a local operation. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
 
@@ -625,7 +623,7 @@ Grade 9 has 20 of 36 weeks complete. Overall, 128 of 252 weekly packages are com
 
 Completed the student lesson, five-task workbook, teacher guide, explanatory visual and six Word/PDF downloads. The chapter declares the fixed-kernel cross-correlation convention used in neural-network convolution, traces all four valid windows, separates shared parameters from arithmetic operations, and compares stride, zero padding, bias and ReLU. Independent and retry examples use different images and kernels. The teacher guide includes the official PyTorch convention reference.
 
-The executable lesson and 147 rectangular-input and stride cases passed independent local-sum and shape checks, alongside the oversized-kernel rejection, worked examples, independent task and retry. All 11 downloadable pages and 11 browser-print pages were visually reviewed. Canonical-text, answer-separation and response-placement audits passed. Six desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 33 access-test groups passed; all 3,076 protected resources decrypted successfully.
+The executable lesson and 147 rectangular-input and stride cases passed independent local-sum and shape checks, alongside the oversized-kernel rejection, worked examples, independent task and retry. All 11 downloadable pages and 11 browser-print pages were visually reviewed. Canonical-text, answer-separation and response-placement audits passed. Six desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 31 access-test groups passed; all 3,076 protected resources decrypted successfully.
 
 Grade 9 has 21 of 36 weeks complete. Overall, 129 of 252 weekly packages are complete, with 774 matching Word/PDF downloads; 123 remain planned. Next: Week 22, Pooling and spatial information. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
 
@@ -634,7 +632,7 @@ Grade 9 has 21 of 36 weeks complete. Overall, 129 of 252 weekly packages are com
 
 Completed the student lesson, five-task workbook, teacher guide, explanatory visual and six matching Word/PDF downloads. The chapter compares max and mean pooling under an explicit complete-window rule, demonstrates collisions and retained coarse spatial structure, exposes omitted borders and signed-value mistakes, and uses movement across a window boundary to limit invariance claims. Independent and retry assessments use new signed maps.
 
-The executable lesson, 64 rectangular map cases, all 16 binary windows, worked calculations, movement counterexamples, negative-value checks and independent/retry cases passed. All 11 downloadable pages and 11 browser-print pages were visually reviewed. Canonical-text, answer-separation and response-placement audits passed. Six desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 33 access-test groups passed; all 3,083 protected resources decrypted successfully.
+The executable lesson, 64 rectangular map cases, all 16 binary windows, worked calculations, movement counterexamples, negative-value checks and independent/retry cases passed. All 11 downloadable pages and 11 browser-print pages were visually reviewed. Canonical-text, answer-separation and response-placement audits passed. Six desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 31 access-test groups passed; all 3,083 protected resources decrypted successfully.
 
 Grade 9 has 22 of 36 weeks complete. Overall, 130 of 252 weekly packages are complete, with 780 matching Word/PDF downloads; 122 remain planned. Next: Week 23, Training a small image model. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
 
@@ -643,7 +641,7 @@ Grade 9 has 22 of 36 weeks complete. Overall, 130 of 252 weekly packages are com
 
 Completed the student lesson, five-task workbook, teacher guide, explanatory visual and six matching Word/PDF downloads. The experiment trains one scalar output weight over explicitly frozen image filters, uses signed targets and a strict class threshold, selects among three saved checkpoints by validation MSE, and compares a frozen model with a constant baseline. Three reserved final cases and their answers remain in the teacher guide. Independent and retry exercises select an earlier checkpoint despite decreasing training loss.
 
-Both updates, 41 numerical gradient checks, all 16 binary images, split uniqueness, final accuracy and MSE, and independent/retry selection calculations passed. All 11 downloadable pages and 12 browser-print pages were visually inspected. Canonical-text, answer-separation and response-placement audits passed. Six desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 33 access-test groups passed; all 3,090 protected resources decrypted successfully.
+Both updates, 41 numerical gradient checks, all 16 binary images, split uniqueness, final accuracy and MSE, and independent/retry selection calculations passed. All 11 downloadable pages and 12 browser-print pages were visually inspected. Canonical-text, answer-separation and response-placement audits passed. Six desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 31 access-test groups passed; all 3,090 protected resources decrypted successfully.
 
 Grade 9 has 23 of 36 weeks complete. Overall, 131 of 252 weekly packages are complete, with 786 matching Word/PDF downloads; 121 remain planned. Next: Week 24, Augmentation and leakage. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
 
@@ -652,7 +650,7 @@ Grade 9 has 23 of 36 weeks complete. Overall, 131 of 252 weekly packages are com
 
 Completed the student lesson, five-task workbook, teacher guide, explanatory visual and six matching Word/PDF downloads. The chapter tests task-specific label preservation, handles ties correctly, assigns source groups before augmentation, audits lineage and exact duplicates, distinguishes source counts from record counts, and matches update budgets. It explicitly revisits Week 23: row-swapped training variants would duplicate its toy validation examples, requiring a new split for an augmentation experiment.
 
-All sixteen binary images passed transformation and source-preservation checks, including ten column-swap label changes and six unchanged ties. Grouped record counts, exclusions, known duplicate relationships, update budgets and independent/retry calculations passed. All 11 downloadable pages and 11 browser-print pages were visually reviewed. Canonical-text, answer-separation and response-placement audits passed. Six desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 33 access-test groups passed; all 3,097 protected resources decrypted successfully.
+All sixteen binary images passed transformation and source-preservation checks, including ten column-swap label changes and six unchanged ties. Grouped record counts, exclusions, known duplicate relationships, update budgets and independent/retry calculations passed. All 11 downloadable pages and 11 browser-print pages were visually reviewed. Canonical-text, answer-separation and response-placement audits passed. Six desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 31 access-test groups passed; all 3,097 protected resources decrypted successfully.
 
 Grade 9 has 24 of 36 weeks complete. Overall, 132 of 252 weekly packages are complete, with 792 matching Word/PDF downloads; 120 remain planned. Next: Week 25, Sequence representations. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
 
@@ -661,7 +659,7 @@ Grade 9 has 24 of 36 weeks complete. Overall, 132 of 252 weekly packages are com
 
 Completed the student lesson, five-task workbook, teacher guide, explanatory visual and six matching Word/PDF downloads. The chapter compares ordered event logs with count vectors, declares a token vocabulary and right-padding mask, distinguishes unknown symbols from placeholders, protects measured zeros in masked calculations, and exposes truncation and empty-input boundaries. Independent and retry tasks use a new vocabulary and storage length.
 
-All 120 known-token sequences of lengths one through four passed encoding, decoding and final-position checks. Four rejection cases, unknown collisions, masked means, truncation and independent/retry arithmetic passed. All 11 downloadable pages and 11 browser-print pages were visually reviewed. Canonical-text, answer-separation and response-placement audits passed. Six desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 33 access-test groups passed; all 3,104 protected resources decrypted successfully.
+All 120 known-token sequences of lengths one through four passed encoding, decoding and final-position checks. Four rejection cases, unknown collisions, masked means, truncation and independent/retry arithmetic passed. All 11 downloadable pages and 11 browser-print pages were visually reviewed. Canonical-text, answer-separation and response-placement audits passed. Six desktop/mobile chapter checks and both protected maps passed. Production build, TypeScript and all 31 access-test groups passed; all 3,104 protected resources decrypted successfully.
 
 Grade 9 has 25 of 36 weeks complete. Overall, 133 of 252 weekly packages are complete, with 798 matching Word/PDF downloads; 119 remain planned. Next: Week 26, Embeddings and neighbourhoods. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
 
@@ -727,24 +725,3 @@ Completed Documenting a network experiment with aligned student lesson, workbook
 Validation passed: analytical losses and numerical gradients across 200 points, both updates, checkpoint selection and tie handling, validation isolation, independent/retry arithmetic and content-hash examples. All 11 canonical pages and 13 browser print pages were visually inspected; canonical text, response placement and student/teacher answer separation passed. Six desktop/mobile chapter checks and both protected maps passed, along with the production build, TypeScript, all 31 access test groups and decryption of all 3,153 protected resources.
 
 Grade 9 has 32 of 36 weeks complete. Overall, 140 of 252 weekly packages are complete, with 840 matching Word/PDF downloads; 112 remain planned. Next: Week 33, Capstone hypothesis and baseline. Cloudflare hosting and student/teacher access controls are preserved. No deployment was performed. Classroom pacing and learning effectiveness still require student trials and teacher feedback.
-
-
-## 2026-10-04 — all remaining weekly packages completed locally
-
-AI 4 Weeks 33–36 and all 36 weeks of AI 5, AI 6 and AI 7 add 112 canonical packages, 336 Word files, 336 matching PDFs and 112 diagrams. Every one of the 1,234 downloadable pages was visually inspected; page breaks after long code blocks were corrected. Thirteen standalone Python labs and companion offline fixtures are included. Sources, artifacts, renderer hashes and page-review receipts are recorded.
-
-All seven levels now have 36 linked weekly packages: 252 lessons, 252 workbooks, 252 teacher guides, 756 Word downloads and 756 PDFs. Protected storage preserves student/teacher access. The build, TypeScript check, canonical/content audits, arithmetic and lab checks, and all 33 access-test groups pass with 3,937 protected resources. Headless Chrome passed 672 desktop/mobile chapter checks and four map checks. Twelve sample browser-print PDFs matched canonical content; all 45 sample print pages and representative screen layouts were visually inspected. The map completion message was updated for the fully released curriculum.
-
-Audience bundles are in `outputs/curriculum-continuation`. No deployment has been performed. Classroom pacing and learning effectiveness require teacher feedback and student trials. Earlier dated entries above document incremental release history.
-
-The complete offline collection is in `outputs/curriculum-complete`: 1,008 student lesson/workbook Word/PDF files plus 252 figures in the student archive, and 504 Word/PDF teacher guides in the teacher archive. Both cover all 252 weeks and include a chapter index, offline labs and artifact hashes. The packaging script verifies the registered source and artifact hashes, resource roles and every archived file. Teacher answers remain in the separate teacher archive.
-
-## Content and presentation review
-
-Reviewed study editions: [student collection](outputs/curriculum-reviewed/student-study-complete.zip) and [teacher preparation collection](outputs/curriculum-reviewed/teacher-study-complete.zip), covering all 252 weeks. These offline HTML editions add vocabulary-first reading, richer explanations, specific later-week targets and complete diagram traces. See the [content and presentation review](curriculum-v3/CONTENT_REVIEW.md) for every-week evidence and validation. The additions supplement the original Word/PDF files.
-
-All 252 weeks passed source screening. Targeted editorial work adds 27 student worked explanations, 47 expanded teacher answers, and specific targets and full traces for 96 later weeks. The final build, TypeScript and 33 access-test groups passed. All 504 study editions passed desktop/mobile layout checks, with affected final changes rechecked; 136 sampled print pages passed text and image bounds checks and contact-sheet inspection. No deployment was performed.
-
-## Unified current pathway
-
-The dashboard and level pages now present the seven-level curriculum directly. Earlier week bookmarks redirect by a 144-topic crosswalk; original illustrated chapters, visual cases, workbooks and teacher explanations are retained as topic practice beside the relevant current lessons. The latest reader now includes editable responses and printed answers. Updated offline study collections include 144 retained practice chapters for each audience. See [UNIFIED_COVERAGE.md](curriculum-v3/UNIFIED_COVERAGE.md) for findings and changed grade placement. No deployment was performed.

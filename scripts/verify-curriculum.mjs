@@ -1,13 +1,13 @@
 import assert from "node:assert/strict";
 import { readFile, stat } from "node:fs/promises";
-import {readResource} from './resource-storage.mjs';
+import { createDecipheriv } from "node:crypto";
 
 const root = new URL("../", import.meta.url);
 const read = path => readFile(new URL(path, root));
 const data = JSON.parse(await read("lib/academy-data.json"));
 const review=JSON.parse(await read('lib/grade6-review.json'));
 for (const file of ["components/visual-lesson-book.tsx", "components/sensor-lab.tsx", "components/lesson-visual.tsx", "app/lesson-book.css", "PACKAGE_EDITION.txt"]) assert.ok((await stat(new URL(file, root))).size > 0, `Missing visual book file: ${file}`);
-assert.match((await read("app/learn/[role]/practice/[level]/[week]/page.tsx")).toString(), /<VisualLessonBook/, "Retained practice must render the complete illustrated lesson book");
+assert.match((await read("app/learn/[role]/[level]/[week]/page.tsx")).toString(), /<VisualLessonBook/, "The week route must render the complete illustrated lesson book");
 const manifest = JSON.parse(await read("lib/resource-manifest.json"));
 const keySource = (await read("lib/resource-key.ts")).toString();
 const keyMatch = keySource.match(/["']([A-Za-z0-9+/]{43}=)["']/);
@@ -58,7 +58,11 @@ for (const [id, metadata] of Object.entries(manifest)) {
   const path = `public/curriculum-blobs/${id}.bin`;
   assert.ok((await stat(new URL(path, root))).size > 28, `Empty resource: ${id}`);
   if (full) {
-    const plain = await readResource(id,metadata,key,read);
+    const encrypted = await read(path);
+    const decipher = createDecipheriv("aes-256-gcm", key, encrypted.subarray(0, 12));
+    decipher.setAAD(Buffer.from(id));
+    decipher.setAuthTag(encrypted.subarray(-16));
+    const plain = Buffer.concat([decipher.update(encrypted.subarray(12, -16)), decipher.final()]);
     if (metadata.mime === "image/png") assert.equal(plain.subarray(0,8).toString("hex"), "89504e470d0a1a0a");
     if (metadata.mime === "application/pdf") assert.equal(plain.subarray(0,5).toString(), "%PDF-");
     else if (metadata.filename) assert.equal(plain.subarray(0,2).toString(), "PK");
