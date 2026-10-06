@@ -1,5 +1,7 @@
 # AI Academy — unified Grades 6–12 pathway
 
+**Complete final version:** [outputs/ai-academy-final](outputs/ai-academy-final), with the full portal project, student/teacher dashboards, all content and linked Word/PDF downloads together. Open [START_HERE.html](outputs/ai-academy-final/START_HERE.html), or use the [single complete ZIP](outputs/ai-academy-final.zip). This is the complete application structure; the smaller study collections below are chapter exports. Recreate it with `python3 scripts/package-unified-final.py`.
+
 AI Academy now presents one current curriculum: seven levels with 36 weeks each, covering **252 student lessons, 252 workbook missions and 252 teacher guides**, with 756 reviewed Word files and 756 matching PDFs. Student and teacher sign-in both open the same current seven-level map. Deployment is outside this content-preparation task.
 
 The earlier four-level edition has been compared against the latest curriculum. All 144 earlier topics have an explicit current destination, and their complete illustrated lessons, visual activities, workbooks, teacher explanations and fresh transfer tasks are retained as optional practice alongside the relevant current lessons. Previous week bookmarks redirect by topic, preserving lesson/workbook/guide selection and access controls. The old level numbers must not be interpreted as equivalent current topics.
