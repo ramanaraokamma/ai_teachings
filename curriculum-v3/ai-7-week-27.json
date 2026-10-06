@@ -1,0 +1,221 @@
+{
+  "level": "ai-7",
+  "week": 27,
+  "title": "Robustness across conditions",
+  "minutes": 90,
+  "goals": [
+    "Explain the mechanism and terminology of robustness across conditions",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "prerequisite": {
+    "prompt": "Recall Inspecting failures and anomalies. Explain why a recorded result needs its input conditions and evidence source before it can support a claim.",
+    "answer": "A result depends on the inputs, procedure and conditions that produced it. Preserve data roles and distinguish observed outcomes from predictions or unmeasured conditions. If the prior concept cannot be explained, use a short retrieval activity before this chapter."
+  },
+  "vocabulary": [
+    [
+      "Robustness check",
+      "Evaluation under declared varied conditions"
+    ],
+    [
+      "Condition-specific result",
+      "A score within one stated setting"
+    ],
+    [
+      "Aggregate masking",
+      "A summary hiding differing condition outcomes"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "The problem and the mechanism",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Robustness checks examine a frozen procedure under declared varied conditions. Performance differences do not by themselves identify cause."
+        },
+        {
+          "type": "paragraph",
+          "text": "Begin by writing the question the procedure is intended to answer. Identify the information already supplied, the information it will produce and the information still missing. These are constructed classroom examples; they do not require live accounts, private records or an external service. Do not treat a plausible explanation as a measured outcome."
+        }
+      ]
+    },
+    {
+      "title": "A procedure you can inspect",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Keep baseline, metric and eligibility aligned across conditions. Report condition counts and failures separately; new conditions may extend evidence but cannot guarantee all conditions."
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Robustness across conditions — evidence trace",
+          "columns": [
+            "Input and scope",
+            "Check or calculation",
+            "Conclusion and limit"
+          ],
+          "rows": [
+            [
+              "Method passes9/10 on current sources and5/10 on outdated sources.",
+              "Keep baseline, metric and eligibility aligned across conditions. Report condition counts and failures separately; new conditions may extend",
+              "90% versus50%; gap40 percentage points. Freshness condition is associated with lower quality here; inspect mechanisms before general causal claims."
+            ]
+          ],
+          "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+        }
+      ]
+    },
+    {
+      "title": "Worked reasoning",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Method passes9/10 on current sources and5/10 on outdated sources."
+        },
+        {
+          "type": "paragraph",
+          "text": "90% versus50%; gap40 percentage points. Freshness condition is associated with lower quality here; inspect mechanisms before general causal claims."
+        },
+        {
+          "type": "paragraph",
+          "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+        }
+      ]
+    },
+    {
+      "title": "Check the boundary and the interpretation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Robustness is bounded by the tested variations and independent evidence policy."
+        },
+        {
+          "type": "paragraph",
+          "text": "A useful check asks what would make the reasoning fail. Distinguish a failure to execute the declared procedure from a weakness in the procedure itself. The first may require a correction; the second requires an explicitly revised method and new evidence. Preserve unsuccessful cases so an improved result cannot hide the original problem."
+        },
+        {
+          "type": "response",
+          "label": "Guided: restate the worked result, then name the assumption or limitation that prevents a broader conclusion.",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "title": "Apply the idea and plan the next check",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Complete the supported workbook tasks before attempting W4 independently. Record any hints or help used. After feedback, use the teacher's fresh retry rather than copying the earlier answer. For a project, select a relevant new case, predict the outcome from the declared rule and preserve the result alongside any revision."
+        },
+        {
+          "type": "response",
+          "label": "Exit: propose one revealing change to the worked scenario. State the expected outcome and the evidence that would make you revise your explanation.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "id": "W1",
+      "title": "Explain the mechanism",
+      "prompt": "Explain the weekly mechanism in your own words. Use the worked scenario to name its input, decision rule and output.",
+      "answer": "Teacher explanation: Robustness checks examine a frozen procedure under declared varied conditions. Performance differences do not by themselves identify cause. Keep baseline, metric and eligibility aligned across conditions. Report condition counts and failures separately; new conditions may extend evidence but cannot guarantee all conditions.",
+      "lines": 6
+    },
+    {
+      "id": "W2",
+      "title": "Trace the worked case",
+      "prompt": "Method passes9/10 on current sources and5/10 on outdated sources. Show the intermediate steps and give the conclusion with its scope.",
+      "answer": "Teacher explanation: 90% versus50%; gap40 percentage points. Freshness condition is associated with lower quality here; inspect mechanisms before general causal claims.",
+      "lines": 7
+    },
+    {
+      "id": "W3",
+      "title": "Audit the limit",
+      "prompt": "A report omits this qualification: Robustness is bounded by the tested variations and independent evidence policy. Explain how omitting it could change a reader's interpretation, and write an accurate replacement.",
+      "answer": "Teacher explanation: Robustness is bounded by the tested variations and independent evidence policy. State the observed result separately from the unverified or out-of-scope claim; preserve the original evidence rather than inventing a missing fact.",
+      "lines": 6
+    },
+    {
+      "id": "W4",
+      "title": "Apply a new case independently",
+      "prompt": "Baseline/candidate on conditionA:6/8, 7/8; conditionB:5/8, 4/8. Compare paired rates.",
+      "answer": "Teacher explanation: Candidate gains12.5 points inA but loses12.5 inB; overall11/16 for both. Aggregate equality hides condition differences.",
+      "lines": 9
+    },
+    {
+      "id": "W5",
+      "title": "Design a revealing follow-up",
+      "prompt": "For the worked scenario, propose one additional case that could reveal a failure, describe its expected outcome before running it, and explain what would need to remain fixed for a fair comparison. Do not reuse W4 as a new final test after receiving feedback.",
+      "answer": "Teacher explanation: Accept a concrete variant of the worked input or a missing/conflicting/boundary condition, with an expectation derived from the declared procedure. Require preserved settings, original outputs and data roles. Robustness is bounded by the tested variations and independent evidence policy. The new case should test this particular mechanism rather than merely restate the original result.",
+      "lines": 7
+    }
+  ],
+  "teacher": {
+    "background": "Two 45-minute sessions. Robustness checks examine a frozen procedure under declared varied conditions. Performance differences do not by themselves identify cause. Use the supplied constructed scenarios to make the mechanism inspectable. Collect W4 before sharing solutions. Students should name intermediate evidence and limitations; classroom pacing and learning effectiveness remain unvalidated.",
+    "materials": [
+      "Lesson and workbook; paper and pencil",
+      "Calculator and optional local Python 3 for arithmetic; no live API or private data",
+      "Prepare the fresh retry separately and withhold its solution until after collection"
+    ],
+    "sessions": [
+      [
+        "Session 1: 0–7 minutes",
+        "Retrieve the prerequisite; identify the input, procedure and evidence source."
+      ],
+      [
+        "7–18 minutes",
+        "Explain section 1 and vocabulary. Complete W1 with a mechanism-based explanation."
+      ],
+      [
+        "18–32 minutes",
+        "Trace the declared procedure and worked case. Complete W2, recording intermediate steps."
+      ],
+      [
+        "32–45 minutes",
+        "Discuss the diagram with the worked input; use W3 to distinguish measured claims and limitations."
+      ],
+      [
+        "Session 2: 0–8 minutes",
+        "Retrieve the worked reasoning and collect the guided response before discussing it."
+      ],
+      [
+        "8–20 minutes",
+        "Compare a proposed boundary variant with the original case; identify what remains fixed."
+      ],
+      [
+        "20–35 minutes",
+        "Collect W4 independently. Require the procedure trace and the bounded conclusion."
+      ],
+      [
+        "35–45 minutes",
+        "Use W5 and exit responses for feedback. Administer the fresh retry after feedback and preserve both attempts."
+      ]
+    ],
+    "guidedAnswer": "Guided: 90% versus50%; gap40 percentage points. Freshness condition is associated with lower quality here; inspect mechanisms before general causal claims. Qualification: Robustness is bounded by the tested variations and independent evidence policy. Exit: accept a concrete variation with its predicted outcome and a stated condition that would challenge the mechanism; reject a claim resting on unmeasured evidence.",
+    "misconceptions": [
+      [
+        "The worked result establishes every future case",
+        "Robustness is bounded by the tested variations and independent evidence policy."
+      ],
+      [
+        "A missing input may be replaced without recording the change",
+        "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+      ],
+      [
+        "Repeating an assessed case is new independent evidence",
+        "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+      ]
+    ],
+    "assessment": "W4: Candidate gains12.5 points inA but loses12.5 inB; overall11/16 for both. Aggregate equality hides condition differences. Require intermediate reasoning and the stated scope. Fresh retry: A baseline4/6, candidate5/6; B baseline5/6, candidate4/6. Expected reasoning: Gains/losses16.667 points; overall9/12 each. Preserve condition-specific findings. If students need support, record it and reassess with another new case rather than awarding independence to a copied answer.",
+    "support": "Provide an input/procedure/result/limit frame and a calculator when needed. Ask students to identify the first step before completing the whole trace. Extension: compare two concrete variants of this mechanism while holding unrelated conditions fixed; report both successful and unsuccessful outcomes.",
+    "next": "Next connection: Negative results and claim revision. Preserve the current case record and retrieve its evidence boundary before moving on."
+  }
+}

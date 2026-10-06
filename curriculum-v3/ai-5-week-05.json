@@ -1,0 +1,243 @@
+{
+  "level": "ai-5",
+  "week": 5,
+  "title": "Embeddings and position",
+  "minutes": 90,
+  "goals": [
+    "Look up token embeddings and add explicit position vectors",
+    "Trace how token order changes a representation",
+    "Explain what a toy position scheme does and does not establish"
+  ],
+  "prerequisite": {
+    "prompt": "Do adjacent vocabulary IDs prove that their tokens have similar meanings?",
+    "answer": "No. IDs are indices. Similarity must refer to the embedding vectors and a defined comparison, not numerical ID distance."
+  },
+  "vocabulary": [
+    [
+      "Embedding",
+      "A vector associated with a token under a specified model"
+    ],
+    [
+      "Position vector",
+      "A vector carrying information about a sequence position"
+    ],
+    [
+      "Representation width",
+      "The number of components in each vector"
+    ],
+    [
+      "Elementwise addition",
+      "Adding corresponding vector components"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Keep IDs and vectors separate",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Use a two-token vocabulary: ID 1 means red with embedding [1,0]; ID 2 means blue with embedding [0,1]. This lookup table is constructed, not trained. The input red blue has embedding rows [1,0] and [0,1], so its shape is two sequence positions by two components. Reversing the text reverses the rows. ID 2 is not “twice as blue” as ID 1 is red."
+        },
+        {
+          "type": "paragraph",
+          "text": "A model needs a way to use order. A collection of vectors without any order-sensitive procedure may lose that distinction. We introduce one explicit toy scheme: add position vector [0,0] at position 0 and [2,0] at position 1. These invented values teach arithmetic; they are not a recommended production encoding."
+        }
+      ]
+    },
+    {
+      "title": "Trace the ordered representation",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Sequence",
+            "Position 0 representation",
+            "Position 1 representation"
+          ],
+          "rows": [
+            [
+              "red blue",
+              "[1,0] + [0,0] = [1,0]",
+              "[0,1] + [2,0] = [2,1]"
+            ],
+            [
+              "blue red",
+              "[0,1] + [0,0] = [0,1]",
+              "[1,0] + [2,0] = [3,0]"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The same red token now has [1,0] at position 0 and [3,0] at position 1. Both token identity and position affect the represented row. Addition requires equal widths; adding a three-component position vector to a two-component embedding violates the input contract. Record the position numbering and embedding-table version."
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Keep the evidence roles separate",
+          "columns": [
+            "Plan or input",
+            "Procedure",
+            "Permitted conclusion"
+          ],
+          "rows": [
+            [
+              "ID 1 at position 0",
+              "[1,0] + [0,0]",
+              "Representation [1,0]"
+            ],
+            [
+              "ID 1 at position 1",
+              "[1,0] + [2,0]",
+              "Representation [3,0]"
+            ],
+            [
+              "Two different sequences",
+              "Inspect ordered rows",
+              "Do not infer meaning from ID gaps"
+            ]
+          ],
+          "caption": "The position contribution changes a token representation according to its location."
+        }
+      ]
+    },
+    {
+      "title": "Avoid a misleading aggregate",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The elementwise sum of the represented rows is [3,1] for both red blue and blue red. This aggregate loses the row-order distinction despite the position additions. A later computation must actually use the represented rows appropriately; merely adding position vectors does not guarantee that every summary preserves order."
+        },
+        {
+          "type": "paragraph",
+          "text": "A position scheme may use learned values or a deterministic construction. The original Transformer added positional information to embeddings. Modern architectures can use other order-sensitive schemes. Our two-vector example demonstrates one possible mechanism and one information-loss failure, not all architecture choices."
+        }
+      ]
+    },
+    {
+      "title": "Practise a supported lookup",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Supported case: embeddings A=[2,1], B=[1,3], positions [0,0] and [1,-1]. Sequence A B becomes [2,1] and [2,2]. Sequence B A becomes [1,3] and [3,0]. Both sums are [4,3]."
+        },
+        {
+          "type": "response",
+          "label": "Guided: compute both ordered representations and compare their sums. Explain which operation discarded the difference.",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "title": "Document assumptions before comparing similarity",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "State whether a vector is a token embedding, a position vector or their combination before calculating distances. Position changes can affect numerical similarity even for the same token. An unknown token or a sequence beyond the toy position table needs explicit handling. This two-position contract rejects a third position; it does not silently wrap back to position 0."
+        },
+        {
+          "type": "response",
+          "label": "Exit: a program compares vocabulary IDs instead of vectors and silently repeats its two-position table for a longer sequence. Identify both contract errors.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "title": "Look up vectors",
+      "prompt": "For red blue name the IDs, embedding rows and shape before adding positions.",
+      "answer": "Teacher explanation: IDs [1,2]; rows [1,0],[0,1]; shape two positions by two components.",
+      "lines": 6,
+      "id": "W1"
+    },
+    {
+      "title": "Add positions",
+      "prompt": "Compute representations for red blue and blue red under the stated position table.",
+      "answer": "Teacher explanation: red blue rows [1,0],[2,1]; blue red rows [0,1],[3,0]. Addition is component by component.",
+      "lines": 6,
+      "id": "W2"
+    },
+    {
+      "title": "Audit the sum",
+      "prompt": "Sum the rows for both sequences. Does the sum establish that the original text had the same order?",
+      "answer": "Teacher explanation: Both sums [3,1]. Summing discards the ordered-row difference; equal summaries do not prove equal source sequences.",
+      "lines": 6,
+      "id": "W3"
+    },
+    {
+      "title": "Trace new vectors independently",
+      "prompt": "Embeddings A=[1,2], B=[3,0], position 0=[0,1], position 1=[1,0]. Compute represented rows and sums for A B and B A. Explain what the equal sums mean.",
+      "answer": "Teacher explanation: A B rows [1,3],[4,0]; B A rows [3,1],[2,2]. Both sums [5,3]; the summaries lose the ordering difference while the ordered row representations differ.",
+      "lines": 9,
+      "id": "W4"
+    },
+    {
+      "title": "Handle a shape failure",
+      "prompt": "An embedding has width two but its position vector has width three. The input also contains a third position absent from the table. Specify honest handling.",
+      "answer": "Teacher explanation: Reject mismatched vector widths and unsupported position explicitly. Do not truncate, wrap or invent values unless a separate documented contract defines that transformation.",
+      "lines": 6,
+      "id": "W5"
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. All model outputs and probability tables are constructed classroom examples. No hosted AI service, external API or student account is needed. Distinguish a model objective from factual support and system permissions. Collect independent work before discussing its solutions.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator; optional local Python 3 interpreter",
+      "Prepare the independent task and fresh retry without displaying solutions"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and distinguish a numerical claim from its interpretation."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read section 1 and complete W1; ask for a reason alongside each answer."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace the worked case in section 2 and complete W2."
+      ],
+      [
+        "32 to 45 minutes",
+        "Discuss the diagram and complete W3 in pairs; record support."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete the guided response before sharing the answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Read the remaining sections and trace another constructed case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, requiring calculations and a bounded conclusion."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit response. Provide feedback and a fresh retry."
+      ]
+    ],
+    "guidedAnswer": "Guided: A B gives [2,1],[2,2]; B A gives [1,3],[3,0]. Both sums [4,3]. The summation discarded the row-order distinction. Exit: ID gaps are not vector similarity; repeating positions violates the stated table range.",
+    "misconceptions": [
+      [
+        "A position vector guarantees every summary preserves order",
+        "The supplied sum counterexample loses the difference."
+      ],
+      [
+        "IDs are embedding coordinates",
+        "IDs select rows; vector components are separate data."
+      ],
+      [
+        "Any vector widths can be added",
+        "Elementwise addition requires equal widths."
+      ]
+    ],
+    "assessment": "W4 requires both row pairs and shared sum [5,3], with an information-loss explanation. Fresh retry: A=[2,0], B=[0,4], positions [1,0] and [0,2]. A B gives [3,0],[0,6]; B A gives [1,4],[2,2]; sums [3,6].",
+    "support": "Provide labelled intermediate columns and allow a calculator. Ask students to state the meaning and denominator of a value before interpreting it. Extension: implement the classroom calculation locally and test boundary cases without using personal data.",
+    "next": "Week 6 introduces attention weights as a way to combine available value vectors for a specified query."
+  }
+}

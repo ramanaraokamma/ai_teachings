@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { readFile, stat } from "node:fs/promises";
-import { createDecipheriv } from "node:crypto";
+import {readResource} from './resource-storage.mjs';
 
 const root = new URL("../", import.meta.url);
 const read = path => readFile(new URL(path, root));
@@ -58,11 +58,7 @@ for (const [id, metadata] of Object.entries(manifest)) {
   const path = `public/curriculum-blobs/${id}.bin`;
   assert.ok((await stat(new URL(path, root))).size > 28, `Empty resource: ${id}`);
   if (full) {
-    const encrypted = await read(path);
-    const decipher = createDecipheriv("aes-256-gcm", key, encrypted.subarray(0, 12));
-    decipher.setAAD(Buffer.from(id));
-    decipher.setAuthTag(encrypted.subarray(-16));
-    const plain = Buffer.concat([decipher.update(encrypted.subarray(12, -16)), decipher.final()]);
+    const plain = await readResource(id,metadata,key,read);
     if (metadata.mime === "image/png") assert.equal(plain.subarray(0,8).toString("hex"), "89504e470d0a1a0a");
     if (metadata.mime === "application/pdf") assert.equal(plain.subarray(0,5).toString(), "%PDF-");
     else if (metadata.filename) assert.equal(plain.subarray(0,2).toString(), "PK");

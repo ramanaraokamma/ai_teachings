@@ -1,0 +1,115 @@
+{
+  "ai-2/10": {
+    "W1": "Read the keys, rather than the positions: name labels the text Red, capacity labels 9, and used labels 2. The used value is therefore 2. Subtract the occupied spaces from the total: 9 - 2 = 7 spare spaces.",
+    "W2": "Only the used field is reassigned. Capacity stays 9 and used becomes 9, so the fresh calculation is 9 - 9 = 0. Ask learners to show the updated record before calculating, rather than reusing the earlier 7.",
+    "W3": "Dictionary keys distinguish uppercase from lowercase. The existing key is used; Used is a different key and is absent. Looking it up raises KeyError. Change the lookup to record[\"used\"]. Adding Used would create a second field rather than repairing the intended lookup."
+  },
+  "ai-2/11": {
+    "W1": "Count the dictionaries, not the fields: the list contains two records. In the second record, capacity is 6 and used is 6. Its spare contribution is 6 - 6 = 0. Zero is a known contribution, not a missing record.",
+    "W2": "Write total before and after each update: 0 + 2 = 2; 2 + 4 = 6; 6 + 1 = 7. The trace is 2, 6, 7. If a learner writes only 7, ask for the intermediate values to distinguish accumulation from a lucky final answer."
+  },
+  "ai-2/12": {
+    "W1": "Apply the specified subtraction rule to each pair: 6 - 2 = 4, 6 - 6 = 0, and 6 - 0 = 6. Label them ordinary, full and unused cases. These expected answers come from the contract before the program is run.",
+    "W2": "Compare the faulty actual result 4 with each independently expected result. It matches the ordinary case expecting 4, but not the full case expecting 0 or unused case expecting 6. One successful case therefore does not establish that the subtraction rule was implemented."
+  },
+  "ai-2/13": {
+    "W1": "Check both fields. activity must exist as nonempty text. minutes must be an exact integer and satisfy 0 <= minutes <= 60. Inclusive means equality is accepted at both ends. Structure, type and range are separate checks; passing them does not prove the duration was measured accurately.",
+    "W2": "Apply the inclusive range to each integer. Both 0 and 60 are on allowed boundaries. -1 is below the minimum and 61 is above the maximum. Require the reason for each rejection, not only pass/fail labels."
+  },
+  "ai-2/14": {
+    "W2": "Process the four entries in order. The integers 4 and 0 have the required type and lie within 0 through 60, so keep [4, 0]. The integer 61 fails the upper boundary. The text \"4\" fails the exact integer type, even though its characters look numeric. That makes two rejected entries."
+  },
+  "ai-2/15": {
+    "W2": "There are 60 seconds in one minute. Divide each seconds value by 60: 150/60 = 2.5 minutes and 30/60 = 0.5 minutes. Do not round away the half-minute. Check the direction by converting back: 2.5 times 60 is 150.",
+    "W3": "First put both values in the same unit. 120 seconds divided by 60 is 2 minutes. Now compare 2 minutes with 3 minutes: 3 minutes is longer by 1 minute. Comparing the raw numbers 120 and 3 without their units compares unlike quantities."
+  },
+  "ai-2/17": {
+    "W1": "Add all five observations: 4 + 4 + 6 + 6 + 10 = 30. Divide by the number of observations, five, to obtain a mean of 6. Keep the count beside the calculation. Do not divide by the three distinct values; repeated observations still count."
+  },
+  "ai-2/18": {
+    "W1": "One square represents two votes. Six equal squares therefore represent 6 times 2 = 12 votes. Ask the learner to name both the visible length and the unit scale before giving the count.",
+    "W2": "The count difference is 15 - 12 = 3 votes. Taking the larger count relative to the smaller gives 15/12 = 1.25, so 15 is 1.25 times 12, or 25 percent larger. Label which count is the reference for the ratio."
+  },
+  "ai-2/19": {
+    "W2": "The numerator is seven respondents choosing longer lunch and the denominator is all twelve observed respondents. The fraction is 7/12, approximately 58.3 percent. Say “of these respondents”; the calculation alone supplies no evidence about the preferences of students who were not represented."
+  },
+  "ai-2/22": {
+    "W1": "Use the declared feature order: position 0 means energy and position 1 means group work. The vector [4,1] therefore records energy 4 and group work 1. Reversing the interpretation would change the meaning and could change the distance calculation."
+  },
+  "ai-2/23": {
+    "W1": "Substitute each rating into its named role: 2 * fun + learning = 2 * 2 + 4 = 4 + 4 = 8. Eligibility is supplied in this task, so this calculation ranks an already permitted option. The score is a result of the chosen preference rule, not a measured educational benefit.",
+    "W2": "At most 20 means minutes <= 20. The value 19 is below the limit and 20 is exactly at it, so both qualify. The value 21 is above it and is excluded. An answer that rejects 20 has changed the inclusive requirement into a strict one."
+  },
+  "ai-2/24": {
+    "W2": "For the empty list, the loop has no iterations, so best stays None. With the worked durations 10 and 9 under a limit of 8, neither item passes the eligibility check, so best again stays None. The caller must turn this result into a clear no-eligible-option message; it must not treat None as an activity name."
+  },
+  "ai-2/25": {
+    "W1": "Before conversion, \"8\" is a string containing the character 8. int(\"8\") returns the integer 8, which can participate in numeric arithmetic. The conversion does not change the original file and does not establish that the number meets the duration schema."
+  },
+  "ai-2/26": {
+    "W1": "Parsing JSON null produces Python None, while serialising Python True produces JSON true. The spelling belongs to the representation: lowercase true is JSON text, not the Python Boolean name True. Keep parsing and serialisation directions clear.",
+    "W5": "No. Parsing checks JSON syntax. The schema separately checks the expected fields, types and ranges. Collection evidence is a third question: even a well-formed, schema-valid duration could have been measured or recorded incorrectly."
+  },
+  "ai-2/28": {
+    "W2": "The weight pair is (fun weight, learning weight). Under (2,1), the score is 2*3 + 1*2 = 8. Under (1,2), it is 1*3 + 2*2 = 7. The same ratings were kept fixed; the difference comes from changing the preference policy."
+  },
+  "ai-2/29": {
+    "W2": "Look up the requested action in the list for each role. The teacher list contains read_review, so that request is permitted. unknown has no policy entry; get supplies an empty list, which does not contain read_summary. This models a permission decision after a role is trusted; it does not authenticate a visitor."
+  },
+  "ai-2/31": {
+    "W2": "Choose two individually valid records with unique names A and B, scores 8 each and durations within the limit. Both survive validation and filtering, then tie on score. The name rule selects A in either order. Require actual record fields so the proposed test can be reproduced, rather than accepting an unexplained winner name."
+  },
+  "ai-2/32": {
+    "W2": "When learning is absent, row.get(\"learning\") returns None. The condition type(value) is not int is true, so the helper returns False before doing the range comparison. This is a schema rejection; it is different from a valid item that later exceeds the selection time limit."
+  },
+  "ai-2/33": {
+    "W2": "Calculate the expected score from the written rule: 2*4 + 3 = 11. Record 11 before running score. Computing the expectation by calling the same score function would allow a shared implementation error to appear on both sides of the comparison."
+  },
+  "ai-2/34": {
+    "W2": "Use ordinary eligible selection, duration boundaries, schema-invalid records, empty or no-match input, and tied scores with reversed order. Each category checks a different requirement. Include concrete inputs and expected reports; five copies of one ordinary case do not provide this coverage."
+  },
+  "ai-2/35": {
+    "W1": "If minutes equals limit, minutes < limit evaluates to False because the comparison is strict. The phrase at most includes equality, so the validated-duration predicate must be minutes <= limit. Test below, at and above the limit to reveal this difference.",
+    "W2": "With limit 15, compare each value using <=: 14 <= 15 is True, 15 <= 15 is True, and 16 <= 15 is False. Keep equality visible as the boundary case rather than testing only clearly short and clearly long activities.",
+    "W3": "Set minutes to 16 and limit to 15. The proposed condition checks 16 <= 16 and accepts it, but the requirement checks 16 <= 15 and rejects it. This single counterexample demonstrates that adding one to the limit changed the policy rather than repairing it."
+  },
+  "ai-3/15": {
+    "W1": "Predicted positives include true positives and false positives, so add TP + FP to get 7. Reference positives include true positives and false negatives, so add TP + FN to get 4. These are different groups: one is defined by the prediction, the other by the reference label."
+  },
+  "ai-3/17": {
+    "W1": "Use each group’s observed positive count over its observed total: 2/10 = 0.2 and 6/10 = 0.6. These are sample frequencies for the worked groups. Do not turn either small-group observation into a guarantee about the next individual or a proof of calibration."
+  },
+  "ai-3/20": {
+    "W1": "For the mean baseline, sum the worked training targets and divide by their count to obtain 6. For the median baseline, sort the training targets and take the middle value, 5. Freeze these choices before examining evaluation targets; choosing a new constant from evaluation outcomes would contaminate the comparison.",
+    "W2": "For constant 6, absolute errors on targets 4 and 8 are 2 and 2, so MAE is (2+2)/2 = 2. For constant 5, the errors are 1 and 3, so MAE is (1+3)/2 = 2. Equal averages can hide different per-record errors; retain the error table as well as the summary."
+  },
+  "ai-3/21": {
+    "W1": "MAE uses absolute residual sizes, so add 1, 2 and 3 and divide by three: (1+2+3)/3 = 2 cm. Positive and negative signed residuals must not cancel in this calculation. State centimetres because absolute error retains the target unit.",
+    "W2": "Square the residual sizes to get 1, 4 and 9; their mean is 14/3 square centimetres. Take the square root to obtain RMSE sqrt(14/3), approximately 2.16 cm. MSE and RMSE describe related quantities but have different units."
+  },
+  "ai-3/26": {
+    "W1": "For the stated 20-row condition, add the run results 5, 7 and 6 to obtain 18 and divide by three to obtain mean 6. Range is largest minus smallest: 7 - 5 = 2. Keep the number of repeated runs distinct from the number of data rows."
+  },
+  "ai-4/7": {
+    "W1": "Each of two outputs connects to all four inputs, giving 4*2 = 8 weights. Each output has one bias, giving 2 biases. The total adjustable scalar values is therefore 8+2 = 10. Ask learners to point to connections and outputs so they do not confuse inputs with parameter counts."
+  },
+  "ai-4/10": {
+    "W1": "At the worked input x=2, the prediction is w*x+b = 1*2+1 = 3. The target is 3, so the prediction-minus-target residual is 0 and squared loss is 0. Both gradient components contain this residual factor, so the gradient is [0,0] for this single case. A zero gradient here does not establish performance on every other case."
+  },
+  "ai-5/4": {
+    "W2": "Under the lesson’s supplied temperature procedure, T=0.5 means exponent 1/T=2. Square the weights to obtain 0.36, 0.09 and 0.01; their total is 0.46. Divide each by 0.46 to obtain 18/23, 9/46 and 1/46. Converting 18/23 to 36/46 shows that the sum is (36+9+1)/46 = 1."
+  },
+  "ai-5/6": {
+    "W2": "Multiply each coordinate by its value’s weight: 0.5*[2,0]=[1,0], 0.25*[0,4]=[0,1], and 0.25*[4,2]=[1,0.5]. Add first coordinates to get 1+0+1=2 and second coordinates to get 0+1+0.5=1.5. The combined vector is [2,1.5], not a literal selection of one source token."
+  },
+  "ai-5/7": {
+    "W1": "The dot products are 1*0=0 and 1*ln(3)=ln(3). Division by sqrt(d)=sqrt(1)=1 leaves them unchanged. Exponentiation gives 1 and 3, with total 4. Normalising gives weights 1/4 and 3/4. These are compatibility weights under the stated calculation, not truth scores.",
+    "W3": "The query has dot product 1 with each key. Both scores are therefore 1/sqrt(2). Equal scores give equal softmax weights, 0.5 each. Combine the values coordinate by coordinate: 0.5*[2,0] + 0.5*[0,4] = [1,2]."
+  },
+  "ai-5/8": {
+    "W1": "Follow the stated operations in order: z=h+A=[1,2]+[3,-1]=[4,1]. Both coordinates are positive, so the supplied ReLU map gives F(z)=[4,1]. The next residual addition is z+F(z), giving r=[8,2]. Do not substitute h for z in that second skip addition."
+  },
+  "ai-5/10": {
+    "W1": "Separate the total budget into its declared parts: 100 minus 20 instruction units minus 10 question units minus 20 reserved output units leaves 50 units for evidence. Preserve the output reserve before filling evidence space. These are the lesson’s supplied token units, not a universal word-to-token conversion."
+  }
+}

@@ -18,7 +18,7 @@ async function protect(path,role,filename,mime,expected){
  const packed=Buffer.concat([nonce,cipher.update(plain),cipher.final(),cipher.getAuthTag()]);
  // Preserve existing identical resources so rerunning a release is idempotent.
  if(!manifest[id])await writeFile(`public/curriculum-blobs/${id}.bin`,packed);
- manifest[id]={mime,role,filename};return {id,sha256:expected};
+ manifest[id]={...manifest[id],mime,role,filename};return {id,sha256:expected};
 }
 for(const [id,r] of Object.entries(review.chapters)){
  const [level,num]=id.split('/'),stem=`${level}-week-${num.padStart(2,'0')}`;

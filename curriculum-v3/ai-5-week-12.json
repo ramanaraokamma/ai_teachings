@@ -1,0 +1,253 @@
+{
+  "level": "ai-5",
+  "week": 12,
+  "title": "Structured outputs and validation",
+  "minutes": 90,
+  "goals": [
+    "Separate JSON parsing, schema validation and source support checks",
+    "Reject invalid types and unexpected fields under a closed schema",
+    "Trace a validly formatted but unsupported claim"
+  ],
+  "prerequisite": {
+    "prompt": "Does a requested output format prove a response followed the specification?",
+    "answer": "No. Parse and validate the returned value, then check its claims and permitted actions against the evidence and contract."
+  },
+  "vocabulary": [
+    [
+      "Syntax validation",
+      "Checking whether text can be parsed under the format grammar"
+    ],
+    [
+      "Schema validation",
+      "Checking fields, types and allowed combinations in a parsed value"
+    ],
+    [
+      "Semantic validation",
+      "Checking meaning and consistency with sources or domain rules"
+    ],
+    [
+      "Closed schema",
+      "A contract rejecting fields beyond the stated set"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Use three validation layers",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A response may be valid JSON and still violate the schema or sources. First parse the text. Then check the exact object fields and types. Finally check source support and domain meaning. These checks answer different questions. Do not call a successful parser a complete validator."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use the Week 11 closed object: exactly status,room,capacity,source_ids. status is supported or needs_review. source_ids is a list of distinct known source-ID strings. For supported, room is a nonempty string and capacity a nonnegative integer. For needs_review, room and capacity are null. Boolean values are not capacities under this contract."
+        }
+      ]
+    },
+    {
+      "title": "Trace syntax and type failures",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Response fragment",
+            "Layer that rejects it",
+            "Reason"
+          ],
+          "rows": [
+            [
+              "{status: supported}",
+              "Syntax",
+              "JSON keys/strings need quotes"
+            ],
+            [
+              "{\"capacity\":\"12\"}",
+              "Schema in a complete object",
+              "String does not satisfy integer capacity"
+            ],
+            [
+              "{\"capacity\":true}",
+              "Schema in a complete object",
+              "Boolean is not accepted as an integer"
+            ],
+            [
+              "An extra booking field",
+              "Closed schema",
+              "Unexpected field"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "These fragments illustrate failures, not complete candidate objects. A real check receives the whole object and verifies every required field. Do not repair a string capacity automatically unless a separate documented conversion policy permits it; otherwise report validation failure. A null value differs from missing a field."
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Keep the evidence roles separate",
+          "columns": [
+            "Plan or input",
+            "Procedure",
+            "Permitted conclusion"
+          ],
+          "rows": [
+            [
+              "Generated text",
+              "JSON parse",
+              "A value or syntax error"
+            ],
+            [
+              "Parsed value",
+              "Closed-schema check",
+              "Contract match or schema error"
+            ],
+            [
+              "Contract-valid object",
+              "Match claims to current sources",
+              "Supported or semantic error"
+            ]
+          ],
+          "caption": "Each passed layer still leaves later layers to check."
+        }
+      ]
+    },
+    {
+      "title": "Inspect a well-formatted unsupported answer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Suppose sources P and Q approve room B and give capacity 12. The complete object {\"status\":\"supported\",\"room\":\"B\",\"capacity\":99,\"source_ids\":[\"P\",\"Q\"]} parses and satisfies the stated field types, but its capacity is unsupported by Q. Reject it at semantic validation. Listing a real source ID does not prove that source supports the associated claim."
+        },
+        {
+          "type": "paragraph",
+          "text": "An object with needs_review and room B violates the conditional schema rule even if its source IDs are real. An object with supported, room B and capacity 12 but source ID Z fails the known-source rule. Require the linked current approval and capacity records to support the same room."
+        }
+      ]
+    },
+    {
+      "title": "Practise a supported validation trace",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Supported object {\"status\":\"supported\",\"room\":\"D\",\"capacity\":8,\"source_ids\":[\"P\",\"Q\"]} matches approval P for D and register Q for D capacity 8. It passes all three layers. Replacing capacity with 0 still passes schema because zero is nonnegative, but fails source consistency unless Q actually reports zero. Preserve measured zero rather than treating it as missing."
+        },
+        {
+          "type": "response",
+          "label": "Guided: name the layers passed and explain why a schema-valid zero still needs source support.",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "title": "Record failures without executing actions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Keep validation outcomes and the original generated text for fictional debugging data. Report the first failing layer and enough detail to locate the issue; later validation should not be reported as passed when it was never reached. Even a fully valid reporting object does not authorise a booking. The application retains the read-only permission boundary."
+        },
+        {
+          "type": "response",
+          "label": "Exit: a parser accepts JSON, but capacity is true and an extra book_now field is present. State which checks remain and why no booking should occur.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "title": "Distinguish the layers",
+      "prompt": "Explain what parsing, schema checks and source support each establish.",
+      "answer": "Teacher explanation: Parsing establishes grammatical JSON; schema checks enforce fields/types/conditional rules; semantic checks match the claims to sources and domain meaning. None alone establishes all three.",
+      "lines": 6,
+      "id": "W1"
+    },
+    {
+      "title": "Audit types and fields",
+      "prompt": "Why do string \"12\",boolean true,missing capacity and an extra action field violate this contract?",
+      "answer": "Teacher explanation: Capacity must be an integer for supported and null for needs_review, with the field present. A Boolean is explicitly excluded. Extra fields violate the closed schema; string values are not silently converted.",
+      "lines": 6,
+      "id": "W2"
+    },
+    {
+      "title": "Check a citation-like ID",
+      "prompt": "Sources P,Q support B capacity 12. A schema-valid object cites P,Q but gives 99. Which layer rejects it?",
+      "answer": "Teacher explanation: Semantic/source validation rejects unsupported capacity 99. Existing source IDs do not establish entailment.",
+      "lines": 6,
+      "id": "W3"
+    },
+    {
+      "title": "Validate new objects independently",
+      "prompt": "Sources A approve room F and B register F capacity 9. Object X has supported,F,9,[A,B] with exactly the required fields. Y replaces 9 with \"9\". Z keeps integer 9 but names room G. Trace the first failing layer for each and explain the difference.",
+      "answer": "Teacher explanation: X passes parsing, schema and source validation. Y parses but fails schema because capacity is a string. Z parses and satisfies field types but fails semantic support because sources name F, not G. Assuming these values are encoded as proper JSON, syntax is not the failure.",
+      "lines": 9,
+      "id": "W4"
+    },
+    {
+      "title": "Keep permissions separate",
+      "prompt": "A fully valid supported reporting object is returned. May the application automatically book the room? Explain.",
+      "answer": "Teacher explanation: No. The specification is read-only; validation of a report does not grant action permission. Booking requires a separately authorised action contract and application controls.",
+      "lines": 6,
+      "id": "W5"
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. All model outputs and probability tables are constructed classroom examples. No hosted AI service, external API or student account is needed. Distinguish a model objective from factual support and system permissions. Collect independent work before discussing its solutions.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator; optional local Python 3 interpreter",
+      "Prepare the independent task and fresh retry without displaying solutions"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and distinguish a numerical claim from its interpretation."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read section 1 and complete W1; ask for a reason alongside each answer."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace the worked case in section 2 and complete W2."
+      ],
+      [
+        "32 to 45 minutes",
+        "Discuss the diagram and complete W3 in pairs; record support."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete the guided response before sharing the answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Read the remaining sections and trace another constructed case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, requiring calculations and a bounded conclusion."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit response. Provide feedback and a fresh retry."
+      ]
+    ],
+    "guidedAnswer": "Guided: D/8 with P/Q passes syntax, schema and source consistency. Zero is a permitted integer but is supported only if Q says zero. Exit: schema must reject Boolean capacity and extra fields; no action authority exists.",
+    "misconceptions": [
+      [
+        "Valid JSON means correct answer",
+        "JSON syntax says nothing about schema or source truth."
+      ],
+      [
+        "Python treats bool as int, so it is acceptable",
+        "The contract explicitly excludes Booleans; an implementation must check accordingly."
+      ],
+      [
+        "A valid report authorises a side effect",
+        "Reporting and booking have different permissions."
+      ]
+    ],
+    "assessment": "W4 requires X passes all, Y schema failure, Z semantic failure. Fresh retry: sources approve H capacity 0. Object H/0 passes; H/null with supported fails schema; H/1 with integer capacity passes schema but fails semantic support. Preserve legitimate zero.",
+    "support": "Provide labelled intermediate columns and allow a calculator. Ask students to state the meaning and denominator of a value before interpreting it. Extension: implement the classroom calculation locally and test boundary cases without using personal data.",
+    "next": "Week 13 compares prompt specifications using fixed development cases, observable criteria and reserved evaluation."
+  }
+}

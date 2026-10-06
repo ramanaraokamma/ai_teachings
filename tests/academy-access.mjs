@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile, readdir, writeFile, mkdir } from 'node:fs/promises';
+import { readFile, readdir, writeFile, mkdir, open, stat } from 'node:fs/promises';
 import { resolve, join } from 'node:path';
 import { createHmac, randomBytes } from 'node:crypto';
 
@@ -8,13 +8,20 @@ const manifest=JSON.parse(await readFile('lib/resource-manifest.json','utf8'));
 const data=JSON.parse(await readFile('lib/academy-data.json','utf8'));
 const plans=JSON.parse(await readFile('lib/topic-plans.json','utf8'));
 const review=JSON.parse(await readFile('lib/grade6-review.json','utf8'));
+const teacherAnswerSupports=JSON.parse(await readFile('curriculum-v3/teacher-answer-support.json','utf8'));
 const secret=randomBytes(32).toString('hex');
 const results=[];
+let missingPart = false, ignoreRanges = false, packRequests = 0;
 const testEnv={STUDENT_PASSCODE:'student1234',TEACHER_PASSCODE:'teacher1234',ACADEMY_SESSION_SECRET:secret,
   ASSETS:{fetch:async request=>{
     const path=new URL(request.url).pathname;
-    if(!/^\/curriculum-blobs\/[a-f0-9]{64}\.bin$/.test(path))return new Response('Not found',{status:404});
-    try{return new Response(await readFile(join(root,'public',path)));}catch{return new Response('Not found',{status:404});}
+    if(!/^\/(?:curriculum-blobs\/(?:parts\/)?[a-f0-9]{64}|curriculum-packs\/[a-f0-9])\.bin$/.test(path))return new Response('Not found',{status:404});
+    try{
+      if(path.startsWith('/curriculum-packs/') && missingPart && ++packRequests > 1) return new Response('Missing',{status:404});
+      const file=join(root,'public',path),range=!ignoreRanges && request.headers.get('range')?.match(/^bytes=(\d+)-(\d+)$/);
+      if(range){const start=Number(range[1]),end=Number(range[2]),handle=await open(file,'r');try{const bytes=Buffer.alloc(end-start+1),result=await handle.read(bytes,0,bytes.length,start);return new Response(bytes.subarray(0,result.bytesRead),{status:206,headers:{'Content-Range':`bytes ${start}-${end}/${(await stat(file)).size}`}});}finally{await handle.close();}}
+      return new Response(await readFile(file));
+    }catch{return new Response('Not found',{status:404});}
   }},
 };
 globalThis.__academyTestEnv=testEnv;
@@ -127,6 +134,7 @@ try {
   const html=(await (await request('/learn/student/curriculum',session('student'))).text()).replace(/<!--.*?-->/gs,'');
   assert.ok(html.includes(`${Object.keys(v3).length} of 252 weekly packages released`));assert.equal((html.match(/class="v3-level"/g)||[]).length,7);
   assert.equal((html.match(/class="v3-status v3-planned"/g)||[]).length,252-Object.keys(v3).length);
+  if(Object.keys(v3).length===252){assert.match(html,/All seven levels have complete/);assert.ok(!html.includes('The remaining weeks are a proposed sequence'));}
   const progression=JSON.parse(await readFile('curriculum-v3/progression.json','utf8'));
   const planned=progression.levels.flatMap(level=>level.weeks.map((_,i)=>`${level.slug}/${i+1}`)).filter(id=>!v3[id]);
   const unavailable=[...new Set([planned[0],planned.at(-1)].filter(Boolean))].map(id=>`/learn/student/curriculum/${id}`);
@@ -139,8 +147,8 @@ try {
    for(const resource of ['lesson','workbook','guide']){
     const role=resource==='guide'?'teacher':'student';const r=await request(`/learn/${role}/curriculum/${id}?resource=${resource}`,session(role));assert.equal(r.status,200);
     const h=(await r.text()).replace(/<!--.*?-->/gs,'');assert.ok(h.includes(release.sourceHash));assert.ok(h.includes(esc(w.title)));assert.match(r.headers.get('cache-control'),/no-store/);
-    if(resource==='guide'){for(const task of w.workbook)assert.ok(h.includes(esc(task.answer)),`${id}: answer missing`);}
-    else {assert.doesNotMatch(h,/data-teacher-answers/);for(const task of w.workbook)assert.ok(!h.includes(esc(task.answer)),`${id}: teacher answer leaked`);}
+    if(resource==='guide'){for(const explanation of Object.values(teacherAnswerSupports[id]??{}))assert.ok(h.includes(esc(explanation)),`${id}: expanded teacher explanation missing`);for(const task of w.workbook)assert.ok(h.includes(esc(task.answer)),`${id}: answer missing`);}
+    else {for(const explanation of Object.values(teacherAnswerSupports[id]??{}))assert.ok(!h.includes(esc(explanation)),`${id}: expanded teacher explanation leaked`);assert.doesNotMatch(h,/data-teacher-answers/);for(const task of w.workbook)assert.ok(!h.includes(esc(task.answer)),`${id}: teacher answer leaked`);}
     if(resource==='lesson')for(const section of w.lesson)for(const b of section.blocks)if(b.type==='paragraph'||b.type==='code')assert.ok(h.includes(esc(b.text)),`${id}: lesson paragraph missing`);
     if(resource==='workbook')for(const task of w.workbook)assert.ok(h.includes(esc(task.prompt)),`${id}: prompt missing`);
     for(const ext of ['docx','pdf'])assert.ok(h.includes(release.documents[`${resource}.${ext}`].id));
@@ -157,9 +165,18 @@ try {
    assert.equal(createHash('sha256').update(Buffer.from(await response.arrayBuffer())).digest('hex'),a.sha256);
   }
  });
+ await check('Missing protected parts fail without partial downloads',async()=>{
+  const a=Object.values(v3)[0].documents['lesson.pdf'];missingPart=true;packRequests=0;
+  try{const r=await request('/api/resource/'+a.id,session('student'));assert.equal(r.status,503);assert.equal(await r.text(),'Resource unavailable.');}finally{missingPart=false;}
+ });
+ await check('Full asset responses reconstruct the same reviewed download',async()=>{
+  const a=Object.values(v3)[0].documents['lesson.pdf'];ignoreRanges=true;
+  try{const r=await request('/api/resource/'+a.id,session('student'));assert.equal(r.status,200);const {createHash}=await import('node:crypto');assert.equal(createHash('sha256').update(Buffer.from(await r.arrayBuffer())).digest('hex'),a.sha256);}finally{ignoreRanges=false;}
+ });
  await check('Rebuilt teacher sources are absent from public JavaScript',async()=>{
   async function files(dir){const all=[];for(const f of await readdir(dir,{withFileTypes:true})){const p=join(dir,f.name);if(f.isDirectory())all.push(...await files(p));else if(/\.(js|json|map)$/.test(f.name))all.push(p);}return all;}
   const publicText=(await Promise.all((await files('dist/client')).map(p=>readFile(p,'utf8')))).join('\n');
+  for(const explanations of Object.values(teacherAnswerSupports))for(const explanation of Object.values(explanations))assert.ok(!publicText.includes(explanation),'Expanded teacher explanation in public bundle');
   for(const id of Object.keys(v3)){
    const [level,num]=id.split('/');const chapter=JSON.parse(await readFile(`curriculum-v3/${level}-week-${num.padStart(2,'0')}.json`,'utf8'));
    for(const task of chapter.workbook)assert.ok(!publicText.includes(task.answer),`${id}: answer in public bundle`);

@@ -1,0 +1,263 @@
+{
+  "level": "ai-4",
+  "week": 35,
+  "title": "Capstone limitations and revision",
+  "minutes": 90,
+  "goals": [
+    "Evaluate a frozen candidate and baseline on final rows",
+    "Identify a distribution limitation from raw errors",
+    "Distinguish revision checks from new independent evaluation"
+  ],
+  "prerequisite": {
+    "prompt": "After selecting rate 0.2, may you change it after viewing final scores and keep calling those scores untouched?",
+    "answer": "No. Once final results influence changes, those rows become development evidence for the revised procedure."
+  },
+  "vocabulary": [
+    [
+      "Frozen procedure",
+      "A recorded procedure fixed before final evaluation"
+    ],
+    [
+      "Residual",
+      "Prediction minus observed target"
+    ],
+    [
+      "Revision",
+      "A documented change informed by earlier evidence"
+    ],
+    [
+      "Coverage limitation",
+      "A condition or group missing or poorly represented in the evidence"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Freeze first, then evaluate",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Freeze the Week 34 candidate: max(0, a*x), initial a = 1, rate 0.2, two full-batch updates on (1,2),(2,4), no bias. The final weight is 2. The baseline is unchanged at a = 1. Now open final rows F1=(5,10), F2=(6,12), F3=(-1,-2), F4=(-2,-4). These fictional rows deliberately include a condition absent from the positive training and validation inputs. Opening them is an evaluation event, not permission to tune on them while retaining an independent-test claim."
+        },
+        {
+          "type": "paragraph",
+          "text": "Write raw predictions for both procedures before summarising. A low overall error can hide a systematic problem in a condition. These four constructed examples do not estimate prevalence or real-world performance."
+        }
+      ]
+    },
+    {
+      "title": "Calculate the final evidence",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "ID",
+            "x",
+            "y",
+            "Baseline prediction",
+            "Candidate prediction"
+          ],
+          "rows": [
+            [
+              "F1",
+              "5",
+              "10",
+              "5",
+              "10"
+            ],
+            [
+              "F2",
+              "6",
+              "12",
+              "6",
+              "12"
+            ],
+            [
+              "F3",
+              "-1",
+              "-2",
+              "0",
+              "0"
+            ],
+            [
+              "F4",
+              "-2",
+              "-4",
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Baseline squared errors are 25,36,4,16, so MSE is 81/4 = 20.25. Candidate squared errors are 0,0,4,16, so MSE is 20/4 = 5. The candidate passes the strict lower-MSE final criterion on these four rows. On the two negative-input rows its MSE is (4+16)/2 = 10; on the positive rows it is zero."
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Keep the evidence roles separate",
+          "columns": [
+            "Plan or input",
+            "Procedure",
+            "Permitted conclusion"
+          ],
+          "rows": [
+            [
+              "Frozen candidate a = 2",
+              "Final MSE = 5",
+              "Improves on baseline 20.25"
+            ],
+            [
+              "Negative x cases",
+              "Predictions forced to zero",
+              "A structural limitation"
+            ],
+            [
+              "Change output rule",
+              "Check revealed failures",
+              "New final evidence needed"
+            ]
+          ],
+          "caption": "A passed aggregate criterion and a known structural failure can both be true."
+        }
+      ]
+    },
+    {
+      "title": "Explain a failure before proposing a repair",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The ReLU output cannot be negative. When targets are negative, no choice of this scalar weight can produce the required negative output. More epochs do not remove that output constraint. A proposed signed linear output a*x would represent negative targets, but it changes the architecture. It needs a new version, appropriate fitting and selection, and fresh reserved evaluation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Running that proposal on F3 and F4 checks the revealed failures. It does not create new independent final evidence. Preserve the original test result and label later scores as revision or regression checks. Do not replace the earlier failure report with a score from a new model on already inspected rows."
+        }
+      ]
+    },
+    {
+      "title": "Practise a bounded failure report",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Supported example: for a = 2 on x = -3 with target -6, the ReLU prediction is 0, residual 6 and squared error 36. The signed proposal predicts -6 on this revealed case. This demonstrates that the alternative can represent the case; it does not establish how well a newly trained model will perform elsewhere."
+        },
+        {
+          "type": "response",
+          "label": "Guided: calculate both predictions and errors and explain which claim the comparison supports.",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "title": "Write the revision plan",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A revision record names the observed failure, proposed mechanism, changed rule, preserved earlier results and new evaluation plan. Reserve fresh cases spanning the relevant input conditions. Include regression checks for earlier successes, and keep independent evaluation separate. Record any cases still missing from coverage."
+        },
+        {
+          "type": "response",
+          "label": "Exit: write one sentence reporting the original final result and one sentence describing what remains unverified after the proposed architecture change.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "title": "Trace final predictions",
+      "prompt": "For F1–F4 calculate candidate residuals and squared errors.",
+      "answer": "Teacher explanation: Residuals 0,0,2,4; squared errors 0,0,4,16. The ReLU predictions for both negative inputs are zero.",
+      "lines": 6,
+      "id": "W1"
+    },
+    {
+      "title": "Compare with the baseline",
+      "prompt": "Compute both overall MSE values and the candidate negative-input MSE. Apply the strict final criterion.",
+      "answer": "Teacher explanation: Baseline MSE 20.25; candidate MSE 5. Candidate negative-input MSE 10 over two rows. Candidate passes the lower-overall-MSE criterion but has a structural negative-output limitation.",
+      "lines": 6,
+      "id": "W2"
+    },
+    {
+      "title": "Explain the architecture limit",
+      "prompt": "Why cannot extra training alone make this ReLU output negative? Name a proposed change and the evidence it would require.",
+      "answer": "Teacher explanation: max(0,a*x) is always nonnegative, regardless of a. A signed linear output can represent negative values; treat it as a changed architecture and run a recorded fitting/selection procedure with fresh reserved final evidence.",
+      "lines": 6,
+      "id": "W3"
+    },
+    {
+      "title": "Evaluate new evidence independently",
+      "prompt": "A frozen ReLU candidate with a = 3 is compared with baseline a = 1 on final rows (2,6),(4,12),(-1,-3),(-2,-6). Compute both MSE values and candidate MSE on negative inputs. Write a bounded conclusion.",
+      "answer": "Teacher explanation: Baseline squared errors 16,64,9,36 total 125, MSE 31.25. Candidate squared errors 0,0,9,36 total 45, MSE 11.25. Negative-input MSE 22.5 over two rows. Candidate improves overall on these four constructed cases but still cannot represent negative outputs.",
+      "lines": 9,
+      "id": "W4"
+    },
+    {
+      "title": "Label a revision honestly",
+      "prompt": "After inspecting F1–F4, a student changes to prediction 2*x and reports “new final MSE 0”. Explain the accurate label and the next evaluation step.",
+      "answer": "Teacher explanation: The score is a revision check on already inspected final rows. Preserve the original final MSE 5 and the architectural change. Freeze the revised training and selection procedure and evaluate on fresh reserved cases; also retain regression checks.",
+      "lines": 6,
+      "id": "W5"
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. This capstone uses constructed scalar ReLU regression so every calculation is inspectable. It is an experiment in training and evidence, not a real-world deployment. Preserve written plans, data roles and raw predictions. Optional local Python requires no external packages or AI account. Do not expose independent-task solutions before collecting work.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator; optional local Python 3 interpreter",
+      "Fictional data only; reserve the independent task and fresh retry until assessment"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and ask students to explain the data roles."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read section 1 and complete W1 with a recorded reason."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace section 2 and complete W2; compare raw values before conclusions."
+      ],
+      [
+        "32 to 45 minutes",
+        "Explain the diagram and complete W3 in pairs; record any support."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete the guided response and discuss why the evidence has limits."
+      ],
+      [
+        "8 to 20 minutes",
+        "Read the remaining explanation and prepare a concise experiment record."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently. Require calculations and a bounded claim."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit response for feedback. Administer the fresh retry after feedback without the earlier solution."
+      ]
+    ],
+    "guidedAnswer": "Guided: ReLU predicts 0, residual 6, squared error 36. Signed 2*x predicts -6, residual 0, squared error 0 on the revealed case. This supports representational feasibility, not independent generalisation. Exit: original candidate MSE 5 versus baseline 20.25 on four constructed final rows; the changed architecture lacks new independent evaluation.",
+    "misconceptions": [
+      [
+        "Passing a criterion means no failures remain",
+        "An aggregate improvement can coexist with systematic subgroup errors."
+      ],
+      [
+        "Training longer fixes any output constraint",
+        "A nonnegative output cannot express a negative target."
+      ],
+      [
+        "A repaired test score is a new final test",
+        "The revealed cases informed the repair and now serve as development or regression checks."
+      ]
+    ],
+    "assessment": "W4 requires overall MSE 31.25 versus 11.25 and negative-input MSE 22.5, with a four-case limit. Fresh retry: a = 4, baseline 1, final rows (2,8),(4,16),(-1,-4),(-2,-8). Baseline MSE 65; candidate MSE 20; negative-input MSE 40. Require an aggregate improvement claim alongside the structural failure.",
+    "support": "Provide a frame with question, fixed settings, changed setting, data roles, raw predictions, metric, conclusion and limitation. Allow a calculator and explicit squared-error columns. Extension: implement the arithmetic locally, preserve the program version, and explain why a successful replay adds no independent test cases.",
+    "next": "Week 36 defends the experiment using preserved plans, results, limitations and an honest account of revision."
+  }
+}

@@ -1,0 +1,243 @@
+{
+  "level": "ai-5",
+  "week": 7,
+  "title": "A small attention calculation",
+  "minutes": 90,
+  "goals": [
+    "Compute scaled query-key scores and softmax weights",
+    "Trace the final weighted attention output",
+    "Check masks, dimensions and softmax invariance"
+  ],
+  "prerequisite": {
+    "prompt": "What must happen to permitted weights after excluding a position?",
+    "answer": "Normalise the permitted weights by their remaining total; handle an empty set explicitly."
+  },
+  "vocabulary": [
+    [
+      "Scaled dot product",
+      "A query-key dot product divided by the square root of key width"
+    ],
+    [
+      "Softmax",
+      "Exponentiating scores and normalising their sum to obtain weights"
+    ],
+    [
+      "Score",
+      "An unnormalised compatibility value before softmax"
+    ],
+    [
+      "Numerical stability",
+      "An implementation choice that avoids avoidable arithmetic overflow or loss"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Introduce the score-to-weight calculation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For one query q and keys k_i of width d, compute score s_i = dot(q,k_i)/sqrt(d). Then obtain weights from softmax and combine value vectors. Dot products may be negative; probabilities cannot. The softmax performs the conversion. This is a single-head classroom calculation, not a full language model."
+        },
+        {
+          "type": "paragraph",
+          "text": "Define softmax weights as exp(s_i-m)/sum_j exp(s_j-m), where m is the maximum permitted score. Subtracting the same maximum from every permitted score leaves the ratios unchanged and avoids unnecessary overflow from large positive scores. Natural exponent exp is introduced here; use a calculator or Python math.exp rather than estimating its meaning from the word exponential."
+        }
+      ]
+    },
+    {
+      "title": "Work through one exact example",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Item",
+            "Key, width 1",
+            "Value, width 1"
+          ],
+          "rows": [
+            [
+              "A",
+              "[0]",
+              "[2]"
+            ],
+            [
+              "B",
+              "[ln(3)]",
+              "[6]"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Take q=[1] and d=1. The scale sqrt(1) is 1, so scores are 0 and ln(3). ln(3) is the number whose natural exponential is 3, approximately 1.098612. Exponentials have ratio 1:3, hence weights 1/4 and 3/4. Output is (1/4)*2 + (3/4)*6 = 5. Using maximum subtraction gives exponentials 1/3 and 1 and the same normalised weights."
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Keep the evidence roles separate",
+          "columns": [
+            "Plan or input",
+            "Procedure",
+            "Permitted conclusion"
+          ],
+          "rows": [
+            [
+              "q=[1], keys 0 and ln(3)",
+              "Scaled scores 0, ln(3)",
+              "Softmax weights .25, .75"
+            ],
+            [
+              "Values 2 and 6",
+              "Weighted sum .25*2 + .75*6",
+              "Output 5"
+            ],
+            [
+              "Mask excludes B",
+              "Only A permitted",
+              "Weight 1 and output 2"
+            ]
+          ],
+          "caption": "Scores, normalised weights and value combinations are separate stages."
+        }
+      ]
+    },
+    {
+      "title": "Trace a width-two and a masked case",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For q=[1,1], kA=[1,0] and kB=[0,1], both dot products are 1. Divide by sqrt(2); equal scores give equal weights 1/2 regardless of their common value. With values [2,0] and [0,4], the output is [1,2]. Do not omit the scale merely because it cancels in this tied example; unequal scores generally change concentration when scaled."
+        },
+        {
+          "type": "paragraph",
+          "text": "Apply masks before normalising over permitted scores. In the width-one example, excluding B leaves weight 1 for A and output 2. A key with the wrong width violates the dot-product contract. Values must share a width with one another, but their width need not equal the query/key width. An all-excluded mask is handled explicitly instead of taking a maximum of an empty list."
+        }
+      ]
+    },
+    {
+      "title": "Practise score shifts",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Supported scores 1000 and 1000+ln(3) would overflow an ordinary direct exponential calculation in many floating-point implementations. Maximum subtraction gives -ln(3) and 0, producing weights 1/4 and 3/4. Their common shift does not change the relative weights. This is a stability mechanism, not evidence about source correctness."
+        },
+        {
+          "type": "response",
+          "label": "Guided: calculate the shifted scores and weights, then the output for values 4 and 8.",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "title": "Check a calculation systematically",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Check query/key dimensions, scale, permitted positions, finite scores, stable normalisation, weight sum and value widths in that order. A zero output can result from values cancelling; it does not imply zero attention weights. Record enough intermediate values for someone else to reproduce the trace."
+        },
+        {
+          "type": "response",
+          "label": "Exit: two equal scores yield weights 1/2,1/2 and values 4,-4 yield output 0. Explain why zero output does not mean neither position was used.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "title": "Compute scores and weights",
+      "prompt": "For q=[1], keys [0],[ln(3)] and d=1, compute scores and softmax weights.",
+      "answer": "Teacher explanation: Scores 0,ln(3); exponential ratio 1:3 gives weights 1/4,3/4.",
+      "lines": 6,
+      "id": "W1"
+    },
+    {
+      "title": "Combine and mask",
+      "prompt": "Use values [2],[6] for the preceding weights. Compute output and output when the second key is excluded.",
+      "answer": "Teacher explanation: Full output 5; with B excluded, weight A=1 and output 2.",
+      "lines": 6,
+      "id": "W2"
+    },
+    {
+      "title": "Trace equal scores",
+      "prompt": "For q=[1,1], keys [1,0],[0,1], values [2,0],[0,4], compute scaled scores, weights and output.",
+      "answer": "Teacher explanation: Both scores 1/sqrt(2); weights .5,.5; output [1,2].",
+      "lines": 6,
+      "id": "W3"
+    },
+    {
+      "title": "Calculate new attention independently",
+      "prompt": "q=[1], keys [0],[ln(2)],[ln(3)], values [0],[3],[8], width 1. Compute scores, weights and output. Then mask the third item and recompute. Explain whether output establishes a factual claim.",
+      "answer": "Teacher explanation: Scores 0,ln(2),ln(3); weights 1/6,2/6,3/6. Output 0+1+4=5. Mask third: weights 1/3,2/3,0; output 2. Neither weighted output verifies a factual claim.",
+      "lines": 9,
+      "id": "W4"
+    },
+    {
+      "title": "Check stability and shape",
+      "prompt": "Scores are 1000 and 1000+ln(3); values 4 and 8. Compute stable shifted weights and output. What if one key has width two and the query width one?",
+      "answer": "Teacher explanation: Shift to -ln(3),0; weights 1/4,3/4 and output 7. Mismatched key/query widths must be rejected rather than silently truncating.",
+      "lines": 6,
+      "id": "W5"
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. All model outputs and probability tables are constructed classroom examples. No hosted AI service, external API or student account is needed. Distinguish a model objective from factual support and system permissions. Collect independent work before discussing its solutions.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator; optional local Python 3 interpreter",
+      "Prepare the independent task and fresh retry without displaying solutions"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and distinguish a numerical claim from its interpretation."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read section 1 and complete W1; ask for a reason alongside each answer."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace the worked case in section 2 and complete W2."
+      ],
+      [
+        "32 to 45 minutes",
+        "Discuss the diagram and complete W3 in pairs; record support."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete the guided response before sharing the answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Read the remaining sections and trace another constructed case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, requiring calculations and a bounded conclusion."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit response. Provide feedback and a fresh retry."
+      ]
+    ],
+    "guidedAnswer": "Guided: shifted scores -ln(3),0; exponentials 1/3,1; weights .25,.75; output .25*4+.75*8 = 7. Exit: both coefficients are .5; opposite values cancel to zero.",
+    "misconceptions": [
+      [
+        "Scores already are probabilities",
+        "Scores may be negative or fail to sum to one; softmax supplies normalised nonnegative weights."
+      ],
+      [
+        "Value width must equal key width",
+        "Values share a common output width, which can differ from query/key width."
+      ],
+      [
+        "Zero output means no source contributed",
+        "Nonzero weighted contributions may cancel."
+      ]
+    ],
+    "assessment": "W4 requires weights 1/6,1/3,1/2 and outputs 5 then 2. Fresh retry: keys [0],[ln(3)],[ln(4)], values [2],[6],[0]. Weights 1/8,3/8,4/8; output 2.5. Exclude third: weights 1/4,3/4,0; output 5.",
+    "support": "Provide labelled intermediate columns and allow a calculator. Ask students to state the meaning and denominator of a value before interpreting it. Extension: implement the classroom calculation locally and test boundary cases without using personal data.",
+    "next": "Week 8 puts attention in a simplified block with residual addition and a positionwise transformation."
+  }
+}

@@ -1,0 +1,248 @@
+{
+  "level": "ai-5",
+  "week": 6,
+  "title": "Attention as weighted information selection",
+  "minutes": 90,
+  "goals": [
+    "Calculate a weighted combination of value vectors",
+    "Distinguish query, key, weight and value roles",
+    "Apply an explicit mask and renormalise permitted weights"
+  ],
+  "prerequisite": {
+    "prompt": "Why can equal row sums conceal different sequences?",
+    "answer": "Summation removes row order, so different ordered vectors may produce the same aggregate."
+  },
+  "vocabulary": [
+    [
+      "Query",
+      "A vector used to compare available keys for the current calculation"
+    ],
+    [
+      "Key",
+      "A vector used to determine compatibility with a query"
+    ],
+    [
+      "Value",
+      "A vector combined using the resulting attention weights"
+    ],
+    [
+      "Mask",
+      "A rule excluding specified positions from a calculation"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Separate the four roles",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Attention computes a weighted combination of value vectors, with weights derived from query-key compatibility. Queries, keys and values are distinct roles even when they come from the same sequence. A weight is a numerical contribution in this computation, not proof of the source’s truth or permission. This week supplies weights directly; Week 7 calculates them from scores."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use three values V1=[2,0], V2=[0,4], V3=[4,2] with weights 0.5,0.25,0.25. Values have equal width and weights are nonnegative with sum 1. Compute each coordinate separately. No token is literally copied by this combination."
+        }
+      ]
+    },
+    {
+      "title": "Trace the weighted result",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Value",
+            "Weight",
+            "Weighted vector"
+          ],
+          "rows": [
+            [
+              "[2,0]",
+              "0.5",
+              "[1,0]"
+            ],
+            [
+              "[0,4]",
+              "0.25",
+              "[0,1]"
+            ],
+            [
+              "[4,2]",
+              "0.25",
+              "[1,0.5]"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Adding the weighted vectors gives [2,1.5]. The same weights applied to different values can give a different result; the same values with different weights can also change it. For example weights 0,1,0 yield V2=[0,4]. The result is a representation to be used by later operations, not automatically a generated word."
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Keep the evidence roles separate",
+          "columns": [
+            "Plan or input",
+            "Procedure",
+            "Permitted conclusion"
+          ],
+          "rows": [
+            [
+              "Values with equal width",
+              "Multiply by .5, .25, .25",
+              "Contributions [1,0], [0,1], [1,.5]"
+            ],
+            [
+              "Weighted contributions",
+              "Add corresponding coordinates",
+              "Output [2,1.5]"
+            ],
+            [
+              "Mask excludes V3",
+              "Renormalise V1 and V2",
+              "Output [4/3,4/3]"
+            ]
+          ],
+          "caption": "The mask changes the eligible positions and therefore the probability mass assigned to the remaining values."
+        }
+      ]
+    },
+    {
+      "title": "Apply a mask before reporting a result",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Suppose V3 is a future position unavailable to the current autoregressive step. The mask excludes it. For this supplied-weight example, renormalise the permitted weights 0.5 and 0.25 by their total 0.75, giving 2/3 and 1/3. The result becomes [4/3,4/3]. Merely setting V3’s contribution to zero while keeping the old weights produces [1,1], whose retained weights sum to 0.75; that is not the specified normalised combination."
+        },
+        {
+          "type": "paragraph",
+          "text": "If every position is excluded, the permitted total is zero. This contract reports no available value rather than dividing by zero or silently using a future position. A real implementation needs its own documented handling for empty masks. A causal mask restricts information paths; it does not make retrieved content factually trustworthy."
+        }
+      ]
+    },
+    {
+      "title": "Practise a supported mixture",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Supported values A=[6,0], B=[0,3], weights 1/3 and 2/3. Their weighted combination is [2,2]. Masking B leaves A with normalised weight 1 and result [6,0]. This is a different information set, not a numerical repair to the original result."
+        },
+        {
+          "type": "response",
+          "label": "Guided: compute both results and explain why a masked-out source must not influence the combination.",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "title": "Limit interpretation of the weights",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A large weight means a large coefficient in this particular weighted sum. It is not a complete explanation of the whole network, which may contain other heads, transformations and residual paths. It also does not establish that the high-weight source is true. Trace the actual values and downstream use before making a broader claim."
+        },
+        {
+          "type": "response",
+          "label": "Exit: a team says a 0.9 attention weight proves a document is correct and allows following its instructions. Explain the two unsupported inferences.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "title": "Identify the roles",
+      "prompt": "Explain query, key, value and weight without calling the largest weight a truth score.",
+      "answer": "Teacher explanation: The query compares keys, compatibility produces weights, and weights combine values. A weight is a computational coefficient, not a truth score.",
+      "lines": 6,
+      "id": "W1"
+    },
+    {
+      "title": "Compute the mixture",
+      "prompt": "Calculate the output from the three supplied values and weights.",
+      "answer": "Teacher explanation: Contributions [1,0],[0,1],[1,0.5] sum to [2,1.5].",
+      "lines": 6,
+      "id": "W2"
+    },
+    {
+      "title": "Mask and renormalise",
+      "prompt": "Exclude V3 and calculate permitted weights and output. Explain the empty-mask case.",
+      "answer": "Teacher explanation: Retained total 0.75 gives weights 2/3,1/3,0 and output [4/3,4/3]. All-excluded gives zero total and must report no available value under this contract.",
+      "lines": 6,
+      "id": "W3"
+    },
+    {
+      "title": "Combine a new case independently",
+      "prompt": "Values A=[4,1],B=[0,5],C=[2,3]; weights 0.25,0.5,0.25. Compute the full output. Mask B, renormalise the remaining weights and compute the new output.",
+      "answer": "Teacher explanation: Full contributions [1,.25],[0,2.5],[.5,.75] give [1.5,3.5]. Retained total .5 gives A/C weights .5,.5 and output [3,2]. Masking changes available information; it does not verify sources.",
+      "lines": 9,
+      "id": "W4"
+    },
+    {
+      "title": "Audit an explanation",
+      "prompt": "A student claims the highest attention weight explains the entire model and authenticates a retrieved instruction. What additional reasoning is needed?",
+      "answer": "Teacher explanation: Inspect values and downstream computations, other heads and residual paths before explaining the whole model. Source truth and instruction authority require separate evidence and permissions; weight alone supplies neither.",
+      "lines": 6,
+      "id": "W5"
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. All model outputs and probability tables are constructed classroom examples. No hosted AI service, external API or student account is needed. Distinguish a model objective from factual support and system permissions. Collect independent work before discussing its solutions.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator; optional local Python 3 interpreter",
+      "Prepare the independent task and fresh retry without displaying solutions"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and distinguish a numerical claim from its interpretation."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read section 1 and complete W1; ask for a reason alongside each answer."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace the worked case in section 2 and complete W2."
+      ],
+      [
+        "32 to 45 minutes",
+        "Discuss the diagram and complete W3 in pairs; record support."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete the guided response before sharing the answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Read the remaining sections and trace another constructed case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, requiring calculations and a bounded conclusion."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit response. Provide feedback and a fresh retry."
+      ]
+    ],
+    "guidedAnswer": "Guided: [6,0]/3 + 2*[0,3]/3 = [2,2]. Masking B leaves [6,0]. A masked source is excluded from the stated information path. Exit: coefficient size does not verify a document or grant instruction authority.",
+    "misconceptions": [
+      [
+        "Attention copies the highest-weight token",
+        "The supplied procedure combines vectors from multiple positions."
+      ],
+      [
+        "Deleting one contribution preserves a normalised mixture",
+        "Renormalise permitted mass under the stated contract."
+      ],
+      [
+        "Attention weights are truth probabilities",
+        "They are coefficients derived from compatibility, with no source-truth guarantee."
+      ]
+    ],
+    "assessment": "W4 requires [1.5,3.5] then [3,2] and explicit renormalisation. Fresh retry: A=[2,2], B=[6,0], C=[0,4], weights .5,.25,.25. Full output [2.5,2]; exclude A, remaining weights .5,.5 and output [3,2].",
+    "support": "Provide labelled intermediate columns and allow a calculator. Ask students to state the meaning and denominator of a value before interpreting it. Extension: implement the classroom calculation locally and test boundary cases without using personal data.",
+    "next": "Week 7 derives weights using scaled dot-product scores and a numerically stable softmax."
+  }
+}

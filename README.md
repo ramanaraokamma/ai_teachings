@@ -1,4 +1,9 @@
-> **Curriculum 3 update:** The rebuilt Grade 6 sequence (Weeks 1–36) and Grade 7 AI 2 Weeks 1–36, plus Grade 8 AI 3 Weeks 1–36 and Grade 9 AI 4 Weeks 1–32, now have matching web, Word and PDF resources. The seven-level map marks the remaining 112 weeks as planned. See [CURRICULUM3.md](CURRICULUM3.md) for scope, access and validation.
+> **Curriculum 3 update:** All seven levels, Grades 6–12, now have 36 weekly packages each: **252 lessons, workbooks and teacher guides**, with 756 Word files and 756 matching PDFs. All weeks are linked in the protected local portal. See [CURRICULUM3.md](CURRICULUM3.md) for scope, access and validation. Content preparation is complete; deployment is outside the current task.
+
+Complete offline collections: [student lessons, workbooks and diagrams](outputs/curriculum-complete/student-complete.zip) and [teacher guides](outputs/curriculum-complete/teacher-complete.zip). Both cover all 252 weeks. Teacher solutions remain in the teacher collection. Recreate these local archives with `node scripts/package-v3-complete.mjs`.
+
+Reviewed study editions: [student collection](outputs/curriculum-reviewed/student-study-complete.zip) and [teacher preparation collection](outputs/curriculum-reviewed/teacher-study-complete.zip), covering all 252 weeks. These offline HTML editions add vocabulary-first reading, richer explanations, specific later-week targets and complete diagram traces. See the [content and presentation review](curriculum-v3/CONTENT_REVIEW.md) for every-week evidence and validation. The additions supplement the original Word/PDF files.
+
 
 # AI Academy — Grade 6 Entry Edition
 

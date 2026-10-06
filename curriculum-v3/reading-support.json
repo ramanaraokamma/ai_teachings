@@ -1,0 +1,137 @@
+{
+  "ai-2/10": {
+    "title": "Read a record by its labels",
+    "studentExplanation": "Think of a dictionary as a small form with labelled boxes. The label capacity tells us which number means the total space; used tells us which number means occupied space. To find spare space, look up both values and subtract used from capacity. After used changes from 4 to 6, read the form again: 12 minus 6 is 6. Do not reuse the old answer 8. The labels stay the same while a value can change.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/11": {
+    "title": "Keep a running total",
+    "studentExplanation": "Use a paper table with one row per cupboard and columns for capacity, used, spare and running total. Start the running total at 0 once. The first cupboard contributes 8 minus 3, or 5; the total becomes 5. The second contributes 6 minus 6, or 0; the total stays 5. The accumulator is like a collection box: empty it before collecting, rather than emptying it before every item.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/12": {
+    "title": "Give each test a job",
+    "studentExplanation": "A useful test includes an input and an answer calculated from the written rule before the program runs. For 8 spaces with 3 used, expect 5 left. For 8 used, expect 0. For none used, expect 8. These cases ask different questions. An incorrect addition rule happens to pass the unused case because adding zero and subtracting zero give the same result. That is why one passing example is weak evidence.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/13": {
+    "title": "Check a row in separate steps",
+    "studentExplanation": "A schema is a checklist for what a row must contain. First ask whether the activity name is text and is not empty. Next ask whether minutes is an integer. Then ask whether that integer lies between 0 and 60, including both ends. Keep these checks separate when explaining a rejection. The number 12 and the text \"12\" look similar on a page, but only the number meets this lesson’s minutes rule.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/14": {
+    "title": "Keep zero separate from unknown",
+    "studentExplanation": "A recorded 0 says the measured duration was zero. A missing field says we do not have the duration. They are different statements. Trace each record with three columns: raw value, decision and reason. Keep 0 and 12; reject the absent value, -1 and None. The accepted list therefore has two values and the rejection count is three. Do not turn an unknown value into a number just to make the calculation run.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/15": {
+    "title": "Convert before comparing",
+    "studentExplanation": "A minute contains 60 seconds. To express 180 seconds in minutes, divide 180 by 60 to get 3 minutes. The other value is already 4 minutes, so leave it at 4. Now both quantities use the same unit and can be compared. Keep the original number, unit and source beside the converted number. That record lets another person check whether you converted the correct measurement in the correct direction.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/16": {
+    "title": "Name the group behind a percentage",
+    "studentExplanation": "Count the responses before dividing. In the example, three say Yes, one says No and one is Unknown. There are four known responses, so Yes among known responses is 3 divided by 4, or 75 percent. Yes among all five supplied responses is 3 divided by 5, or 60 percent. Neither number needs to be hidden. Label the question each answers, and keep the unknown count visible.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/17": {
+    "title": "Use two summaries for two questions",
+    "studentExplanation": "The mean shares the total equally: 2 + 3 + 3 + 4 + 18 is 30, and 30 divided by five is 6. The median asks for the middle value after sorting: the third value is 3. The long duration 18 pulls the mean upwards but leaves the middle value at 3. A difference between the summaries is a clue to inspect the data, not permission to remove the inconvenient value.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/18": {
+    "title": "Make bar lengths mean something",
+    "studentExplanation": "With a zero baseline, eight votes make a bar eight units high and ten votes make a bar ten units high. The difference is two votes. If the drawing begins at seven, only the extra one and three units are visible, making the second bar look three times as tall. That picture describes the part above seven, not the full counts. Use one scale, label the units and show the counts.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/19": {
+    "title": "Match the people to the question",
+    "studentExplanation": "The population is everyone the question concerns. The sample is the smaller group whose responses you actually collect. If the question is about all Grade 7 students, a coding-club sample leaves other students out before the poll even starts. Separate the invitation process from the response process: some invited students may not reply. A report needs both counts so readers can see whose preferences might be missing.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/20": {
+    "title": "Combine counts, not just percentages",
+    "studentExplanation": "The club has 8 Yes out of 10, and the other group has 2 Yes out of 10. Combine the Yes counts to get 10 and combine the response counts to get 20; the combined observed rate is 10 divided by 20, or 50 percent. When group sizes differ, simply averaging their percentages can give the wrong combined rate. A correct combined calculation still describes the collected sample, not automatically the whole school.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/21": {
+    "title": "Separate a pattern from a cause",
+    "studentExplanation": "The three records show that higher practice time goes with higher scores. They do not tell us what would happen if the same learner practised for one more hour. Prior experience could make someone both practise more and score higher. That is a possible confounder: another influence connected to both quantities. First describe the pattern accurately. Then propose a comparison that addresses alternative explanations rather than treating the pattern as a guarantee.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/22": {
+    "title": "Calculate a gap one feature at a time",
+    "studentExplanation": "Keep the features in the same order: energy first, group work second. For target [2,4] and Sketch [1,3], the gaps are abs(1-2)=1 and abs(3-4)=1; the distance is 2. Relay [5,4] has gaps 3 and 0, so its distance is 3. Smaller means closer under this particular rule. It does not mean better in every way, because the two recorded features leave out other needs.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/23": {
+    "title": "Check must-have rules before scoring",
+    "studentExplanation": "Make two decisions in order. First check the duration: A takes 15 minutes and qualifies under the 20-minute limit; B takes 25 minutes and does not. Then calculate scores for eligible choices. A scores 2 times 4 plus 2, or 10. B would score 11, but that score cannot remove the time requirement. Keep the rejection reason beside B instead of calling it a worse-scoring activity.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/24": {
+    "title": "Trace the best-so-far record",
+    "studentExplanation": "Write a trace table with item, eligible, score and best-so-far. In the worked list, B qualifies and scores 8, so B becomes the current best. A also qualifies and scores 8. The scores tie, so the written alphabetical rule changes the best to A. Starting with A gives the same final answer. If no item qualifies, best stays None; do not invent a winner or quietly relax the limit.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/25": {
+    "title": "Separate file text from numbers",
+    "studentExplanation": "The file contains characters, not ready-made Python integers. Reading gives text; splitlines separates the lines; int converts each valid line into a number. The lines \"12\" and \"8\" become 12 and 8, so their total is 20. Keep those three stages visible in your trace. A line such as \"twelve\" fails conversion, and a missing file is a different problem. Neither failure means the observed duration was zero.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/26": {
+    "title": "Check the envelope before its fields",
+    "studentExplanation": "JSON is a text format for exchanging values. Parsing asks whether the text follows that format. Schema checking asks whether the parsed value has the structure and values your task requires. Start by checking that the whole value is an object, represented here by a Python dictionary. Only then look up name and minutes. A valid JSON list is still the wrong top-level structure for this contract. Syntax success and acceptance are separate decisions.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/27": {
+    "title": "Give each failure an honest result",
+    "studentExplanation": "Trace the function as a decision path. First try to turn the text into an integer. If that conversion raises ValueError, return invalid text and None. If conversion succeeds, check the range. A value outside 0 through 60 returns out of range and None. Only a value passing both stages returns ok and its number. None means there is no accepted number; it must not be added to a duration total.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/28": {
+    "title": "Compare one planned change at a time",
+    "studentExplanation": "For the worked records, v1 gives A a score of 2 times 4 plus 1, or 9, and B a score of 2 times 2 plus 4, or 8. v2 gives A 4 plus 2 times 1, or 6, and B 2 plus 2 times 4, or 10. The winner changes because the weights changed. Keep the records fixed so this explanation can be checked. A different preference policy is not automatically a more accurate model.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/29": {
+    "title": "Ask what each role actually needs",
+    "studentExplanation": "Least privilege means giving each role only the actions needed for its purpose. Read the policy as a table: students may read the approved summary, while teachers may also read the necessary review. An unknown role gets no listed action. The small function checks this table; it does not establish who a visitor is. In a real application, the server must verify the session and apply the permission check whenever protected data is requested.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/30": {
+    "title": "Keep the denominator with the evidence",
+    "studentExplanation": "First filter the raw durations using the written schema. Keep 10, 0 and 20; reject None because the duration is unknown and -2 because it is outside the range. The accepted sum is 30 and the accepted count is three, so the accepted-record mean is 10 minutes. Dividing by all five supplied records would treat the two rejected durations as if they contributed known zeros. State three accepted out of five beside the mean.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/31": {
+    "title": "Turn a wish into a checkable plan",
+    "studentExplanation": "A phrase such as make a smart choice does not say what counts as success. The chooser plan does: validate the named fields, include durations at most 20 minutes, calculate 2 times fun plus learning, and use alphabetical names to break a tie. Describe the expected output and a no-match result before coding. Another learner should be able to use your plan to predict the same answer without guessing what you intended.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/32": {
+    "title": "Trace the hand-off between stages",
+    "studentExplanation": "Think of validation and selection as two desks. At the first desk, each record is checked for required fields, exact types and allowed ranges; a batch check also checks unique names. Only accepted records go to the second desk, where the time limit and scoring policy are applied. A record can be valid yet too long to qualify. Report rejected and ineligible separately so a reader knows which decision removed an item.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/33": {
+    "title": "Test the connections as well as the pieces",
+    "studentExplanation": "A score unit test asks whether the scoring function calculates the specified number. An integration test asks whether validation, filtering, scoring and reporting work together. A correct score does not establish that invalid records were rejected or that a tie was resolved correctly. Predict the full report from the input records before running. Check its counts and reasons as well as its selected name, and repeat a tie case with reversed input order.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/34": {
+    "title": "Look inside the overall result",
+    "studentExplanation": "The six development checks include ordinary, boundary, invalid, empty and tie cases. Five pass, but the only tie case fails. Saying five out of six pass is true; saying the tie rule works is false. Keep both statements visible. A category table helps you choose the next repair. Adding many copies of passing ordinary cases can raise the overall fraction without checking a new condition or fixing the failed requirement.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/35": {
+    "title": "Repair the rule, then keep the evidence",
+    "studentExplanation": "At most includes equality. For a limit of 10, the durations 9 and 10 qualify while 11 does not. The strict comparison minutes < limit wrongly rejects 10; changing it to minutes <= limit repairs that boundary. Check below, at and above the boundary, then rerun earlier tie and invalid-input cases. Keep the original failure record so another person can understand what changed and which evidence supports the repair.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  },
+  "ai-2/36": {
+    "title": "Explain a result so someone can check it",
+    "studentExplanation": "A useful handover joins a claim to its evidence. Show the fictional input records, the policy and version, which records passed validation, which met the time limit, the scores and any tie decision. Then show the report. Its counts should agree, but consistent counts alone do not prove the selected item is correct. Include an earlier failure and repair, and separate demonstrated software behaviour from educational benefits that have not been measured.",
+    "teacherPrompt": "Model the worked example using the explanation below. Pause after each decision and ask learners to predict the next value or reason. Use the chapter’s guided answer to discuss their responses; collect W4 before showing its solution."
+  }
+}

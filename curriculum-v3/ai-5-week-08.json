@@ -1,0 +1,248 @@
+{
+  "level": "ai-5",
+  "week": 8,
+  "title": "Transformer blocks and residual paths",
+  "minutes": 90,
+  "goals": [
+    "Trace a simplified attention and residual block with equal-width vectors",
+    "Distinguish attention mixing from a positionwise transformation",
+    "Separate a hidden representation from vocabulary probabilities"
+  ],
+  "prerequisite": {
+    "prompt": "Can a weighted attention output be treated directly as a probability distribution?",
+    "answer": "Not generally. It is a value-vector combination that may be negative or fail to sum to one; a later output head maps representations to vocabulary scores."
+  },
+  "vocabulary": [
+    [
+      "Residual path",
+      "A connection adding an input representation to a same-width transformed output"
+    ],
+    [
+      "Positionwise transformation",
+      "A function applied separately to each position using shared parameters"
+    ],
+    [
+      "Hidden representation",
+      "An intermediate vector before the final output mapping"
+    ],
+    [
+      "Output head",
+      "A mapping from a representation to scores for vocabulary alternatives"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Define a simplified block before tracing it",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "This lesson defines a teaching block, not a complete production Transformer. At one position, input h=[1,2] and already-computed attention result A(h)=[3,-1]. First residual addition gives z=h+A(h). Then apply the positionwise function F(z)=[max(0,z1),max(0,z2)]. A second residual gives r=z+F(z). We omit layer normalisation, learned projections, multiple heads and training so the two additions remain visible."
+        },
+        {
+          "type": "paragraph",
+          "text": "Attention can mix information across available positions. The defined F reads only the current row and uses the same rule for every position. Residual addition keeps an explicit input route, but it is not a guarantee that the whole model preserves all information or avoids numerical cancellation."
+        }
+      ]
+    },
+    {
+      "title": "Trace both residual additions",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Stage",
+            "Calculation",
+            "Result"
+          ],
+          "rows": [
+            [
+              "Attention residual",
+              "[1,2] + [3,-1]",
+              "z=[4,1]"
+            ],
+            [
+              "Positionwise function",
+              "[max(0,4),max(0,1)]",
+              "F(z)=[4,1]"
+            ],
+            [
+              "Second residual",
+              "[4,1] + [4,1]",
+              "r=[8,2]"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "For another row h=[-2,1] and supplied attention result [1,-3], z=[-1,-2], F(z)=[0,0] and r=[-1,-2]. The residual result can remain negative even though the branch function uses ReLU. A width mismatch prevents addition under this contract."
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Keep the evidence roles separate",
+          "columns": [
+            "Plan or input",
+            "Procedure",
+            "Permitted conclusion"
+          ],
+          "rows": [
+            [
+              "h=[1,2], A=[3,-1]",
+              "First residual addition",
+              "z=[4,1]"
+            ],
+            [
+              "z=[4,1]",
+              "Positionwise ReLU",
+              "F(z)=[4,1]"
+            ],
+            [
+              "z plus F(z)",
+              "Second residual addition",
+              "r=[8,2]"
+            ]
+          ],
+          "caption": "The branch output and residual output are different intermediate representations."
+        }
+      ]
+    },
+    {
+      "title": "Map representations to vocabulary scores",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "For the first row define a toy output head: score for token YES is r1-r2, and score for token NO is 0. At r=[8,2], scores are 6 and 0. Softmax gives YES exp(6)/(exp(6)+1), approximately 0.997527, and NO approximately 0.002473. This head is invented to show the representation-to-score-to-probability stages. Its high YES probability cannot verify an unspecified factual proposition."
+        },
+        {
+          "type": "paragraph",
+          "text": "A real Transformer block includes additional operations and architectural choices. The original Transformer used attention, a feed-forward sublayer and residual connections with normalisation. Our reduced trace deliberately leaves out those operations and cannot be used to claim exact behaviour or efficiency of a deployed model."
+        }
+      ]
+    },
+    {
+      "title": "Practise a supported branch",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Supported row h=[2,-1], attention result [-3,3]. Then z=[-1,2], F(z)=[0,2] and r=[-1,4]. The YES score is -5 and NO score 0, so YES probability is 1/(1+exp(5)), approximately 0.006693. Applying the output head to z instead of r would trace a different procedure."
+        },
+        {
+          "type": "response",
+          "label": "Guided: compute z, F(z), r and both scores. Explain which representation the defined head receives.",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "title": "Explain what each stage does",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Name the stage when discussing a value: input, attention branch, first residual, positionwise branch, second residual, vocabulary score or probability. Do not call every vector an embedding or every large number a confidence. A causal mask remains part of the attention calculation; residual addition does not authorise future-token access. To verify the complete model, a record must include every omitted stage rather than silently borrow this simplified trace."
+        },
+        {
+          "type": "response",
+          "label": "Exit: explain why “the ReLU branch is nonnegative, so all block outputs are nonnegative and true” contains two unjustified conclusions.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "title": "Trace the first row",
+      "prompt": "For h=[1,2], A=[3,-1], compute z,F(z),r.",
+      "answer": "Teacher explanation: z=[4,1],F(z)=[4,1],r=[8,2].",
+      "lines": 6,
+      "id": "W1"
+    },
+    {
+      "title": "Check a negative residual",
+      "prompt": "For h=[-2,1], A=[1,-3], compute all stages. What does this show about nonnegative branch outputs?",
+      "answer": "Teacher explanation: z=[-1,-2],F(z)=[0,0],r=[-1,-2]. A nonnegative ReLU branch does not force the residual sum to be nonnegative.",
+      "lines": 6,
+      "id": "W2"
+    },
+    {
+      "title": "Apply the output head",
+      "prompt": "For r=[8,2], compute YES/NO scores and probabilities. Explain the meaning limit.",
+      "answer": "Teacher explanation: Scores 6,0; probabilities about .997527,.002473. These are preferences under the constructed head, not verification of factual truth.",
+      "lines": 6,
+      "id": "W3"
+    },
+    {
+      "title": "Trace a new block independently",
+      "prompt": "At one row h=[3,-2],A=[-5,5]. Use the same two-residual block and output head. Compute z,F(z),r,YES/NO scores and approximate probabilities. Does the result prove anything about a real question?",
+      "answer": "Teacher explanation: z=[-2,3],F(z)=[0,3],r=[-2,6]. Scores -8,0; YES 1/(1+exp(8)) ≈ .00033535, NO ≈ .99966465. The calculation concerns the toy head; no factual question or independent evidence is supplied.",
+      "lines": 9,
+      "id": "W4"
+    },
+    {
+      "title": "Audit an architecture description",
+      "prompt": "A presenter calls this a full Transformer and says the positionwise ReLU alone mixes every sequence position. Identify what needs correcting.",
+      "answer": "Teacher explanation: The trace omits normalisation, learned projections, multi-head details and training. The stated positionwise function acts separately per row; attention is the defined cross-position mixing operation. Label the block a simplified teaching model.",
+      "lines": 6,
+      "id": "W5"
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. All model outputs and probability tables are constructed classroom examples. No hosted AI service, external API or student account is needed. Distinguish a model objective from factual support and system permissions. Collect independent work before discussing its solutions.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator; optional local Python 3 interpreter",
+      "Prepare the independent task and fresh retry without displaying solutions"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and distinguish a numerical claim from its interpretation."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read section 1 and complete W1; ask for a reason alongside each answer."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace the worked case in section 2 and complete W2."
+      ],
+      [
+        "32 to 45 minutes",
+        "Discuss the diagram and complete W3 in pairs; record support."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete the guided response before sharing the answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Read the remaining sections and trace another constructed case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, requiring calculations and a bounded conclusion."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit response. Provide feedback and a fresh retry."
+      ]
+    ],
+    "guidedAnswer": "Guided: z=[-1,2],F(z)=[0,2],r=[-1,4]; scores -5,0. The output head receives r. Exit: residual addition can retain negative components, and numerical activations do not verify truth.",
+    "misconceptions": [
+      [
+        "A residual is the branch result alone",
+        "The defined residual adds the input representation to the branch output."
+      ],
+      [
+        "Positionwise means all positions are mixed together",
+        "The stated function processes each row separately with shared parameters."
+      ],
+      [
+        "A large vocabulary probability verifies a claim",
+        "It records a model preference under a prefix and head, not independent evidence."
+      ]
+    ],
+    "assessment": "W4 requires z=[-2,3],F=[0,3],r=[-2,6],scores -8,0 and approximate probabilities. Fresh retry: h=[1,-3],A=[-4,5]; z=[-3,2],F=[0,2],r=[-3,4],scores -7,0; YES ≈ .00091105 and NO ≈ .99908895.",
+    "support": "Provide labelled intermediate columns and allow a calculator. Ask students to state the meaning and denominator of a value before interpreting it. Extension: implement the classroom calculation locally and test boundary cases without using personal data.",
+    "next": "Week 9 returns to training objectives and data, separating the training signal from evaluation of a complete system."
+  }
+}

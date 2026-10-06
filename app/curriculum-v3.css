@@ -21,3 +21,9 @@
 
 /* Keep Grade 9 explanations intact across printed page boundaries. */
 @media print{.v3-chapter[data-level="ai-4"][data-resource="lesson"] .v3-chapter-section>p{break-inside:avoid}}
+
+/* Reading and teaching supports keep definitions beside the worked explanation. */
+.v3-reading-map{display:grid;gap:.65rem;margin:1.5rem 0}.v3-reading-map a{display:flex;align-items:baseline;gap:.75rem;padding:.8rem 1rem;background:#f0f5f9;border:1px solid #c8d7e4;border-radius:.65rem;color:#164d79;text-decoration:none;font-weight:650}.v3-reading-map a span{display:inline-flex;justify-content:center;min-width:1.5rem;color:#476580}.v3-reading-map a:focus-visible{outline:3px solid #275f8d;outline-offset:3px}.v3-chapter-section[id]{scroll-margin-top:1.5rem}.v3-explanation{margin:1.5rem 0;padding:1rem 1.25rem;background:#edf7f1;border-left:4px solid #327653;border-radius:.5rem}.v3-explanation h3{margin-top:0}.v3-explanation p:last-child{margin-bottom:0}.v3-teacher-primer{background:#f7fafc;border-radius:.75rem;padding:1.5rem!important}.v3-board-walkthrough{border:1px solid #c8d7e4;border-radius:.65rem;padding:1rem}.v3-board-walkthrough h3{margin-top:0}
+@media print{.v3-reading-map{display:none}.v3-explanation,.v3-teacher-primer{background:white;border:1px solid #aebfcf;padding:10pt!important}.v3-board-walkthrough{break-inside:auto}.v3-board-walkthrough img{break-inside:avoid}}
+
+.v3-complete-trace{list-style:none;counter-reset:trace;margin:20px 0;padding:0;display:grid;gap:12px}.v3-complete-trace li{counter-increment:trace;margin:0;padding:16px 18px;border:1px solid #bfd0dd;background:#f5f9fc;border-radius:8px}.v3-complete-trace li>strong::before{content:counter(trace) ". ";color:#476580}.v3-complete-trace li p{margin:8px 0 0}.v3-complete-trace li{break-inside:avoid}

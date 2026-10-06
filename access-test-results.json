@@ -1,5 +1,5 @@
 {
-  "passed": 31,
+  "passed": 33,
   "checks": [
     {
       "name": "Only landing content is public",
@@ -119,6 +119,14 @@
     },
     {
       "name": "All rebuilt downloads enforce their roles and match reviewed bytes",
+      "passed": true
+    },
+    {
+      "name": "Missing protected parts fail without partial downloads",
+      "passed": true
+    },
+    {
+      "name": "Full asset responses reconstruct the same reviewed download",
       "passed": true
     },
     {

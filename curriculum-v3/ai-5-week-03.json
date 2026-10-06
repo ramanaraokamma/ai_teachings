@@ -1,0 +1,248 @@
+{
+  "level": "ai-5",
+  "week": 3,
+  "title": "Next token distributions",
+  "minutes": 90,
+  "goals": [
+    "Check whether a next-token table is a valid probability distribution",
+    "Calculate a two-step sequence probability using conditional probabilities",
+    "Explain why token probability does not measure factual truth"
+  ],
+  "prerequisite": {
+    "prompt": "Why must token counts name the vocabulary and special-token convention?",
+    "answer": "Different vocabularies and rules segment the same text differently; end markers may change the reported count."
+  },
+  "vocabulary": [
+    [
+      "Probability distribution",
+      "Nonnegative probabilities over stated alternatives that sum to one"
+    ],
+    [
+      "Conditional probability",
+      "A probability evaluated given specified information"
+    ],
+    [
+      "Sequence probability",
+      "The product of successive conditional probabilities under an autoregressive model"
+    ],
+    [
+      "Probability mass",
+      "The probability assigned to an alternative or a set of alternatives"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Read a distribution with its prefix",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A constructed model uses prefix “Status:” and vocabulary alternatives ready, busy and unknown. Its next-token table is ready 0.5, busy 0.3, unknown 0.2. All entries are nonnegative and sum to 1. A probability belongs to a token under this prefix and model, not to that token in every situation. An omitted vocabulary alternative would make the interpretation incomplete unless its probability were explicitly zero."
+        },
+        {
+          "type": "paragraph",
+          "text": "A table containing 0.6,0.3,0.3 sums to 1.2 and is not already a probability distribution. If the values are nonnegative weights and the rule says normalise, divide each by 1.2. Do not silently treat weights as probabilities. Negative weights cannot be repaired by this simple normalisation rule."
+        }
+      ]
+    },
+    {
+      "title": "Multiply the correct conditional branches",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Expanded prefix",
+            "End probability",
+            "Today probability"
+          ],
+          "rows": [
+            [
+              "Status: ready",
+              "0.8",
+              "0.2"
+            ],
+            [
+              "Status: busy",
+              "0.5",
+              "0.5"
+            ],
+            [
+              "Status: unknown",
+              "1",
+              "0"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The probability of ready followed by end is 0.5*0.8 = 0.4. Ready followed by today is 0.5*0.2 = 0.1. Busy followed by end is 0.3*0.5 = 0.15, and busy followed by today is 0.15. Unknown followed by end is 0.2 and unknown followed by today is 0. Together these six two-step paths sum to 1. These products are chain-rule calculations; they do not assume the second token is independent of the first."
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Keep the evidence roles separate",
+          "columns": [
+            "Plan or input",
+            "Procedure",
+            "Permitted conclusion"
+          ],
+          "rows": [
+            [
+              "Ready probability 0.5",
+              "End given ready 0.8",
+              "Joint path probability 0.4"
+            ],
+            [
+              "Busy probability 0.3",
+              "End given busy 0.5",
+              "Joint path probability 0.15"
+            ],
+            [
+              "Unknown probability 0.2",
+              "End given unknown 1",
+              "Joint path probability 0.2"
+            ]
+          ],
+          "caption": "The second probability uses the expanded prefix on that branch."
+        }
+      ]
+    },
+    {
+      "title": "Compare greedy choice and sequence probability",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Greedy decoding chooses the largest next-token probability at each step, with an explicit tie rule if needed. It does not always maximise the probability of a complete sequence. Counterexample: first-step A=0.6 and B=0.4. Given A, end=0.51 and x=0.49; given B, end=1. Greedy produces A,end with probability 0.306. The path B,end has probability 0.4, larger than 0.306. This comparison concerns exactly two-step paths; longer completion probabilities require the later conditionals too."
+        },
+        {
+          "type": "paragraph",
+          "text": "A high path probability measures the model’s preference over these specified paths. It is not evidence that a status claim matches a live observation. Format checks and source checks remain separate."
+        }
+      ]
+    },
+    {
+      "title": "Practise a supported branch calculation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Supported table: first red=0.4, blue=0.6. End given red=0.9 and end given blue=0.5. The red,end path has probability 0.36. The blue,end path has probability 0.3 despite blue being the larger first-step probability."
+        },
+        {
+          "type": "response",
+          "label": "Guided: compute both products and distinguish the preferred first token from the more probable specified end path.",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "title": "Report alternatives and limits",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Always report the prefix, alternatives and stage. The complement of ready in the first table is busy or unknown, probability 0.5; it is not automatically busy. Values rounded for display may not sum exactly to 1, so retain full values for calculations and label rounding. A missing or invalid table should lead to an explicit error, not a confident probability claim."
+        },
+        {
+          "type": "response",
+          "label": "Exit: explain two errors in “ready has probability 0.5, so busy also has probability 0.5 and the room is ready half the time”.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "title": "Validate the table",
+      "prompt": "Check 0.5,0.3,0.2 as probabilities. Interpret their sum and the complement of ready.",
+      "answer": "Teacher explanation: Entries are nonnegative and sum to 1. Not ready has mass 0.3+0.2 = 0.5, including busy and unknown.",
+      "lines": 6,
+      "id": "W1"
+    },
+    {
+      "title": "Calculate the paths",
+      "prompt": "Compute ready,end; busy,end; unknown,end and their combined probability.",
+      "answer": "Teacher explanation: Path probabilities 0.4,0.15,0.2; combined probability of ending at step two is 0.75.",
+      "lines": 6,
+      "id": "W2"
+    },
+    {
+      "title": "Test a greedy claim",
+      "prompt": "Use A=0.6,B=0.4 and end conditional probabilities 0.51 and 1. Compare greedy A,end with B,end.",
+      "answer": "Teacher explanation: A,end probability 0.306 versus B,end 0.4. Greedy next-token choice does not guarantee the largest complete-path probability.",
+      "lines": 6,
+      "id": "W3"
+    },
+    {
+      "title": "Analyse a new table independently",
+      "prompt": "First tokens go=0.4, wait=0.35, ask=0.25. End probabilities given them are 0.5,0.8,1 respectively; each branch has a complementary more token. Compute all three end-path probabilities and their sum. Which first token is greedy, which end path is largest, and does either verify a real status?",
+      "answer": "Teacher explanation: End-path probabilities 0.2,0.28,0.25; sum 0.73. Greedy first token is go, but wait,end is the largest of the specified end paths. Neither establishes a real status without appropriate evidence.",
+      "lines": 9,
+      "id": "W4"
+    },
+    {
+      "title": "Normalise with a stated rule",
+      "prompt": "Weights are ready 6,busy 3,unknown 1. Convert them into probabilities. What if a weight is -1?",
+      "answer": "Teacher explanation: Total 10 yields 0.6,0.3,0.1. Negative weights violate this nonnegative-weight normalisation contract; reject rather than quietly normalise them.",
+      "lines": 6,
+      "id": "W5"
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. All model outputs and probability tables are constructed classroom examples. No hosted AI service, external API or student account is needed. Distinguish a model objective from factual support and system permissions. Collect independent work before discussing its solutions.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator; optional local Python 3 interpreter",
+      "Prepare the independent task and fresh retry without displaying solutions"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and distinguish a numerical claim from its interpretation."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read section 1 and complete W1; ask for a reason alongside each answer."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace the worked case in section 2 and complete W2."
+      ],
+      [
+        "32 to 45 minutes",
+        "Discuss the diagram and complete W3 in pairs; record support."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete the guided response before sharing the answer."
+      ],
+      [
+        "8 to 20 minutes",
+        "Read the remaining sections and trace another constructed case."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently, requiring calculations and a bounded conclusion."
+      ],
+      [
+        "35 to 45 minutes",
+        "Discuss W5 and the exit response. Provide feedback and a fresh retry."
+      ]
+    ],
+    "guidedAnswer": "Guided: red,end 0.4*0.9 = 0.36; blue,end 0.6*0.5 = 0.3. Blue is the preferred first token but red,end has the larger specified end-path probability. Exit: the complement includes unknown, and model next-token probabilities do not measure observed room-state frequency.",
+    "misconceptions": [
+      [
+        "Conditional products assume independence",
+        "Use a different conditional probability for each expanded prefix."
+      ],
+      [
+        "Greedy decoding maximises every full sequence",
+        "The supplied two-step counterexample disproves that general claim."
+      ],
+      [
+        "Not ready means busy",
+        "The stated alternatives also include unknown."
+      ]
+    ],
+    "assessment": "W4 requires 0.2,0.28,0.25, sum 0.73, greedy go and largest end path wait,end with an evidence limit. Fresh retry: first A=0.45,B=0.3,C=0.25; end conditionals 0.4,0.9,1. Products 0.18,0.27,0.25 sum 0.70; greedy A, largest end path B,end.",
+    "support": "Provide labelled intermediate columns and allow a calculator. Ask students to state the meaning and denominator of a value before interpreting it. Extension: implement the classroom calculation locally and test boundary cases without using personal data.",
+    "next": "Week 4 distinguishes greedy choice from sampling and computes the effect of temperature on a fixed toy distribution."
+  }
+}

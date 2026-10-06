@@ -1,0 +1,258 @@
+{
+  "level": "ai-4",
+  "week": 33,
+  "title": "Capstone hypothesis and baseline",
+  "minutes": 90,
+  "goals": [
+    "Write a testable capstone hypothesis and a credible baseline",
+    "Specify data roles and a selection rule before inspecting results",
+    "Calculate baseline MSE and distinguish a success criterion from a result"
+  ],
+  "prerequisite": {
+    "prompt": "Why must a checkpoint chosen using validation data still face an untouched final test?",
+    "answer": "Validation influences selection, so its score is not independent final evidence. Freeze the chosen procedure before opening the final test."
+  },
+  "vocabulary": [
+    [
+      "Hypothesis",
+      "A testable expectation with a stated comparison and outcome"
+    ],
+    [
+      "Baseline",
+      "A specified reference procedure evaluated on the same cases"
+    ],
+    [
+      "Success criterion",
+      "A rule written before evaluation for judging the measured result"
+    ],
+    [
+      "Reserved test",
+      "Cases kept out of fitting, tuning and selection"
+    ]
+  ],
+  "lesson": [
+    {
+      "title": "Turn a broad aim into a question",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A capstone needs a question that evidence can answer. “Build a better network” leaves better undefined. Here the question is: does two-update full-batch fitting of one scalar ReLU weight reduce validation mean squared error relative to the initial-weight baseline on a constructed positive-input task? Predict max(0, a*x), with no bias. The baseline has a = 1. The trained candidate starts at a = 1, uses learning rate 0.1 and exactly two updates. These choices are written before results are inspected."
+        },
+        {
+          "type": "paragraph",
+          "text": "The hypothesis is that the trained candidate has lower validation MSE. The plan does not guarantee that result. This task tests training and record keeping, not whether neural networks are preferable to every other model. A stronger comparison may also include an ordinary fitted line."
+        }
+      ]
+    },
+    {
+      "title": "Assign roles and calculate the baseline",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Role and ID",
+            "x",
+            "y"
+          ],
+          "rows": [
+            [
+              "Training T1",
+              "1",
+              "2"
+            ],
+            [
+              "Training T2",
+              "2",
+              "4"
+            ],
+            [
+              "Validation V1",
+              "3",
+              "6"
+            ],
+            [
+              "Validation V2",
+              "4",
+              "8"
+            ],
+            [
+              "Final test",
+              "Sealed",
+              "Sealed"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Training rows determine updates. Validation rows compare the prespecified candidate with the baseline. The final-test inputs and targets remain sealed until the procedure and reporting plan are frozen. MSE = sum of squared prediction errors divided by the number of evaluated rows. Baseline predictions on V1 and V2 are 3 and 4. Errors are -3 and -4, squared errors 9 and 16, and validation MSE is 25/2 = 12.5. There are two validation cases."
+        },
+        {
+          "type": "diagram",
+          "kind": "lanes",
+          "title": "Keep the evidence roles separate",
+          "columns": [
+            "Plan or input",
+            "Procedure",
+            "Permitted conclusion"
+          ],
+          "rows": [
+            [
+              "T1 and T2",
+              "Fit two updates",
+              "Training result only"
+            ],
+            [
+              "V1 and V2",
+              "Compare with a = 1",
+              "Validation comparison"
+            ],
+            [
+              "Sealed final rows",
+              "Evaluate frozen procedure",
+              "Final evidence on those rows"
+            ]
+          ],
+          "caption": "Each arrow preserves a distinct data role. Opening final rows to choose a learning rate changes their role."
+        }
+      ]
+    },
+    {
+      "title": "Write criteria before observing outcomes",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The validation criterion is candidate MSE strictly below baseline MSE on V1 and V2. Equality does not pass. The final criterion is lower MSE than the same baseline on the sealed final rows. Report both scores and every raw prediction whether or not the criterion passes. Record the rule, training rows, update count, learning rate, loss, data versions and code version. A criterion specifies how to judge a future result; it is not evidence that the result already happened."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep validation and final criteria separate. Do not silently add epochs or change preprocessing after seeing a weak result. A changed plan is a new version and needs an honest account of what evidence informed it."
+        }
+      ]
+    },
+    {
+      "title": "Practise recording a complete comparison",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Supported example: a separate baseline predicts 2 and 4 for validation targets 5 and 7. Its errors are -3 and -3 and MSE is 9. A proposed plan says to train one fixed candidate and report both MSE values on those same two rows. It supplies no candidate predictions, so no improvement can yet be claimed."
+        },
+        {
+          "type": "response",
+          "label": "Guided: compute that baseline MSE, name the missing evidence, and state whether the hypothesis has been confirmed.",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "title": "Plan without contaminating the final test",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Before running, exchange a plan with a partner. The partner should be able to identify what is changed, what stays fixed, what metric is computed, which rows select the procedure and when the final test may be opened. A file name alone does not protect a split; record who can inspect it and how related examples were separated."
+        },
+        {
+          "type": "response",
+          "label": "Exit: someone opens the final targets to choose between learning rates, then calls the winning score independent final evidence. Explain the change of role and the next honest step.",
+          "lines": 5
+        }
+      ]
+    }
+  ],
+  "workbook": [
+    {
+      "title": "Write the hypothesis",
+      "prompt": "State the prediction rule, baseline, candidate learning rate and update count, comparison data and metric. Write a testable hypothesis.",
+      "answer": "Teacher explanation: Predict max(0, a*x) without bias; baseline a = 1; candidate starts at 1, learning rate 0.1, two full-batch updates on T1/T2. Hypothesis: candidate validation MSE on V1/V2 is strictly below the baseline MSE.",
+      "lines": 6,
+      "id": "W1"
+    },
+    {
+      "title": "Calculate the reference score",
+      "prompt": "Compute baseline predictions, errors, squared errors and MSE on V1 and V2. State the denominator.",
+      "answer": "Teacher explanation: Predictions 3 and 4; errors -3 and -4; squared errors 9 and 16; MSE 12.5 over two rows.",
+      "lines": 6,
+      "id": "W2"
+    },
+    {
+      "title": "Audit the plan",
+      "prompt": "A proposal says “try models until the test score looks good”. Identify the missing fixed choices and explain why that test is not independent.",
+      "answer": "Teacher explanation: It omits architecture, baseline, training settings, metric, stopping/selection rule and split policy. Repeated choices based on the test use it for development; reserve new independent final data after freezing the revised procedure.",
+      "lines": 6,
+      "id": "W3"
+    },
+    {
+      "title": "Plan a new case independently",
+      "prompt": "A new task predicts max(0, a*x), with baseline a = 1. Training rows are (1,3) and (2,6); validation rows are (3,9) and (4,12); final rows are sealed. Specify a candidate starting at 1 with learning rate 0.1 and two full-batch updates. Calculate baseline validation MSE and write a strict improvement criterion. Has the candidate succeeded yet?",
+      "answer": "Teacher explanation: Baseline predictions 3 and 4, errors -6 and -8, squared errors 36 and 64, MSE 50 over two rows. Candidate is fixed at two updates with rate 0.1 on training only; success means candidate validation MSE < 50. No candidate results have been supplied, so success is unknown.",
+      "lines": 9,
+      "id": "W4"
+    },
+    {
+      "title": "Preserve the reserved evidence",
+      "prompt": "A partner inspects final labels and changes the learning rate. Explain how to document this and obtain independent evidence.",
+      "answer": "Teacher explanation: Record the inspection and changed plan. Those rows informed selection and cannot honestly serve as untouched final evidence. Freeze the revised procedure and use newly reserved independent cases; retain the earlier result as development evidence.",
+      "lines": 6,
+      "id": "W5"
+    }
+  ],
+  "teacher": {
+    "background": "Use two 45-minute sessions. This capstone uses constructed scalar ReLU regression so every calculation is inspectable. It is an experiment in training and evidence, not a real-world deployment. Preserve written plans, data roles and raw predictions. Optional local Python requires no external packages or AI account. Do not expose independent-task solutions before collecting work.",
+    "materials": [
+      "Printed lesson and workbook; paper and pencil",
+      "Calculator; optional local Python 3 interpreter",
+      "Fictional data only; reserve the independent task and fresh retry until assessment"
+    ],
+    "sessions": [
+      [
+        "Session 1 start to 7 minutes",
+        "Retrieve the prerequisite and ask students to explain the data roles."
+      ],
+      [
+        "7 to 18 minutes",
+        "Read section 1 and complete W1 with a recorded reason."
+      ],
+      [
+        "18 to 32 minutes",
+        "Trace section 2 and complete W2; compare raw values before conclusions."
+      ],
+      [
+        "32 to 45 minutes",
+        "Explain the diagram and complete W3 in pairs; record any support."
+      ],
+      [
+        "Session 2 start to 8 minutes",
+        "Complete the guided response and discuss why the evidence has limits."
+      ],
+      [
+        "8 to 20 minutes",
+        "Read the remaining explanation and prepare a concise experiment record."
+      ],
+      [
+        "20 to 35 minutes",
+        "Collect W4 independently. Require calculations and a bounded claim."
+      ],
+      [
+        "35 to 45 minutes",
+        "Use W5 and the exit response for feedback. Administer the fresh retry after feedback without the earlier solution."
+      ]
+    ],
+    "guidedAnswer": "Guided: errors -3 and -3 give MSE 9 on two rows. Candidate predictions are missing, so the hypothesis remains untested. Exit: final rows became selection evidence; document the change, freeze the revised plan and reserve new independent final cases.",
+    "misconceptions": [
+      [
+        "A hypothesis is a result",
+        "A hypothesis states an expectation before the comparison. Results may support or contradict it."
+      ],
+      [
+        "A weak baseline proves neural networks help",
+        "An initial-weight reference checks improvement from that starting point, not superiority to a fitted line."
+      ],
+      [
+        "Renaming a used test restores independence",
+        "A new name cannot undo using its results for selection."
+      ]
+    ],
+    "assessment": "W4 requires baseline MSE 50, all fixed settings, a strict < 50 criterion and no premature success claim. Fresh retry: use validation (3,12) and (4,16), same baseline and candidate settings. Baseline errors -9 and -12 give MSE (81+144)/2 = 112.5; require a < 112.5 criterion and an untested conclusion.",
+    "support": "Provide a frame with question, fixed settings, changed setting, data roles, raw predictions, metric, conclusion and limitation. Allow a calculator and explicit squared-error columns. Extension: implement the arithmetic locally, preserve the program version, and explain why a successful replay adds no independent test cases.",
+    "next": "Week 34 runs controlled learning-rate comparisons while preserving the recorded data roles."
+  }
+}

@@ -1,0 +1,482 @@
+{
+  "ai-6/1": [
+    "Describe the timetable service’s allowed inputs and outputs",
+    "Separate a permitted lookup from an out-of-scope edit",
+    "Write an observable success and refusal requirement"
+  ],
+  "ai-6/2": [
+    "Trace validation, permission, lookup and response checks in order",
+    "Locate the first boundary that should stop a bad request",
+    "Explain why a final refusal cannot undo an earlier restricted read"
+  ],
+  "ai-6/3": [
+    "Check required fields, exact types and allowed ranges",
+    "Distinguish zero from invalid negative, text and Boolean counts",
+    "Return the stated validation outcome before using a request"
+  ],
+  "ai-6/4": [
+    "Separate non-secret configuration from privileged secret values",
+    "Check required settings without printing their contents",
+    "Design a useful error record that does not expose credentials"
+  ],
+  "ai-6/5": [
+    "Distinguish identifying an actor from permitting an operation",
+    "Apply permissions using the trusted session role",
+    "Reject a claimed role that conflicts with the verified session"
+  ],
+  "ai-6/6": [
+    "Check both operation and resource against a tool’s scope",
+    "Explain why confidence cannot expand a permission",
+    "Reject an out-of-scope call before it executes"
+  ],
+  "ai-6/7": [
+    "Test a pure calculation with independently expected results",
+    "Check zero, full-capacity, invalid-range and Boolean cases",
+    "Separate an arithmetic result from a contract rejection"
+  ],
+  "ai-6/8": [
+    "Score repeated responses against a fixed semantic rubric",
+    "Report overall run rates and distinct case counts",
+    "Keep variable wording separate from unsupported claims"
+  ],
+  "ai-6/9": [
+    "Test connected stages using controlled dependency fixtures",
+    "Check the response and the calls that actually occurred",
+    "Handle missing evidence without inventing a supported result"
+  ],
+  "ai-6/10": [
+    "Preserve case and procedure versions with raw outcomes",
+    "Calculate completed-case pass rate and planned-case coverage",
+    "Report skipped cases separately from observed failures"
+  ],
+  "ai-6/11": [
+    "Define success and eligible requests before setting an objective",
+    "Calculate allowed failures and observed success in an interval",
+    "Decide whether the stated objective was met"
+  ],
+  "ai-6/12": [
+    "Choose diagnostic fields that answer the investigation question",
+    "Link stages with a trace ID without logging private content",
+    "Explain why permission to process data does not imply permission to log it"
+  ],
+  "ai-6/13": [
+    "Trace allowed transitions in a bounded state machine",
+    "Locate an invalid transition or action after a terminal state",
+    "Keep transition rules separate from attempt limits"
+  ],
+  "ai-6/14": [
+    "Separate a proposed plan from permission to execute it",
+    "Validate each action against scope and prerequisites",
+    "Use review or fallback when a permitted plan lacks evidence"
+  ],
+  "ai-6/15": [
+    "Bind approval to the exact actor, version and destination",
+    "Replay a committed operation without repeating its effect",
+    "Reject an idempotency-key conflict with a changed payload"
+  ],
+  "ai-6/16": [
+    "Calculate waiting bounds from attempts, timeouts and gaps",
+    "Distinguish declared transient failures from non-retryable failures",
+    "Stop future work on cancellation while accounting for committed effects"
+  ],
+  "ai-6/17": [
+    "Distinguish an external effect from its acknowledgement",
+    "Reconcile an operation ID before repeating uncertain work",
+    "Use the declared recovery rule rather than assuming timeout means failure"
+  ],
+  "ai-6/18": [
+    "Validate input against an exact format before lookup",
+    "Keep instruction-shaped strings as data rather than executable authority",
+    "Test rejected formats and the permitted lookup path"
+  ],
+  "ai-6/19": [
+    "Check filesystem, network, time and task quotas separately",
+    "Reject an operation outside a job’s declared sandbox",
+    "Handle a batch that exceeds the queue limit under an explicit policy"
+  ],
+  "ai-6/20": [
+    "Apply the stated inclusive deletion boundary",
+    "Trace content across primary storage, caches and logs",
+    "Keep allowed audit metadata separate from content that must be removed"
+  ],
+  "ai-6/21": [
+    "Build cache keys that preserve role and version boundaries",
+    "Check age against the exact expiry rule",
+    "Reject a stale or wrong-version answer even when its age seems acceptable"
+  ],
+  "ai-6/22": [
+    "Distinguish accepted, pending, failed and completed jobs",
+    "Explain why redelivery need not mean a second effect",
+    "Consult durable status before acknowledging or repeating work"
+  ],
+  "ai-6/23": [
+    "Check endpoints, data stores and credentials for each environment",
+    "Detect a staging label that still targets production",
+    "Block mismatched configuration before a run"
+  ],
+  "ai-6/24": [
+    "Link a release to compatible code, configuration and data versions",
+    "Explain why code-only rollback can fail after a schema change",
+    "Specify a tested compatible recovery combination"
+  ],
+  "ai-6/25": [
+    "Compare observed rates rather than raw pass totals alone",
+    "Check a window against its stated alert threshold",
+    "Investigate case mix and version changes before naming a cause"
+  ],
+  "ai-6/26": [
+    "Build an incident timeline from retained observations",
+    "Separate containment from a tested causal explanation",
+    "Use versions and traces to challenge an unsupported hypothesis"
+  ],
+  "ai-6/27": [
+    "Route an unresolved decision to a named authorised reviewer",
+    "Provide the evidence, deadline and fallback needed for review",
+    "Keep a pending decision pending when silence is not approval"
+  ],
+  "ai-6/28": [
+    "Describe an error with text as well as colour",
+    "Make controls usable by keyboard and preserve valid input",
+    "Check focus order, labels and recovery messages"
+  ],
+  "ai-6/29": [
+    "Compare matched workloads with timing and quality boundaries",
+    "Calculate means and medians while retaining slow cases",
+    "Explain a speed result alongside wrong-response evidence"
+  ],
+  "ai-6/30": [
+    "Trace every return, cache and export path for restricted content",
+    "Distinguish happy-path success from misuse testing",
+    "Write a check for a confidentiality bypass"
+  ],
+  "ai-6/31": [
+    "Define an authorised isolated test of one failure boundary",
+    "Record the exact request, permissions and action trace",
+    "Judge actual attempted actions rather than refusal wording alone"
+  ],
+  "ai-6/32": [
+    "Write a runbook another operator can follow",
+    "Include verification, ownership and compatible recovery steps",
+    "Explain why a setup-only guide is not operational readiness"
+  ],
+  "ai-6/33": [
+    "Implement a bounded read-only room-service pipeline",
+    "Keep supported, review and denied outcomes distinct",
+    "Preserve measured zero instead of treating it as missing evidence"
+  ],
+  "ai-6/34": [
+    "Predict outcomes and forbidden calls before failure testing",
+    "Calculate a case pass rate while preserving critical failures",
+    "Reject a test that denies visibly but still reads restricted data"
+  ],
+  "ai-6/35": [
+    "Apply each critical release gate separately",
+    "Distinguish a threshold pass from missing recovery evidence",
+    "Block release when an access gate fails despite a good average"
+  ],
+  "ai-6/36": [
+    "Demonstrate one supported, review and denied fixture outcome",
+    "Present tests, versions, runbook and recovery evidence",
+    "Limit claims to what the local demonstration actually measured"
+  ],
+  "ai-7/1": [
+    "Write a question with an outcome, comparison and stated conditions",
+    "Match the question to the available fictional records",
+    "Name a missing detail before making a broader claim"
+  ],
+  "ai-7/2": [
+    "Link a research claim to its method, data, baseline and metric",
+    "Calculate the stated sample comparison",
+    "Limit the conclusion to the observed workload and conditions"
+  ],
+  "ai-7/3": [
+    "Locate the primary methods and results behind a summary",
+    "Record the exact source version, dataset and metric",
+    "Resolve a summary mismatch without borrowing an unsupported number"
+  ],
+  "ai-7/4": [
+    "Separate a method statement, observed result and limitation",
+    "Keep a result’s count and denominator together",
+    "Identify which evidence would be needed for a broader interpretation"
+  ],
+  "ai-7/5": [
+    "Distinguish replaying a computation from collecting new evidence",
+    "Count distinct cases separately from repeated runs",
+    "Explain what a matching replay can and cannot establish"
+  ],
+  "ai-7/6": [
+    "Compare studies using aligned task, data, metric and cutoff columns",
+    "Mark results that cannot be ranked directly",
+    "Specify a common evaluation before claiming one method is better"
+  ],
+  "ai-7/7": [
+    "Declare a primary outcome and direction before the study",
+    "Describe a result that would fail the stated expectation",
+    "Label a result-informed change as exploratory"
+  ],
+  "ai-7/8": [
+    "Choose a credible baseline on matched cases and evidence",
+    "Check quality and resource requirements together",
+    "Identify an unfair freshness or time-budget comparison"
+  ],
+  "ai-7/9": [
+    "Identify the assigned or sampled experimental unit",
+    "Separate unit counts from repeated or clustered measurements",
+    "Explain why related measurements are not independent assignments"
+  ],
+  "ai-7/10": [
+    "Identify another factor changing with the intended method",
+    "Hold corpus, cases and scoring rules fixed where required",
+    "Use order control to address a timing confounder"
+  ],
+  "ai-7/11": [
+    "Enumerate unordered samples using distinct unit IDs",
+    "Calculate each sample mean and the mean of those means",
+    "Separate sampling variation from a procedure change or biased selection"
+  ],
+  "ai-7/12": [
+    "Calculate standard error, margin and the supplied mean interval",
+    "State the known-sigma, normality and independence assumptions",
+    "Interpret confidence as coverage of the repeated-sampling method"
+  ],
+  "ai-7/13": [
+    "Calculate paired differences in the declared direction and units",
+    "Compare the mean gain with a prespecified practical threshold",
+    "Separate a positive sample difference from sufficient practical benefit"
+  ],
+  "ai-7/14": [
+    "Enumerate sign assignments under the stated null model",
+    "Calculate the two-sided tail fraction with inclusive ties",
+    "Separate a non-rejection from proof of zero effect"
+  ],
+  "ai-7/15": [
+    "Calculate a Bonferroni threshold for the declared test family",
+    "Apply the same prespecified rule to every supplied p-value",
+    "Explain why selecting attractive unadjusted results changes error control"
+  ],
+  "ai-7/16": [
+    "Compare component removals on the same cases and scoring",
+    "Calculate sample performance drops and retain critical boundary failures",
+    "Limit component claims to the remaining system and possible interactions"
+  ],
+  "ai-7/17": [
+    "Prespecify a range of settings and retain every result",
+    "Describe how precision, recall or pass rate changes with a setting",
+    "Separate development selection from independent final evidence"
+  ],
+  "ai-7/18": [
+    "Count unique source units separately from duplicate rows",
+    "Check dates, labels and task coverage in a benchmark",
+    "Limit a benchmark claim to its eligible data and conditions"
+  ],
+  "ai-7/19": [
+    "Separate classroom teaching permission from research permission",
+    "Apply the supplied opt-in and voluntary-participation policy",
+    "Redesign a proposal that penalises non-participation"
+  ],
+  "ai-7/20": [
+    "Explain why coded records can still identify a person",
+    "Apply the fictional policy to access, retention and small groups",
+    "Avoid disclosing a subgroup that fails the reporting rule"
+  ],
+  "ai-7/21": [
+    "Record units, metrics, exclusions and comparisons before results",
+    "Apply a prespecified eligibility rule with visible exclusions",
+    "Label outcome-informed changes rather than hiding them"
+  ],
+  "ai-7/22": [
+    "Use a pilot to test feasibility, measurement and failure handling",
+    "Preserve defects, corrections and changed versions",
+    "Reserve fresh primary cases after pilot-informed revision"
+  ],
+  "ai-7/23": [
+    "Compare supplied detection frequencies and per-study costs",
+    "State the effect, variability and unit assumptions of the planning model",
+    "Avoid turning one simulation into a universal sample-size rule"
+  ],
+  "ai-7/24": [
+    "Link data, code, settings, dependencies and raw outputs to a run",
+    "Explain why a seed alone cannot reconstruct an experiment",
+    "Assign a new run identity when preprocessing or input versions change"
+  ],
+  "ai-7/25": [
+    "Follow the frozen plan while recording every eligible outcome",
+    "Report completed-case performance and coverage separately",
+    "Keep outages and deviations visible instead of assuming success"
+  ],
+  "ai-7/26": [
+    "Calculate summaries while retaining valid unusual observations",
+    "Investigate an anomaly using its source and trace",
+    "Separate a justified correction from an outcome-driven deletion"
+  ],
+  "ai-7/27": [
+    "Compare a frozen procedure across declared conditions",
+    "Report condition-specific gains and losses beside the aggregate",
+    "Avoid treating a condition difference as a proven cause"
+  ],
+  "ai-7/28": [
+    "Compare the observed result with the original expectation",
+    "Preserve a negative finding and its practical threshold",
+    "Narrow a failed claim without asserting no effect everywhere"
+  ],
+  "ai-7/29": [
+    "Label counts, denominators, units and plotting scales",
+    "Calculate the actual rate or percentage-point difference",
+    "Choose a figure that does not exaggerate the preferred result"
+  ],
+  "ai-7/30": [
+    "Describe design and computation so another reader can reconstruct them",
+    "Record units, grouping, splits, baselines and metric choices",
+    "Separate prespecified methods from later changes"
+  ],
+  "ai-7/31": [
+    "State observed estimates before interpreting them",
+    "Link each limitation to the claim it restricts",
+    "Avoid claiming unmeasured timing or classroom benefit"
+  ],
+  "ai-7/32": [
+    "Record a reviewer’s concern and the evidence needed to address it",
+    "Respond with changes, artifacts or a justified narrower claim",
+    "Keep failure evidence rather than removing a limitation"
+  ],
+  "ai-7/33": [
+    "Give an independent operator exact artifacts and split records",
+    "Diagnose a metric or version mismatch during replay",
+    "Distinguish computational reproduction from new-data replication"
+  ],
+  "ai-7/34": [
+    "Audit agreement between abstract, figures, raw outcomes and run records",
+    "Correct sample counts and missing-outcome denominators",
+    "Retain failed cases when presenting the manuscript"
+  ],
+  "ai-7/35": [
+    "Present the baseline, main result, failure and limitation",
+    "Distinguish a selected demonstration from the full study result",
+    "State when an audience question concerns an untested condition"
+  ],
+  "ai-7/36": [
+    "Defend the frozen question, comparison, methods and findings",
+    "Explain what replay and a limited or negative result establish",
+    "Propose a fresh bounded question tied to the recorded evidence gap"
+  ],
+  "ai-5/13": [
+    "Compare prompts on the same paired cases and rubric",
+    "Calculate overall and special-case results separately",
+    "Preserve a regression hidden by the total pass count"
+  ],
+  "ai-5/14": [
+    "Split a generated answer into separately checkable claims",
+    "Classify each claim as supported, contradicted or unsupported",
+    "Recalculate a stated quantity under the source’s assumptions"
+  ],
+  "ai-5/15": [
+    "Evaluate a generated image against explicit visual criteria",
+    "Check labels and meaning as well as object counts",
+    "Separate generation provenance from observed-event authenticity"
+  ],
+  "ai-5/16": [
+    "Trace evidence through transcription and later processing",
+    "Resolve a task using its declared authoritative record",
+    "Keep a source conflict separate from a claim about the original speech"
+  ],
+  "ai-5/17": [
+    "Filter a retrieval corpus by role and active status",
+    "Trace which records may enter the answer context",
+    "Explain why hiding a final citation cannot undo a restricted read"
+  ],
+  "ai-5/18": [
+    "Keep a rule and its linked exception together",
+    "Preserve document version and source locations for chunks",
+    "Answer a scoped question using the applicable exception"
+  ],
+  "ai-5/19": [
+    "Compute lexical matches and supplied vector similarities",
+    "Compare rankings using the same task and eligible records",
+    "Separate numerical similarity from relevance and source truth"
+  ],
+  "ai-5/20": [
+    "Calculate precision and recall at the stated cutoff",
+    "Identify relevant omissions in the judged eligible set",
+    "Name each metric’s denominator and coverage limit"
+  ],
+  "ai-5/21": [
+    "Link every answer claim to its available source evidence",
+    "Preserve conditions and exceptions in a capacity statement",
+    "Keep an unresolved status explicit rather than choosing a convenient value"
+  ],
+  "ai-5/22": [
+    "Check citation presence, link validity and claim support separately",
+    "Compute support and citation rates with stated denominators",
+    "Explain why a real link alone does not establish entailment"
+  ],
+  "ai-5/23": [
+    "Decide whether supplied evidence can answer the question",
+    "Ask a targeted question about a missing or ambiguous identifier",
+    "Abstain from a claim that would require guessing"
+  ],
+  "ai-5/24": [
+    "Apply the source version effective at the requested time",
+    "Preserve signed amendments and supersession links",
+    "Keep unresolved conflicts visible when no priority rule is supplied"
+  ],
+  "ai-5/25": [
+    "Treat retrieved instruction-shaped text as lower-authority data",
+    "Apply role and tool boundaries before restricted context or action",
+    "Explain why a high similarity score cannot grant permission"
+  ],
+  "ai-5/26": [
+    "Validate a tool request’s required types and permitted fields",
+    "Separate input failure from a valid request with no matching record",
+    "Keep not-found distinct from a measured zero value"
+  ],
+  "ai-5/27": [
+    "Track a corrected value within its declared session",
+    "Apply the stated session-ending retention rule",
+    "Ask for new-session input instead of silently reusing old context"
+  ],
+  "ai-5/28": [
+    "Apply the fictional source terms to a proposed use",
+    "Check audience, quotation length and attribution separately",
+    "Seek permission or revise use without inventing universal legal exceptions"
+  ],
+  "ai-5/29": [
+    "Compare group success rates using their own denominators",
+    "Calculate a percentage-point difference from the observed rates",
+    "Separate a descriptive disparity from a demonstrated cause"
+  ],
+  "ai-5/30": [
+    "Bind human review to the precise proposed action and version",
+    "Distinguish read-only report approval from permission to send it",
+    "Show the destination and content needed for a consequential-use review"
+  ],
+  "ai-5/31": [
+    "Calculate costs using the supplied input/output tariff",
+    "State timing boundaries and preserve resource units",
+    "Compare resource results alongside answer quality"
+  ],
+  "ai-5/32": [
+    "Evaluate answerable and unanswerable cases separately",
+    "Calculate correct-answer, appropriate-fallback and combined pass rates",
+    "Keep development and reserved evaluation roles distinct"
+  ],
+  "ai-5/33": [
+    "Define a role-appropriate corpus and credible deterministic baseline",
+    "Specify source-backed answers and a missing-evidence outcome",
+    "Keep restricted records outside student-facing context"
+  ],
+  "ai-5/34": [
+    "Trace request validation, evidence matching and output checks",
+    "Preserve a supported capacity of zero",
+    "Separate a well-formed draft from a source-supported answer"
+  ],
+  "ai-5/35": [
+    "Compare baseline and candidate on reserved cases",
+    "Apply the zero-unauthorised-action gate independently of average performance",
+    "Preserve revealed failures and obtain fresh evaluation after revision"
+  ],
+  "ai-5/36": [
+    "Present retrieval, support and fallback results with their denominators",
+    "Demonstrate a source-backed answer and a legitimate fallback",
+    "Limit claims to measured quality, permissions and resource evidence"
+  ]
+}
