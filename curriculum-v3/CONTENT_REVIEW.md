@@ -15,8 +15,8 @@ This is an editorial and technical review, not a classroom study establishing co
 
 ## Collections
 
-- `outputs/curriculum-reviewed/student-study-complete.zip`: 252 offline student editions, with lessons and workbook prompts.
-- `outputs/curriculum-reviewed/teacher-study-complete.zip`: 252 offline teacher preparation editions, including solutions.
+- `outputs/curriculum-reviewed/student-study-complete.zip`: 252 offline current student editions, with lessons and workbook prompts, plus 144 retained illustrated practice chapters.
+- `outputs/curriculum-reviewed/teacher-study-complete.zip`: 252 offline current teacher preparation editions, including solutions, plus 144 matching retained practice chapters.
 - Extract either archive and open `index.html`. Each chapter is self-contained; use its print button to print or save as PDF.
 - These enriched HTML study editions supplement the original reviewed Word/PDF collections in `outputs/curriculum-complete`. The Word/PDF collections retain their original reviewed bytes; the extra explanations are in the study editions and local portal.
 - `outputs/curriculum-reviewed/week-by-week-review.json` records the per-week evidence, source hashes and archive-file hashes.
@@ -288,3 +288,7 @@ This is an editorial and technical review, not a classroom study establishing co
 | 12 | 34 | Final project manuscript | Core explanation + glossary | Added / complete | 0 | Passed |
 | 12 | 35 | Presentation and challenge session | Core explanation + glossary | Added / complete | 0 | Passed |
 | 12 | 36 | Research defense and next questions | Core explanation + glossary | Added / complete | 0 | Passed |
+
+## Unified pathway and continuity
+
+The current portal presents one seven-level pathway. See [UNIFIED_COVERAGE.md](UNIFIED_COVERAGE.md) for the 144-topic editorial crosswalk, changed grade placement and retained practice. The latest study collections contain 792 audience chapters (504 current + 288 retained practice). Both audience indexes also passed desktop/mobile checks, bringing this additional layout run to 1,588 checks. Source preservation, offline images, archive hashes and internal links are checked by `scripts/verify-unified-coverage.py`.

@@ -7,7 +7,7 @@ import "./curriculum-v3.css";
 
 export const metadata: Metadata = {
   title: { default: "AI Academy", template: "%s | AI Academy" },
-  description: "AI Academy for students starting in Grade 6: lessons, practice and protected teacher guidance.",
+  description: "AI Academy: one seven-level pathway for Grades 6–12, with 252 weekly lessons, workbook practice and protected teacher guidance.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",

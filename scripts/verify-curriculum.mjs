@@ -7,7 +7,7 @@ const read = path => readFile(new URL(path, root));
 const data = JSON.parse(await read("lib/academy-data.json"));
 const review=JSON.parse(await read('lib/grade6-review.json'));
 for (const file of ["components/visual-lesson-book.tsx", "components/sensor-lab.tsx", "components/lesson-visual.tsx", "app/lesson-book.css", "PACKAGE_EDITION.txt"]) assert.ok((await stat(new URL(file, root))).size > 0, `Missing visual book file: ${file}`);
-assert.match((await read("app/learn/[role]/[level]/[week]/page.tsx")).toString(), /<VisualLessonBook/, "The week route must render the complete illustrated lesson book");
+assert.match((await read("app/learn/[role]/practice/[level]/[week]/page.tsx")).toString(), /<VisualLessonBook/, "Retained practice must render the complete illustrated lesson book");
 const manifest = JSON.parse(await read("lib/resource-manifest.json"));
 const keySource = (await read("lib/resource-key.ts")).toString();
 const keyMatch = keySource.match(/["']([A-Za-z0-9+/]{43}=)["']/);

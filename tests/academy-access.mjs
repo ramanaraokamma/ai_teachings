@@ -8,6 +8,7 @@ const manifest=JSON.parse(await readFile('lib/resource-manifest.json','utf8'));
 const data=JSON.parse(await readFile('lib/academy-data.json','utf8'));
 const plans=JSON.parse(await readFile('lib/topic-plans.json','utf8'));
 const review=JSON.parse(await readFile('lib/grade6-review.json','utf8'));
+const coverage=JSON.parse(await readFile('curriculum-v3/edition-coverage.json','utf8'));
 const teacherAnswerSupports=JSON.parse(await readFile('curriculum-v3/teacher-answer-support.json','utf8'));
 const secret=randomBytes(32).toString('hex');
 const results=[];
@@ -46,21 +47,21 @@ try {
   });
  }
  await check('Wrong passcode is rejected',async()=>{const r=await request('/api/access',null,{method:'POST',headers:{'content-type':'application/x-www-form-urlencoded'},body:'role=teacher&passcode=student1234'});assert.equal(r.status,303);assert.match(r.headers.get('location'),/incorrect/);assert.equal(r.headers.get('set-cookie'),null);});
- await check('Student cannot open teacher pages',async()=>{assert.equal((await request('/learn/teacher/ai-4/17',session('student'))).status,307);});
+ await check('Student cannot open teacher pages',async()=>{assert.equal((await request('/learn/teacher/practice/ai-4/17',session('student'))).status,307);});
  await check('Expired and tampered sessions are rejected',async()=>{for(const c of [session('student',1),session('teacher')+'bad'])assert.equal((await request('/learn/student',c)).status,307);});
  for(const level of data.levels) {
   await check(`${level.code} has 36 accessible weeks`,async()=>{
-   const r=await request(`/learn/student/${level.slug}`,session('student'));assert.equal(r.status,200);const html=(await r.text()).replace(/<!--.*?-->/gs,'');assert.ok(html.includes('Week 36'));assert.ok(html.includes(level.phases[0].name));
+   const r=await request(`/learn/student/${level.slug}`,session('student'));assert.equal(r.status,200);const html=(await r.text()).replace(/<!--.*?-->/gs,'');assert.ok(html.includes('36'));assert.equal((html.match(/class="v3-week-number"/g)||[]).length,36);assert.ok(html.includes('Seven-level pathway'));assert.doesNotMatch(html,/Curriculum 2.0|existing four-level edition/);
   });
  }
  await check('Student lesson contains full visuals and no teacher answers',async()=>{
-  const r=await request('/learn/student/ai-4/17?resource=guide',session('student'));assert.equal(r.status,200);const html=await r.text();assert.match(html,/instruction-visual/);assert.match(html,/Download editable/);assert.doesNotMatch(html,/Expected independent answer|Teacher-ready background/);assert.match(r.headers.get('cache-control'),/no-store/);
+  assert.equal((await request('/learn/student/practice/ai-4/17?resource=guide',session('student'))).status,404);const r=await request('/learn/student/practice/ai-4/17',session('student'));assert.equal(r.status,200);const html=await r.text();assert.match(html,/instruction-visual/);assert.match(html,/Download editable/);assert.doesNotMatch(html,/Expected independent answer|Teacher-ready background/);assert.match(r.headers.get('cache-control'),/no-store/);
  });
- await check('Teacher guide includes aligned reasoning',async()=>{const r=await request('/learn/teacher/ai-4/17',session('teacher'));assert.equal(r.status,200);assert.match(await r.text(),/Precision is 6/);});
- await check('Workbook offers response fields',async()=>{const r=await request('/learn/student/ai-3/8?resource=workbook',session('student'));assert.equal(r.status,200);assert.match(await r.text(),/<textarea/);});
+ await check('Teacher guide includes aligned reasoning',async()=>{const r=await request('/learn/teacher/practice/ai-4/17',session('teacher'));assert.equal(r.status,200);assert.match(await r.text(),/Precision is 6/);});
+ await check('Workbook offers response fields',async()=>{const r=await request('/learn/student/practice/ai-3/8?resource=workbook',session('student'));assert.equal(r.status,200);assert.match(await r.text(),/<textarea/);});
  await check('All 144 lesson books have individual diagrams, teaching panels, retained artwork and complete chapters',async()=>{
   for(const level of data.levels) for(const week of level.weeks) {
-   const r=await request(`/learn/student/${level.slug}/${week.number}`,session('student'));
+   const r=await request(`/learn/student/practice/${level.slug}/${week.number}`,session('student'));
    assert.equal(r.status,200,`${level.slug}/${week.number}`);
    const html=await r.text();
    const reviewId=`${level.slug}/${week.number}`;
@@ -90,7 +91,7 @@ try {
  await check('All 144 teacher guides and 144 workbook pages use the matching topic plan',async()=>{
   for(const level of data.levels)for(const week of level.weeks)for(const resource of ['guide','workbook']){
    const role=resource==='guide'?'teacher':'student';
-   const r=await request(`/learn/${role}/${level.slug}/${week.number}?resource=${resource}`,session(role));assert.equal(r.status,200);
+   const r=await request(`/learn/${role}/practice/${level.slug}/${week.number}?resource=${resource}`,session(role));assert.equal(r.status,200);
    const html=await r.text();assert.match(html,resource==='guide'?/topic-teacher-prompt/:/topic-workbook-prompt/);
    const reviewId=`${level.slug}/${week.number}`;
    assert.ok(html.includes(`data-transfer-id="${reviewId}"`));
@@ -102,7 +103,7 @@ try {
   }
  });
  await check('Sensor lesson explains measurement separately from fixed-rule decisions',async()=>{
-  const r=await request('/learn/student/ai-1/3',session('student'));
+  const r=await request('/learn/student/practice/ai-1/3',session('student'));
   const html=await r.text();
   assert.match(html,/data-native-diagram="sensor-matching"/);
   assert.match(html,/The sensor measures. The rule decides./);
@@ -111,7 +112,7 @@ try {
   await mkdir('outputs',{recursive:true});
   await writeFile('outputs/ai1-week03-rendered.html',html);
  });
- await check('Teacher guides contain a visual board plan',async()=>{const r=await request('/learn/teacher/ai-2/3',session('teacher'));const h=await r.text();assert.match(h,/teacher-visual-board/);assert.match(h,/data-native-diagram="mechanism"/);});
+ await check('Teacher guides contain a visual board plan',async()=>{const r=await request('/learn/teacher/practice/ai-2/3',session('teacher'));const h=await r.text();assert.match(h,/teacher-visual-board/);assert.match(h,/data-native-diagram="mechanism"/);});
  const studentImage=Object.entries(manifest).find(([,m])=>m.mime==='image/png'&&m.role==='student')[0];
  const teacherDoc=Object.entries(manifest).find(([,m])=>m.role==='teacher'&&m.filename)[0];
  const studentDoc=Object.entries(manifest).find(([,m])=>m.role==='student'&&m.filename)[0];
@@ -124,6 +125,19 @@ try {
  await check('Image optimizer cannot bypass access',async()=>{assert.equal((await request('/_vinext/image?url=/api/resource/'+studentImage+'&w=640&q=75')).status,404);});
  await check('Cross-origin sign-in is rejected',async()=>{const r=await request('/api/access',null,{method:'POST',headers:{origin:'https://other.test'}});assert.equal(r.status,403);});
  await check('Logout clears session cookie',async()=>{const r=await request('/api/logout',session('student'),{method:'POST'});assert.equal(r.status,303);assert.match(r.headers.get('set-cookie'),/Max-Age=0/i);});
+ await check('One latest pathway is shown in both dashboards and all seven level pages',async()=>{
+  for(const role of ['student','teacher']){
+   const h=await (await request(`/learn/${role}`,session(role))).text();assert.match(h,/252/);assert.match(h,/Grades 6–12/);assert.doesNotMatch(h,/Curriculum 2.0|Open Curriculum 3|existing four-level/);
+   for(let n=1;n<=7;n++){const r=await request(`/learn/${role}/ai-${n}`,session(role));assert.equal(r.status,200);const text=(await r.text()).replace(/<!--.*?-->/gs,'');assert.equal((text.match(/class="v3-week-number"/g)||[]).length,36);assert.ok(text.includes(`Grade ${n+5}`));}
+  }
+ });
+ await check('All 144 previous bookmarks map by topic with protected teacher views',async()=>{
+  for(const row of coverage)for(const role of ['student','teacher']){const resource=role==='teacher'?'guide':'lesson';const r=await request(`/learn/${role}/${row.legacy}?resource=${resource}`,session(role));assert.equal(r.status,307);const location=new URL(r.headers.get('location'),'https://academy.test');assert.equal(location.pathname+location.search,`/learn/${role}/curriculum/${row.destination}?resource=${resource}`);}
+  assert.equal((await request('/learn/student/ai-3/1?resource=guide',session('student'))).status,404);
+ });
+ await check('Latest chapters retain mapped practice and editable response fields',async()=>{
+  for(const destination of new Set(coverage.map(row=>row.destination))){const html=await (await request(`/learn/student/curriculum/${destination}`,session('student'))).text();for(const row of coverage.filter(r=>r.destination===destination))assert.ok(html.includes(`/learn/student/practice/${row.legacy}?resource=lesson`));assert.match(html,/<textarea/);assert.doesNotMatch(html,/data-teacher-solution=/);}
+ });
  const v3=JSON.parse(await readFile('curriculum-v3/releases.json','utf8'));
  await check('Curriculum 3 roadmap and chapters require a session',async()=>{
   for(const p of ['/learn/student/curriculum','/learn/teacher/curriculum','/learn/student/curriculum/ai-1/1'])assert.equal((await request(p)).status,307);
@@ -132,9 +146,9 @@ try {
  });
  await check('Curriculum 3 exposes only released weeks as lessons',async()=>{
   const html=(await (await request('/learn/student/curriculum',session('student'))).text()).replace(/<!--.*?-->/gs,'');
-  assert.ok(html.includes(`${Object.keys(v3).length} of 252 weekly packages released`));assert.equal((html.match(/class="v3-level"/g)||[]).length,7);
+  assert.ok(html.includes(`${Object.keys(v3).length} of 252 weeks ready to learn`));assert.equal((html.match(/class="v3-level"/g)||[]).length,7);
   assert.equal((html.match(/class="v3-status v3-planned"/g)||[]).length,252-Object.keys(v3).length);
-  if(Object.keys(v3).length===252){assert.match(html,/All seven levels have complete/);assert.ok(!html.includes('The remaining weeks are a proposed sequence'));}
+  if(Object.keys(v3).length===252){assert.match(html,/All seven levels include/);assert.ok(!html.includes('The remaining weeks are a proposed sequence'));}
   const progression=JSON.parse(await readFile('curriculum-v3/progression.json','utf8'));
   const planned=progression.levels.flatMap(level=>level.weeks.map((_,i)=>`${level.slug}/${i+1}`)).filter(id=>!v3[id]);
   const unavailable=[...new Set([planned[0],planned.at(-1)].filter(Boolean))].map(id=>`/learn/student/curriculum/${id}`);

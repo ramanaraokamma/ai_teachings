@@ -1,43 +1,31 @@
-> **Curriculum 3 update:** All seven levels, Grades 6–12, now have 36 weekly packages each: **252 lessons, workbooks and teacher guides**, with 756 Word files and 756 matching PDFs. All weeks are linked in the protected local portal. See [CURRICULUM3.md](CURRICULUM3.md) for scope, access and validation. Content preparation is complete; deployment is outside the current task.
+# AI Academy — unified Grades 6–12 pathway
 
-Complete offline collections: [student lessons, workbooks and diagrams](outputs/curriculum-complete/student-complete.zip) and [teacher guides](outputs/curriculum-complete/teacher-complete.zip). Both cover all 252 weeks. Teacher solutions remain in the teacher collection. Recreate these local archives with `node scripts/package-v3-complete.mjs`.
+AI Academy now presents one current curriculum: seven levels with 36 weeks each, covering **252 student lessons, 252 workbook missions and 252 teacher guides**, with 756 reviewed Word files and 756 matching PDFs. Student and teacher sign-in both open the same current seven-level map. Deployment is outside this content-preparation task.
 
-Reviewed study editions: [student collection](outputs/curriculum-reviewed/student-study-complete.zip) and [teacher preparation collection](outputs/curriculum-reviewed/teacher-study-complete.zip), covering all 252 weeks. These offline HTML editions add vocabulary-first reading, richer explanations, specific later-week targets and complete diagram traces. See the [content and presentation review](curriculum-v3/CONTENT_REVIEW.md) for every-week evidence and validation. The additions supplement the original Word/PDF files.
+The earlier four-level edition has been compared against the latest curriculum. All 144 earlier topics have an explicit current destination, and their complete illustrated lessons, visual activities, workbooks, teacher explanations and fresh transfer tasks are retained as optional practice alongside the relevant current lessons. Previous week bookmarks redirect by topic, preserving lesson/workbook/guide selection and access controls. The old level numbers must not be interpreted as equivalent current topics.
 
+See [the 144-topic coverage crosswalk](curriculum-v3/UNIFIED_COVERAGE.md) and [the 252-week content review](curriculum-v3/CONTENT_REVIEW.md). Several topics move to a later grade in the current progression; introductory retained cases remain available after a readiness check. The audit establishes source preservation and topic continuity, not proven classroom outcomes.
 
-# AI Academy — Grade 6 Entry Edition
+## Prepared collections
 
-The redesign reviews all 144 existing weeks across four levels, with prerequisite retrieval, fresh transfer assessments, optional hints and teacher-only solutions. Typical entry grades are 6–9; readiness determines placement. See [the week-by-week review](GRADE6_REVIEW.md). This is an extension and correction of the existing four-level curriculum, not the proposed seven-level replacement.
+- [Student study collection](outputs/curriculum-reviewed/student-study-complete.zip): 252 latest lesson/workbook editions plus 144 optional illustrated practice chapters.
+- [Teacher preparation collection](outputs/curriculum-reviewed/teacher-study-complete.zip): 252 latest guides plus 144 matching practice editions with teacher explanations.
+- [Core student Word/PDF collection](outputs/curriculum-complete/student-complete.zip) and [core teacher Word/PDF collection](outputs/curriculum-complete/teacher-complete.zip): original reviewed core downloads, unchanged.
 
-There are 258 authored vocabulary definitions, filling 288 empty student definition cells and their corresponding teacher meanings. The ML code labs retain Python indentation and include executable source examples. Use the portal print action for the current edition; original protected DOCX downloads are explicitly marked as the earlier edition.
+Extract a study archive and open `index.html`. Additional practice is linked from its current lesson and leads back to it. Every chapter contains its own images and works offline. Teacher solutions belong only in the separate teacher collection. New reading supports and presentation refinements are in the study editions and portal; they are not silently included in unchanged core Word/PDF files.
 
-Cloudflare Worker hosting, signed sessions and student/teacher permissions are retained. Runtime secrets are unchanged. The response edition header is `grade6-entry-2026-09-14`. `npm run build` now also works on macOS without Linux flock or GNU timeout.
-
-A protected learning portal containing the complete AI‑1 through AI‑4 curriculum.
+Recreate study collections with `node scripts/review-v3-content.mjs`, then verify continuity with `python3 scripts/verify-unified-coverage.py`. Recreate core archives with `node scripts/package-v3-complete.mjs`.
 
 ## What is included
 
-- AI‑1 Explorer, AI‑2 Thinker, AI‑3 Creator and AI‑4 ML Builder
-- 36 weeks per level, organized into six curriculum phases
-- 144 illustrated student lessons
-- 144 teacher guides
-- 144 aligned workbook missions
-- Student and Teacher role dashboards
-- Server-side passcode validation and signed, HTTP-only sessions
-- Teacher-only guide protection
-- Original story and vocabulary artwork, plus 144 topic-specific HTML/SVG teaching diagrams
-- 292 editable Word downloads: 144 student modules, 144 teacher guides and four workbooks
-- On-page response fields and print layouts (responses are cleared on navigation or reload)
-- Responsive desktop, tablet and mobile layouts
-- Complete continuous student lesson books with all chapters, worked reasoning and practice
-- Pixel grids, signal traces, fraction models, confusion matrices, context windows, proportional partitions, decision paths, code traces and learning curves selected for the actual weekly concept
-- A misconception discussion, worked-case panel and comparison practice in every lesson
-- AI-1 Week 3 sensor-matching diagrams and an interactive light-sensor / fixed-rule demonstration
-- A topic-specific diagram and teaching prompt in all 144 teacher guides; matching practice prompts in all 144 workbook missions
-- Larger text for younger learners, expandable illustrations, illustrated week cards, and complete chapter-based print styling
-- Build-time checks for all 144 visual plans, source curriculum coverage and all 292 downloads; missing media stops the build
-
-The original 292 DOCX files are retained unchanged. These refinements apply to the website and printable HTML. Generic raster stage/case cards are replaced in the main student reading flow; original instructional text is retained. The separately delivered offline collection contains 432 HTML resources (144 lessons, 144 guides, 144 workbook pages), including teacher answers, and must not be put in a public static folder.
+- Seven current levels: foundations; Python and data; machine learning; neural networks; generative systems; AI engineering; research.
+- Vocabulary before technical reading, worked cases, diagrams and text descriptions, coding examples, response space and independent transfer assessments.
+- 27 additional student explanations, 47 expanded teacher answers, and specific targets and complete evidence traces for 96 later weeks.
+- Teacher topic primers, board walkthroughs, timed two-session plans, misconceptions, support and fresh reassessment guidance.
+- Editable on-page answer fields with print support; responses clear when leaving or reloading the page.
+- 144 retained practice topics with original artwork, topic-specific visual models and teacher-only transfer solutions.
+- Server-side passcode checks, signed HTTP-only sessions, protected downloads and role-specific teacher access.
+- Responsive reading and print layouts, with source/hash audits and access tests.
 
 ## Access configuration
 
