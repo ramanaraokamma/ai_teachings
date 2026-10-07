@@ -3,8 +3,6 @@ import { ArrowLeft, ArrowRight, BookOpen, ClipboardCheck, GraduationCap, Image a
 import { notFound } from "next/navigation";
 
 import { ContentReader } from "@/components/content-reader";
-import { ReadinessCheck, TransferChallenge } from "@/components/grade6-learning";
-import { VisualLessonBook, TeacherVisualBoard, WorkbookTrace, lessonIdea } from "@/components/visual-lesson-book";
 import { PortalHeader } from "@/components/portal-header";
 import { PrintResource } from "@/components/print-resource";
 import { Badge } from "@/components/ui/badge";
