@@ -1,0 +1,282 @@
+{
+  "week": "ai-2/31",
+  "title": "Permissions and Human Review",
+  "grade": 7,
+  "project": "Transparent Book Recommender",
+  "goals": [
+    "Explain the mechanism and terminology of least privilege and tool scopes",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Least privilege and tool scopes",
+  "vocabulary": [
+    [
+      "Least privilege",
+      "Granting only the necessary authority"
+    ],
+    [
+      "Capability",
+      "A scoped permission to perform an operation"
+    ],
+    [
+      "Resource scope",
+      "The specific records an operation may address"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Tool token permits lookup(public-room). A proposed call writes teacher notes."
+      },
+      {
+        "type": "paragraph",
+        "text": "Both operation and resource exceed scope; deny before execution, regardless of generated confidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "Tool token permits lookup(public-room). A proposed call writes teacher notes. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: Both operation and resource exceed scope; deny before execution, regardless of generated confidence.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "Scope allows read inventory items A, B. Calls read A, read C, write B. Decide.",
+    "answer": "Teacher explanation: read A permitted; read C denied by resource scope; write B denied by operation scope.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "A generated plan cannot expand the token or actor scope."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/f0a2b916a6385a7bbdac3b53614c229fbc540b68f265e6a42e8bf2022470642d",
+        "alt": "INPUT stage for Permissions and Human Review",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/d511d562940a42e01d4d47f48c472e46f3891a9dbfa538fcefb57d4bb784d63f",
+        "alt": "PROCESS stage for Permissions and Human Review",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/10f9375809ad3a6cc70ab25582fe04d2ff6f9d35a997ebe9cdd77ed13082c808",
+        "alt": "OUTPUT stage for Permissions and Human Review",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "A reporting assistant may lookup public rooms but may not write records, send messages or read teacher notes. Check actor, operation and resource before executing a proposed call."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Least privilege and tool scopes \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "Tool token permits lookup(public-room). A proposed call writes teacher notes.",
+            "A reporting assistant may lookup public rooms but may not write records, send messages or read teacher notes. Check actor, operation and resource before executing a proposed call.",
+            "Both operation and resource exceed scope; deny before execution, regardless of generated confidence."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Apply the connected idea: Privacy and least privilege"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "roles = {\"student\": [\"read_summary\"],\n         \"teacher\": [\"read_summary\", \"read_review\"]}\ndef allowed(role, action):\n    return action in roles.get(role, [])\n\nprint(allowed(\"student\", \"read_summary\"))\nprint(allowed(\"student\", \"read_review\"))\nprint(allowed(\"unknown\", \"read_summary\"))"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow the evidence",
+        "columns": [
+          "Step or case",
+          "Evidence",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "Student",
+            "Read summary",
+            "No review notes"
+          ],
+          [
+            "Teacher",
+            "Read summary and review",
+            "Authorized purpose"
+          ],
+          [
+            "Unknown role",
+            "No listed permissions",
+            "Deny by default"
+          ]
+        ],
+        "caption": "Read each row from left to right and connect the evidence to the stated rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "The toy code prints True, False, False. It models a permission decision, not a complete security system. A real server must verify identity and enforce authorization on every protected request; hiding a button in a page is insufficient."
+      },
+      {
+        "type": "subheading",
+        "text": "Ask what each role actually needs"
+      },
+      {
+        "type": "paragraph",
+        "text": "Least privilege means giving each role only the actions needed for its purpose. Read the policy as a table: students may read the approved summary, while teachers may also read the necessary review. An unknown role gets no listed action. The small function checks this table; it does not establish who a visitor is. In a real application, the server must verify the session and apply the permission check whenever protected data is requested."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1f18213ba3d74c99072fa04ad7520b53eee0b2e9e845b0d8a61ccdda1b41f3f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fed8318cf337134a2c31a8d2c90831db67a27a43d3c6f85b25079c53ec37ff9a",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/75f964dbe29000347e518a59e2717387d7109bd1f947abdafa07e931a61cf754",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4d936b6648b81ac897fc99370c2788f8e0b135d8fc31cfd77afceee66a92128c",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

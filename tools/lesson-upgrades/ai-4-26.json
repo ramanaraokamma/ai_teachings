@@ -1,0 +1,53 @@
+{
+  "week": "ai-4/26",
+  "title": "Reproducible Experiments",
+  "outcome": "By the end, I can explain reproducible experiments using a traced example and a stated limitation.",
+  "scenario": "Record variation across declared seeds instead of selecting the prettiest run.",
+  "given": [
+    "Same fixed validation set of10 cases; declared runs seed 4=6 correct, seed 5=8, seed 6=7. All three are reported.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Keep run identities",
+      "icon": "code",
+      "detail": "Record seeds4, 5, 6 with 6/10, 8/10, 7/10."
+    },
+    {
+      "label": "Summarise variation",
+      "icon": "chart",
+      "detail": "Mean accuracy is 70%; range is 60% to80%."
+    },
+    {
+      "label": "Preserve context",
+      "icon": "book",
+      "detail": "Record data version, split, code, settings and seeds, not just the winning80%."
+    }
+  ],
+  "explanation": "Read the picture in order. Record data version, split, code, settings and seeds, not just the winning80%. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "The report deletes the 60% run.",
+    "prediction": "The remaining mean rises to75%, but the reported comparison becomes selectively incomplete.",
+    "reason": "Removing an unfavourable declared run changes the evidence rather than improving the method."
+  },
+  "student_task": "What should accompany the mean 70%? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "The three individual run results, seed list, 60–80% range and shared evaluation conditions, so variability is visible. Changed-case check: The remaining mean rises to75%, but the reported comparison becomes selectively incomplete. Removing an unfavourable declared run changes the evidence rather than improving the method.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Seeds help reproduction but do not necessarily remove hardware or library nondeterminism; report the actual environment.",
+  "review_note": "Reviewed Reproducible Experiments against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "All declared seeds",
+    "labels": [
+      "seed 4",
+      "seed 5",
+      "seed 6"
+    ],
+    "values": [
+      60,
+      80,
+      70
+    ],
+    "unit": "accuracy percent"
+  }
+}

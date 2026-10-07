@@ -1,0 +1,293 @@
+{
+  "week": "ai-1/18",
+  "title": "Confidence Is Not Correctness",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Distinguish a confidence claim from evidence that a prediction was correct",
+    "Compare recorded confidence claims with observed outcomes for a group",
+    "Explain why a score, a confident sentence and repeated agreement need different checks"
+  ],
+  "primary_topic": "Confidence and correctness",
+  "vocabulary": [
+    [
+      "Confidence claim",
+      "A statement or number expressing how strongly a prediction is supported according to a stated method"
+    ],
+    [
+      "Correctness",
+      "Whether a prediction agrees with an adequately established outcome for the task"
+    ],
+    [
+      "Probability estimate",
+      "A numerical estimate of how likely a specified event is"
+    ],
+    [
+      "Calibration",
+      "Agreement between probability estimates and observed frequencies across relevant groups of cases"
+    ],
+    [
+      "Score meaning",
+      "The definition explaining what a reported number measures"
+    ]
+  ],
+  "worked_example": {
+    "title": "Check individual cases without changing their scores",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Case and recorded claim",
+          "Observed outcome",
+          "Judgment"
+        ],
+        "rows": [
+          [
+            "A predicts far at 90 percent",
+            "Verified near",
+            "Incorrect despite high confidence"
+          ],
+          [
+            "B predicts near at 60 percent",
+            "Verified near",
+            "Correct despite lower confidence"
+          ],
+          [
+            "C predicts far at 90 percent",
+            "Outcome missing",
+            "Unassessed"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "A high-confidence error and a lower-confidence success can occur even when a probability method is useful. One error does not prove that all confidence estimates are worthless, and one success does not validate a method. Keep the original scores and investigate patterns across relevant cases."
+      },
+      {
+        "type": "paragraph",
+        "text": "Record the task, model version, event being assigned a probability, score definition and evidence used for checking. If outcomes are missing, report that count. Do not quietly remove difficult cases or change the confidence values after reading the answers. Adjustments belong to a new recorded method and need a fresh evaluation."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Judge cases using outcomes",
+    "prompt": "Use cases A, B and C from the lesson table. State which is correct, incorrect and unassessed. Explain why ordering them by confidence cannot replace checking their outcomes.",
+    "lines": 6,
+    "answer": "A is incorrect, B correct and C unassessed. The score is a prior claim; the observed category determines agreement for an assessable case. A larger claim does not supply a missing outcome or override a conflicting one."
+  },
+  "independent_case": {
+    "title": "Audit a different probability claim",
+    "task": "A fictional leaf sorter claims a 75 percent probability of correctness for each of eight chosen labels. Later evidence establishes six correct labels, one incorrect label and one missing outcome. A report says six out of eight proves perfect calibration and guarantees the next label. Repair the report, state the assessed and unassessed counts, and describe a better follow-up check.",
+    "answer": "Seven cases are assessed: six correct and one incorrect; one is unassessed. Report six out of seven assessed alongside the missing count, and preserve the original 75 percent claims. Six out of eight treats the missing outcome as known. The small incomplete group proves neither calibration nor the next label. Seek the missing outcome and evaluate the unchanged method on more relevant reserved cases.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "An 80 point score always means an 80 percent probability",
+      "Read the documented quantity before interpreting it."
+    ],
+    [
+      "An 80 percent method must succeed exactly eight times in every ten",
+      "A probability describes likelihood; small groups can vary."
+    ],
+    [
+      "A high-confidence error disproves all probabilities",
+      "Investigate many relevant cases while preserving individual errors."
+    ],
+    [
+      "A missing outcome can be counted as a failure to finish the fraction",
+      "Report assessed results and missing counts separately."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/cb5baf9e56061e4137befe7e032e767a776d7074e73527c1ae9c46ac3abe6304",
+        "alt": "Visual card for the input stage: input and model scores",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/23c87b5a803bdbc09384b33abc938781f533bdff2f3b4ce8c7c2f6cadadc3cb2",
+        "alt": "Visual card for the process stage: rank possible outputs",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4cde42de8cdf3b208d1968586b808eb4fd116f23b9f6b53df70b43bd98519b8c",
+        "alt": "Visual card for the output stage: predicted label plus confidence, later checked for correctness",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  input and model scores"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  rank possible outputs"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  predicted label plus confidence, later checked for correctness"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  A system can be very confident and still be wrong.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Confidence is model-relative strength, not a calibrated probability of truth unless validated. Distribution shift, bad labels, missing classes, or overfitting can produce high-confidence errors.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Claims and results are separate records",
+        "columns": [
+          "Before outcomes",
+          "After outcomes",
+          "What the group shows"
+        ],
+        "rows": [
+          [
+            "Ten claims of 80 percent",
+            "Eight predictions correct",
+            "8 out of 10 matched"
+          ],
+          [
+            "Ten claims of 80 percent",
+            "Five predictions correct",
+            "5 out of 10 matched"
+          ],
+          [
+            "One claim of 80 percent",
+            "Outcome not available",
+            "Correctness unknown"
+          ]
+        ],
+        "caption": "Here each percentage claims the probability that its chosen category will be correct. The two ten-case groups are fictional examples. A group comparison cannot identify an unknown individual outcome."
+      },
+      {
+        "type": "paragraph",
+        "text": "An 80 percent claim means an estimated chance of 80 out of 100, for the event that was named. Across many relevant cases carrying that claim, a well-calibrated method should be correct about that often. It does not promise exactly eight successes in every ten cases or tell us which cases will fail."
+      },
+      {
+        "type": "paragraph",
+        "text": "Eight correct out of ten agrees numerically with 80 percent in this small group. Five out of ten is lower. Both are observations worth reporting; neither small group alone establishes how dependable the method will be. Larger relevant checks, independent of model fitting and score adjustment, give a stronger basis for judging the claim."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fcfcd5913d61f60c134748a22b2c9a4cdd83d09156e4e63049d3ad0291761ef1",
+        "alt": "Comparison picture for 95% dog, actually fox: strong wrong output; confident error",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/dd27b237542ee5e63f8cb505766750ad11bc5c28a3f9ed2a42f3b293cfeb01b6",
+        "alt": "Comparison picture for 55% cat, actually cat: weak correct output; cautious correct",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/3e950c988d1da9935a875e2fee50821931bedbd92a0d57cb6dfc192270d27e99",
+        "alt": "Comparison picture for 50/50 tie: competing outputs; uncertain",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/6bf3c2fd157b6b3aae0e243286ab55a498acd76ab1dcd2fbaf80625bface0613",
+        "alt": "Comparison picture for Unknown animal: class absent; confidence may mislead",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 95% dog, actually fox  Clue: strong wrong output. Meaning: confident error."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 55% cat, actually cat  Clue: weak correct output. Meaning: cautious correct."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 50/50 tie  Clue: competing outputs. Meaning: uncertain."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Unknown animal  Clue: class absent. Meaning: confidence may mislead."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Avoid presenting a score as an objective certainty when its meaning has not been validated.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

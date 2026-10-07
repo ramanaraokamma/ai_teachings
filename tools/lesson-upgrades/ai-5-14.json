@@ -1,0 +1,38 @@
+{
+  "week": "ai-5/14",
+  "title": "Learning rate experiments",
+  "outcome": "By the end, I can explain learning rate experiments using a traced example and a stated limitation.",
+  "scenario": "Compare learning rates with identical starting loss and update counts.",
+  "given": [
+    "Loss J(a)=(a-4)\u00b2; gradient 2(a-4); start a =  = 0. Compare two updates at rates0.25 and 0.75.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Rate0.25",
+      "icon": "chart",
+      "detail": "First a = 2, loss 4; second a = 3, loss 1."
+    },
+    {
+      "label": "Rate0.75",
+      "icon": "chart",
+      "detail": "First a = 6, loss 4; second a = 3, loss 1."
+    },
+    {
+      "label": "Inspect paths",
+      "icon": "check",
+      "detail": "Both end at 3 and loss 1; larger rate crosses the optimum while smaller rate stays below it."
+    }
+  ],
+  "explanation": "Keep the starting parameter and update budget identical to compare rates fairly. Rate one-quarter approaches the optimum from below; rate three-quarters crosses it and comes back. Their final losses happen to match after two updates, despite different paths. Rate one repeatedly overshoots by the same distance, so using the correct gradient alone does not ensure improvement.",
+  "counterfactual": {
+    "change": "Add a rate 1 run from a = 0.",
+    "prediction": "Its path is 8 then 0, with loss 16 at both steps.",
+    "reason": "The update alternates across4 without reducing the initial loss."
+  },
+  "student_task": "What should a fair rate comparison hold fixed? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Use the same objective, start a =  = 0 and two-update budget; report full paths, not only the preferred run\u2019s endpoint. Changed-case check: Its path is 8 then 0, with loss 16 at both steps. The update alternates across4 without reducing the initial loss.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "These quadratic paths explain step size. Real nonconvex networks can have more complicated rate behaviour.",
+  "review_note": "Reviewed Learning rate experiments against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation."
+}

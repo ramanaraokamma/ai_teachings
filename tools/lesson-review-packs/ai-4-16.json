@@ -1,0 +1,262 @@
+{
+  "week": "ai-4/16",
+  "title": "Accuracy and Imbalance",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Explain why overall accuracy can hide failure on a less common class",
+    "Compare a training-majority baseline with class-specific results",
+    "Calculate an equal-class average and report its limits alongside the confusion matrix"
+  ],
+  "primary_topic": "Accuracy and class imbalance",
+  "vocabulary": [
+    [
+      "Class imbalance",
+      "Unequal numbers of examples in different classes"
+    ],
+    [
+      "Majority baseline",
+      "A rule that always predicts the most common training label"
+    ],
+    [
+      "Class-specific correct fraction",
+      "Correct predictions for one reference class divided by the number of examples of that class"
+    ],
+    [
+      "Balanced accuracy",
+      "The average of the class-specific correct fractions with equal weight for each class"
+    ]
+  ],
+  "worked_example": {
+    "title": "Read the denominators before the percentage",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Same overall score different class results",
+        "columns": [
+          "Summary",
+          "Always clear baseline",
+          "Frozen candidate"
+        ],
+        "rows": [
+          [
+            "Overall correct",
+            "16 of 20 is 80 percent",
+            "16 of 20 is 80 percent"
+          ],
+          [
+            "Reference clear correct",
+            "16 of 16 is 100 percent",
+            "12 of 16 is 75 percent"
+          ],
+          [
+            "Reference blocked correct",
+            "0 of 4 is 0 percent",
+            "4 of 4 is 100 percent"
+          ]
+        ],
+        "caption": "Overall accuracy weights classes by their number of evaluation examples. Balanced accuracy gives the two class-specific fractions equal weight."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Both methods score 80 percent. Explain which cases the baseline fails, how the candidate changes the errors, and why their balanced accuracies differ.",
+        "lines": 4
+      },
+      {
+        "type": "paragraph",
+        "text": "Balanced accuracy is a metric choice, not a repair to the classifier or a guarantee of safety. It gives classes equal influence in this summary; it does not encode the actual consequences of false alarms and missed cases. Four blocked evaluation examples are also too few for a strong general claim."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Compare both class fractions",
+    "prompt": "For the worked candidate [[12,4],[0,4]], give ordinary accuracy, both class-specific correct fractions, balanced accuracy, false positives and false negatives. Compare with the baseline.",
+    "answer": "Accuracy 16/20=80 percent. Clear fraction 12/16=75 percent; blocked fraction 4/4=100 percent; balanced accuracy (75+100)/2=87.5 percent. FP=4,FN=0. Baseline accuracy is also 80 percent but balanced accuracy is 50 percent with FP=0,FN=4.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Changed independent case",
+    "task": "Validation has90 healthy and10 spotted cases. Always-healthy predicts all healthy. Another model has TP7,FN3,FP8,TN82. Compare accuracy and spotted recall.",
+    "answer": "Always-healthy accuracy90% but spotted recall0%. The other model has89% accuracy and70% spotted recall. Its false positives are8. Decide using declared consequences and relevant metrics; accuracy alone hides missed spotted cases.",
+    "source": "new parallel transfer case"
+  },
+  "misconceptions": [
+    [
+      "High accuracy means both classes work well",
+      "A common class can dominate the overall count. Inspect each reference-class denominator and its errors."
+    ],
+    [
+      "Balanced accuracy fixes the model",
+      "It changes the summary weighting, not any prediction or underlying error."
+    ],
+    [
+      "An absent class has zero measured performance",
+      "Its fraction has a zero denominator and is unavailable. Report missing coverage rather than inventing a value."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/de49b6652a3861c86837a4f1540ac59ebf0da520b5a555a15f2628bb04809150",
+        "alt": "Week 16 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/37e493be8b36d3cd61c00551fbcef218f2c083de88e79487ac850ccc90deb6a0",
+        "alt": "Week 16 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/28d19463c54df5c41e8576bb6a0ceb00e9fd690f6dc9244dc8e240ccbcc475fb",
+        "alt": "Week 16 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Compare trivial accuracy with minority-class recall."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  Accuracy can be dominated by a common class and hide failure on a rare but important class."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Test set has 95 healthy and 5 diseased leaves. Always predicting healthy gives 95 \u00f7 100 = 95% accuracy.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "def scores(counts):\n    clear_n = sum(counts[0])\n    blocked_n = sum(counts[1])\n    if clear_n == 0 or blocked_n == 0:\n        raise ValueError(\"Need evaluation examples of both classes\")\n    correct = counts[0][0] + counts[1][1]\n    accuracy = correct / (clear_n + blocked_n)\n    clear_fraction = counts[0][0] / clear_n\n    blocked_fraction = counts[1][1] / blocked_n\n    balanced = (clear_fraction + blocked_fraction) / 2\n    return accuracy, balanced\n\nbaseline = [[16, 0], [4, 0]]\ncandidate = [[12, 4], [0, 4]]\nfor name, counts in [(\"baseline\", baseline), (\"candidate\", candidate)]:\n    accuracy, balanced = scores(counts)\n    print(name, round(100 * accuracy, 1), round(100 * balanced, 1))"
+      },
+      {
+        "type": "paragraph",
+        "text": "The output is baseline 80.0 50.0, then candidate 80.0 87.5. In each output line the first percentage is ordinary accuracy and the second is balanced accuracy. For the candidate, the clear-class correct fraction is 12/16=75 percent and the blocked-class fraction is 4/4=100 percent. Their equal average is 87.5 percent."
+      },
+      {
+        "type": "paragraph",
+        "text": "For the baseline, those fractions are 16/16=100 percent and 0/4=0 percent, averaging 50 percent. The code assumes a two-by-two table of nonnegative integer counts in the stated order. It stops when either reference class is absent. Then report the observed counts and the unavailable class result; do not invent a denominator or silently substitute zero."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 16 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 16 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 16 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 16 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

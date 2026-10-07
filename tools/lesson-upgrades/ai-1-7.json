@@ -1,0 +1,43 @@
+{
+  "week": "ai-1/7",
+  "title": "Categories and Labels",
+  "outcome": "By the end, I can apply a shared labelling policy consistently, including missing information.",
+  "scenario": "A fictional craft club labels cardboard-order cards ready, review or revise.",
+  "given": [
+    "Allowed quantity: whole number 1–4. Required colour: red or blue.",
+    "If any known field fails, revise; otherwise if a required field is blank, review; otherwise ready. Cards A=(4,red), B=(5,blank), C=(2,blank)."
+  ],
+  "steps": [
+    {
+      "label": "Read policy",
+      "icon": "rule",
+      "detail": "Check known invalid fields before checking missing ones."
+    },
+    {
+      "label": "Card A",
+      "icon": "check",
+      "detail": "4 is allowed and red is allowed: ready."
+    },
+    {
+      "label": "Card B",
+      "icon": "check",
+      "detail": "5 is outside 1–4: revise, even though colour is missing."
+    },
+    {
+      "label": "Card C",
+      "icon": "question",
+      "detail": "2 is valid but colour is blank: review."
+    }
+  ],
+  "explanation": "Operational labels specify what a word means for this task. Two labellers using the same priority should agree on these cards. Review describes missing evidence, not a hidden assumption that the card is wrong. Revise is supported by a known failure.",
+  "counterfactual": {
+    "change": "Change B’s quantity from 5 to 4; leave colour blank.",
+    "prediction": "B becomes review.",
+    "reason": "The known failure is removed, but a required field is still missing."
+  },
+  "student_task": "Explain why B originally was revise rather than review, then label its changed version.",
+  "teacher_answer": "Quantity 5 violates the allowed range and failure has priority. With quantity 4 and missing colour, B is review.",
+  "project_evidence": "Write a sorter label guide with examples of complete, invalid and unresolved inputs before comparing labels.",
+  "limits": "Agreement between labellers does not prove this policy is suitable for every school or that labels are objective truths.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice."
+}

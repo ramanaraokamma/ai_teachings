@@ -1,0 +1,43 @@
+{
+  "week": "ai-2/26",
+  "title": "Image and Voice Pipelines",
+  "outcome": "By the end, I can trace where speech information changes and resolve a declared-authority conflict.",
+  "scenario": "A fictional librarian dictates a shelf note that passes through transcription and catalogue lookup.",
+  "given": [
+    "Teacher-supplied ground truth audio phrase is “shelf fourteen”. Transcript says “shelf forty”.",
+    "A current signed inventory is declared authoritative and lists the requested book on shelf 14. The original audio recording remains available."
+  ],
+  "steps": [
+    {
+      "label": "Audio input",
+      "icon": "sensor",
+      "detail": "Known phrase names fourteen, not forty."
+    },
+    {
+      "label": "Transcription",
+      "icon": "model",
+      "detail": "Text output changes the shelf number to forty."
+    },
+    {
+      "label": "Cross-check",
+      "icon": "book",
+      "detail": "The authoritative inventory gives shelf 14."
+    },
+    {
+      "label": "Review and correct",
+      "icon": "person",
+      "detail": "Replay the audio, preserve the faulty transcript and use confirmed shelf 14."
+    }
+  ],
+  "explanation": "A correct later lookup cannot repair an earlier wrong input by magic. Locate the first difference between known audio and transcript, then compare the stated source authority. Keeping both records makes the correction auditable. A confident spoken answer for shelf 40 would remain wrong despite fluent synthesis.",
+  "counterfactual": {
+    "change": "Remove access to the audio, while keeping the authoritative inventory.",
+    "prediction": "Shelf 14 remains supported for the lookup, but transcription accuracy cannot be replay-checked.",
+    "reason": "The inventory resolves the shelf task; it does not recreate unavailable audio."
+  },
+  "student_task": "Which stage first fails, and why should the faulty transcript not be silently overwritten?",
+  "teacher_answer": "Transcription first fails. Preserve it to diagnose the confusion and distinguish correction from the original model output.",
+  "project_evidence": "For voice-driven recommendations, confirm important recognised fields before searching or acting and retain source provenance.",
+  "limits": "Declared authority resolves this task’s source choice; it does not make every inventory entry universally accurate.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment."
+}

@@ -1,0 +1,299 @@
+{
+  "week": "ai-2/12",
+  "title": "Accuracy as a Fraction",
+  "grade": 7,
+  "project": "Transparent Book Recommender",
+  "goals": [
+    "Explain why overall accuracy can hide failure on a less common class",
+    "Compare a training-majority baseline with class-specific results",
+    "Calculate an equal-class average and report its limits alongside the confusion matrix"
+  ],
+  "primary_topic": "Accuracy and class imbalance",
+  "vocabulary": [
+    [
+      "Class imbalance",
+      "Unequal numbers of examples in different classes"
+    ],
+    [
+      "Majority baseline",
+      "A rule that always predicts the most common training label"
+    ],
+    [
+      "Class-specific correct fraction",
+      "Correct predictions for one reference class divided by the number of examples of that class"
+    ],
+    [
+      "Balanced accuracy",
+      "The average of the class-specific correct fractions with equal weight for each class"
+    ]
+  ],
+  "worked_example": {
+    "title": "Read the denominators before the percentage",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Same overall score different class results",
+        "columns": [
+          "Summary",
+          "Always clear baseline",
+          "Frozen candidate"
+        ],
+        "rows": [
+          [
+            "Overall correct",
+            "16 of 20 is 80 percent",
+            "16 of 20 is 80 percent"
+          ],
+          [
+            "Reference clear correct",
+            "16 of 16 is 100 percent",
+            "12 of 16 is 75 percent"
+          ],
+          [
+            "Reference blocked correct",
+            "0 of 4 is 0 percent",
+            "4 of 4 is 100 percent"
+          ]
+        ],
+        "caption": "Overall accuracy weights classes by their number of evaluation examples. Balanced accuracy gives the two class-specific fractions equal weight."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Both methods score 80 percent. Explain which cases the baseline fails, how the candidate changes the errors, and why their balanced accuracies differ.",
+        "lines": 4
+      },
+      {
+        "type": "paragraph",
+        "text": "Balanced accuracy is a metric choice, not a repair to the classifier or a guarantee of safety. It gives classes equal influence in this summary; it does not encode the actual consequences of false alarms and missed cases. Four blocked evaluation examples are also too few for a strong general claim."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Compare both class fractions",
+    "prompt": "For the worked candidate [[12,4],[0,4]], give ordinary accuracy, both class-specific correct fractions, balanced accuracy, false positives and false negatives. Compare with the baseline.",
+    "answer": "Accuracy 16/20=80 percent. Clear fraction 12/16=75 percent; blocked fraction 4/4=100 percent; balanced accuracy (75+100)/2=87.5 percent. FP=4,FN=0. Baseline accuracy is also 80 percent but balanced accuracy is 50 percent with FP=0,FN=4.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Assess a new comparison independently",
+    "task": "New training labels have a clear majority. A separate evaluation has 18 clear and 2 blocked records. The always-clear baseline is [[18,0],[2,0]] and candidate is [[15,3],[1,1]], with reference rows and clear then blocked on both axes. Calculate ordinary accuracy, both class fractions and balanced accuracy for each. Give candidate FP and FN, then explain why the metrics do not choose an automatic winner.",
+    "answer": "Baseline accuracy 18/20=90 percent; class fractions 100 percent and 0 percent; balanced accuracy 50 percent. Candidate accuracy 16/20=80 percent; clear fraction 15/18=5/6 about 83.3 percent, blocked fraction 1/2=50 percent; balanced accuracy (5/6+1/2)/2=2/3 about 66.7 percent. Candidate FP=3,FN=1. It finds one blocked case but adds three false alarms; task consequences and the small sample matter.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "High accuracy means both classes work well",
+      "A common class can dominate the overall count. Inspect each reference-class denominator and its errors."
+    ],
+    [
+      "Balanced accuracy fixes the model",
+      "It changes the summary weighting, not any prediction or underlying error."
+    ],
+    [
+      "An absent class has zero measured performance",
+      "Its fraction has a zero denominator and is unavailable. Report missing coverage rather than inventing a value."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/14a089ad962a77dd51786f2deabad37c471a6c12e2a6f79c38b821aa2a3efd7c",
+        "alt": "INPUT stage for Accuracy as a Fraction",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/41f56558acea609f3e1555b15e83aa6774dd0ab3c5a94f6c35d53521d13079fd",
+        "alt": "PROCESS stage for Accuracy as a Fraction",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/865a3e354b06796021c8f1c4ca4750f8ca3acf4e343764973e47e4a6624625a5",
+        "alt": "OUTPUT stage for Accuracy as a Fraction",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "def scores(counts):\n    clear_n = sum(counts[0])\n    blocked_n = sum(counts[1])\n    if clear_n == 0 or blocked_n == 0:\n        raise ValueError(\"Need evaluation examples of both classes\")\n    correct = counts[0][0] + counts[1][1]\n    accuracy = correct / (clear_n + blocked_n)\n    clear_fraction = counts[0][0] / clear_n\n    blocked_fraction = counts[1][1] / blocked_n\n    balanced = (clear_fraction + blocked_fraction) / 2\n    return accuracy, balanced\n\nbaseline = [[16, 0], [4, 0]]\ncandidate = [[12, 4], [0, 4]]\nfor name, counts in [(\"baseline\", baseline), (\"candidate\", candidate)]:\n    accuracy, balanced = scores(counts)\n    print(name, round(100 * accuracy, 1), round(100 * balanced, 1))"
+      },
+      {
+        "type": "paragraph",
+        "text": "The output is baseline 80.0 50.0, then candidate 80.0 87.5. In each output line the first percentage is ordinary accuracy and the second is balanced accuracy. For the candidate, the clear-class correct fraction is 12/16=75 percent and the blocked-class fraction is 4/4=100 percent. Their equal average is 87.5 percent."
+      },
+      {
+        "type": "paragraph",
+        "text": "For the baseline, those fractions are 16/16=100 percent and 0/4=0 percent, averaging 50 percent. The code assumes a two-by-two table of nonnegative integer counts in the stated order. It stops when either reference class is absent. Then report the observed counts and the unavailable class result; do not invent a denominator or silently substitute zero."
+      },
+      {
+        "type": "subheading",
+        "text": "Apply the connected idea: Summaries with counts and proportions"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "responses = [\"Yes\", \"No\", \"Yes\", \"Unknown\", \"Yes\"]\nyes = 0\nknown = 0\nfor response in responses:\n    if response == \"Yes\" or response == \"No\":\n        known = known + 1\n        if response == \"Yes\":\n            yes = yes + 1\nif known > 0:\n    print(yes / known)\nelse:\n    print(\"No known responses\")"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow the evidence",
+        "columns": [
+          "Step or case",
+          "Evidence",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "Yes",
+            "3",
+            "Numerator"
+          ],
+          [
+            "Yes or No",
+            "4",
+            "Known denominator"
+          ],
+          [
+            "All supplied",
+            "5",
+            "Includes one unknown"
+          ]
+        ],
+        "caption": "Read each row from left to right and connect the evidence to the stated rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "The printed proportion is 0.75, or 75 percent, among four known responses. Yes among all five supplied responses is 0.6, or 60 percent. Both calculations are correct when labelled; they describe different denominators. Unknown must not silently become No."
+      },
+      {
+        "type": "subheading",
+        "text": "Name the group behind a percentage"
+      },
+      {
+        "type": "paragraph",
+        "text": "Count the responses before dividing. In the example, three say Yes, one says No and one is Unknown. There are four known responses, so Yes among known responses is 3 divided by 4, or 75 percent. Yes among all five supplied responses is 3 divided by 5, or 60 percent. Neither number needs to be hidden. Label the question each answers, and keep the unknown count visible."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1f18213ba3d74c99072fa04ad7520b53eee0b2e9e845b0d8a61ccdda1b41f3f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fed8318cf337134a2c31a8d2c90831db67a27a43d3c6f85b25079c53ec37ff9a",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/75f964dbe29000347e518a59e2717387d7109bd1f947abdafa07e931a61cf754",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4d936b6648b81ac897fc99370c2788f8e0b135d8fc31cfd77afceee66a92128c",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

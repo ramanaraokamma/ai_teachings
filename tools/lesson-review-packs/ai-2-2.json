@@ -1,0 +1,274 @@
+{
+  "week": "ai-2/2",
+  "title": "Decompose a Goal",
+  "grade": 7,
+  "project": "Transparent Book Recommender",
+  "goals": [
+    "Distinguish a function definition from a function call",
+    "Match positional arguments to parameters in order",
+    "Reuse one function and test that it uses the supplied values"
+  ],
+  "primary_topic": "Functions and arguments",
+  "vocabulary": [
+    [
+      "Function",
+      "A named block of reusable instructions that runs when called"
+    ],
+    [
+      "Definition",
+      "Code that creates a function and specifies its body"
+    ],
+    [
+      "Call",
+      "An instruction that runs a function with supplied arguments"
+    ],
+    [
+      "Parameter",
+      "A name in a function definition that receives an argument"
+    ],
+    [
+      "Argument",
+      "A value supplied when calling a function"
+    ]
+  ],
+  "worked_example": {
+    "title": "Trace the call before running it",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Execution event",
+          "What happens"
+        ],
+        "rows": [
+          [
+            "Execute the definition",
+            "Create the function; no output yet"
+          ],
+          [
+            "Call with 12 and 4",
+            "Match parameters; subtract; print 8"
+          ],
+          [
+            "Call with 10 and 7",
+            "Match new values; subtract; print 3"
+          ],
+          [
+            "After the second call",
+            "Continue with the next statement"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "In show_remaining(12, 4), 12 and 4 are arguments; capacity and used are parameters. Positional arguments match from left to right. show_remaining(4, 12) produces -8, showing why order matters; it also violates our written input contract. Use a fresh file with the definition before its calls."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Predict the output of show_remaining(9, 9) followed by show_remaining(9, 0). Name the parameter receiving each argument. What would be printed if both calls were removed?",
+        "lines": 5
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Follow the execution order",
+    "prompt": "Using the correct definition, predict show_remaining(8, 3), show_remaining(8, 8) and show_remaining(8, 0) in that order. Explain what happens if the file contains only the definition.",
+    "answer": "The calls print 5, 0 and 8 on separate lines. A definition alone creates the function but prints nothing because its body has not been called.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Create a new function independently",
+    "task": "Each sealed box contains 6 counters. Define show_stock(boxes, loose) to print the total counters using its two parameters. Assume nonnegative integer arguments. Call it with (3, 2), (0, 2) and (3, 0). Predict each output and explain why show_stock(2, 3) is a different case.",
+    "answer": "The body prints boxes * 6 + loose. Outputs are 20, 2 and 18. show_stock(2, 3) gives 15 because boxes and loose have different roles. Define once and use three calls; do not hard-code one answer.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Writing def runs the body immediately",
+      "The definition creates the function; a call runs its body."
+    ],
+    [
+      "Arguments and parameters are interchangeable labels",
+      "Parameters are names in the definition; arguments supply values at a call."
+    ],
+    [
+      "Swapping arguments never matters",
+      "Different parameter roles can give different results when values are swapped."
+    ],
+    [
+      "A correct first example proves the function is reusable",
+      "Fixed numbers can match one case while ignoring later arguments."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/f8778bfa5cc420c3c701eb316e2894b315ec426bffa057e7f7b38e8cf8715df1",
+        "alt": "INPUT stage for Decompose a Goal",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/3c56fd373757646a05af69a641a19f969316dc4ea15e6715f6a1101689d369c4",
+        "alt": "PROCESS stage for Decompose a Goal",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2edc198bea98c513b42f3d1d392c84cd2005f949a477e4ce067784aa6b5cbf29",
+        "alt": "OUTPUT stage for Decompose a Goal",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "def show_remaining(capacity, used):\n    remaining = capacity - used\n    print(remaining)\n\nshow_remaining(12, 4)\nshow_remaining(10, 7)"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Arguments matched in order",
+        "columns": [
+          "Call",
+          "Parameter values",
+          "Printed output"
+        ],
+        "rows": [
+          [
+            "show_remaining(12, 4)",
+            "capacity 12; used 4",
+            "8"
+          ],
+          [
+            "show_remaining(10, 7)",
+            "capacity 10; used 7",
+            "3"
+          ]
+        ],
+        "caption": "Each call runs the same body with the values supplied for that call."
+      },
+      {
+        "type": "paragraph",
+        "text": "def introduces the definition. The function name is followed by parameter names in parentheses and a colon. Four-space indentation marks the body. Executing the definition creates the function but does not run its body. The two unindented calls then run it, producing 8 and 3 on separate lines. A blank line helps readability; indentation determines the block."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1f18213ba3d74c99072fa04ad7520b53eee0b2e9e845b0d8a61ccdda1b41f3f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fed8318cf337134a2c31a8d2c90831db67a27a43d3c6f85b25079c53ec37ff9a",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/75f964dbe29000347e518a59e2717387d7109bd1f947abdafa07e931a61cf754",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4d936b6648b81ac897fc99370c2788f8e0b135d8fc31cfd77afceee66a92128c",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

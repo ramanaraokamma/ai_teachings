@@ -1,0 +1,298 @@
+{
+  "week": "ai-1/31",
+  "title": "Design the Decision Process",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Design a decision process that covers valid, invalid and no-match requests",
+    "Trace changing state and explain why the search stops",
+    "Preserve both compatibility conditions and the agreed first-match rule"
+  ],
+  "primary_topic": "Designing a complete decision process",
+  "vocabulary": [
+    [
+      "Validation",
+      "Checking an input against the agreed rules before using it"
+    ],
+    [
+      "Branch",
+      "A path chosen according to a condition"
+    ],
+    [
+      "Candidate",
+      "An option currently being checked"
+    ],
+    [
+      "State",
+      "Information that records the process\u2019s current position or values"
+    ],
+    [
+      "Termination",
+      "Reaching a point where the process stops"
+    ]
+  ],
+  "worked_example": {
+    "title": "Trace a request before trusting the design",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Stage for 9 minutes and Quiet required No",
+          "Evidence",
+          "Next state or output"
+        ],
+        "rows": [
+          [
+            "Validate",
+            "9 is a whole number in range; No is valid",
+            "Current candidate B1"
+          ],
+          [
+            "Check B1",
+            "10 minutes is more than 9",
+            "Move to B2"
+          ],
+          [
+            "Check B2",
+            "8 is no more than 9; quiet is not required",
+            "Suggest B2 and stop"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "The current candidate changes from B1 to B2. The request values stay the same. After B2 passes, the process stops: it does not replace B2 with a later fitting row. This early stop preserves the first-match rule and gives the same required suggestion as the manual baseline, which marked every row before selecting the first fit."
+      },
+      {
+        "type": "paragraph",
+        "text": "Termination needs a reason. There are only four rows, each failed check moves to the next row, and no row is revisited. A valid request therefore examines at most four candidates. A success can stop sooner. Invalid input stops before the search. Merely drawing an arrow around a loop is not enough; the state must make progress toward an end."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Track the current candidate",
+    "prompt": "Trace 9 minutes with Quiet required No. Record the current candidate, time result, quiet condition and next step until the process stops. Explain why the request values should not change as the candidate advances.",
+    "lines": 6,
+    "answer": "B1 fails time because 10 is greater than 9; quiet is unrestricted. Advance to B2. B2 passes time because 8 is no more than 9 and quiet is not required, so suggest B2 and stop. Candidate state changes to search the catalogue; changing the request values would solve a different task."
+  },
+  "independent_case": {
+    "title": "Design a complete room decision process",
+    "task": "A new paper catalogue lists C1 first, capacity 4, quiet Yes; C2 second, capacity 8, quiet No. Valid requests give a whole group size from 1 to 10 and Quiet required Yes or No. A room fits if capacity is at least group size and the quiet condition is met; choose the first fit. Write a complete process with validation, search, state change and stopping rules. Trace 6 people No and explain the outcome for a blank quiet field. No booking takes place.",
+    "answer": "Validate group size and Yes or No; request clarification and stop if invalid. Start C1; check capacity and quiet. If both pass, suggest and stop; otherwise advance to C2. If C2 also fails, report no match and stop. For 6 No, C1 fails capacity, C2 passes capacity with quiet unrestricted, so suggest C2. Blank quiet requires clarification before searching. Each failed row advances, so at most two candidates are checked.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "One failed row proves no match",
+      "Later rows may fit; continue until a fit or catalogue exhaustion."
+    ],
+    [
+      "Passing either condition is sufficient",
+      "The time and quiet conditions must both hold."
+    ],
+    [
+      "Any compatible answer satisfies the task",
+      "The first-in-catalogue tie rule is also a requirement."
+    ],
+    [
+      "A loop stops because it should",
+      "Show a state change that advances toward a finite end."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/90c21df06dabbfcf96aa62700a1f8393b12e046bedabe9590589e631afc12096",
+        "alt": "Visual card for the input stage: approved input fields",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b23d73cc4c5126b87539425623c7e56f7f4936f4b455de208f887ff462f9f66d",
+        "alt": "Visual card for the process stage: smallest rule or learned decision flow with visible branches",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fbdf35e6c536ddcc0cf4d7b350fac94585cf0c78882fe30393d904a3f02c1778",
+        "alt": "Visual card for the output stage: suggested bin, not sure, and reason",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  approved input fields"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  smallest rule or learned decision flow with visible branches"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  suggested bin, not sure, and reason"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  Rules or learned patterns must connect inputs to outputs transparently.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  A decision process operationalizes the interface contract. Simplicity improves testability and explanation, but oversimplification can erase relevant distinctions. Learned components need explicit data, threshold, and fallback documentation.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Four paths through the recommender",
+        "columns": [
+          "Condition reached",
+          "Next action",
+          "Where the path ends"
+        ],
+        "rows": [
+          [
+            "Input missing or invalid",
+            "Ask for corrected input",
+            "Stop this run"
+          ],
+          [
+            "Candidate fails a check",
+            "Move to the next row",
+            "Continue search"
+          ],
+          [
+            "Candidate passes both",
+            "Suggest it with a reason",
+            "Stop this run"
+          ],
+          [
+            "All rows checked and failed",
+            "Report no match",
+            "Stop this run"
+          ]
+        ],
+        "caption": "Failing one candidate continues the search. No match is justified only after the valid request has no fitting candidate."
+      },
+      {
+        "type": "paragraph",
+        "text": "Begin by checking the request. If minutes are missing, outside 0 to 30 or not a whole number, ask for a whole number in that range. If the quiet field is not Yes or No, ask for one of those values. State the fields needing correction and stop this run. When a corrected request arrives, validate it as a new run rather than continuing with old candidate state."
+      },
+      {
+        "type": "paragraph",
+        "text": "For a valid request, start at B1. Check time and the quiet condition for the current candidate. If both pass, output that candidate and stop. If either fails, move forward exactly one row. After B4 fails, there is no next row, so output no match and stop. Never jump back to B1 within the same search."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/d664748daf1ec2a1611072663a5df223c5ca9f0fcb8ff795db761ec8493a9822",
+        "alt": "Comparison picture for Picture-rule baseline: direct visible branches; easy to inspect",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/f5865d978c8aee3e9091cf2229aa7ae93f3a9e2c17630fbddc2fd779ad6cdd95",
+        "alt": "Comparison picture for Learned classifier: patterns from examples; needs data evidence",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/9f7fbc194adbb1d5928f3840ea849f1eb3680442514d69231265a740a3437fc3",
+        "alt": "Comparison picture for Extra unused field: never changes path; remove",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/f49a817cf414785daf0fb8ddad6834e1ee93629c16e916f71adf5540df6d9add",
+        "alt": "Comparison picture for No fallback: forces ambiguous label; add review",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Picture-rule baseline  Clue: direct visible branches. Meaning: easy to inspect."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Learned classifier  Clue: patterns from examples. Meaning: needs data evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Extra unused field  Clue: never changes path. Meaning: remove."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 No fallback  Clue: forces ambiguous label. Meaning: add review."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Transparent does not mean correct; the flow still needs testing.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

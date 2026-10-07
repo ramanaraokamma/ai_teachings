@@ -1,0 +1,43 @@
+{
+  "week": "ai-3/8",
+  "title": "Structured Output and Schemas",
+  "outcome": "By the end, I can validate structured output in layers: syntax, schema and source meaning.",
+  "scenario": "A fictional Study Buddy returns a machine-readable book fact.",
+  "given": [
+    "Schema: exactly title text, pages integer, source_id text. Approved record R: River Notes, 64 pages.",
+    "X={\"title\":\"River Notes\",\"pages\":64,\"source_id\":\"R\"}; Y uses pages:\"64\"; Z uses pages:46 with otherwise identical fields."
+  ],
+  "steps": [
+    {
+      "label": "Parse",
+      "icon": "code",
+      "detail": "Each shown object is valid JSON syntax."
+    },
+    {
+      "label": "Schema check",
+      "icon": "shield",
+      "detail": "Y fails because its pages value is text, not an integer."
+    },
+    {
+      "label": "Meaning check",
+      "icon": "book",
+      "detail": "Z fits field types but contradicts R’s page count."
+    },
+    {
+      "label": "Accept X",
+      "icon": "output",
+      "detail": "X passes syntax, declared schema and source comparison."
+    }
+  ],
+  "explanation": "Parsing establishes that text forms a structured object. Schema checks establish required fields and types. Semantic validation compares their meaning with the approved source. These are different layers: a parseable, well-shaped object can still contain a false fact. Report the first failing layer without treating format success as factual success.",
+  "counterfactual": {
+    "change": "Add an extra field \"rating\":5 to X under the exactly-fields schema.",
+    "prediction": "The changed object fails schema despite keeping the correct page count.",
+    "reason": "Exactly means additional fields are not allowed in this contract."
+  },
+  "student_task": "Which object demonstrates that valid JSON and valid types are insufficient for truth?",
+  "teacher_answer": "Z: its pages is an integer and syntax is valid, but 46 contradicts approved 64.",
+  "project_evidence": "Validate Study Buddy outputs before another program consumes them; retain source IDs and separate syntax/type/support failures.",
+  "limits": "Source agreement does not establish that the approved catalogue itself is correct or complete.",
+  "review_note": "Individually designed fictional worked case, distinct from the reserved assessment. Toy model simplifications, arithmetic and source authority reviewed explicitly."
+}

@@ -1,0 +1,38 @@
+{
+  "week": "ai-3/23",
+  "title": "Block to Python Bridge",
+  "outcome": "By the end, I can explain block to python bridge using a traced example and a stated limitation.",
+  "scenario": "Translate a “count qualifying books” paper procedure into a Python-style trace.",
+  "given": [
+    "Page counts are [80, 150, 90]. Start count=0; for each pages value, add 1 only when pages<100.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Start counter",
+      "icon": "code",
+      "detail": "count begins at 0 before the loop."
+    },
+    {
+      "label": "Trace decisions",
+      "icon": "rule",
+      "detail": "80 qualifies: count 1. 150 does not: count 1. 90 qualifies: count 2."
+    },
+    {
+      "label": "Report count",
+      "icon": "output",
+      "detail": "The final result is 2 qualifying books, not the sum of their page counts."
+    }
+  ],
+  "explanation": "Read the picture in order. The final result is 2 qualifying books, not the sum of their page counts. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Replace the last page count 90 with 100.",
+    "prediction": "The final count becomes 1.",
+    "reason": "The comparison is strictly less than 100, so the boundary value does not qualify."
+  },
+  "student_task": "Trace the changed list and identify where the result differs. Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "80 increments to 1; 150 leaves 1; 100 leaves 1. The last comparison changed from true to false. Changed-case check: The final count becomes 1. The comparison is strictly less than 100, so the boundary value does not qualify.",
+  "project_evidence": "For your Verified Study Buddy, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "This deterministic loop counts a stated condition; it neither trains a model nor measures whether the books suit a reader.",
+  "review_note": "Reviewed Block to Python Bridge against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

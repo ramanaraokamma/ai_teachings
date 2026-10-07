@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/14",
+  "title": "Planning and action selection",
+  "outcome": "Explain planning and action selection using the deciding step in this fictional service.",
+  "scenario": "Plan around missing evidence. A bot must answer a tower-height question using approved cards only.",
+  "given": [
+    "Search finds no height card. Allowed actions: search, clarify, return unsupported. Unapproved web access is excluded."
+  ],
+  "steps": [
+    {
+      "label": "Name missing input",
+      "icon": "question",
+      "detail": "A supported height answer needs an approved height record."
+    },
+    {
+      "label": "Select allowed action",
+      "icon": "rule",
+      "detail": "After the empty search, return unsupported rather than inventing a number."
+    },
+    {
+      "label": "Explain next step",
+      "icon": "output",
+      "detail": "Ask for an approved source card if the question should be answered."
+    }
+  ],
+  "explanation": "Planning selects useful actions within available evidence and authority. More steps cannot create permission to access an excluded source.",
+  "counterfactual": {
+    "change": "Supply an approved card giving height 24 metres.",
+    "prediction": "The bot can retrieve it and answer 24 metres with attribution.",
+    "reason": "The missing factual input is now available within the allowed collection."
+  },
+  "student_task": "Choose a permitted plan when no approved tower-height card exists. What new answer becomes supported after a card records 24 metres, and why could the bot not invent it earlier?",
+  "teacher_answer": "A supported height answer needs an approved height record. After the empty search, return unsupported rather than inventing a number. Ask for an approved source card if the question should be answered. Changed case: The bot can retrieve it and answer 24 metres with attribution. The missing factual input is now available within the allowed collection.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "Source validity still matters; the presence of a card does not independently verify its accuracy.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

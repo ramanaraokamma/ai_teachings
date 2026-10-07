@@ -1,0 +1,298 @@
+{
+  "week": "ai-1/24",
+  "title": "Privacy by Choosing Less",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Justify which information a stated task needs and remove unnecessary fields",
+    "Distinguish reducing personal data from hiding a name",
+    "Design a simple access, retention and deletion plan for a classroom activity"
+  ],
+  "primary_topic": "Privacy and data minimisation",
+  "vocabulary": [
+    [
+      "Personal data",
+      "Information about an identifiable person, including combinations that can identify someone"
+    ],
+    [
+      "Purpose",
+      "The specific job information is collected or used to do"
+    ],
+    [
+      "Data minimisation",
+      "Using only the information needed for a stated purpose"
+    ],
+    [
+      "Access control",
+      "A rule and mechanism deciding who can see or use information"
+    ],
+    [
+      "Retention",
+      "How long information is kept before an agreed deletion or other approved action"
+    ]
+  ],
+  "worked_example": {
+    "title": "Removing a name is only one change",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Proposed change",
+          "What it changes",
+          "What still needs thought"
+        ],
+        "rows": [
+          [
+            "Replace a name with P07",
+            "Hides the name on this sheet",
+            "A separate key can reconnect the code"
+          ],
+          [
+            "Remove names but keep photos",
+            "Removes one identifying field",
+            "Faces may still identify people"
+          ],
+          [
+            "Share topic totals only",
+            "Removes individual rows",
+            "Small or unusual groups may still reveal a choice"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "A code is not a promise of anonymity. If a teacher keeps a key connecting P07 to a pupil, the coded record can still be linked to that pupil. Even without a key, a combination such as an exact birthday, a team and a photograph may identify someone. Ask whether a reader could connect the information to a person, not just whether the name column is blank."
+      },
+      {
+        "type": "paragraph",
+        "text": "Totals also need context. A report saying that the only member of a tiny club chose music reveals that member\u2019s choice. Our whole-class topic totals reveal less detail than individual rows, but we should not describe every possible total as automatically anonymous. Share only what the audience needs for the purpose."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Challenge a claim of anonymity",
+    "prompt": "A teacher replaces names with codes and keeps a separate code-to-name key. A pupil calls the records anonymous. Explain the problem. Then explain why removing names while leaving photographs would not settle the question either.",
+    "lines": 6,
+    "answer": "The key can reconnect each code to a person, so the coded records are not anonymous just because names are absent. Restricting the key helps limit access but does not erase the link. Photographs can identify people even if the name field is removed."
+  },
+  "independent_case": {
+    "title": "Design a different minimal-data task",
+    "task": "A fictional library wants only the total number of books needing repair in each category: cover, page or binding. It does not need to contact borrowers. A draft repair sheet asks for borrower name, home address, book repair category and borrower photograph. Design a plan: state the purpose, required and removed fields, who handles source sheets, what totals are shared with the librarian, and who disposes of sheets at what agreed point. Use no real borrower details.",
+    "answer": "Purpose: count repair needs by category. Keep repair category; remove borrower name, address and photograph because no borrower contact is required. An assigned teacher or librarian handles the source sheets, checks counts and shares category totals with the librarian. Name that adult as responsible for disposal after totals are verified and the counting task closes, following the agreed school process. Other justified restricted roles and clear disposal triggers are acceptable.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "More data always improves a task",
+      "Unnecessary identity fields do not improve a category count and create more information to manage."
+    ],
+    [
+      "Codes or missing names mean anonymous",
+      "A key or other identifying fields may reconnect records to a person."
+    ],
+    [
+      "Every total is safe to publish",
+      "A small or distinctive group may allow a reader to infer a person\u2019s choice."
+    ],
+    [
+      "Deleting one copy proves all copies are gone",
+      "Other copies, screenshots or backups may remain; follow the adult-led school process."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fdc182da104ebad4d29e62b7846d3549042b3cb8d76c6b315d0b15077d6195f6",
+        "alt": "Visual card for the input stage: candidate information fields",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/6a6c12daf229133c9f97c1d124ecda7342e60d4b0f09e49880aaf362f5bcbc65",
+        "alt": "Visual card for the process stage: keep only fields needed for the stated goal",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b048345ce0846eb91a3de5b2677486f7215b91fe13fbdc8c0453c55d96b48153",
+        "alt": "Visual card for the output stage: useful result with reduced privacy risk",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  candidate information fields"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  keep only fields needed for the stated goal"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  useful result with reduced privacy risk"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  A useful system should collect only information it truly needs.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Data minimization limits collection, access, retention, and reuse to what is necessary for a defined purpose. Less data reduces breach exposure and misuse, but essential high-stakes information still needs secure, consent-aware handling.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "A small information plan for a fictional vote",
+        "columns": [
+          "Stage",
+          "Needed action",
+          "Privacy check"
+        ],
+        "rows": [
+          [
+            "Collect",
+            "One topic per slip",
+            "No name or address"
+          ],
+          [
+            "Count",
+            "Teacher totals choices",
+            "Keep slips restricted"
+          ],
+          [
+            "Share",
+            "Three topic totals",
+            "No individual choices"
+          ],
+          [
+            "Delete",
+            "After totals checked",
+            "Follow agreed plan"
+          ]
+        ],
+        "caption": "Purpose: choose a workshop topic. Collect the minimum, limit access, share the required result and agree how long the source slips are kept."
+      },
+      {
+        "type": "paragraph",
+        "text": "Suppose the fictional counts are drawing 8, music 7 and coding 5. These totals support the choice of drawing. There is no need to publish each slip or a photograph of a child holding it. The teacher checks the total of 20 against the number of slips and then follows the agreed school process for disposing of the slips after verification."
+      },
+      {
+        "type": "paragraph",
+        "text": "A retention plan needs a clear trigger and a responsible person: for example, the teacher disposes of the fictional vote slips after the totals are checked and the activity closes. Real classroom records must follow the school\u2019s approved process. Deleting one visible copy does not prove that every backup, screenshot or previously shared copy is gone."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a7384a21d3c1f97ed19de68e8585fd315f18539c3568753ea73cbba6f365e248",
+        "alt": "Comparison picture for Allergy: needed for safe lunch filter; relevant sensitive data",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/da4b7826c9e20ea8fb97507e235775aae23be87fd175bf863153419ac39e5316",
+        "alt": "Comparison picture for Favorite foods: useful for preference; optional relevant data",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/34b13cc62ddb6c728f8c36e9e540c46cc8485cf589fe0dd66c8c41d0fef8e7e4",
+        "alt": "Comparison picture for Home address: not needed; remove",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/454aea91aee29e9f685bcc68942c5a22b819a34609da521b1102e721c8872472",
+        "alt": "Comparison picture for Face photo: not needed for menu choice; remove",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Allergy  Clue: needed for safe lunch filter. Meaning: relevant sensitive data."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Favorite foods  Clue: useful for preference. Meaning: optional relevant data."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Home address  Clue: not needed. Meaning: remove."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Face photo  Clue: not needed for menu choice. Meaning: remove."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Useful does not mean permitted forever or for every new purpose.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

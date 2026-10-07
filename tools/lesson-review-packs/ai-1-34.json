@@ -1,0 +1,308 @@
+{
+  "week": "ai-1/34",
+  "title": "Test Edge Cases and Fairness",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Choose tests just below, at and above a decision boundary",
+    "Distinguish valid no-match requests from invalid input",
+    "Use labelled catalogue variations to examine previously untested paths"
+  ],
+  "primary_topic": "Testing boundaries and varied conditions",
+  "vocabulary": [
+    [
+      "Boundary",
+      "A value where an input changes category or a condition changes truth"
+    ],
+    [
+      "Inclusive",
+      "Including the stated endpoint or equal value"
+    ],
+    [
+      "Invalid input",
+      "A value that does not meet the agreed input rules"
+    ],
+    [
+      "Test variation",
+      "A documented change in the conditions used for a test"
+    ],
+    [
+      "Coverage gap",
+      "A relevant condition or behaviour the current tests have not examined"
+    ]
+  ],
+  "worked_example": {
+    "title": "Separate validation limits from activity limits",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Request using catalogue B",
+          "Expected response",
+          "Reason"
+        ],
+        "rows": [
+          [
+            "0 minutes Yes",
+            "No match",
+            "Zero is valid; every activity needs more time"
+          ],
+          [
+            "30 minutes Yes",
+            "B1 with a matching reason",
+            "30 is valid; B1 is the first fit"
+          ],
+          [
+            "31 minutes Yes",
+            "Clarify minutes; no search",
+            "31 is outside the accepted range"
+          ],
+          [
+            "Blank minutes with Yes",
+            "Clarify minutes; no search",
+            "The time field is missing"
+          ],
+          [
+            "10.5 minutes Yes",
+            "Clarify minutes; no search",
+            "The accepted time must be a whole number"
+          ],
+          [
+            "10 minutes with blank quiet",
+            "Clarify quiet; no search",
+            "Choose Yes or No before searching"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "The accepted range and activity durations are different kinds of boundary. Zero belongs to the valid range even though no activity fits. Thirty also belongs to it. A negative time, such as minus one minute, is below zero and invalid. Do not change a blank to zero, round 10.5 to 10 or turn a blank quiet choice into No. Ask for the field to be corrected and start a new validated run."
+      },
+      {
+        "type": "paragraph",
+        "text": "A test record should say whether a search is expected to begin. Clarification should name the field needing correction; it should not claim the catalogue has no suitable activity. Test an unrecognised quiet value such as Maybe as well as a missing value. These check different forms of unusable input."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Check the validation boundary",
+    "prompt": "Classify these requests before searching: 0 Yes, 30 Yes, 31 Yes, blank minutes with Yes, 10.5 Yes, and 10 Maybe. Give each expected output or clarification and explain whether any candidate should be checked. Why must zero not be treated like a blank?",
+    "lines": 6,
+    "answer": "0 Yes is valid and checks all rows before no match. 30 Yes is valid and selects B1 at the first row. 31, blank minutes and 10.5 require minutes clarification; 10 Maybe requires a Yes or No quiet choice. Invalid cases check zero candidates. Zero is a supplied whole number within range; blank is missing information."
+  },
+  "independent_case": {
+    "title": "Find an independent capacity boundary",
+    "task": "A new equipment selector lists E1 first, capacity 4; E2 second, capacity 8. Valid group size is a whole number from 1 to 10. Choose the first item whose capacity is at least the group size, or no match; invalid input needs clarification. A faulty version uses capacity strictly greater than group size. Independently give correct and faulty outputs for groups 3, 4 and 5, then for group 8. Explain the defect and give the correct response to group 0. No booking occurs.",
+    "answer": "Correct outputs for 3, 4, 5 and 8 are E1, E1, E2 and E2. Faulty outputs are E1, E2, E2 and no match. Equality is wrongly excluded at capacities 4 and 8. Use capacity at least group size, including equality. Group 0 is outside the accepted 1 to 10 range and needs clarification before any search. This range differs from the activity time range.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "At the limit means outside the rule",
+      "An inclusive rule accepts its endpoints and equality."
+    ],
+    [
+      "No match and invalid mean the same thing",
+      "No match follows valid input; invalid fields need clarification before search."
+    ],
+    [
+      "A catalogue change needs the same expected answer",
+      "Recompute expectations from the declared new data and unchanged requirements."
+    ],
+    [
+      "More routine repetitions close every gap",
+      "Choose cases that exercise a missing condition or path."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b5e8c00fd51cf11ff051abec048403c9d5c82e2a7fa887c344deb2c797bf6cc8",
+        "alt": "Visual card for the input stage: planned edge and subgroup cases",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fad8567f9f1dc944e45657a52ff0b7661695be025b2e1af1188b9855ba523f04",
+        "alt": "Visual card for the process stage: run same version and compare error patterns",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/95040706084dcf7eb923f0ffc8558e09b6cae96692b8156320be60ff9b42db6f",
+        "alt": "Visual card for the output stage: documented gaps, harms, and repair priorities",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  planned edge and subgroup cases"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  run same version and compare error patterns"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  documented gaps, harms, and repair priorities"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  Unusual and underrepresented cases reveal hidden assumptions.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Edge testing explores boundaries, rare combinations, missing values, adversarial ambiguity, and subgroup conditions. Fairness analysis asks whether error burdens differ and whether fallback paths remain usable.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Three requests around ten minutes",
+        "columns": [
+          "Available time",
+          "Check B1 time",
+          "Result for quiet Yes"
+        ],
+        "rows": [
+          [
+            "9 minutes",
+            "10 is too long",
+            "No match in catalogue B"
+          ],
+          [
+            "10 minutes",
+            "10 fits exactly",
+            "Suggest B1"
+          ],
+          [
+            "11 minutes",
+            "10 fits with time left",
+            "Suggest B1"
+          ]
+        ],
+        "caption": "Keep Quiet required Yes and catalogue B version 1 fixed while changing available time."
+      },
+      {
+        "type": "paragraph",
+        "text": "For quiet requests, 10 minutes is the first time a catalogue activity fits. Test 9, 10 and 11 with Yes so only the time changes. A faulty comparison S version 0 uses strictly less than instead of no more than for time, while keeping the other P1 rules. It rejects B1 at exactly 10. With quiet required, every later row also fails, so it incorrectly reports no match."
+      },
+      {
+        "type": "paragraph",
+        "text": "S can pass all four routine requests from Week 33: 11 Yes, 9 No, 6 No and 9 Yes. None has a fitting activity whose duration equals the request. The 10 Yes case reveals a gap those passes did not close. Another useful boundary is 8 minutes with No: equality should allow B2, while 7 No has no match. Keep both quiet values in your wider plan because No does not mean nonquiet only."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/98c059733f5f6dafa5f1c530e7b8783eb3b30d24bf33c17d6a9121934536d8ab",
+        "alt": "Comparison picture for Worn label: text partly missing; degraded input",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/7739354d25e102503d75a9d5d3cc49e2463f885fc7cac04c4125320415d2a9d0",
+        "alt": "Comparison picture for Two-bin object: categories overlap; boundary case",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ef7e4206c48419ad3be7b7ed4a8cab9dda6303b46e59a52d0845bdeac97af0c2",
+        "alt": "Comparison picture for Different language: label format changes; access/fairness case",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b0a2b52a98831aff80417c18c1f09ca963d2b56edafdd8882adbea1ac92f3ae8",
+        "alt": "Comparison picture for Blank card: required input absent; missing-data case",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Worn label  Clue: text partly missing. Meaning: degraded input."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Two-bin object  Clue: categories overlap. Meaning: boundary case."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Different language  Clue: label format changes. Meaning: access/fairness case."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Blank card  Clue: required input absent. Meaning: missing-data case."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Edge cases are not excuses to blame users for being unusual; they are evidence about design limits.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

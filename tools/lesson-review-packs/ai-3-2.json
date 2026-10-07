@@ -1,0 +1,320 @@
+{
+  "week": "ai-3/2",
+  "title": "A Distribution of Possibilities",
+  "grade": 8,
+  "project": "Verified Study Buddy",
+  "goals": [
+    "Check whether a next-token table is a valid probability distribution",
+    "Calculate a two-step sequence probability using conditional probabilities",
+    "Explain why token probability does not measure factual truth"
+  ],
+  "primary_topic": "Next token distributions",
+  "vocabulary": [
+    [
+      "Probability distribution",
+      "Nonnegative probabilities over stated alternatives that sum to one"
+    ],
+    [
+      "Conditional probability",
+      "A probability evaluated given specified information"
+    ],
+    [
+      "Sequence probability",
+      "The product of successive conditional probabilities under an autoregressive model"
+    ],
+    [
+      "Probability mass",
+      "The probability assigned to an alternative or a set of alternatives"
+    ]
+  ],
+  "worked_example": {
+    "title": "Compare greedy choice and sequence probability",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Greedy decoding chooses the largest next-token probability at each step, with an explicit tie rule if needed. It does not always maximise the probability of a complete sequence. Counterexample: first-step A=0.6 and B=0.4. Given A, end=0.51 and x=0.49; given B, end=1. Greedy produces A,end with probability 0.306. The path B,end has probability 0.4, larger than 0.306. This comparison concerns exactly two-step paths; longer completion probabilities require the later conditionals too."
+      },
+      {
+        "type": "paragraph",
+        "text": "A high path probability measures the model\u2019s preference over these specified paths. It is not evidence that a status claim matches a live observation. Format checks and source checks remain separate."
+      }
+    ]
+  },
+  "guided_practice": {
+    "title": "Calculate the paths",
+    "prompt": "Compute ready,end; busy,end; unknown,end and their combined probability.",
+    "answer": "Teacher explanation: Path probabilities 0.4,0.15,0.2; combined probability of ending at step two is 0.75.",
+    "lines": 6,
+    "id": "W2"
+  },
+  "independent_case": {
+    "title": "Analyse a new table independently",
+    "task": "First tokens go=0.4, wait=0.35, ask=0.25. End probabilities given them are 0.5,0.8,1 respectively; each branch has a complementary more token. Compute all three end-path probabilities and their sum. Which first token is greedy, which end path is largest, and does either verify a real status?",
+    "answer": "Teacher explanation: End-path probabilities 0.2,0.28,0.25; sum 0.73. Greedy first token is go, but wait,end is the largest of the specified end paths. Neither establishes a real status without appropriate evidence.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Conditional products assume independence",
+      "Use a different conditional probability for each expanded prefix."
+    ],
+    [
+      "Greedy decoding maximises every full sequence",
+      "The supplied two-step counterexample disproves that general claim."
+    ],
+    [
+      "Not ready means busy",
+      "The stated alternatives also include unknown."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/9c5ff88d84124849ade7de33e565d0fd053d60149385b69ba80f74bb76737ba1",
+        "alt": "INPUT stage for A Distribution of Possibilities",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/43267573979a902de7692c98fe4034772b046002f5f7482b1b80ad7e11dd18e8",
+        "alt": "PROCESS stage for A Distribution of Possibilities",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/428f341f5e4b8cf9d5732d06d480fe795018106f25ad5338b1d309c2deb3d33f",
+        "alt": "OUTPUT stage for A Distribution of Possibilities",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "table",
+        "rows": [
+          [
+            "Expanded prefix",
+            "End probability",
+            "Today probability"
+          ],
+          [
+            "Status: ready",
+            "0.8",
+            "0.2"
+          ],
+          [
+            "Status: busy",
+            "0.5",
+            "0.5"
+          ],
+          [
+            "Status: unknown",
+            "1",
+            "0"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "The probability of ready followed by end is 0.5*0.8 = 0.4. Ready followed by today is 0.5*0.2 = 0.1. Busy followed by end is 0.3*0.5 = 0.15, and busy followed by today is 0.15. Unknown followed by end is 0.2 and unknown followed by today is 0. Together these six two-step paths sum to 1. These products are chain-rule calculations; they do not assume the second token is independent of the first."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Keep the evidence roles separate",
+        "columns": [
+          "Plan or input",
+          "Procedure",
+          "Permitted conclusion"
+        ],
+        "rows": [
+          [
+            "Ready probability 0.5",
+            "End given ready 0.8",
+            "Joint path probability 0.4"
+          ],
+          [
+            "Busy probability 0.3",
+            "End given busy 0.5",
+            "Joint path probability 0.15"
+          ],
+          [
+            "Unknown probability 0.2",
+            "End given unknown 1",
+            "Joint path probability 0.2"
+          ]
+        ],
+        "caption": "The second probability uses the expanded prefix on that branch."
+      },
+      {
+        "type": "subheading",
+        "text": "Apply the connected idea: Embeddings and position"
+      },
+      {
+        "type": "table",
+        "rows": [
+          [
+            "Sequence",
+            "Position 0 representation",
+            "Position 1 representation"
+          ],
+          [
+            "red blue",
+            "[1,0] + [0,0] = [1,0]",
+            "[0,1] + [2,0] = [2,1]"
+          ],
+          [
+            "blue red",
+            "[0,1] + [0,0] = [0,1]",
+            "[1,0] + [2,0] = [3,0]"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "The same red token now has [1,0] at position 0 and [3,0] at position 1. Both token identity and position affect the represented row. Addition requires equal widths; adding a three-component position vector to a two-component embedding violates the input contract. Record the position numbering and embedding-table version."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Keep the evidence roles separate",
+        "columns": [
+          "Plan or input",
+          "Procedure",
+          "Permitted conclusion"
+        ],
+        "rows": [
+          [
+            "ID 1 at position 0",
+            "[1,0] + [0,0]",
+            "Representation [1,0]"
+          ],
+          [
+            "ID 1 at position 1",
+            "[1,0] + [2,0]",
+            "Representation [3,0]"
+          ],
+          [
+            "Two different sequences",
+            "Inspect ordered rows",
+            "Do not infer meaning from ID gaps"
+          ]
+        ],
+        "caption": "The position contribution changes a token representation according to its location."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/baa081bb74d63b3556ecfd5951cdc8779d64ec1813de34614621c4e969a973f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/5e6557194a1470352d07b6a509da5d673d81767981996dd1b685f799a5582b76",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/8e1f2e3affdd81449df265675243cda4511c1e88dd8cd9583d4ea42f6083c297",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a54f0c40e48e47ca92a4c36ebbc98f08b4a78c72cd385d85b0a5a7f07f558757",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

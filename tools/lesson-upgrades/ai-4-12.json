@@ -1,0 +1,67 @@
+{
+  "week": "ai-4/12",
+  "title": "Nearest Neighbors",
+  "outcome": "By the end, I can explain nearest neighbors using a traced example and a stated limitation.",
+  "scenario": "Let a nearest-neighbour picture show each distance before voting.",
+  "given": [
+    "Training: A length 2 healthy; B length8 spotted; C length11 spotted. Query length5 cm. Distance is absolute difference; ties use alphabetically earlier ID.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Measure distances",
+      "icon": "chart",
+      "detail": "To A: |5-2|=3; B: |5-8|=3; C: |5-11|=6 cm."
+    },
+    {
+      "label": "Apply k=1 rule",
+      "icon": "model",
+      "detail": "A and B tie nearest; declared ID tie-break chooses A, predicting healthy."
+    },
+    {
+      "label": "Compare k=3",
+      "icon": "check",
+      "detail": "All three vote: two spotted and one healthy, so k=3 predicts spotted."
+    }
+  ],
+  "explanation": "Read the picture in order. All three vote: two spotted and one healthy, so k=3 predicts spotted. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Move the query to length7 cm.",
+    "prediction": "k=1 predicts spotted from B, distance1; k=3 remains spotted.",
+    "reason": "Distances become 5, 1, 4 cm, so the nearest tie disappears."
+  },
+  "student_task": "Why is the k=1 outcome at length5 not uniquely determined without a tie rule? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "A healthy and B spotted are equally near. The declared alphabetical rule resolves the otherwise ambiguous one-neighbour selection. Changed-case check: k=1 predicts spotted from B, distance1; k=3 remains spotted. Distances become 5, 1, 4 cm, so the nearest tie disappears.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Length alone is a toy feature, not a disease diagnosis. Distance choices and feature scaling can change neighbours.",
+  "review_note": "Reviewed Nearest Neighbors against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary.",
+  "mini_visual": {
+    "kind": "scatter",
+    "title": "One-dimensional neighbours shown along length axis",
+    "points": [
+      {
+        "x": 2,
+        "y": 0,
+        "label": "A healthy"
+      },
+      {
+        "x": 8,
+        "y": 0,
+        "label": "B spotted"
+      },
+      {
+        "x": 11,
+        "y": 0,
+        "label": "C spotted"
+      }
+    ],
+    "query": {
+      "x": 5,
+      "y": 0,
+      "label": "query"
+    },
+    "metric": "Absolute length difference; ties use alphabetically earlier ID",
+    "x_label": "length (cm)",
+    "y_label": "fixed display row, y=0"
+  }
+}

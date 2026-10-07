@@ -1,0 +1,264 @@
+{
+  "week": "ai-3/1",
+  "title": "Predictive and Generative AI",
+  "grade": 8,
+  "project": "Verified Study Buddy",
+  "goals": [
+    "Distinguish discriminative prediction from generation by inspecting the requested output",
+    "Calculate an empirical next-token distribution from counted continuations",
+    "Separate next-token fit from factual support and downstream usefulness"
+  ],
+  "primary_topic": "Generative and predictive objectives",
+  "vocabulary": [
+    [
+      "Generative objective",
+      "A training aim concerned with producing or modelling possible outputs"
+    ],
+    [
+      "Discriminative objective",
+      "A training aim mapping inputs to a specified target such as a label"
+    ],
+    [
+      "Conditional distribution",
+      "Probabilities for alternatives given stated information"
+    ],
+    [
+      "Autoregressive generation",
+      "Producing a sequence one next item at a time using preceding items"
+    ]
+  ],
+  "worked_example": {
+    "title": "Generation continues after the first choice",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "After producing red, the next step conditions on the expanded prefix \u201cThe marker is red\u201d. A second table might give an end token probability 0.8 and the token today probability 0.2. A generated sequence can stop at the end token or continue. Do not reuse the first-step table unchanged after adding a token unless the model explicitly ignores the new prefix."
+      },
+      {
+        "type": "paragraph",
+        "text": "A separate classifier can return red as a label from an image; that is a different input and target from continuing text. A downstream evaluation asks whether the system correctly reports the current marker. It must include ground truth or sources and appropriate failure handling, not just count plausible phrases."
+      }
+    ]
+  },
+  "guided_practice": {
+    "title": "Compute the distribution",
+    "prompt": "For The marker is, calculate the three empirical probabilities, their sum and their meaning.",
+    "answer": "Teacher explanation: Probabilities 0.6,0.3,0.1 sum to 1 and describe ten supplied corpus continuations; they are not observations of the current marker.",
+    "lines": 6,
+    "id": "W2"
+  },
+  "independent_case": {
+    "title": "Changed independent case",
+    "task": "A system retrieves an approved Moon note, uses a trained classifier to predict reading difficulty, then writes a poem. Identify each mechanism and the evidence needed to check its output.",
+    "answer": "Retrieval finds an existing note; classification predicts from fitted patterns; generation creates text. Check relevance and provenance of the note, difficulty predictions against suitable held-out labels, and poem claims against sources. Fluent style is not factual evidence.",
+    "source": "new parallel transfer case"
+  },
+  "misconceptions": [
+    [
+      "Generative models do not predict",
+      "Autoregressive generation predicts the next item repeatedly."
+    ],
+    [
+      "The most frequent phrase is the current truth",
+      "Corpus frequency and current observations answer different questions."
+    ],
+    [
+      "A single accuracy score evaluates the whole system",
+      "Generation, retrieval, grounding, formatting and permissions require appropriate separate checks."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/8c92e460d11bb094357d9315fa028d2b4f16d37e82a744834f7d6b7818dd167d",
+        "alt": "INPUT stage for Predictive and Generative AI",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/171a950bccd7c540ec15898befdb977bfff38e63a7a34d3842b33c50af4b1152",
+        "alt": "PROCESS stage for Predictive and Generative AI",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/f4f417f87b89e5361f0cde623a4267f8b4c6dcc111e3df97dd1263264628fe25",
+        "alt": "OUTPUT stage for Predictive and Generative AI",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "table",
+        "rows": [
+          [
+            "Prefix",
+            "Continuation",
+            "Count"
+          ],
+          [
+            "The marker is",
+            "red",
+            "6"
+          ],
+          [
+            "The marker is",
+            "blue",
+            "3"
+          ],
+          [
+            "The marker is",
+            "green",
+            "1"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "There are ten observed continuations. The empirical probabilities are red 6/10 = 0.6, blue 3/10 = 0.3, green 1/10 = 0.1. They are nonnegative and sum to 1. A simple frequentist classroom model uses these relative counts as its next-token distribution. These probabilities describe the supplied corpus counts, not the current colour of any actual marker."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Keep the evidence roles separate",
+        "columns": [
+          "Plan or input",
+          "Procedure",
+          "Permitted conclusion"
+        ],
+        "rows": [
+          [
+            "Ten corpus continuations",
+            "Count red 6, blue 3, green 1",
+            "Distribution 0.6, 0.3, 0.1"
+          ],
+          [
+            "Prefix: The marker is",
+            "Select a next token",
+            "An output, not an observation"
+          ],
+          [
+            "Current marker question",
+            "Check direct evidence",
+            "Colour claim needs support"
+          ]
+        ],
+        "caption": "The continuation model and a factual observation have different evidence sources."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/baa081bb74d63b3556ecfd5951cdc8779d64ec1813de34614621c4e969a973f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/5e6557194a1470352d07b6a509da5d673d81767981996dd1b685f799a5582b76",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/8e1f2e3affdd81449df265675243cda4511c1e88dd8cd9583d4ea42f6083c297",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a54f0c40e48e47ca92a4c36ebbc98f08b4a78c72cd385d85b0a5a7f07f558757",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

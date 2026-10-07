@@ -1,0 +1,43 @@
+{
+  "week": "ai-2/11",
+  "title": "Training and Testing",
+  "outcome": "By the end, I can split related records by group when evaluation concerns new groups.",
+  "scenario": "A fictional catalogue model learns from scans of book covers and will face previously unseen books.",
+  "given": [
+    "Book A has scans A1,A2; B has B1,B2; C has C1,C2; D has D1,D2.",
+    "Proposed training A1,B1,C1; validation A2,D1; test B2,C2,D2."
+  ],
+  "steps": [
+    {
+      "label": "Choose unit",
+      "icon": "book",
+      "detail": "The intended kind of new example being evaluated is a new book, not merely a new scan."
+    },
+    {
+      "label": "Find leakage",
+      "icon": "shield",
+      "detail": "A crosses train/validation; B,C cross train/test; D crosses validation/test."
+    },
+    {
+      "label": "Group repair",
+      "icon": "data",
+      "detail": "Training all A,B scans; validation all C scans; test all D scans."
+    },
+    {
+      "label": "Freeze assignment",
+      "icon": "check",
+      "detail": "Keep every scan from one book in exactly one role before fitting."
+    }
+  ],
+  "explanation": "Different scan IDs do not make examples independent books. A model may recognise repeated cover details from another view. Grouping by book matches the intended claim about new books and makes the split inspectable. The repaired split has four training, two validation and two test scans, but only two, one and one books respectively.",
+  "counterfactual": {
+    "change": "Give A2 a new filename without changing the book it depicts.",
+    "prediction": "Its group is still A; the original related examples still cross the split.",
+    "reason": "Renaming a row does not remove the relationship between scans."
+  },
+  "student_task": "How many distinct books are in each repaired role, and why report that as well as scan counts?",
+  "teacher_answer": "Training 2, validation 1, test 1. Scan counts alone exaggerate the number of distinct books evaluated.",
+  "project_evidence": "Group the recommender’s related reviews, editions or repeated-user examples according to its intended evaluation claim.",
+  "limits": "One validation book and one test book provide very limited diversity even though no groups overlap.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment."
+}

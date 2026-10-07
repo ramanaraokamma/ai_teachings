@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/13",
+  "title": "State machines for bounded agents",
+  "outcome": "Explain state machines for bounded agents using the deciding step in this fictional service.",
+  "scenario": "A parcel lookup state machine. An agent may follow idle→querying→checking→complete; complete is terminal.",
+  "given": [
+    "A follows all four states. B follows idle→querying→complete. No other transitions are declared."
+  ],
+  "steps": [
+    {
+      "label": "Read arrows",
+      "icon": "rule",
+      "detail": "The graph permits three forward transitions."
+    },
+    {
+      "label": "Follow A",
+      "icon": "check",
+      "detail": "All adjacent pairs match permitted arrows."
+    },
+    {
+      "label": "Inspect B",
+      "icon": "shield",
+      "detail": "Querying→complete skips checking and is invalid."
+    }
+  ],
+  "explanation": "A state machine bounds action order. A plausible final state does not establish that the path was valid.",
+  "counterfactual": {
+    "change": "Add checking→querying as a permitted retry.",
+    "prediction": "That retry becomes valid; querying→complete stays forbidden.",
+    "reason": "Adding one arrow does not authorise unrelated shortcuts."
+  },
+  "student_task": "Trace A and B through the state diagram. Name B’s forbidden transition and explain whether adding checking→querying permits that shortcut.",
+  "teacher_answer": "The graph permits three forward transitions. All adjacent pairs match permitted arrows. Querying→complete skips checking and is invalid. Changed case: That retry becomes valid; querying→complete stays forbidden. Adding one arrow does not authorise unrelated shortcuts.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "This graph checks sequence, not the correctness of the fetched parcel data.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

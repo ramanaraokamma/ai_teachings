@@ -1,0 +1,298 @@
+{
+  "week": "ai-1/35",
+  "title": "Improve One Cause",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Repair a located defect without changing the agreed requirements",
+    "Check the repaired case and earlier successful behaviour",
+    "Preserve versioned evidence and fix a candidate before final evaluation"
+  ],
+  "primary_topic": "Improving and checking regressions",
+  "vocabulary": [
+    [
+      "Defect",
+      "A fault in the instructions or implementation that can cause incorrect behaviour"
+    ],
+    [
+      "Repair",
+      "A change intended to correct a located defect"
+    ],
+    [
+      "Regression",
+      "Previously correct behaviour that becomes incorrect after a change"
+    ],
+    [
+      "Change record",
+      "A note of what changed, why, and which versions and tests support it"
+    ],
+    [
+      "Fixed candidate",
+      "A saved version kept unchanged while a specified evaluation is run"
+    ]
+  ],
+  "worked_example": {
+    "title": "A tempting repair can cause a regression",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Consider a different proposed repair, T version 1. It accepts equal times but accidentally removes the quiet check. It fixes 10 Yes, yet now returns B2 for 9 Yes. That second request correctly returned no match under S0 because B2 is not quiet. Previously correct behaviour has become wrong: this is a regression."
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Case with catalogue B version 1",
+          "Required result",
+          "Outputs from the stated instructions"
+        ],
+        "rows": [
+          [
+            "10 Yes; equality repair",
+            "B1 with a valid reason",
+            "S0 no match; T1 B1; S1 B1"
+          ],
+          [
+            "9 Yes; quiet regression check",
+            "No match with a valid reason",
+            "S0 no match; T1 B2; S1 no match"
+          ],
+          [
+            "8 No; another equality case",
+            "B2 with a valid reason",
+            "S0 no match; T1 B2; S1 B2"
+          ],
+          [
+            "6 No; exhaustion check",
+            "No match with a valid reason",
+            "S0 no match; T1 no match; S1 no match"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "These outputs are worked predictions from the described versions. Your own test record must contain the actual runs and their reasons. T1 should not replace the candidate merely because it passes the first row. For S1, check the revealing equality cases and rerun all four routine cases from Week 33, then validation and the labelled catalogue variations from Week 34. A full pass still needs both the required output and a correct explanation."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Check the repair and earlier behaviour",
+    "prompt": "Plan and operate the S1 repair and regression set described in the lesson, using the appropriate catalogue version for each case. Record expected and observed results separately with reasons and traces. Summarise full passes over all attempted cases, list unrun cases separately and identify any remaining failures. Do not replace observed mistakes with worked answers.",
+    "lines": 6,
+    "answer": "Under B version 1 the listed requests yield B1, B2, no match, no match, B1, B2, no match, B1, then four clarifications for 31, blank minutes, 10.5 and Maybe. B version 2 with 12 Yes yields B3. B version 3 yields B4 for 15 No and no match for 15 Yes. There are 15 planned cases. Correct execution with correct reasons gives 15 of 15; accept honest different observations with investigation. Unrun cases are not passes and the attempted denominator must be stated."
+  },
+  "independent_case": {
+    "title": "Audit a different proposed repair",
+    "task": "Equipment catalogue E lists E1 first with capacity 4 and E2 second with capacity 8. Valid whole group sizes are 1 to 10. Choose the first capacity at least the group size, or no match; invalid input needs clarification. Old U0 uses strictly greater capacity and stops at the first fit. Proposed U1 includes equality but keeps searching and returns the last fit. Independently compare U0, U1 and the requirement for groups 8 and 3. Identify the repair and regression, propose U2 and give one validation check. No booking occurs.",
+    "answer": "For 8, U0 returns no match, U1 returns E2 and the requirement is E2: equality is repaired. For 3, U0 returns E1 correctly but U1 returns E2, violating first-fit order: a regression. U2 includes equality and stops immediately at the first fit, giving E2 for 8 and E1 for 3. Preserve both old traces and rerun both cases plus wider tests. Group 0 or 11, a blank or a nonwhole size needs clarification before searching.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "One repaired example proves improvement everywhere",
+      "Check the revealing case and previously successful behaviour under recorded conditions."
+    ],
+    [
+      "Any failure after editing is a regression",
+      "Show that the same behaviour was correct before the change; otherwise it may be an existing defect."
+    ],
+    [
+      "A good project must contain a repair",
+      "An unchanged correct version can be justified with honest evidence."
+    ],
+    [
+      "A seen final case becomes unseen after a new version label",
+      "Once it guides revision, it is development evidence for that revision."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/d845e1e782ddbd760bd50ecba7b54e90b4378523349d0cb485c4cd86b72c2cc4",
+        "alt": "Visual card for the input stage: failure record and suspected cause",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/10c4c1953de3bb08a30785c8cd961a9eb8d7ddab10327c9ca632e1cbe3496d55",
+        "alt": "Visual card for the process stage: change one responsible rule, input, or threshold",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/d9d4fe388c4202e23baa5463663d76c3ab6c469921cf670c9df6fa7aadf2064d",
+        "alt": "Visual card for the output stage: same tests rerun with before/after evidence",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  failure record and suspected cause"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  change one responsible rule, input, or threshold"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  same tests rerun with before/after evidence"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  An improvement should target evidence from a failure, not random change.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Controlled iteration links an intervention to an observed outcome. Holding test cases and unrelated components constant strengthens causal inference. Improvement claims must include regressions and tradeoffs, not only repaired cases.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "A repair with evidence",
+        "columns": [
+          "Locate",
+          "Change",
+          "Check"
+        ],
+        "rows": [
+          [
+            "Keep the failing trace",
+            "Save a new version",
+            "Rerun the revealing case"
+          ],
+          [
+            "Name the broken requirement",
+            "Correct the faulty step",
+            "Rerun earlier passing cases"
+          ],
+          [
+            "Keep input and catalogue labels",
+            "Record what changed",
+            "Keep every result and limit"
+          ]
+        ],
+        "caption": "A passing repair test checks the reported defect. Regression tests examine previously correct behaviour."
+      },
+      {
+        "type": "paragraph",
+        "text": "S version 0 follows the P1 process except that its time check uses strictly less than. On 10 Yes with catalogue B version 1, it reports no match. The expected result is B1 because 10 fits exactly and B1 is quiet. Compare the saved instruction with the trace: the cause is the exclusion of equality, not a need to change the catalogue or expected answer."
+      },
+      {
+        "type": "paragraph",
+        "text": "Create S version 1 by replacing only the time comparison with no more than. Keep validation, the quiet condition, catalogue order, advancement and stopping rules. Write a change record naming S0, S1, the failing 10 Yes case, the comparison changed and why equality belongs in the rule. Retain the old version and failed trace; do not overwrite them with the new result."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/28a7fae0e30aa593caa7e39e1075a92bdde8e2452cde2e68757987b4d53cec3f",
+        "alt": "Comparison picture for Change one threshold: targeted intervention; interpretable",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/d93d5dd8750c8d912127b06d404381492ad550f471b0333c7e24db50fefa6bbb",
+        "alt": "Comparison picture for Rewrite all rules: many causes changed; weak evidence",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/9e4e177ecde3dc39ca6de6f17c9206925a35101fc15b977ebe57ac7802a24d93",
+        "alt": "Comparison picture for Same tests: before/after comparable; stronger evidence",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/92120d445fe53351f63a70a1ba08615a92915fee111d6c4c410fee67fd4699cc",
+        "alt": "Comparison picture for New failure: old case now breaks; regression",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Change one threshold  Clue: targeted intervention. Meaning: interpretable."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Rewrite all rules  Clue: many causes changed. Meaning: weak evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Same tests  Clue: before/after comparable. Meaning: stronger evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 New failure  Clue: old case now breaks. Meaning: regression."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  A higher pass count can hide a serious new failure; review every changed outcome.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

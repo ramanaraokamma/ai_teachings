@@ -1,0 +1,68 @@
+{
+  "week": "ai-1/13",
+  "title": "Learning from Examples",
+  "outcome": "By the end, I can compare candidate models, resolve a tie explicitly and separate fit from prediction.",
+  "scenario": "A fictional classifier learns whether measured sticks are short or long.",
+  "given": [
+    "Training lengths 2,4,8,10 cm have labels short,short,long,long.",
+    "Candidate boundaries: long at least 5 or at least 7. Lowest errors wins; tie chooses smaller boundary."
+  ],
+  "steps": [
+    {
+      "label": "Training rows",
+      "icon": "data",
+      "detail": "2 and 4 are short; 8 and 10 are long."
+    },
+    {
+      "label": "Candidate checks",
+      "icon": "rule",
+      "detail": "Boundaries 5 and 7 both predict S,S,L,L: zero errors each."
+    },
+    {
+      "label": "Tie policy",
+      "icon": "model",
+      "detail": "Choose boundary 5 because the declared tie rule prefers the smaller value."
+    },
+    {
+      "label": "New prediction",
+      "icon": "output",
+      "detail": "Length 6 is predicted long by the selected rule."
+    }
+  ],
+  "explanation": "There is no training stick between 4 and 8 to distinguish these candidates. The tie policy chooses one consistently; it is not additional evidence that its prediction at 6 is true. Label-free prediction applies the selected boundary, while evaluation would require an appropriate new reference label.",
+  "counterfactual": {
+    "change": "Reverse the tie policy to prefer the larger boundary.",
+    "prediction": "Boundary 7 is selected and predicts short at 6.",
+    "reason": "The training fit is unchanged; only the explicit choice between tied candidates changes."
+  },
+  "student_task": "Which new measured length would reveal disagreement between the candidates?",
+  "teacher_answer": "Length 6 does: boundary 5 predicts long and boundary 7 predicts short. A checked label would then provide new evidence.",
+  "project_evidence": "Save candidate definitions, training errors and tie policy with any sorter model version.",
+  "limits": "Zero training errors for both rules cannot determine the correct label of every unobserved stick.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Same training errors, different new prediction",
+    "cells": [
+      [
+        5,
+        0,
+        "long"
+      ],
+      [
+        7,
+        0,
+        "short"
+      ]
+    ],
+    "row_labels": [
+      "Candidate 5",
+      "Candidate 7"
+    ],
+    "column_labels": [
+      "Boundary",
+      "Training errors",
+      "Prediction at 6"
+    ]
+  }
+}

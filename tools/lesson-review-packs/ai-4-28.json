@@ -1,0 +1,253 @@
+{
+  "week": "ai-4/28",
+  "title": "Learning Curves",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Read training-size learning curves",
+    "Describe variability across repeated development runs",
+    "Avoid unsupported guarantees from a trend"
+  ],
+  "primary_topic": "Learning curves and variability",
+  "vocabulary": [
+    [
+      "Learning curve",
+      "Performance plotted against training sample size"
+    ],
+    [
+      "Repeat",
+      "Another run under a recorded procedure"
+    ],
+    [
+      "Variability",
+      "How much results differ between runs"
+    ],
+    [
+      "Range",
+      "Maximum minus minimum of observed values"
+    ]
+  ],
+  "worked_example": {
+    "title": "Explain the visual",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Learning curves and variability at a glance",
+        "columns": [
+          "Part",
+          "Evidence or action",
+          "Interpretation"
+        ],
+        "rows": [
+          [
+            "10 training rows",
+            "Validation 7 9 8",
+            "Mean 8 range 2"
+          ],
+          [
+            "20 training rows",
+            "Validation 5 7 6",
+            "Mean 6 range 2"
+          ],
+          [
+            "40 training rows",
+            "Validation 4 6 5",
+            "Mean 5 range 2"
+          ]
+        ],
+        "caption": "The decreasing gap is encouraging in this experiment. It does not establish that doubling again will halve error. A range from three repeats is a descriptive spread, not a confidence interval or a guarantee that future results fall inside it. Repeated runs can share records and therefore are not independent studies."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Why can training error rise while validation error falls? Explain the steps or evidence behind your response.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Read both curves",
+    "prompt": "Why can training error rise while validation error falls?",
+    "answer": "Teacher explanation: More varied training cases may be harder to fit exactly while giving a pattern that generalizes better.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Apply independently",
+    "task": "At sizes 12 and 24, validation errors are [6, 8, 7] and [4, 7, 7]. Calculate means/ranges and a careful comparison.",
+    "answer": "Teacher explanation: Means 7 and 6; ranges 2 and 3. The larger condition improves the mean by 1 but has greater observed spread in these three repeats.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A final answer is enough",
+      "Ask for the relevant counts, units, procedure or saved record. For this week: Mean(5+7+6)/3=6; range 7-5=2."
+    ],
+    [
+      "A stronger claim makes a stronger project",
+      "It only describes the smallest and largest observed repeats; no coverage-probability calculation or independent-sampling argument was supplied."
+    ],
+    [
+      "The new case can be copied from the example",
+      "The independent task changes the evidence. Require a fresh explanation: Means 7 and 6; ranges 2 and 3. The larger condition improves the mean by 1 but has greater observed spread in these three repeats."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/15d92933907ea45e386eb4a4a5c0c0e272abe6c1b10f7ea110cc85cd91d45988",
+        "alt": "Week 28 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/e3264f798d8680e7c25b72c5e00b81f6a86a76192187369a3e945846ca171066",
+        "alt": "Week 28 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/c145926017fe6a1917458aa76b77a31c447c26aa7287ea89308d6c34ac801358",
+        "alt": "Week 28 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Interpret three curve patterns and select a targeted next experiment."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  Learning curves plot performance against training size or effort and help distinguish underfitting, overfitting, and data limitation."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Both train and validation scores are low and close: likely underfitting. Train high, validation much lower: likely high variance or overfitting.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "At training sizes 10, 20, 40, validation MAEs across three declared repeats are [7, 9, 8], [5, 7, 6], [4, 6, 5]. Means are 8, 6, 5 and ranges 2, 2, 2. Mean training MAEs are 1, 2, 3. Validation improves as training grows, while training error rises because fitting more varied examples can be harder."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before continuing, underline the decision rule and circle the evidence that supports the conclusion. Explain the example to a partner without replacing the counts or conditions with a stronger claim. Keep the distinction between an observed result and a proposed next step."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 28 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 28 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 28 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 28 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

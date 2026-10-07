@@ -1,0 +1,50 @@
+{
+  "week": "ai-7/11",
+  "title": "Sampling variability",
+  "outcome": "Explain sampling variability using the records and boundaries of this fictional investigation.",
+  "scenario": "Two small samples can differ. A fixed classifier is scored on two distinct four-case samples from a declared collection.",
+  "given": [
+    "Sample A has 3 correct of 4; sample B has 2 correct of 4. The model and rubric are unchanged."
+  ],
+  "steps": [
+    {
+      "icon": "data",
+      "label": "Keep model fixed",
+      "detail": "No training or threshold change occurs between samples."
+    },
+    {
+      "icon": "chart",
+      "label": "Compute observed rates",
+      "detail": "A is 75%; B is 50%, differing by 25 percentage points."
+    },
+    {
+      "icon": "question",
+      "label": "Consider sampling",
+      "detail": "Different included cases can change a small-sample rate."
+    }
+  ],
+  "explanation": "Sampling variability means a statistic can vary because different units were observed. Do not automatically attribute every rate change to a model improvement or deterioration.",
+  "counterfactual": {
+    "change": "Evaluate the exact same fixed four cases twice with deterministic predictions.",
+    "prediction": "The counts should agree unless some condition, data or scoring changed.",
+    "reason": "The sampling explanation no longer applies when the records are identical."
+  },
+  "student_task": "Calculate the two four-case rates and their difference. Explain how changed included cases can affect a fixed model, and why identical deterministic records should not differ on a rerun.",
+  "teacher_answer": "No training or threshold change occurs between samples. A is 75%; B is 50%, differing by 25 percentage points. Different included cases can change a small-sample rate. Changed case: The counts should agree unless some condition, data or scoring changed. The sampling explanation no longer applies when the records are identical.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "These two samples do not supply a probability model or confidence interval; none is invented.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Two distinct samples, fixed model",
+    "labels": [
+      "Sample A",
+      "Sample B"
+    ],
+    "values": [
+      3,
+      2
+    ],
+    "unit": "correct cases out of 4 in each sample"
+  }
+}

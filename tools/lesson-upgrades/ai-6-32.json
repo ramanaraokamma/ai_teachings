@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/32",
+  "title": "Documentation and operational readiness",
+  "outcome": "Explain documentation and operational readiness using the deciding step in this fictional service.",
+  "scenario": "A runbook with an owner. Another teacher must handle SOURCE_UNAVAILABLE without inventing an answer.",
+  "given": [
+    "The runbook names a maintainer and a read-only source-connection diagnostic. The code means no supported answer can be produced."
+  ],
+  "steps": [
+    {
+      "label": "Match symptom",
+      "icon": "book",
+      "detail": "Identify the documented unavailable-source condition."
+    },
+    {
+      "label": "Run safe check",
+      "icon": "question",
+      "detail": "Inspect the approved connection without broadening permissions."
+    },
+    {
+      "label": "Escalate clearly",
+      "icon": "person",
+      "detail": "Contact the named maintainer and retain unresolved status."
+    }
+  ],
+  "explanation": "Operational documentation connects a symptom, bounded action, responsible person and recovery check. Component names alone do not tell an operator what to do.",
+  "counterfactual": {
+    "change": "Remove the maintainer and escalation route.",
+    "prediction": "The diagnostic remains, but responsibility for an unresolved fault becomes unclear.",
+    "reason": "Readiness includes who acts when routine checks do not solve the problem."
+  },
+  "student_task": "Match SOURCE_UNAVAILABLE to its safe check and escalation owner. What is lost when the maintainer route is removed, even if the diagnostic instructions stay readable?",
+  "teacher_answer": "Identify the documented unavailable-source condition. Inspect the approved connection without broadening permissions. Contact the named maintainer and retain unresolved status. Changed case: The diagnostic remains, but responsibility for an unresolved fault becomes unclear. Readiness includes who acts when routine checks do not solve the problem.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "Rehearse and revise runbooks; readable instructions alone cannot establish readiness for every incident.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

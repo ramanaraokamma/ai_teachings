@@ -1,0 +1,38 @@
+{
+  "week": "ai-4/25",
+  "title": "Metrics Match Consequences",
+  "outcome": "By the end, I can explain metrics match consequences using a traced example and a stated limitation.",
+  "scenario": "Translate a threshold choice into missed-leaf and false-alarm costs.",
+  "given": [
+    "Scores/reference: 0.9 spotted, 0.6 healthy, 0.4 spotted, 0.1 healthy. Predict spotted at score>=threshold. Miss cost5; false-alarm cost1.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Threshold0.7",
+      "icon": "chart",
+      "detail": "TP 1, FN 1, FP 0, TN 2: cost5."
+    },
+    {
+      "label": "Threshold0.4",
+      "icon": "rule",
+      "detail": "TP 2, FN 0, FP 1, TN 1: cost1."
+    },
+    {
+      "label": "Choose for stated costs",
+      "icon": "check",
+      "detail": "Threshold0.4 has smaller validation cost on these four cases."
+    }
+  ],
+  "explanation": "Read the picture in order. Threshold0.4 has smaller validation cost on these four cases. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Miss and false-alarm costs swap to1 and 5.",
+    "prediction": "Threshold0.7 costs1 while0.4 costs5; preferred threshold switches.",
+    "reason": "Metric choice encodes the declared consequences, not a universal best threshold."
+  },
+  "student_task": "Which labels determine the false-alarm count at threshold 0.4? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "The healthy 0.6 case is wrongly flagged; healthy 0.1 stays clear. There is exactly one false alarm. Changed-case check: Threshold0.7 costs1 while0.4 costs5; preferred threshold switches. Metric choice encodes the declared consequences, not a universal best threshold.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Toy costs illustrate decision design; real use needs agreed consequences, review capacity and fresh evaluation.",
+  "review_note": "Reviewed Metrics Match Consequences against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

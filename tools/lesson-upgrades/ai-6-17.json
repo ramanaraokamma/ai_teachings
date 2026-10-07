@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/17",
+  "title": "External side effects and recovery",
+  "outcome": "Explain external side effects and recovery using the deciding step in this fictional service.",
+  "scenario": "Recover an uncertain print job. A badge printer loses its reply after receiving a print request.",
+  "given": [
+    "Job key J6 identifies one badge. The printer supports status lookup by key; missing acknowledgement leaves outcome unknown."
+  ],
+  "steps": [
+    {
+      "label": "Record uncertainty",
+      "icon": "network",
+      "detail": "Sending occurred, but printing completion is not yet known."
+    },
+    {
+      "label": "Query J6",
+      "icon": "question",
+      "detail": "Ask for the existing job’s recorded state."
+    },
+    {
+      "label": "Recover from status",
+      "icon": "check",
+      "detail": "If complete, return that result without issuing another print job."
+    }
+  ],
+  "explanation": "A lost response does not show whether an external effect occurred. Recovery distinguishes unknown outcome from a confirmed failed action.",
+  "counterfactual": {
+    "change": "Status reliably reports J6 absent.",
+    "prediction": "A policy-approved resend using the same deduplication key may be considered.",
+    "reason": "Confirmed absence supplies different evidence from silence."
+  },
+  "student_task": "Distinguish a missing printer acknowledgement from confirmed failure. What should happen if J6 is complete, and what evidence changes when J6 is reliably reported absent?",
+  "teacher_answer": "Sending occurred, but printing completion is not yet known. Ask for the existing job’s recorded state. If complete, return that result without issuing another print job. Changed case: A policy-approved resend using the same deduplication key may be considered. Confirmed absence supplies different evidence from silence.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "Without reliable status or deduplication, escalate uncertainty rather than claiming one and only one print.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

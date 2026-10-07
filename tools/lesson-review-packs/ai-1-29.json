@@ -1,0 +1,303 @@
+{
+  "week": "ai-1/29",
+  "title": "Find a Real Problem",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Describe a specific user difficulty using supplied evidence without inventing its cause",
+    "Define a useful outcome and a way to observe it before choosing a solution",
+    "Choose a small project with clear boundaries, permitted information and a simple alternative"
+  ],
+  "primary_topic": "A problem worth solving",
+  "vocabulary": [
+    [
+      "User need",
+      "Something a person needs to accomplish in a particular situation"
+    ],
+    [
+      "Problem statement",
+      "A specific description of who faces a difficulty and what that difficulty is"
+    ],
+    [
+      "Outcome",
+      "The result experienced by the user"
+    ],
+    [
+      "Constraint",
+      "A condition that a proposed solution must respect"
+    ],
+    [
+      "Success measure",
+      "An observable quantity or result used to judge progress"
+    ]
+  ],
+  "worked_example": {
+    "title": "Keep the first project small enough to inspect",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Project choice",
+          "Boundary for this sequence",
+          "Reason"
+        ],
+        "rows": [
+          [
+            "Users and setting",
+            "Fictional classroom activity requests",
+            "A clear situation to test"
+          ],
+          [
+            "Information",
+            "Available minutes and quiet-room requirement",
+            "Relevant to compatibility"
+          ],
+          [
+            "Action",
+            "Suggest an activity or report no match",
+            "The user retains the choice"
+          ],
+          [
+            "Outside the project",
+            "Names, profiles, purchases and public posting",
+            "Not needed for this paper task"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "The teacher permits a paper prototype using fictional requests and an approved catalogue. We do not need names, home details or a history of a pupil\u2019s choices. A request can say \u201c10 minutes, quiet room required\u201d without identifying anyone. Use only the request information needed to test the intended outcome."
+      },
+      {
+        "type": "paragraph",
+        "text": "A clear catalogue or a short checklist may solve this problem. We will compare a proposed recommender with a simple starting method instead of assuming a more complicated system is better. This project can use explicit rules; it does not have to fit a machine-learning model. The choice should follow the problem, available evidence and limits of the task."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Identify claims beyond the evidence",
+    "prompt": "A team says that the four mismatches prove every pupil dislikes the catalogue and that a recommender will fix the problem. Identify two unsupported conclusions and state what the log actually establishes.",
+    "lines": 6,
+    "answer": "The log establishes four incompatible first choices out of ten supplied fictional requests. It does not establish every pupil\u2019s opinion, the cause of the mismatches or that an untested recommender will improve outcomes. Accept any two of those unsupported conclusions with the bounded observation."
+  },
+  "independent_case": {
+    "title": "Frame a different problem independently",
+    "task": "In a fictional equipment cupboard exercise, eight teams choose a box from a list. Three boxes do not contain the items required by the corresponding request; five do. The teacher permits a paper box-finder using fictional item requests and an inventory. Write a brief naming the user difficulty, evidence, desired outcome, necessary information, an excluded action and a simple alternative. Identify one cause or benefit that these counts do not establish.",
+    "answer": "Teams selecting equipment in the supplied exercise had three mismatches out of eight and need a box whose listed contents meet the request, or a clear no-match result. Use requested items and the inventory; personal identities are unnecessary. Exclude real purchases, changing stock or public posting. A clearer inventory or item checklist is a simple alternative. The counts do not explain why teams chose mismatching boxes or prove that a box-finder will improve selection.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Using AI is itself the outcome",
+      "State what improves for the user and how to observe it."
+    ],
+    [
+      "A mismatch count proves its cause",
+      "Separate observations from explanations that need further evidence."
+    ],
+    [
+      "No wrong suggestions means success",
+      "Check whether valid options were missed or every request was refused."
+    ],
+    [
+      "A prototype requires real personal data",
+      "This paper project uses permitted fictional requests and task-relevant inputs."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/0ea19ec6e19fafb2e147988b4c11493538105e565a0531cb7dbe36f6d68e0fdd",
+        "alt": "Visual card for the input stage: observations and interview evidence",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/93ddf69fb03b95551f92d0fa888b22d833f0047c401bbcb7e4a69fe93a8ab5bb",
+        "alt": "Visual card for the process stage: identify user, situation, need, and measurable effect",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/9cd2e8349a27a2754d87f11a6cd319d03e6211b642db8903b32589a607fe4b8b",
+        "alt": "Visual card for the output stage: testable problem statement without a preselected solution",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  observations and interview evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  identify user, situation, need, and measurable effect"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  testable problem statement without a preselected solution"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  A strong project begins with a specific user and observable need.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Problem framing separates evidence about a user's need from assumptions about a solution. A strong statement identifies who, when, what observable difficulty occurs, and how improvement could be measured.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "From an observed difficulty to a testable goal",
+        "columns": [
+          "Evidence or decision",
+          "What it supports",
+          "What remains to check"
+        ],
+        "rows": [
+          [
+            "4 of 10 choices mismatch",
+            "Some re-selection occurred",
+            "Cause is not established"
+          ],
+          [
+            "Need a compatible choice",
+            "Check time and conditions",
+            "User can still decline"
+          ],
+          [
+            "Paper suggestion process",
+            "Small permitted prototype",
+            "Benefit needs a comparison"
+          ],
+          [
+            "Measure fit and coverage",
+            "Observe useful outcomes",
+            "Do not hide no-result cases"
+          ]
+        ],
+        "caption": "The goal describes a useful result. Building a tool is an activity, not evidence that users benefited."
+      },
+      {
+        "type": "paragraph",
+        "text": "Our target outcome is a compatible suggestion when the catalogue contains one, and a clear no-match message when none fits. Compatibility means respecting the stated conditions; it does not mean that every pupil will enjoy the activity. We can check time and room conditions from a request and catalogue. Enjoyment would need different evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Count compatible suggestions, incompatible suggestions and no-match messages separately. Otherwise a system could avoid every wrong suggestion by refusing to suggest anything. If a valid option existed, that refusal would still fail to provide the intended help. Record the total number of requests so a count has a clear denominator."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/5cb895b7849bfebea69920912d8a785607b63b9439d25058ec57d6fa9c2a165c",
+        "alt": "Comparison picture for Students need AI: technology-first claim; weak framing",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/9496db36466d91ea5e182f6de440c6fa525c450800b23bee23c9f3a83083e86d",
+        "alt": "Comparison picture for Books are messy: vague judgment; needs observation",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/d16b94eedf4484d642c0c3d7773134b4eff4dbf88f6c62d62e60276a26012b49",
+        "alt": "Comparison picture for Librarian re-sorts 20 books daily: specific burden; testable need",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/34e3f8387afbb30119dfbe3f4fbc9c9ea832c28352416e50317bfbe5956669df",
+        "alt": "Comparison picture for One student opinion: useful but limited; seek more evidence",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Students need AI  Clue: technology-first claim. Meaning: weak framing."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Books are messy  Clue: vague judgment. Meaning: needs observation."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Librarian re-sorts 20 books daily  Clue: specific burden. Meaning: testable need."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 One student opinion  Clue: useful but limited. Meaning: seek more evidence."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Do not collect personal stories unrelated to the design question.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

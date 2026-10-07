@@ -1,0 +1,85 @@
+{
+  "week": "ai-1/15",
+  "title": "Save New Examples for Testing",
+  "outcome": "By the end, I can freeze a model before labels are revealed and report a bounded test result.",
+  "scenario": "A fictional envelope exercise evaluates a fixed pencil-length sorter.",
+  "given": [
+    "Freeze PencilP: long at least 6 cm; short below 6.",
+    "Reserved valid lengths are 3,5,6,9 cm. Teacher envelope labels, revealed only after predictions, are short,long,long,long."
+  ],
+  "steps": [
+    {
+      "label": "Freeze",
+      "icon": "shield",
+      "detail": "Write PencilP and its boundary before opening the label envelope."
+    },
+    {
+      "label": "Predict",
+      "icon": "model",
+      "detail": "For 3,5,6,9 cm predict short,short,long,long."
+    },
+    {
+      "label": "Reveal references",
+      "icon": "person",
+      "detail": "Envelope labels are short,long,long,long."
+    },
+    {
+      "label": "Compare",
+      "icon": "chart",
+      "detail": "Three of four agree; the disagreement is at 5 cm."
+    }
+  ],
+  "explanation": "The prediction record must exist before the labels are seen. PencilP scores 3/4=75% agreement on these four selected cases. Moving the boundary after inspecting the envelope makes this a development exercise; the same four cases can no longer serve as untouched final evaluation.",
+  "counterfactual": {
+    "change": "After feedback, change the boundary to 5.",
+    "prediction": "The revised rule matches all four known labels but needs a different final test.",
+    "reason": "These labels influenced the revision, so replaying them is evidence of repair rather than unseen performance."
+  },
+  "student_task": "Does 4/4 on the replay replace the original 3/4 result? Explain.",
+  "teacher_answer": "No. Keep 3/4 as the frozen version’s result; record 4/4 separately as a revised-version replay on known cases.",
+  "project_evidence": "Maintain dated sorter versions and separate development examples from reserved project-evaluation cases.",
+  "limits": "Four selected cases cannot establish a reliable accuracy rate for every future pencil or classroom.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Frozen predictions versus reserved labels",
+    "cells": [
+      [
+        3,
+        "short",
+        "short",
+        "agree"
+      ],
+      [
+        5,
+        "short",
+        "long",
+        "disagree"
+      ],
+      [
+        6,
+        "long",
+        "long",
+        "agree"
+      ],
+      [
+        9,
+        "long",
+        "long",
+        "agree"
+      ]
+    ],
+    "row_labels": [
+      "Test 1",
+      "Test 2",
+      "Test 3",
+      "Test 4"
+    ],
+    "column_labels": [
+      "Length cm",
+      "PencilP",
+      "Reference",
+      "Result"
+    ]
+  }
+}

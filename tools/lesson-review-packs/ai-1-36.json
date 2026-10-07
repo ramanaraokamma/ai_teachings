@@ -1,0 +1,304 @@
+{
+  "week": "ai-1/36",
+  "title": "Expo and Defense",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Evaluate a saved candidate and a manual baseline fairly",
+    "Defend a conclusion using results, failures and limits",
+    "Explain the rules, privacy choices and human control in your project"
+  ],
+  "primary_topic": "Evaluating and explaining your project",
+  "vocabulary": [
+    [
+      "Final evaluation",
+      "Testing a saved candidate under stated conditions after development"
+    ],
+    [
+      "Baseline",
+      "A comparison method tested under the same conditions"
+    ],
+    [
+      "Evidence",
+      "Recorded observations that support or challenge a claim"
+    ],
+    [
+      "Limitation",
+      "A boundary on what a result or system can establish"
+    ],
+    [
+      "Defence",
+      "An explanation of a decision using evidence and reasoning"
+    ]
+  ],
+  "worked_example": {
+    "title": "Make a claim that matches the evidence",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Here is a fictional example from a different project, not your class results. A candidate has 6 full passes from 8 attempted cases; the baseline has 8 from the same 8. Two more planned cases were not run. The candidate passed 75 percent of attempted cases; the baseline passed 100 percent. Neither has evidence for the two unrun cases. The candidate did not outperform the baseline on this measure."
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Evidence",
+          "Supported statement",
+          "Claim to avoid"
+        ],
+        "rows": [
+          [
+            "6 of 8 full passes",
+            "Six attempted cases met the full rule",
+            "It works for every request"
+          ],
+          [
+            "Both methods pass the same cases",
+            "They tie on this measured result",
+            "Automation must be better"
+          ],
+          [
+            "A time was not measured",
+            "Speed is unknown",
+            "The candidate is faster"
+          ],
+          [
+            "Only fictional catalogue data",
+            "Results concern these test conditions",
+            "People will enjoy every suggestion"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Explain each failure and its consequence instead of hiding it inside a total. Even perfect results on a small reserved set do not establish reliability in every situation. Our paper adviser applies human-written rules; it has not learned a model from training examples. It checks compatibility, not enjoyment, popularity or real material availability."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "In the fictional example, state the candidate and baseline results, explain how the two unrun cases should be reported, and give one useful next action. Why is \u201cthe adviser is ready for every classroom\u201d unsupported?",
+        "lines": 6
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Keep the final evaluation record",
+    "prompt": "Use a separate sheet for the teacher\u2019s reserved cases. For every case record its ID and inputs, catalogue and candidate labels, both methods\u2019 observed outputs and reasons, and results after checking. Preserve failure traces. Here summarise each method\u2019s full passes over attempted cases and list unrun cases. State what the comparison supports.",
+    "lines": 6,
+    "answer": "Use the reserved key in Preparation only after observations are saved. Full pass requires output and reason; no-match explanations must rule out all rows. Clarification must precede search. Report actual candidate and baseline counts over the same attempted cases, plus unrun cases. Never substitute the key for an observation or assume a baseline run was correct."
+  },
+  "independent_case": {
+    "title": "Judge a different project independently",
+    "task": "A fictional library adviser and its manual baseline face the same 6 reserved cases. The candidate has 4 full passes; the baseline has 5. One additional planned case is unrun by both. No speed data was collected. The team says \u201cours is faster and more reliable everywhere\u201d and repairs it after seeing the failures. Explain what the counts support, two unsupported claims and how to label a rerun of the revealed cases.",
+    "answer": "Report candidate 4 of 6 and baseline 5 of 6 full passes, with one unrun case for each. The baseline performed better on this measured set; neither result establishes reliability everywhere. Speed was not measured. A rerun after the failures informed a repair is development evidence for the revised version, not an unseen final test. Preserve the old results and label both versions.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A polished presentation proves the system works",
+      "Ask for the saved instruction, trace and actual result behind the claim."
+    ],
+    [
+      "Unrun cases count as passes",
+      "Report attempted denominators and unrun cases separately."
+    ],
+    [
+      "The baseline must lose",
+      "A tie or a better baseline can justify retaining the simpler method."
+    ],
+    [
+      "A repair erases the final failure",
+      "Preserve the evaluated version and results; revealed cases become development checks for the revision."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/96f861de3fceae2ab7952b0bb010f9fbe4edc2aadf9e7a9911db88139435de84",
+        "alt": "Visual card for the input stage: fresh item and documented system",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/28401a966d9c026772af23e4cdd80ceea45b3cc6edd12817873c336429b65995",
+        "alt": "Visual card for the process stage: execute and explain each stage under questions",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/12dbfc3d722ed0258c437b7cba07cc1be1504829174a5034ba280953fb5136fc",
+        "alt": "Visual card for the output stage: result, evidence, limitation, and responsible next action",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  fresh item and documented system"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  execute and explain each stage under questions"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  result, evidence, limitation, and responsible next action"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  Understanding is shown by explanation, transfer, testing, and limits.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  A defense evaluates transferable understanding, not presentation polish. Strong evidence includes system architecture, version history, planned tests, failures, controlled improvement, fairness/privacy boundaries, and independent response to a novel case.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "From saved version to supported claim",
+        "columns": [
+          "Before the run",
+          "During the run",
+          "After the run"
+        ],
+        "rows": [
+          [
+            "Save instructions and label",
+            "Use the assigned data",
+            "Keep results and traces"
+          ],
+          [
+            "Keep final cases reserved",
+            "Run both methods fairly",
+            "Compare full passes"
+          ],
+          [
+            "State rules and limits",
+            "Record actual outputs",
+            "Explain failures and limits"
+          ]
+        ],
+        "caption": "Changing instructions during evaluation creates a different version. Keep evidence for the original version."
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the same final requests, catalogue, requirements and full-pass rule for both methods. Record the candidate output and reason before looking at the expected answer. Record the baseline separately; do not copy the candidate result into it. Your teacher holds the answer key. A full pass needs both the required output and a valid reason, including why earlier rows fail when a later row is selected."
+      },
+      {
+        "type": "paragraph",
+        "text": "For each request record its ID, inputs, catalogue label, candidate label, candidate output and reason, baseline output and reason, and both results after checking. Keep a trace for any failure. Mark unrun cases explicitly. Do not silently correct an observation. If a person misreads an instruction, record that execution error separately from a defect in the written instruction."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/60f74bba62ee1a594046297db44ce597f58632e78760f5a6772d2bdbca144a0e",
+        "alt": "Comparison picture for Polished poster: communication aid; not proof alone",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/d133835b023bef8f09751e2845bda2a3412b0e3f1ff1c5cb581ddde6cc3471e4",
+        "alt": "Comparison picture for Fresh trace: unrehearsed application; transfer evidence",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a0ae7ae242bf2be4aa961f9276cf3e0bfee54962612e458f30f6af908d58d6d4",
+        "alt": "Comparison picture for Failure log: honest testing record; engineering evidence",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1449b585a11767f7b893595cb61a0e92c88abb58d12fef8792ad9955afc4be83",
+        "alt": "Comparison picture for Human gate: responsible boundary; use condition",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Polished poster  Clue: communication aid. Meaning: not proof alone."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Fresh trace  Clue: unrehearsed application. Meaning: transfer evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Failure log  Clue: honest testing record. Meaning: engineering evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Human gate  Clue: responsible boundary. Meaning: use condition."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Confidence, decoration, or memorized vocabulary cannot replace a fresh trace and evidence-based answers.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

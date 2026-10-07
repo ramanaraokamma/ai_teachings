@@ -1,0 +1,148 @@
+{
+  "week": "ai-5/22",
+  "title": "Pooling and spatial information",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Compute max and mean pooling under an explicit window rule",
+    "Use collisions to explain lost spatial information",
+    "Test boundary and movement claims with revealing examples"
+  ],
+  "primary_topic": "Pooling and spatial information",
+  "vocabulary": [
+    [
+      "Max pooling",
+      "Replacing each window by its largest value"
+    ],
+    [
+      "Mean pooling",
+      "Replacing each window by the arithmetic mean of its values"
+    ],
+    [
+      "Spatial information",
+      "Information about where values occur and how positions relate"
+    ],
+    [
+      "Pooling collision",
+      "Different inputs producing the same pooled values"
+    ]
+  ],
+  "worked_example": {
+    "title": "Find different inputs with the same summary",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "A maximum does not identify its location",
+        "columns": [
+          "Input window rows",
+          "Maximum",
+          "Mean"
+        ],
+        "rows": [
+          [
+            "[4 0] and [0 0]",
+            "4",
+            "1"
+          ],
+          [
+            "[0 4] and [0 0]",
+            "4",
+            "1"
+          ],
+          [
+            "[4 4] and [4 4]",
+            "4",
+            "4"
+          ]
+        ],
+        "caption": "The first two windows differ in the position of their nonzero value yet have the same maximum and mean. The third has the same maximum but a different mean. Each summary retains some distinctions and discards others."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Compare windows [[0, 0], [6, 0]] and [[0, 0], [0, 6]]. Compute both summaries. Can a deterministic head receiving only either scalar distinguish bottom-left from bottom-right?",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Prove that location can be lost",
+    "prompt": "Give two different 2 by 2 windows containing exactly one 4 and three zeros that have the same maximum and mean. Explain why either scalar alone cannot identify the position of the 4.",
+    "answer": "Teacher explanation: For example, [[4, 0], [0, 0]] and [[0, 4], [0, 0]] both give maximum 4 and mean 1. A deterministic head receiving the same scalar must give the same output, so it cannot distinguish those positions.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Pool a new map independently",
+    "task": "Use rows [-4, -1, 2, 6], [-3, -2, 4, 0], [5, 1, -8, -2], [3, 7, -4, -6]. Under the lesson rule, give all four sums, the max map and the mean map. Explain why replacing a negative maximum by zero is an error here.",
+    "answer": "Teacher explanation: Window sums in row order are -10, 12, 16 and -20. Max map is [[-1, 6], [7, -2]]. Mean map is [[-2.5, 3], [4, -5]]. Zero is not in either all-negative window; pooling is not ReLU and must return the largest actual value.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Max pooling turns negative numbers into zero",
+      "That is a ReLU behaviour, not the maximum of an all-negative window."
+    ],
+    [
+      "Pooling removes all spatial information",
+      "A local pooled grid retains coarse regional arrangement while losing within-window detail."
+    ],
+    [
+      "Saving the maximum position restores the input",
+      "Other values remain unknown even when a unique maximum location is recorded."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "This code assumes a nonempty rectangular numeric map at least 2 by 2. It uses only complete 2 by 2 windows, stride 2 and no padding. It returns two separate summaries of the same map; it does not apply one pooling operation after the other."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "def pool2(image):\n    h, w = len(image), len(image[0])\n    if h < 2 or w < 2:\n        raise ValueError(\"Need a complete 2 by 2 window\")\n    maxima, means = [], []\n    for r in range(0, h - 1, 2):\n        max_row, mean_row = [], []\n        for c in range(0, w - 1, 2):\n            values = [image[r+i][c+j]\n                      for i in range(2) for j in range(2)]\n            max_row.append(max(values))\n            mean_row.append(sum(values) / 4)\n        maxima.append(max_row)\n        means.append(mean_row)\n    return maxima, means\n\nx = [[1, 4, 2, 0], [3, 2, 5, 1],\n     [0, 6, 1, 3], [2, 4, 2, 7]]\nassert pool2(x) == ([[4, 5], [6, 7]],\n                    [[2.5, 2], [3, 3.25]])"
+      },
+      {
+        "type": "paragraph",
+        "text": "For this complete-window rule the output shape is floor((H - 2) / 2) + 1 by floor((W - 2) / 2) + 1. A 3 by 3 map produces just one output; its last row and last column are not read. Do not silently invent a partial-window rule or pad missing positions."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Give two different 2 by 2 windows containing exactly one 4 and three zeros that have the same maximum and mean. Explain why either scalar alone cannot identify the position of the 4."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

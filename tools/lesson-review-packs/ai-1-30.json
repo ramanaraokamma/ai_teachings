@@ -1,0 +1,307 @@
+{
+  "week": "ai-1/30",
+  "title": "Choose Inputs and Outputs",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Turn the project outcome into precise input and output requirements",
+    "Apply a simple manual baseline to valid requests and record its results",
+    "Plan a fair comparison using the same catalogue, requests and judging rules"
+  ],
+  "primary_topic": "Requirements and a simple baseline",
+  "vocabulary": [
+    [
+      "Requirement",
+      "A precise condition that the solution must satisfy"
+    ],
+    [
+      "Baseline",
+      "A defined starting method used for comparison"
+    ],
+    [
+      "Compatible",
+      "Meeting all the stated conditions of the request"
+    ],
+    [
+      "Tie rule",
+      "A stated way to choose when several options qualify"
+    ],
+    [
+      "Acceptance check",
+      "A check of whether a result satisfies a requirement"
+    ]
+  ],
+  "worked_example": {
+    "title": "Describe a baseline someone else can repeat",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "The manual checklist baseline",
+        "columns": [
+          "Stage",
+          "Manual action",
+          "Recorded result"
+        ],
+        "rows": [
+          [
+            "Validate the request",
+            "Check minutes and Yes or No",
+            "Clarify invalid input"
+          ],
+          [
+            "Inspect catalogue in order",
+            "Check time and quiet for each",
+            "Mark compatible rows"
+          ],
+          [
+            "Choose or explain absence",
+            "First compatible row or none",
+            "Suggestion or no match"
+          ],
+          [
+            "Keep the evidence",
+            "Record input, result, reason",
+            "Comparable baseline record"
+          ]
+        ],
+        "caption": "The baseline is a complete manual method. A prototype must be compared with this defined procedure, not an invented weak opponent."
+      },
+      {
+        "type": "paragraph",
+        "text": "Write the request at the top of a sheet. If it is invalid, record what needs clarification and stop. Otherwise mark each catalogue row as compatible or incompatible using both conditions. Circle the first compatible row in order, or write no match if every row fails. Record the output and its reason. This checklist is our baseline."
+      },
+      {
+        "type": "paragraph",
+        "text": "The baseline can be correct on all cases when applied carefully. A prototype that matches it has not demonstrated better compatibility. It may still be easier to use or faster to trace, but those are separate claims that need their own measures. Do not make the baseline skip a condition just to make the prototype look better."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Run the baseline on three requests",
+    "prompt": "Using the catalogue, record the baseline output and reason for 10 minutes with quiet required, 8 minutes with quiet not required, and 7 minutes with quiet not required. Identify which no-match result is justified and why.",
+    "lines": 6,
+    "answer": "10 Yes gives B1: 10 fits exactly and it is quiet. 8 No gives B2: B1 is too long, B2 fits and non-quiet is permitted. 7 No gives no match: even the shortest activity requires 8 minutes. That no-match result is justified by the complete catalogue."
+  },
+  "independent_case": {
+    "title": "Build a baseline for a different catalogue",
+    "task": "A paper room recommender uses R1 first, capacity 6, quiet Yes; then R2, capacity 10, quiet No. Valid requests give a whole group size from 1 to 12 and Quiet required Yes or No. A room fits when capacity is at least group size and the quiet condition is met; choose the first fitting room. Record outputs and reasons for 6 people Yes, 8 people No and 8 people Yes. Explain how a manual baseline can be compared fairly with a prototype. No real booking is allowed.",
+    "answer": "6 Yes gives R1: equality fits and it is quiet. 8 No gives R2: R1 is too small and R2 meets capacity with quiet not required. 8 Yes gives no match: R1 is too small, R2 is not quiet. Use the same room catalogue, request set and requirements for both methods and keep all results. Compare suggestions only; do not make bookings.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Quiet required No excludes quiet activities",
+      "No removes the quiet restriction; it does not reverse it."
+    ],
+    [
+      "Ten minutes does not fit a ten-minute limit",
+      "No more than includes equality."
+    ],
+    [
+      "Blank time means zero",
+      "Blank is missing; zero is a valid input with no matching activity here."
+    ],
+    [
+      "A baseline must be bad to make a comparison useful",
+      "Use a credible simple method and accept a tie or a baseline win."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/386a5fcdf2458ca45fc92fb2ee234f67d206979e716614019d4482934ae71c4d",
+        "alt": "Visual card for the input stage: minimal required information",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/adf87c7f7d50832ccf02e9ab4679050bc52b86ca984a1f1fc425a2a776209b2c",
+        "alt": "Visual card for the process stage: candidate decision process",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/f4b4f25b9abaf7ff1f931f16ec50160121234bec6554665cf3ea36da58670e04",
+        "alt": "Visual card for the output stage: specific promised result and uncertainty path",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  minimal required information"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  candidate decision process"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  specific promised result and uncertainty path"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  A useful design makes required information and promised result explicit.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Interface contracts define inputs, outputs, types, allowed values, missing-data behavior, and guarantees. Good design avoids collecting data that cannot improve the promised result and avoids promising outcomes the process cannot support.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "table",
+        "rows": [
+          [
+            "Catalogue order and activity",
+            "Minutes required",
+            "Quiet activity"
+          ],
+          [
+            "B1 Bookmark drawing",
+            "10",
+            "Yes"
+          ],
+          [
+            "B2 Story circle",
+            "8",
+            "No"
+          ],
+          [
+            "B3 Pattern puzzle",
+            "12",
+            "Yes"
+          ],
+          [
+            "B4 Tower challenge",
+            "15",
+            "No"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "These four rows are the complete approved catalogue for the paper model. Treat their times as fixed task values, not measured guarantees about real pupils. All required materials are assumed available. The catalogue order B1, B2, B3, B4 is the tie rule; it is not a claim that B1 is everyone\u2019s favourite."
+      },
+      {
+        "type": "paragraph",
+        "text": "For 10 minutes with quiet required, B1 fits because 10 is no more than 10 and B1 is quiet. B2 fails the quiet requirement. B3 and B4 take too long. For 8 minutes with quiet not required, B2 fits; B1 takes too long. A request for 7 minutes has no compatible activity in this catalogue, even when quiet is not required."
+      },
+      {
+        "type": "paragraph",
+        "text": "Check each condition. A fast activity can still fail the quiet requirement. A quiet activity can still take too long. Exact equality is allowed: an activity listed as 10 minutes fits 10 available minutes. A blank time is different from a valid time of zero."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/dd7610378ffd33dde79c7b8fcc808b767e875d641df3b85f86ba0581f873a53e",
+        "alt": "Comparison picture for Item type: directly supports bin choice; required candidate",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/9243d379848a1ee6f57d8579ac2cd8f8455c4651f692449f72ecb818fd7dfbe1",
+        "alt": "Comparison picture for Location found: may disambiguate; optional candidate",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/3fab4099f148ec52b18674b22416d118c0c478871745038761877a30853b1476",
+        "alt": "Comparison picture for Student face: not needed; remove",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/da75194da593da7b244b3c3e45d6918e36b0ae3a35c057c6db2335ac0be5bf61",
+        "alt": "Comparison picture for Guaranteed owner: unsupported promise; revise output",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Item type  Clue: directly supports bin choice. Meaning: required candidate."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Location found  Clue: may disambiguate. Meaning: optional candidate."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Student face  Clue: not needed. Meaning: remove."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Guaranteed owner  Clue: unsupported promise. Meaning: revise output."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Every collected field creates cost and risk; every promised output needs evidence.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

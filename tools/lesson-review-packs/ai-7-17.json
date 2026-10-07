@@ -1,0 +1,135 @@
+{
+  "week": "ai-7/17",
+  "title": "Sensitivity analysis",
+  "grade": 12,
+  "project": "Reproducible AI Research Study",
+  "goals": [
+    "Explain the mechanism and terminology of sensitivity analysis",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Sensitivity analysis",
+  "vocabulary": [
+    [
+      "Sensitivity analysis",
+      "Checking outcomes across declared plausible choices"
+    ],
+    [
+      "Robustness range",
+      "The conditions over which a conclusion is examined"
+    ],
+    [
+      "Post-hoc selection",
+      "Choosing a procedure after seeing its scores"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Retrieval cutoffs1, 3, 5 yield recall .4, .7, .8 and precision .9, .7, .5."
+      },
+      {
+        "type": "paragraph",
+        "text": "Higher cutoff increases recall here while precision decreases. No universally best cutoff follows without a task-specific criterion."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "Retrieval cutoffs1, 3, 5 yield recall .4, .7, .8 and precision .9, .7, .5. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: Higher cutoff increases recall here while precision decreases. No universally best cutoff follows without a task-specific criterion.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "Thresholds .4, .5, .6 give passes8, 9, 7 out of10. Report range and a selection limit.",
+    "answer": "Teacher explanation: Rates80%, 90%, 70%, range70\u201390%. Choosing .5 from these results is development selection, not independent final evidence.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "A stable tested range does not establish stability under every parameter or dataset change."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Prespecify a range and preserve all results. Distinguish robustness across settings from proof beyond the tested range. Settings affecting data roles require special caution."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Sensitivity analysis \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "Retrieval cutoffs1, 3, 5 yield recall .4, .7, .8 and precision .9, .7, .5.",
+            "Prespecify a range and preserve all results. Distinguish robustness across settings from proof beyond the tested range. Settings affecting data roles require special caution.",
+            "Higher cutoff increases recall here while precision decreases. No universally best cutoff follows without a task-specific criterion."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Retrieval cutoffs1, 3, 5 yield recall .4, .7, .8 and precision .9, .7, .5. Show the intermediate steps and give the conclusion with its scope."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

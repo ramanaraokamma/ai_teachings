@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/34",
+  "title": "Capstone failure testing",
+  "outcome": "Explain capstone failure testing using the deciding step in this fictional service.",
+  "scenario": "Inject one component failure. A capstone test blocks model drafting after a successful approved-card retrieval.",
+  "given": [
+    "F4 records club time 15:00. The contract permits a checked fixed-template answer when drafting is unavailable."
+  ],
+  "steps": [
+    {
+      "label": "Verify source",
+      "icon": "book",
+      "detail": "Retrieval supplies F4 and the time 15:00."
+    },
+    {
+      "label": "Inject failure",
+      "icon": "experiment",
+      "detail": "Disable drafting without changing source evidence."
+    },
+    {
+      "label": "Use bounded fallback",
+      "icon": "rule",
+      "detail": "Return the checked template citing F4 and record degraded operation."
+    }
+  ],
+  "explanation": "Failure injection changes a component deliberately so the team can inspect the response. A fallback must retain evidence checks and honest status.",
+  "counterfactual": {
+    "change": "Make retrieval unavailable as well.",
+    "prediction": "Return unsupported or unavailable; do not use the factual template.",
+    "reason": "A template can phrase evidence but cannot replace missing evidence."
+  },
+  "student_task": "Explain why retrieval success permits the checked 15:00 fallback when drafting fails. What changes if retrieval fails too, and why can a template not fill that evidence gap?",
+  "teacher_answer": "Retrieval supplies F4 and the time 15:00. Disable drafting without changing source evidence. Return the checked template citing F4 and record degraded operation. Changed case: Return unsupported or unavailable; do not use the factual template. A template can phrase evidence but cannot replace missing evidence.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "This trial covers one failure combination; check other components and interactions separately.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

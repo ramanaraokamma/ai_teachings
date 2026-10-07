@@ -1,0 +1,38 @@
+{
+  "week": "ai-4/13",
+  "title": "Train a Classifier",
+  "outcome": "By the end, I can explain train a classifier using a traced example and a stated limitation.",
+  "scenario": "Separate a reproducible fitted pipeline from merely displaying predictions.",
+  "given": [
+    "Toy training lengths are [2, 6] cm with labels [healthy, spotted]. Pipeline converts cm to mm, then uses k=1 absolute distance. Query is 5 cm.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Fit transform",
+      "icon": "code",
+      "detail": "The declared conversion produces training lengths 20 and 60 mm."
+    },
+    {
+      "label": "Transform query",
+      "icon": "data",
+      "detail": "5 cm becomes 50 mm using the same conversion."
+    },
+    {
+      "label": "Predict neighbour",
+      "icon": "model",
+      "detail": "Distances 30 and 10 mm select the spotted training record."
+    }
+  ],
+  "explanation": "Read the picture in order. Distances 30 and 10 mm select the spotted training record. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Transform training but leave query numerically at 5.",
+    "prediction": "Distances become 15 and 55, incorrectly selecting healthy.",
+    "reason": "The query is now compared in inconsistent units; the changed result is a pipeline defect."
+  },
+  "student_task": "Which pipeline record would help another team reproduce the result? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Record training inputs/labels, unit conversion, k=1, distance rule and query transformation; correct result is spotted from distance10 mm. Changed-case check: Distances become 15 and 55, incorrectly selecting healthy. The query is now compared in inconsistent units; the changed result is a pipeline defect.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "A reproducible toy pipeline can still perform poorly; evaluation must use separate records and appropriate group splits.",
+  "review_note": "Reviewed Train a Classifier against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

@@ -1,0 +1,80 @@
+{
+  "week": "ai-2/33",
+  "title": "Build the Recommender",
+  "outcome": "By the end, I can implement deterministic filtering, scoring and ties for a complete catalogue case.",
+  "scenario": "A fictional book chooser filters a request before comparing preference scores.",
+  "given": [
+    "Request: animal subject, at most 90 pages. Score 2 for illustrated and 1 for comic. Tie chooses smaller ID.",
+    "A animal90 illustrated prose; B animal70 plain comic; C space60 illustrated comic; D animal80 illustrated comic."
+  ],
+  "steps": [
+    {
+      "label": "Filter",
+      "icon": "shield",
+      "detail": "A,B,D meet subject and page requirements; C fails subject."
+    },
+    {
+      "label": "Compute scores",
+      "icon": "code",
+      "detail": "A=2; B=1; D=3."
+    },
+    {
+      "label": "Choose best",
+      "icon": "output",
+      "detail": "Return D with both preference matches recorded."
+    },
+    {
+      "label": "Deterministic output",
+      "icon": "check",
+      "detail": "Reordering the input rows must not change D’s unique winning score."
+    }
+  ],
+  "explanation": "Eligibility and ranking answer different questions. C has a high preference score but is not an animal book, so it must stay excluded. The implementation needs a no-match result and explicit tie policy even when this example has a unique winner. Save rejected reasons for an explanation, not just the final ID.",
+  "counterfactual": {
+    "change": "Change D’s pages to 91, leaving every other field unchanged.",
+    "prediction": "D becomes ineligible, so A wins with score 2.",
+    "reason": "The strict excess over the 90-page maximum changes filtering before ranking."
+  },
+  "student_task": "Explain why B does not win after D is excluded even though it has fewer pages.",
+  "teacher_answer": "Page count is an eligibility limit, not a ranking preference here. A scores 2 and B scores 1.",
+  "project_evidence": "Save the recommender code, contract and this full trace; test the same records in different input orders.",
+  "limits": "Toy preference weights do not imply shorter or illustrated books are universally better for all learners.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Filtering before scoring",
+    "cells": [
+      [
+        90,
+        2,
+        "eligible"
+      ],
+      [
+        70,
+        1,
+        "eligible"
+      ],
+      [
+        60,
+        3,
+        "subject fails"
+      ],
+      [
+        80,
+        3,
+        "eligible"
+      ]
+    ],
+    "row_labels": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "column_labels": [
+      "Pages",
+      "Preference score",
+      "Status"
+    ]
+  }
+}

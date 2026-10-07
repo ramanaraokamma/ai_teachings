@@ -1,0 +1,43 @@
+{
+  "week": "ai-2/32",
+  "title": "Project Problem and Success Test",
+  "outcome": "By the end, I can plan a recommender with acceptance tests before writing its selection code.",
+  "scenario": "A fictional reading-break chooser needs a transparent contract.",
+  "given": [
+    "Items have id text, minutes integer 0–30, interest integer 0–5. Request limit is integer 0–30.",
+    "Eligible if minutes<=limit; score=interest; highest wins; ties choose alphabetically smaller ID; invalid rows excluded and counted."
+  ],
+  "steps": [
+    {
+      "label": "Specify inputs",
+      "icon": "book",
+      "detail": "Validate each row and request; keep rejected-row reasons."
+    },
+    {
+      "label": "Filter and rank",
+      "icon": "rule",
+      "detail": "At limit 8: A(time8,interest3), B(9,5), C(6,3). B is ineligible."
+    },
+    {
+      "label": "Expected output",
+      "icon": "output",
+      "detail": "A beats tied C by ID; report A and its score 3."
+    },
+    {
+      "label": "Acceptance cases",
+      "icon": "check",
+      "detail": "Also plan invalid request, no eligible item and equal-score cases."
+    }
+  ],
+  "explanation": "Planning fixes what success means before code returns an answer. The duration boundary is including equality, and the tie policy prevents accidental list-order dependence. A complete output may include why other rows were excluded. Test expectations should come from the contract rather than copying the first program result.",
+  "counterfactual": {
+    "change": "Reduce the limit from 8 to 5.",
+    "prediction": "Return no eligible item.",
+    "reason": "All three valid rows take more than five minutes."
+  },
+  "student_task": "Write an equality test and explain which requirement it checks.",
+  "teacher_answer": "Limit 8 with A taking 8 must include A; it checks that time eligibility uses <= rather than <.",
+  "project_evidence": "Retain the Transparent Book Recommender’s schema, constraints, score, tie rule and acceptance table as its build specification.",
+  "limits": "The supplied interest scores are fictional; the specification does not establish genuine learner preferences.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment."
+}

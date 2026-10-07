@@ -1,0 +1,53 @@
+{
+  "week": "ai-5/3",
+  "title": "Bias terms and decision boundaries",
+  "outcome": "By the end, I can explain bias terms and decision boundaries using a traced example and a stated limitation.",
+  "scenario": "Move a toy boundary with a bias while keeping its input weights fixed.",
+  "given": [
+    "Score z=2u-v-3; predict class 1 when z>=0. InputsA=[2, 1], B=[1, 1].",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Trace input A",
+      "icon": "network",
+      "detail": "A score=4-1-3=0, so class 1 at the declared inclusive boundary."
+    },
+    {
+      "label": "Trace input B",
+      "icon": "network",
+      "detail": "B score=2-1-3=-2, so class 0."
+    },
+    {
+      "label": "Read boundary",
+      "icon": "chart",
+      "detail": "The boundary is v=2u-3; the bias sets its position."
+    }
+  ],
+  "explanation": "The bias adds the same offset after the input contributions. It moves the dividing line without changing the weights that set the line\u2019s orientation. Class 1 includes score zero under our stated rule. That is why B changes class when the bias rises by two: its score moves from minus two onto the included boundary.",
+  "counterfactual": {
+    "change": "Change bias from-3 to-1.",
+    "prediction": "A score becomes2 and B score 0; both predict class 1.",
+    "reason": "Increasing bias by2 adds2 to every score without changing the weights."
+  },
+  "student_task": "Is B positive under the original or changed model? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Originally B has score-2 and class 0; with bias-1 its score is 0 and class 1 because the boundary is inclusive. Changed-case check: A score becomes2 and B score 0; both predict class 1. Increasing bias by2 adds2 to every score without changing the weights.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "A linear boundary is a toy classifier rule. Raw score size does not automatically describe confidence or probability.",
+  "review_note": "Reviewed Bias terms and decision boundaries against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation.",
+  "mini_visual": {
+    "kind": "weights",
+    "title": "Input A reaches the inclusive boundary",
+    "inputs": [
+      2,
+      1
+    ],
+    "weights": [
+      2,
+      -1
+    ],
+    "bias": -3,
+    "activation": "identity",
+    "output": 0
+  }
+}

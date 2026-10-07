@@ -1,0 +1,258 @@
+{
+  "week": "ai-4/25",
+  "title": "Metrics Match Consequences",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Apply a declared score threshold including equality",
+    "Compare false alarms and misses at two thresholds",
+    "Separate validation choices from final testing"
+  ],
+  "primary_topic": "Thresholds and consequences",
+  "vocabulary": [
+    [
+      "Score",
+      "A model output used to rank or decide"
+    ],
+    [
+      "Threshold",
+      "A boundary that converts a score to a label"
+    ],
+    [
+      "False alarm",
+      "A positive prediction for a negative reference"
+    ],
+    [
+      "Cost rule",
+      "A declared way to value different mistakes"
+    ]
+  ],
+  "worked_example": {
+    "title": "Explain the visual",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Thresholds and consequences at a glance",
+        "columns": [
+          "Part",
+          "Evidence or action",
+          "Interpretation"
+        ],
+        "rows": [
+          [
+            "Threshold .5",
+            "One false alarm one miss",
+            "Four of six correct"
+          ],
+          [
+            "Threshold .3",
+            "Two false alarms no misses",
+            "Four of six correct"
+          ],
+          [
+            "Decision rule",
+            "Include equality",
+            "Record before evaluation"
+          ]
+        ],
+        "caption": "Lowering the threshold here finds D but adds E as a false alarm. The two accuracies are equal while consequences differ. Precision is 2/3 at .5 and 3/5 at .3; recall rises from 2/3 to 1. This behavior follows these fixed scores and records, not a promise of future performance."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Give TP, FP, FN, TN at both thresholds. Explain the steps or evidence behind your response.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Count the consequences",
+    "prompt": "Give TP, FP, FN, TN at both thresholds.",
+    "answer": "Teacher explanation: At .5: 2, 1, 1, 2. At .3: 3, 2, 0, 1.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Apply independently",
+    "task": "Scores/references are .8/blocked,.5/clear,.2/blocked,.1/clear. Compare thresholds .5 and .2 using the same cost.",
+    "answer": "Teacher explanation: At .5 TP 1 FP 1 FN 1 TN 1 cost 5. At .2 TP 2 FP 1 FN 0 TN 1 cost 1. Equality is positive at both boundaries.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A final answer is enough",
+      "Ask for the relevant counts, units, procedure or saved record. For this week: At .5: A, B, C. At .3: A, B, C, D, E, including equality."
+    ],
+    [
+      "A stronger claim makes a stronger project",
+      "Selection uses the test answers, turning the test into development data and weakening its independent evaluation role."
+    ],
+    [
+      "The new case can be copied from the example",
+      "The independent task changes the evidence. Require a fresh explanation: At .5 TP 1 FP 1 FN 1 TN 1 cost 5. At .2 TP 2 FP 1 FN 0 TN 1 cost 1. Equality is positive at both boundaries."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a6ea590c05ca7614bfbca93fc6e593f1cb06d9ab08808b147f2f1b4e5de7d2dc",
+        "alt": "Week 25 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/60bdea16c4ffd3343ccc938b26fd0e9c8782c21493b03981fdd6480ab5d15573",
+        "alt": "Week 25 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/af37ea8f40376070499d43be5effb669bbc02642a43bc591a0212dd4d0184e90",
+        "alt": "Week 25 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Select metrics for screening, recommendation, and forecasting tasks."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  Metric choice depends on intended use, the positive class, who is affected, and the consequences of each error."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Screening task treats missed positives as costly, so emphasize recall and human follow-up. Recommendation task may track precision among shown items plus user benefit.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Six records have score/reference pairs A .9/blocked, B .7/clear, C .6/blocked, D .4/blocked, E .3/clear, F .1/clear. At threshold .5, TP=2, FP=1, FN=1, TN=2. At .3, TP=3, FP=2, FN=0, TN=1. Equality is positive, so E is flagged at .3."
+      },
+      {
+        "type": "code",
+        "title": "Python 3 check",
+        "text": "scores = [0.9, 0.7, 0.6, 0.4, 0.3, 0.1]\nactual = [True, False, True, True, False, False]\nfor threshold in [0.5, 0.3]:\n    predicted = [s >= threshold for s in scores]\n    fp = sum(p and not a for p, a in zip(predicted, actual))\n    fn = sum(not p and a for p, a in zip(predicted, actual))\n    print(threshold, fp, fn, fp + 4 * fn)\n# Output rows: 0.5 1 1 5, then 0.3 2 0 2."
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the calculation on paper before running this optional Python check. Use the stated fictional inputs and compare intermediate values. The code checks this example; your independent workbook case uses different evidence."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 25 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 25 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 25 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 25 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

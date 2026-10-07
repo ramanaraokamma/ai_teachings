@@ -1,0 +1,148 @@
+{
+  "week": "ai-5/13",
+  "title": "Batching and epochs",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Distinguish an example a batch an update and an epoch",
+    "Trace parameter changes across successive batches",
+    "Calculate update counts and aggregate unequal batch losses correctly"
+  ],
+  "primary_topic": "Batching and epochs",
+  "vocabulary": [
+    [
+      "Batch",
+      "A group of training examples used together to calculate one gradient here"
+    ],
+    [
+      "Update",
+      "One application of the gradient and learning rate to the current parameters"
+    ],
+    [
+      "Epoch",
+      "One pass through all training examples under the stated sampling rule"
+    ],
+    [
+      "Batch size",
+      "The intended number of examples in each batch with a possible smaller final batch"
+    ]
+  ],
+  "worked_example": {
+    "title": "Read the epoch trace",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "One pass can contain different numbers of updates",
+        "columns": [
+          "Batch rule",
+          "Parameter after each batch",
+          "Updates"
+        ],
+        "rows": [
+          [
+            "A then B separately",
+            "0 to 0.4 to 1.68",
+            "2"
+          ],
+          [
+            "A and B together",
+            "0 to 1",
+            "1"
+          ],
+          [
+            "B then A separately",
+            "0 to 1.6 to 1.68",
+            "2"
+          ]
+        ],
+        "caption": "All three passes visit two examples. The reversed order happens to end at the same value for these proportional targets; that coincidence is not a general order-invariance rule."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "For B then A separately, show both gradients and new parameter values. Why does one epoch still contain two updates?",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Repair a stale gradient",
+    "prompt": "For A then B separately in the lesson, a learner computes both gradients at v = 0, then applies them to get v = 2. Explain the error and give the correct final value.",
+    "answer": "Teacher explanation: The second gradient must use v = 0.4. Using -16 from the old state is stale; the current B gradient is -12.8 and the final v is 1.68.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Test order on a new case independently",
+    "task": "Use A = (1, 1), B = (2, 0), h = ReLU(x), y = vh, v = 0 and rate 0.1. Train with size 1 for one epoch in A then B order, then restart at 0 and reverse the order. Show gradients and parameter values. Compare the final values.",
+    "answer": "Teacher explanation: A then B: A gradient -2 gives v = 0.2; B residual 0.4 gives gradient 1.6 and v = 0.04. B then A: B gradient 0 keeps v = 0; A gradient -2 gives v = 0.2. Both see the same rows but finish differently.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "One epoch always means one update",
+      "Only a full-data batch gives one update per epoch in this procedure."
+    ],
+    [
+      "Reuse all gradients from the start of an epoch",
+      "Recompute at the parameter value before each batch update."
+    ],
+    [
+      "Average batch means equally",
+      "At one fixed model, weight each batch mean by the number of examples in that batch."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Use the two fictional pairs A = (1, 2) and B = (2, 4), start v = 0 and rate 0.1. For one pair with hidden value h, squared-error gradient is 2 times (vh - target) times h. For a batch, average these gradients at the same current v. Apply one update, then recompute for the next batch."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "def epoch(v, rows, size, rate):\n    if not rows or size < 1:\n        raise ValueError(\"Need rows and positive batch size\")\n    trace = []\n    for start in range(0, len(rows), size):\n        batch = rows[start:start + size]\n        hs = [max(0.0, x) for x, target in batch]\n        gradient = sum(2 * (v * h - target) * h\n                       for h, (x, target) in zip(hs, batch)) / len(batch)\n        v = v - rate * gradient\n        trace.append(v)\n    return trace\n\nrows = [(1.0, 2.0), (2.0, 4.0)]\nprint([round(v, 6) for v in epoch(0.0, rows, 1, 0.1)])  # [0.4, 1.68]\nprint([round(v, 6) for v in epoch(0.0, rows, 2, 0.1)])  # [1.0]"
+      },
+      {
+        "type": "paragraph",
+        "text": "Assume finite numeric pairs, integer size and finite rate. With size 1, A gives gradient -4 and new v = 0.4. B then uses 0.4, giving prediction 0.8, residual -3.2 and gradient -12.8, so v becomes 1.68. With size 2, both gradients are evaluated at v = 0; their mean is -10, producing v = 1."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "For A then B separately in the lesson, a learner computes both gradients at v = 0, then applies them to get v = 2. Explain the error and give the correct final value."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

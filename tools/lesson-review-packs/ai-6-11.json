@@ -1,0 +1,135 @@
+{
+  "week": "ai-6/11",
+  "title": "Failure budgets and service objectives",
+  "grade": 11,
+  "project": "Grounded Learning Service",
+  "goals": [
+    "Explain the mechanism and terminology of failure budgets and service objectives",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Failure budgets and service objectives",
+  "vocabulary": [
+    [
+      "Service objective",
+      "A declared measured target over a specified scope"
+    ],
+    [
+      "Failure budget",
+      "The failures allowed under that target"
+    ],
+    [
+      "Eligible request",
+      "A request included under the declared denominator rule"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "In the interval 200 requests are eligible and 5 fail."
+      },
+      {
+        "type": "paragraph",
+        "text": "195/200=97.5%, below 98%; failures exceed budget 4 by one. This is the measured interval only."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "In the interval 200 requests are eligible and 5 fail. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: 195/200=97.5%, below 98%; failures exceed budget 4 by one. This is the measured interval only.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "Objective 95% over 80 eligible requests. Five fail. Compute allowed failures and observed success.",
+    "answer": "Teacher explanation: Allowed four; 75/80=93.75%, so objective fails. Unknown eligibility cannot be silently excluded.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "Meeting one interval objective does not establish every future interval or zero critical failures."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "For a fictional objective at least 98% of 200 eligible requests must pass all contract checks. Allowed failures are 2%*200=4. Count every eligible failure once; report excluded requests separately."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Failure budgets and service objectives \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "In the interval 200 requests are eligible and 5 fail.",
+            "For a fictional objective at least 98% of 200 eligible requests must pass all contract checks.",
+            "195/200=97.5%, below 98%; failures exceed budget 4 by one. This is the measured interval only."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "In the interval 200 requests are eligible and 5 fail. Show the intermediate steps and give the conclusion with its scope."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "week": "ai-6/10",
+  "title": "Evaluation pipelines",
+  "outcome": "Explain evaluation pipelines using the deciding step in this fictional service.",
+  "scenario": "Four cases through a scoring pipeline. Two fixed versions answer the same four questions with frozen correct-or-incorrect labels.",
+  "given": [
+    "A scores [1,1,0,1]; B scores [1,0,0,1]. Each 1 means agreement with the reference answer."
+  ],
+  "steps": [
+    {
+      "label": "Freeze cases",
+      "icon": "data",
+      "detail": "Keep questions and reference labels unchanged for both versions."
+    },
+    {
+      "label": "Compute rates",
+      "icon": "chart",
+      "detail": "A is 3/4=75%; B is 2/4=50%."
+    },
+    {
+      "label": "Inspect failures",
+      "icon": "check",
+      "detail": "Case two separates the versions; case three fails for both."
+    }
+  ],
+  "explanation": "A pipeline preserves comparable cases, version labels and scoring. Report the denominator and disagreements alongside percentages.",
+  "counterfactual": {
+    "change": "Remove the shared failed third case after scoring.",
+    "prediction": "Rates become 3/3 and 2/3, but this selectively edited evaluation is misleading.",
+    "reason": "The population changed after seeing failures, concealing a weakness."
+  },
+  "student_task": "Calculate A’s and B’s correct rates on all four cases. Identify their shared failure and explain why removing that case after scoring changes the honesty of the comparison.",
+  "teacher_answer": "Keep questions and reference labels unchanged for both versions. A is 3/4=75%; B is 2/4=50%. Case two separates the versions; case three fails for both. Changed case: Rates become 3/3 and 2/3, but this selectively edited evaluation is misleading. The population changed after seeing failures, concealing a weakness.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "Four fictional cases illustrate a procedure, not broad quality or a stable future success rate.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Correct answers on four shared cases",
+    "labels": [
+      "A",
+      "B"
+    ],
+    "values": [
+      3,
+      2
+    ],
+    "unit": "correct answers out of 4"
+  }
+}

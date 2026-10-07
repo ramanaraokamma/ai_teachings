@@ -1,0 +1,43 @@
+{
+  "week": "ai-1/30",
+  "title": "Choose Inputs and Outputs",
+  "outcome": "By the end, I can specify valid inputs, exact outputs and a manual baseline.",
+  "scenario": "A fictional classroom chooses a storage bin for model parts.",
+  "given": [
+    "Catalogue order: B1 capacity 5, B2 capacity 9. Valid request is a whole part count 1–12.",
+    "Return first bin with capacity at least the count; none if neither fits; clarify invalid input."
+  ],
+  "steps": [
+    {
+      "label": "Validate request",
+      "icon": "shield",
+      "detail": "Count 6 is whole and within 1–12."
+    },
+    {
+      "label": "Check first bin",
+      "icon": "rule",
+      "detail": "B1 capacity 5 is below 6; reject it."
+    },
+    {
+      "label": "Check second bin",
+      "icon": "rule",
+      "detail": "B2 capacity 9 is at least 6; accept it."
+    },
+    {
+      "label": "Baseline output",
+      "icon": "output",
+      "detail": "Report B2 and stop; save the comparison evidence."
+    }
+  ],
+  "explanation": "The baseline is an ordered catalogue scan, not a preference ranking. It makes expectations testable before a prototype is built. Count 10 is valid but has no matching bin; that differs from a blank count, which fails the input contract. Both situations need explicit output behavior.",
+  "counterfactual": {
+    "change": "Change request 6 to 5.",
+    "prediction": "The baseline returns B1.",
+    "reason": "Its capacity equals the request, and at least includes equality."
+  },
+  "student_task": "Trace requests 10 and blank. Why should they not receive the same explanation?",
+  "teacher_answer": "10 is valid but neither bin fits: no match. Blank is missing input: request clarification before searching.",
+  "project_evidence": "Document sorter schema, catalogue order, acceptance rule and all output types; use a manual trace as the comparison baseline.",
+  "limits": "Bin capacity is the only supplied fitting criterion; weight or shape suitability cannot be inferred.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment."
+}

@@ -1,0 +1,54 @@
+{
+  "week": "ai-7/26",
+  "title": "Inspecting failures and anomalies",
+  "outcome": "Explain inspecting failures and anomalies using the records and boundaries of this fictional investigation.",
+  "scenario": "Inspect an anomaly without erasing it. A timing study records four runs and notices one unusually long duration.",
+  "given": [
+    "Durations are 2,2,2,10 seconds. Logs show a source timeout on the fourth run. The plan includes timeouts in reporting."
+  ],
+  "steps": [
+    {
+      "icon": "chart",
+      "label": "Keep the raw record",
+      "detail": "The fourth duration remains 10 seconds."
+    },
+    {
+      "icon": "code",
+      "label": "Compute summaries",
+      "detail": "Mean is 16/4=4 seconds; median is 2 seconds."
+    },
+    {
+      "icon": "question",
+      "label": "Investigate the event",
+      "detail": "Report the timeout evidence and distinguish it from an untested explanation."
+    }
+  ],
+  "explanation": "An anomaly invites investigation, not automatic deletion. A slow failure may be part of real service behaviour; the predefined rule determines inclusion.",
+  "counterfactual": {
+    "change": "Delete the 10-second record only because it looks bad.",
+    "prediction": "The mean becomes 2 seconds but the selective report violates this plan.",
+    "reason": "Observed inconvenient outcomes are not an approved exclusion reason."
+  },
+  "student_task": "Calculate mean and median for 2,2,2,10. What does the timeout log establish, and why is deleting that inconvenient record incompatible with the stated plan?",
+  "teacher_answer": "The fourth duration remains 10 seconds. Mean is 16/4=4 seconds; median is 2 seconds. Report the timeout evidence and distinguish it from an untested explanation. Changed case: The mean becomes 2 seconds but the selective report violates this plan. Observed inconvenient outcomes are not an approved exclusion reason.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "A logged timeout does not identify every underlying cause; report conditions and test explanations.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "All four recorded durations",
+    "labels": [
+      "Run 1",
+      "Run 2",
+      "Run 3",
+      "Run 4"
+    ],
+    "values": [
+      2,
+      2,
+      2,
+      10
+    ],
+    "unit": "seconds; run 4 includes timeout"
+  }
+}

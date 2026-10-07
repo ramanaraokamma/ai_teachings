@@ -1,0 +1,274 @@
+{
+  "week": "ai-4/6",
+  "title": "Label Quality",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Write an observable label rule with boundaries and a review option",
+    "Measure agreement using matched items and an explicit denominator",
+    "Investigate disagreement and record justified label decisions"
+  ],
+  "primary_topic": "Label definitions and disagreement",
+  "vocabulary": [
+    [
+      "Label rule",
+      "A written definition for assigning an outcome to an example"
+    ],
+    [
+      "Annotator",
+      "A person who assigns labels using a stated rule"
+    ],
+    [
+      "Agreement",
+      "How often annotators assign the same label to the same items"
+    ],
+    [
+      "Adjudication",
+      "Reviewing evidence and rules to resolve a disputed label or retain uncertainty"
+    ]
+  ],
+  "worked_example": {
+    "title": "Resolve a case with evidence",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "For B, the full lane is visible and a wheel touches its boundary. One annotator treated touching as clear; the other treated it as blocked. Rule v1 explicitly includes touching, so the reviewed label is blocked. Preserve both original labels and record the item, rule version, evidence, decision and reviewer. Do not silently overwrite the originals."
+      },
+      {
+        "type": "paragraph",
+        "text": "For C, a curtain hides part of the lane. One annotator guessed clear; the other requested review. Rule v1 requires full visibility for clear. The justified status remains review until sufficient evidence is available. More votes cannot reveal the hidden area."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Using rule v1, explain the decisions for B and C. If you exclude C from the original comparison, what is agreement among the remaining pairs? Why must you still report the exclusion?",
+        "lines": 5
+      },
+      {
+        "type": "paragraph",
+        "text": "A decision log could say: B, original clear/blocked, wheel touches line, v1, blocked after review by the teacher. For C it could say: original review/clear, lane partly hidden, v1, unresolved review. Add the labeling method and rule version to the dataset card."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Interpret agreement",
+    "prompt": "Explain the output 2 4 for A through D. State the fraction and percent, whether review is included, and why this is not model accuracy.",
+    "answer": "Two of four matched items have identical annotator labels: 2/4 or 50 percent. Review is included in this exact comparison. Neither annotator is established as a correct reference, and no model predictions are being scored.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Apply the process independently",
+    "task": "New pairs are P blocked/blocked, Q clear/blocked, R review/review, S clear/clear, T blocked/clear. P has an object inside; Q touches the line; R is partly hidden; S has all objects outside a fully visible lane; T has an object inside. Count agreement including review. Apply v1 to all five. Then report agreement on the original pairs excluding any review status, with its denominator and limitation.",
+    "answer": "Three of five pairs match, or 60 percent. Reviewed results are P blocked, Q blocked, R review, S clear, T blocked. Excluding R leaves two matches among four pairs, or 50 percent. The subset omits the uncertain case and does not establish correctness or general reliability. Preserve original labels separately from reviewed decisions.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Agreement is accuracy",
+      "Agreement compares annotators. Accuracy would require predictions and an appropriate reference; shared mistakes can still match."
+    ],
+    [
+      "Review means clear",
+      "Review preserves insufficient evidence. It is neither a negative label nor proof of a physical condition."
+    ],
+    [
+      "Voting removes uncertainty",
+      "Votes may select a decision policy but cannot create missing evidence. Preserve unresolved cases and document the policy."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/28e1719afe67bb3763b774e7ff26e4d84f969a97ad09c36e114364dd8a8c26df",
+        "alt": "Week 6 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a38a0fcc2007aaf3c0ce2874ca1fb6c8484e586a41372c983da4592ce698246e",
+        "alt": "Week 6 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/9c420e4eb743022acb7c5e1741598d2ceed9e919fd820c5e58bc0bc326bf8d7b",
+        "alt": "Week 6 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Measure annotator agreement and revise the labeling guide."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  Ambiguous definitions and inconsistent annotation place an upper bound on learnable performance."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Two annotators label 20 leaves and agree on 16. Observed agreement = 16 \u00f7 20 = 80%.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Two annotators used an earlier vague instruction, mark an obstructed lane, on four invented items. Their labels are shown in the code. A and D match; B and C differ. Compare the same item IDs, not merely the first row in two differently ordered files."
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "pairs = [(\"A\", \"blocked\", \"blocked\"),\n         (\"B\", \"clear\", \"blocked\"),\n         (\"C\", \"review\", \"clear\"),\n         (\"D\", \"clear\", \"clear\")]\nagree = 0\nfor item_id, first, second in pairs:\n    if first == second:\n        agree = agree + 1\nprint(agree, len(pairs))"
+      },
+      {
+        "type": "paragraph",
+        "text": "The output is 2 4: two matching labels among four paired items, so observed exact agreement is 2/4 or 50 percent. Here review is included as a label value in the comparison: review versus clear is a disagreement. This simple count is not model accuracy and does not establish which labels are correct."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow a disagreement back to evidence",
+        "columns": [
+          "Observe",
+          "Investigate",
+          "Record"
+        ],
+        "rows": [
+          [
+            "B has two labels",
+            "Read boundary rule",
+            "Keep labels and reason"
+          ],
+          [
+            "C includes review",
+            "Check visible evidence",
+            "Retain uncertainty if needed"
+          ],
+          [
+            "A and D match",
+            "Check rule as well",
+            "Agreement is not proof"
+          ]
+        ],
+        "caption": "Preserve independent labels before discussion. Shared mistakes can produce agreement, and missing evidence can prevent a justified final label."
+      },
+      {
+        "type": "paragraph",
+        "text": "The code assumes one valid pair per unique item ID and allowed label strings. It does not validate IDs or spelling. Use a nonempty paired set before calculating a fraction; zero paired items gives no agreement estimate."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 6 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 6 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 6 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 6 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

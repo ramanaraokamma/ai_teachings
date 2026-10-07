@@ -1,0 +1,58 @@
+{
+  "week": "ai-2/29",
+  "title": "Evidence and Sources",
+  "outcome": "By the end, I can separate citation presence, link validity and support for an exact claim.",
+  "scenario": "A fictional catalogue answer contains three factual statements and cites existing records.",
+  "given": [
+    "Record R: book Ocean Maps has 80 pages and is available on shelf 2.",
+    "Claims: 80 pages [R]; shelf 2 [R]; suitable for every child [R]. All three citations resolve to R."
+  ],
+  "steps": [
+    {
+      "label": "Break into claims",
+      "icon": "book",
+      "detail": "Count three factual claims rather than treating the answer as one blob."
+    },
+    {
+      "label": "Check links",
+      "icon": "check",
+      "detail": "All three citation links resolve to the intended R."
+    },
+    {
+      "label": "Check exact source support",
+      "icon": "rule",
+      "detail": "R supports page count and shelf, not universal suitability."
+    },
+    {
+      "label": "Report separately",
+      "icon": "chart",
+      "detail": "Citation presence 3/3; link validity 3/3; supported claims 2/3."
+    }
+  ],
+  "explanation": "An existing citation is not automatically evidence for every nearby sentence. Read the cited passage and compare its exact scope with the claim. The universal suitability statement extends beyond what R says. Remove or qualify unsupported content; adding more copies of the same link does not create the missing evidence.",
+  "counterfactual": {
+    "change": "Change the third claim to “the record does not assess suitability”.",
+    "prediction": "That statement accurately describes the supplied record’s limits.",
+    "reason": "R gives pages and shelf only; it contains no suitability assessment."
+  },
+  "student_task": "Why is the original answer not fully supported despite having citations on every claim?",
+  "teacher_answer": "One of the three claims is not entailed by its cited source; citation coverage and link validity do not measure claim support.",
+  "project_evidence": "Attach source IDs to recommender explanation facts and separately audit whether each source supports its precise statement.",
+  "limits": "Source support is relative to supplied records; those records can themselves be incomplete, outdated or incorrect.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Different citation checks",
+    "labels": [
+      "Citation presence",
+      "Link validity",
+      "Claim support"
+    ],
+    "values": [
+      100,
+      100,
+      66.66666666666667
+    ],
+    "unit": "percent"
+  }
+}

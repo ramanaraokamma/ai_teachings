@@ -1,0 +1,152 @@
+{
+  "week": "ai-5/27",
+  "title": "Similarity and normalisation",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Calculate vector length and normalise a nonzero vector",
+    "Compare squared distance with cosine similarity and explain a changed ranking",
+    "Handle zero vectors explicitly and justify what information a comparison keeps"
+  ],
+  "primary_topic": "Similarity and normalisation",
+  "vocabulary": [
+    [
+      "Vector length",
+      "The square root of the sum of squared components, also called the L2 norm"
+    ],
+    [
+      "L2 normalisation",
+      "Dividing every component of a nonzero vector by its length"
+    ],
+    [
+      "Cosine similarity",
+      "The dot product of two nonzero vectors divided by the product of their lengths"
+    ],
+    [
+      "Unit vector",
+      "A vector with length one"
+    ]
+  ],
+  "worked_example": {
+    "title": "See a ranking change",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Compare the same candidates using two rules",
+        "columns": [
+          "Candidate",
+          "Raw squared distance",
+          "Cosine similarity"
+        ],
+        "rows": [
+          [
+            "A [6, 8]",
+            "25",
+            "1"
+          ],
+          [
+            "B [3, 0]",
+            "16",
+            "0.6"
+          ],
+          [
+            "C [-3, -4]",
+            "100",
+            "-1"
+          ]
+        ],
+        "caption": "For Q [3, 4], raw squared distance selects B by minimising the score. Cosine selects A by maximising the score. The candidates stayed the same; the comparison rule changed."
+      },
+      {
+        "type": "paragraph",
+        "text": "After normalising both Q and every candidate, squared distances to A, B and C are 0, 0.8 and 4. For unit vectors, squared distance = 2 - 2 times cosine. Thus the smallest normalised distance and largest cosine produce the same ranking, including ties, in exact arithmetic."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Add candidate D [0, 5]. Calculate its raw squared distance and cosine from Q [3, 4]. Compare D with A under each rule.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Compare the rankings",
+    "prompt": "For query Q, write the raw squared distances and cosines to A, B and C from the lesson. Name the winner under each rule. Calculate squared distances after normalising both sides and check the relationship to cosine.",
+    "answer": "Teacher explanation: Raw squared distances are 25, 16, 100, so B wins. Cosines are 1, 0.6, -1, so A wins. Unit-vector squared distances are 0, 0.8, 4, matching 2 - 2 times each cosine and selecting A.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Compare a new case independently",
+    "task": "Use query [5, 0] and candidates P [10, 0], R [4, 3] and S [0, 5]. Calculate all raw squared distances and cosines, name each winner, and give squared distances after normalising both query and candidates. Explain the changed ranking.",
+    "answer": "Teacher explanation: Raw squared distances to P, R and S are 25, 10, 50, selecting R. Cosines are 1, 0.8, 0, selecting P. Normalised squared distances are 0, 0.4, 2. P shares the query direction despite its greater length; raw distance also reflects that length difference.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Cosine is a probability",
+      "Its possible negative values and geometric definition show that it is not a calibrated probability."
+    ],
+    [
+      "Normalisation keeps all information",
+      "Positive multiples collapse to the same unit vector; preserve length separately if the task needs it."
+    ],
+    [
+      "Any scaling leaves cosine unchanged",
+      "Positive scaling preserves direction. Multiplying only one vector by a negative number reverses the cosine sign; zero scaling makes it undefined."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Multiply matching components and add to obtain the dot product. Cosine similarity equals dot(Q, candidate) divided by (length(Q) times length(candidate)). Higher cosine means a closer direction. For A, the dot product is 3 times 6 + 4 times 8 = 50, so cosine = 50 / (5 times 10) = 1. For B it is 9 / 15 = 0.6; for C it is -25 / 25 = -1."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "from math import sqrt\n\ndef unit(v):\n    if not v:\n        raise ValueError(\"Need a nonempty vector\")\n    length = sqrt(sum(x*x for x in v))\n    if length == 0:\n        raise ValueError(\"Zero vector has no direction\")\n    return [x / length for x in v]\n\ndef cosine(a, b):\n    if len(a) != len(b):\n        raise ValueError(\"Need matching dimensions\")\n    ua, ub = unit(a), unit(b)\n    return sum(x*y for x, y in zip(ua, ub))\n\nq = [3, 4]\nfor name, v in [(\"A\", [6, 8]), (\"B\", [3, 0]),\n                (\"C\", [-3, -4])]:\n    print(name, round(cosine(q, v), 6))"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace before running: A gives 1, B gives 0.6 and C gives -1. This classroom code assumes finite, moderate numeric inputs. It rejects empty, unequal-length and zero vectors. Keep full precision for decisions; rounding here is only for display. Cosine lies between -1 and 1 in exact arithmetic and is not a probability."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "For query Q, write the raw squared distances and cosines to A, B and C from the lesson. Name the winner under each rule. Calculate squared distances after normalising both sides and check the relationship to cosine."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

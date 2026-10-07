@@ -1,0 +1,38 @@
+{
+  "week": "ai-4/2",
+  "title": "Features, Labels, Targets",
+  "outcome": "By the end, I can explain features, labels, targets using a traced example and a stated limitation.",
+  "scenario": "Choose features that exist when a plant prediction must be made.",
+  "given": [
+    "Predict next-week wilting at today’s photo capture. Available fields: today_light, today_soil_moisture, plant_id; next_week_wilt is the target recorded later.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Mark prediction time",
+      "icon": "clock",
+      "detail": "The decision occurs today, before next week’s outcome."
+    },
+    {
+      "label": "Select inputs",
+      "icon": "data",
+      "detail": "Today’s light and soil readings are available features; plant_id identifies the plant."
+    },
+    {
+      "label": "Keep target separate",
+      "icon": "shield",
+      "detail": "next_week_wilt supplies the training label, not an input available today."
+    }
+  ],
+  "explanation": "Read the picture in order. next_week_wilt supplies the training label, not an input available today. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "A table adds tomorrow_soil_moisture as an input.",
+    "prediction": "Reject it for this prediction-time contract.",
+    "reason": "Tomorrow’s measurement is unavailable when today’s prediction must be issued."
+  },
+  "student_task": "Why can a historical table contain a field that is an invalid input? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Historical exports combine measurements from different times. Availability at prediction time, not table presence, determines eligibility. Changed-case check: Reject it for this prediction-time contract. Tomorrow’s measurement is unavailable when today’s prediction must be issued.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Eligible fields are not automatically useful or causal. Measure their predictive value with a valid split.",
+  "review_note": "Reviewed Features, Labels, Targets against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

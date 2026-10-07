@@ -1,0 +1,178 @@
+{
+  "week": "python-bridge/9",
+  "title": "Return values and local state",
+  "grade": 8,
+  "project": "Python readiness portfolio",
+  "goals": [
+    "Use a returned value in a later calculation",
+    "Trace local variables separately for each function call",
+    "Detect a missing return and test repeated calls"
+  ],
+  "primary_topic": "Return values and local state",
+  "vocabulary": [
+    [
+      "Return value",
+      "A value a function sends back to its caller"
+    ],
+    [
+      "Caller",
+      "The code that calls a function"
+    ],
+    [
+      "Local variable",
+      "A name assigned inside a function and used in that function call"
+    ],
+    [
+      "Scope",
+      "The region of code in which a name can be looked up"
+    ],
+    [
+      "None",
+      "A Python value representing no result value in this lesson"
+    ]
+  ],
+  "worked_example": {
+    "title": "Give each call its own local names",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Point in execution",
+          "Local spaces",
+          "Caller values"
+        ],
+        "rows": [
+          [
+            "First call before return",
+            "8",
+            "first not assigned yet"
+          ],
+          [
+            "Second call before return",
+            "3",
+            "first is still 8"
+          ],
+          [
+            "After both calls",
+            "Not accessible by this local name",
+            "first is 8 and second is 3"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "capacity, used and spaces belong to the current call. The second call gets new parameter values and calculates its own spaces; it does not overwrite first. In a fresh script with no outside variable called spaces, adding print(spaces) after the calls raises NameError. Use the returned value stored in first or second instead."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Change the calls to remaining(9, 9) and remaining(9, 0). What values are stored and what does their sum print? What happens if only the final print statement is removed?",
+        "lines": 5
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace separate calls",
+    "prompt": "Using the correct definition, store a = remaining(8, 3), b = remaining(8, 8), c = remaining(8, 3). State a, b and c. In a fresh script, explain why print(spaces) outside the function fails.",
+    "answer": "a is 5, b is 0, c is 5. Each call has its own local spaces. That name has not been defined outside the function, so print(spaces) there raises NameError. Print a, b or c to use the saved results.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Follow arguments and returns",
+    "task": "Trace both calls, their local totals and returned values. What would bundle(0,5) return?",
+    "code": "def bundle(n, each):\n    total = n * each\n    return total\nfirst = bundle(3, 4)\nsecond = bundle(2, 5)\nprint(first, second)\n",
+    "expected_stdout": "12 10\n",
+    "answer": "Local totals and returns are 12 and 10; printed values are 12 10. Bundle(0,5) returns 0. The local variable does not become a global name.",
+    "source": "new parallel Python readiness case"
+  },
+  "misconceptions": [
+    [
+      "Printing a value returns that value",
+      "print displays a value. Without an explicit return, these functions return None."
+    ],
+    [
+      "A second call overwrites the first saved answer",
+      "These integer results are stored separately in the caller. A later call creates new local bindings."
+    ],
+    [
+      "A local name is available anywhere",
+      "spaces is assigned inside remaining. In our fresh script it cannot be looked up outside that function."
+    ],
+    [
+      "Zero means the function returned nothing",
+      "Zero is a number and supports arithmetic. None is a different value."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "def remaining(capacity, used):\n    spaces = capacity - used\n    return spaces\n\nfirst = remaining(12, 4)\nsecond = remaining(10, 7)\nprint(first + second)"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Two calls return two values",
+        "columns": [
+          "Call",
+          "Inside this call",
+          "Back in the caller"
+        ],
+        "rows": [
+          [
+            "remaining(12, 4)",
+            "spaces becomes 8",
+            "first receives 8"
+          ],
+          [
+            "remaining(10, 7)",
+            "spaces becomes 3",
+            "second receives 3"
+          ]
+        ],
+        "caption": "The caller adds the returned values. Only print(first + second) displays 11."
+      },
+      {
+        "type": "paragraph",
+        "text": "return spaces ends the current function call and sends the value of spaces back. The assignment first = remaining(12, 4) waits for that value and stores 8. The next call stores 3 in second. Neither call prints. The final statement prints 11. A statement after an executed return in the same call is not reached."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Using the correct definition, store a = remaining(8, 3), b = remaining(8, 8), c = remaining(8, 3). State a, b and c. In a fresh script, explain why print(spaces) outside the function fails."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

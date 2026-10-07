@@ -1,0 +1,135 @@
+{
+  "week": "ai-6/30",
+  "title": "Security and privacy review",
+  "grade": 11,
+  "project": "Grounded Learning Service",
+  "goals": [
+    "Explain the mechanism and terminology of security and privacy review",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Security and privacy review",
+  "vocabulary": [
+    [
+      "Threat model",
+      "Assets, actors and failure assumptions considered"
+    ],
+    [
+      "Attack surface",
+      "The inputs and routes through which behaviour can be influenced"
+    ],
+    [
+      "Privacy review",
+      "A check of purpose, access and data handling"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Output denies teacher guide, but cache contains it under a student-accessible key."
+      },
+      {
+        "type": "paragraph",
+        "text": "Access remains broken through the cache path. Review every storage/return path and assert restricted data never reaches student output/context."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "Output denies teacher guide, but cache contains it under a student-accessible key. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: Access remains broken through the cache path. Review every storage/return path and assert restricted data never reaches student output/context.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "Service blocks direct teacher lookup but diagnostic export includes full teacher answers. Identify defect and a test.",
+    "answer": "Teacher explanation: Diagnostic export bypasses confidentiality. Use a teacher-only authorised export or minimised metadata; test student requests against every export route.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "Review findings are bounded by tested paths and threat assumptions, not a proof of complete security."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "For the classroom service identify restricted guides, session secrets and student content. Test denied roles, unexpected fields, source injection and minimised logging without real credentials."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Security and privacy review \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "Output denies teacher guide, but cache contains it under a student-accessible key.",
+            "For the classroom service identify restricted guides, session secrets and student content. Test denied roles, unexpected fields, source injection and minimised logging without real credentials.",
+            "Access remains broken through the cache path. Review every storage/return path and assert restricted data never reaches student output/context."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Output denies teacher guide, but cache contains it under a student-accessible key. Show the intermediate steps and give the conclusion with its scope."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

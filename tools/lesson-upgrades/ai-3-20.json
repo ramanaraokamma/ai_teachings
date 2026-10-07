@@ -1,0 +1,38 @@
+{
+  "week": "ai-3/20",
+  "title": "Conversation State and Memory",
+  "outcome": "By the end, I can explain conversation state and memory using a traced example and a stated limitation.",
+  "scenario": "Keep a reading conversation consistent when the learner changes the selected book.",
+  "given": [
+    "In this toy session, “choose Cedar” sets selected_book=Cedar; “change to Maple” replaces it. Session state is cleared on exit.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "First choice",
+      "icon": "data",
+      "detail": "Store Cedar as this session’s selected book."
+    },
+    {
+      "label": "Correct choice",
+      "icon": "person",
+      "detail": "Replace Cedar with Maple; do not append an equally active second choice."
+    },
+    {
+      "label": "End session",
+      "icon": "clock",
+      "detail": "Clear selected_book. A new session begins with no selected book."
+    }
+  ],
+  "explanation": "Read the picture in order. Clear selected_book. A new session begins with no selected book. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "The next session asks “summarise my book” without naming one.",
+    "prediction": "Ask which book the learner wants.",
+    "reason": "The declared policy clears session state, so yesterday’s choice is unavailable."
+  },
+  "student_task": "What is selected_book after the correction and after exit? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "After correction it is Maple; after exit it is unset. Ask for a new selection before making a summary. Changed-case check: Ask which book the learner wants. The declared policy clears session state, so yesterday’s choice is unavailable.",
+  "project_evidence": "For your Verified Study Buddy, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Conversation state is an application record; it is not evidence that the model permanently learned the learner’s preferences.",
+  "review_note": "Reviewed Conversation State and Memory against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

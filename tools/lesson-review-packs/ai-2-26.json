@@ -1,0 +1,233 @@
+{
+  "week": "ai-2/26",
+  "title": "Image and Voice Pipelines",
+  "grade": 7,
+  "project": "Transparent Book Recommender",
+  "goals": [
+    "Explain the mechanism and terminology of speech pipelines and multimodal evidence",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Speech pipelines and multimodal evidence",
+  "vocabulary": [
+    [
+      "Modality",
+      "A form of information such as audio, image or text"
+    ],
+    [
+      "Transcription",
+      "A text representation of speech"
+    ],
+    [
+      "Error propagation",
+      "An earlier error affecting later processing"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Audio transcript reads fifteen boxes; a clear written inventory says fifty boxes. The original audio is unavailable and the assistant reports fifteen as certain."
+      },
+      {
+        "type": "paragraph",
+        "text": "There is an unresolved quantity conflict and no audio replay. Preserve both sources and ask the responsible person; certainty is unsupported."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "Audio transcript reads fifteen boxes; a clear written inventory says fifty boxes. The original audio is unavailable and the assistant reports fifteen as certain. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: There is an unresolved quantity conflict and no audio replay. Preserve both sources and ask the responsible person; certainty is unsupported.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "Transcript says room E; a current written approval says room F. The task requires current approved room. Written approval is declared authoritative; trace the response and the transcription limit.",
+    "answer": "Teacher explanation: Report F from the authoritative approval, noting the transcript conflict if relevant. This resolves the task authority, not what the original speaker actually said.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "A stage-level accuracy or authority policy does not establish every modality agrees or every downstream claim is supported."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/dcf221ff6ed258ad2e555cbc089139dbe33f2b4e8de0ec1a84b542bbed9ce77d",
+        "alt": "INPUT stage for Image and Voice Pipelines",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/8dce01a2d1c1da073bccdd804b5a15c47a3dddceee5999803f492db1493de07f",
+        "alt": "PROCESS stage for Image and Voice Pipelines",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/57d1defb188d970af6bb4e678369f58f3fa452041b06b2a4d4f3dd81a9e6149c",
+        "alt": "OUTPUT stage for Image and Voice Pipelines",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Track source modality, segment/time references, transcription, interpretation and final claims separately. Compare conflicting evidence without assuming one modality always wins. Ask for clarification when the task needs unresolved information."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Speech pipelines and multimodal evidence \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "Audio transcript reads fifteen boxes; a clear written inventory says fifty boxes. The original audio is unavailable and the assistant reports fifteen as certain.",
+            "Track source modality, segment/time references, transcription, interpretation and final claims separately. Compare conflicting evidence without assuming one modality always wins. Ask for clarification when the task needs unresolved information.",
+            "There is an unresolved quantity conflict and no audio replay. Preserve both sources and ask the responsible person; certainty is unsupported."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1f18213ba3d74c99072fa04ad7520b53eee0b2e9e845b0d8a61ccdda1b41f3f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fed8318cf337134a2c31a8d2c90831db67a27a43d3c6f85b25079c53ec37ff9a",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/75f964dbe29000347e518a59e2717387d7109bd1f947abdafa07e931a61cf754",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4d936b6648b81ac897fc99370c2788f8e0b135d8fc31cfd77afceee66a92128c",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

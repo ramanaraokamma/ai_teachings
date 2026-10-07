@@ -1,0 +1,38 @@
+{
+  "week": "ai-3/26",
+  "title": "Evaluation Sets",
+  "outcome": "By the end, I can explain evaluation sets using a traced example and a stated limitation.",
+  "scenario": "Design an evaluation set that checks answering and appropriate uncertainty separately.",
+  "given": [
+    "Six toy questions: three have source answers and three do not. Results: 2 supported answers out of 3; 3 correct “not in source” responses out of 3.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Separate cases",
+      "icon": "data",
+      "detail": "Keep answerable and missing-evidence cases as different groups."
+    },
+    {
+      "label": "Calculate rates",
+      "icon": "chart",
+      "detail": "Answering: 2/3. Appropriate uncertainty: 3/3."
+    },
+    {
+      "label": "Report total",
+      "icon": "output",
+      "detail": "Five of six pass overall; the perfect missing-evidence group hides one answering failure if only totals are discussed."
+    }
+  ],
+  "explanation": "Read the picture in order. Five of six pass overall; the perfect missing-evidence group hides one answering failure if only totals are discussed. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Add three missing-evidence cases that all pass.",
+    "prediction": "Overall becomes 8/9, but supported answering remains 2/3.",
+    "reason": "Changing the case mixture raises the pooled rate without improving any existing answerable result."
+  },
+  "student_task": "Did the added cases demonstrate better answering? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "No. Answerable cases still pass 2/3. Report both group rates and the changed evaluation mixture. Changed-case check: Overall becomes 8/9, but supported answering remains 2/3. Changing the case mixture raises the pooled rate without improving any existing answerable result.",
+  "project_evidence": "For your Verified Study Buddy, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "A small constructed set probes specific behaviours; its pooled rate is not an estimate of every future classroom question.",
+  "review_note": "Reviewed Evaluation Sets against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

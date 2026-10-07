@@ -1,0 +1,148 @@
+{
+  "week": "ai-5/20",
+  "title": "Image tensors and channels",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Read a pixel using declared row column and channel axes",
+    "Convert channel layout without changing pixel meaning",
+    "Distinguish fixed value scaling from information losing transformations"
+  ],
+  "primary_topic": "Image tensors and channels",
+  "vocabulary": [
+    [
+      "Tensor",
+      "A numerical array with a declared set of axes"
+    ],
+    [
+      "Channel",
+      "One component plane of an image such as red green or blue"
+    ],
+    [
+      "Axis order",
+      "The sequence of meanings assigned to array dimensions"
+    ],
+    [
+      "Value scaling",
+      "A declared numerical conversion applied to stored values"
+    ]
+  ],
+  "worked_example": {
+    "title": "Separate position from colour",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "The same pixels in three channel planes",
+        "columns": [
+          "Channel",
+          "Top row",
+          "Bottom row"
+        ],
+        "rows": [
+          [
+            "Red c 0",
+            "[255, 0]",
+            "[0, 255]"
+          ],
+          [
+            "Green c 1",
+            "[0, 255]",
+            "[0, 255]"
+          ],
+          [
+            "Blue c 2",
+            "[0, 0]",
+            "[255, 255]"
+          ]
+        ],
+        "caption": "Each row describes one channel plane. Within a plane the first listed row is the image top and the second is the bottom. Combining the three values at the same position recovers its RGB triplet."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Use the planes to reconstruct the top-right and bottom-right RGB pixels. Give both HWC and CHW indices for the top-right green value.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Audit an axis conversion",
+    "prompt": "A program flattens the lesson HWC array and groups the first four values into a 2 by 2 red plane. Give that incorrect plane and the correct plane. Identify a position where they disagree.",
+    "answer": "Teacher explanation: The incorrect plane is [[255, 0], [0, 0]]. The correct red plane is [[255, 0], [0, 255]]. They disagree at row 1 column 1. Regrouping consecutive values does not transpose axes.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Convert a new image independently",
+    "task": "A one-row two-column RGB image has pixels [10, 20, 30] then [40, 50, 60]. State its HWC shape and all three CHW planes. Give the green value at row 0 column 1 in both layouts. A batch contains four copies: give its NHWC shape and total channel-value count.",
+    "answer": "Teacher explanation: HWC shape is 1 by 2 by 3. CHW planes are [[10, 40]], [[20, 50]], [[30, 60]], giving shape 3 by 1 by 2. hwc[0][1][1] and chw[1][0][1] both equal 50. Batch shape is 4 by 1 by 2 by 3, containing 24 values.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Three channels mean three images",
+      "Channels are component planes at matching spatial positions in one image."
+    ],
+    [
+      "Reshaping automatically changes axis meanings correctly",
+      "Axis permutation must preserve coordinate correspondence; regrouping a flattened list can mix positions and colours."
+    ],
+    [
+      "Every conversion to a smaller number preserves information",
+      "Exact fixed scaling differs from rounding and channel averaging, which can collapse distinct values."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "A channel-first layout uses image[channel][row][column], abbreviated CHW. Our image then has shape 3 by 2 by 2. A correct conversion preserves the rule chw[c][r][k] = hwc[r][k][c]. The code assumes a nonempty rectangular image with exactly three values per pixel."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "hwc = [\n    [[255, 0, 0], [0, 255, 0]],\n    [[0, 0, 255], [255, 255, 255]],\n]\nheight, width = len(hwc), len(hwc[0])\nchw = [[[hwc[r][k][c] for k in range(width)]\n        for r in range(height)] for c in range(3)]\nfor channel in chw:\n    print(channel)\nassert chw[2][1][0] == hwc[1][0][2] == 255\nrestored = [[[chw[c][r][k] for c in range(3)]\n             for k in range(width)] for r in range(height)]\nassert restored == hwc"
+      },
+      {
+        "type": "paragraph",
+        "text": "Reading nested values in order and merely regrouping them into a new shape does not perform this axis conversion. The first four flattened HWC values are [255, 0, 0, 0]. A naive regrouping makes these the first channel plane, but the correct red plane is [[255, 0], [0, 255]]. Shape agreement alone cannot detect this mistake."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "A program flattens the lesson HWC array and groups the first four values into a 2 by 2 red plane. Give that incorrect plane and the correct plane. Identify a position where they disagree."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

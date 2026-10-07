@@ -1,0 +1,298 @@
+{
+  "week": "ai-1/16",
+  "title": "Boundaries and 'Not Sure'",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Identify a specific source of uncertainty and explain how it affects a prediction",
+    "Compare predictions across stated possible inputs without inventing a missing value",
+    "Design a review step with relevant evidence and an explicit unresolved outcome"
+  ],
+  "primary_topic": "Uncertainty and review",
+  "vocabulary": [
+    [
+      "Uncertainty",
+      "Something relevant that the available evidence does not settle"
+    ],
+    [
+      "Possible input",
+      "An input still compatible with the stated information"
+    ],
+    [
+      "Review trigger",
+      "A stated condition that sends a case for an additional check"
+    ],
+    [
+      "Review evidence",
+      "Information gathered to investigate the reason a case was referred"
+    ],
+    [
+      "Unresolved",
+      "Still not settled after the available checks"
+    ]
+  ],
+  "worked_example": {
+    "title": "Match the review to the cause",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Reason for review",
+          "Relevant check",
+          "What it cannot settle alone"
+        ],
+        "rows": [
+          [
+            "Smudged height",
+            "Read the original or remeasure",
+            "Whether the model is accurate"
+          ],
+          [
+            "Unit missing",
+            "Check how the record was made",
+            "The unit from digits alone"
+          ],
+          [
+            "Two labels for one record",
+            "Check the label policy and sources",
+            "Truth by majority vote"
+          ],
+          [
+            "Poorly tested new use",
+            "Evaluate relevant reserved cases",
+            "Every future outcome"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "A review request should carry the original input, model version, unresolved issue and any predictions already made. Name the evidence to seek and the person responsible for checking it. A reviewer needs access to relevant evidence and a clear task; being human does not make an unsupported guess correct."
+      },
+      {
+        "type": "paragraph",
+        "text": "After review, record what was checked and what changed. If a reliable new reading establishes 6 cm, the model predicts tall. If the record is still unreadable, keep no prediction with reason unresolved height. Do not replace the original record without retaining the reason for the correction."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Keep a stable prediction within its limits",
+    "prompt": "Assume the only possible heights are 8 and 9 cm. Apply tall at least 6 to each. Write a justified result statement and two things it does not establish. Do not invent a confidence percentage.",
+    "lines": 6,
+    "answer": "Both inputs predict tall, so the prediction is tall under both listed possibilities. This does not identify whether the exact height is 8 or 9 and does not establish agreement with the correct task label. Outside the exercise, completeness of the possibilities also needs evidence."
+  },
+  "independent_case": {
+    "title": "Transfer the method to distance",
+    "task": "A paper model predicts far at a distance of at least 4 units, otherwise near, for whole-number distances 1 through 8. For each complete possibility set, compare predictions: 2 or 3; 3 or 4; 4 or 5. Identify the set requiring review before a single category can be stated. Design a relevant check and an unresolved ending. Limit the claims for the other two sets.",
+    "answer": "At 2 or 3 both predict near. At 3 predict near and at 4 far, so that set leaves the category unresolved. At 4 or 5 both predict far. Request a reliable distance reading in the stated units for the disputed set; if unavailable retain no single category and reason unresolved distance. The other two predictions are stable only across their listed possibilities, not verified as correct labels or exact distances.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Two possible values imply equal probabilities",
+      "A list of possibilities supplies no probabilities unless further evidence states them."
+    ],
+    [
+      "Averaging guesses recovers the missing input",
+      "A calculated average is a new assumption, not an observed measurement."
+    ],
+    [
+      "Repeated identical outputs remove input uncertainty",
+      "Re-running unchanged information does not reveal a missing digit or unit."
+    ],
+    [
+      "A human reviewer can always settle the case",
+      "Require relevant evidence and allow an explicit unresolved outcome."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/26c74fd620ace281c5a6fbc93ac78d7f613377049aef2e492879cfc89ac24493",
+        "alt": "Visual card for the input stage: features with incomplete or conflicting clues",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/dc1240502aa5ae11b647d6a1079562f190e32e66f89d7cb5031d7eeb4d59bae3",
+        "alt": "Visual card for the process stage: compare evidence with category boundaries",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/c6179130df4c2fae5e433f68cf396e86945d5929eea33846c92c77d702b43d57",
+        "alt": "Visual card for the output stage: category, not sure, or request more information",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  features with incomplete or conflicting clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  compare evidence with category boundaries"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  category, not sure, or request more information"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  Overlapping categories create uncertainty; abstaining can be responsible.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Abstention is a decision policy: when confidence or evidence fails a threshold, the system defers. Good thresholds balance coverage against error cost and specify what additional information or human review follows.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Possible heights can change the prediction",
+        "columns": [
+          "Available record",
+          "Predictions to compare",
+          "What can be stated"
+        ],
+        "rows": [
+          [
+            "Either 5 or 6 cm",
+            "5 gives short; 6 gives tall",
+            "Category unresolved"
+          ],
+          [
+            "Either 8 or 9 cm",
+            "Both give tall",
+            "Tall under both inputs"
+          ],
+          [
+            "No height supplied",
+            "Possibilities not listed",
+            "Request a measurement"
+          ]
+        ],
+        "caption": "A shared prediction across the listed possibilities does not identify the exact input or prove the category correct. Different predictions show that the unknown input can change this model\u2019s result."
+      },
+      {
+        "type": "paragraph",
+        "text": "At either 5 or 6 cm, one possibility predicts short and the other tall. Record no single category yet and ask for the original record or a new measurement. Do not select the more convenient digit. Averaging the two readings would introduce a different input that neither possibility stated."
+      },
+      {
+        "type": "paragraph",
+        "text": "At either 8 or 9 cm, the model predicts tall in both cases. You can state that the prediction stays tall under these two possibilities. Keep the exact-height uncertainty visible. This agreement does not check the model against a correct task label or establish that the list of possible heights is complete."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a06b9d13f15f11202e65574b3ad2e8b399ac1b350faff432d1d96375034df66a",
+        "alt": "Comparison picture for Clearly a book: strong single-category evidence; classify",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/69837d014e37624c30a68396da1b03d50ee63cf1af39ad19e8dfb2983048b813",
+        "alt": "Comparison picture for Toy ball: toy and sports overlap; review purpose",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/7cdaf8a471e01fdc8c630687d1f5bffdf7e536b365060adad436a527d2589826",
+        "alt": "Comparison picture for Covered object: important features hidden; need more info",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/6c63188f16d8a3d4b97765325d76e557a554b839074ef46281bd5b27781783ed",
+        "alt": "Comparison picture for Personal item: high consequence if wrong; adult review",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Clearly a book  Clue: strong single-category evidence. Meaning: classify."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Toy ball  Clue: toy and sports overlap. Meaning: review purpose."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Covered object  Clue: important features hidden. Meaning: need more info."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Personal item  Clue: high consequence if wrong. Meaning: adult review."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Responsible uncertainty is informative and actionable, not a blank refusal.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

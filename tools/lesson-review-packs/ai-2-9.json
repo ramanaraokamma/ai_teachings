@@ -1,0 +1,290 @@
+{
+  "week": "ai-2/9",
+  "title": "Features and Distractors",
+  "grade": 7,
+  "project": "Transparent Book Recommender",
+  "goals": [
+    "Choose recorded properties that preserve distinctions needed for a stated task",
+    "Show why identical feature records can hide examples with different target labels",
+    "Reject an answer copied into the inputs and test a proposed feature with a new case"
+  ],
+  "primary_topic": "Features and useful distinctions",
+  "vocabulary": [
+    [
+      "Feature",
+      "A recorded property supplied as an input to a system"
+    ],
+    [
+      "Target label",
+      "The answer a supervised learning task asks a model to predict"
+    ],
+    [
+      "Feature record",
+      "The selected input values for one example, in a defined order"
+    ],
+    [
+      "Relevant feature",
+      "An input property that helps make distinctions needed for the stated task"
+    ],
+    [
+      "Leakage",
+      "Information used during development that would not legitimately be available when making the intended prediction"
+    ]
+  ],
+  "worked_example": {
+    "title": "Use contrasting cases to examine a feature",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Card measurements and colour",
+          "Label under the guide",
+          "What the comparison shows"
+        ],
+        "rows": [
+          [
+            "10 by 7 cm and blue",
+            "Fits",
+            "Compare with the next card"
+          ],
+          [
+            "10 by 9 cm and blue",
+            "Too large",
+            "Same length and colour but width changes the label"
+          ],
+          [
+            "13 by 7 cm and blue",
+            "Too large",
+            "Same width and colour as the first card but length changes the label"
+          ],
+          [
+            "10 by 7 cm and red",
+            "Fits",
+            "Changing only colour does not change this guide"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "The first two cards show why width matters. The first and third show why length matters. The first and fourth show that colour has no part in this particular rule. That is a statement about our task, not a claim that colour is useless for every task. For sorting red and blue cards, colour would be essential."
+      },
+      {
+        "type": "paragraph",
+        "text": "Suppose every fitting card in a small practice set is blue and every oversized card is red. Colour would appear to predict the labels perfectly in that set. A red 10 by 7 card and a blue 13 by 7 card expose the shortcut. Check a proposed feature on deliberately different cases before trusting the practice score."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Prove that one measurement is insufficient",
+    "prompt": "Invent two cards with the same width but different correct labels under the card guide. Give both lengths and widths and justify the labels. Explain why a system receiving only width cannot always label both correctly.",
+    "lines": 7,
+    "answer": "One valid pair is length 11 width 6, which fits, and length 13 width 6, which is too large. Both give the width-only input 6 but require different labels. Without length or other permitted distinguishing information, the system cannot guarantee correct labels for both. Accept any valid pair with positive measurements, equal widths at most 8, and lengths on opposite sides of 12."
+  },
+  "independent_case": {
+    "title": "Changed independent case",
+    "task": "Training covers show space books only on yellow backgrounds and animal books only on blue backgrounds. Design two controlled comparisons to test whether a classifier uses the intended subject.",
+    "answer": "Compare different subjects on the same background, then the same subject on different backgrounds, holding other features fixed. Record actual predictions before claiming a shortcut. The training pattern alone makes the shortcut plausible, not established.",
+    "source": "new parallel transfer case"
+  },
+  "misconceptions": [
+    [
+      "A stronger model can always recover an omitted measurement",
+      "Cover width and all identifiers for two same-length cards with different labels. Ask which supplied value tells them apart. Guessing or using typical values cannot guarantee correctness for both."
+    ],
+    [
+      "A feature that matches practice labels must be useful",
+      "Use a red fitting card or a blue oversized card. Ask whether the feature preserves the stated distinction when the practice pattern changes."
+    ],
+    [
+      "The final label is the best input feature",
+      "Place the sticker after inspection on the timeline. It is a target for checking or teaching, not an available input for a prediction before inspection."
+    ],
+    [
+      "Useful features stay useful for every task",
+      "Change the target to red or blue bins. Identical dimensions can now require different answers, so colour matters."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b59598ab6c3e4755887448ccb2c9037b6192342919f850a7cbb5260b1b2a25c1",
+        "alt": "INPUT stage for Features and Distractors",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/d4aa9c113921fe432b9eeb57a7417c9e663cc0b0039a6a1f191b05d34d446375",
+        "alt": "PROCESS stage for Features and Distractors",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/eb6df8dc6213c59127035f3c76cf8c21d4e767fb4e3b2d6536e95f97918140e9",
+        "alt": "OUTPUT stage for Features and Distractors",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Card A is 10 centimetres long and 7 centimetres wide. Card B is 10 centimetres long and 9 centimetres wide. A fits; B is too large because its width exceeds 8. Compare two ways of recording these cards."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "The same cards under two feature choices",
+        "columns": [
+          "Original card",
+          "Choose the inputs",
+          "Resulting feature record"
+        ],
+        "rows": [
+          [
+            "A is 10 by 7 cm and fits",
+            "Keep length only",
+            "10 cm"
+          ],
+          [
+            "B is 10 by 9 cm and is too large",
+            "Keep length only",
+            "10 cm"
+          ],
+          [
+            "A is 10 by 7 cm and fits",
+            "Keep length and width",
+            "10 cm and 7 cm"
+          ],
+          [
+            "B is 10 by 9 cm and is too large",
+            "Keep length and width",
+            "10 cm and 9 cm"
+          ]
+        ],
+        "caption": "Length alone makes A and B look identical to the system. Retaining width preserves the difference needed by this task. The letters identify the examples here; they are not additional inputs."
+      },
+      {
+        "type": "paragraph",
+        "text": "A system receiving only the length cannot use the hidden width to tell these two cards apart. The same input, 10, is paired with two different correct answers. It may guess, return an uncertainty, or use a usual answer, but length alone cannot guarantee the right label for both. A more complicated model cannot reconstruct this missing distinction with certainty from that input alone."
+      },
+      {
+        "type": "paragraph",
+        "text": "A feature record needs a consistent order and units. Here we write length in centimetres first, then width in centimetres. The record 10, 7 means something different if someone silently switches the order or records millimetres. Write the definitions alongside the data."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1f18213ba3d74c99072fa04ad7520b53eee0b2e9e845b0d8a61ccdda1b41f3f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fed8318cf337134a2c31a8d2c90831db67a27a43d3c6f85b25079c53ec37ff9a",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/75f964dbe29000347e518a59e2717387d7109bd1f947abdafa07e931a61cf754",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4d936b6648b81ac897fc99370c2788f8e0b135d8fc31cfd77afceee66a92128c",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

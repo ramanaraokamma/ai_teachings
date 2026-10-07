@@ -1,0 +1,43 @@
+{
+  "week": "ai-2/18",
+  "title": "Missing Data",
+  "outcome": "By the end, I can validate missing values without confusing zero with absent data.",
+  "scenario": "A fictional catalogue records counts of available copies under a strict input contract.",
+  "given": [
+    "Accept count only if type(value) is int and 0<=value<=8. Missing fields are invalid, and Booleans are not counts.",
+    "Rows have count 0, count 4, absent count, count \"4\", count True and count 9."
+  ],
+  "steps": [
+    {
+      "label": "Retrieve carefully",
+      "icon": "code",
+      "detail": "Use row.get(\"count\"); absent field gives None, distinct from 0."
+    },
+    {
+      "label": "Check exact type",
+      "icon": "shield",
+      "detail": "Integers 0,4 pass; text \"4\", Boolean True and None fail."
+    },
+    {
+      "label": "Check range",
+      "icon": "rule",
+      "detail": "Integer 9 fails maximum 8."
+    },
+    {
+      "label": "Report validation",
+      "icon": "output",
+      "detail": "Accepted counts [0,4]; four rows rejected with recorded reasons."
+    }
+  ],
+  "explanation": "Testing if value would wrongly discard zero, which is a real valid count. Python’s isinstance(True,int) is true, so the stated exact-integer contract uses type(value) is int to reject Boolean input. Keep missing, type-invalid and range-invalid reasons separate rather than turning every rejected value into zero.",
+  "counterfactual": {
+    "change": "Replace text \"4\" with integer 4 through an authorised conversion.",
+    "prediction": "Accepted values become [0,4,4]; three rows remain rejected.",
+    "reason": "The converted value now satisfies both type and range checks."
+  },
+  "student_task": "Why is the Boolean True rejected even though arithmetic can treat it like 1 in Python?",
+  "teacher_answer": "The contract requires actual integer counts, not Boolean flags; type(True) is bool.",
+  "project_evidence": "Validate recommender stock and numeric features explicitly, recording zero stock as measured zero rather than missing.",
+  "limits": "Type and range checks cannot confirm whether the real shelf count was measured accurately.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment."
+}

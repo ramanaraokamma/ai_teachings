@@ -1,0 +1,262 @@
+{
+  "week": "ai-4/3",
+  "title": "Classification or Regression?",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Identify a task from the meaning of its target",
+    "Distinguish category agreement from numerical error",
+    "Specify outputs and checks that match a user need"
+  ],
+  "primary_topic": "Classification and regression",
+  "vocabulary": [
+    [
+      "Classification",
+      "Predicting a category from a defined set"
+    ],
+    [
+      "Regression",
+      "Estimating a numerical quantity with meaningful differences"
+    ],
+    [
+      "Threshold",
+      "A boundary used to turn a value into a decision"
+    ],
+    [
+      "Absolute error",
+      "The nonnegative distance between an estimate and an observation"
+    ]
+  ],
+  "worked_example": {
+    "title": "Predict what the threshold changes",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "The 14-minute trip has the largest duration error in our example, yet its slow category is correct. The 10-minute trip has only a one-minute error but the category is wrong. These checks answer different questions. Report 2 correct out of 3 category decisions separately from a mean absolute error of about 1.33 minutes. Do not compare a fraction directly with minutes."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "A trip actually takes 10 minutes and its estimate is 10.5 minutes. At the greater-than-10 boundary, give the actual category, predicted category and absolute duration error. Is the category decision correct?",
+        "lines": 5
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace both checks",
+    "prompt": "For actual 14 minutes and estimate 12 minutes, calculate absolute error and both slow categories using greater than 10. Explain why a correct category does not mean an exact duration.",
+    "answer": "Absolute error is 2 minutes. Both actual and predicted categories are 1, so the category matches even though the duration estimate is 2 minutes too low.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Compare new evidence independently",
+    "task": "For three fictional print jobs, actual completion times are 4, 5 and 9 minutes; estimates are 6, 5 and 8 minutes in matching order. Slow means more than 5 minutes. Write actual and predicted category lists, count correct categories, calculate each absolute error and the mean error in minutes. State what each result measures.",
+    "answer": "Actual categories are [0, 0, 1]; predicted categories are [1, 0, 1], so 2 of 3 match. Absolute errors are [2, 0, 1] minutes; their mean is 1 minute. The fraction measures threshold-category agreement on these jobs, while mean absolute error measures average duration discrepancy.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Numbers always mean regression",
+      "Category codes remain categories. Ask what a difference between the numbers would mean in the task."
+    ],
+    [
+      "Regression requires decimal observations",
+      "A quantity measured or rounded to whole minutes still has meaningful numerical distances. Target meaning decides the task."
+    ],
+    [
+      "A correct category means a precise estimate",
+      "The 14 versus 12 minute example has a correct category but a two-minute error. Conversely, a small error near the boundary can change the category."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/d8621fd9b47d69a5c43f306382b4e69f32eb0bbdac977b4f7b3541809be2230e",
+        "alt": "Week 3 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/428475fbe77bff800cc9e6cef0731190bc88f9d10e13c105ed6a3b7802448862",
+        "alt": "Week 3 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/8361f542f84b318607020e44f2b139e7b22893c91d1fd184151fc05d53096685",
+        "alt": "Week 3 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Choose the task type for six scenarios and define the output space precisely."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  Classification predicts a category; regression predicts a numerical quantity. The target\u2014not the input format\u2014determines the task type."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Predict plant species from a photo: target is a category, so classification. Predict plant height next week: target is centimeters, so regression.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "The following predictions are supplied for practice; no model is fitted here. Each estimate was written before revealing its matching observed duration. We compare duration error with a category decision made from that estimate. Predict slow when the estimated duration is greater than 10 minutes; exactly 10 is not slow. A classifier could also predict categories directly, but this example uses a threshold on estimates."
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "actual_minutes = [8, 10, 14]\nestimated_minutes = [9, 11, 12]\ncorrect = 0\nerrors = []\nfor actual, estimate in zip(actual_minutes, estimated_minutes):\n    actual_slow = int(actual > 10)\n    predicted_slow = int(estimate > 10)\n    correct = correct + int(actual_slow == predicted_slow)\n    errors.append(abs(estimate - actual))\nprint(correct, len(actual_minutes))\nprint(errors)"
+      },
+      {
+        "type": "paragraph",
+        "text": "zip pairs the lists in order. They must have equal lengths and refer to the same trips; otherwise this loop is not a valid evaluation. abs gives the distance from zero, so both a one-minute overestimate and a one-minute underestimate have absolute error 1. The output is 2 3 followed by [1, 1, 2]. The mean absolute error is (1 + 1 + 2) / 3 = 4/3 minutes, about 1.33 minutes."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Read both kinds of evidence",
+        "columns": [
+          "Actual and estimate",
+          "Duration error",
+          "Category match"
+        ],
+        "rows": [
+          [
+            "8 and 9 minutes",
+            "1 minute",
+            "No and no match"
+          ],
+          [
+            "10 and 11 minutes",
+            "1 minute",
+            "No and yes differ"
+          ],
+          [
+            "14 and 12 minutes",
+            "2 minutes",
+            "Yes and yes match"
+          ]
+        ],
+        "caption": "All three rows use the same greater-than-10 boundary. A small duration error can cross that boundary; a larger error can stay on the same side."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 3 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 3 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 3 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 3 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

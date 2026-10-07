@@ -1,0 +1,43 @@
+{
+  "week": "ai-1/28",
+  "title": "Humans Set Boundaries",
+  "outcome": "By the end, I can match permission to a specific action, object and version.",
+  "scenario": "A fictional teacher approves one checked classroom poster for internal display.",
+  "given": [
+    "Approval: publish exactly poster P2 on the classroom noticeboard today, once.",
+    "Assistant proposes P2 there; P3 there after an edit; P2 on a public website."
+  ],
+  "steps": [
+    {
+      "label": "Read authority",
+      "icon": "person",
+      "detail": "The teacher approved P2, one internal noticeboard and one publication."
+    },
+    {
+      "label": "Allowed action",
+      "icon": "shield",
+      "detail": "Publishing unchanged P2 there today matches the approval."
+    },
+    {
+      "label": "Changed version",
+      "icon": "question",
+      "detail": "P3 requires new review; P2 approval does not automatically cover edits."
+    },
+    {
+      "label": "Changed audience",
+      "icon": "shield",
+      "detail": "Public-web publication exceeds the approved destination."
+    }
+  ],
+  "explanation": "A general intention to help the class does not grant every action that might help. Check the version, destination and time explicitly. An edit may improve accuracy while still changing the approved artifact. The assistant should hold the changed poster for review rather than treating its own confidence as permission.",
+  "counterfactual": {
+    "change": "P2 has already been published once under this approval.",
+    "prediction": "A second publication is not covered.",
+    "reason": "The instruction allowed a single use, not repeated actions."
+  },
+  "student_task": "Which original proposal is authorised? Why do the other two need separate approval?",
+  "teacher_answer": "Only unchanged P2 on the specified noticeboard today, once. P3 changes version; public posting changes audience.",
+  "project_evidence": "Record sorter actions allowed automatically and actions requiring the classroom owner’s explicit review.",
+  "limits": "Permission does not prove content accuracy; factual checks and action authority are separate requirements.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment."
+}

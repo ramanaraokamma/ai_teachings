@@ -1,0 +1,298 @@
+{
+  "week": "ai-1/27",
+  "title": "Verify Important Outputs",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Separate an answer into claims and connect each claim to relevant evidence",
+    "Recalculate quantities with consistent units and a reasonableness check",
+    "Report supported, contradicted and unresolved claims without inventing missing evidence"
+  ],
+  "primary_topic": "Verifying claims and quantities",
+  "vocabulary": [
+    [
+      "Claim",
+      "A statement that can be examined against evidence"
+    ],
+    [
+      "Verification",
+      "Checking whether a claim is supported by appropriate evidence"
+    ],
+    [
+      "Citation",
+      "A reference that helps a reader locate a source"
+    ],
+    [
+      "Unit",
+      "The agreed measurement scale attached to a quantity, such as centimetres"
+    ],
+    [
+      "Corroboration",
+      "Additional evidence that supports a claim, with its origin checked"
+    ]
+  ],
+  "worked_example": {
+    "title": "Carry units through the whole calculation",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Quantity",
+          "Calculation in centimetres",
+          "Equivalent in metres"
+        ],
+        "rows": [
+          [
+            "Starting length",
+            "4 \u00d7 200 cm = 800 cm",
+            "8 m"
+          ],
+          [
+            "Length used",
+            "12 \u00d7 50 cm = 600 cm",
+            "6 m"
+          ],
+          [
+            "Length remaining",
+            "800 cm \u2212 600 cm = 200 cm",
+            "2 m"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Convert to one length unit before subtracting. Two metres is 200 centimetres, so four rolls give 800 centimetres. The twelve pieces use 600 centimetres, leaving 200 centimetres, or 2 metres. Subtracting the bare numbers 8 \u2212 600 would mix metres with centimetres and would not describe the remaining length correctly."
+      },
+      {
+        "type": "paragraph",
+        "text": "Use a second route as a check: 50 centimetres is half a metre, so twelve pieces use six metres. Eight minus six leaves two metres. A reasonableness check also asks whether the used length is at most the starting length and whether starting length equals used plus remaining. These checks can reveal mistakes; they do not replace checking the original inputs and assumptions."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Repair a unit error",
+    "prompt": "A report calculates 12 \u00d7 50 = 600 and labels the result metres. Use R to correct the unit, convert the result to metres and calculate the remaining length. Give a second arithmetic route or a check using starting, used and remaining lengths.",
+    "lines": 6,
+    "answer": "Each piece is 50 cm, so 12 \u00d7 50 cm = 600 cm = 6 m. Starting length is 4 \u00d7 2 m = 8 m; remaining is 8 \u2212 6 = 2 m. A check is 6 m used + 2 m remaining = 8 m starting; alternatively twelve half-metre pieces use 6 m."
+  },
+  "independent_case": {
+    "title": "Audit a new model with mass units",
+    "task": "Fictional craft card M states five sealed bags of modelling material at exactly 250 g per bag. Three models each use 300 g, with no other loss. A draft says \u201cM supplies 1250 g; the models use 900 g; 350 kg remains; every model will win a prize.\u201d Check all four claims, show the remaining mass in grams, and explain the status of the prize claim. Use 1 kg = 1000 g.",
+    "answer": "1250 g is supported by 5 \u00d7 250 g; 900 g is supported by 3 \u00d7 300 g. Remaining mass is 1250 \u2212 900 = 350 g, so 350 kg is contradicted by the inputs and unit conversion: 350 kg would be 350000 g, greater than the starting mass. The prize claim is unresolved because M gives no prize evidence; it is not established true or false by the material counts.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A citation proves every nearby claim",
+      "Inspect the actual source and the specific claim it supports."
+    ],
+    [
+      "The number is enough without a unit",
+      "600 cm and 600 m differ by a factor of 100."
+    ],
+    [
+      "An unsupported claim must be false",
+      "Unresolved means the supplied evidence does not settle it."
+    ],
+    [
+      "Three copied claims are three independent checks",
+      "Find the origin and seek an independent record or calculation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a4a033c128449381ea50185ee8dd58a1c1030059696bf5f7f3dbda557111bb75",
+        "alt": "Visual card for the input stage: specific claim extracted from an output",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b9e919a545933d84b20722560aca4d2d469a7f02418e41eb9a4fc857f9362a1b",
+        "alt": "Visual card for the process stage: check independent suitable sources and reconcile differences",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2259c279778d26e4e081f43e53e4ed25b805e6ccc0833c38054c941cd37ff423",
+        "alt": "Visual card for the output stage: supported, corrected, uncertain, or removed claim",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  specific claim extracted from an output"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  check independent suitable sources and reconcile differences"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  supported, corrected, uncertain, or removed claim"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  Fluent AI output is not evidence; important claims need independent support.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Verification is claim-level evidence work. Source independence, authority, direct support, recency, and agreement matter. Multiple pages repeating the same upstream error are not independent confirmation.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Different claims need different checks",
+        "columns": [
+          "Claim",
+          "Evidence path",
+          "Decision"
+        ],
+        "rows": [
+          [
+            "Four rolls",
+            "Read current card R",
+            "Supported"
+          ],
+          [
+            "8 metres at start",
+            "4 rolls \u00d7 2 metres",
+            "Supported"
+          ],
+          [
+            "600 metres used",
+            "12 \u00d7 50 cm = 600 cm",
+            "Wrong unit"
+          ],
+          [
+            "Everyone will enjoy it",
+            "No enjoyment evidence",
+            "Unresolved"
+          ]
+        ],
+        "caption": "A correct source reference is a starting point. Read what the record actually says and check every derived quantity."
+      },
+      {
+        "type": "paragraph",
+        "text": "A citation is useful only if you can locate the source and confirm that it supports the specific claim. The title \u201cMaterials card R\u201d beside a paragraph does not make the enjoyment claim part of R. If a cited card Z is not supplied or cannot be found, that citation cannot currently verify its claim. Record the gap rather than inventing Z\u2019s contents."
+      },
+      {
+        "type": "paragraph",
+        "text": "Check whether the source covers the right activity, version, population or time. Q\u2019s three rolls may be accurate for its own activity but irrelevant to the current four-roll task. In real work, also inspect who created the record, how they obtained the information and whether there is a correction or better source."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ac768619c8a70b2d01972dea786e322197c5880210c0493fbb34114a399f6018",
+        "alt": "Comparison picture for Generated sentence: fluent output; claim, not evidence",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/c0a8d96d97fb7876b062120e5c606437a35923d49b49d8d5196e0afba4733abe",
+        "alt": "Comparison picture for Zoo care page: direct animal information; possible source",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/170241e86e8633b4f38d4a9678088b7a37c90261bbc5ef3c48eff147ea682aaa",
+        "alt": "Comparison picture for Two copied blogs: same origin; not independent",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1d492bda89f2f807335a9c7713e31d1859b5f2b1675d1855066f06464a8b5fd7",
+        "alt": "Comparison picture for Conflicting references: evidence disagrees; report uncertainty",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Generated sentence  Clue: fluent output. Meaning: claim, not evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Zoo care page  Clue: direct animal information. Meaning: possible source."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Two copied blogs  Clue: same origin. Meaning: not independent."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Conflicting references  Clue: evidence disagrees. Meaning: report uncertainty."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Two search results are not two independent sources when both copy the same page.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "week": "ai-3/25",
+  "title": "Quality Rubrics",
+  "outcome": "By the end, I can explain quality rubrics using a traced example and a stated limitation.",
+  "scenario": "Use a quality rubric whose safety gate cannot be traded for attractive formatting.",
+  "given": [
+    "Approved S1 says: “A root anchors a plant in soil.” Rubric: every claim supported by S1, at most two sentences. Draft: “A root anchors a plant in soil. Roots grow exactly 2 cm each day.”",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Check support",
+      "icon": "book",
+      "detail": "The anchoring sentence matches S1. The daily 2 cm growth sentence has no supporting evidence in S1."
+    },
+    {
+      "label": "Check format",
+      "icon": "rule",
+      "detail": "Two sentences satisfy the format requirement."
+    },
+    {
+      "label": "Apply gate",
+      "icon": "shield",
+      "detail": "Reject the answer for unsupported content despite its correct length."
+    }
+  ],
+  "explanation": "Compare each draft sentence directly with S1. The anchoring claim matches the supplied source; the daily growth claim adds a measurement the source never gives. Two sentences pass the format rule, but unsupported content fails the mandatory evidence gate. Removing that sentence repairs the support defect rather than merely polishing the wording.",
+  "counterfactual": {
+    "change": "Remove the unsupported sentence while preserving the supported one.",
+    "prediction": "The revised one-sentence answer passes these two declared checks.",
+    "reason": "The remaining claim is supported and one sentence is within the maximum."
+  },
+  "student_task": "Why is “one out of two checks passed” an insufficient release decision? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Support is a mandatory gate. Passing length cannot compensate for presenting an unsupported claim as fact. Changed-case check: The revised one-sentence answer passes these two declared checks. The remaining claim is supported and one sentence is within the maximum.",
+  "project_evidence": "For your Verified Study Buddy, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Passing this small rubric does not establish readability, completeness or benefit across every pupil and question.",
+  "review_note": "Reviewed Quality Rubrics against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

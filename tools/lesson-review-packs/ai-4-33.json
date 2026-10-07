@@ -1,0 +1,253 @@
+{
+  "week": "ai-4/33",
+  "title": "Model Cards and Human Review",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Write a model card whose claims match evidence",
+    "Separate intended use from unsupported use",
+    "Review a card for missing evaluation details"
+  ],
+  "primary_topic": "Model cards and review",
+  "vocabulary": [
+    [
+      "Model card",
+      "A concise structured account of a model and its limits"
+    ],
+    [
+      "Intended use",
+      "The purpose and conditions the evidence supports"
+    ],
+    [
+      "Out-of-scope use",
+      "A purpose for which the model is not supported"
+    ],
+    [
+      "Review status",
+      "The current state of checks and unresolved issues"
+    ]
+  ],
+  "worked_example": {
+    "title": "Explain the visual",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Model cards and review at a glance",
+        "columns": [
+          "Part",
+          "Evidence or action",
+          "Interpretation"
+        ],
+        "rows": [
+          [
+            "Purpose and version",
+            "Toy classifier v 1",
+            "Fictional data only"
+          ],
+          [
+            "Evidence",
+            "12 held-out cases",
+            "Full matrix and baseline"
+          ],
+          [
+            "Limits and review",
+            "No real decisions",
+            "List unresolved coverage"
+          ]
+        ],
+        "caption": "The model card should name feature availability, preprocessing fitted on training, model settings, reference-label rules and test date. Include subgroup coverage if evaluated; otherwise say it was not assessed. Describe relevant failure examples without exposing personal information."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Verify the worked accuracy, precision and recall. Explain the steps or evidence behind your response.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Check arithmetic",
+    "prompt": "Verify the worked accuracy, precision and recall.",
+    "answer": "Teacher explanation: TN 7 TP 2 give 9/12 accuracy; TP 2/(TP 2+FP 1)=2/3 precision; TP 2/(TP 2+FN 2)=2/4 recall.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Apply independently",
+    "task": "Review this card: model v 2, 90 percent accurate, works for every school. No dataset size, split or baseline is given. Write a correction request with a bounded replacement claim.",
+    "answer": "Teacher explanation: Request evaluated counts, split history, reference labels, baseline, errors and supported use. Replace the universal claim with: performance scope is not established from the supplied evidence; the reported 90 percent cannot yet be audited.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A final answer is enough",
+      "Ask for the relevant counts, units, procedure or saved record. For this week: Intended: compare toy classifiers on the documented fictional task. Not supported: real parcel handling, student assessment or decisions outside the evaluated setup."
+    ],
+    [
+      "A stronger claim makes a stronger project",
+      "Record a new version, threshold, reason, affected evaluations and review status; retain prior results and distinguish new independent evidence from reused development data."
+    ],
+    [
+      "The new case can be copied from the example",
+      "The independent task changes the evidence. Require a fresh explanation: Request evaluated counts, split history, reference labels, baseline, errors and supported use. Replace the universal claim with: performance scope is not established from the supplied evidence; the reported 90 percent cannot yet be audited."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/d345aea982f80e12cb357ba10997d3ebc6371048b964c32831a60272e4f28478",
+        "alt": "Week 33 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/3b0ec7ddd6b0461faf623caabc53a09cb5e4d23b2f4eeeae9ab9ab0b11af1d60",
+        "alt": "Week 33 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4f268c63c03df40e5aded011964001ef79b3c82d4acc5d5a65a16bfd3270a1f7",
+        "alt": "Week 33 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Write a model card with a clear do-not-use case and review path."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  A model card defines intended use, evidence, limitations, risks, decision boundaries, monitoring, and human escalation."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Intended use: classroom exploration of visible leaf spotting. Evidence: test metrics, confusion matrix, subgroup slices, and data version.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Example card: classroom parcel classifier v 1; purpose: compare toy classification methods on fictional clear/blocked labels. Training 40, validation 20, test 12 with separate record groups. Frozen test TN 7 FP 1 FN 2 TP 2, blocked positive: accuracy 9/12, precision 2/3, recall 2/4. Always-clear baseline scores 8/12. No real parcel or student decision is supported."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before continuing, underline the decision rule and circle the evidence that supports the conclusion. Explain the example to a partner without replacing the counts or conditions with a stronger claim. Keep the distinction between an observed result and a proposed next step."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 33 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 33 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 33 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 33 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

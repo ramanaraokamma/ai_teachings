@@ -1,0 +1,37 @@
+{
+  "week": "ai-7/7",
+  "title": "Hypotheses and measurable outcomes",
+  "outcome": "Explain hypotheses and measurable outcomes using the records and boundaries of this fictional investigation.",
+  "scenario": "Write a testable hypothesis before scoring. A team predicts that a retrieval rule will reduce unsupported answers on a fixed validation set.",
+  "given": [
+    "Ten cases are reserved. Unsupported means a factual claim absent from the approved card. Prediction: B has fewer unsupported cases than A."
+  ],
+  "steps": [
+    {
+      "icon": "question",
+      "label": "Name the directional claim",
+      "detail": "The prediction concerns unsupported cases, not writing elegance."
+    },
+    {
+      "icon": "rule",
+      "label": "Define scoring first",
+      "detail": "Each answer either contains an unsupported claim or does not under the fixed rubric."
+    },
+    {
+      "icon": "experiment",
+      "label": "Freeze the comparison",
+      "detail": "Run both versions on the same cases after recording the hypothesis."
+    }
+  ],
+  "explanation": "A hypothesis makes an expected pattern explicit before seeing outcomes. The measured definition must be clear enough for another reviewer to apply.",
+  "counterfactual": {
+    "change": "B sounds friendlier but has the same unsupported count as A.",
+    "prediction": "The stated improvement hypothesis is not supported on these cases.",
+    "reason": "Friendliness is a different outcome from the predefined unsupported-case count."
+  },
+  "student_task": "Name the predicted outcome and how unsupported is scored. If B sounds friendlier but ties A’s unsupported count, does the recorded improvement hypothesis receive support?",
+  "teacher_answer": "The prediction concerns unsupported cases, not writing elegance. Each answer either contains an unsupported claim or does not under the fixed rubric. Run both versions on the same cases after recording the hypothesis. Changed case: The stated improvement hypothesis is not supported on these cases. Friendliness is a different outcome from the predefined unsupported-case count.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "No power calculation or significance claim is provided; a null descriptive difference is not proof of exact equality.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted."
+}

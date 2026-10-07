@@ -1,0 +1,320 @@
+{
+  "week": "ai-3/4",
+  "title": "Sampling and Variability",
+  "grade": 8,
+  "project": "Verified Study Buddy",
+  "goals": [
+    "Sample from a distribution using explicit cumulative intervals",
+    "Calculate temperature-adjusted probabilities for a toy example",
+    "Explain why random variation and factual reliability need separate evaluation"
+  ],
+  "primary_topic": "Sampling and temperature",
+  "vocabulary": [
+    [
+      "Sampling",
+      "Selecting an alternative using a specified random procedure"
+    ],
+    [
+      "Greedy choice",
+      "Selecting an alternative with largest next-token probability under a tie rule"
+    ],
+    [
+      "Temperature",
+      "A positive parameter that changes the concentration of a distribution under a stated transformation"
+    ],
+    [
+      "Cumulative interval",
+      "A range of draws assigned to an alternative using accumulated probability mass"
+    ]
+  ],
+  "worked_example": {
+    "title": "Read concentration without inventing accuracy",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "The lower positive temperature concentrates this table on its largest entry. For T=2, use square roots before normalising; this flattens this unequal distribution. These changes leave the order of positive probabilities unchanged, so greedy still selects red. They change the sampling distribution, not the factual evidence behind a generated claim."
+      },
+      {
+        "type": "paragraph",
+        "text": "Our formula excludes T=0; dividing by zero is undefined. Some systems offer a zero-temperature setting as a separate greedy policy, but that is not a value to substitute into this formula. We also avoid claiming that any one setting removes all nondeterminism in an unspecified system."
+      }
+    ]
+  },
+  "guided_practice": {
+    "title": "Compute the adjusted table",
+    "prompt": "At T=0.5 compute squared weights, total and normalised probabilities. Check the sum.",
+    "answer": "Teacher explanation: Weights 0.36,0.09,0.01 sum 0.46. Probabilities 18/23,9/46,1/46 sum 1.",
+    "lines": 6,
+    "id": "W2"
+  },
+  "independent_case": {
+    "title": "Sample a new table independently",
+    "task": "Probabilities A=0.5,B=0.3,C=0.2 in that order. Compute T=0.5 probabilities and cumulative boundaries. Trace u=0.5 and u=0.9 under T=1 and T=0.5. Explain the limit of the comparison.",
+    "answer": "Teacher explanation: Squared weights 0.25,0.09,0.04 total 0.38. Probabilities 25/38,9/38,4/38; boundaries 25/38 and 34/38. T=1: 0.5 selects B,0.9 selects C. T=0.5: 0.5 selects A,0.9 selects C because 0.9 > 34/38. The trace shows distribution effects, not factual accuracy.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Sampling means equal chances",
+      "Intervals have widths equal to the probabilities; unequal widths give unequal chances."
+    ],
+    [
+      "T=0 can be inserted into p^(1/T)",
+      "The formula requires T>0; greedy is a separate policy."
+    ],
+    [
+      "Lower temperature verifies claims",
+      "A probability transformation does not add factual evidence."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/e94a5e89ea2c2c20e659437c47e990a29f72669b03da87648570b6e5f16e08b9",
+        "alt": "INPUT stage for Sampling and Variability",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/c7d76dda4b6ba28e209aebdf0e5aca3bb10836ad3ee534a8da44ae174898763a",
+        "alt": "PROCESS stage for Sampling and Variability",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/389bbff9d42fb4a6e632631cf327e252333126d2b6fbd4bc6004157d8ad0d7c0",
+        "alt": "OUTPUT stage for Sampling and Variability",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "For strictly positive probabilities p_i and temperature T>0, define q_i = p_i^(1/T) / sum_j p_j^(1/T). This classroom formula is equivalent to scaling logits before a softmax when p came from those logits. We use it directly on the supplied table. At T=1 the distribution is unchanged. At T=0.5, square each probability: 0.36,0.09,0.01; total 0.46. The adjusted distribution is red 18/23, blue 9/46, green 1/46."
+      },
+      {
+        "type": "table",
+        "rows": [
+          [
+            "Token",
+            "T=1 probability",
+            "T=0.5 probability"
+          ],
+          [
+            "red",
+            "0.6",
+            "18/23 \u2248 0.782609"
+          ],
+          [
+            "blue",
+            "0.3",
+            "9/46 \u2248 0.195652"
+          ],
+          [
+            "green",
+            "0.1",
+            "1/46 \u2248 0.021739"
+          ]
+        ]
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Keep the evidence roles separate",
+        "columns": [
+          "Plan or input",
+          "Procedure",
+          "Permitted conclusion"
+        ],
+        "rows": [
+          [
+            "T = 1",
+            "Intervals 0 to .6 to .9 to 1",
+            "Draw .7 selects blue"
+          ],
+          [
+            "T = 0.5",
+            "First boundary 18/23",
+            "Draw .7 selects red"
+          ],
+          [
+            "Same recorded draw",
+            "Changed distribution",
+            "Different output possible"
+          ]
+        ],
+        "caption": "Temperature changes probability concentration; the same draw can fall in a different interval."
+      },
+      {
+        "type": "subheading",
+        "text": "Apply the connected idea: A small attention calculation"
+      },
+      {
+        "type": "table",
+        "rows": [
+          [
+            "Item",
+            "Key, width 1",
+            "Value, width 1"
+          ],
+          [
+            "A",
+            "[0]",
+            "[2]"
+          ],
+          [
+            "B",
+            "[ln(3)]",
+            "[6]"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Take q=[1] and d=1. The scale sqrt(1) is 1, so scores are 0 and ln(3). ln(3) is the number whose natural exponential is 3, approximately 1.098612. Exponentials have ratio 1:3, hence weights 1/4 and 3/4. Output is (1/4)*2 + (3/4)*6 = 5. Using maximum subtraction gives exponentials 1/3 and 1 and the same normalised weights."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Keep the evidence roles separate",
+        "columns": [
+          "Plan or input",
+          "Procedure",
+          "Permitted conclusion"
+        ],
+        "rows": [
+          [
+            "q=[1], keys 0 and ln(3)",
+            "Scaled scores 0, ln(3)",
+            "Softmax weights .25, .75"
+          ],
+          [
+            "Values 2 and 6",
+            "Weighted sum .25*2 + .75*6",
+            "Output 5"
+          ],
+          [
+            "Mask excludes B",
+            "Only A permitted",
+            "Weight 1 and output 2"
+          ]
+        ],
+        "caption": "Scores, normalised weights and value combinations are separate stages."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/baa081bb74d63b3556ecfd5951cdc8779d64ec1813de34614621c4e969a973f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/5e6557194a1470352d07b6a509da5d673d81767981996dd1b685f799a5582b76",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/8e1f2e3affdd81449df265675243cda4511c1e88dd8cd9583d4ea42f6083c297",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a54f0c40e48e47ca92a4c36ebbc98f08b4a78c72cd385d85b0a5a7f07f558757",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

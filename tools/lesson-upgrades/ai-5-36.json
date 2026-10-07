@@ -1,0 +1,52 @@
+{
+  "week": "ai-5/36",
+  "title": "Neural network experiment defense",
+  "outcome": "Explain neural network experiment defense with a traceable toy-network case and a bounded conclusion.",
+  "scenario": "Defend an individual network calculation. At the defence, a team shows a single toy neuron before describing the whole image-pattern experiment.",
+  "given": [
+    "Inputs are [2,1]; weights [0.5,-1]; bias 0.2; activation is ReLU, max(0,z). This is a demonstration, not a probability model."
+  ],
+  "steps": [
+    {
+      "icon": "data",
+      "label": "Multiply inputs",
+      "detail": "2×0.5=1 and 1×(-1)=-1."
+    },
+    {
+      "icon": "model",
+      "label": "Add weighted terms",
+      "detail": "Pre-activation z is 1-1+0.2=0.2."
+    },
+    {
+      "icon": "output",
+      "label": "Apply ReLU",
+      "detail": "max(0,0.2)=0.2; this activation is not a confidence percentage."
+    }
+  ],
+  "explanation": "A defence should distinguish a traceable network calculation from a claim about classification quality. The neuron transforms supplied numbers; held-out labelled cases are needed to assess the complete system.",
+  "counterfactual": {
+    "change": "Change the second input from 1 to 2.",
+    "prediction": "z becomes 1-2+0.2=-0.8 and ReLU returns 0.",
+    "reason": "The negative weighted term grows; ReLU clips a negative pre-activation to zero."
+  },
+  "student_task": "Calculate both weighted terms, z and ReLU output. Predict the changed second input and explain why 0.2 cannot be called 20% accuracy.",
+  "teacher_answer": "The products are 1 and -1; z=0.2 and ReLU=0.2. With second input 2, z=-0.8 and output=0. The activation is a neuron value, not an accuracy fraction or calibrated probability.",
+  "project_evidence": "For the Image-pattern Network Investigation, save the labelled trace and the changed-case explanation beside the experiment record. State exactly what this example supports before linking it to the wider capstone claim.",
+  "limits": "This one-neuron arithmetic does not establish how a trained image classifier generalises or why its full network makes a decision.",
+  "review_note": "Individually authored fictional supported practice distinct from the reserved independent assessment. Arithmetic and experimental conditions are explicit; no real network training or pupil result is claimed.",
+  "mini_visual": {
+    "kind": "weights",
+    "title": "One toy ReLU neuron: not a probability",
+    "inputs": [
+      2,
+      1
+    ],
+    "weights": [
+      0.5,
+      -1
+    ],
+    "bias": 0.2,
+    "activation": "relu",
+    "output": 0.2
+  }
+}

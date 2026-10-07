@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/7",
+  "title": "Testing pure components",
+  "outcome": "Explain testing pure components using the deciding step in this fictional service.",
+  "scenario": "Test a room formatter alone. A pure function returns \"Room \" plus a supplied positive integer.",
+  "given": [
+    "Accepted inputs are positive integers. Expected outputs: 7→\"Room 7\"; 12→\"Room 12\"."
+  ],
+  "steps": [
+    {
+      "label": "Call with 7",
+      "icon": "code",
+      "detail": "The prefix and supplied numeral produce Room 7."
+    },
+    {
+      "label": "Compare exact text",
+      "icon": "check",
+      "detail": "The expected text includes one space before 7."
+    },
+    {
+      "label": "Call with 12",
+      "icon": "code",
+      "detail": "The same fixed procedure produces Room 12."
+    }
+  ],
+  "explanation": "A pure component depends on its accepted input, not a clock, network or model. Isolating it makes failures easier to locate.",
+  "counterfactual": {
+    "change": "Supply zero instead of 7.",
+    "prediction": "Reject the input under the stated positive-integer contract.",
+    "reason": "Zero has the right type but violates the value requirement."
+  },
+  "student_task": "Predict the formatter outputs for 7 and 12, including spacing. Why does input 0 need rejection under this contract rather than an ordinary formatted response?",
+  "teacher_answer": "The prefix and supplied numeral produce Room 7. The expected text includes one space before 7. The same fixed procedure produces Room 12. Changed case: Reject the input under the stated positive-integer contract. Zero has the right type but violates the value requirement.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "These tests cover only stated cases; they do not test the full AI service or every invalid value.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

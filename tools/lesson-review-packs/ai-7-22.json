@@ -1,0 +1,135 @@
+{
+  "week": "ai-7/22",
+  "title": "Pilot experiments",
+  "grade": 12,
+  "project": "Reproducible AI Research Study",
+  "goals": [
+    "Explain the mechanism and terminology of pilot experiments",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Pilot experiments",
+  "vocabulary": [
+    [
+      "Pilot",
+      "A preliminary study of the procedure"
+    ],
+    [
+      "Feasibility",
+      "Whether the planned method can be carried out"
+    ],
+    [
+      "Measurement defect",
+      "A failure in collecting the intended outcome"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Pilot five cases reveals wrong units in duration logs; team corrects units and reports the pilot as final evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Preserve pilot defect and correction. Pilot informed the method; use newly reserved primary cases for a final comparison."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "Pilot five cases reveals wrong units in duration logs; team corrects units and reports the pilot as final evidence. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: Preserve pilot defect and correction. Pilot informed the method; use newly reserved primary cases for a final comparison.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "Pilot six cases exposes ambiguous labels in two. What should happen before the primary study?",
+    "answer": "Teacher explanation: Clarify label rubric, reassess pilot as development, record versions and reserve fresh primary evidence under the frozen rubric.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "A pilot may assess feasibility but is not automatically powered or independent evidence for the final hypothesis."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Run a small fixture set to test data capture, timing boundaries, rubric and analysis code. Fix defects and freeze the revised plan before new primary cases."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Pilot experiments \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "Pilot five cases reveals wrong units in duration logs; team corrects units and reports the pilot as final evidence.",
+            "Run a small fixture set to test data capture, timing boundaries, rubric and analysis code. Fix defects and freeze the revised plan before new primary cases.",
+            "Preserve pilot defect and correction. Pilot informed the method; use newly reserved primary cases for a final comparison."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Pilot five cases reveals wrong units in duration logs; team corrects units and reports the pilot as final evidence. Show the intermediate steps and give the conclusion with its scope."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

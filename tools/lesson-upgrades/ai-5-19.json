@@ -1,0 +1,66 @@
+{
+  "week": "ai-5/19",
+  "title": "Learned representations",
+  "outcome": "By the end, I can explain learned representations using a traced example and a stated limitation.",
+  "scenario": "See when a representation preserves a distinction and when it destroys it.",
+  "given": [
+    "Toy input [left, right]; representation h=[ReLU(left-right), ReLU(right-left)]. A=[5, 2]; B=[2, 5]; target is left-brighter versus right-brighter.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Encode A",
+      "icon": "network",
+      "detail": "A becomes [3, 0], with left brighter."
+    },
+    {
+      "label": "Encode B",
+      "icon": "network",
+      "detail": "B becomes [0, 3], with right brighter."
+    },
+    {
+      "label": "Compare collapsed summary",
+      "icon": "chart",
+      "detail": "If the head receives only h1+h2, both become3 and the target distinction is lost."
+    }
+  ],
+  "explanation": "A hidden representation decides which distinctions remain available to an output head. These two hidden coordinates preserve whether the left or right side is brighter. Adding them discards that direction and gives both examples the same scalar. A deterministic head cannot assign different labels to identical inputs; retain the distinction or change the task.",
+  "counterfactual": {
+    "change": "The head keeps both ordered hidden values instead of their sum.",
+    "prediction": "It can distinguish [3, 0] from [0, 3] in this example.",
+    "reason": "The representation retains the direction of brightness difference when coordinates stay separate."
+  },
+  "student_task": "Why can no deterministic head using only the sum classify both correctly? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Both examples supply the identical scalar3 but require different targets. Identical inputs cannot produce different deterministic outputs. Changed-case check: It can distinguish [3, 0] from [0, 3] in this example. The representation retains the direction of brightness difference when coordinates stay separate.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "This is a hand-chosen representation, not evidence that a trained image model actually learned these units.",
+  "review_note": "Reviewed Learned representations against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "A representation can preserve direction",
+    "cells": [
+      [
+        5,
+        2,
+        3,
+        0
+      ],
+      [
+        2,
+        5,
+        0,
+        3
+      ]
+    ],
+    "row_labels": [
+      "A",
+      "B"
+    ],
+    "column_labels": [
+      "left",
+      "right",
+      "h1",
+      "h2"
+    ]
+  }
+}

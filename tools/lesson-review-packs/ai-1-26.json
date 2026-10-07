@@ -1,0 +1,298 @@
+{
+  "week": "ai-1/26",
+  "title": "Prompts Are Design Instructions",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Write a prompt with a clear task, supplied evidence and checkable output requirements",
+    "Test a response against criteria chosen before seeing it",
+    "Revise a prompt using observed failures while preserving missing and conflicting information"
+  ],
+  "primary_topic": "Specifying and testing prompts",
+  "vocabulary": [
+    [
+      "Prompt",
+      "Instructions and context supplied to a model for a task"
+    ],
+    [
+      "Constraint",
+      "A requirement that an acceptable response must satisfy"
+    ],
+    [
+      "Criterion",
+      "A stated rule used to judge a response"
+    ],
+    [
+      "Test case",
+      "A particular input with expected behaviour used to check a process"
+    ],
+    [
+      "Revision",
+      "A documented change intended to address a specific problem"
+    ]
+  ],
+  "worked_example": {
+    "title": "Test missing and conflicting information deliberately",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Test input",
+          "Expected behaviour",
+          "What it reveals"
+        ],
+        "rows": [
+          [
+            "C plus a stated 3 pm time",
+            "Use 3 pm for Time",
+            "Can use supplied information"
+          ],
+          [
+            "Original C with no time",
+            "Time: not stated",
+            "Does not fill a gap by guessing"
+          ],
+          [
+            "C and D disagree on room",
+            "Flag the room conflict",
+            "Does not silently choose a record"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "For the third case, D describes the same event as C but gives Room 9, and neither record is marked as replacing the other. P1 explains missing values but says nothing about disagreement. Revise that weakness: if supplied records conflict about a requested field and no priority is given, write \u201cconflicting information\u201d for that field. Preserve values that do not conflict."
+      },
+      {
+        "type": "paragraph",
+        "text": "Call the revision P2 and keep the rest of P1 unchanged, except that it now refers to the supplied records rather than C alone. The place field should flag the conflict; it must not silently choose Room 7, choose Room 9 or combine them into Room 79. A later authoritative correction may resolve the conflict, but this input does not provide one."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Score a response by separate criteria",
+    "prompt": "For original C, a card gives four correctly labelled lines but says Time: 3 pm. All other values match C. State which format and evidence checks pass or fail. Is the card acceptable overall? Explain.",
+    "lines": 6,
+    "answer": "The four-line label and order checks pass; day, place and bring values match. The time and no-unsupported-details checks fail because C gives no time; Time should be not stated. It is not acceptable overall because every required criterion must pass."
+  },
+  "independent_case": {
+    "title": "Specify and test a new exhibit card",
+    "task": "Fictional record X says an exhibit is called Shadow Pairs and is in Hall 2; no opening time is given. Write a complete prompt for a Grade 6 card with exactly three labelled lines: Title, Location, Opening. Limit facts to supplied records, define missing and conflicting values and prohibit added claims. Give two test inputs and expected outputs: original X, then X with an opening time of 10 am added.",
+    "answer": "A valid prompt names the Grade 6 card task, supplied records only, exactly three lines in Title/Location/Opening order, not stated for missing values, conflicting information for unresolved disagreements and no added details. It includes X. Original X gives Title: Shadow Pairs; Location: Hall 2; Opening: not stated. Adding 10 am gives the same title and location with Opening: 10 am. Equivalent clear wording is acceptable.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A tidy response is a correct response",
+      "Score facts and missing-value handling separately from layout."
+    ],
+    [
+      "A better prompt guarantees correct output",
+      "Inspect actual responses; even explicit requirements can be violated."
+    ],
+    [
+      "A conflict can be resolved by choosing the confident record",
+      "Without authority or priority, flag the unresolved field."
+    ],
+    [
+      "The best attempt represents every attempt",
+      "Keep all planned trials and report failures rather than selecting only a success."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/630eeced9ff6d8c13ee4eb4fbdc1c0794f5a1ba61624237760f1741471bfd54b",
+        "alt": "Visual card for the input stage: goal, context, constraints, and requested format",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/8e883d812825b545f604c33850741f1dad23459e186ec60f316a6475d8b8841e",
+        "alt": "Visual card for the process stage: a generative model predicts an output matching the instruction",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/8ab54fa1a3550119708e8516893c5948d7d514f856cc1fcd45497f5ff5957346",
+        "alt": "Visual card for the output stage: draft that still requires review",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  goal, context, constraints, and requested format"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  a generative model predicts an output matching the instruction"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  draft that still requires review"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  Clear goals, context, and constraints improve usefulness, not truth guarantees.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Prompting conditions model behavior but does not change underlying knowledge, eliminate hallucination, or grant access to missing sources. Strong prompts specify success criteria and evidence boundaries, then support iterative evaluation.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "From prompt requirement to evidence of success",
+        "columns": [
+          "Requirement",
+          "Expected behaviour",
+          "How to check"
+        ],
+        "rows": [
+          [
+            "Use source C only",
+            "Monday and Room 7",
+            "Compare with C"
+          ],
+          [
+            "Mark missing values",
+            "Time: not stated",
+            "Check absent time"
+          ],
+          [
+            "Four labelled lines",
+            "Day Time Place Bring",
+            "Count and inspect"
+          ],
+          [
+            "No added details",
+            "No invented promises",
+            "Check every claim"
+          ]
+        ],
+        "caption": "Choose these checks before reading a response. A response must satisfy all required criteria, not merely look tidy."
+      },
+      {
+        "type": "paragraph",
+        "text": "For P1, an acceptable card has Day: Monday; Time: not stated; Place: Room 7; Bring: paper, each on its own line. The semicolons here separate lines for discussion. A correct format with an invented 3 pm time still fails the evidence requirement. Accurate facts inside a long paragraph still fail the requested four-line format."
+      },
+      {
+        "type": "paragraph",
+        "text": "These are classroom response examples written for inspection, not measurements from a live AI system. You can test the instructions by asking a partner to follow them on paper. That checks how clear the instructions are, but it does not prove that a model will always follow them."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/6392782cd00b442f9b9cd87ae7293e7f33b6c6570047a9a09b8c4817e3e3308c",
+        "alt": "Comparison picture for Write a story: goal underspecified; vague prompt",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/e3829a16e9c964961ef6b551a51d78f3e97210918793566ec5748bfe56dd4337",
+        "alt": "Comparison picture for 300-word space mystery for age 8: audience and format clear; better direction",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2512cc7ac3cc1ddc36b7b5bc12de1a945b472638ca0b2806108b9b59961d5367",
+        "alt": "Comparison picture for Use only these facts: evidence boundary; still verify",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/6c622f16c7cbb9d94e4821b9f3704c0a131be8015c38e286a522242f0c92b12a",
+        "alt": "Comparison picture for Be accurate: wish without checking plan; not a guarantee",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Write a story  Clue: goal underspecified. Meaning: vague prompt."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 300-word space mystery for age 8  Clue: audience and format clear. Meaning: better direction."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Use only these facts  Clue: evidence boundary. Meaning: still verify."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Be accurate  Clue: wish without checking plan. Meaning: not a guarantee."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Prompt quality improves control and usefulness, not guaranteed truth.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

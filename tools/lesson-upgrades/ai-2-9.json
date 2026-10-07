@@ -1,0 +1,43 @@
+{
+  "week": "ai-2/9",
+  "title": "Features and Distractors",
+  "outcome": "By the end, I can test a distracting feature with controlled changes rather than confounding clues.",
+  "scenario": "A fictional book-topic classifier sees mystery books with triangular logos and science books with circular logos.",
+  "given": [
+    "Training contains no mystery-circle or science-triangle covers.",
+    "Goal is to identify topic from actual subject information, not publisher logo. New controlled test outputs have not been supplied."
+  ],
+  "steps": [
+    {
+      "label": "Spot confounding",
+      "icon": "data",
+      "detail": "Topic and logo always move together in the training set."
+    },
+    {
+      "label": "Hold topic fixed",
+      "icon": "experiment",
+      "detail": "Compare the same mystery description with triangle versus circle logo."
+    },
+    {
+      "label": "Hold logo fixed",
+      "icon": "experiment",
+      "detail": "Compare mystery versus science descriptions with identical triangle logo."
+    },
+    {
+      "label": "Observe separately",
+      "icon": "check",
+      "detail": "Record predictions before concluding which clue the classifier uses."
+    }
+  ],
+  "explanation": "Either subject information or logo could explain success on the old combinations. Controlled pairs separate their predictions by changing one aspect at a time. Designing the pair is not equivalent to observing the model’s response. Keep the descriptions identical when testing logo so differences do not have two possible causes.",
+  "counterfactual": {
+    "change": "The first controlled pair yields mystery for triangle and science for circle.",
+    "prediction": "That pair is evidence of unwanted logo sensitivity.",
+    "reason": "The subject description stayed mystery; only the irrelevant logo changed."
+  },
+  "student_task": "Does this one pair prove the classifier always ignores subject? Explain a narrower claim.",
+  "teacher_answer": "No. It shows one topic-fixed prediction changed with logo in this case; additional balanced comparisons are needed to characterise behavior.",
+  "project_evidence": "Test recommender features for shortcuts, keeping relevant subject information separate from superficial catalogue styling.",
+  "limits": "Controlled observations support specific sensitivity claims; they do not reveal every internal feature a learned model uses.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment."
+}

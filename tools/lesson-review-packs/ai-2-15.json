@@ -1,0 +1,253 @@
+{
+  "week": "ai-2/15",
+  "title": "Choose Informative Questions",
+  "grade": 7,
+  "project": "Transparent Book Recommender",
+  "goals": [
+    "Fit a root question and leaf predictions from training examples",
+    "Trace a new example through the learned tree",
+    "Compare a shallow tree with a baseline and state its limits"
+  ],
+  "primary_topic": "Fitting a decision tree",
+  "vocabulary": [
+    [
+      "Root",
+      "The first question asked by a tree"
+    ],
+    [
+      "Branch",
+      "A path selected by the answer to a question"
+    ],
+    [
+      "Leaf",
+      "An endpoint that stores a prediction"
+    ],
+    [
+      "Depth",
+      "The largest number of question steps from root to leaf"
+    ]
+  ],
+  "worked_example": {
+    "title": "Trace the fitted tree on new rows",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Two paths through the learned tree",
+        "columns": [
+          "Root question",
+          "Branch answer",
+          "Learned leaf"
+        ],
+        "rows": [
+          [
+            "Is near equal to 1",
+            "No near is 0",
+            "Predict clear"
+          ],
+          [
+            "Is near equal to 1",
+            "Yes near is 1",
+            "Predict blocked"
+          ]
+        ],
+        "caption": "Both paths start at the same root. Tall is not used by this fitted tree; the leaf labels came from training counts."
+      },
+      {
+        "type": "paragraph",
+        "text": "Validation rows are (near=1,tall=1,blocked), (0,0,clear), (0,1,blocked), (1,0,clear). Follow only near: predictions are blocked, clear, clear, blocked. Two of four match. The training-majority baseline predicts blocked, since training has four blocked and two clear; it also matches two of four validation labels."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Which validation rows does the tree miss, and which does the baseline miss? Explain why the tall value cannot change this tree\u2019s prediction.",
+        "lines": 4
+      },
+      {
+        "type": "paragraph",
+        "text": "Keep the fitted root and leaves unchanged while scoring. Equal accuracy does not mean identical errors, and five correct training predictions out of six is not the validation result."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Verify the candidate scores",
+    "prompt": "For each near branch and each tall branch, count blocked and clear labels and choose a leaf. Give the total errors for each candidate question.",
+    "answer": "Near=0 has 1 blocked and 2 clear, predicts clear with 1 error; near=1 has 3 blocked and 0 clear, predicts blocked with 0 errors. Tall=0 has 2 blocked and 1 clear; tall=1 also has 2 blocked and 1 clear. Both tall leaves predict blocked with 1 error each. Totals are near 1 and tall 2.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Changed independent case",
+    "task": "Ten cards have six pet subjects and four space subjects; all are green. Compare asking \u201cgreen?\u201d with asking \u201cpet?\u201d to identify a card. Give the largest remaining group and one limitation.",
+    "answer": "Green splits 10/0, leaving as many as 10. Pet splits 6/4, leaving as many as 6, so it is more informative under these supplied counts. Incorrect subject tags can invalidate the split; one question does not uniquely identify every card.",
+    "source": "new parallel transfer case"
+  },
+  "misconceptions": [
+    [
+      "A near branch must predict blocked",
+      "The branch label is learned from its training labels; W4 deliberately reverses that relationship."
+    ],
+    [
+      "Every feature is used during prediction",
+      "Only questions in the stored tree are followed. Candidate questions rejected during fitting do not affect this tree\u2019s output."
+    ],
+    [
+      "A deeper tree must work better",
+      "More questions can fit training detail. Future performance needs separate evaluation; depth choices must be documented."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/768f3b54a5dbe8f45479a3b032d967bb94b82599711b1ff2ec7c1cc1d89991e2",
+        "alt": "INPUT stage for Choose Informative Questions",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fbcc0d47192ed64f95e3b079474a14fe3f840d8d8aa443c5120fa43bb717b7f9",
+        "alt": "PROCESS stage for Choose Informative Questions",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fa36abad7613647543363ef12152f4357c3c112fa49d61888f13cde84be52006",
+        "alt": "OUTPUT stage for Choose Informative Questions",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "rows = [(1, 0, \"blocked\"), (1, 1, \"blocked\"),\n        (1, 0, \"blocked\"), (0, 1, \"clear\"),\n        (0, 0, \"clear\"), (0, 1, \"blocked\")]\ndef majority(labels):\n    if labels.count(\"blocked\") > labels.count(\"clear\"):\n        return \"blocked\"\n    return \"clear\"\nbest_errors = len(rows) + 1\nfor feature in [0, 1]:\n    leaves = {}\n    for value in [0, 1]:\n        labels = [row[2] for row in rows\n                  if row[feature] == value]\n        leaves[value] = majority(labels)\n    errors = 0\n    for row in rows:\n        if leaves[row[feature]] != row[2]:\n            errors = errors + 1\n    print(feature, errors)\n    if errors < best_errors:\n        best_errors = errors\n        tree = (feature, leaves)\nprint(tree[0], tree[1][0], tree[1][1])"
+      },
+      {
+        "type": "paragraph",
+        "text": "Feature 0 is near; feature 1 is tall; row[2] is the label. Output is 0 1, then 1 2, then 0 clear blocked. Near makes one training mistake: near=0 contains two clear labels and one blocked, so that leaf predicts clear. Near=1 contains three blocked labels. Tall makes two mistakes because both its groups have a blocked majority."
+      },
+      {
+        "type": "paragraph",
+        "text": "The stored tree contains the chosen feature and its two learned leaves. The code assumes nonempty data, binary flags, allowed labels and examples on both branches of each candidate. An empty branch would need a declared fallback; this small example does not implement one. The score is total training mistakes, not an average giving small and large branches equal weight."
+      },
+      {
+        "type": "paragraph",
+        "text": "This is an explicitly limited depth-one learner. General tree algorithms can repeat split selection within branches and often use impurity criteria such as Gini. Our code does not implement that full procedure. Keeping the scope small lets you inspect every decision."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1f18213ba3d74c99072fa04ad7520b53eee0b2e9e845b0d8a61ccdda1b41f3f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fed8318cf337134a2c31a8d2c90831db67a27a43d3c6f85b25079c53ec37ff9a",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/75f964dbe29000347e518a59e2717387d7109bd1f947abdafa07e931a61cf754",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4d936b6648b81ac897fc99370c2788f8e0b135d8fc31cfd77afceee66a92128c",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

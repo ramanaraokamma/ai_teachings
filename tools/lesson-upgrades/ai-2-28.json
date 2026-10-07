@@ -1,0 +1,65 @@
+{
+  "week": "ai-2/28",
+  "title": "Prompt Experiments",
+  "outcome": "By the end, I can compare prompts on paired cases and inspect a subgroup before choosing.",
+  "scenario": "A fictional book-help project tests two prompt versions on seven shared development cases.",
+  "given": [
+    "P passes cases 1,2,3,4. Q passes 1,2,3,5,6. Cases 4 and 7 involve missing sources.",
+    "Same inputs, system configuration and rubric; only the prompt changes. These are invented records."
+  ],
+  "steps": [
+    {
+      "label": "Paired setup",
+      "icon": "experiment",
+      "detail": "Use the same seven cases and pass criteria for both prompts."
+    },
+    {
+      "label": "Overall rates",
+      "icon": "chart",
+      "detail": "P=4/7; Q=5/7."
+    },
+    {
+      "label": "Missing-source slice",
+      "icon": "chart",
+      "detail": "P passes 1/2; Q passes 0/2 in cases 4 and 7."
+    },
+    {
+      "label": "Decide explicitly",
+      "icon": "person",
+      "detail": "Q improves overall count but worsens missing-source behavior; use the declared priorities."
+    }
+  ],
+  "explanation": "A larger total can conceal a more serious failure category. Paired records show which cases changed, not just how many passed. If refusing unsupported claims is mandatory, Q’s overall advantage may not justify selection. Keep the failing examples for development and obtain fresh cases after choosing a final version.",
+  "counterfactual": {
+    "change": "Make missing-source correctness a required selection gate.",
+    "prediction": "Neither prompt clears a 2/2 gate on these records.",
+    "reason": "P fails 7 and Q fails both 4 and 7; both need revision."
+  },
+  "student_task": "Name the case P passes and Q fails, and explain why it matters.",
+  "teacher_answer": "Case 4, a missing-source case. Its regression can matter more than gains on ordinary cases if unsupported answers are unacceptable.",
+  "project_evidence": "Run controlled recommender explanation experiments with paired cases and report important failure conditions separately.",
+  "limits": "Seven development cases cannot establish causal learning benefits or untouched final performance; repeated generation may also vary.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Paired overall and missing-source passes",
+    "cells": [
+      [
+        4,
+        1
+      ],
+      [
+        5,
+        0
+      ]
+    ],
+    "row_labels": [
+      "P",
+      "Q"
+    ],
+    "column_labels": [
+      "Overall passes /7",
+      "Missing-source passes /2"
+    ]
+  }
+}

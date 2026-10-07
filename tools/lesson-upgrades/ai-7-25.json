@@ -1,0 +1,71 @@
+{
+  "week": "ai-7/25",
+  "title": "Running the primary experiment",
+  "outcome": "Explain running the primary experiment using the records and boundaries of this fictional investigation.",
+  "scenario": "Run the frozen experiment. A research team freezes versions A and B, labels and scoring before a six-case primary run.",
+  "given": [
+    "A scores [1,0,1,1,0,1]; B scores [1,1,1,0,1,1]. Both answer the same six cases. Binary entries mean 1=correct and 0=incorrect."
+  ],
+  "steps": [
+    {
+      "icon": "shield",
+      "label": "Keep versions fixed",
+      "detail": "No case result may trigger tuning during this run."
+    },
+    {
+      "icon": "chart",
+      "label": "Compute results",
+      "detail": "A totals 4/6; B totals 5/6."
+    },
+    {
+      "icon": "data",
+      "label": "Keep case-level records",
+      "detail": "Cases two and five favour B; case four favours A."
+    }
+  ],
+  "explanation": "Running the primary experiment means following the declared protocol and retaining raw outcomes. Overall scores alone hide different failure patterns.",
+  "counterfactual": {
+    "change": "Tune B after inspecting its case-four failure, then rescore the same set.",
+    "prediction": "Label the rerun as development on exposed cases, not untouched primary evaluation.",
+    "reason": "The evaluation outcomes have now influenced the version."
+  },
+  "student_task": "Compute A’s and B’s six-case counts and identify the cases that favour each. How must a B revision tuned on case four be labelled when evaluated again on the same set?",
+  "teacher_answer": "No case result may trigger tuning during this run. A totals 4/6; B totals 5/6. Cases two and five favour B; case four favours A. Changed case: Label the rerun as development on exposed cases, not untouched primary evaluation. The evaluation outcomes have now influenced the version.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "Six illustrative cases do not establish a population advantage or statistical significance.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Paired primary case outcomes",
+    "cells": [
+      [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        0,
+        1,
+        1
+      ]
+    ],
+    "row_labels": [
+      "Version A",
+      "Version B"
+    ],
+    "column_labels": [
+      "Case 1",
+      "Case 2",
+      "Case 3",
+      "Case 4",
+      "Case 5",
+      "Case 6"
+    ]
+  }
+}

@@ -1,0 +1,250 @@
+{
+  "week": "ai-2/6",
+  "title": "Debugging Strategies",
+  "grade": 7,
+  "project": "Transparent Book Recommender",
+  "goals": [
+    "Design revealing tests for a function",
+    "Compare expected and actual results",
+    "Repair a defect and rerun earlier cases"
+  ],
+  "primary_topic": "Testing and debugging functions",
+  "vocabulary": [
+    [
+      "Test case",
+      "Inputs and an expected result"
+    ],
+    [
+      "Boundary",
+      "An edge of a permitted range"
+    ],
+    [
+      "Regression",
+      "A previously working case that fails after a change"
+    ],
+    [
+      "Assertion",
+      "A check that raises an error when its condition is false"
+    ]
+  ],
+  "worked_example": {
+    "title": "Predict before running",
+    "blocks": [
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Would replacing the body with return 5 pass every worked case? Identify the first revealing test.",
+        "lines": 6
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Find a revealing case",
+    "prompt": "A faulty function always returns 4. Which of your three cases pass and fail?",
+    "answer": "Only (6, 2) passes. The full and unused cases fail.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Test a new function independently",
+    "task": "Define stock(packs, loose) to return packs * 4 + loose. Create expected tests for (2, 3), (0, 3), (2, 0), then show which detects a faulty packs + loose body.",
+    "answer": "Expected 11, 3, 8. Faulty results 5, 3, 2; first and third reveal it. Use independent expectations in the test loop.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A successful run proves the conclusion",
+      "Passing this small suite supports these particular cases. It neither proves every allowed input correct nor checks invalid input handling. A test outside the contract needs a separately specified expected behavior."
+    ],
+    [
+      "Matching the example is enough",
+      "Require the new W4 case, explicit predictions and an explanation. Fresh retry: bundles * 3 + singles with (3, 1), (0, 1), (3, 0) expects 10, 1, 9. A constant return 10 passes only the first."
+    ],
+    [
+      "A convenient shortcut preserves meaning",
+      "A faulty return capacity + used gives 11, 16 and 8. The unused case passes even though the rule is wrong. Repair the operator to subtraction and rerun all three cases. Never change an expected result merely to match faulty output."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/88ef5f52db4b218990369a2f40247d94b8d25c4a1979be8f46cb82747b0be731",
+        "alt": "INPUT stage for Debugging Strategies",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b8b162a06c3d986f668b58f8b68f27180ba7501a815e5bd50b882b92dc4b0f81",
+        "alt": "PROCESS stage for Debugging Strategies",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/e12f47e331cc29261352fb3f3eb686c812fadd1e58edd92d6eb013065438ed6c",
+        "alt": "OUTPUT stage for Debugging Strategies",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "def remaining(capacity, used):\n    return capacity - used\n\ncases = [(8, 3, 5), (8, 8, 0), (8, 0, 8)]\nfor capacity, used, expected in cases:\n    actual = remaining(capacity, used)\n    print(actual == expected)"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow the evidence",
+        "columns": [
+          "Step or case",
+          "Evidence",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "Ordinary case",
+            "8 and 3",
+            "Expect 5"
+          ],
+          [
+            "Full case",
+            "8 and 8",
+            "Expect 0"
+          ],
+          [
+            "Unused case",
+            "8 and 0",
+            "Expect 8"
+          ]
+        ],
+        "caption": "Read each row from left to right and connect the evidence to the stated rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "Each parenthesized group is a tuple, an ordered group of values. The loop unpacks each group into three names. Equality compares the actual result to the independently calculated expected result. The worked script prints True three times. An assert actual == expected could instead stop at the first mismatch with AssertionError."
+      },
+      {
+        "type": "subheading",
+        "text": "Give each test a job"
+      },
+      {
+        "type": "paragraph",
+        "text": "A useful test includes an input and an answer calculated from the written rule before the program runs. For 8 spaces with 3 used, expect 5 left. For 8 used, expect 0. For none used, expect 8. These cases ask different questions. An incorrect addition rule happens to pass the unused case because adding zero and subtracting zero give the same result. That is why one passing example is weak evidence."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1f18213ba3d74c99072fa04ad7520b53eee0b2e9e845b0d8a61ccdda1b41f3f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fed8318cf337134a2c31a8d2c90831db67a27a43d3c6f85b25079c53ec37ff9a",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/75f964dbe29000347e518a59e2717387d7109bd1f947abdafa07e931a61cf754",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4d936b6648b81ac897fc99370c2788f8e0b135d8fc31cfd77afceee66a92128c",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

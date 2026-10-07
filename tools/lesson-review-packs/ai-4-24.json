@@ -1,0 +1,253 @@
+{
+  "week": "ai-4/24",
+  "title": "Train, Validation, Test",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Select a model using a declared validation rule",
+    "Keep training, validation and test roles separate",
+    "Recognize repeated validation as development"
+  ],
+  "primary_topic": "Validation and model selection",
+  "vocabulary": [
+    [
+      "Validation",
+      "Development evidence used to choose between options"
+    ],
+    [
+      "Hyperparameter",
+      "A model setting chosen outside its fitted parameters"
+    ],
+    [
+      "Selection rule",
+      "A declared method for choosing an option"
+    ],
+    [
+      "Test set",
+      "Held-out evidence reserved for a final evaluation"
+    ]
+  ],
+  "worked_example": {
+    "title": "Explain the visual",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Validation and model selection at a glance",
+        "columns": [
+          "Part",
+          "Evidence or action",
+          "Interpretation"
+        ],
+        "rows": [
+          [
+            "Training",
+            "Fit each candidate",
+            "No test labels"
+          ],
+          [
+            "Validation",
+            "Choose A by rule",
+            "Record every attempt"
+          ],
+          [
+            "Final test",
+            "Frozen model only",
+            "Report after selection"
+          ]
+        ],
+        "caption": "A tie policy prevents a convenient choice after inspecting results. Equal validation scores do not prove equal future performance. Record candidate settings, split identifiers, preprocessing and the full comparison, including rejected options."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Where should parameter fitting, setting selection and final reporting occur? Explain the steps or evidence behind your response.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Assign data roles",
+    "prompt": "Where should parameter fitting, setting selection and final reporting occur?",
+    "answer": "Teacher explanation: Fit on training, select on validation, evaluate the frozen choice on held-out test; fit preprocessing only on training.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Apply independently",
+    "task": "Training errors P 2 Q 0 R 1; validation errors P 4 Q 6 R 4. Rule: smallest validation MAE, then simpler; P is simpler than R. Choose and state the test action.",
+    "answer": "Teacher explanation: Choose P with validation MAE 4; Q loses with 6. Keep the test unopened until settings and reporting rules are frozen.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A final answer is enough",
+      "Ask for the relevant counts, units, procedure or saved record. For this week: Choose A: validation MAE 3 ties C, and A wins the simplicity tie. B has validation MAE 5 despite training MAE 0."
+    ],
+    [
+      "A stronger claim makes a stronger project",
+      "Selection used this sample, repeated attempts can adapt to it, and future conditions and sampling may differ."
+    ],
+    [
+      "The new case can be copied from the example",
+      "The independent task changes the evidence. Require a fresh explanation: Choose P with validation MAE 4; Q loses with 6. Keep the test unopened until settings and reporting rules are frozen."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/896b0ef07a50b2722b3b05f9ead33069f276b8a543f69358bd5082719d2b2475",
+        "alt": "Week 24 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/c99708cedbfe45cc753154033c73e8c76c7e2262baba3255c1d2c6a05bda4fb3",
+        "alt": "Week 24 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/998b3cdb7277bdf7305ac773108b4e5e0072ab2f5aa67d8d20654e19a5ebd26b",
+        "alt": "Week 24 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Assign every modeling decision and dataset use to the correct split."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  Training fits parameters, validation chooses settings, and testing estimates final performance after choices are frozen."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Fit two candidate trees on training rows. Choose depth and threshold using validation metrics and error slices.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Three candidates have training MAE A=1, B=0, C=2 and validation MAE A=3, B=5, C=3. The declared rule is smallest validation MAE, then simpler model, with A simpler than C. Choose A. B fits training perfectly but does worse on validation. The final test remains unopened."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before continuing, underline the decision rule and circle the evidence that supports the conclusion. Explain the example to a partner without replacing the counts or conditions with a stronger claim. Keep the distinction between an observed result and a proposed next step."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 24 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 24 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 24 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 24 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

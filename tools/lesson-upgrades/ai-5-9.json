@@ -1,0 +1,38 @@
+{
+  "week": "ai-5/9",
+  "title": "Slopes and local change",
+  "outcome": "By the end, I can explain slopes and local change using a traced example and a stated limitation.",
+  "scenario": "Use a local slope to propose a small move rather than claiming every move helps.",
+  "given": [
+    "Toy loss J(a)=(a-2)\u00b2. At a = 0, use symmetric step 0.5.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Evaluate nearby points",
+      "icon": "chart",
+      "detail": "J(0.5)=2.25 and J(-0.5)=6.25."
+    },
+    {
+      "label": "Estimate slope",
+      "icon": "code",
+      "detail": "Slope=(2.25-6.25)/(0.5-(-0.5))=-4."
+    },
+    {
+      "label": "Check small move",
+      "icon": "experiment",
+      "detail": "Move to a = 0.25: loss 3.0625, below starting loss 4."
+    }
+  ],
+  "explanation": "A slope describes how the loss changes near the current parameter. The symmetric calculation compares equal small moves on either side. Its negative result suggests a small increase may help at zero. It does not promise every increase helps: jumping to five passes the optimum at two and produces a larger loss. Check the new loss after each proposed step.",
+  "counterfactual": {
+    "change": "Move from 0 all the way to5.",
+    "prediction": "Loss becomes9, exceeding the starting4.",
+    "reason": "A negative local slope suggests increasing a locally, not that every positive jump decreases loss."
+  },
+  "student_task": "Which calculation disproves \u201cany increase helps\u201d? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "J(5)=(5-2)\u00b2=9>J(0)=4. The local direction is useful only with an appropriately sized step and verification. Changed-case check: Loss becomes9, exceeding the starting4. A negative local slope suggests increasing a locally, not that every positive jump decreases loss.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "A finite difference approximates local change; numerical precision and nonsmooth points need care in more complex objectives.",
+  "review_note": "Reviewed Slopes and local change against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation."
+}

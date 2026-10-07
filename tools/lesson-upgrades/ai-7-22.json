@@ -1,0 +1,50 @@
+{
+  "week": "ai-7/22",
+  "title": "Pilot experiments",
+  "outcome": "Explain pilot experiments using the records and boundaries of this fictional investigation.",
+  "scenario": "A pilot tests the procedure. A pilot checks whether the team can score answers consistently before running the main study.",
+  "given": [
+    "Two reviewers score four practice answers. They agree on three and disagree on one; these answers are excluded from final evaluation."
+  ],
+  "steps": [
+    {
+      "icon": "experiment",
+      "label": "Try the workflow",
+      "detail": "Both reviewers apply the draft rubric to four practice answers."
+    },
+    {
+      "icon": "chart",
+      "label": "Measure agreement",
+      "detail": "Agreement is 3/4=75% on this pilot."
+    },
+    {
+      "icon": "book",
+      "label": "Repair the rubric",
+      "detail": "Discuss the disagreement and clarify the scoring rule before the main run."
+    }
+  ],
+  "explanation": "A pilot can reveal missing instructions, practical delays or ambiguous scoring. It is preparation, not an untouched final estimate after the team uses it to revise methods.",
+  "counterfactual": {
+    "change": "Add the corrected pilot answers into final evaluation.",
+    "prediction": "Declare them previously exposed rather than untouched final evidence.",
+    "reason": "Rubric development already used those answers."
+  },
+  "student_task": "Calculate reviewer agreement on the four pilot answers. What can the disagreement improve, and why are those revised practice answers not untouched final evidence?",
+  "teacher_answer": "Both reviewers apply the draft rubric to four practice answers. Agreement is 3/4=75% on this pilot. Discuss the disagreement and clarify the scoring rule before the main run. Changed case: Declare them previously exposed rather than untouched final evidence. Rubric development already used those answers.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "Four pilot answers do not establish long-run reviewer reliability or a stable performance effect.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Reviewer agreement on four pilot answers",
+    "labels": [
+      "Agree",
+      "Disagree"
+    ],
+    "values": [
+      3,
+      1
+    ],
+    "unit": "pilot answers out of 4"
+  }
+}

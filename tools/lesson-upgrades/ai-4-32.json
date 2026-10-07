@@ -1,0 +1,38 @@
+{
+  "week": "ai-4/32",
+  "title": "Proxy Features and Fairness",
+  "outcome": "By the end, I can explain proxy features and fairness using a traced example and a stated limitation.",
+  "scenario": "Removing an obvious setting field may leave another field that carries the same information.",
+  "given": [
+    "Toy table has location=greenhouse/desk and camera_code=G/D. Every G record is greenhouse; every D record is desk. The team drops location.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Remove direct field",
+      "icon": "data",
+      "detail": "The location column is absent from the new input table."
+    },
+    {
+      "label": "Check retained proxy",
+      "icon": "question",
+      "detail": "camera_code still identifies the setting perfectly in this supplied sample."
+    },
+    {
+      "label": "Audit effect",
+      "icon": "experiment",
+      "detail": "Compare controlled predictions and held-out setting slices; dropping one column does not establish setting independence."
+    }
+  ],
+  "explanation": "Read the picture in order. Compare controlled predictions and held-out setting slices; dropping one column does not establish setting independence. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Camera codes are assigned independently of setting in a new balanced dataset.",
+    "prediction": "camera_code no longer perfectly identifies setting in that dataset.",
+    "reason": "The observed mapping changed; other retained fields may still contain setting information."
+  },
+  "student_task": "What evidence contradicts the original “all setting information removed” claim? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "The retained G/D code maps exactly to greenhouse/desk, so the supplied table still exposes setting information. Changed-case check: camera_code no longer perfectly identifies setting in that dataset. The observed mapping changed; other retained fields may still contain setting information.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "A correlated field is not necessarily harmful in every use; assess task relevance, consequences and actual model behaviour.",
+  "review_note": "Reviewed Proxy Features and Fairness against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

@@ -1,0 +1,37 @@
+{
+  "week": "python-bridge/1",
+  "title": "From a paper algorithm to Python",
+  "outcome": "Trace from a paper algorithm to python and explain the changed program before running it.",
+  "scenario": "Convert a seed-count algorithm. The paper plan counts seeds in identical trays, then adds a labelled spare tray.",
+  "given": [
+    "Python 3: trays=4; per_tray=6; spare=2; total=trays*per_tray+spare; print(total). All quantities count seeds."
+  ],
+  "steps": [
+    {
+      "icon": "data",
+      "label": "Name the inputs",
+      "detail": "Four trays hold six seeds each; two extra seeds are separate."
+    },
+    {
+      "icon": "rule",
+      "label": "Translate the plan",
+      "detail": "Multiply tray count by seeds per tray, then add the spare count."
+    },
+    {
+      "icon": "code",
+      "label": "Trace the assignment",
+      "detail": "4*6+2 is 26; total stores 26 and print displays it."
+    }
+  ],
+  "explanation": "Python follows the arithmetic instructions. This translation automates a declared counting rule; it does not train a model from examples.",
+  "counterfactual": {
+    "change": "Change spare to 5 while keeping both tray inputs fixed.",
+    "prediction": "The printed total becomes 29.",
+    "reason": "4*6 remains 24; adding five gives 29."
+  },
+  "student_task": "Match each paper quantity to its Python name. Why does the spare count get added once, and what prints when spare is five?",
+  "teacher_answer": "The names map trays→4, per_tray→6 and spare→2. The spare count is outside the identical trays, so total is 24+2=26. With spare=5, print displays 29.",
+  "project_evidence": "For Python readiness before the Responsible Plant Classifier, retain a trace of the values, the predicted outputs and the changed-case explanation. Use actual Python 3 results to check the prediction after reasoning first.",
+  "limits": "The calculation assumes identical tray sizes and measured counts; it cannot detect a miscounted tray.",
+  "review_note": "Individually authored supported practice; distinct from the reserved independent case. Python semantics are checked on standalone snippets; no learned model or real pupil result is implied."
+}

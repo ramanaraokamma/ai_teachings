@@ -1,0 +1,65 @@
+{
+  "week": "ai-3/9",
+  "title": "Prompt Evaluation",
+  "outcome": "By the end, I can evaluate prompts with paired cases and a predeclared mandatory criterion.",
+  "scenario": "A fictional Study Buddy compares two prompts across six development questions.",
+  "given": [
+    "A passes cases 1,2,3,4. B passes 1,2,5,6. Cases 5 and 6 require refusing unsupported claims.",
+    "Mandatory selection gate: pass both refusal cases. All cases use fixed sources and one common rubric."
+  ],
+  "steps": [
+    {
+      "label": "Paired total",
+      "icon": "chart",
+      "detail": "A and B both pass 4/6."
+    },
+    {
+      "label": "Different failures",
+      "icon": "data",
+      "detail": "A alone passes 3,4; B alone passes 5,6."
+    },
+    {
+      "label": "Mandatory slice",
+      "icon": "shield",
+      "detail": "A passes 0/2 refusal cases; B passes 2/2."
+    },
+    {
+      "label": "Selection",
+      "icon": "model",
+      "detail": "B clears the declared gate, but its failures 3,4 remain visible."
+    }
+  ],
+  "explanation": "Equal totals do not imply equal behavior. The predeclared gate expresses an important requirement instead of choosing a criterion after seeing the result. Selecting B is justified under that rule, not by claiming it is best on every question. After development, freeze the chosen prompt and test new questions, including both ordinary and unsupported cases.",
+  "counterfactual": {
+    "change": "Remove the gate and retain total passes as the only criterion.",
+    "prediction": "The record is a tie; another predeclared tie policy or further development evidence is needed.",
+    "reason": "Both prompts have four passes on six questions."
+  },
+  "student_task": "Why is B’s selection defensible here without calling it universally superior?",
+  "teacher_answer": "It alone passes both mandatory refusal cases. A is better on cases 3 and 4, which must still be reported.",
+  "project_evidence": "Use Study Buddy case matrices with explicit priorities, source support gates and fresh final questions.",
+  "limits": "Six invented development outcomes do not measure real model performance or prove a gain in student understanding.",
+  "review_note": "Individually designed fictional worked case, distinct from the reserved assessment. Toy model simplifications, arithmetic and source authority reviewed explicitly.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Same total, different mandatory-case results",
+    "cells": [
+      [
+        4,
+        0
+      ],
+      [
+        4,
+        2
+      ]
+    ],
+    "row_labels": [
+      "Prompt A",
+      "Prompt B"
+    ],
+    "column_labels": [
+      "Total passes /6",
+      "Refusal passes /2"
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "week": "ai-2/15",
+  "title": "Choose Informative Questions",
+  "outcome": "By the end, I can choose a question that separates possibilities rather than repeating a constant clue.",
+  "scenario": "A fictional guessing game has eight catalogue cards and asks yes/no questions to narrow the target.",
+  "given": [
+    "Cards: four mystery, four science; six paperback, two hardback; all English.",
+    "Compare worst-case remaining group size after asking mystery?, paperback? or English?. No claim about unequal target probabilities is made."
+  ],
+  "steps": [
+    {
+      "label": "List possibilities",
+      "icon": "data",
+      "detail": "There are eight possible target cards initially."
+    },
+    {
+      "label": "Mystery question",
+      "icon": "chart",
+      "detail": "Yes group 4; No group 4; largest remaining group 4."
+    },
+    {
+      "label": "Paperback question",
+      "icon": "chart",
+      "detail": "Yes 6; No 2; largest remaining group 6."
+    },
+    {
+      "label": "English question",
+      "icon": "rule",
+      "detail": "Yes 8; No 0; largest remaining group 8."
+    }
+  ],
+  "explanation": "Under the stated worst-case criterion, mystery is the most useful of these questions because it leaves at most four cards. The constant language clue never narrows the set. This is an identification-game criterion; a classifier fitting labels may instead compare prediction errors or another declared training measure.",
+  "counterfactual": {
+    "change": "The current possibility set contains only the four mystery cards.",
+    "prediction": "Asking mystery now leaves all four; it no longer narrows the set.",
+    "reason": "Question value depends on the remaining candidates, not just on its wording."
+  },
+  "student_task": "Choose the best original question and explain why its more balanced split matters here.",
+  "teacher_answer": "Mystery gives 4/4 and worst case 4, better than paperback’s 6 and English’s 8 under the declared smallest-worst-case rule.",
+  "project_evidence": "Choose recommender questions that distinguish feasible options, documenting the decision criterion rather than asking unnecessary personal details.",
+  "limits": "Balanced groups do not guarantee a truthful user answer or optimal choices under every probability or cost model.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Worst-case remaining candidates",
+    "labels": [
+      "Mystery?",
+      "Paperback?",
+      "English?"
+    ],
+    "values": [
+      4,
+      6,
+      8
+    ],
+    "unit": "cards remaining"
+  }
+}

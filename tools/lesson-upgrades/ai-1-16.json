@@ -1,0 +1,71 @@
+{
+  "week": "ai-1/16",
+  "title": "Boundaries and 'Not Sure'",
+  "outcome": "By the end, I can use uncertainty to request a specific review when possible inputs lead to different decisions.",
+  "scenario": "A fictional cubby selector accepts a block if width is at most 5 cm.",
+  "given": [
+    "An unclear measurement means Block A is either 4 or 5 cm; Block B is either 5 or 6 cm.",
+    "These complete possibility sets contain all widths under consideration. Other dimensions are known to fit."
+  ],
+  "steps": [
+    {
+      "label": "Block A possibilities",
+      "icon": "data",
+      "detail": "4 and 5 both satisfy the including equality width limit."
+    },
+    {
+      "label": "Block B possibilities",
+      "icon": "data",
+      "detail": "5 fits; 6 does not."
+    },
+    {
+      "label": "Compare decisions",
+      "icon": "rule",
+      "detail": "A has one supported decision; B’s possible decisions disagree."
+    },
+    {
+      "label": "Review B",
+      "icon": "person",
+      "detail": "Ask a named reviewer to remeasure B using the specified width unit."
+    }
+  ],
+  "explanation": "Uncertainty about a number need not always create uncertainty about the decision. Every allowed width for A fits, so its width uncertainty does not affect acceptance. B straddles the boundary. Record both possibilities and request a better measurement instead of selecting the one that makes a preferred outcome.",
+  "counterfactual": {
+    "change": "Narrow B’s possibilities to 6 or 7 cm.",
+    "prediction": "Both fail the width limit; rejection no longer depends on resolving their difference.",
+    "reason": "All remaining possibilities lead to the same decision."
+  },
+  "student_task": "Which original block needs a better width before accepting or rejecting it? What should the reviewer do?",
+  "teacher_answer": "B needs review because 5 fits and 6 fails. The reviewer should remeasure width in cm and retain the evidence.",
+  "project_evidence": "Add explicit review paths to the sorter, including unresolved input, responsible person and evidence needed.",
+  "limits": "A review path is not automatically accurate; its conclusion depends on relevant, better evidence.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Possibilities and decisions",
+    "cells": [
+      [
+        4,
+        "fits",
+        5,
+        "fits"
+      ],
+      [
+        5,
+        "fits",
+        6,
+        "fails"
+      ]
+    ],
+    "row_labels": [
+      "Block A",
+      "Block B"
+    ],
+    "column_labels": [
+      "Width 1 cm",
+      "Decision 1",
+      "Width 2 cm",
+      "Decision 2"
+    ]
+  }
+}

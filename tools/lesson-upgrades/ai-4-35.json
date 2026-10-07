@@ -1,0 +1,60 @@
+{
+  "week": "ai-4/35",
+  "title": "Capstone Train, Analyze, Improve",
+  "outcome": "By the end, I can explain capstone train, analyze, improve using a traced example and a stated limitation.",
+  "scenario": "Choose the next capstone revision from explicit false alarms and misses.",
+  "given": [
+    "Positive=spotted. CandidateTP4, FN 2, FP 1, TN 9; baselineTP0, FN 6, FP 0, TN 10. Both evaluate the same16 cases.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Compare accuracy",
+      "icon": "chart",
+      "detail": "Candidate13/16=81.25%; baseline10/16=62.5%."
+    },
+    {
+      "label": "Compare detection",
+      "icon": "data",
+      "detail": "Candidate catches4/6 spotted leaves; baseline catches0/6."
+    },
+    {
+      "label": "Inspect errors",
+      "icon": "experiment",
+      "detail": "Review candidate’s two misses and one false alarm with conditions and label evidence before revising."
+    }
+  ],
+  "explanation": "Read the picture in order. Review candidate’s two misses and one false alarm with conditions and label evidence before revising. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "A revision fixes one miss but creates two extra false alarms.",
+    "prediction": "TP 5, FN 1, FP 3, TN 7 gives 12/16=75% accuracy and 5/6 recall.",
+    "reason": "Recall rises while accuracy falls; the preferred revision depends on declared error consequences."
+  },
+  "student_task": "Why is “the revision is better” incomplete? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "It catches more spotted leaves but raises false alarms and lowers accuracy. Report both trade-offs and decide using predeclared use costs. Changed-case check: TP 5, FN 1, FP 3, TN 7 gives 12/16=75% accuracy and 5/6 recall. Recall rises while accuracy falls; the preferred revision depends on declared error consequences.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Any case-driven revision makes these records development evidence for that revision; reserve a fresh final set.",
+  "review_note": "Reviewed Capstone Train, Analyze, Improve against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Candidate, before revision",
+    "cells": [
+      [
+        4,
+        2
+      ],
+      [
+        1,
+        9
+      ]
+    ],
+    "row_labels": [
+      "actual spotted",
+      "actual healthy"
+    ],
+    "column_labels": [
+      "predicted spotted",
+      "predicted healthy"
+    ]
+  }
+}

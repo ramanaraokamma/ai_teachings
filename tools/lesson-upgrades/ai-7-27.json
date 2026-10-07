@@ -1,0 +1,50 @@
+{
+  "week": "ai-7/27",
+  "title": "Robustness across conditions",
+  "outcome": "Explain robustness across conditions using the records and boundaries of this fictional investigation.",
+  "scenario": "Check robustness across conditions. A fixed classifier is tested separately on indoor and shaded outdoor cases.",
+  "given": [
+    "Indoor 7/8 correct; outdoor 3/8 correct. The rubric and frozen model are unchanged."
+  ],
+  "steps": [
+    {
+      "icon": "data",
+      "label": "Name both slices",
+      "detail": "Each condition has eight labelled cases."
+    },
+    {
+      "icon": "chart",
+      "label": "Compute rates",
+      "detail": "Indoor is 87.5%; outdoor is 37.5%."
+    },
+    {
+      "icon": "question",
+      "label": "Bound robustness",
+      "detail": "The large observed gap motivates investigation rather than claiming condition independence."
+    }
+  ],
+  "explanation": "Robustness asks whether behaviour survives relevant changes in conditions. A total score can hide a weak slice; keep the scenario and denominator visible.",
+  "counterfactual": {
+    "change": "Report only the combined 10/16=62.5%.",
+    "prediction": "The arithmetic is correct, but the condition gap becomes hidden.",
+    "reason": "Combining records discards the slice distinction relevant to the deployment goal."
+  },
+  "student_task": "Calculate indoor, outdoor and combined rates. Which relevant weakness disappears from view when only the combined rate is reported?",
+  "teacher_answer": "Each condition has eight labelled cases. Indoor is 87.5%; outdoor is 37.5%. The large observed gap motivates investigation rather than claiming condition independence. Changed case: The arithmetic is correct, but the condition gap becomes hidden. Combining records discards the slice distinction relevant to the deployment goal.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "Eight cases per slice do not establish stable population rates or the reason for the difference.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Fixed model across conditions",
+    "labels": [
+      "Indoor",
+      "Shaded outdoor"
+    ],
+    "values": [
+      7,
+      3
+    ],
+    "unit": "correct cases out of 8 per condition"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "week": "ai-7/18",
+  "title": "Dataset and benchmark limitations",
+  "outcome": "Explain dataset and benchmark limitations using the records and boundaries of this fictional investigation.",
+  "scenario": "A benchmark can miss the intended setting. A plant model is evaluated on clean indoor photos but proposed for shaded outdoor photos.",
+  "given": [
+    "Indoor benchmark: 9/10 correct. No outdoor cases are present. The same model is intended for both."
+  ],
+  "steps": [
+    {
+      "icon": "data",
+      "label": "Name measured setting",
+      "detail": "All ten benchmark images are clean indoor photos."
+    },
+    {
+      "icon": "chart",
+      "label": "Report the result",
+      "detail": "The observed indoor score is 90%."
+    },
+    {
+      "icon": "question",
+      "label": "Name missing evidence",
+      "detail": "Outdoor shade performance remains unmeasured."
+    }
+  ],
+  "explanation": "A benchmark represents particular tasks and collection conditions. High performance on it cannot automatically establish fitness for a different deployment setting.",
+  "counterfactual": {
+    "change": "Add four reserved outdoor cases, of which two are correct.",
+    "prediction": "Report the outdoor slice as 2/4=50%, separately from indoor results.",
+    "reason": "The new records finally measure the missing condition, with a small denominator."
+  },
+  "student_task": "Report the indoor benchmark with its denominator and missing condition. After two correct outdoor cases out of four are added, what slice rate is supported and what remains uncertain?",
+  "teacher_answer": "All ten benchmark images are clean indoor photos. The observed indoor score is 90%. Outdoor shade performance remains unmeasured. Changed case: Report the outdoor slice as 2/4=50%, separately from indoor results. The new records finally measure the missing condition, with a small denominator.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "Neither slice estimates all future photos; inspect sampling, labels and grouping.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Benchmark conditions",
+    "cells": [
+      [
+        9,
+        10
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "row_labels": [
+      "Indoor benchmark",
+      "Added outdoor slice"
+    ],
+    "column_labels": [
+      "Correct",
+      "Total"
+    ]
+  }
+}

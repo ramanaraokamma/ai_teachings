@@ -1,0 +1,38 @@
+{
+  "week": "ai-5/25",
+  "title": "Sequence representations",
+  "outcome": "By the end, I can explain sequence representations using a traced example and a stated limitation.",
+  "scenario": "Distinguish padding positions from meaningful zero sensor readings.",
+  "given": [
+    "Toy tokensPAD0, UNK1, LEFT2, RIGHT3; stored length4. SequenceLEFT RIGHT encodes [2, 3, 0, 0], mask [1, 1, 0, 0].",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Encode real tokens",
+      "icon": "code",
+      "detail": "LEFT and RIGHT occupy positions0 and 1."
+    },
+    {
+      "label": "Mark padding",
+      "icon": "data",
+      "detail": "Positions2 and 3 are storage padding; mask marks them 0."
+    },
+    {
+      "label": "Compare sensor example",
+      "icon": "sensor",
+      "detail": "Readings [0, 4, 0, 0] with real length 2 use mask [1, 1, 0, 0]; the first zero is a real measurement."
+    }
+  ],
+  "explanation": "Sequence values and sequence length are separate information. Padding fills unused storage positions so arrays can share a size; a mask marks which positions are real. A real sensor reading can be zero, just like a padding value. Keep the length or mask rather than inferring presence from the number alone. Token IDs are identifiers, not measured magnitudes.",
+  "counterfactual": {
+    "change": "A missing sequence length causes every numeric0 to be treated as padding in the sensor example.",
+    "prediction": "The first real sensor reading is incorrectly discarded.",
+    "reason": "Its numeric value is 0, but its position is real according to the declared length."
+  },
+  "student_task": "Which record lets the program distinguish the first and last zeros? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "The explicit real length 2 or equivalent mask. Values alone cannot tell a genuine zero measurement from a padding zero. Changed-case check: The first real sensor reading is incorrectly discarded. Its numeric value is 0, but its position is real according to the declared length.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Token padding rules need not apply to sensor values. Document sequence lengths, vocabulary and unknown-token handling.",
+  "review_note": "Reviewed Sequence representations against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation."
+}

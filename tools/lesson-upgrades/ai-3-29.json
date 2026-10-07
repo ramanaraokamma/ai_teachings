@@ -1,0 +1,38 @@
+{
+  "week": "ai-3/29",
+  "title": "Copyright and Provenance",
+  "outcome": "By the end, I can explain copyright and provenance using a traced example and a stated limitation.",
+  "scenario": "Read fictional reuse terms before decorating a public study guide.",
+  "given": [
+    "Image Fern allows public redistribution with attribution but no alteration. Image Moss allows alteration and public redistribution with attribution. The plan crops an image.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Read terms",
+      "icon": "book",
+      "detail": "Fern excludes alteration; Moss permits it."
+    },
+    {
+      "label": "Match proposed use",
+      "icon": "rule",
+      "detail": "Cropping is an alteration in these declared toy terms."
+    },
+    {
+      "label": "Choose eligible asset",
+      "icon": "check",
+      "detail": "Use Moss with its required attribution; do not crop Fern for this public guide."
+    }
+  ],
+  "explanation": "Read the picture in order. Use Moss with its required attribution; do not crop Fern for this public guide. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Use Fern unchanged and include the required attribution.",
+    "prediction": "That use satisfies the stated fictional permission conditions.",
+    "reason": "Its public redistribution is permitted when there is no alteration and attribution is included."
+  },
+  "student_task": "Does acknowledging Fern make a cropped version permitted? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "No. Attribution is one condition; the no-alteration condition still prohibits cropping under these terms. Changed-case check: That use satisfies the stated fictional permission conditions. Its public redistribution is permitted when there is no alteration and attribution is included.",
+  "project_evidence": "For your Verified Study Buddy, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Real permission decisions require the actual licence and use context. These invented terms teach condition matching, not legal advice.",
+  "review_note": "Reviewed Copyright and Provenance against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

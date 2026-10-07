@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/3",
+  "title": "Typed contracts and schemas",
+  "outcome": "Explain typed contracts and schemas using the deciding step in this fictional service.",
+  "scenario": "A labelled sample record. A lab tool accepts a string sample_id and an integer count of at least zero.",
+  "given": [
+    "A={sample_id:\"jar-8\",count:4}; B={sample_id:\"jar-9\",count:\"4\"}. No type conversion is allowed."
+  ],
+  "steps": [
+    {
+      "label": "Inspect A",
+      "icon": "data",
+      "detail": "The fields and integer count satisfy the contract."
+    },
+    {
+      "label": "Inspect B",
+      "icon": "rule",
+      "detail": "The quoted count is a string, so B fails the type check."
+    },
+    {
+      "label": "Return status",
+      "icon": "output",
+      "detail": "Accept A; reject B before running the lab operation."
+    }
+  ],
+  "explanation": "A schema checks declared structure. Looking like a number is different from having the required numeric type.",
+  "counterfactual": {
+    "change": "Change A count to -1.",
+    "prediction": "Reject A on the non-negative value rule.",
+    "reason": "The type is correct but the value is outside its accepted range."
+  },
+  "student_task": "Compare A’s count 4 with B’s count \"4\". Which record passes, which gate rejects B, and why does changing A’s count to -1 create a different failure?",
+  "teacher_answer": "The fields and integer count satisfy the contract. The quoted count is a string, so B fails the type check. Accept A; reject B before running the lab operation. Changed case: Reject A on the non-negative value rule. The type is correct but the value is outside its accepted range.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "Valid structure does not establish that the reported count is accurate.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

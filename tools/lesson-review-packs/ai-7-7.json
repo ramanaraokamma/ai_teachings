@@ -1,0 +1,135 @@
+{
+  "week": "ai-7/7",
+  "title": "Hypotheses and measurable outcomes",
+  "grade": 12,
+  "project": "Reproducible AI Research Study",
+  "goals": [
+    "Explain the mechanism and terminology of hypotheses and measurable outcomes",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Hypotheses and measurable outcomes",
+  "vocabulary": [
+    [
+      "Hypothesis",
+      "A stated expectation to test"
+    ],
+    [
+      "Primary outcome",
+      "The prespecified main measure"
+    ],
+    [
+      "Exploratory result",
+      "An observation or analysis chosen after seeing evidence"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "After seeing faster responses, the team changes its primary claim from support improvement to speed improvement."
+      },
+      {
+        "type": "paragraph",
+        "text": "Report the change as exploratory/post-result revision. Preserve the original support hypothesis; do not present speed as the prespecified primary outcome."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "After seeing faster responses, the team changes its primary claim from support improvement to speed improvement. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: Report the change as exploratory/post-result revision. Preserve the original support hypothesis; do not present speed as the prespecified primary outcome.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "Before running12 cases, you expect B support to exceed A. Write primary metric and one falsifying result.",
+    "answer": "Teacher explanation: Primary metric is supported cases/12 under the fixed rubric. Equal or lower B support contradicts the strict-improvement expectation in this sample.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "A hypothesis can fail honestly; changing it after results does not erase the original test."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Toy hypothesis:method B improves supported-answer rate over baseline A on a reserved paired set. Define support rubric and failure treatment; record secondary outcomes separately."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Hypotheses and measurable outcomes \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "After seeing faster responses, the team changes its primary claim from support improvement to speed improvement.",
+            "Toy hypothesis:method B improves supported-answer rate over baseline A on a reserved paired set. Define support rubric and failure treatment; record secondary outcomes separately.",
+            "Report the change as exploratory/post-result revision. Preserve the original support hypothesis; do not present speed as the prespecified primary outcome."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "After seeing faster responses, the team changes its primary claim from support improvement to speed improvement. Show the intermediate steps and give the conclusion with its scope."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "week": "ai-1/10",
+  "title": "If/Then Decisions",
+  "outcome": "By the end, I can trace exactly one branch and test an including equality boundary.",
+  "scenario": "A fictional counter begins with a number, adds 2, then chooses one branch.",
+  "given": [
+    "If the updated value is at least 6, subtract 1; otherwise double it.",
+    "Report once and stop. Use separate starting values 3,4,5."
+  ],
+  "steps": [
+    {
+      "label": "Update first",
+      "icon": "code",
+      "detail": "Starts 3,4,5 become 5,6,7."
+    },
+    {
+      "label": "Test current value",
+      "icon": "rule",
+      "detail": "5≥6 is false; 6≥6 and 7≥6 are true."
+    },
+    {
+      "label": "Choose one branch",
+      "icon": "code",
+      "detail": "Double 5 to 10; subtract 1 from 6 to 5; subtract 1 from 7 to 6."
+    },
+    {
+      "label": "Report",
+      "icon": "output",
+      "detail": "The three independent runs report 10,5,6."
+    }
+  ],
+  "explanation": "The condition is evaluated after adding 2. Equality belongs to the at-least branch, so starting at 4 checks the boundary. Once a branch finishes, the program reports; it does not reconsider the condition just because doubling 5 produced 10.",
+  "counterfactual": {
+    "change": "Replace at least 6 with above 6.",
+    "prediction": "Only the run starting at 4 changes: it reports 12.",
+    "reason": "Updated value 6 fails a strict above comparison and is doubled."
+  },
+  "student_task": "Which input detects the difference between the two written conditions? Explain its entire run.",
+  "teacher_answer": "Start 4: add 2 gives 6. The including equality rule subtracts 1 to report 5; the strict rule doubles to report 12.",
+  "project_evidence": "Include equality examples when reviewing sorter conditions, and trace from original input through output.",
+  "limits": "A large reported value need not mean the true branch ran; branch choice depends on the earlier value.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Inclusive branching trace",
+    "cells": [
+      [
+        3,
+        5,
+        "false",
+        10
+      ],
+      [
+        4,
+        6,
+        "true",
+        5
+      ],
+      [
+        5,
+        7,
+        "true",
+        6
+      ]
+    ],
+    "row_labels": [
+      "Run 1",
+      "Run 2",
+      "Run 3"
+    ],
+    "column_labels": [
+      "Start",
+      "After +2",
+      "At least 6?",
+      "Report"
+    ]
+  }
+}

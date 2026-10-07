@@ -1,0 +1,38 @@
+{
+  "week": "ai-3/33",
+  "title": "Capstone Design",
+  "outcome": "By the end, I can explain capstone design using a traced example and a stated limitation.",
+  "scenario": "Plan a bounded study buddy around a small approved vocabulary corpus.",
+  "given": [
+    "Corpus V1 defines roots, stem and leaf. It contains no plant disease treatment. Success requires a source reference; missing definitions require a clear fallback.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Define contract",
+      "icon": "rule",
+      "detail": "Answer only glossary-definition requests supported by V1."
+    },
+    {
+      "label": "Plan normal test",
+      "icon": "book",
+      "detail": "“What is a stem?” must point to V1’s stem entry."
+    },
+    {
+      "label": "Plan missing test",
+      "icon": "question",
+      "detail": "“How do I cure this disease?” must produce an out-of-scope response, not a treatment guess."
+    }
+  ],
+  "explanation": "Read the picture in order. “How do I cure this disease?” must produce an out-of-scope response, not a treatment guess. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "The corpus gains a teacher-approved flower definition in V2.",
+    "prediction": "Add a flower test using V2 and record the corpus version.",
+    "reason": "The evidence boundary changed explicitly; the earlier corpus could not support this new entry."
+  },
+  "student_task": "What should the project plan record before the new flower test? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Record approved corpus V2, the expected sourced definition and which evaluation cases belong to that version. Changed-case check: Add a flower test using V2 and record the corpus version. The evidence boundary changed explicitly; the earlier corpus could not support this new entry.",
+  "project_evidence": "For your Verified Study Buddy, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "A capstone design is a testable plan; its proposed behaviours are not verified outcomes until checked.",
+  "review_note": "Reviewed Capstone Design against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

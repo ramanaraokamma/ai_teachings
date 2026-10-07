@@ -1,0 +1,143 @@
+{
+  "week": "ai-6/3",
+  "title": "Typed contracts and schemas",
+  "grade": 11,
+  "project": "Grounded Learning Service",
+  "goals": [
+    "Explain the mechanism and terminology of typed contracts and schemas",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Typed contracts and schemas",
+  "vocabulary": [
+    [
+      "Schema",
+      "A contract for structure and types"
+    ],
+    [
+      "Runtime validation",
+      "Checking actual incoming values"
+    ],
+    [
+      "Closed object",
+      "An object rejecting unexpected fields"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Input room_id=B, requested_count=true passes a naive isinstance(value, int) check in Python."
+      },
+      {
+        "type": "paragraph",
+        "text": "Boolean is an int subclass in Python but excluded by this contract; use type(value) is int and validate nonnegative range."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      },
+      {
+        "type": "paragraph",
+        "text": "Optional local lab: predict the printed result before running this standalone Python 3 example. Change one relevant boundary input, record the outcome and state the contract or statistical assumptions. The program uses fictional values and the Python standard library; it performs no external operations."
+      },
+      {
+        "type": "code",
+        "text": "def nonnegative_integer(value):\n    return type(value) is int and value >= 0\n\ndef validate_request(value):\n    if type(value) is not dict or set(value) != {'room_id', 'requested_count'}:\n        raise ValueError('request fields')\n    if type(value['room_id']) is not str or not value['room_id']:\n        raise ValueError('room ID')\n    if not nonnegative_integer(value['requested_count']):\n        raise ValueError('requested count')\n    return dict(value)\n\nprint(validate_request({\"room_id\": \"A\", \"requested_count\": 0}))"
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "Input room_id=B, requested_count=true passes a naive isinstance(value, int) check in Python. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: Boolean is an int subclass in Python but excluded by this contract; use type(value) is int and validate nonnegative range.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "Classify counts 0, -1, \"3\", False under the stated contract.",
+    "answer": "Teacher explanation: 0 valid; -1 fails range; string fails type; False fails explicit Boolean exclusion.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "Schema-valid input can still be unauthorised or semantically unsuitable; subsequent checks remain necessary."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Accept exactly room_id as a nonempty string and requested_count as a nonnegative integer excluding bool. Reject extra fields, missing fields and wrong types before processing."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Typed contracts and schemas \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "Input room_id=B, requested_count=true passes a naive isinstance(value, int) check in Python.",
+            "Accept exactly room_id as a nonempty string and requested_count as a nonnegative integer excluding bool. Reject extra fields, missing fields and wrong types before processing.",
+            "Boolean is an int subclass in Python but excluded by this contract; use type(value) is int and validate nonnegative range."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input room_id=B, requested_count=true passes a naive isinstance(value, int) check in Python. Show the intermediate steps and give the conclusion with its scope."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

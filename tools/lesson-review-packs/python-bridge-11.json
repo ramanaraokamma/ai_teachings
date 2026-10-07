@@ -1,0 +1,141 @@
+{
+  "week": "python-bridge/11",
+  "title": "Reading structured data",
+  "grade": 8,
+  "project": "Python readiness portfolio",
+  "goals": [
+    "Process a list of records consistently",
+    "Compute a total from named fields",
+    "Preserve record meaning while tracing a loop"
+  ],
+  "primary_topic": "Reading structured data",
+  "vocabulary": [
+    [
+      "Dataset",
+      "A collection of records"
+    ],
+    [
+      "Row",
+      "One record in a table"
+    ],
+    [
+      "Field",
+      "One named part of a record"
+    ],
+    [
+      "Accumulator",
+      "A variable updated to keep a running result"
+    ]
+  ],
+  "worked_example": {
+    "title": "Predict before running",
+    "blocks": [
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Add a third record with capacity 10 and used 4. Predict the total and list each contribution.",
+        "lines": 6
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace all updates",
+    "prompt": "For spare contributions 2, 4 and 1, trace total starting at 0.",
+    "answer": "Running totals 2, 6, 7.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Explain what tests establish",
+    "task": "Predict the output. If the function uses x <= 10, identify the first failing assertion. Do these three checks prove all input types are safe?",
+    "code": "def below_limit(x):\n    return x < 10\nassert below_limit(9) is True\nassert below_limit(10) is False\nassert below_limit(11) is False\nprint(\"three checks passed\")\n",
+    "expected_stdout": "three checks passed\n",
+    "answer": "The original prints three checks passed. With <=, the assertion for 10 fails first and the final print is not reached. Three tested numbers do not establish every value or input type is handled.",
+    "source": "new parallel Python readiness case"
+  },
+  "misconceptions": [
+    [
+      "A successful run proves the conclusion",
+      "This loop assumes every record has the required integer fields. A missing used field causes KeyError. Do not silently treat a missing count as zero; that would invent unused capacity."
+    ],
+    [
+      "Matching the example is enough",
+      "Require the new W4 case, explicit predictions and an explanation. Fresh retry: records (7, 2), (3, 3), (8, 6) contribute 5, 0, 2 and total 7; reversed order also totals 7."
+    ],
+    [
+      "A convenient shortcut preserves meaning",
+      "Putting total = 0 inside the loop discards earlier contributions. With the original rows it finishes at 0, the second contribution. Move the initialization before the loop and rerun both the original and reversed row order."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "rows = [{\"capacity\": 8, \"used\": 3},\n        {\"capacity\": 6, \"used\": 6}]\ntotal = 0\nfor row in rows:\n    spare = row[\"capacity\"] - row[\"used\"]\n    total = total + spare\nprint(total)"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow the evidence",
+        "columns": [
+          "Step or case",
+          "Evidence",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "First row",
+            "8 - 3 = 5",
+            "total becomes 5"
+          ],
+          [
+            "Second row",
+            "6 - 6 = 0",
+            "total stays 5"
+          ]
+        ],
+        "caption": "Read each row from left to right and connect the evidence to the stated rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "The loop variable row refers to each record in turn. We calculate spare from that record, then add it. total starts before the loop. An empty list produces 0 because there are no updates; it does not tell us whether no cupboards exist or records were not collected."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "For spare contributions 2, 4 and 1, trace total starting at 0."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

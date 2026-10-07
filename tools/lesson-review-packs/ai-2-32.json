@@ -1,0 +1,299 @@
+{
+  "week": "ai-2/32",
+  "title": "Project Problem and Success Test",
+  "grade": 7,
+  "project": "Transparent Book Recommender",
+  "goals": [
+    "Define a small application purpose",
+    "Turn requirements into checkable acceptance cases",
+    "Plan a feasible pipeline and human review"
+  ],
+  "primary_topic": "Planning the application",
+  "vocabulary": [
+    [
+      "Requirement",
+      "A statement of behavior the application must provide"
+    ],
+    [
+      "Acceptance case",
+      "An input and expected behavior used to judge a requirement"
+    ],
+    [
+      "Non-goal",
+      "Something intentionally outside project scope"
+    ],
+    [
+      "Prototype",
+      "A limited implementation for testing a design"
+    ]
+  ],
+  "worked_example": {
+    "title": "Predict before running",
+    "blocks": [
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Write an acceptance case for the duration boundary and one for no eligible option.",
+        "lines": 6
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Write an acceptance case",
+    "prompt": "Give a tie case for A and B with score 8 each and valid durations.",
+    "answer": "With both eligible, choose A alphabetically regardless of input order.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Plan independently",
+    "task": "Plan a 15-minute fictional club chooser. Specify schema, score, duration limit, tie rule, invalid-data behavior, output and three acceptance cases.",
+    "answer": "Retain the stated schema and scoring or justify an explicit alternative. Require boundary 15/16, tie/order and no-match cases with expected results, rejection reasons and human review.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A successful run proves the conclusion",
+      "The scope is a rule-based prototype using fictional ratings. It does not demonstrate personalized learning impact or a trained AI model. A clear non-goal protects students from building an untestable or overly broad project."
+    ],
+    [
+      "Matching the example is enough",
+      "Require the new W4 case, explicit predictions and an explanation. Fresh retry: plan a 10-minute chooser with boundary 10/11, duplicate-name rejection and an empty-input case. Collect the plan before implementation."
+    ],
+    [
+      "A convenient shortcut preserves meaning",
+      "A requirement such as make a smart choice cannot be tested precisely. Replace it with a stated score, limit, tie rule and output explanation. If real feedback later changes the policy, record a versioned change rather than rewriting previous evidence."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/f4c1d8d428256bb2ee3526ea3b7fdd327a88d1cb79b3b6134dbadfe4cb6e18ee",
+        "alt": "INPUT stage for Project Problem and Success Test",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/3b04294f955e647807107cc90eddee8c581fb0b83c22fa04f86669d7c2caf5a1",
+        "alt": "PROCESS stage for Project Problem and Success Test",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b67057039326b0c5992890bafb4d9b98d5c1b5c8cd7fbf16e3141f927cb55451",
+        "alt": "OUTPUT stage for Project Problem and Success Test",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "requirements = {\"limit\": 20, \"fun_weight\": 2,\n                \"learning_weight\": 1, \"tie\": \"name ascending\"}\nprint(requirements[\"limit\"])\nprint(requirements[\"tie\"])"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow the evidence",
+        "columns": [
+          "Step or case",
+          "Evidence",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "Input",
+            "Local fictional records",
+            "Validate schema"
+          ],
+          [
+            "Decision",
+            "Filter then score then tie rule",
+            "Explain selected item"
+          ],
+          [
+            "Output",
+            "Suggestion or no eligible item",
+            "Teacher reviews"
+          ]
+        ],
+        "caption": "Read each row from left to right and connect the evidence to the stated rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "Define fields name, minutes, fun and learning. Require a nonempty text name, integer minutes 0 through 60 and integer ratings 0 through 5. Reject duplicate names because the tie rule uses names as identifiers. Write cases before implementing so requirements do not drift to fit outputs."
+      },
+      {
+        "type": "subheading",
+        "text": "Turn a wish into a checkable plan"
+      },
+      {
+        "type": "paragraph",
+        "text": "A phrase such as make a smart choice does not say what counts as success. The chooser plan does: validate the named fields, include durations at most 20 minutes, calculate 2 times fun plus learning, and use alphabetical names to break a tie. Describe the expected output and a no-match result before coding. Another learner should be able to use your plan to predict the same answer without guessing what you intended."
+      },
+      {
+        "type": "subheading",
+        "text": "Apply the connected idea: A reproducible data investigation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "raw = [10, 0, 20, None, -2]\nvalid = []\nrejected = 0\nfor value in raw:\n    if type(value) is int and 0 <= value <= 60:\n        valid.append(value)\n    else:\n        rejected = rejected + 1\nprint(len(valid), rejected)\nif len(valid) > 0:\n    print(sum(valid) / len(valid))\nelse:\n    print(\"No valid observations\")"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow the evidence",
+        "columns": [
+          "Step or case",
+          "Evidence",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "Raw evidence",
+            "Five supplied values",
+            "Keep unchanged"
+          ],
+          [
+            "Validation",
+            "Accept 10, 0, 20",
+            "Reject unknown and negative"
+          ],
+          [
+            "Summary",
+            "30 divided by 3",
+            "Mean 10 minutes"
+          ]
+        ],
+        "caption": "Read each row from left to right and connect the evidence to the stated rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "The result is 3 accepted, 2 rejected, and mean 10.0 minutes. A reproducible report states the question, raw input version, schema, exclusion reasons, calculation and scope. Someone else should obtain the same result from the same inputs and rules."
+      },
+      {
+        "type": "subheading",
+        "text": "Keep the denominator with the evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "First filter the raw durations using the written schema. Keep 10, 0 and 20; reject None because the duration is unknown and -2 because it is outside the range. The accepted sum is 30 and the accepted count is three, so the accepted-record mean is 10 minutes. Dividing by all five supplied records would treat the two rejected durations as if they contributed known zeros. State three accepted out of five beside the mean."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1f18213ba3d74c99072fa04ad7520b53eee0b2e9e845b0d8a61ccdda1b41f3f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fed8318cf337134a2c31a8d2c90831db67a27a43d3c6f85b25079c53ec37ff9a",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/75f964dbe29000347e518a59e2717387d7109bd1f947abdafa07e931a61cf754",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4d936b6648b81ac897fc99370c2788f8e0b135d8fc31cfd77afceee66a92128c",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

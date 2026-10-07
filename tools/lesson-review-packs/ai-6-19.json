@@ -1,0 +1,135 @@
+{
+  "week": "ai-6/19",
+  "title": "Sandboxing and resource limits",
+  "grade": 11,
+  "project": "Grounded Learning Service",
+  "goals": [
+    "Explain the mechanism and terminology of sandboxing and resource limits",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Sandboxing and resource limits",
+  "vocabulary": [
+    [
+      "Sandbox",
+      "An enforced restriction on process capabilities"
+    ],
+    [
+      "Quota",
+      "A maximum permitted resource allocation"
+    ],
+    [
+      "Admission policy",
+      "Rules for accepting work under limits"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "A job requests a public webpage and a write outside its output directory."
+      },
+      {
+        "type": "paragraph",
+        "text": "Both operations violate the sandbox contract. Deny them; public availability does not grant network or filesystem authority."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "A job requests a public webpage and a write outside its output directory. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: Both operations violate the sandbox contract. Deny them; public availability does not grant network or filesystem authority.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "Queue currently has 9 tasks; job proposes 2 more under a maximum10 policy. Decide.",
+    "answer": "Teacher explanation: Accepting both would produce11 and exceed quota. Either reject the two-task batch or use a separately declared partial-admission policy; do not invent one.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "Resource limits constrain execution but cannot prove generated claims or algorithms correct."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "The fictional job may read its fixture directory, write its output directory, use no network and run for at most 2 seconds with at most 10 queued tasks. Reject excess work before starting it."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Sandboxing and resource limits \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "A job requests a public webpage and a write outside its output directory.",
+            "The fictional job may read its fixture directory, write its output directory, use no network and run for at most 2 seconds with at most 10 queued tasks. Reject excess work before starting it.",
+            "Both operations violate the sandbox contract. Deny them; public availability does not grant network or filesystem authority."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "A job requests a public webpage and a write outside its output directory. Show the intermediate steps and give the conclusion with its scope."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "week": "ai-3/19",
+  "title": "User Need and AI Contribution",
+  "outcome": "By the end, I can explain user need and ai contribution using a traced example and a stated limitation.",
+  "scenario": "Define a useful reading helper before choosing its AI features.",
+  "given": [
+    "A pupil needs the meaning of unfamiliar words in an approved glossary. G3 defines habitat as the place an organism lives; no other sources are allowed.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Name the need",
+      "icon": "person",
+      "detail": "The pupil wants a glossary meaning, not a made-up example presented as a fact."
+    },
+    {
+      "label": "Choose contribution",
+      "icon": "model",
+      "detail": "The assistant locates the glossary entry and restates it in clear language with G3."
+    },
+    {
+      "label": "Bound the service",
+      "icon": "shield",
+      "detail": "An absent word produces “not in this glossary”; a direct glossary search is the baseline."
+    }
+  ],
+  "explanation": "Read the picture in order. An absent word produces “not in this glossary”; a direct glossary search is the baseline. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "The pupil asks for photosynthesis, which G3 does not contain.",
+    "prediction": "The assistant reports that the definition is unavailable in its approved glossary.",
+    "reason": "A helpful interface cannot expand its authorised evidence by guessing."
+  },
+  "student_task": "What non-AI baseline would reveal whether this helper adds value? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Ask the same pupils to use direct glossary search on the same word tasks; compare supported answers and effort without inventing results. Changed-case check: The assistant reports that the definition is unavailable in its approved glossary. A helpful interface cannot expand its authorised evidence by guessing.",
+  "project_evidence": "For your Verified Study Buddy, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "A requirements plan identifies intended value; it does not demonstrate actual pupil benefit.",
+  "review_note": "Reviewed User Need and AI Contribution against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

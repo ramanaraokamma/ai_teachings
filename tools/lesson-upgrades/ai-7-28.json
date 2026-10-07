@@ -1,0 +1,50 @@
+{
+  "week": "ai-7/28",
+  "title": "Negative results and claim revision",
+  "outcome": "Explain negative results and claim revision using the records and boundaries of this fictional investigation.",
+  "scenario": "A negative result changes the claim. A proposed prompt improvement ties the baseline on a fixed eight-case evaluation.",
+  "given": [
+    "A and B each score 6/8. Before running, the team predicted B would score higher."
+  ],
+  "steps": [
+    {
+      "icon": "book",
+      "label": "Recall the prediction",
+      "detail": "The claim was a higher correct count for B."
+    },
+    {
+      "icon": "chart",
+      "label": "State the finding",
+      "detail": "Both versions score 75%; no observed count advantage appears here."
+    },
+    {
+      "icon": "question",
+      "label": "Revise cautiously",
+      "detail": "Report the unsupported prediction and a justified next test."
+    }
+  ],
+  "explanation": "A negative result can be informative when methods and limits are clear. A tie does not prove the methods are equivalent under all conditions or that the experiment was worthless.",
+  "counterfactual": {
+    "change": "B wins on one new task after the team chooses it because A fails.",
+    "prediction": "Treat that selected demonstration as exploratory, not a replacement for the original result.",
+    "reason": "Case selection now depends on outcomes."
+  },
+  "student_task": "Does a 6/8 tie support the prediction that B scores higher? Explain why one newly selected favourable demonstration does not replace the original result or prove equivalence.",
+  "teacher_answer": "The claim was a higher correct count for B. Both versions score 75%; no observed count advantage appears here. Report the unsupported prediction and a justified next test. Changed case: Treat that selected demonstration as exploratory, not a replacement for the original result. Case selection now depends on outcomes. A tie on eight cases does not prove equivalence.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "A tie on eight cases is not an equivalence test; uncertainty and practical thresholds remain unspecified.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "No observed count advantage",
+    "labels": [
+      "A",
+      "B"
+    ],
+    "values": [
+      6,
+      6
+    ],
+    "unit": "correct cases out of 8 shared cases"
+  }
+}

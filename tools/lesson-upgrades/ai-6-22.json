@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/22",
+  "title": "Queues and asynchronous work",
+  "outcome": "Explain queues and asynchronous work using the deciding step in this fictional service.",
+  "scenario": "Queued is not complete. A conversion service queues job J12 rather than processing it during submission.",
+  "given": [
+    "States: queued, running, succeeded, failed. Submission returns J12 with queued status."
+  ],
+  "steps": [
+    {
+      "label": "Accept request",
+      "icon": "network",
+      "detail": "J12 acknowledges receipt, not completed conversion."
+    },
+    {
+      "label": "Start worker",
+      "icon": "clock",
+      "detail": "The worker marks J12 running before processing."
+    },
+    {
+      "label": "Publish checked result",
+      "icon": "output",
+      "detail": "Only a checked output permits succeeded status."
+    }
+  ],
+  "explanation": "Asynchronous work separates submission from completion. Honest status and a job identifier let users track that difference.",
+  "counterfactual": {
+    "change": "The worker crashes before producing checked output.",
+    "prediction": "The job is failed or awaiting a controlled retry, not succeeded.",
+    "reason": "Receipt is not evidence that conversion finished."
+  },
+  "student_task": "Explain what the queued J12 submission response proves and what it does not. Which event permits succeeded status, and what status is honest after a worker crash?",
+  "teacher_answer": "J12 acknowledges receipt, not completed conversion. The worker marks J12 running before processing. Only a checked output permits succeeded status. Changed case: The job is failed or awaiting a controlled retry, not succeeded. Receipt is not evidence that conversion finished.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "Queue delivery and duplicate handling need their own policies; this sequence does not guarantee completion.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

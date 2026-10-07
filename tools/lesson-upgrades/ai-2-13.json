@@ -1,0 +1,65 @@
+{
+  "week": "ai-2/13",
+  "title": "Types of Classification Error",
+  "outcome": "By the end, I can construct a confusion matrix with declared axes and name both error types.",
+  "scenario": "A fictional book-condition checker predicts repair or sound.",
+  "given": [
+    "Use reference rows and prediction columns in order sound,repair. Repair is positive.",
+    "Six reference/prediction pairs: sound/sound twice; sound/repair once; repair/sound once; repair/repair twice."
+  ],
+  "steps": [
+    {
+      "label": "Declare axes",
+      "icon": "book",
+      "detail": "Rows: reference sound,repair. Columns: predicted sound,repair."
+    },
+    {
+      "label": "Fill sound row",
+      "icon": "data",
+      "detail": "Two true negatives and one false positive: [2,1]."
+    },
+    {
+      "label": "Fill repair row",
+      "icon": "data",
+      "detail": "One false negative and two true positives: [1,2]."
+    },
+    {
+      "label": "Read result",
+      "icon": "chart",
+      "detail": "Matrix [[2,1],[1,2]]: agreement 4/6, repair recall 2/3."
+    }
+  ],
+  "explanation": "Each case enters one cell according to its reference and predicted label. The off-diagonal cells represent different mistakes: a false alarm on a sound book versus a missed repair. Trace the cell definitions before naming rates; swapping axes changes the table’s interpretation even if its diagonal sum remains unchanged.",
+  "counterfactual": {
+    "change": "Change one repair/sound prediction to repair/repair after a real model revision.",
+    "prediction": "Repair row becomes [0,3]; agreement becomes 5/6.",
+    "reason": "One false negative moves to true positive; the sound row stays [2,1]."
+  },
+  "student_task": "Which error causes a sound book to be sent for unnecessary repair review?",
+  "teacher_answer": "The sound/repair cell is a false positive; there is one in the original matrix.",
+  "project_evidence": "Use a confusion table when evaluating recommender category predictions and attach concrete consequences to each error.",
+  "limits": "Reference labels can themselves be disputed; a true-positive name does not guarantee the annotation is infallible.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Reference rows, prediction columns",
+    "cells": [
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "row_labels": [
+      "Reference sound",
+      "Reference repair"
+    ],
+    "column_labels": [
+      "Predicted sound",
+      "Predicted repair"
+    ]
+  }
+}

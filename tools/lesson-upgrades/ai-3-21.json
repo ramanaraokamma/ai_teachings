@@ -1,0 +1,38 @@
+{
+  "week": "ai-3/21",
+  "title": "Tools and APIs",
+  "outcome": "By the end, I can explain tools and apis using a traced example and a stated limitation.",
+  "scenario": "Check a library lookup call before it reaches a tool.",
+  "given": [
+    "lookup_book accepts exactly one field: book_id, a string. Registry IDs are C7 and M2. The proposed call is {book_id: C7}.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Check shape",
+      "icon": "code",
+      "detail": "Exactly book_id is supplied, and C7 is text."
+    },
+    {
+      "label": "Check membership",
+      "icon": "book",
+      "detail": "C7 occurs in the authorised registry."
+    },
+    {
+      "label": "Read only",
+      "icon": "shield",
+      "detail": "Run the lookup. This tool contract contains no lending or deletion operation."
+    }
+  ],
+  "explanation": "Read the picture in order. Run the lookup. This tool contract contains no lending or deletion operation. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Add lend: true to the same call.",
+    "prediction": "Reject the call before invoking the tool.",
+    "reason": "An extra operation is outside the exact allowed contract, even when book_id is valid."
+  },
+  "student_task": "Does a valid C7 ID permit the extra lending action? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "No. ID validity and operation permission are separate checks; reject the extra field under this contract. Changed-case check: Reject the call before invoking the tool. An extra operation is outside the exact allowed contract, even when book_id is valid.",
+  "project_evidence": "For your Verified Study Buddy, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "A valid tool call can still return unavailable or outdated records. Validate the response and access rights separately.",
+  "review_note": "Reviewed Tools and APIs against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

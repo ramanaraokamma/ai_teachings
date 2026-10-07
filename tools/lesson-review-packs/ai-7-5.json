@@ -1,0 +1,135 @@
+{
+  "week": "ai-7/5",
+  "title": "Replication and reproduction",
+  "grade": 12,
+  "project": "Reproducible AI Research Study",
+  "goals": [
+    "Explain the mechanism and terminology of replication and reproduction",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Replication and reproduction",
+  "vocabulary": [
+    [
+      "Replay",
+      "Repeating a computation with the recorded artifacts"
+    ],
+    [
+      "Replication",
+      "A new evidence collection under a comparable declared question"
+    ],
+    [
+      "Distinct unit",
+      "A separately eligible observation rather than a repeated copy"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Partner reruns the same eight cases and gets the same score. Team counts sixteen independent cases."
+      },
+      {
+        "type": "paragraph",
+        "text": "This is a successful replay on eight distinct cases, not sixteen new cases. It checks computation consistency."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "Partner reruns the same eight cases and gets the same score. Team counts sixteen independent cases. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: This is a successful replay on eight distinct cases, not sixteen new cases. It checks computation consistency.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "Team repeats old six queries, then evaluates four newly reserved queries. How many distinct cases and which are new evidence?",
+    "answer": "Teacher explanation: Ten distinct total; four are new. Replays of six old cases are not additional observations for population coverage.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "Exact replay can preserve the original design flaws; new data can change conditions and needs its own record."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Here replay means same artifacts/procedure; new-data replication means newly collected eligible cases under the same plan. Preserve environment, data versions and raw results."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Replication and reproduction \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "Partner reruns the same eight cases and gets the same score. Team counts sixteen independent cases.",
+            "Here replay means same artifacts/procedure; new-data replication means newly collected eligible cases under the same plan. Preserve environment, data versions and raw results.",
+            "This is a successful replay on eight distinct cases, not sixteen new cases. It checks computation consistency."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Partner reruns the same eight cases and gets the same score. Team counts sixteen independent cases. Show the intermediate steps and give the conclusion with its scope."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

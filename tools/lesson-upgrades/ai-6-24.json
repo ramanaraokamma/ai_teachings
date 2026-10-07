@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/24",
+  "title": "Release and rollback",
+  "outcome": "Explain release and rollback using the deciding step in this fictional service.",
+  "scenario": "A higher score can still block release. Version B is proposed to replace A; every privacy gate is mandatory.",
+  "given": [
+    "A passes 8/10 correctness cases. B passes 9/10 but fails one mandatory privacy check."
+  ],
+  "steps": [
+    {
+      "label": "Compute quality",
+      "icon": "chart",
+      "detail": "Correctness rises from 80% to 90% on these cases."
+    },
+    {
+      "label": "Apply privacy gate",
+      "icon": "shield",
+      "detail": "The mandatory failure blocks B’s release."
+    },
+    {
+      "label": "Keep recovery ready",
+      "icon": "rule",
+      "detail": "Retain the reviewed A version and documented rollback procedure."
+    }
+  ],
+  "explanation": "Release criteria combine benefits and mandatory conditions. Rollback requires known versions and compatible data, not an informal promise.",
+  "counterfactual": {
+    "change": "Repair B and pass privacy on a fresh reserved case.",
+    "prediction": "B may enter the remaining gates; one repair does not approve everything.",
+    "reason": "All required release conditions still apply."
+  },
+  "student_task": "Compute A’s and B’s correctness percentages. Why is B still blocked, and does passing a fresh privacy check automatically satisfy every release gate?",
+  "teacher_answer": "Correctness rises from 80% to 90% on these cases. The mandatory failure blocks B’s release. Retain the reviewed A version and documented rollback procedure. Changed case: B may enter the remaining gates; one repair does not approve everything. All required release conditions still apply.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "Rolling back code may not reverse earlier external effects or incompatible data changes.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

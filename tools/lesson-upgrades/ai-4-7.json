@@ -1,0 +1,38 @@
+{
+  "week": "ai-4/7",
+  "title": "Sampling and Intended Use",
+  "outcome": "By the end, I can explain sampling and intended use using a traced example and a stated limitation.",
+  "scenario": "Sample for the conditions in which the plant classifier will actually be used.",
+  "given": [
+    "Training set: 12 windowsill plants photographed at midday. Intended use includes evening desk photos; no evening examples have been collected.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Declare coverage",
+      "icon": "data",
+      "detail": "All 12 training examples share one lighting situation."
+    },
+    {
+      "label": "Identify gap",
+      "icon": "sensor",
+      "detail": "Evening desk lighting is outside the observed sampling conditions."
+    },
+    {
+      "label": "Plan comparison",
+      "icon": "experiment",
+      "detail": "Collect consented fictional or teacher-created evening examples; keep plant groups separate across development and final evaluation."
+    }
+  ],
+  "explanation": "Read the picture in order. Collect consented fictional or teacher-created evening examples; keep plant groups separate across development and final evaluation. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Collect 12 more midday windowsill photos of the same plants.",
+    "prediction": "The evening-coverage gap remains.",
+    "reason": "More rows in the same condition do not supply evidence about the missing condition."
+  },
+  "student_task": "Which collection would address the intended-use gap most directly? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Collect suitable evening desk observations, with plant grouping and labels recorded, rather than only repeating midday views. Changed-case check: The evening-coverage gap remains. More rows in the same condition do not supply evidence about the missing condition.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Condition coverage reduces a known gap but does not guarantee accuracy; test the selected model on fresh intended-use examples.",
+  "review_note": "Reviewed Sampling and Intended Use against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

@@ -1,0 +1,269 @@
+{
+  "week": "ai-2/25",
+  "title": "Text as Pieces",
+  "grade": 7,
+  "project": "Transparent Book Recommender",
+  "goals": [
+    "Encode and decode text under an explicit toy vocabulary",
+    "Explain how segmentation changes sequence length",
+    "Handle unsupported characters without silently deleting information"
+  ],
+  "primary_topic": "Tokenisation and vocabulary",
+  "vocabulary": [
+    [
+      "Token",
+      "An item in a model vocabulary, which may represent a word, part of a word or another text unit"
+    ],
+    [
+      "Vocabulary",
+      "The permitted tokens and their identifiers"
+    ],
+    [
+      "Encoding",
+      "Mapping source text into a token sequence under a specified rule"
+    ],
+    [
+      "Decoding",
+      "Mapping a token sequence back to text under a specified rule"
+    ]
+  ],
+  "worked_example": {
+    "title": "Compare representations without changing the text",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "A character-only vocabulary c,a,t,s,space could encode cats sat as c,a,t,s,space,s,a,t: eight text tokens. The original vocabulary uses four. Both decode to the same source text. Sequence length is a property of the text, vocabulary and encoding rule together. Counts from different tokenizers are not automatically comparable."
+      },
+      {
+        "type": "paragraph",
+        "text": "In this vocabulary, sat is chosen over s because it is longer. The toy longest-match rule is defined explicitly. Real tokenizers may use different algorithms, byte encodings and special-token policies. Never infer an unknown tokenizer\u2019s count from word count alone."
+      }
+    ]
+  },
+  "guided_practice": {
+    "title": "Encode and decode",
+    "prompt": "Encode cats sat using the given vocabulary, decode it, and count with and without an appended end marker.",
+    "answer": "Teacher explanation: Text IDs [1,5,6,7] decode cats sat. Four text tokens; five sequence items if the protocol appends end ID 0.",
+    "lines": 6,
+    "id": "W2"
+  },
+  "independent_case": {
+    "title": "Trace a new input independently",
+    "task": "Under the original vocabulary encode sat cats, decode it and count text tokens. Then trace sat cat! and state the exact failure position using zero-based character positions.",
+    "answer": "Teacher explanation: sat cats encodes [7,6,1,5], decodes exactly and has four text tokens. sat cat! has partial IDs [7,6,1] then unsupported ! at position 7. Report failure with the partial trace, not complete success.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A token always equals a word",
+      "The vocabulary contains both whole strings and character pieces, so one word can take multiple tokens."
+    ],
+    [
+      "IDs measure semantic similarity",
+      "IDs are vocabulary indices; their numerical spacing does not establish meaning."
+    ],
+    [
+      "Dropping characters preserves an exact round trip",
+      "Deleted characters change the source and must not be hidden."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a8907e5432188015aab69170bdd57e2f4290cb553c0e4ec5653f197a684e9eac",
+        "alt": "INPUT stage for Text as Pieces",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/04c9be9cee7afe3945d41091cf00841002140a9140ce2eef3e1f7f1047e912c6",
+        "alt": "PROCESS stage for Text as Pieces",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/42855548556f153c0e8067e2b047dd6ebb585463c2cb4fc6a2bc8910bb13937d",
+        "alt": "OUTPUT stage for Text as Pieces",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "table",
+        "rows": [
+          [
+            "Remaining text",
+            "Chosen token",
+            "ID"
+          ],
+          [
+            "cats sat",
+            "cat",
+            "1"
+          ],
+          [
+            "s sat",
+            "s",
+            "5"
+          ],
+          [
+            " sat",
+            "space",
+            "6"
+          ],
+          [
+            "sat",
+            "sat",
+            "7"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "The encoding of cats sat is [1,5,6,7], followed by [0] only if the protocol appends an end token. Decoding concatenates the ordinary token strings to recover cats sat. Count four text tokens, or five sequence items with the end marker included; always state the counting convention. The two written words do not imply two tokens."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Keep the evidence roles separate",
+        "columns": [
+          "Plan or input",
+          "Procedure",
+          "Permitted conclusion"
+        ],
+        "rows": [
+          [
+            "Exact text: cats sat",
+            "Longest-match encoding",
+            "IDs 1, 5, 6, 7"
+          ],
+          [
+            "IDs 1, 5, 6, 7",
+            "Concatenate token strings",
+            "Exact text: cats sat"
+          ],
+          [
+            "Exact text: Cat",
+            "No match for uppercase C",
+            "Report unsupported input"
+          ]
+        ],
+        "caption": "Encoding preserves supported characters and makes unsupported input explicit."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1f18213ba3d74c99072fa04ad7520b53eee0b2e9e845b0d8a61ccdda1b41f3f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fed8318cf337134a2c31a8d2c90831db67a27a43d3c6f85b25079c53ec37ff9a",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/75f964dbe29000347e518a59e2717387d7109bd1f947abdafa07e931a61cf754",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4d936b6648b81ac897fc99370c2788f8e0b135d8fc31cfd77afceee66a92128c",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

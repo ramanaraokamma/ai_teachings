@@ -1,0 +1,291 @@
+{
+  "week": "ai-4/8",
+  "title": "Leakage",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Choose a split unit that matches the intended prediction claim",
+    "Keep related examples together and audit group overlap",
+    "Record split roles counts and limits before model evaluation"
+  ],
+  "primary_topic": "Splits and related examples",
+  "vocabulary": [
+    [
+      "Training set",
+      "Examples used to fit a model"
+    ],
+    [
+      "Validation set",
+      "Separate examples used to compare choices during development"
+    ],
+    [
+      "Test set",
+      "Held out examples used for final evaluation after choices are fixed"
+    ],
+    [
+      "Group",
+      "Related examples that must stay together for a stated evaluation goal"
+    ]
+  ],
+  "worked_example": {
+    "title": "Repair a split at the group level",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Suppose A1 and A2 are in training while A3 is in test. The frame IDs differ, but A appears in both sets. Shuffling the rows does not remove this relationship. For our new-trip claim, move all A frames to one chosen role and record the revised assignment before evaluating a model. Do not copy A3 into both roles."
+      },
+      {
+        "type": "paragraph",
+        "text": "Audit that every source frame occurs exactly once, no group crosses roles and the assigned counts sum to the source count. In our worked plan the row counts are six training, two validation and four test: twelve total. A fixed random seed can reproduce a random split, but it cannot make a flawed grouping choice fair."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "A learner moves D2 from validation to training but leaves D1 in validation. Give the new row counts and shared trip ID. Explain why different frame IDs and a fixed seed do not repair the overlap.",
+        "lines": 5
+      },
+      {
+        "type": "paragraph",
+        "text": "A split record names the prediction goal, source version, group definition, exact assignments, row and group counts, date and any random method or seed used. For this hand-assigned example, record that there was no random sampling. Keep label-rule versions and unresolved review statuses traceable as in Week 5."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Distinguish frames from groups",
+    "prompt": "For the worked A through F plan, give training, validation and test counts first in groups and then in rows. Interpret [] from the code and state one problem it cannot detect.",
+    "answer": "Group counts are 3,1,2; row counts are 6,2,4. The empty list means no trip ID overlaps between any pair of the listed sets. The code cannot detect wrong metadata, an omitted frame, a disguised duplicate or an outcome feature.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Changed independent case",
+    "task": "Each of five plants has four photos. A random photo split puts different views of every plant in both training and test sets. Explain the problem and repair.",
+    "answer": "Related views of the same plant cross the split, making the test less independent. Split by plant identity and keep all four views together. Unique filenames do not make plants independent; declare plant assignments before fitting or tuning.",
+    "source": "new parallel transfer case"
+  },
+  "misconceptions": [
+    [
+      "Different row IDs mean independent examples",
+      "Different frames may share a trip or source. Choose group metadata based on the claim and verify it against the source."
+    ],
+    [
+      "A fixed percentage guarantees a fair test",
+      "Percentages do not remove overlap or ensure enough groups and relevant cases. The goal and dependencies determine the split."
+    ],
+    [
+      "An empty overlap list proves there is no leakage",
+      "The audit checks listed group IDs only. Wrong metadata, copied content, outcome features or preprocessing fitted on all sets can still invalidate evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/3489d6421ed40252cbd2f4c54ed68c49ec9447eb3117063e50afdb29a59e21cd",
+        "alt": "Week 8 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/d2ee57f1dbdbed4aa7caa8b8e35df0e9ddca23194681ce167bf9268bba1b88a7",
+        "alt": "Week 8 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/79419586a21c4f741e022365d64b7866eb785f4b9ff7f36a09daec85df5a951a",
+        "alt": "Week 8 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Find and explain four leakage paths in a school-event dataset."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  Leakage occurs when a feature exposes the target through information that would be unavailable, created later, or derived from the answer at real prediction time."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  A leaf file name contains 'diseased'\u2014the answer is hidden in the input. Treatment outcome was recorded after diagnosis, so it is unavailable at prediction time.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Training data fits the model. Validation data helps compare choices such as candidate rules. Keep the test set for a final check after those choices are fixed. A learner who repeatedly changes the model after seeing test results has used that set for development; its score is no longer an untouched final check."
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "train_groups = {\"A\", \"B\", \"C\"}\nvalid_groups = {\"D\"}\ntest_groups = {\"E\", \"F\"}\nshared = ((train_groups & valid_groups)\n          | (train_groups & test_groups)\n          | (valid_groups & test_groups))\nprint(sorted(shared))\nprint(len(train_groups), len(valid_groups),\n      len(test_groups))"
+      },
+      {
+        "type": "paragraph",
+        "text": "The first line of output is []: no trip ID is shared between any pair of sets. The second is 3 1 2: training, validation and test contain three, one and two trip groups. The symbol & finds shared values and | combines sets. These are group counts, not frame counts."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Keep each trip in one role",
+        "columns": [
+          "Whole groups",
+          "Role",
+          "Purpose"
+        ],
+        "rows": [
+          [
+            "A B C with all frames",
+            "Training",
+            "Fit from examples"
+          ],
+          [
+            "D with all frames",
+            "Validation",
+            "Compare choices"
+          ],
+          [
+            "E F with all frames",
+            "Test",
+            "Final check after choices"
+          ]
+        ],
+        "caption": "Keep related frames together. Separate group IDs prevent this form of overlap; they do not prove that every other source of leakage is absent."
+      },
+      {
+        "type": "paragraph",
+        "text": "This audit assumes the lists correctly describe every frame assignment. It cannot find an omitted frame, a wrong trip ID, a copied image with a different ID or a feature containing the answer. Check the assignment table and source records too."
+      },
+      {
+        "type": "subheading",
+        "text": "Apply the connected idea: Scaling without leakage"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "train = [(10, 200), (20, 100), (20, 200)]\nlow = [min(row[j] for row in train) for j in range(2)]\nspan = [max(row[j] for row in train) - low[j]\n        for j in range(2)]\nif 0 in span:\n    raise ValueError(\"Review a constant training feature\")\n\ndef transform(row):\n    return tuple((row[j] - low[j]) / span[j]\n                 for j in range(2))\n\nscaled_train = [transform(row) for row in train]\nquery = (11, 120)\nprint(low, span)\nprint(scaled_train)\nprint(transform(query))"
+      },
+      {
+        "type": "paragraph",
+        "text": "For each feature use scaled value = (value minus training minimum) divided by training range. range(2) visits feature positions 0 and 1. The code prints [10, 100] [10, 100], then [(0.0, 1.0), (1.0, 0.0), (1.0, 1.0)], then (0.1, 0.2). Each minimum becomes 0 and each maximum becomes 1."
+      },
+      {
+        "type": "paragraph",
+        "text": "The first calculations fit low and span from train. transform uses those stored values without learning new ones. The code assumes nonempty training rows with exactly two finite numeric features; it does not check all inputs. Its explicit zero-range guard stops division by zero so a constant feature can be reviewed. This is a classroom policy, not a claim that every library stops this way."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 8 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 8 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 8 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 8 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

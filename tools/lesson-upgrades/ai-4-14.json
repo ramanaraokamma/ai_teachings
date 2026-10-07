@@ -1,0 +1,38 @@
+{
+  "week": "ai-4/14",
+  "title": "Scores and Calibration Intuition",
+  "outcome": "By the end, I can explain scores and calibration intuition using a traced example and a stated limitation.",
+  "scenario": "Treat calibration as a comparison across groups of probability scores.",
+  "given": [
+    "Toy classifier outputs p(spotted)=0.8 on ten cases; eight are actually spotted. Another ten have p=0.2; four are spotted.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Group scores",
+      "icon": "data",
+      "detail": "Keep the ten 0.8 cases and ten 0.2 cases separate."
+    },
+    {
+      "label": "Compare frequencies",
+      "icon": "chart",
+      "detail": "Observed spotted fractions are 8/10=0.8 and 4/10=0.4."
+    },
+    {
+      "label": "Interpret gap",
+      "icon": "check",
+      "detail": "The 0.8 group matches here; the 0.2 group understates the observed fraction by 0.2."
+    }
+  ],
+  "explanation": "Read the picture in order. The 0.8 group matches here; the 0.2 group understates the observed fraction by 0.2. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "The 0.2 group has two spotted cases instead of four.",
+    "prediction": "Its observed fraction becomes 0.2 and matches the supplied score in this group.",
+    "reason": "Calibration compares stated probabilities with group outcome frequencies."
+  },
+  "student_task": "Does a calibrated 0.8 score mean every such leaf is spotted? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "No. It describes a group proportion: here eight of ten are spotted, and two are not. It is not an individual guarantee. Changed-case check: Its observed fraction becomes 0.2 and matches the supplied score in this group. Calibration compares stated probabilities with group outcome frequencies.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Ten cases per group provide noisy evidence; the exercise does not establish calibration on every score or setting.",
+  "review_note": "Reviewed Scores and Calibration Intuition against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

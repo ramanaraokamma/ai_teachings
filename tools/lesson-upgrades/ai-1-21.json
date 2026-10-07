@@ -1,0 +1,43 @@
+{
+  "week": "ai-1/21",
+  "title": "Good Data, Bad Data",
+  "outcome": "By the end, I can repair data with traceable evidence while preserving valid zero and unknown.",
+  "scenario": "A fictional toy-car distance table needs cleaning before use.",
+  "given": [
+    "Contract: unique run ID; whole distance 0–30 cm. Raw rows: A=0 cm, B=200 mm, C=blank, another A=0 cm.",
+    "Source log confirms one A run and B’s original measurement of 200 mm; C has no measurement."
+  ],
+  "steps": [
+    {
+      "label": "Validate rows",
+      "icon": "shield",
+      "detail": "A’s zero is valid; B has wrong unit; C is missing; A is duplicated."
+    },
+    {
+      "label": "Evidence repair",
+      "icon": "check",
+      "detail": "200 mm ÷10 =20 cm; source log supports retaining one A."
+    },
+    {
+      "label": "Keep unknown",
+      "icon": "question",
+      "detail": "C stays unresolved; do not replace it with 0."
+    },
+    {
+      "label": "Clean record",
+      "icon": "data",
+      "detail": "Usable unique rows: A=0 cm, B=20 cm; retain a separate change log."
+    }
+  ],
+  "explanation": "Cleaning is not permission to make inconvenient values plausible. The source log supports a unit conversion and removal of a duplicate copy. Zero means a measured zero distance; blank means no supplied measurement. Keep the raw table and explain every change so someone can reconstruct what happened.",
+  "counterfactual": {
+    "change": "The source log gives B only as bare 200 with no unit.",
+    "prediction": "B remains unresolved rather than becoming 20 cm.",
+    "reason": "Without a confirmed unit, division by 10 would be an unsupported assumption."
+  },
+  "student_task": "Which repairs are evidence-backed in the original case, and which row must remain unknown?",
+  "teacher_answer": "Convert B to 20 cm and keep one confirmed A; C stays unknown. A’s valid zero must not be treated as missing.",
+  "project_evidence": "Keep raw sorter inputs, validated records and an evidence-linked repair log as different artifacts.",
+  "limits": "A clean table can still contain measurement or labelling errors that these checks do not detect.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice."
+}

@@ -1,0 +1,43 @@
+{
+  "week": "ai-1/26",
+  "title": "Prompts Are Design Instructions",
+  "outcome": "By the end, I can write a prompt contract that handles absent and conflicting facts.",
+  "scenario": "A fictional club needs a short exhibit card, without guesses.",
+  "given": [
+    "Source A: exhibit Paper Birds, location Shelf 2. No duration appears.",
+    "Required output: two labelled lines, Exhibit and Duration; missing values must say not supplied."
+  ],
+  "steps": [
+    {
+      "label": "State task",
+      "icon": "rule",
+      "detail": "Produce exactly two labelled lines using source A only."
+    },
+    {
+      "label": "Find evidence",
+      "icon": "book",
+      "detail": "A supplies Paper Birds but no duration."
+    },
+    {
+      "label": "Follow missing rule",
+      "icon": "output",
+      "detail": "Exhibit: Paper Birds. Duration: not supplied."
+    },
+    {
+      "label": "Check contract",
+      "icon": "check",
+      "detail": "Check labels, two-line format and each factual claim."
+    }
+  ],
+  "explanation": "A useful prompt describes both the wanted answer and what to do when evidence is insufficient. Asking for a duration does not create one. Examples can demonstrate the format, but they must not become sources of event facts. Check content support separately from whether the answer looks tidy.",
+  "counterfactual": {
+    "change": "Add source B naming the same exhibit duration 20 minutes, with B declared current and authoritative.",
+    "prediction": "Duration becomes 20 minutes.",
+    "reason": "There is now an authorised source for the previously missing field."
+  },
+  "student_task": "What must happen if B instead conflicts with another equally authoritative duration record?",
+  "teacher_answer": "Flag the duration conflict and request resolution; do not choose a convenient number or silently average them.",
+  "project_evidence": "Specify sorter input, output fields, evidence limits and missing/conflict behavior before improving its wording.",
+  "limits": "Even a complete prompt does not guarantee an AI system follows it; test returned outputs against the contract.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment."
+}

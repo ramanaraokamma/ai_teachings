@@ -1,0 +1,233 @@
+{
+  "week": "ai-3/14",
+  "title": "Hallucination Failure Types",
+  "grade": 8,
+  "project": "Verified Study Buddy",
+  "goals": [
+    "Explain the mechanism and terminology of generation failures and verification",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Generation failures and verification",
+  "vocabulary": [
+    [
+      "Atomic claim",
+      "A single factual statement checked separately"
+    ],
+    [
+      "Contradicted",
+      "Inconsistent with the supplied evidence"
+    ],
+    [
+      "Unsupported",
+      "Not established by the available evidence"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Source R says room B seats 12 and the meeting starts at 15:00. Generated answer says B seats 20, starts at 15:00 and includes free lunch."
+      },
+      {
+        "type": "paragraph",
+        "text": "Capacity 20 is contradicted; 15:00 is supported; free lunch is unsupported. One of three claims has support. The missing lunch fact is not evidence of no lunch."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "Source R says room B seats 12 and the meeting starts at 15:00. Generated answer says B seats 20, starts at 15:00 and includes free lunch. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: Capacity 20 is contradicted; 15:00 is supported; free lunch is unsupported. One of three claims has support. The missing lunch fact is not evidence of no lunch.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "Source S: trip is 18 km; vehicle speed is 6 km/h, constant, excluding stops. Answer says 2 hours, 18 km and includes lunch. Audit and recalculate.",
+    "answer": "Teacher explanation: Travel time is 18/6=3 hours under the stated assumption, so 2 hours is contradicted. Distance supported; lunch unsupported. Do not infer actual duration with unknown stops.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "Source agreement and arithmetic validity are separate checks; missing evidence is not proof of the opposite claim."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/d70bf0ec0e73cefd60f80d222cd2bfae99d9aeb39e8165d1ef88e230d85f53c2",
+        "alt": "INPUT stage for Hallucination Failure Types",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2c0c315f431cf83ab86604c777a2ad5f823c33515b44adf3b2f666aef5c582be",
+        "alt": "PROCESS stage for Hallucination Failure Types",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/f2fe0050bfef41cd4e34a2a99baa27f88b3cf9461a80d5794281b02d3a776f50",
+        "alt": "OUTPUT stage for Hallucination Failure Types",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Split an answer into atomic claims. For each, record the exact source passage, support status and any needed calculation. Mark unsupported and contradicted claims separately; do not repair them by inventing sources."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Generation failures and verification \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "Source R says room B seats 12 and the meeting starts at 15:00. Generated answer says B seats 20, starts at 15:00 and includes free lunch.",
+            "Split an answer into atomic claims. For each, record the exact source passage, support status and any needed calculation. Mark unsupported and contradicted claims separately; do not repair them by inventing sources.",
+            "Capacity 20 is contradicted; 15:00 is supported; free lunch is unsupported. One of three claims has support. The missing lunch fact is not evidence of no lunch."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/baa081bb74d63b3556ecfd5951cdc8779d64ec1813de34614621c4e969a973f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/5e6557194a1470352d07b6a509da5d673d81767981996dd1b685f799a5582b76",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/8e1f2e3affdd81449df265675243cda4511c1e88dd8cd9583d4ea42f6083c297",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a54f0c40e48e47ca92a4c36ebbc98f08b4a78c72cd385d85b0a5a7f07f558757",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

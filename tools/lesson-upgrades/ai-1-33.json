@@ -1,0 +1,85 @@
+{
+  "week": "ai-1/33",
+  "title": "Test Normal Cases",
+  "outcome": "By the end, I can test routine cases against expectations and count full passes honestly.",
+  "scenario": "A fictional pencil-pouch finder has been run on four ordinary requests.",
+  "given": [
+    "Catalogue: P1 capacity 3, P2 capacity 7; first fitting pouch. Valid whole counts 1–9.",
+    "Requests 2,4,6,8; recorded outputs P1,P2,P1,none. These are invented records, not class results."
+  ],
+  "steps": [
+    {
+      "label": "Write expectations",
+      "icon": "book",
+      "detail": "For 2,4,6,8 expect P1,P2,P2,none."
+    },
+    {
+      "label": "Compare outputs",
+      "icon": "check",
+      "detail": "Runs at 2,4 and 8 agree; run at 6 disagrees."
+    },
+    {
+      "label": "Trace failure",
+      "icon": "question",
+      "detail": "P1 holds only 3, so it cannot satisfy request 6."
+    },
+    {
+      "label": "Report",
+      "icon": "chart",
+      "detail": "Three of four routine cases pass; retain the failure."
+    }
+  ],
+  "explanation": "An ordinary case is not automatically correct. Define expected outputs from the contract before reading prototype outputs. Checking both selected ID and eligibility catches the wrong P1 suggestion. A no-match output can be a full pass when that is exactly what the valid request requires.",
+  "counterfactual": {
+    "change": "Prototype reports none for request 6 instead of P1.",
+    "prediction": "That run still fails.",
+    "reason": "P2 can hold 6, so none is also wrong under the first-fit rule."
+  },
+  "student_task": "Why is none correct for 8 but incorrect for 6? Use both capacity cards.",
+  "teacher_answer": "Neither capacity 3 nor 7 reaches 8. Capacity 7 does reach 6, so P2 is required for 6.",
+  "project_evidence": "Maintain sorter tests with input, independently derived expectation, actual output, version and full-pass judgment.",
+  "limits": "Four routine tests do not cover equality, invalid inputs or every relevant classroom condition.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Expected versus recorded routine outputs",
+    "cells": [
+      [
+        2,
+        "P1",
+        "P1",
+        "pass"
+      ],
+      [
+        4,
+        "P2",
+        "P2",
+        "pass"
+      ],
+      [
+        6,
+        "P2",
+        "P1",
+        "fail"
+      ],
+      [
+        8,
+        "none",
+        "none",
+        "pass"
+      ]
+    ],
+    "row_labels": [
+      "Test 1",
+      "Test 2",
+      "Test 3",
+      "Test 4"
+    ],
+    "column_labels": [
+      "Request",
+      "Expected",
+      "Recorded",
+      "Result"
+    ]
+  }
+}

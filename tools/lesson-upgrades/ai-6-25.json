@@ -1,0 +1,65 @@
+{
+  "week": "ai-6/25",
+  "title": "Monitoring quality drift",
+  "outcome": "Explain monitoring quality drift using the deciding step in this fictional service.",
+  "scenario": "Monitor separate question slices. A service uses the same rubric on clear and ambiguous questions in two recorded weeks.",
+  "given": [
+    "A: clear 18/20, ambiguous 8/10. B: clear 19/20, ambiguous 4/10."
+  ],
+  "steps": [
+    {
+      "label": "Compute slice rates",
+      "icon": "chart",
+      "detail": "Clear rises 90%→95%; ambiguous falls 80%→40%."
+    },
+    {
+      "label": "Compute totals",
+      "icon": "data",
+      "detail": "A is 26/30; B is 23/30 correct."
+    },
+    {
+      "label": "Investigate ambiguity",
+      "icon": "question",
+      "detail": "Inspect that slice’s failures before selecting a repair."
+    }
+  ],
+  "explanation": "Slice monitoring exposes changes hidden by common easy questions. Retain each denominator and compare the measurement conditions.",
+  "counterfactual": {
+    "change": "Week B has no ambiguous questions.",
+    "prediction": "That slice is unmeasured, not perfectly correct.",
+    "reason": "No observations means no rate can be calculated for it."
+  },
+  "student_task": "Compute both clear and ambiguous slice rates for A and B. Which slice weakens, and how should that slice be reported when no ambiguous questions are observed?",
+  "teacher_answer": "Clear rises 90%→95%; ambiguous falls 80%→40%. A is 26/30; B is 23/30 correct. Inspect that slice’s failures before selecting a repair. Changed case: That slice is unmeasured, not perfectly correct. No observations means no rate can be calculated for it.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "Small samples do not establish a stable trend or cause; retain uncertainty and compare conditions.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Quality slices: retain denominators",
+    "cells": [
+      [
+        18,
+        20,
+        8,
+        10
+      ],
+      [
+        19,
+        20,
+        4,
+        10
+      ]
+    ],
+    "row_labels": [
+      "Week A",
+      "Week B"
+    ],
+    "column_labels": [
+      "Clear correct",
+      "Clear total",
+      "Ambiguous correct",
+      "Ambiguous total"
+    ]
+  }
+}

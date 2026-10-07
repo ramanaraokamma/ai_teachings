@@ -1,0 +1,274 @@
+{
+  "week": "ai-4/34",
+  "title": "Capstone Dataset and Baseline",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Define a feasible capstone question and acceptance criteria",
+    "Create a data and split plan before modelling",
+    "Specify evidence, privacy and a fallback"
+  ],
+  "primary_topic": "Capstone data and requirements",
+  "vocabulary": [
+    [
+      "Requirement",
+      "A concrete condition the project must meet"
+    ],
+    [
+      "Acceptance criterion",
+      "Evidence that decides whether a requirement is met"
+    ],
+    [
+      "Data dictionary",
+      "Definitions and units for dataset fields"
+    ],
+    [
+      "Milestone",
+      "A review point with a stated deliverable"
+    ]
+  ],
+  "worked_example": {
+    "title": "Explain the visual",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Capstone data and requirements at a glance",
+        "columns": [
+          "Part",
+          "Evidence or action",
+          "Interpretation"
+        ],
+        "rows": [
+          [
+            "Week 33",
+            "Task data and split plan",
+            "Teacher checks feasibility"
+          ],
+          [
+            "Week 34",
+            "Baseline and candidate",
+            "Validation decision recorded"
+          ],
+          [
+            "Weeks 35 and 36",
+            "Frozen test and defense",
+            "Evidence plus limitations"
+          ]
+        ],
+        "caption": "The data dictionary lists record ID, group ID, width in cm, height in cm and reference class. IDs track provenance and splitting; they are not automatic predictive inputs. Check uniqueness, units, missing values, class coverage and group separation. Fit imputation or scaling only on training."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Explain why record ID, group ID and measured width have different roles. Explain the steps or evidence behind your response.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Define fields",
+    "prompt": "Explain why record ID, group ID and measured width have different roles.",
+    "answer": "Teacher explanation: Record ID tracks rows, group ID keeps related records together, and width is a potential measured feature available before prediction; IDs are not automatic inputs.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Apply independently",
+    "task": "A proposed 80-row dataset has 40 related pairs, and the team splits individual rows randomly then uses pair ID as a feature. Revise its plan.",
+    "answer": "Teacher explanation: Keep both members of each pair in one split, exclude pair ID from predictive inputs, check group/class coverage and record split membership before training. Reserve final-test labels.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A final answer is enough",
+      "Ask for the relevant counts, units, procedure or saved record. For this week: Compare a simple classifier with a training-majority baseline on the fictional parcel evaluation; no real handling or student decisions are supported."
+    ],
+    [
+      "A stronger claim makes a stronger project",
+      "Label the work as development or a demonstration, report the limitation and avoid an untouched-test claim; do not fabricate test data or results."
+    ],
+    [
+      "The new case can be copied from the example",
+      "The independent task changes the evidence. Require a fresh explanation: Keep both members of each pair in one split, exclude pair ID from predictive inputs, check group/class coverage and record split membership before training. Reserve final-test labels."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/5022007766eff9282b251e68792d56a3230ec81e70923e9bc5487031ed7405d7",
+        "alt": "Week 34 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/bed5c732ddd9309fa2e26d6b5e192e127f11ee357f48ef548d8f950fae9d12b0",
+        "alt": "Week 34 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/992ef8af410a0c42f834199d8da8a1e7ce475f7431c6972af519280a34f520ec",
+        "alt": "Week 34 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Freeze the dataset card, split, and baseline results before training."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  A responsible capstone begins by freezing the problem, intended use, dataset documentation, grouped split, and baseline evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Freeze dataset card v3 and grouped split s2 with no plant identity crossing sets. Test set remains sealed; validation supports model choices.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Example proposal: can a small classifier improve validation accuracy over the training-majority baseline on fictional parcel measurements? Before modelling, assign 40 training, 20 validation and 12 final-test records, with related parcel groups kept together. Define blocked as positive, keep a fixed label rule, and reserve test labels with the teacher until Week 35."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before continuing, underline the decision rule and circle the evidence that supports the conclusion. Explain the example to a partner without replacing the counts or conditions with a stronger claim. Keep the distinction between an observed result and a proposed next step."
+      },
+      {
+        "type": "paragraph",
+        "text": "Your teacher can prepare the 72-record fictional grid described in the teacher guide, or approve another documented synthetic dataset. Each supplied record has an ID, group ID, width and height in cm. Training and validation labels are released for development; final-test labels stay with the teacher until the model is frozen. The numerical results in later worked examples are illustrative and are not expected scores for your project."
+      },
+      {
+        "type": "subheading",
+        "text": "Apply the connected idea: Capstone models and baselines"
+      },
+      {
+        "type": "paragraph",
+        "text": "Illustrative training has 30 clear and 10 blocked cases, so the baseline always predicts clear. On 20 validation cases with 14 clear and 6 blocked, its matrix is[[14, 0],[6, 0]], accuracy 70 percent. Candidate matrix[[12, 2],[2, 4]] gives accuracy 80 percent, precision 4/6 and recall 4/6. These are example results, not the student team results."
+      },
+      {
+        "type": "code",
+        "title": "Python 3 check",
+        "text": "# A check of the illustrative validation matrix.\n# Replace with your own saved counts; do not invent results.\ntn, fp, fn, tp = 12, 2, 2, 4\nn = tn + fp + fn + tp\nprint(\"accuracy\", (tn + tp) / n)\nprint(\"precision\", tp / (tp + fp))\nprint(\"recall\", tp / (tp + fn))\n# Compare with the training-majority baseline: 14 / 20."
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the calculation on paper before running this optional Python check. Use the stated fictional inputs and compare intermediate values. The code checks this example; your independent workbook case uses different evidence."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 34 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 34 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 34 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 34 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

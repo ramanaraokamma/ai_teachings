@@ -1,0 +1,62 @@
+{
+  "week": "ai-2/17",
+  "title": "Noise and Outliers",
+  "outcome": "By the end, I can calculate mean and median and investigate an unusual value before changing it.",
+  "scenario": "A fictional library records five book-processing times in minutes.",
+  "given": [
+    "Sorted times: 2,3,3,4,18.",
+    "All are recorded measurements; no evidence yet shows 18 is a mistake."
+  ],
+  "steps": [
+    {
+      "label": "Mean",
+      "icon": "code",
+      "detail": "Sum 30; divide by 5: mean 6 minutes."
+    },
+    {
+      "label": "Median",
+      "icon": "chart",
+      "detail": "The middle of five sorted values is 3 minutes."
+    },
+    {
+      "label": "Investigate 18",
+      "icon": "question",
+      "detail": "Check the source record and whether an unusually slow task occurred."
+    },
+    {
+      "label": "Document repair",
+      "icon": "check",
+      "detail": "Change a value only if evidence supports a correction; preserve the raw record."
+    }
+  ],
+  "explanation": "The mean uses every value and is pulled upward by 18. The median identifies the middle recorded time and stays at 3. Neither statistic declares the unusual observation invalid. Deleting it simply because it changes the mean would hide potentially real slow work and change the question being answered.",
+  "counterfactual": {
+    "change": "An authorised log confirms 18 was a transcription error for 3.",
+    "prediction": "Corrected mean is 3 minutes and median is 3.",
+    "reason": "Values become 2,3,3,4,3 with sum 15; sorted middle remains 3."
+  },
+  "student_task": "If 18 was genuine, which summary better describes the middle observed task, and what extra fact should be shown?",
+  "teacher_answer": "Median 3 describes the middle; also report the unusual 18-minute task and the mean 6 rather than concealing spread.",
+  "project_evidence": "Investigate unusual recommender features and show evidence-backed repairs instead of removing inconvenient records.",
+  "limits": "Five task times do not estimate all library processing times reliably or prove which summary suits every decision.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Retain unusual recorded measurements",
+    "labels": [
+      "Task 1",
+      "Task 2",
+      "Task 3",
+      "Task 4",
+      "Task 5"
+    ],
+    "values": [
+      2,
+      3,
+      3,
+      4,
+      18
+    ],
+    "unit": "minutes"
+  }
+}

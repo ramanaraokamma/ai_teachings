@@ -1,0 +1,79 @@
+{
+  "week": "ai-7/15",
+  "title": "Multiple comparisons",
+  "outcome": "Explain multiple comparisons using the records and boundaries of this fictional investigation.",
+  "scenario": "Six declared prompt comparisons. A team performs six valid hypothesis tests and applies a predeclared Bonferroni familywise threshold.",
+  "given": [
+    "Familywise alpha=0.05. Supplied unadjusted p-values are 0.004,0.012,0.02,0.08,0.4,0.9. These values are stipulated, not calculated from invented data."
+  ],
+  "steps": [
+    {
+      "icon": "rule",
+      "label": "Count the planned tests",
+      "detail": "There are six tests in the declared family."
+    },
+    {
+      "icon": "code",
+      "label": "Compute corrected threshold",
+      "detail": "0.05/6 is about 0.00833 for each test."
+    },
+    {
+      "icon": "check",
+      "label": "Apply all six decisions",
+      "detail": "Only 0.004 is below 0.00833; the other five do not reject under this rule."
+    }
+  ],
+  "explanation": "Searching many comparisons provides more chances for false positives. Bonferroni divides the error allowance across the declared family; valid individual p-values are required. A rejected null is not automatically a large or useful improvement.",
+  "counterfactual": {
+    "change": "The declared family has ten tests instead of six; keep the listed values unchanged.",
+    "prediction": "The cutoff becomes 0.005, and only 0.004 among the listed values still rejects.",
+    "reason": "The error allowance is divided among ten tests; all ten results must be reported, including the four not supplied here."
+  },
+  "student_task": "Calculate the six-test cutoff and identify which supplied p-values reject. Why must the team count every planned comparison rather than report only its smallest p-value?",
+  "teacher_answer": "The cutoff is 0.05/6≈0.00833. Only p=0.004 rejects; the other five exceed the cutoff. Reporting just that result conceals the search and its familywise error control.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "No effect size or real data is supplied. Bonferroni can be conservative and cannot repair invalid p-values or undisclosed outcome-driven test selection.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Supplied p-values and six-test decisions",
+    "cells": [
+      [
+        0.004,
+        "Reject"
+      ],
+      [
+        0.012,
+        "Do not reject"
+      ],
+      [
+        0.02,
+        "Do not reject"
+      ],
+      [
+        0.08,
+        "Do not reject"
+      ],
+      [
+        0.4,
+        "Do not reject"
+      ],
+      [
+        0.9,
+        "Do not reject"
+      ]
+    ],
+    "row_labels": [
+      "Test 1",
+      "Test 2",
+      "Test 3",
+      "Test 4",
+      "Test 5",
+      "Test 6"
+    ],
+    "column_labels": [
+      "Supplied p",
+      "At cutoff 0.00833"
+    ]
+  }
+}

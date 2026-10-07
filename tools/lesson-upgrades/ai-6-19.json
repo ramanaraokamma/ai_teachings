@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/19",
+  "title": "Sandboxing and resource limits",
+  "outcome": "Explain sandboxing and resource limits using the deciding step in this fictional service.",
+  "scenario": "Bound a student program. A toy sandbox forbids network access, allows at most two seconds and limits output to 20 MB.",
+  "given": [
+    "A uses one second and writes 2 MB. B tries to contact a website. These are declared trial records."
+  ],
+  "steps": [
+    {
+      "label": "Apply isolation",
+      "icon": "shield",
+      "detail": "Neither program receives network permission."
+    },
+    {
+      "label": "Check A",
+      "icon": "clock",
+      "detail": "One second and 2 MB fit both resource limits."
+    },
+    {
+      "label": "Deny B network call",
+      "icon": "network",
+      "detail": "Stop the prohibited network action regardless of its purpose."
+    }
+  ],
+  "explanation": "Sandbox controls bound reach and resource use. Passing an output limit cannot cancel a network or time restriction.",
+  "counterfactual": {
+    "change": "A takes three seconds but still writes 2 MB.",
+    "prediction": "Stop A for exceeding the time allowance.",
+    "reason": "The independent two-second limit remains binding."
+  },
+  "student_task": "Check A against both resource limits and B against network isolation. Why must A stop after three seconds even if its output remains only 2 MB?",
+  "teacher_answer": "Neither program receives network permission. One second and 2 MB fit both resource limits. Stop the prohibited network action regardless of its purpose. Changed case: Stop A for exceeding the time allowance. The independent two-second limit remains binding.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "These controls are not a complete security proof; implementation and escape risks still require review.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

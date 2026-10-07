@@ -1,0 +1,151 @@
+{
+  "week": "ai-5/31",
+  "title": "Efficiency and resource measurement",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Calculate throughput and amortised time per example from repeated timings",
+    "Count dense-network parameters and distinguish storage from peak memory",
+    "Compare resource use under fixed quality and measurement conditions"
+  ],
+  "primary_topic": "Efficiency and resource measurement",
+  "vocabulary": [
+    [
+      "Latency",
+      "Elapsed time for one request from a declared start to completed response"
+    ],
+    [
+      "Throughput",
+      "The number of completed examples processed per unit time"
+    ],
+    [
+      "Parameter storage",
+      "The bytes used to store model weights and biases at a declared precision"
+    ],
+    [
+      "Peak memory",
+      "The largest amount of memory in use during a measured operation"
+    ]
+  ],
+  "worked_example": {
+    "title": "Apply a quality requirement first",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "A faster result can miss the requirement",
+        "columns": [
+          "Model",
+          "Quality requirement",
+          "Time requirement"
+        ],
+        "rows": [
+          [
+            "A: 92 of 100",
+            "At least 91 correct: pass",
+            "At most 25 ms average: pass"
+          ],
+          [
+            "B: 90 of 100",
+            "At least 91 correct: fail",
+            "At most 25 ms average: pass"
+          ]
+        ],
+        "caption": "For this declared validation rule, only A meets both requirements. The time requirement uses amortised time from the median pass, not a per-request latency guarantee."
+      },
+      {
+        "type": "paragraph",
+        "text": "The requirements were set before inspecting these results. B is faster under this measurement but is not eligible under the quality rule. One hundred validation cases do not establish future accuracy; reserve independent final evaluation after choosing a model, and inspect relevant subgroup results."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "If the quality requirement had instead been set in advance to at least 90 correct, with the same time limit, which models would qualify? Which would you choose if lower measured amortised time is the declared tie-breaker?",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Compare under requirements",
+    "prompt": "With at least 91 correct out of 100 and at most 25 ms amortised time required, which model qualifies? Calculate B\u2019s time reduction relative to A and explain why the percentage throughput increase differs.",
+    "answer": "Teacher explanation: Only A qualifies; B misses the quality requirement. B reduces time by 8 / 20 = 40 percent. Throughput rises from 50 to about 83.33, an increase of about 66.67 percent relative to 50. Time and throughput use different baseline denominators and are reciprocal for this fixed workload.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Evaluate a new case independently",
+    "task": "For 50 shared validation cases, P has times 0.6, 0.5, 0.4 seconds and 47 correct; Q has 0.3, 0.4, 0.5 seconds and 45 correct. Require at least 92 percent accuracy and at most 12 ms amortised time. Give median times, amortised times, throughput, accuracy and eligible models. A separate dense network has dimensions 3 to 2 to 1 with one bias per output: find its parameter count and raw bytes at four bytes each.",
+    "answer": "Teacher explanation: P: median 0.5 s, 10 ms, 100 examples/s, accuracy 47 / 50 = 94 percent. Q: median 0.4 s, 8 ms, 125 examples/s, accuracy 45 / 50 = 90 percent. Only P qualifies. The separate network has (3*2 + 2) + (2*1 + 1) = 11 parameters, or 44 raw bytes.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Fewer parameters always means faster",
+      "Hardware, operations, memory access, precision and implementation affect runtime; measure the declared workload."
+    ],
+    [
+      "Total time divided by count is every request\u2019s latency",
+      "It is an amortised quantity. Individual requests can vary, and batching or concurrency changes waiting time."
+    ],
+    [
+      "Only the winning run consumed resources",
+      "Unsuccessful trials and warm-up also consume resources; record them in the appropriate experiment budget."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Sort each set of three times and take the middle value. A\u2019s median is 2.0 seconds per 100 examples; B\u2019s is 1.2 seconds. Dividing by 100 gives amortised times of 0.020 and 0.012 seconds per example, or 20 and 12 milliseconds. Median-pass throughput is 100 / 2.0 = 50 examples per second for A and about 83.33 for B."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "from math import isfinite\nfrom statistics import median\n\ndef timing_summary(seconds, count):\n    if count <= 0 or not seconds:\n        raise ValueError(\"Need examples and timed passes\")\n    if any(not isfinite(t) or t <= 0 for t in seconds):\n        raise ValueError(\"Times must be finite and positive\")\n    middle = median(seconds)\n    ms_per_example = 1000 * middle / count\n    examples_per_second = count / middle\n    return middle, ms_per_example, examples_per_second\n\nprint(timing_summary([2.0, 2.2, 1.8], 100))\nprint(timing_summary([1.2, 1.1, 1.3], 100))"
+      },
+      {
+        "type": "paragraph",
+        "text": "The code assumes a positive integer example count and numeric times. A outputs (2.0, 20.0, 50.0); B outputs approximately (1.2, 12.0, 83.33). Retain full precision until display. The time reduction is (20 - 12) / 20 = 40 percent, while throughput rises by about 66.67 percent. These are different denominators."
+      },
+      {
+        "type": "paragraph",
+        "text": "Amortised time does not reveal the slowest request or a latency percentile. In a batched or concurrent workload, total time divided by count is not an individual request\u2019s waiting time. Record per-request timings if the requirement concerns latency; keep batch size and concurrency explicit."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "With at least 91 correct out of 100 and at most 25 ms amortised time required, which model qualifies? Calculate B\u2019s time reduction relative to A and explain why the percentage throughput increase differs."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

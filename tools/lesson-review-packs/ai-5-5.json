@@ -1,0 +1,148 @@
+{
+  "week": "ai-5/5",
+  "title": "Composing layers",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Trace how one layer supplies the next layer inputs",
+    "Check that connected layer dimensions and feature order agree",
+    "Explain why intermediate activations are not automatically class predictions"
+  ],
+  "primary_topic": "Composing layers",
+  "vocabulary": [
+    [
+      "Layer",
+      "A group of computations that maps an input vector to an output vector"
+    ],
+    [
+      "Hidden activation",
+      "An intermediate value computed inside a network"
+    ],
+    [
+      "Composition",
+      "Applying one function to the output of another"
+    ],
+    [
+      "Forward calculation",
+      "Computing successive values from an input using fixed parameters"
+    ]
+  ],
+  "worked_example": {
+    "title": "Follow the layer connections",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Complete each stage before using its output",
+        "columns": [
+          "Available input",
+          "Computation",
+          "Value passed on"
+        ],
+        "rows": [
+          [
+            "x is [3, 1]",
+            "Both first layer scores",
+            "z is [2, 2]"
+          ],
+          [
+            "z is [2, 2]",
+            "ReLU on each component",
+            "h is [2, 2]"
+          ],
+          [
+            "h is [2, 2]",
+            "2h1 - h2 + 1",
+            "y is 3"
+          ]
+        ],
+        "caption": "Read the rows from top to bottom. The first two rows together form the hidden layer; the final row is the output layer. Each row shows the values actually passed to the next stage."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Trace x = [1, 1]. Record z1, z2, h1, h2 and y. Explain why using x directly in the output formula would be a different model.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Repair a dimension mismatch",
+    "prompt": "A revised hidden layer returns [h1, h2, h3]. The output layer still has weights [2, -1]. Explain the mismatch and what must be specified before calculation.",
+    "answer": "Teacher explanation: Three hidden values need three matching weights under this dense output definition. Specify all three coefficients and the bias or explicitly design a documented selection operation. Do not silently drop the third value.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Compose a new network independently",
+    "task": "A new model takes [u, v]. Compute a = ReLU(u + v - 3), b = ReLU(u - v), then q = a + 2b - 1. Trace both inputs [2, 1] and [1, 2], including scores before ReLU. Apply class 1 when q >= 0. State the hidden and output vector sizes.",
+    "answer": "Teacher explanation: For [2, 1], scores 0 and 1 give [a, b] = [0, 1], q = 1 and class 1. For [1, 2], scores 0 and -1 give [0, 0], q = -1 and class 0. Hidden dimension is 2; output dimension is 1. The equality at hidden score zero produces activation zero, not an automatic final class.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The second hidden unit receives the first hidden unit output",
+      "Both units in this hidden layer receive x. The next layer receives the pair of activations after both are computed."
+    ],
+    [
+      "Two numbers mean the connection must be correct",
+      "Matching lengths do not establish matching order or meaning. Trace a case with unequal hidden activations."
+    ],
+    [
+      "A hidden unit is already a class prediction",
+      "Its activation is an intermediate numerical feature. A declared output rule assigns the final class."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Take x = [3, 1]. First compute z1 = 3 - 1 = 2 and z2 = 3 + 1 - 2 = 2. ReLU gives h = [2, 2]. The output layer receives exactly this ordered pair and returns y = 2 times 2 - 2 + 1 = 3. Record z, h and y separately so that a correct final number cannot hide an incorrect intermediate step."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "def forward(x):\n    if len(x) != 2:\n        raise ValueError(\"Expected two input components\")\n    x1, x2 = x\n    z = [x1 - x2, x1 + x2 - 2]\n    h = [max(0, value) for value in z]\n    y = 2 * h[0] - h[1] + 1\n    return z, h, y\n\nprint(forward([3, 1]))  # ([2, 2], [2, 2], 3)\nprint(forward([1, 3]))  # ([-2, 2], [0, 2], -1)"
+      },
+      {
+        "type": "paragraph",
+        "text": "The code assumes numeric inputs with the agreed meaning. Its length check does not validate units or field order. Python indices 0 and 1 correspond to the first and second hidden components. There is no feedback from y into h during this forward calculation."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "A revised hidden layer returns [h1, h2, h3]. The output layer still has weights [2, -1]. Explain the mismatch and what must be specified before calculation."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

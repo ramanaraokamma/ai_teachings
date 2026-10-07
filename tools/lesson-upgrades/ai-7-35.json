@@ -1,0 +1,37 @@
+{
+  "week": "ai-7/35",
+  "title": "Presentation and challenge session",
+  "outcome": "Explain presentation and challenge session using the records and boundaries of this fictional investigation.",
+  "scenario": "Answer a challenge without inventing evidence. At the presentation, a reviewer asks whether the model works on a different camera.",
+  "given": [
+    "The project tested twelve photos from camera A only. Ten were correct; no camera B records exist."
+  ],
+  "steps": [
+    {
+      "icon": "chart",
+      "label": "State measured result",
+      "detail": "Report 10/12 correct on camera A."
+    },
+    {
+      "icon": "question",
+      "label": "Address the challenge",
+      "detail": "Say camera B performance is not measured."
+    },
+    {
+      "icon": "experiment",
+      "label": "Propose a valid next test",
+      "detail": "Use reserved camera-B cases with labels, grouping and a fixed scoring rule."
+    }
+  ],
+  "explanation": "A challenge session tests whether the team knows its evidence boundary. An honest unknown plus a specific future test is stronger than an unsupported confident promise.",
+  "counterfactual": {
+    "change": "The reviewer shows one camera-B success.",
+    "prediction": "That is one demonstration, not an estimate of broad camera-B reliability.",
+    "reason": "One selected observation does not represent the full proposed condition."
+  },
+  "student_task": "Answer the camera-B challenge using only the twelve camera-A records. Why is one displayed camera-B success a demonstration rather than broad evidence of camera-B reliability?",
+  "teacher_answer": "Report 10/12 correct on camera A. Say camera B performance is not measured. Use reserved camera-B cases with labels, grouping and a fixed scoring rule. Changed case: That is one demonstration, not an estimate of broad camera-B reliability. One selected observation does not represent the full proposed condition.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "The original result and proposed study still need sampling and uncertainty discussion.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted."
+}

@@ -1,0 +1,75 @@
+{
+  "week": "ai-2/4",
+  "title": "Trace Tables",
+  "outcome": "By the end, I can make a trace table for a for-loop, including zero iterations.",
+  "scenario": "A fictional reading-token jar starts with one token and gains three per round.",
+  "given": [
+    "Python: total=1; for turn in range(4): total=total+3; after the loop print(total).",
+    "The update is inside the loop; print is outside."
+  ],
+  "steps": [
+    {
+      "label": "Initial state",
+      "icon": "data",
+      "detail": "Before the loop, total=1."
+    },
+    {
+      "label": "Iteration values",
+      "icon": "code",
+      "detail": "range(4) supplies turn values 0,1,2,3."
+    },
+    {
+      "label": "Updated totals",
+      "icon": "chart",
+      "detail": "After each turn total is 4,7,10,13."
+    },
+    {
+      "label": "After the loop",
+      "icon": "output",
+      "detail": "Print 13 once, after all four updates."
+    }
+  ],
+  "explanation": "The turn value labels an iteration; it is not the number added. The fixed update adds three each time. Four iterations take the total from 1 to 13. Keeping print outside the loop produces one final display rather than four intermediate displays. Initialise total before the loop so a zero-iteration run still has a defined value.",
+  "counterfactual": {
+    "change": "Use range(0) instead of range(4).",
+    "prediction": "The loop body never runs and the printed total is 1.",
+    "reason": "The iterable contains no turn values; the initial assignment still happened."
+  },
+  "student_task": "Move print inside the original loop. What sequence is displayed?",
+  "teacher_answer": "4,7,10,13 on separate lines, because each print follows one update.",
+  "project_evidence": "Trace recommender loops with current item, eligibility, score and current best so each update can be explained.",
+  "limits": "This finite loop does not establish behavior of a while-loop with a different update or stopping condition.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Loop totals after each iteration",
+    "cells": [
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        3,
+        13
+      ]
+    ],
+    "row_labels": [
+      "First",
+      "Second",
+      "Third",
+      "Fourth"
+    ],
+    "column_labels": [
+      "turn",
+      "total after update"
+    ]
+  }
+}

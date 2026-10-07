@@ -1,0 +1,233 @@
+{
+  "week": "ai-3/19",
+  "title": "User Need and AI Contribution",
+  "grade": 8,
+  "project": "Verified Study Buddy",
+  "goals": [
+    "Explain the mechanism and terminology of capstone requirements and corpus",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Capstone requirements and corpus",
+  "vocabulary": [
+    [
+      "Requirement",
+      "A declared user-visible condition the system must satisfy"
+    ],
+    [
+      "Corpus manifest",
+      "An inventory of source IDs, versions and access roles"
+    ],
+    [
+      "Baseline procedure",
+      "A credible reference process on the same task"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Student room assistant corpus contains public register P, teacher-only guide T and current approval A. It must report approved room capacity or needs_review."
+      },
+      {
+        "type": "paragraph",
+        "text": "Authorised corpus contains P and A, excluding T. Baseline manually checks same-room current approval and capacity. Reserve complete, missing and conflicting cases before development."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "Student room assistant corpus contains public register P, teacher-only guide T and current approval A. It must report approved room capacity or needs_review. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: Authorised corpus contains P and A, excluding T. Baseline manually checks same-room current approval and capacity. Reserve complete, missing and conflicting cases before development.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "Student equipment assistant has public inventory I, restricted purchase ledger L and public booking notice B. Define eligible corpus, baseline and a missing-evidence test.",
+    "answer": "Teacher explanation: Use I and B only; exclude L. Baseline manually matches item availability to authorised booking evidence. Missing notice should trigger the specified review outcome.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "A complete capstone plan is not evidence that the implementation meets it; evaluate after building."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b68342a3d382299d25b0af59f1665dbb78a8e3ecb7ad1e81629ac228ebb36aaf",
+        "alt": "INPUT stage for User, Need, and AI Contribution",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/61aa96289113273d0b848a48485ae1beb34d554636592d9727e46ed5b461f4fe",
+        "alt": "PROCESS stage for User, Need, and AI Contribution",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/515dd30f683c477de0543158f38a3ed8bec2fa78b9873c114f6d66c6e55c657a",
+        "alt": "OUTPUT stage for User, Need, and AI Contribution",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Specify the user question, source authority, access, output/fallback contract and evaluation plan. Freeze corpus IDs and split cases before implementation. Keep teacher material out of student retrieval."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Capstone requirements and corpus \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "Student room assistant corpus contains public register P, teacher-only guide T and current approval A. It must report approved room capacity or needs_review.",
+            "Specify the user question, source authority, access, output/fallback contract and evaluation plan. Freeze corpus IDs and split cases before implementation. Keep teacher material out of student retrieval.",
+            "Authorised corpus contains P and A, excluding T. Baseline manually checks same-room current approval and capacity. Reserve complete, missing and conflicting cases before development."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/baa081bb74d63b3556ecfd5951cdc8779d64ec1813de34614621c4e969a973f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/5e6557194a1470352d07b6a509da5d673d81767981996dd1b685f799a5582b76",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/8e1f2e3affdd81449df265675243cda4511c1e88dd8cd9583d4ea42f6083c297",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a54f0c40e48e47ca92a4c36ebbc98f08b4a78c72cd385d85b0a5a7f07f558757",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

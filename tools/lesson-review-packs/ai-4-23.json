@@ -1,0 +1,253 @@
+{
+  "week": "ai-4/23",
+  "title": "Hold Out Test Data",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Freeze the full evaluation procedure before testing",
+    "Report a held-out result with counts and limitations",
+    "Recognize when test feedback has become development"
+  ],
+  "primary_topic": "Final testing and honest claims",
+  "vocabulary": [
+    [
+      "Freeze",
+      "Record a fixed model and procedure before testing"
+    ],
+    [
+      "Held out",
+      "Kept separate from development decisions"
+    ],
+    [
+      "Provenance",
+      "A record of where data and results came from"
+    ],
+    [
+      "Claim",
+      "A statement whose scope must match its evidence"
+    ]
+  ],
+  "worked_example": {
+    "title": "Explain the visual",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Final testing and honest claims at a glance",
+        "columns": [
+          "Part",
+          "Evidence or action",
+          "Interpretation"
+        ],
+        "rows": [
+          [
+            "Before labels",
+            "Freeze version and rules",
+            "Record test membership"
+          ],
+          [
+            "During evaluation",
+            "Keep every planned case",
+            "Count failures explicitly"
+          ],
+          [
+            "After evaluation",
+            "Publish full results",
+            "Restrict the claim"
+          ]
+        ],
+        "caption": "The test comparison must use the same cases and consistent rules. Report the denominator, reference-label process and sampling limitations. If the software fails on one case, report that failure; do not silently drop the case and keep the original headline denominator."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Why does 75 percent versus 70 percent not settle deployment? Explain the steps or evidence behind your response.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Compare a baseline",
+    "prompt": "Why does 75 percent versus 70 percent not settle deployment?",
+    "answer": "Teacher explanation: The difference is one correct case on 20; error consequences, limited coverage and missed blocked cases remain.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Apply independently",
+    "task": "A new frozen test has TN 7 FP 1 FN 2 TP 2. Calculate accuracy, precision and recall and state a bounded claim.",
+    "answer": "Teacher explanation: Accuracy 9/12=75 percent; precision 2/3 about 66.7 percent; recall 2/4=50 percent. These describe these 12 held-out examples only.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A final answer is enough",
+      "Ask for the relevant counts, units, procedure or saved record. For this week: Accuracy 15/20, precision 3/5, recall 3/6. Report TN 12 FP 2 FN 3 TP 3 and blocked positive."
+    ],
+    [
+      "A stronger claim makes a stronger project",
+      "Retain the planned denominator and report the failed case and predefined scoring policy; disclose any metric denominator change."
+    ],
+    [
+      "The new case can be copied from the example",
+      "The independent task changes the evidence. Require a fresh explanation: Accuracy 9/12=75 percent; precision 2/3 about 66.7 percent; recall 2/4=50 percent. These describe these 12 held-out examples only."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/829d5becda5e343979feaf1ded45584c18b7ae97715e947057ff01e004bfc059",
+        "alt": "Week 23 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/48a448e9b748247abe14f7effdcc74d9b5017a9735d24bf0cc8246f96f417088",
+        "alt": "Week 23 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/d993b8995eb3a79287fee32d99ba81b389efd93142b0b09d63bd0f4a0f0457b1",
+        "alt": "Week 23 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Identify contaminated evaluations and repair the workflow."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  The final test set must remain untouched until model and threshold choices are finished, or it becomes part of training by decision."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Team checks test accuracy after every parameter change. Those repeated choices adapt to the test set, contaminating it.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "A frozen classifier is tested on 20 fictional cases: TN 12 FP 2 FN 3 TP 3, blocked positive. Accuracy is 15/20=75 percent, precision 3/5=60 percent and recall 3/6=50 percent. Its previously fitted always-clear baseline gets 14/20=70 percent. The candidate improves accuracy here but misses half the blocked cases."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before continuing, underline the decision rule and circle the evidence that supports the conclusion. Explain the example to a partner without replacing the counts or conditions with a stronger claim. Keep the distinction between an observed result and a proposed next step."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 23 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 23 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 23 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 23 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "week": "ai-5/26",
+  "title": "Embeddings and neighbourhoods",
+  "outcome": "By the end, I can explain embeddings and neighbourhoods using a traced example and a stated limitation.",
+  "scenario": "Measure embedding neighbours without turning numerical proximity into factual certainty.",
+  "given": [
+    "Toy tableP=[0, 1], Q=[3, 1], R=[1, 4]; query [1, 1]. Use squared Euclidean distance.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Distance to P",
+      "icon": "chart",
+      "detail": "(1-0)\u00b2+(1-1)\u00b2=1."
+    },
+    {
+      "label": "Distances to Q/R",
+      "icon": "chart",
+      "detail": "Q distance4; R distance9."
+    },
+    {
+      "label": "Select neighbour",
+      "icon": "model",
+      "detail": "P is nearest under the declared metric; this is a geometric result, not proof of meaning."
+    }
+  ],
+  "explanation": "An embedding stores each item as an ordered vector. Under squared Euclidean distance, subtract matching coordinates, square their differences and add. The smallest total identifies the nearest supplied vector. These invented coordinates let us check geometry exactly; a claim that neighbours share meaning needs evidence about how the representation was learned and used.",
+  "counterfactual": {
+    "change": "Move the query to [2, 1].",
+    "prediction": "Q becomes nearest with squared distance1; P distance4; R distance10.",
+    "reason": "Changing the query position changes geometric neighbours while the stored table remains fixed."
+  },
+  "student_task": "What would justify claiming nearby vectors mean related topics? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Evidence about how the table was learned plus task-specific evaluation. These invented coordinates alone establish only distances. Changed-case check: Q becomes nearest with squared distance1; P distance4; R distance10. Changing the query position changes geometric neighbours while the stored table remains fixed.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Embedding geometry depends on training, metric and scale; proximity does not prove truth, causation or source permission.",
+  "review_note": "Reviewed Embeddings and neighbourhoods against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation.",
+  "mini_visual": {
+    "kind": "scatter",
+    "title": "Squared Euclidean embedding distances",
+    "points": [
+      {
+        "x": 0,
+        "y": 1,
+        "label": "P"
+      },
+      {
+        "x": 3,
+        "y": 1,
+        "label": "Q"
+      },
+      {
+        "x": 1,
+        "y": 4,
+        "label": "R"
+      }
+    ],
+    "query": {
+      "x": 1,
+      "y": 1,
+      "label": "query"
+    },
+    "metric": "Squared Euclidean distance",
+    "x_label": "first embedding coordinate",
+    "y_label": "second embedding coordinate"
+  }
+}

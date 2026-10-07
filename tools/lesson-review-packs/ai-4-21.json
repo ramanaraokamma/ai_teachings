@@ -1,0 +1,258 @@
+{
+  "week": "ai-4/21",
+  "title": "Absolute Error and MAE",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Calculate MAE MSE and RMSE",
+    "Explain how squaring changes sensitivity to large errors",
+    "Match the loss and units to the task"
+  ],
+  "primary_topic": "Absolute and squared loss",
+  "vocabulary": [
+    [
+      "MAE",
+      "Mean absolute error"
+    ],
+    [
+      "MSE",
+      "Mean squared error"
+    ],
+    [
+      "RMSE",
+      "Square root of mean squared error"
+    ],
+    [
+      "Loss",
+      "A numerical penalty for prediction errors"
+    ]
+  ],
+  "worked_example": {
+    "title": "Explain the visual",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Absolute and squared loss at a glance",
+        "columns": [
+          "Part",
+          "Evidence or action",
+          "Interpretation"
+        ],
+        "rows": [
+          [
+            "Residuals",
+            "minus 1 plus 2 minus 3",
+            "Signed differences"
+          ],
+          [
+            "Absolute values",
+            "1 2 3",
+            "MAE 2 cm"
+          ],
+          [
+            "Squares",
+            "1 4 9",
+            "MSE 14 divided by 3"
+          ]
+        ],
+        "caption": "Model A has residuals [0, 0, 6]; model B has [2, 2, 2]. Both MAEs are 2, but MSEs are 12 and 4. Squaring distinguishes concentrated large errors from evenly spread smaller errors. Which pattern matters depends on the task and consequences."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Give MSE and RMSE with units. Explain the steps or evidence behind your response.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Compute squared loss",
+    "prompt": "Give MSE and RMSE with units.",
+    "answer": "Teacher explanation: MSE 14/3 square cm; RMSE sqrt(14/3) about 2.16 cm.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Apply independently",
+    "task": "Residuals [-2, 0, 4] m: calculate MAE MSE RMSE and the result of converting to cm.",
+    "answer": "Teacher explanation: MAE 2 m; MSE 20/3 square m; RMSE about 2.58 m. In cm, MAE 200, MSE 200000/3, RMSE about 258.20.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A final answer is enough",
+      "Ask for the relevant counts, units, procedure or saved record. For this week: (1+2+3)/3=2 cm."
+    ],
+    [
+      "A stronger claim makes a stronger project",
+      "Keep the declared primary metric and disclose any additional metric and reason. Report the large error and complete evaluation."
+    ],
+    [
+      "The new case can be copied from the example",
+      "The independent task changes the evidence. Require a fresh explanation: MAE 2 m; MSE 20/3 square m; RMSE about 2.58 m. In cm, MAE 200, MSE 200000/3, RMSE about 258.20."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/193e1d9634286ad5cf77255db47ad5632116f3c6b759d8660c9a143f73b22eb0",
+        "alt": "Week 21 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/f58fbfaf7f235305d22550a8ff1465fa5bbaae98c074b1b9fa7fc1a59ff260ba",
+        "alt": "Week 21 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/cb2179590782def71fda467006ccf2c096bda5e38bb21b070071d0023a074763",
+        "alt": "Week 21 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Calculate residuals, absolute errors, and mean absolute error."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  Absolute error measures distance from truth without cancellation; MAE averages those distances in the target's original unit."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Actual heights: 10, 14, 20; predictions: 12, 13, 17. Residuals: \u22122, +1, +3 cm; absolute errors: 2, 1, 3 cm.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Residuals [-1, 2,-3] cm have absolute errors [1, 2, 3], so MAE=6/3=2 cm. Squared errors [1, 4, 9] sum to 14, so MSE=14/3 square cm and RMSE=sqrt(14/3), about 2.16 cm. Keep the square and the average in the correct order."
+      },
+      {
+        "type": "code",
+        "title": "Python 3 check",
+        "text": "from math import sqrt\nresiduals = [-1, 2, -3]\nmae = sum(abs(r) for r in residuals) / len(residuals)\nmse = sum(r * r for r in residuals) / len(residuals)\nprint(mae, mse, sqrt(mse))\n# About 2.0, 4.67, 2.16.\n# MAE and RMSE: cm. MSE: square cm."
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the calculation on paper before running this optional Python check. Use the stated fictional inputs and compare intermediate values. The code checks this example; your independent workbook case uses different evidence."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 21 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 21 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 21 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 21 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

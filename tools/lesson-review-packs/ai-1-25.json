@@ -1,0 +1,293 @@
+{
+  "week": "ai-1/25",
+  "title": "Generate, Retrieve, or Calculate?",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Distinguish retrieving a record, calculating from inputs and generating wording",
+    "Trace a task that combines these operations and check each step",
+    "Identify unsupported details and explain why output appearance does not reveal its method"
+  ],
+  "primary_topic": "Generation retrieval and calculation",
+  "vocabulary": [
+    [
+      "Retrieval",
+      "Finding and returning existing information from a collection"
+    ],
+    [
+      "Calculation",
+      "Applying specified mathematical operations to input values"
+    ],
+    [
+      "Generation",
+      "Producing content using a model and its input context"
+    ],
+    [
+      "Source record",
+      "An existing item whose content and origin can be inspected"
+    ],
+    [
+      "Trace",
+      "A record of the inputs, operations and outputs used in a task"
+    ]
+  ],
+  "worked_example": {
+    "title": "Generated wording needs evidence for factual details",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Draft statement",
+          "Evidence in this example",
+          "Decision"
+        ],
+        "rows": [
+          [
+            "Meet Wednesday in Room 4",
+            "Current notice N2",
+            "Supported by the record"
+          ],
+          [
+            "There are 21 non-helper places",
+            "6 \u00d7 4 \u2212 3 from N2",
+            "Supported by calculation"
+          ],
+          [
+            "Free snacks will be provided",
+            "Not stated in N2",
+            "Remove or verify separately"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "A generated invitation might add free snacks because that detail fits a familiar invitation pattern. Plausible wording is not evidence that snacks are provided. Remove that claim or obtain an appropriate confirming source before including it. Generated content can be useful and can contain correct facts; its fluent style alone does not verify those facts."
+      },
+      {
+        "type": "paragraph",
+        "text": "Generation also does not guarantee originality. A response may repeat wording already present in its context or elsewhere. Retrieval and calculation can feed a generator, and a generator can propose a calculation for another tool. Keep the evidence path visible instead of assuming that every sentence came from the same operation."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Separate a correct sum from a correct answer",
+    "prompt": "A calculator correctly returns 24 for 6 \u00d7 4. A pupil reports this as the number of non-helper places available. Explain the problem and write the correct expression, result and meaning.",
+    "lines": 6,
+    "answer": "24 is total capacity before the three helper places are reserved. The requested remaining count is 6 \u00d7 4 \u2212 3 = 21 non-helper places. The calculator can execute the supplied expression correctly while that expression omits a required step."
+  },
+  "independent_case": {
+    "title": "Trace a new library workshop",
+    "task": "Current fictional record B lists a library workshop on Friday in Room 5: five tables with six places each, with four places reserved for helpers. B replaces old record A, which lists Room 3. A draft says \u201cThursday in Room 3, with 30 places remaining and a free bus home.\u201d Retrieve the current day and room, calculate the non-helper places, write a corrected factual sentence and identify the detail that cannot be supported by B.",
+    "answer": "Retrieve Friday and Room 5 from B. Calculate 5 \u00d7 6 \u2212 4 = 26 non-helper places. A suitable sentence is: The workshop is Friday in Room 5 with 26 places after the helper reservation, according to B and the capacity calculation. The free bus is unsupported and must be removed or verified separately. The draft\u2019s 30 is total capacity before reservation.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Retrieving a record proves it is current",
+      "Check event and version; N1 is superseded by N2 in this example."
+    ],
+    [
+      "A correct calculator result always answers the task",
+      "The expression must include the required reservation and correct units."
+    ],
+    [
+      "Fluent generated details are verified facts",
+      "Free snacks and transport need evidence; wording alone is insufficient."
+    ],
+    [
+      "The final sentence reveals the method",
+      "Matching outputs do not establish matching operations; inspect records and traces."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/3ca900362ef83102bc712db0e3e0bff922143872fdb1a00837495e2fd032b6a2",
+        "alt": "Visual card for the input stage: question and available sources or rules",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/336ef75b5ab1790469b6fe84b83c92afb79c9fd309d11900a1db012632896c0c",
+        "alt": "Visual card for the process stage: generate patterns, retrieve records, or calculate",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/5da8776a587e5925ecd3537d75fc0b3f1ed100b7968e0c3167031e4956b92e77",
+        "alt": "Visual card for the output stage: answer with mechanism-appropriate checking",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  question and available sources or rules"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  generate patterns, retrieve records, or calculate"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  answer with mechanism-appropriate checking"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  Different systems create, look up, or compute answers in different ways.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Generation synthesizes outputs from learned distributions, retrieval selects stored records, and calculation applies formal operations. Products often combine all three; verification should match the component that produced each claim.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "One club task with three kinds of work",
+        "columns": [
+          "Operation",
+          "Example output",
+          "Required check"
+        ],
+        "rows": [
+          [
+            "Retrieve N2",
+            "Room 4 on Wednesday",
+            "Right event and version"
+          ],
+          [
+            "Calculate",
+            "6 \u00d7 4 \u2212 3 = 21",
+            "Inputs and operations"
+          ],
+          [
+            "Generate wording",
+            "Try a making activity",
+            "Facts and constraints"
+          ]
+        ],
+        "caption": "Retrieval supplies recorded information; calculation derives a result; generation drafts wording. Each operation needs a check suited to what it does."
+      },
+      {
+        "type": "paragraph",
+        "text": "Retrieving N1 accurately would still give an outdated room for this task. Successful retrieval means finding a record, not proving that every record is correct or current. Check the event, source and version. Here the explicit replacement statement tells us which notice governs the classroom example."
+      },
+      {
+        "type": "paragraph",
+        "text": "A calculator given 6 \u00d7 4 correctly returns 24, but 24 is the total capacity, not the number remaining after three reserved places. Correct arithmetic on an incomplete expression answers the wrong question. Explain the input values, units and operations before accepting a number."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/311c30a861bd1dbcc0e106171b6747d42ab10fb1a80540c7bec47b0c151b7ca6",
+        "alt": "Comparison picture for Invent a story: new wording from patterns; generate",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/376c0e00b14e0cbdefd37318b7907b3b4b27c3d822e4a4d6896c20ce2c6b612f",
+        "alt": "Comparison picture for Find a book title: return catalog record; retrieve",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/e9c5de2ea4cc576399e62368328e96c547db125cb2075aa2c9b9e42132433b3c",
+        "alt": "Comparison picture for Add 27 + 18: apply arithmetic; calculate",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/7af5d67ce50406bcb716ab1d8b8166fbeb2e0f04abc7049bfbf3f94e97a38db3",
+        "alt": "Comparison picture for Answer with quote and total: multiple components; mixed system",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Invent a story  Clue: new wording from patterns. Meaning: generate."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Find a book title  Clue: return catalog record. Meaning: retrieve."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Add 27 + 18  Clue: apply arithmetic. Meaning: calculate."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Answer with quote and total  Clue: multiple components. Meaning: mixed system."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Fluent wording does not reveal whether a fact was retrieved, generated, or calculated.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

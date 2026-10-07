@@ -1,0 +1,65 @@
+{
+  "week": "ai-3/4",
+  "title": "Sampling and Variability",
+  "outcome": "By the end, I can calculate a toy temperature change and trace a sampling draw.",
+  "scenario": "A fictional two-token distribution illustrates variability in generation.",
+  "given": [
+    "At T=1, A=0.8 and B=0.2. For positive T use p^(1/T), then normalise.",
+    "Use token order A,B and cumulative intervals [0,boundary),[boundary,1). Draw u=0.85."
+  ],
+  "steps": [
+    {
+      "label": "Original distribution",
+      "icon": "chart",
+      "detail": "A boundary 0.8; u=0.85 selects B."
+    },
+    {
+      "label": "T=0.5 weights",
+      "icon": "code",
+      "detail": "Square probabilities:0.64 and 0.04; total 0.68."
+    },
+    {
+      "label": "Normalise",
+      "icon": "chart",
+      "detail": "A=16/17≈0.9412; B=1/17≈0.0588."
+    },
+    {
+      "label": "Same draw",
+      "icon": "model",
+      "detail": "0.85 is below 16/17, so T=0.5 selects A."
+    }
+  ],
+  "explanation": "Lower positive temperature concentrates this unequal distribution on its larger entry. It changes sampling probabilities, not evidence for whether A or B is true. Using the same draw isolates how the distribution changes the decision. This formula is a toy probability-space illustration corresponding to a temperature-scaled model distribution.",
+  "counterfactual": {
+    "change": "Set the draw to 0.97, keeping both distributions.",
+    "prediction": "Both temperatures select B.",
+    "reason": "0.97 exceeds both A boundaries, 0.8 and approximately 0.9412."
+  },
+  "student_task": "Does T=0.5 make B impossible, and does choosing A guarantee factual accuracy?",
+  "teacher_answer": "No. B still has probability 1/17, and the table supplies no truth labels for either token.",
+  "project_evidence": "Keep Study Buddy generation settings fixed during prompt comparisons and check evidence regardless of variability.",
+  "limits": "Two tokens and one draw do not predict every output; temperature alone does not solve hallucinations.",
+  "review_note": "Individually designed fictional worked case, distinct from the reserved assessment. Toy model simplifications, arithmetic and source authority reviewed explicitly.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Temperature-scaled toy probabilities",
+    "cells": [
+      [
+        0.8,
+        0.9411764705882353
+      ],
+      [
+        0.2,
+        0.058823529411764705
+      ]
+    ],
+    "row_labels": [
+      "A",
+      "B"
+    ],
+    "column_labels": [
+      "T=1",
+      "T=0.5"
+    ]
+  }
+}

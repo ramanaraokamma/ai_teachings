@@ -1,0 +1,51 @@
+{
+  "week": "ai-4/18",
+  "title": "Error Analysis",
+  "outcome": "By the end, I can explain error analysis using a traced example and a stated limitation.",
+  "scenario": "Find an error cluster before choosing a controlled follow-up.",
+  "given": [
+    "Candidate errors: bright-light photos1/8; dim-light photos3/6. Images and reference labels are fixed for this audit.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Compute slice errors",
+      "icon": "chart",
+      "detail": "Bright: 12.5%; dim: 50%. Total errors4/14, about28.6%."
+    },
+    {
+      "label": "Inspect dim failures",
+      "icon": "sensor",
+      "detail": "Check blur, lighting and label uncertainty instead of assuming lighting caused every error."
+    },
+    {
+      "label": "Plan controlled pair",
+      "icon": "experiment",
+      "detail": "Photograph the same approved toy scene in bright and dim conditions; hold device and framing fixed."
+    }
+  ],
+  "explanation": "Read the picture in order. Photograph the same approved toy scene in bright and dim conditions; hold device and framing fixed. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Dim errors fall to1/6 in a later same-case replay.",
+    "prediction": "The replay’s dim error rate is 16.7%; it is development evidence if those cases guided the revision.",
+    "reason": "Observed improvement on reused cases is not an untouched final generalisation test."
+  },
+  "student_task": "What evidence would support the claim that a change helps fresh dim-light images? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Freeze the revision and test new appropriately labelled dim-light examples, retaining plant groups and comparable conditions. Changed-case check: The replay’s dim error rate is 16.7%; it is development evidence if those cases guided the revision. Observed improvement on reused cases is not an untouched final generalisation test.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "A slice difference suggests investigation; it does not establish a causal lighting explanation by itself.",
+  "review_note": "Reviewed Error Analysis against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Errors per 100 photos in each lighting slice",
+    "labels": [
+      "bright",
+      "dim"
+    ],
+    "values": [
+      12.5,
+      50
+    ],
+    "unit": "percent"
+  }
+}

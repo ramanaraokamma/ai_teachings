@@ -1,0 +1,38 @@
+{
+  "week": "ai-4/4",
+  "title": "Python and Table Readiness",
+  "outcome": "By the end, I can explain python and table readiness using a traced example and a stated limitation.",
+  "scenario": "Inspect a small table before asking Python to compute an average.",
+  "given": [
+    "Plant heights in cm: P=2, Q=6, R=None, S=0. None means unmeasured; zero is a recorded valid height.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Check records",
+      "icon": "data",
+      "detail": "Four rows contain three measured values and one missing value."
+    },
+    {
+      "label": "Calculate mean",
+      "icon": "code",
+      "detail": "Measured sum is 2+6+0=8; mean is 8/3 cm, approximately 2.67 cm."
+    },
+    {
+      "label": "Report coverage",
+      "icon": "chart",
+      "detail": "Report 3/4 measured, retaining the missing record separately."
+    }
+  ],
+  "explanation": "Read the picture in order. Report 3/4 measured, retaining the missing record separately. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "S changes from 0 to None.",
+    "prediction": "Mean becomes (2+6)/2=4 cm with 2/4 measured.",
+    "reason": "Removing a measured zero changes both the denominator and the coverage."
+  },
+  "student_task": "Why should the missing value not silently become zero? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Zero is a real recorded measurement here. Replacing missing with zero would invent evidence and lower the mean without justification. Changed-case check: Mean becomes (2+6)/2=4 cm with 2/4 measured. Removing a measured zero changes both the denominator and the coverage.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "The measured-row mean may not represent the missing plants; investigate why those readings are absent.",
+  "review_note": "Reviewed Python and Table Readiness against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

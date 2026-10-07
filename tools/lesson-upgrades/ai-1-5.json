@@ -1,0 +1,80 @@
+{
+  "week": "ai-1/5",
+  "title": "Pictures Become Numbers",
+  "outcome": "By the end, I can encode pixel positions and show why a count cannot reconstruct a picture.",
+  "scenario": "Two fictional 2-by-3 pixel badges contain the same number of dark squares.",
+  "given": [
+    "Dark=1, light=0; rows are read top to bottom, left to right.",
+    "Badge A rows: 1,0,1 / 0,1,0. Badge B: 1,1,1 / 0,0,0."
+  ],
+  "steps": [
+    {
+      "label": "Pixel convention",
+      "icon": "rule",
+      "detail": "Each image has two rows and three columns; 1 means dark."
+    },
+    {
+      "label": "Badge A",
+      "icon": "data",
+      "detail": "Top 101, bottom 010: three dark pixels."
+    },
+    {
+      "label": "Badge B",
+      "icon": "data",
+      "detail": "Top 111, bottom 000: also three dark pixels."
+    },
+    {
+      "label": "Compare arrangements",
+      "icon": "check",
+      "detail": "The totals agree, but middle-top and middle-bottom positions differ."
+    }
+  ],
+  "explanation": "A grid preserves where each brightness belongs. Adding the six values preserves only the dark count, which is 3 in both images. The total therefore cannot distinguish these badges. Dimensions and reading order belong to the representation, not to an optional caption.",
+  "counterfactual": {
+    "change": "Change A’s bottom-left pixel from 0 to 1.",
+    "prediction": "A now has four dark pixels; its row encoding is 101 / 110.",
+    "reason": "Exactly one light pixel becomes dark; the other five positions remain unchanged."
+  },
+  "student_task": "Find a position where the original badges differ, then read the changed A back as a picture.",
+  "teacher_answer": "The top-middle pixel is 0 in A and 1 in B. Changed A is dark at top-left, top-right, bottom-left and bottom-middle.",
+  "project_evidence": "If the sorter uses images, retain dimensions and arrangement rather than assuming a dark-pixel count describes shape.",
+  "limits": "This toy binary encoding does not include real photographs’ colour channels, compression or illumination effects.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Pixel positions: two badges, same dark count",
+    "cells": [
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "row_labels": [
+      "A top",
+      "A bottom",
+      "B top",
+      "B bottom"
+    ],
+    "column_labels": [
+      "Left",
+      "Middle",
+      "Right"
+    ]
+  }
+}

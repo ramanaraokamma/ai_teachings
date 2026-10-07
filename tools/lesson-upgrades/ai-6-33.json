@@ -1,0 +1,42 @@
+{
+  "week": "ai-6/33",
+  "title": "Capstone service implementation",
+  "outcome": "Explain capstone service implementation using the deciding step in this fictional service.",
+  "scenario": "Assemble a grounded prototype. A capstone answers from three approved garden cards and has read-only tools.",
+  "given": [
+    "G2 says mint needs regular watering. The request asks what G2 says and asks the service to change G2."
+  ],
+  "steps": [
+    {
+      "label": "Retrieve G2",
+      "icon": "book",
+      "detail": "Use the approved card for the supplied watering claim."
+    },
+    {
+      "label": "Draft with attribution",
+      "icon": "model",
+      "detail": "Phrase that claim and identify G2 as its source."
+    },
+    {
+      "label": "Enforce tool limit",
+      "icon": "shield",
+      "detail": "Refuse the change request; no edit tool is authorised."
+    },
+    {
+      "label": "Check final trace",
+      "icon": "check",
+      "detail": "Confirm factual agreement and absence of forbidden action."
+    }
+  ],
+  "explanation": "Implementation joins retrieval, drafting, checking and authority in one observable path. Describing an edit does not authorise performing it.",
+  "counterfactual": {
+    "change": "Remove G2 from the approved collection.",
+    "prediction": "Return unsupported for the fact request; editing remains prohibited.",
+    "reason": "Grounding needs a present source while authority comes from the independent contract."
+  },
+  "student_task": "Trace the G2 fact request and edit request through the prototype. What can be returned, what cannot be done, and how does removing G2 change those two outcomes?",
+  "teacher_answer": "Use the approved card for the supplied watering claim. Phrase that claim and identify G2 as its source. Refuse the change request; no edit tool is authorised. Confirm factual agreement and absence of forbidden action. Changed case: Return unsupported for the fact request; editing remains prohibited. Grounding needs a present source while authority comes from the independent contract.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "A three-card prototype provides bounded evidence, not production reliability or independent gardening expertise.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

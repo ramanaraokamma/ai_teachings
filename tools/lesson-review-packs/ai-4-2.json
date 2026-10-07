@@ -1,0 +1,262 @@
+{
+  "week": "ai-4/2",
+  "title": "Features, Labels, Targets",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Separate prediction inputs from observed targets",
+    "Check whether each feature exists at prediction time",
+    "Repair target leakage and state a feature contract"
+  ],
+  "primary_topic": "Features labels and prediction time",
+  "vocabulary": [
+    [
+      "Feature contract",
+      "A specification of input meaning units order and timing"
+    ],
+    [
+      "Target",
+      "The outcome a prediction aims to estimate"
+    ],
+    [
+      "Prediction time",
+      "The moment when the prediction must be made"
+    ],
+    [
+      "Target leakage",
+      "Predictor information that reveals the outcome but is unavailable at prediction time"
+    ]
+  ],
+  "worked_example": {
+    "title": "Audit availability before running",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "For every proposed input, ask what it means, when it was recorded, and whether the same definition can be supplied at checkout. A field in the historical export is not automatically available at prediction time. An input calculated from later information is also unavailable, even if its name does not mention the outcome."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "A completed loan has pages 200, queue_at_checkout 3 and days_to_return 14. Write the feature list and label. Someone adds overdue_fee calculated after return. Can it become a feature for the checkout prediction? Explain.",
+        "lines": 5
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the feature contract",
+    "prompt": "A completed loan has pages 96, queue_at_checkout 4 and days_to_return 14. Give the ordered feature list and target. Then state what changes if it took 15 days instead.",
+    "answer": "The feature list is [96, 4]. At 14 days the target is 0. At 15 days the target becomes 1; the checkout feature list remains [96, 4].",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Audit a new task independently",
+    "task": "A fictional robot predicts at dispatch whether a parcel trip will take more than 10 minutes. Fields are route_steps and queue_at_dispatch captured at dispatch, trip_id for tracking, arrival_minutes measured after arrival, and slow = 1 when arrival_minutes > 10. Specify inputs, order, target and exclusions. For a past trip with steps 30, queue 2, arrival 10, give features and label. For a new trip with steps 24 and queue 0, give features and explain whether slow is known.",
+    "answer": "Use [route_steps, queue_at_dispatch] in that order, measured in steps and queued trips at dispatch. slow is the target. Keep trip_id as tracking metadata; exclude arrival_minutes and slow from inputs. Past features are [30, 2] with label 0 because 10 is not greater than 10. New features are [24, 0]; slow is unknown until the outcome can be established.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Every stored column is a feature",
+      "A historical export combines information from different times. Require a meaning and timestamp before treating a column as an input."
+    ],
+    [
+      "Removing the label column removes leakage",
+      "days_to_return and an outcome-based fee may still disclose the target. Audit how every field was created."
+    ],
+    [
+      "An unknown outcome is a negative label",
+      "Unknown means not established. In this exercise labels come from completed historical returns. Do not turn unavailable outcomes into on-time labels."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/d4f986ea0b7972c19091efaa594164efee0bdde4f64aec3cab88fcf858e278c8",
+        "alt": "Week 2 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b87d396ac03a89a7d082606873949f9600af52bbffa067e8f82663381813d65d",
+        "alt": "Week 2 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/23a55acf6590887be66fc11706e2dab827892155dc078a54ca61151873a288bf",
+        "alt": "Week 2 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Mark features and targets in three datasets and reject information unavailable at real prediction time."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  Features are the information available at prediction time; the target is the value the model should estimate; labels are observed target values in examples."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Plant row: leaf_width=6 cm, color_score=0.72, health=spotted. Features are leaf_width and color_score because they exist before prediction.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "def features(row):\n    return [row[\"pages\"], row[\"queue_at_checkout\"]]\n\npast = {\"loan_id\": \"A\", \"pages\": 120,\n        \"queue_at_checkout\": 2, \"days_to_return\": 18,\n        \"returned_late\": 1}\nprint(features(past))\nprint(past[\"returned_late\"])\nnew = {\"loan_id\": \"B\", \"pages\": 80,\n       \"queue_at_checkout\": 0}\nprint(features(new))"
+      },
+      {
+        "type": "paragraph",
+        "text": "The feature order is always pages first, queue count second. The first output is [120, 2]; the separate label is 1 because this historical loan took 18 days. The new loan produces [80, 0] even though its return outcome does not yet exist. The same feature function serves past and new records. It deliberately selects allowed fields rather than copying every column except returned_late."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow information through time",
+        "columns": [
+          "Moment",
+          "Available information",
+          "Allowed use"
+        ],
+        "rows": [
+          [
+            "Checkout",
+            "Pages and saved queue",
+            "Prediction inputs"
+          ],
+          [
+            "Later return",
+            "Elapsed days",
+            "Create observed label"
+          ],
+          [
+            "Historical training",
+            "Inputs plus separate label",
+            "Fit a model later"
+          ]
+        ],
+        "caption": "The outcome may teach the model during training, but it cannot be an input to an earlier checkout prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "This code prepares inputs; it does not fit a model or predict lateness. It assumes the two feature fields contain valid nonnegative integer values and pages is positive. A missing required field raises KeyError. A real pipeline needs explicit validation and a missing-data policy."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 2 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 2 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 2 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 2 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

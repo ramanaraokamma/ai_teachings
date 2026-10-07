@@ -1,0 +1,303 @@
+{
+  "week": "ai-1/11",
+  "title": "Repeating Efficiently",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Trace a loop by testing its condition before every repetition",
+    "Distinguish the number of repetitions from the final value and include zero repetitions",
+    "Explain why an update reaches a stopping condition or why a faulty loop keeps repeating"
+  ],
+  "primary_topic": "Loops and stopping rules",
+  "vocabulary": [
+    [
+      "Loop",
+      "Instructions that repeat according to a stated rule"
+    ],
+    [
+      "Iteration",
+      "One execution of the repeated body"
+    ],
+    [
+      "Body",
+      "The instructions performed on each iteration"
+    ],
+    [
+      "Stopping condition",
+      "The situation in which repetition ends"
+    ],
+    [
+      "Progress",
+      "A change that brings the state closer to a stopping condition"
+    ]
+  ],
+  "worked_example": {
+    "title": "Check starts that need no repetitions",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Starting counter",
+          "Values at successive tests",
+          "Iterations and reported value"
+        ],
+        "rows": [
+          [
+            "5",
+            "5 true then 7 false",
+            "1 iteration and report 7"
+          ],
+          [
+            "6",
+            "6 true then 8 false",
+            "1 iteration and report 8"
+          ],
+          [
+            "7",
+            "7 false",
+            "0 iterations and report 7"
+          ],
+          [
+            "8",
+            "8 false",
+            "0 iterations and report 8"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "While tests before the body. If the first test is false, the body runs zero times. Do not add 2 once just because a loop is present. Starting at 7 or 8 is a useful test of this rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "A loop that stops when the counter is no longer below 7 does not promise to finish at exactly 7. Starting at 6 produces 8. Passing the boundary is allowed by these instructions. Always report the actual final state instead of replacing it with the threshold."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Check the first test",
+    "prompt": "Use the same below 8 loop with add 2. Make separate runs from 8 and 9. Explain how many times the body runs and what each run reports. Why would adding 2 once be an error?",
+    "lines": 6,
+    "answer": "Both first tests are false. Each run has zero iterations, reporting its unchanged starting value: 8 or 9. Adding 2 once would execute the body despite a false first test."
+  },
+  "independent_case": {
+    "title": "Transfer to a countdown",
+    "task": "A paper countdown starts at 7. While remaining is above 1, subtract 2. When false, report and stop. Trace the run and count iterations. Repeat from 6 and from 1. Explain why the final value need not equal 1. What happens from 7 if subtract 2 is replaced by subtract 0?",
+    "answer": "From 7: 7 true, 5 true, 3 true, 1 false; three iterations, report 1. From 6: 6 true, 4 true, 2 true, 0 false; three iterations, report 0. From 1: first test false, zero iterations, report 1. Above 1 stops at 1 or below. Subtracting 0 from 7 leaves every test true, so that faulty run never reports.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Every loop runs at least once",
+      "Point to the test before the body. From 7 under below 7 the first test is false, so no update is permitted."
+    ],
+    [
+      "The final value must equal the threshold",
+      "Trace start 6 under add 2 and below 7. The loop reports 8 because the stopping requirement is no longer below 7."
+    ],
+    [
+      "Tests and iterations are the same count",
+      "Count body executions separately and show the last false test with no body action."
+    ],
+    [
+      "A changing number guarantees a stop",
+      "Compare below 7 with not equal to 7 from 6 under add 2. Even numbers pass 7 without equalling it."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ae2703fd1439e2e320b82dc19c70551fb61181c880f409fb6833f03ef91dbfd3",
+        "alt": "Visual card for the input stage: starting state and repeat count",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a5862b76bc049c1ac6c6655d64478be601458d483f0b4711cccc4f49f47b72e5",
+        "alt": "Visual card for the process stage: run the loop body and update progress",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/699a505b7300098a2bb93812e74d1f6abd6c27e21bb7f7a8bcbf14d0230c78c1",
+        "alt": "Visual card for the output stage: finished pattern when the stop condition is met",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  starting state and repeat count"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  run the loop body and update progress"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  finished pattern when the stop condition is met"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  A loop repeats a useful step until a stopping condition is met.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  A loop requires an initialization, body, update, and termination condition. Repetition is safe only when each iteration moves state toward stopping; otherwise the loop may run forever or the wrong number of times.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "A complete loop trace",
+        "columns": [
+          "Counter before test",
+          "Is counter below 7",
+          "Next action"
+        ],
+        "rows": [
+          [
+            "1",
+            "True",
+            "Add 2 to reach 3"
+          ],
+          [
+            "3",
+            "True",
+            "Add 2 to reach 5"
+          ],
+          [
+            "5",
+            "True",
+            "Add 2 to reach 7"
+          ],
+          [
+            "7",
+            "False",
+            "Report 7 and stop"
+          ]
+        ],
+        "caption": "Read the rows from top to bottom as one run. Each true test performs one addition and returns to the test. The final false test performs no addition."
+      },
+      {
+        "type": "paragraph",
+        "text": "The trace has four tests but only three iterations. The false test is evidence that this run stops. A list ending at 5 would be incomplete, while a list continuing to 9 would include an addition the loop did not authorise."
+      },
+      {
+        "type": "paragraph",
+        "text": "Write the current value, the test result and the action on every row. Repeated values can matter: if the body does not change the state used by the test, the same true test may occur again. Do not erase these rows simply because they look unhelpful."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/60e08cdb8df4d02cbc2a71efc2c325e166f787ce3ed0353e48d44ae939dbd259",
+        "alt": "Comparison picture for Square: repeat move and turn 4 times; counted loop",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2438883e43ba2b785f80152910a5d1e86c986b10b5e7162cd2331a6b3c674cc2",
+        "alt": "Comparison picture for Pick cards: repeat until pile empty; condition loop",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/f67d5f0cd929fd8f60e5517a3f62f35e0ec0bf3aa4dd8d3784f9e02021218934",
+        "alt": "Comparison picture for No counter update: condition never changes; infinite loop risk",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/8df9ac390b14f3796f051edcc1ff049e626f909b27eb6e88652a2a006d659eaa",
+        "alt": "Comparison picture for Stop too early: one item remains; off-by-one error",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Square  Clue: repeat move and turn 4 times. Meaning: counted loop."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Pick cards  Clue: repeat until pile empty. Meaning: condition loop."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 No counter update  Clue: condition never changes. Meaning: infinite loop risk."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Stop too early  Clue: one item remains. Meaning: off-by-one error."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Repeat forever is not an efficient algorithm unless endless operation is truly the goal and can be stopped safely.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

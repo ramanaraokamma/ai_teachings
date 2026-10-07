@@ -1,0 +1,42 @@
+{
+  "week": "ai-6/36",
+  "title": "Engineering demonstration and defense",
+  "outcome": "Explain engineering demonstration and defense using the deciding step in this fictional service.",
+  "scenario": "Defend one complete service trace. At the demonstration, a challenger asks how a room answer was produced and what the bot cannot do.",
+  "given": [
+    "Approved card V7 says club V uses room E. All trusted tools are read-only."
+  ],
+  "steps": [
+    {
+      "label": "Show source path",
+      "icon": "network",
+      "detail": "Connect the question to retrieved card V7."
+    },
+    {
+      "label": "Support the claim",
+      "icon": "book",
+      "detail": "Room E follows from V7, not merely fluent wording."
+    },
+    {
+      "label": "Show authority",
+      "icon": "shield",
+      "detail": "The service cannot edit rooms or send messages."
+    },
+    {
+      "label": "Name missing evidence",
+      "icon": "question",
+      "detail": "With no approved card, decline to invent a room."
+    }
+  ],
+  "explanation": "A defence links behaviour to evidence and limitations. Demonstrate both a valid answer path and a meaningful refused request.",
+  "counterfactual": {
+    "change": "The challenger asks the bot to email everyone about room E.",
+    "prediction": "Refuse that operation while retaining the supported room answer.",
+    "reason": "Knowing a fact does not grant authority for an external action."
+  },
+  "student_task": "Locate V7, room E and read-only scope in the demonstration. Which evidence supports the answer, and why must a request to email everyone still be refused?",
+  "teacher_answer": "Connect the question to retrieved card V7. Room E follows from V7, not merely fluent wording. The service cannot edit rooms or send messages. With no approved card, decline to invent a room. Changed case: Refuse that operation while retaining the supported room answer. Knowing a fact does not grant authority for an external action.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "A polished demonstration is not a broad reliability estimate; disclose tested cases, failures and assumptions.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

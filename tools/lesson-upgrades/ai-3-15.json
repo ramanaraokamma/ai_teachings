@@ -1,0 +1,43 @@
+{
+  "week": "ai-3/15",
+  "title": "Source Quality",
+  "outcome": "By the end, I can apply source authority and effective dates rather than choosing the newest-looking upload.",
+  "scenario": "A fictional Study Buddy answers which room a club is authorised to use.",
+  "given": [
+    "Signed notice A: Hall 1 from day 1. Signed amendment B references A and changes to Hall 3 effective day 8.",
+    "An old copy of A is reuploaded on day 10. B remains the authoritative amendment. Queries concern day 6 and day 9."
+  ],
+  "steps": [
+    {
+      "label": "Check authority",
+      "icon": "book",
+      "detail": "B is a signed amendment to A, not an unrelated comment."
+    },
+    {
+      "label": "Day 6",
+      "icon": "clock",
+      "detail": "Before effective day 8, authorised room is Hall 1."
+    },
+    {
+      "label": "Day 9",
+      "icon": "clock",
+      "detail": "From day 8 onward, authorised room is Hall 3."
+    },
+    {
+      "label": "Ignore upload shortcut",
+      "icon": "shield",
+      "detail": "Reuploading old A on day 10 does not revoke B."
+    }
+  ],
+  "explanation": "A source’s upload time and the time its rule takes effect answer different questions. Preserve version relationships and the query’s intended date. The current authoritative chain gives a consistent answer to both queries. A later filename or timestamp alone cannot establish that an old record supersedes a signed amendment.",
+  "counterfactual": {
+    "change": "A signed amendment C explicitly revokes B effective day 12 and restores Hall 1.",
+    "prediction": "Day 9 stays Hall 3; day 13 becomes Hall 1.",
+    "reason": "The new authoritative change applies from its stated effective date, not retroactively."
+  },
+  "student_task": "Which source fields must be checked before answering day 9?",
+  "teacher_answer": "The amendment’s authority, reference to A, effective day 8 and queried day 9; the answer is Hall 3.",
+  "project_evidence": "Store Study Buddy source identity, version, authority and effective date, especially for schedules or changing classroom rules.",
+  "limits": "Authority is declared in this fictional case; real conflicting sources may require the responsible owner’s review.",
+  "review_note": "Individually designed fictional worked case, distinct from the reserved assessment. Toy model simplifications, arithmetic and source authority reviewed explicitly."
+}

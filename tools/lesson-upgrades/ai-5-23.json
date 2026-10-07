@@ -1,0 +1,38 @@
+{
+  "week": "ai-5/23",
+  "title": "Training a small image model",
+  "outcome": "By the end, I can explain training a small image model using a traced example and a stated limitation.",
+  "scenario": "Train one tiny image score with a fixed budget and a separately reserved check.",
+  "given": [
+    "Toy brightness difference d=left\u2212right; score=a\u00d7d. Training pair d=2, target 2; start a=0; squared loss; learning rate 1/16; two updates.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "First update",
+      "icon": "code",
+      "detail": "Gradient2(2a-2)\u00d72=-8; new a =  = 0.5, training loss 1."
+    },
+    {
+      "label": "Second update",
+      "icon": "code",
+      "detail": "Gradient at 0.5 is-4; new a =  = 0.75, training loss 0.25."
+    },
+    {
+      "label": "Validation score",
+      "icon": "chart",
+      "detail": "At reserved d1, target 1: prediction 0.75, squared error0.0625."
+    }
+  ],
+  "explanation": "The image feature is a brightness difference, and training adjusts one output weight multiplying it. Each gradient is computed using the current prediction before the next update. In this example, the rate halves the distance to the training optimum each time. More updates reduce this training loss, but choosing a budget still requires separate validation evidence.",
+  "counterfactual": {
+    "change": "Double the two-update budget while keeping the same training rule.",
+    "prediction": "Next a values 0.875 and 0.9375; training loss falls to 0.015625.",
+    "reason": "Each update halves the distance to the training optimum1 in this toy system."
+  },
+  "student_task": "Does lower training loss alone establish that four updates generalise better? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "No. Record the extra budget and score suitable validation evidence; use an untouched final evaluation after selecting a schedule. Changed-case check: Next a values 0.875 and 0.9375; training loss falls to 0.015625. Each update halves the distance to the training optimum1 in this toy system.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "This scalar brightness model is a transparent toy image task, not a claim that a full image network was run.",
+  "review_note": "Reviewed Training a small image model against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation."
+}

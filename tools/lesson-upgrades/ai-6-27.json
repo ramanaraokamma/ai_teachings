@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/27",
+  "title": "Human escalation workflows",
+  "outcome": "Explain human escalation workflows using the deciding step in this fictional service.",
+  "scenario": "A useful human handoff. A learner asks whether a damaged laboratory bottle is safe; the bot handles lesson notes only.",
+  "given": [
+    "The contract excludes equipment certification. An assigned adult supervisor handles equipment concerns."
+  ],
+  "steps": [
+    {
+      "label": "Recognise boundary",
+      "icon": "shield",
+      "detail": "The requested judgement is outside this service’s authority."
+    },
+    {
+      "label": "Route the question",
+      "icon": "person",
+      "detail": "Give the designated supervisor route without inventing a verdict."
+    },
+    {
+      "label": "Preserve reported facts",
+      "icon": "book",
+      "detail": "Record the concern as reported, not as a confirmed diagnosis."
+    }
+  ],
+  "explanation": "Escalation needs an appropriate person and accurate context. Model confidence cannot replace required authority or physical inspection.",
+  "counterfactual": {
+    "change": "No supervisor is currently reachable.",
+    "prediction": "State unresolved status and use the institution’s approved waiting procedure.",
+    "reason": "Lack of a human reply does not expand the bot’s authority."
+  },
+  "student_task": "Identify the exact service boundary in the bottle question. What accurate information belongs in the supervisor handoff, and what remains unresolved if nobody is reachable?",
+  "teacher_answer": "The requested judgement is outside this service’s authority. Give the designated supervisor route without inventing a verdict. Record the concern as reported, not as a confirmed diagnosis. Changed case: State unresolved status and use the institution’s approved waiting procedure. Lack of a human reply does not expand the bot’s authority.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "This is a fictional workflow, not a real laboratory safety procedure; institutions define authorised responses.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

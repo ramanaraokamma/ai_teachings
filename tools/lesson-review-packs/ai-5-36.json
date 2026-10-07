@@ -1,0 +1,167 @@
+{
+  "week": "ai-5/36",
+  "title": "Neural network experiment defense",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Defend a network experiment using traceable evidence",
+    "Separate selection, final evaluation and revision claims",
+    "Answer a challenge with a calculation and a bounded conclusion"
+  ],
+  "primary_topic": "Neural network experiment defense",
+  "vocabulary": [
+    [
+      "Defense",
+      "An explanation of methods and claims supported by inspectable evidence"
+    ],
+    [
+      "Evidence chain",
+      "The connection from inputs and procedure through raw outputs to a reported claim"
+    ],
+    [
+      "Limitation",
+      "A condition restricting what evidence can establish"
+    ],
+    [
+      "Reproduction",
+      "Repeating the documented procedure to check reported outputs"
+    ]
+  ],
+  "worked_example": {
+    "title": "Respond to challenges with reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Challenge: \u201cYour validation error was zero, so why did the final test fail on negative targets?\u201d Response: validation contained only positive inputs; the output max(0,a*x) cannot be negative. The final negative cases expose a coverage and architecture limitation. The overall criterion still passed, but that does not remove the failure."
+      },
+      {
+        "type": "paragraph",
+        "text": "Challenge: \u201cIs a neural network better than linear regression?\u201d Response: the supplied baseline was a fixed initial weight, not a fitted line. The evidence establishes improvement relative to that baseline only. A fitted signed line is a relevant additional comparison and needs a documented, fair evaluation. Challenge: \u201cWas the candidate faster?\u201d Response: no timing evidence was collected, so speed is unmeasured."
+      }
+    ]
+  },
+  "guided_practice": {
+    "title": "Defend the result",
+    "prompt": "State the validation selection and frozen final comparison using their correct metrics and scopes.",
+    "answer": "Teacher explanation: Rate 0.2 selected a = 2 with validation MSE 0 versus 0.78125 on two positive rows. Frozen final MSE was 5 versus baseline 20.25 on four constructed rows; negative-input candidate MSE was 10 on two rows.",
+    "lines": 6,
+    "id": "W2"
+  },
+  "independent_case": {
+    "title": "Defend a new record independently",
+    "task": "A separate experiment compares candidates C1 and C2 on two validation rows: MSE 1.5 and 1.0. The written rule selects lower MSE. After freezing C2, four fresh final rows give baseline squared errors 4,9,1,2 and C2 squared errors 1,1,2,0. Compute final MSE and relative reduction. Two condition-B rows are the last two rows; compare baseline and candidate MSE there. State what this record supports and what is unmeasured.",
+    "answer": "Teacher explanation: Select C2. Baseline final MSE 16/4 = 4; candidate MSE 4/4 = 1; absolute reduction 3 and relative reduction 75%. Condition B baseline MSE (1+2)/2 = 1.5 and candidate MSE (2+0)/2 = 1, though one condition-B row worsened from 1 to 2. The record supports lower MSE on these four final rows, not universal reliability or a classification-accuracy percentage. Speed and energy are unmeasured.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A polished demonstration is an evaluation",
+      "A demonstration needs traceable data roles, metrics and raw results to support a performance claim."
+    ],
+    [
+      "Relative MSE reduction is accuracy",
+      "Regression MSE and classification accuracy are different metrics."
+    ],
+    [
+      "A limitation invalidates every result",
+      "A limitation bounds a result; lower error on the measured rows can be true without a universal claim."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "table",
+        "rows": [
+          [
+            "Stage",
+            "Evidence",
+            "Supported statement"
+          ],
+          [
+            "Validation selection",
+            "Two positive rows; MSE 0 versus 0.78125",
+            "Selected rate 0.2 by written rule"
+          ],
+          [
+            "Frozen final comparison",
+            "Four rows; MSE 5 versus 20.25",
+            "Lower MSE than initial-weight baseline on these rows"
+          ],
+          [
+            "Condition check",
+            "Two negative rows; candidate MSE 10",
+            "Nonnegative output fails to represent negative targets"
+          ],
+          [
+            "Proposed revision",
+            "Signed output on revealed cases",
+            "A possible representational repair, not new final evidence"
+          ]
+        ]
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Keep the evidence roles separate",
+        "columns": [
+          "Plan or input",
+          "Procedure",
+          "Permitted conclusion"
+        ],
+        "rows": [
+          [
+            "Question and settings",
+            "Replay calculations",
+            "Procedure can be checked"
+          ],
+          [
+            "Frozen final predictions",
+            "Compare same four rows",
+            "Bounded baseline improvement"
+          ],
+          [
+            "Known failures and changes",
+            "Preserve old results",
+            "Revision still needs evaluation"
+          ]
+        ],
+        "caption": "Every claim has an evidence source and a limit. A complete record is not a substitute for broader data."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "State the validation selection and frozen final comparison using their correct metrics and scopes."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

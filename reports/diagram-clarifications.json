@@ -1,0 +1,812 @@
+[
+  {
+    "source": "ai-5/13",
+    "before": "On six development cases P passes cases 1, 2, 3, 4; Q passes 1, 2, 3, 5, 6. Missing-approval cases are 4 and",
+    "after": "On six development cases P passes cases 1, 2, 3, 4; Q passes 1, 2, 3, 5, 6. Missing-approval cases are 4 and 6. Compare totals and condition results."
+  },
+  {
+    "source": "ai-5/14",
+    "before": "Source R says room B seats 12 and the meeting starts at 15:00. Generated answer says",
+    "after": "Source R says room B seats 12 and the meeting starts at 15:00. Generated answer says B seats 20, starts at 15:00 and includes free lunch."
+  },
+  {
+    "source": "ai-5/14",
+    "before": "Split an answer into atomic claims. For each, record the exact source passage, support status and",
+    "after": "Split an answer into atomic claims. For each, record the exact source passage, support status and any needed calculation. Mark unsupported and contradicted claims separately; do not repair them by inventing sources."
+  },
+  {
+    "source": "ai-5/14",
+    "before": "Capacity 20 is contradicted; 15:00 is supported; free lunch is unsupported. One of three claims has support. The",
+    "after": "Capacity 20 is contradicted; 15:00 is supported; free lunch is unsupported. One of three claims has support. The missing lunch fact is not evidence of no lunch."
+  },
+  {
+    "source": "ai-5/15",
+    "before": "A fictional poster requires exactly three labelled circles. Generated image shows four circles and one unreadable",
+    "after": "A fictional poster requires exactly three labelled circles. Generated image shows four circles and one unreadable label. A caption calls it a photograph of a real lesson."
+  },
+  {
+    "source": "ai-5/15",
+    "before": "It fails count and label criteria; the photograph claim is unsupported. Record it as a generated fictional illustration",
+    "after": "It fails count and label criteria; the photograph claim is unsupported. Record it as a generated fictional illustration and revise or reject before use."
+  },
+  {
+    "source": "ai-5/16",
+    "before": "Audio transcript reads fifteen boxes; a clear written inventory says fifty boxes. The original audio is",
+    "after": "Audio transcript reads fifteen boxes; a clear written inventory says fifty boxes. The original audio is unavailable and the assistant reports fifteen as certain."
+  },
+  {
+    "source": "ai-5/16",
+    "before": "Track source modality, segment/time references, transcription, interpretation and final claims separately. Compare conflicting evidence without assuming",
+    "after": "Track source modality, segment/time references, transcription, interpretation and final claims separately. Compare conflicting evidence without assuming one modality always wins. Ask for clarification when the task needs unresolved information."
+  },
+  {
+    "source": "ai-5/16",
+    "before": "There is an unresolved quantity conflict and no audio replay. Preserve both sources and ask the responsible person;",
+    "after": "There is an unresolved quantity conflict and no audio replay. Preserve both sources and ask the responsible person; certainty is unsupported."
+  },
+  {
+    "source": "ai-5/17",
+    "before": "Index v1 contains notice N1 for room A. Corpus v2 supersedes it with N2 for room",
+    "after": "Index v1 contains notice N1 for room A. Corpus v2 supersedes it with N2 for room B, but the query still returns N1. What can be reported?"
+  },
+  {
+    "source": "ai-5/17",
+    "before": "Assign stable document IDs, versions and permitted access before indexing. Retrieve only authorised records. Preserve source",
+    "after": "Assign stable document IDs, versions and permitted access before indexing. Retrieve only authorised records. Preserve source references and define behaviour when a document is missing, outdated or access-restricted."
+  },
+  {
+    "source": "ai-5/17",
+    "before": "The stale index returns old evidence. It cannot establish current room approval; refresh against authorised corpus v2 or",
+    "after": "The stale index returns old evidence. It cannot establish current room approval; refresh against authorised corpus v2 or report unresolved freshness."
+  },
+  {
+    "source": "ai-5/21",
+    "before": "Current source P approves room C; Q lists C capacity 10. Draft says room C is",
+    "after": "Current source P approves room C; Q lists C capacity 10. Draft says room C is approved, seats 10 and offers lunch."
+  },
+  {
+    "source": "ai-5/21",
+    "before": "Build a claim-evidence table before final wording. Preserve source versions and qualifiers, omit unsupported claims or",
+    "after": "Build a claim-evidence table before final wording. Preserve source versions and qualifiers, omit unsupported claims or explicitly state the gap, then validate the answer against the table."
+  },
+  {
+    "source": "ai-5/21",
+    "before": "Approval and capacity are supported by P and Q; lunch lacks evidence. A grounded answer reports the first",
+    "after": "Approval and capacity are supported by P and Q; lunch lacks evidence. A grounded answer reports the first two claims and does not invent lunch."
+  },
+  {
+    "source": "ai-5/22",
+    "before": "An answer has four factual claims. Three have citations, but only two are supported by their",
+    "after": "An answer has four factual claims. Three have citations, but only two are supported by their cited passages. All links exist."
+  },
+  {
+    "source": "ai-5/22",
+    "before": "Claim support is 2/4=50%; citation presence is 3/4=75%; link existence among three citations is 3/3. These measure different",
+    "after": "Claim support is 2/4=50%; citation presence is 3/4=75%; link existence among three citations is 3/3. These measure different failures."
+  },
+  {
+    "source": "ai-5/24",
+    "before": "Notice N says room A from Monday. Signed amendment M references N and changes to B",
+    "after": "Notice N says room A from Monday. Signed amendment M references N and changes to B effective Wednesday. Query asks Tuesday, then Thursday."
+  },
+  {
+    "source": "ai-5/24",
+    "before": "For this toy task a signed amendment supersedes the referenced original from its effective time. Keep",
+    "after": "For this toy task a signed amendment supersedes the referenced original from its effective time. Keep both records. A newer timestamp alone has no authority unless the policy grants it."
+  },
+  {
+    "source": "ai-5/26",
+    "before": "For lookup_room accept exactly room_id as a nonempty string; return found plus capacity or a not-found",
+    "after": "For lookup_room accept exactly room_id as a nonempty string; return found plus capacity or a not-found result. It is read-only. Reject unknown arguments and do not replace missing values with invented facts."
+  },
+  {
+    "source": "ai-5/26",
+    "before": "Reject the extra field under the closed input contract. The lookup tool provides no booking authority even if",
+    "after": "Reject the extra field under the closed input contract. The lookup tool provides no booking authority even if the requested room exists."
+  },
+  {
+    "source": "ai-5/27",
+    "before": "Turn 1 selects room A; turn 2 corrects to room B. A later answer uses A",
+    "after": "Turn 1 selects room A; turn 2 corrects to room B. A later answer uses A from an older summary."
+  },
+  {
+    "source": "ai-5/27",
+    "before": "This classroom assistant keeps an approved room ID only for the current session. A later correction",
+    "after": "This classroom assistant keeps an approved room ID only for the current session. A later correction replaces the active value but retains an audit event until session end. Do not persist private text merely because it appeared in conversation."
+  },
+  {
+    "source": "ai-5/27",
+    "before": "Active state should be B under the correction rule. The summary is stale; regenerate or invalidate it and",
+    "after": "Active state should be B under the correction rule. The summary is stale; regenerate or invalidate it and preserve the correction audit within the declared session lifetime."
+  },
+  {
+    "source": "ai-5/28",
+    "before": "For this fictional policy, licence L permits classroom display with attribution but forbids public redistribution. Licence",
+    "after": "For this fictional policy, licence L permits classroom display with attribution but forbids public redistribution. Licence M permits adaptation and redistribution with attribution. Unknown permission means seek approval or choose a permitted alternative; this exercise is not a legal ruling."
+  },
+  {
+    "source": "ai-5/28",
+    "before": "A is not permitted for this use under L. B is permitted under the supplied M terms with",
+    "after": "A is not permitted for this use under L. B is permitted under the supplied M terms with attribution. Keep licence version and provenance."
+  },
+  {
+    "source": "ai-5/29",
+    "before": "Define the task, relevant groups, labels and denominators before comparing. Use fictional, non-identifying records. Evaluate quality",
+    "after": "Define the task, relevant groups, labels and denominators before comparing. Use fictional, non-identifying records. Evaluate quality and fallback outcomes separately; preserve sample sizes and unresolved explanations."
+  },
+  {
+    "source": "ai-5/29",
+    "before": "Rates 90% and 60%; gap 30 percentage points. Investigate case mix, retrieval coverage and annotation rules before attributing",
+    "after": "Rates 90% and 60%; gap 30 percentage points. Investigate case mix, retrieval coverage and annotation rules before attributing cause."
+  },
+  {
+    "source": "ai-5/30",
+    "before": "Coordinator approves draft v1 for room B. Assistant changes room to C in v2 and submits",
+    "after": "Coordinator approves draft v1 for room B. Assistant changes room to C in v2 and submits using the old approval."
+  },
+  {
+    "source": "ai-5/30",
+    "before": "For this fictional workflow the assistant drafts a room request but only the coordinator can approve",
+    "after": "For this fictional workflow the assistant drafts a room request but only the coordinator can approve and submit it. Review packets include sources, uncertainty, requested action and the exact version. Any material change requires new approval."
+  },
+  {
+    "source": "ai-5/30",
+    "before": "The submission violates version-bound approval. Preserve v1 approval, request review of v2 and prevent submission until its exact",
+    "after": "The submission violates version-bound approval. Preserve v1 approval, request review of v2 and prevent submission until its exact action is approved."
+  },
+  {
+    "source": "ai-5/32",
+    "before": "Ten cases include six answerable and four missing-evidence cases. System answers five answerable correctly and abstains",
+    "after": "Ten cases include six answerable and four missing-evidence cases. System answers five answerable correctly and abstains appropriately on three missing cases."
+  },
+  {
+    "source": "ai-5/32",
+    "before": "Record case ID, evidence version, expected claims or fallback, permitted actions and scoring rubric. Separate development",
+    "after": "Record case ID, evidence version, expected claims or fallback, permitted actions and scoring rubric. Separate development from final cases. Aggregate metrics only after checking required conditions individually."
+  },
+  {
+    "source": "ai-5/32",
+    "before": "Answer correctness 5/6; appropriate fallback 3/4; combined contract passes 8/10 if each case has one required outcome. Different",
+    "after": "Answer correctness 5/6; appropriate fallback 3/4; combined contract passes 8/10 if each case has one required outcome. Different denominators answer different questions."
+  },
+  {
+    "source": "ai-5/33",
+    "before": "Student room assistant corpus contains public register P, teacher-only guide T and current approval A. It",
+    "after": "Student room assistant corpus contains public register P, teacher-only guide T and current approval A. It must report approved room capacity or needs_review."
+  },
+  {
+    "source": "ai-5/33",
+    "before": "Specify the user question, source authority, access, output/fallback contract and evaluation plan. Freeze corpus IDs and",
+    "after": "Specify the user question, source authority, access, output/fallback contract and evaluation plan. Freeze corpus IDs and split cases before implementation. Keep teacher material out of student retrieval."
+  },
+  {
+    "source": "ai-5/33",
+    "before": "Authorised corpus contains P and A, excluding T. Baseline manually checks same-room current approval and capacity. Reserve complete,",
+    "after": "Authorised corpus contains P and A, excluding T. Baseline manually checks same-room current approval and capacity. Reserve complete, missing and conflicting cases before development."
+  },
+  {
+    "source": "ai-5/34",
+    "before": "Request room B; retrieved approval names B but register names C. Draft gives capacity 10 from",
+    "after": "Request room B; retrieved approval names B but register names C. Draft gives capacity 10 from C."
+  },
+  {
+    "source": "ai-5/34",
+    "before": "A supported response requires current matching approval and register records. Any retrieval or validation failure gives",
+    "after": "A supported response requires current matching approval and register records. Any retrieval or validation failure gives needs_review with null claims. The classroom implementation performs no booking or external action."
+  },
+  {
+    "source": "ai-5/34",
+    "before": "Same-room support fails before or during semantic validation. Return needs_review with null claims; the draft capacity is unsupported",
+    "after": "Same-room support fails before or during semantic validation. Return needs_review with null claims; the draft capacity is unsupported for B."
+  },
+  {
+    "source": "ai-5/35",
+    "before": "On ten final cases baseline passes seven and assistant eight. One assistant failure exposes a teacher-only",
+    "after": "On ten final cases baseline passes seven and assistant eight. One assistant failure exposes a teacher-only source to a student."
+  },
+  {
+    "source": "ai-5/35",
+    "before": "Report paired case outcomes, condition rates and permission violations separately. A critical access failure can block",
+    "after": "Report paired case outcomes, condition rates and permission violations separately. A critical access failure can block release even when overall pass rate rises. Never overwrite the original final run."
+  },
+  {
+    "source": "ai-5/35",
+    "before": "Rates 70% and 80%, gain 10 percentage points. The access violation blocks the declared release policy; aggregate improvement",
+    "after": "Rates 70% and 80%, gain 10 percentage points. The access violation blocks the declared release policy; aggregate improvement does not excuse it."
+  },
+  {
+    "source": "ai-5/36",
+    "before": "Link each claim to a recorded result. State the distinction between retrieval relevance, claim support, fallback",
+    "after": "Link each claim to a recorded result. State the distinction between retrieval relevance, claim support, fallback and permissions. Give a reproduction packet and answer challenges without inventing missing measurements."
+  },
+  {
+    "source": "ai-5/36",
+    "before": "Retrieval rate 90% and support rate 70% differ. Action trace supports zero actions in that run; no timing",
+    "after": "Retrieval rate 90% and support rate 70% differ. Action trace supports zero actions in that run; no timing evidence supports speed. Correct the full-correctness and speed claims."
+  },
+  {
+    "source": "ai-6/1",
+    "before": "A request asks for Tuesday meeting time and to move it to Wednesday. The public schedule",
+    "after": "A request asks for Tuesday meeting time and to move it to Wednesday. The public schedule lists Tuesday 16:00."
+  },
+  {
+    "source": "ai-6/1",
+    "before": "The fictional student timetable service reads a public schedule and returns a meeting time or review",
+    "after": "The fictional student timetable service reads a public schedule and returns a meeting time or review status. It cannot edit schedules or email users. Test success and refusal before adding model behaviour."
+  },
+  {
+    "source": "ai-6/10",
+    "before": "Load versioned cases, validate expected outcomes, execute the frozen system, store case-level results and compute declared",
+    "after": "Load versioned cases, validate expected outcomes, execute the frozen system, store case-level results and compute declared denominators. Reject missing results rather than silently counting them as success."
+  },
+  {
+    "source": "ai-6/10",
+    "before": "Completed-case rate 4/5=80%; coverage 5/6. Do not report 4/6 as completed accuracy without declaring that separate policy; skipped",
+    "after": "Completed-case rate 4/5=80%; coverage 5/6. Do not report 4/6 as completed accuracy without declaring that separate policy; skipped remains unassessed."
+  },
+  {
+    "source": "ai-6/12",
+    "before": "For this policy log trace ID, stage, status, duration and error category; do not log passcodes,",
+    "after": "For this policy log trace ID, stage, status, duration and error category; do not log passcodes, student text or teacher answers. Restrict access and declare retention."
+  },
+  {
+    "source": "ai-6/13",
+    "before": "States are ready, looking_up, review, done. ready may start lookup; lookup may finish done or request review; review may",
+    "after": "States are ready, looking_up, review, done. ready may start lookup; lookup may finish done or request review; review may finish done after authorised evidence. done is terminal. Maximum two lookup attempts."
+  },
+  {
+    "source": "ai-6/13",
+    "before": "review -> looking_up is not allowed by this declared transition table, even if total attempts is two. Reject",
+    "after": "review -> looking_up is not allowed by this declared transition table, even if total attempts is two. Reject the transition or explicitly redesign and retest the table."
+  },
+  {
+    "source": "ai-6/14",
+    "before": "For read-only reporting, allowed plan is validate -> retrieve -> verify -> answer. If retrieval lacks",
+    "after": "For read-only reporting, allowed plan is validate -> retrieve -> verify -> answer. If retrieval lacks evidence, route to review. Reject write or send steps before they run."
+  },
+  {
+    "source": "ai-6/15",
+    "before": "The mock submission requires approval for request version v1 and destination D. Store key -> committed",
+    "after": "The mock submission requires approval for request version v1 and destination D. Store key -> committed result. Reusing the same key with the same payload returns that result; the same key with different payload is rejected."
+  },
+  {
+    "source": "ai-6/16",
+    "before": "Three attempts each time out after 4 seconds with gaps 1 and 2. A fourth is",
+    "after": "Three attempts each time out after 4 seconds with gaps 1 and 2. A fourth is proposed."
+  },
+  {
+    "source": "ai-6/16",
+    "before": "Retry only declared transient failures. Use at most three attempts with waiting gaps 1 and 2",
+    "after": "Retry only declared transient failures. Use at most three attempts with waiting gaps 1 and 2 seconds; each attempt may run at most 4 seconds. Worst-case elapsed bound excluding overhead is 3*4+1+2=15 seconds."
+  },
+  {
+    "source": "ai-6/16",
+    "before": "Budget is exhausted after 15 seconds under the model; reject fourth attempt. A late side-effect result must still",
+    "after": "Budget is exhausted after 15 seconds under the model; reject fourth attempt. A late side-effect result must still be reconciled."
+  },
+  {
+    "source": "ai-6/17",
+    "before": "The mock ledger records prepared, committed or unknown per operation ID. Retry a committed operation by returning",
+    "after": "The mock ledger records prepared, committed or unknown per operation ID. Retry a committed operation by returning its result; reconcile unknown status instead of assuming failure. Preserve compensation as a separate authorised action."
+  },
+  {
+    "source": "ai-6/17",
+    "before": "Lookup the operation ID and return the committed booking; do not create a second booking. A lost acknowledgement",
+    "after": "Lookup the operation ID and return the committed booking; do not create a second booking. A lost acknowledgement does not undo the effect."
+  },
+  {
+    "source": "ai-6/18",
+    "before": "For the toy lookup accept room IDs matching one uppercase letter plus one digit. Perform exact",
+    "after": "For the toy lookup accept room IDs matching one uppercase letter plus one digit. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters."
+  },
+  {
+    "source": "ai-6/19",
+    "before": "The fictional job may read its fixture directory, write its output directory, use no network and run for",
+    "after": "The fictional job may read its fixture directory, write its output directory, use no network and run for at most 2 seconds with at most 10 queued tasks. Reject excess work before starting it."
+  },
+  {
+    "source": "ai-6/2",
+    "before": "Trace request validator -> role filter -> source lookup -> response validator -> result. Sources enter",
+    "after": "Trace request validator -> role filter -> source lookup -> response validator -> result. Sources enter as data, not control instructions. Reject invalid requests before any downstream lookup."
+  },
+  {
+    "source": "ai-6/2",
+    "before": "The data path crosses the access boundary incorrectly. Move the role filter before source lookup/context construction; hiding a",
+    "after": "The data path crosses the access boundary incorrectly. Move the role filter before source lookup/context construction; hiding a later citation is insufficient."
+  },
+  {
+    "source": "ai-6/20",
+    "before": "Retain age6; delete content ages7 and9 from primary and cache under the policy. Retain only allowed audit metadata;",
+    "after": "Retain age6; delete content ages7 and9 from primary and cache under the policy. Retain only allowed audit metadata; backups need their stated expiry process."
+  },
+  {
+    "source": "ai-6/21",
+    "before": "Cache key includes query, role, corpus version and procedure version. Entry valid only while age<TTL. At exact TTL",
+    "after": "Cache key includes query, role, corpus version and procedure version. Entry valid only while age<TTL. At exact TTL it expires. Teacher and student results never share a role-agnostic key."
+  },
+  {
+    "source": "ai-6/22",
+    "before": "A queued job is pending, running, completed or failed. Acknowledge only after the declared durable completion step. A",
+    "after": "A queued job is pending, running, completed or failed. Acknowledge only after the declared durable completion step. A repeated completed ID returns its prior result; unknown status needs reconciliation."
+  },
+  {
+    "source": "ai-6/22",
+    "before": "Consult durable job status; return committed result and acknowledge without repeating the effect. Delivery count is not effect",
+    "after": "Consult durable job status; return committed result and acknowledge without repeating the effect. Delivery count is not effect count."
+  },
+  {
+    "source": "ai-6/23",
+    "before": "For the classroom mock ENV selects a separate fixture store and secret namespace. Validate allowed environment",
+    "after": "For the classroom mock ENV selects a separate fixture store and secret namespace. Validate allowed environment names. A staging run cannot use production write credentials."
+  },
+  {
+    "source": "ai-6/24",
+    "before": "Version v2 writes schema2. Version v1 reads only schema1. A rollback to v1 after v2 writes",
+    "after": "Version v2 writes schema2. Version v1 reads only schema1. A rollback to v1 after v2 writes data cannot safely proceed without migration or a compatible reader."
+  },
+  {
+    "source": "ai-6/24",
+    "before": "Code-only rollback is incompatible with stored schema2. Use the tested recovery plan or compatible migration; preserve data and",
+    "after": "Code-only rollback is incompatible with stored schema2. Use the tested recovery plan or compatible migration; preserve data and failure evidence."
+  },
+  {
+    "source": "ai-6/25",
+    "before": "For each window report eligible counts, passes, missing outcomes and condition mix. Alert when success falls below the",
+    "after": "For each window report eligible counts, passes, missing outcomes and condition mix. Alert when success falls below the toy80% threshold; investigate before attributing cause."
+  },
+  {
+    "source": "ai-6/25",
+    "before": "90% versus70%, drop20 percentage points; new window breaches80%. Check case mix, data versions and logs before asserting model drift as",
+    "after": "90% versus70%, drop20 percentage points; new window breaches80%. Check case mix, data versions and logs before asserting model drift as the cause."
+  },
+  {
+    "source": "ai-6/26",
+    "before": "At09:00 corpus updates; 09:05 stale cache response; 09:06 cache disabled. Team says model weights changed, but weight version",
+    "after": "At09:00 corpus updates; 09:05 stale cache response; 09:06 cache disabled. Team says model weights changed, but weight version is unchanged."
+  },
+  {
+    "source": "ai-6/26",
+    "before": "Record timestamps, versions, requests, authorised actions and outcomes with minimised logs. Separate immediate containment from diagnosis. Compare candidate explanations",
+    "after": "Record timestamps, versions, requests, authorised actions and outcomes with minimised logs. Separate immediate containment from diagnosis. Compare candidate explanations against evidence."
+  },
+  {
+    "source": "ai-6/26",
+    "before": "Weight-change claim is contradicted by the version record. Stale cache is a supported candidate explanation; preserve timeline and",
+    "after": "Weight-change claim is contradicted by the version record. Stale cache is a supported candidate explanation; preserve timeline and test it with controlled reproduction."
+  },
+  {
+    "source": "ai-6/27",
+    "before": "Toy workflow routes conflicting room approval to coordinator with source IDs and requested decision. While awaiting",
+    "after": "Toy workflow routes conflicting room approval to coordinator with source IDs and requested decision. While awaiting review the assistant returns needs_review and performs no booking."
+  },
+  {
+    "source": "ai-6/28",
+    "before": "An invalid room is marked only by a red border; no text error or associated label",
+    "after": "An invalid room is marked only by a red border; no text error or associated label is provided."
+  },
+  {
+    "source": "ai-6/28",
+    "before": "A form provides visible labels, keyboard access, associated error text and a non-colour status indicator. Test at zoom",
+    "after": "A form provides visible labels, keyboard access, associated error text and a non-colour status indicator. Test at zoom and with keyboard. Do not treat automated checks as a complete user evaluation."
+  },
+  {
+    "source": "ai-6/28",
+    "before": "Colour alone does not communicate the failure to all users. Add labelled error text and an actionable correction;",
+    "after": "Colour alone does not communicate the failure to all users. Add labelled error text and an actionable correction; retain keyboard navigation."
+  },
+  {
+    "source": "ai-6/29",
+    "before": "Use the same cases and environment; record every duration and success. For a simple median sort",
+    "after": "Use the same cases and environment; record every duration and success. For a simple median sort values and average the middle pair for even counts. Keep failed requests visible."
+  },
+  {
+    "source": "ai-6/29",
+    "before": "A mean3, median1; B mean2, median2. B lowers mean but A has lower median; show the9-second tail instead of declaring",
+    "after": "A mean3, median1; B mean2, median2. B lowers mean but A has lower median; show the9-second tail instead of declaring one universal winner."
+  },
+  {
+    "source": "ai-6/3",
+    "before": "Accept exactly room_id as a nonempty string and requested_count as a nonnegative integer excluding bool. Reject",
+    "after": "Accept exactly room_id as a nonempty string and requested_count as a nonnegative integer excluding bool. Reject extra fields, missing fields and wrong types before processing."
+  },
+  {
+    "source": "ai-6/3",
+    "before": "Boolean is an int subclass in Python but excluded by this contract; use type(value) is int and validate",
+    "after": "Boolean is an int subclass in Python but excluded by this contract; use type(value) is int and validate nonnegative range."
+  },
+  {
+    "source": "ai-6/30",
+    "before": "For the classroom service identify restricted guides, session secrets and student content. Test denied roles, unexpected fields, source injection",
+    "after": "For the classroom service identify restricted guides, session secrets and student content. Test denied roles, unexpected fields, source injection and minimised logging without real credentials."
+  },
+  {
+    "source": "ai-6/30",
+    "before": "Access remains broken through the cache path. Review every storage/return path and assert restricted data never reaches student",
+    "after": "Access remains broken through the cache path. Review every storage/return path and assert restricted data never reaches student output/context."
+  },
+  {
+    "source": "ai-6/31",
+    "before": "Use fictional records and allowed test routes. Define a target contract violation, record the exact case, observe action/data",
+    "after": "Use fictional records and allowed test routes. Define a target contract violation, record the exact case, observe action/data traces and preserve a reproducible report. Do not touch external systems."
+  },
+  {
+    "source": "ai-6/31",
+    "before": "Boundary fails at the attempted action despite refusal text. Report exact fixture, permissions and trace; block tool execution through",
+    "after": "Boundary fails at the attempted action despite refusal text. Report exact fixture, permissions and trace; block tool execution through application scope."
+  },
+  {
+    "source": "ai-6/32",
+    "before": "A runbook names versions, required non-secret configuration, secret key names, health checks, release/rollback dependencies, alerts and owners. Test it with a",
+    "after": "A runbook names versions, required non-secret configuration, secret key names, health checks, release/rollback dependencies, alerts and owners. Test it with a fresh operator and fictional fixtures."
+  },
+  {
+    "source": "ai-6/33",
+    "before": "Room A has approval and capacity12; room B lacks approval; teacher guide T is restricted. Student",
+    "after": "Room A has approval and capacity12; room B lacks approval; teacher guide T is restricted. Student requests each."
+  },
+  {
+    "source": "ai-6/34",
+    "before": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads",
+    "after": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur."
+  },
+  {
+    "source": "ai-6/34",
+    "before": "Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result",
+    "after": "Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace. Preserve failed fixtures for regression checks."
+  },
+  {
+    "source": "ai-6/34",
+    "before": "All four meet their expected condition if responses and traces agree. Denial/review are successful contract outcomes, not automatic test",
+    "after": "All four meet their expected condition if responses and traces agree. Denial/review are successful contract outcomes, not automatic test failures."
+  },
+  {
+    "source": "ai-6/35",
+    "before": "90% ordinary threshold met but rollback evidence missing, so release is not ready. Absence of a failure report is",
+    "after": "90% ordinary threshold met but rollback evidence missing, so release is not ready. Absence of a failure report is not a passed rehearsal."
+  },
+  {
+    "source": "ai-6/36",
+    "before": "Present requirements, architecture, contracts, permissions, evaluation, resource measurements and recovery. Show one supported case, one legitimate review and one denied operation. State",
+    "after": "Present requirements, architecture, contracts, permissions, evaluation, resource measurements and recovery. Show one supported case, one legitimate review and one denied operation. State what was mocked and what remains untested."
+  },
+  {
+    "source": "ai-6/36",
+    "before": "The demo supports the three fixture behaviours only. Real availability, resource limits and broader security remain untested; preserve the",
+    "after": "The demo supports the three fixture behaviours only. Real availability, resource limits and broader security remain untested; preserve the mock boundary."
+  },
+  {
+    "source": "ai-6/4",
+    "before": "The toy service reads DATA_VERSION from configuration and a signing secret from server-only input. Validate required",
+    "after": "The toy service reads DATA_VERSION from configuration and a signing secret from server-only input. Validate required settings at startup and fail clearly if absent; do not substitute a published default secret."
+  },
+  {
+    "source": "ai-6/4",
+    "before": "It risks exposing secrets unrelated to the error. Report the missing key name without values and validate only",
+    "after": "It risks exposing secrets unrelated to the error. Report the missing key name without values and validate only required fields."
+  },
+  {
+    "source": "ai-6/5",
+    "before": "Use trusted session roles, never a role claimed inside user JSON. Student may read student resources;",
+    "after": "Use trusted session roles, never a role claimed inside user JSON. Student may read student resources; teacher may read both. Unauthenticated requests are denied."
+  },
+  {
+    "source": "ai-6/6",
+    "before": "A reporting assistant may lookup public rooms but may not write records, send messages or read",
+    "after": "A reporting assistant may lookup public rooms but may not write records, send messages or read teacher notes. Check actor, operation and resource before executing a proposed call."
+  },
+  {
+    "source": "ai-6/7",
+    "before": "Define remaining(capacity, used)=capacity-used for integer inputs satisfying 0<=used<=capacity. Invalid types/ranges raise an explicit validation error. Test zero",
+    "after": "Define remaining(capacity, used)=capacity-used for integer inputs satisfying 0<=used<=capacity. Invalid types/ranges raise an explicit validation error. Test zero and equality boundaries."
+  },
+  {
+    "source": "ai-6/8",
+    "before": "Use fixed evidence and rubric per case. Require supported room/capacity, valid schema and no actions. Repeats",
+    "after": "Use fixed evidence and rubric per case. Require supported room/capacity, valid schema and no actions. Repeats estimate observed variation for this case; they are not additional independent users."
+  },
+  {
+    "source": "ai-6/9",
+    "before": "A student requests a teacher source; test response is denied, but a recorded lookup call read",
+    "after": "A student requests a teacher source; test response is denied, but a recorded lookup call read the teacher file."
+  },
+  {
+    "source": "ai-6/9",
+    "before": "Trace request validation, session permission, lookup and output validation together. Include absent sources and failing dependencies;",
+    "after": "Trace request validation, session permission, lookup and output validation together. Include absent sources and failing dependencies; verify that denied requests never invoke restricted lookup."
+  },
+  {
+    "source": "ai-6/9",
+    "before": "The test exposes a hidden boundary failure despite the denied final response. Assert both response and call trace;",
+    "after": "The test exposes a hidden boundary failure despite the denied final response. Assert both response and call trace; deny before lookup."
+  },
+  {
+    "source": "ai-7/1",
+    "before": "For fictional classroom retrieval, ask whether method B returns more relevant records than lexical baseline A on",
+    "after": "For fictional classroom retrieval, ask whether method B returns more relevant records than lexical baseline A on a reserved judged query set at cutoff3. Define eligible corpus and relevance rules before running."
+  },
+  {
+    "source": "ai-7/1",
+    "before": "Narrow to relevant retrieval at a declared cutoff on those queries. The supplied records cannot answer universal usefulness",
+    "after": "Narrow to relevant retrieval at a declared cutoff on those queries. The supplied records cannot answer universal usefulness or deployment impact."
+  },
+  {
+    "source": "ai-7/10",
+    "before": "For a toy comparison vary only retrieval method while holding corpus, queries, cutoff and relevance rubric fixed. Randomise",
+    "after": "For a toy comparison vary only retrieval method while holding corpus, queries, cutoff and relevance rubric fixed. Randomise or counterbalance order when order effects matter."
+  },
+  {
+    "source": "ai-7/11",
+    "before": "Find the mean of sample means and the chance of mean2 under uniform selection of those",
+    "after": "Find the mean of sample means and the chance of mean2 under uniform selection of those six samples."
+  },
+  {
+    "source": "ai-7/12",
+    "before": "For this constructed exercise assume independent normal measurements with known population standard deviation2. A95% mean interval",
+    "after": "For this constructed exercise assume independent normal measurements with known population standard deviation2. A95% mean interval uses supplied normal critical value1.96:mean plus/minus1.96*sigma/sqrt(n). Unknown sigma requires a different justified method."
+  },
+  {
+    "source": "ai-7/13",
+    "before": "For paired response durations compute baseline minus candidate per case and average the differences. Positive means",
+    "after": "For paired response durations compute baseline minus candidate per case and average the differences. Positive means faster candidate. Compare with a prespecified minimum useful gain."
+  },
+  {
+    "source": "ai-7/14",
+    "before": "Toy paired sign-flip test assumes independent paired differences whose signs are exchangeable under a symmetric zero-effect",
+    "after": "Toy paired sign-flip test assumes independent paired differences whose signs are exchangeable under a symmetric zero-effect null. Enumerate all2^n sign assignments, holding magnitudes fixed. Two-sided p is fraction with absolute mean at least the observed absolute mean; use inclusive ties."
+  },
+  {
+    "source": "ai-7/14",
+    "before": "Only all-plus and all-minus have absolute mean1; others have1/3. Exact p=2/8=.25. At alpha .05 do not reject; this does not prove",
+    "after": "Only all-plus and all-minus have absolute mean1; others have1/3. Exact p=2/8=.25. At alpha .05 do not reject; this does not prove zero effect."
+  },
+  {
+    "source": "ai-7/15",
+    "before": "For this exercise use Bonferroni:family alpha .05 divided by number of tests m; reject each test when its",
+    "after": "For this exercise use Bonferroni:family alpha .05 divided by number of tests m; reject each test when its valid p-value is at most .05/m. This controls the family error by a bound without requiring independent tests."
+  },
+  {
+    "source": "ai-7/16",
+    "before": "Compare full system, without retrieval and without validation on identical cases and scoring. Hold other settings fixed; record",
+    "after": "Compare full system, without retrieval and without validation on identical cases and scoring. Hold other settings fixed; record changed failure categories, not just totals."
+  },
+  {
+    "source": "ai-7/17",
+    "before": "Prespecify a range and preserve all results. Distinguish robustness across settings from proof beyond the tested",
+    "after": "Prespecify a range and preserve all results. Distinguish robustness across settings from proof beyond the tested range. Settings affecting data roles require special caution."
+  },
+  {
+    "source": "ai-7/18",
+    "before": "Inspect eligibility, source dates, related units and label definitions before scoring. Deduplicate by declared unit identity, not merely file",
+    "after": "Inspect eligibility, source dates, related units and label definitions before scoring. Deduplicate by declared unit identity, not merely file name; report excluded and unassessed cases."
+  },
+  {
+    "source": "ai-7/19",
+    "before": "Use fictional records for this course. For the supplied classroom policy, a real study needs responsible review, plain-language",
+    "after": "Use fictional records for this course. For the supplied classroom policy, a real study needs responsible review, plain-language purpose, opt-in consent and withdrawal handling before collection. Do not implement real recruitment in this exercise."
+  },
+  {
+    "source": "ai-7/19",
+    "before": "The grading purpose does not establish research permission under the policy. Redesign around fictional data or obtain required",
+    "after": "The grading purpose does not establish research permission under the policy. Redesign around fictional data or obtain required review and voluntary permission before collection."
+  },
+  {
+    "source": "ai-7/2",
+    "before": "A fictional report says method B is better after6/8 supported answers versus baseline5/8 on the same",
+    "after": "A fictional report says method B is better after6/8 supported answers versus baseline5/8 on the same constructed cases."
+  },
+  {
+    "source": "ai-7/2",
+    "before": "Separate the claim from supplied evidence. Record dataset, unit, baseline, metric and limitations. Ask whether the statement extends beyond",
+    "after": "Separate the claim from supplied evidence. Record dataset, unit, baseline, metric and limitations. Ask whether the statement extends beyond those observations."
+  },
+  {
+    "source": "ai-7/2",
+    "before": "B has75% versus62.5%, a12.5-point difference on eight cases. Better in this measured outcome does not establish broader tasks or",
+    "after": "B has75% versus62.5%, a12.5-point difference on eight cases. Better in this measured outcome does not establish broader tasks or uncertainty."
+  },
+  {
+    "source": "ai-7/20",
+    "before": "Export has coded ID, exact birth date, classroom and rare condition. Team calls it anonymous because names are",
+    "after": "Export has coded ID, exact birth date, classroom and rare condition. Team calls it anonymous because names are removed."
+  },
+  {
+    "source": "ai-7/20",
+    "before": "For fictional records separate participant-code table from analysis values; limit access and retention. Remove unnecessary fields and",
+    "after": "For fictional records separate participant-code table from analysis values; limit access and retention. Remove unnecessary fields and small-group details before a permitted aggregate export."
+  },
+  {
+    "source": "ai-7/21",
+    "before": "Plan includes all20 cases. After results, the team removes four failed cases because they make the graph",
+    "after": "Plan includes all20 cases. After results, the team removes four failed cases because they make the graph look worse."
+  },
+  {
+    "source": "ai-7/21",
+    "before": "The exclusion is outcome-informed and violates the plan. Report original16/20 if16 passed, and label any revised analysis with reasons",
+    "after": "The exclusion is outcome-informed and violates the plan. Report original16/20 if16 passed, and label any revised analysis with reasons rather than hiding failures."
+  },
+  {
+    "source": "ai-7/22",
+    "before": "Pilot five cases reveals wrong units in duration logs; team corrects units and reports the pilot as",
+    "after": "Pilot five cases reveals wrong units in duration logs; team corrects units and reports the pilot as final evidence."
+  },
+  {
+    "source": "ai-7/22",
+    "before": "Run a small fixture set to test data capture, timing boundaries, rubric and analysis code. Fix defects and",
+    "after": "Run a small fixture set to test data capture, timing boundaries, rubric and analysis code. Fix defects and freeze the revised plan before new primary cases."
+  },
+  {
+    "source": "ai-7/23",
+    "before": "Use supplied simulation results rather than an unsupported universal sample-size rule. Estimated detection frequency is detections/simulated",
+    "after": "Use supplied simulation results rather than an unsupported universal sample-size rule. Estimated detection frequency is detections/simulated alternative trials; false positives require null trials separately."
+  },
+  {
+    "source": "ai-7/24",
+    "before": "Record exact data IDs/splits, code version, dependency versions, parameters, randomness policy and raw outputs. Verify hashes for integrity without treating",
+    "after": "Record exact data IDs/splits, code version, dependency versions, parameters, randomness policy and raw outputs. Verify hashes for integrity without treating them as correctness proofs."
+  },
+  {
+    "source": "ai-7/25",
+    "before": "Run declared cases, store raw paired results and deviations, and keep primary analysis separate from exploratory repairs. Stop",
+    "after": "Run declared cases, store raw paired results and deviations, and keep primary analysis separate from exploratory repairs. Stop or escalate only according to the stated rule."
+  },
+  {
+    "source": "ai-7/26",
+    "before": "The slow valid case must remain in the declared primary analysis. Investigate mechanism separately; mean5 and median2 reveal different",
+    "after": "The slow valid case must remain in the declared primary analysis. Investigate mechanism separately; mean5 and median2 reveal different aspects."
+  },
+  {
+    "source": "ai-7/27",
+    "before": "Keep baseline, metric and eligibility aligned across conditions. Report condition counts and failures separately; new conditions may extend",
+    "after": "Keep baseline, metric and eligibility aligned across conditions. Report condition counts and failures separately; new conditions may extend evidence but cannot guarantee all conditions."
+  },
+  {
+    "source": "ai-7/28",
+    "before": "Compare results with the original criterion and uncertainty assumptions. Preserve the failed hypothesis, discuss plausible mechanisms and",
+    "after": "Compare results with the original criterion and uncertainty assumptions. Preserve the failed hypothesis, discuss plausible mechanisms and label revised questions as new work."
+  },
+  {
+    "source": "ai-7/29",
+    "before": "Label axes, units, cases and scope. For simple comparative bars use a zero baseline or explicitly justify another",
+    "after": "Label axes, units, cases and scope. For simple comparative bars use a zero baseline or explicitly justify another plot. Show condition breakdowns and unassessed counts where relevant."
+  },
+  {
+    "source": "ai-7/3",
+    "before": "Record title, authors, version, date, identifier and access location. Distinguish paper, code, data and commentary. Verify that a quoted claim belongs to",
+    "after": "Record title, authors, version, date, identifier and access location. Distinguish paper, code, data and commentary. Verify that a quoted claim belongs to the cited version."
+  },
+  {
+    "source": "ai-7/3",
+    "before": "Track versions and use the correct original record for the claim. The blog is secondary; the two original",
+    "after": "Track versions and use the correct original record for the claim. The blog is secondary; the two original versions must not be merged silently."
+  },
+  {
+    "source": "ai-7/32",
+    "before": "For each comment record concern, response, change location and new evidence if needed. If no new evidence exists, narrow",
+    "after": "For each comment record concern, response, change location and new evidence if needed. If no new evidence exists, narrow the claim instead of promising an unperformed test."
+  },
+  {
+    "source": "ai-7/32",
+    "before": "The response lacks evidence. Add a fair comparison under the plan or narrow the claim to the existing",
+    "after": "The response lacks evidence. Add a fair comparison under the plan or narrow the claim to the existing baseline; record any new analysis as such."
+  },
+  {
+    "source": "ai-7/34",
+    "before": "Audit consistency across abstract, figures, raw results and artifact manifest. Remove unsupported universal claims; label exploratory analyses and unassessed",
+    "after": "Audit consistency across abstract, figures, raw results and artifact manifest. Remove unsupported universal claims; label exploratory analyses and unassessed outcomes."
+  },
+  {
+    "source": "ai-7/35",
+    "before": "Use a short sequence:question, design, primary result, failure, limitation, next question. Answer unfamiliar challenges by locating evidence or stating it is",
+    "after": "Use a short sequence:question, design, primary result, failure, limitation, next question. Answer unfamiliar challenges by locating evidence or stating it is missing."
+  },
+  {
+    "source": "ai-7/35",
+    "before": "The demonstration is one example; study rate70%. Present aggregate and failures and do not call the best output representative",
+    "after": "The demonstration is one example; study rate70%. Present aggregate and failures and do not call the best output representative without evidence."
+  },
+  {
+    "source": "ai-7/36",
+    "before": "Present the frozen question, credible baseline, unit design, primary analysis, uncertainty assumptions, failures and reproduction record. Propose next work that resolves",
+    "after": "Present the frozen question, credible baseline, unit design, primary analysis, uncertainty assumptions, failures and reproduction record. Propose next work that resolves a named gap with new evidence."
+  },
+  {
+    "source": "ai-7/4",
+    "before": "Classify each statement by role and link results to the procedure and denominator. A proposed mechanism",
+    "after": "Classify each statement by role and link results to the procedure and denominator. A proposed mechanism is an explanation to test, not an extra observation."
+  },
+  {
+    "source": "ai-7/5",
+    "before": "Here replay means same artifacts/procedure; new-data replication means newly collected eligible cases under the same plan. Preserve",
+    "after": "Here replay means same artifacts/procedure; new-data replication means newly collected eligible cases under the same plan. Preserve environment, data versions and raw results."
+  },
+  {
+    "source": "ai-7/6",
+    "before": "Different tasks and metrics cannot establish A superior to B. Keep separate columns and identify a common evaluation",
+    "after": "Different tasks and metrics cannot establish A superior to B. Keep separate columns and identify a common evaluation needed."
+  },
+  {
+    "source": "ai-7/7",
+    "before": "Toy hypothesis:method B improves supported-answer rate over baseline A on a reserved paired set. Define support",
+    "after": "Toy hypothesis:method B improves supported-answer rate over baseline A on a reserved paired set. Define support rubric and failure treatment; record secondary outcomes separately."
+  },
+  {
+    "source": "ai-7/7",
+    "before": "Report the change as exploratory/post-result revision. Preserve the original support hypothesis; do not present speed as the prespecified primary",
+    "after": "Report the change as exploratory/post-result revision. Preserve the original support hypothesis; do not present speed as the prespecified primary outcome."
+  },
+  {
+    "source": "ai-7/8",
+    "before": "Source freshness is confounded with procedure. Provide both the same eligible current sources or report the unequal comparison",
+    "after": "Source freshness is confounded with procedure. Provide both the same eligible current sources or report the unequal comparison without isolating method."
+  },
+  {
+    "source": "ai-7/9",
+    "before": "If methods are compared within each query, queries are paired units. Repeated runs within a query estimate",
+    "after": "If methods are compared within each query, queries are paired units. Repeated runs within a query estimate run variation but do not increase the number of independent query contexts."
+  },
+  {
+    "source": "ai-5/18",
+    "before": "A notice says capacity 20, followed by during maintenance capacity 8. Separate chunks contain each sentence",
+    "after": "A notice says capacity 20, followed by during maintenance capacity 8. Separate chunks contain each sentence but retrieval returns only the first."
+  },
+  {
+    "source": "ai-5/18",
+    "before": "Give each chunk its document/version ID, section and offsets. Preserve qualifiers or link adjacent material. Overlap",
+    "after": "Give each chunk its document/version ID, section and offsets. Preserve qualifiers or link adjacent material. Overlap can repeat information; repeated chunks are not independent sources."
+  },
+  {
+    "source": "ai-5/18",
+    "before": "The first chunk alone lacks the applicable exception. Retrieve the linked condition and determine maintenance status before asserting",
+    "after": "The first chunk alone lacks the applicable exception. Retrieve the linked condition and determine maintenance status before asserting capacity 20."
+  },
+  {
+    "source": "ai-5/19",
+    "before": "Query terms red sensor. D1 text red sensor manual; D2 text red paint. Their lexical scores",
+    "after": "Query terms red sensor. D1 text red sensor manual; D2 text red paint. Their lexical scores are 2 and 1. Vector query [1, 0], D1=[.4, .9], D2=[.8, .1]."
+  },
+  {
+    "source": "ai-5/19",
+    "before": "For a toy lexical score, count distinct query terms present after lowercase exact-word matching. For a",
+    "after": "For a toy lexical score, count distinct query terms present after lowercase exact-word matching. For a toy vector score use a stated dot product. Compare relevance using independent judgments, not score magnitude alone."
+  },
+  {
+    "source": "ai-5/19",
+    "before": "Lexical ranks D1 first; dot product ranks D2 first (.8 versus .4). The supplied task relevance favours the",
+    "after": "Lexical ranks D1 first; dot product ranks D2 first (.8 versus .4). The supplied task relevance favours the sensor manual; vector ranking alone does not prove relevance."
+  },
+  {
+    "source": "ai-5/23",
+    "before": "Separate answerable claims from unresolved ones. Clarify ambiguous input when a user can supply the needed",
+    "after": "Separate answerable claims from unresolved ones. Clarify ambiguous input when a user can supply the needed fact; abstain from unsupported conclusions when evidence is unavailable. Define acceptable fallback before evaluation."
+  },
+  {
+    "source": "ai-5/23",
+    "before": "Do not pick the larger or smaller value as established fact. Report the conflict and request the current",
+    "after": "Do not pick the larger or smaller value as established fact. Report the conflict and request the current authoritative register version."
+  },
+  {
+    "source": "ai-5/25",
+    "before": "Treat retrieved text as evidence data. Reject requests to reveal secrets, change permissions or execute actions",
+    "after": "Treat retrieved text as evidence data. Reject requests to reveal secrets, change permissions or execute actions outside the authorised contract. Enforce tool scopes in code; detection by wording alone is incomplete."
+  },
+  {
+    "source": "ai-5/25",
+    "before": "Do not send email or reveal the key. The notice cannot grant authority. Keep read-only evidence processing and",
+    "after": "Do not send email or reveal the key. The notice cannot grant authority. Keep read-only evidence processing and flag the suspicious text for review."
+  },
+  {
+    "source": "ai-5/31",
+    "before": "A request uses 500 input units and 200 output units; starts at 10.0 seconds and finishes",
+    "after": "A request uses 500 input units and 200 output units; starts at 10.0 seconds and finishes at 13.5."
+  },
+  {
+    "source": "ai-5/31",
+    "before": "In this fictional tariff input costs 2 credits per 1000 units and output 6 credits per",
+    "after": "In this fictional tariff input costs 2 credits per 1000 units and output 6 credits per 1000. Sum per-request costs; separately calculate elapsed duration from start/end records. Do not label credits as a current provider price."
+  },
+  {
+    "source": "ai-5/31",
+    "before": "Input cost 1 credit; output 1.2; total 2.2 credits. Elapsed 3.5 seconds within the recorded boundary. Quality is",
+    "after": "Input cost 1 credit; output 1.2; total 2.2 credits. Elapsed 3.5 seconds within the recorded boundary. Quality is unmeasured."
+  }
+]

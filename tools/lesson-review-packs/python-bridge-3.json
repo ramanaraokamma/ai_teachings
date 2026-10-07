@@ -1,0 +1,163 @@
+{
+  "week": "python-bridge/3",
+  "title": "Expressions and operator order",
+  "grade": 8,
+  "project": "Python readiness portfolio",
+  "goals": [
+    "Evaluate numeric expressions using Python\u2019s grouping rules",
+    "Use parentheses to express the intended calculation",
+    "Distinguish ordinary division, whole groups and a remainder"
+  ],
+  "primary_topic": "Expressions and operator order",
+  "vocabulary": [
+    [
+      "Expression",
+      "Code evaluated to produce a value"
+    ],
+    [
+      "Operator",
+      "A symbol such as + or * that specifies an operation"
+    ],
+    [
+      "Precedence",
+      "Rules that determine how an expression is grouped"
+    ],
+    [
+      "Parentheses",
+      "Symbols that make a grouping explicit"
+    ],
+    [
+      "Remainder",
+      "The amount left after forming whole groups"
+    ]
+  ],
+  "worked_example": {
+    "title": "Work through equal-precedence operations",
+    "blocks": [
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "print(20 - 6 - 2)\nprint(20 - (6 - 2))\nprint(12 / 3 * 2)"
+      },
+      {
+        "type": "paragraph",
+        "text": "The first line groups subtraction from left to right: (20 - 6) - 2 gives 12. The second gives 16. Multiplication and division share a precedence level, so 12 / 3 * 2 groups as (12 / 3) * 2 and displays 8.0, not 2.0. Ordinary / division produces a float, even when the result is mathematically whole."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Explain why 18 - 4 * 3 gives 6 while (18 - 4) * 3 gives 42. Which operation is grouped first in each expression?",
+        "lines": 5
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Predict then test expressions",
+    "prompt": "Predict 16 - 5 - 3, 16 - (5 - 3), and 18 / 3 * 2. Write the grouping, run each line and record actual results separately.",
+    "answer": "(16 - 5) - 3 is 8; 16 - (5 - 3) is 14; (18 / 3) * 2 is 12.0. Record any observed discrepancy and check the saved expression rather than copying expected results.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Trace a string precisely",
+    "task": "Predict each output. Explain the start and stopping positions of the slice. What would place[0:0] contain?",
+    "code": "place = \"North\"\nprint(place.lower())\nprint(len(place))\nprint(place[1:4])\n",
+    "expected_stdout": "north\n5\nort\n",
+    "answer": "north, 5 and ort. The slice includes indices 1,2,3 but excludes 4. The slice [0:0] is empty, not the first character.",
+    "source": "new parallel Python readiness case"
+  },
+  "misconceptions": [
+    [
+      "All operations are read left to right regardless of precedence",
+      "Establish grouping first; only operations at the same applicable precedence level group left to right here."
+    ],
+    [
+      "Parentheses never change a value",
+      "Compare the two packs expressions and their different stories."
+    ],
+    [
+      "Ordinary division always returns an integer",
+      "/ produces a float for these integer operands."
+    ],
+    [
+      "A remainder can be as large as the group size",
+      "For this positive whole-group case, another complete group would then be possible."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Two expressions with different meanings",
+        "columns": [
+          "Expression",
+          "First calculation",
+          "Final value"
+        ],
+        "rows": [
+          [
+            "3 * 8 + 2",
+            "3 * 8 is 24",
+            "24 + 2 is 26"
+          ],
+          [
+            "3 * (8 + 2)",
+            "8 + 2 is 10",
+            "3 * 10 is 30"
+          ],
+          [
+            "(3 * 8) + 2",
+            "3 * 8 is 24",
+            "24 + 2 is 26"
+          ]
+        ],
+        "caption": "Adding two inside every pack differs from adding two loose counters once."
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "packs = 3\nper_pack = 8\nloose = 2\ntotal = packs * per_pack + loose\nprint(total)"
+      },
+      {
+        "type": "paragraph",
+        "text": "The script displays 26. Replacing the total expression with packs * (per_pack + loose) displays 30, because it adds two to every pack. Parentheses are not decoration: they can change the represented situation. Write a brief phrase for each group before running."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Predict 16 - 5 - 3, 16 - (5 - 3), and 18 / 3 * 2. Write the grouping, run each line and record actual results separately."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

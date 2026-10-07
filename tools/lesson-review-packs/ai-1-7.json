@@ -1,0 +1,298 @@
+{
+  "week": "ai-1/7",
+  "title": "Categories and Labels",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Apply a category definition using explicit evidence and boundary rules",
+    "Distinguish a known failure from information that is missing or unreadable",
+    "Use disagreement to improve a labelling guide without mistaking agreement for truth"
+  ],
+  "primary_topic": "Categories and operational labels",
+  "vocabulary": [
+    [
+      "Category",
+      "A group defined by stated membership criteria"
+    ],
+    [
+      "Operational definition",
+      "A definition precise enough to tell someone what to observe or do when assigning a category"
+    ],
+    [
+      "Label",
+      "The category recorded for an example under a particular guide"
+    ],
+    [
+      "Annotator",
+      "A person who assigns labels to examples"
+    ],
+    [
+      "Disagreement",
+      "A case where annotators assign different labels to the same example"
+    ]
+  ],
+  "worked_example": {
+    "title": "Work through evidence and priority",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Card fields",
+          "Relevant evidence",
+          "Label and reason"
+        ],
+        "rows": [
+          [
+            "Day 12 room A",
+            "Both values satisfy the criteria",
+            "Ready because both checks pass"
+          ],
+          [
+            "Day 31 room A",
+            "31 is outside 1 through 30",
+            "Revise because a known value fails"
+          ],
+          [
+            "Day 12 room unreadable",
+            "No known failure but the room is unknown",
+            "Review until the room is checked"
+          ],
+          [
+            "Day 31 room unreadable",
+            "The day already fails although the room is unknown",
+            "Revise because the first check has priority"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "For the last card, first read only what is known: day 31. Compare it with the allowed range and record a failure. The guide therefore selects revise before the missing-room check. Checking the room later could reveal another problem, but it cannot make day 31 satisfy this policy."
+      },
+      {
+        "type": "paragraph",
+        "text": "A clear explanation cites the particular criterion. Saying It looks wrong is not enough. Write Day 31 exceeds the accepted maximum of 30 instead. That explanation lets another person reproduce the check and challenge it if the recorded value or policy is different."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Replace a vague instruction",
+    "prompt": "A helper says Label a card ready if it looks nice. Explain why this can lead to inconsistent labels. Replace it with an instruction that another person can apply using the calendar policy, including what to do about a blank field.",
+    "lines": 6,
+    "answer": "Looks nice has no agreed observable criterion and can invite different preferences. A usable replacement checks for a known day outside whole numbers 1 to 30 or a known room other than A/B and labels revise; otherwise any blank or unreadable required field gives review; otherwise label ready. Accept equivalent wording that preserves all criteria and priority."
+  },
+  "independent_case": {
+    "title": "Transfer the method to a new record",
+    "task": "A fictional equipment-request form accepts a whole-number borrowing duration of 1 through 7 days inclusive and one item code X or Y. Label revise if any known field fails; otherwise label review if a field is blank or unreadable; otherwise label ready. Classify these forms and justify each: 7 days X; 8 days Y; unreadable duration X; 8 days blank code. Explain whether ready alone grants permission to borrow.",
+    "answer": "7 days X is ready: both pass, including the endpoint. 8 days Y is revise: duration exceeds 7. Unreadable duration X is review: no known failure but duration is unknown. 8 days blank code is revise: the known duration failure has priority. Ready only means the printed fields satisfy this policy; borrowing still requires the actual availability and authorisation process.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A blank is the same as a failing value",
+      "Contrast unreadable day with day 0. One is unknown; the other is known to violate the stated range."
+    ],
+    [
+      "Review must win whenever any field is missing",
+      "Trace the guide in order for day 31 with a blank room. The known failure already selects revise under this policy."
+    ],
+    [
+      "Agreement proves the labels are true",
+      "Give two annotators the same mistaken exclusive-boundary interpretation. Their agreement can coexist with incorrect labels."
+    ],
+    [
+      "A category describes the whole person or event",
+      "Return to the task scope. Ready checks two printed fields under one policy, not the worth of a person or the reality of an event."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/3046f47d052bfd54301a0c96092f5fb75bdac2ec928b600e7bfc9c9223d28fed",
+        "alt": "Visual card for the input stage: objects and a purpose for sorting",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/709e48d0ebf1861f134811121f35fd50d8a4aebd7afbb6cb308e644c2a66a0f9",
+        "alt": "Visual card for the process stage: people define labels and assign examples",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/24cd9f8643398d19acf99388b203f89d66de88836af4e0289cfb300b704bf57f",
+        "alt": "Visual card for the output stage: category names attached to items",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  objects and a purpose for sorting"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  people define labels and assign examples"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  category names attached to items"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  Labels are human choices that may overlap or be unclear.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  A label is an operational definition chosen for a task. Categories may be mutually exclusive, multi-label, hierarchical, subjective, or context-dependent. Ambiguity in labels becomes ambiguity in training and evaluation.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Our fictional calendar accepts a whole-number day from 1 through 30, including both endpoints, and exactly one room code, A or B. The month is already fixed for this exercise. A blank or unreadable field counts as unknown. The categories are revise, review and ready. Use the checks in the order shown."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Three ordered checks for a calendar card",
+        "columns": [
+          "Check in this order",
+          "Evidence",
+          "Recorded label"
+        ],
+        "rows": [
+          [
+            "First check known values",
+            "Any known field fails its criterion",
+            "Revise even if another field is unknown"
+          ],
+          [
+            "Then check missing information",
+            "No known failure but a field is blank or unreadable",
+            "Review because evidence is incomplete"
+          ],
+          [
+            "Otherwise all checks have passed",
+            "Day is 1 through 30 and room is A or B",
+            "Ready under this record policy"
+          ]
+        ],
+        "caption": "Stop at the first matching row. The order resolves a card with both a known failure and an unknown field. Ready describes the printed record under this policy; it does not confirm that the event exists or has permission to run."
+      },
+      {
+        "type": "paragraph",
+        "text": "Known failure and unknown are different. Day 31 is known and outside the accepted range, so the card needs revision. An unreadable day might be valid or invalid; without another known failure, it needs review. Never silently turn a blank into zero just to make a comparison possible."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/956d02e55c8231fec2f9d8a220e222f2d10f0e43b1c490b010f706b7a892abf1",
+        "alt": "Comparison picture for Red ball: red and round; multiple descriptive labels",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/dd227278781f2c07dff01575d1f65feb24c0a05af7d1a9f64a2a07dfe5475ba1",
+        "alt": "Comparison picture for Frisbee: toy or sports equipment; purpose changes label",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/414962dbbfdac58f5e1757b3fbb4134dd82c082a137e00de23c975e421e8740c",
+        "alt": "Comparison picture for Wet slide: equipment and possible hazard; context matters",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/df6e3d14c8ef9d31cca9b37561476139acb245a517af8f8c8bea5c499a28f791",
+        "alt": "Comparison picture for Mystery object: insufficient features; need more information",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Red ball  Clue: red and round. Meaning: multiple descriptive labels."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Frisbee  Clue: toy or sports equipment. Meaning: purpose changes label."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Wet slide  Clue: equipment and possible hazard. Meaning: context matters."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Mystery object  Clue: insufficient features. Meaning: need more information."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Labels do not exist naturally in the data; people define them for a purpose.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

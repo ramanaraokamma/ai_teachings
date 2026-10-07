@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/26",
+  "title": "Incident investigation",
+  "outcome": "Explain incident investigation using the deciding step in this fictional service.",
+  "scenario": "An incident timeline. After a schedule update, a service gives an old classroom location.",
+  "given": [
+    "14:00 version 6 publishes room D; 14:05 answer uses version 5 room C; 14:06 user reports mismatch."
+  ],
+  "steps": [
+    {
+      "label": "Order events",
+      "icon": "clock",
+      "detail": "The new source predates the request and report."
+    },
+    {
+      "label": "Locate stale evidence",
+      "icon": "data",
+      "detail": "The answer trace identifies version 5 rather than current version 6."
+    },
+    {
+      "label": "Test explanation",
+      "icon": "check",
+      "detail": "Reproduce version selection with controlled fixtures before naming the exact bug."
+    }
+  ],
+  "explanation": "A timeline separates observed events from a proposed cause. Evidence can locate a mismatch without yet explaining why it happened.",
+  "counterfactual": {
+    "change": "Trace instead shows version 6 retrieved and room C drafted.",
+    "prediction": "Investigate drafting or validation before blaming caching.",
+    "reason": "The mismatch now appears after retrieval."
+  },
+  "student_task": "Order the three incident records and locate the old evidence version. How does the investigation change if the trace instead retrieves version 6 but drafts room C?",
+  "teacher_answer": "The new source predates the request and report. The answer trace identifies version 5 rather than current version 6. Reproduce version selection with controlled fixtures before naming the exact bug. Changed case: Investigate drafting or validation before blaming caching. The mismatch now appears after retrieval.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "Missing events may change the account; temporal order alone does not prove causation.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

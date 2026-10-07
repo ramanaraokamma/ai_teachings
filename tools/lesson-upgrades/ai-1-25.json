@@ -1,0 +1,43 @@
+{
+  "week": "ai-1/25",
+  "title": "Generate, Retrieve, or Calculate?",
+  "outcome": "By the end, I can separate retrieval, calculation and generated wording.",
+  "scenario": "A fictional craft invitation combines three different operations.",
+  "given": [
+    "Approved record C: Tuesday, Hall 4, three tables with four learner places each.",
+    "Two places are reserved for helpers; no snack information is supplied."
+  ],
+  "steps": [
+    {
+      "label": "Retrieve facts",
+      "icon": "book",
+      "detail": "Read Tuesday, Hall 4 and 3×4 places from approved C."
+    },
+    {
+      "label": "Calculate",
+      "icon": "code",
+      "detail": "12 total places minus 2 reserved =10 learner places."
+    },
+    {
+      "label": "Generate wording",
+      "icon": "model",
+      "detail": "Draft a friendly invitation using only those supported details."
+    },
+    {
+      "label": "Check claims",
+      "icon": "check",
+      "detail": "A sentence promising snacks has no supporting record."
+    }
+  ],
+  "explanation": "Retrieval copies relevant source information; calculation follows arithmetic; generation proposes wording. These jobs can cooperate, but one does not validate the others. A friendly generated sentence can still contain an invented detail. Keep the approved source beside the draft and check each factual claim separately.",
+  "counterfactual": {
+    "change": "Reserve four places instead of two, keeping the room and day unchanged.",
+    "prediction": "Eight learner places remain.",
+    "reason": "3×4−4=8; this changes capacity for learners, not the retrieved date or location."
+  },
+  "student_task": "Label each arrow with its operation. Can the system add snacks because invitations often mention them?",
+  "teacher_answer": "The arrows are retrieval, calculation and generation. No: snacks need confirmation; familiar wording is not evidence.",
+  "project_evidence": "Use the sorter’s approved catalogue for facts, explicit calculations for scores and checked prose for explanations.",
+  "limits": "The fictional source must itself be current and authoritative; retrieval alone does not ensure a record is correct.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment."
+}

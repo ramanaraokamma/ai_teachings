@@ -1,0 +1,148 @@
+{
+  "week": "ai-5/14",
+  "title": "Learning rate experiments",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Run a controlled comparison of learning rates",
+    "Explain slow progress oscillation and increasing loss in a toy model",
+    "Report the limits of a training experiment"
+  ],
+  "primary_topic": "Learning rate experiments",
+  "vocabulary": [
+    [
+      "Learning rate",
+      "The multiplier controlling the size of a gradient update"
+    ],
+    [
+      "Controlled comparison",
+      "An experiment changing a named factor while holding other stated conditions fixed"
+    ],
+    [
+      "Oscillation",
+      "Repeated movement from one side of a value to the other"
+    ],
+    [
+      "Divergence",
+      "Movement away from a target solution with growing error in this experiment"
+    ]
+  ],
+  "worked_example": {
+    "title": "Relate a factor to a loss pattern",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "The update factor explains three behaviours",
+        "columns": [
+          "Rate and factor",
+          "Signed distance behaviour",
+          "Training loss behaviour"
+        ],
+        "rows": [
+          [
+            "0.05 gives 0.75",
+            "Same side and shrinking",
+            "Multiplied by 0.5625"
+          ],
+          [
+            "0.3 gives -0.5",
+            "Alternating and shrinking",
+            "Multiplied by 0.25"
+          ],
+          [
+            "0.5 gives -1.5",
+            "Alternating and growing",
+            "Multiplied by 2.25"
+          ]
+        ],
+        "caption": "For this objective, loss is 2.5 times squared distance. Therefore the loss multiplier is the square of the distance multiplier."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "For rate 0.4, calculate its distance multiplier, the first two new v values and both losses. Does a changing parameter guarantee progress?",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Explain a crossing",
+    "prompt": "At rate 0.3 the first update gives v = 3, past the minimum at 2. Calculate the next v and loss. Has the first crossing proved divergence?",
+    "answer": "Teacher explanation: Next gradient 5 gives v = 1.5 and loss 0.625. No. Signed distance changes side but shrinks by half each update; loss decreases.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Compare a new objective independently",
+    "task": "Use J(a) = (a - 1) squared with gradient 2(a - 1), start a = 0 and two updates. Restart for each rate 0.25, 0.5 and 1. Compute the two new a values and losses for each run. Identify the result supported after two updates.",
+    "answer": "Teacher explanation: At 0.25: a = 0.5 then 0.75; losses 0.25 then 0.0625. At 0.5: a = 1 then 1; losses 0 then 0. At 1: a = 2 then 0; losses 1 then 1. Rate 0.5 attains the lowest objective in this comparison. The useful rate differs from the lesson model.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Crossing the minimum means divergence",
+      "Compare distance magnitudes or losses; alternating sides can converge."
+    ],
+    [
+      "A larger rate is always faster",
+      "The tested 0.5 rate increases this objective; 0.4 keeps it unchanged."
+    ],
+    [
+      "The best rate is independent of loss scaling",
+      "Scaling the loss scales its gradient and changes the step at a fixed rate."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Write d = v - 2, the signed distance from this objective minimum. Substituting the update gives new d = (1 - 5 times rate) times old d. At rate 0.05 the factor is 0.75: distance shrinks without changing sign. At rate 0.3 it is -0.5: distance changes sign and halves. Both can reduce loss."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "def run(rate, updates=4):\n    v = 0.0\n    history = [v]\n    for _ in range(updates):\n        gradient = 5 * (v - 2)\n        v = v - rate * gradient\n        history.append(v)\n    losses = [2.5 * (value - 2) ** 2 for value in history]\n    return history, losses\n\nfor rate in [0.05, 0.2, 0.3, 0.4, 0.5]:\n    values, losses = run(rate)\n    print(rate, values, losses)"
+      },
+      {
+        "type": "paragraph",
+        "text": "The helper assumes a finite rate and nonnegative integer update count. Its five logged states include the initial value. At 0.3 the parameter sequence is [0, 3, 1.5, 2.25, 1.875] and loss is [10, 2.5, 0.625, 0.15625, 0.0390625]. Crossing the minimum does not itself mean training failed."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "At rate 0.3 the first update gives v = 3, past the minimum at 2. Calculate the next v and loss. Has the first crossing proved divergence?"
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

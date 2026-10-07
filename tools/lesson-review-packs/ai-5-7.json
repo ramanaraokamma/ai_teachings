@@ -1,0 +1,148 @@
+{
+  "week": "ai-5/7",
+  "title": "Parameters and architecture",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Distinguish architectural choices from parameter values",
+    "Count weights and biases in a small dense network",
+    "Explain why parameter count alone cannot establish quality"
+  ],
+  "primary_topic": "Parameters and architecture",
+  "vocabulary": [
+    [
+      "Parameter",
+      "A numerical model value that a fitting procedure may adjust"
+    ],
+    [
+      "Architecture",
+      "The arrangement of layers, connections and activation choices"
+    ],
+    [
+      "Dense layer",
+      "A layer in which each output unit has a weight for every input component"
+    ],
+    [
+      "Hyperparameter",
+      "A setting chosen for a model or training procedure rather than fitted as an ordinary weight"
+    ]
+  ],
+  "worked_example": {
+    "title": "Classify proposed changes",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Decide what a change alters",
+        "columns": [
+          "Proposed change",
+          "Type of change",
+          "Consequence"
+        ],
+        "rows": [
+          [
+            "Change one weight 2 to 3",
+            "Parameter value",
+            "Same architecture"
+          ],
+          [
+            "Use 4 hidden units",
+            "Architecture width",
+            "Different parameter count"
+          ],
+          [
+            "Use learning rate 0.1",
+            "Training setting",
+            "No extra model weight"
+          ]
+        ],
+        "caption": "Each row is a separate proposed change. A parameter value, an architectural choice and a training setting answer different questions about the system."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "For a dense 2 to 4 to 1 network with one bias per unit, count each layer and the total. How many more parameters does it have than 2 to 3 to 1?",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Sort the quantities",
+    "prompt": "Classify hidden activation 0.7, weight -2, hidden width 3 and learning rate 0.1 as computed value, parameter, architecture choice or training setting.",
+    "answer": "Teacher explanation: Activation 0.7 is computed; weight -2 is a parameter; width 3 is an architecture choice; learning rate 0.1 is a training setting.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Count a new architecture independently",
+    "task": "A dense 3 to 2 to 2 network uses ReLU in the hidden layer and identity in the output layer, with one bias per unit. Give each layer count and the total. If hidden width becomes 4, recount and explain why activation values are excluded.",
+    "answer": "Teacher explanation: Original: 3 times 2 + 2 = 8, then 2 times 2 + 2 = 6, total 14. Wider: 3 times 4 + 4 = 16, then 4 times 2 + 2 = 10, total 26. Activations are computed from inputs and parameters, not separately fitted values.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Count one bias per input",
+      "Here each output unit has its own bias. A layer with m outputs has m biases."
+    ],
+    [
+      "Count the activation values as parameters",
+      "Activations change with the input; the network computes them."
+    ],
+    [
+      "More weights prove better learning",
+      "Capacity and performance differ. Compare measured outcomes with controlled conditions."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "For a dense layer with n input components and m output units, each output has n weights and one bias. The count is n times m plus m, or (n + 1) times m. Count each layer separately before adding."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "def dense_count(inputs, outputs):\n    return inputs * outputs + outputs\n\nprint(dense_count(2, 3))   # 9\nprint(dense_count(3, 1))   # 4\nprint(dense_count(2, 3) + dense_count(3, 1))  # 13"
+      },
+      {
+        "type": "paragraph",
+        "text": "The helper assumes positive integer widths and the bias convention stated above. It is a counting aid, not a model trainer. A ReLU has no fitted numerical parameters in this example."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Classify hidden activation 0.7, weight -2, hidden width 3 and learning rate 0.1 as computed value, parameter, architecture choice or training setting."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

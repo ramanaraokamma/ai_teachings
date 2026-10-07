@@ -1,0 +1,50 @@
+{
+  "week": "ai-7/29",
+  "title": "Figures that preserve evidence",
+  "outcome": "Explain figures that preserve evidence using the records and boundaries of this fictional investigation.",
+  "scenario": "Draw bars that preserve the comparison. A report plots correct counts for two versions on the same ten cases.",
+  "given": [
+    "A has 6/10 correct; B has 8/10. The count axis should start at zero and identify the ten-case denominator."
+  ],
+  "steps": [
+    {
+      "icon": "chart",
+      "label": "Draw honest bars",
+      "detail": "Use heights 6 and 8 on a zero-based correct-count axis."
+    },
+    {
+      "icon": "rule",
+      "label": "Label the scale",
+      "detail": "State counts out of ten, not an unspecified quality score."
+    },
+    {
+      "icon": "check",
+      "label": "Keep context nearby",
+      "detail": "Note the fixed tasks and absence of a significance test."
+    }
+  ],
+  "explanation": "Figures make evidence easier to inspect when labels and scales preserve meaning. A dramatic-looking visual cannot supply missing uncertainty or representativeness.",
+  "counterfactual": {
+    "change": "Start the axis at 5 without making the truncation obvious.",
+    "prediction": "The bars exaggerate the visual contrast and require correction or clear disclosure.",
+    "reason": "Visible heights no longer correspond to the full count scale."
+  },
+  "student_task": "Draw count bars for 6/10 and 8/10 using the stated axis. Why must the denominator and fixed task context remain visible, and what distortion arises from an undisclosed axis start at five?",
+  "teacher_answer": "Use heights 6 and 8 on a zero-based correct-count axis. State counts out of ten, not an unspecified quality score. Note the fixed tasks and absence of a significance test. Changed case: The bars exaggerate the visual contrast and require correction or clear disclosure. Visible heights no longer correspond to the full count scale.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "A well-labelled chart still cannot establish a causal or population claim from ten cases.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Zero-based correct counts",
+    "labels": [
+      "A",
+      "B"
+    ],
+    "values": [
+      6,
+      8
+    ],
+    "unit": "correct cases out of 10"
+  }
+}

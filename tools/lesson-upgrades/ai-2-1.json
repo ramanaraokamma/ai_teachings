@@ -1,0 +1,43 @@
+{
+  "week": "ai-2/1",
+  "title": "Precision in Algorithms",
+  "outcome": "By the end, I can translate an ordered algorithm into Python and check state after each line.",
+  "scenario": "A fictional book-box counter has three boxes with five books each and two loose books.",
+  "given": [
+    "Python instructions: boxes=3; total=boxes*5; total=total+2; print(total).",
+    "Run the instructions in this order with ordinary integer arithmetic."
+  ],
+  "steps": [
+    {
+      "label": "Read input",
+      "icon": "data",
+      "detail": "boxes is assigned 3."
+    },
+    {
+      "label": "Multiply",
+      "icon": "code",
+      "detail": "total becomes 3×5=15."
+    },
+    {
+      "label": "Update total",
+      "icon": "code",
+      "detail": "total becomes its current value 15 plus 2: 17."
+    },
+    {
+      "label": "Print",
+      "icon": "output",
+      "detail": "The program prints 17 once."
+    }
+  ],
+  "explanation": "Assignment replaces a variable’s stored value. In total=total+2, Python first reads the current total on the right, calculates 17, then assigns that result to total on the left. The equal sign is an instruction here, not a claim that 15 and 17 are mathematically equal. Predict output before running.",
+  "counterfactual": {
+    "change": "Set boxes=0, keeping the two loose books.",
+    "prediction": "The printed result is 2.",
+    "reason": "0×5+2=2; there is no rule saying zero boxes means zero loose books."
+  },
+  "student_task": "If print(total) moves before total=total+2, what gets printed for the original input?",
+  "teacher_answer": "It prints 15. The later update still makes total 17, but nothing then prints the new value.",
+  "project_evidence": "Use small predicted traces when translating the Transparent Book Recommender’s paper logic into code.",
+  "limits": "These statements count supplied books; they do not validate input types or infer stock from measurements.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment."
+}

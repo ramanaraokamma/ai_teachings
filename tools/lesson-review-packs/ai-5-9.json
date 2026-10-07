@@ -1,0 +1,148 @@
+{
+  "week": "ai-5/9",
+  "title": "Slopes and local change",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Calculate an average rate of change over a stated interval",
+    "Estimate a local slope with nearby loss values",
+    "Explain the limits of a local direction clue"
+  ],
+  "primary_topic": "Slopes and local change",
+  "vocabulary": [
+    [
+      "Slope",
+      "Change in output divided by change in input over a stated interval"
+    ],
+    [
+      "Local change",
+      "Change considered near a particular input or parameter value"
+    ],
+    [
+      "Step size",
+      "The amount by which an input or parameter is changed"
+    ],
+    [
+      "Stationary point",
+      "A point where a differentiable function has zero local slope"
+    ]
+  ],
+  "worked_example": {
+    "title": "Interpret the sign near the current value",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Compare slope clues on the same loss curve",
+        "columns": [
+          "Current w",
+          "Local slope",
+          "Nearby downhill direction"
+        ],
+        "rows": [
+          [
+            "1",
+            "-2",
+            "Increase w a little"
+          ],
+          [
+            "2",
+            "0",
+            "No first order direction"
+          ],
+          [
+            "3",
+            "2",
+            "Decrease w a little"
+          ]
+        ],
+        "caption": "These are local clues for L(w) = (w - 2) squared. At w = 2 the displayed function has its minimum; zero slope does not establish a minimum for every possible function."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "At w = 3, use 2.9 and 3.1. Calculate both losses and the symmetric slope. Which small change should lower loss here?",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Check a symmetric estimate",
+    "prompt": "At centre w = 0, use step 0.5. Calculate L(-0.5), L(0.5) and the symmetric slope.",
+    "answer": "Teacher explanation: Losses are 6.25 and 2.25. Denominator is 1, giving slope -4.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Estimate a new curve independently",
+    "task": "Let J(a) = (a + 1) squared. At a = 1 use step 0.25 to find the symmetric slope. Compare J(1) with J(0.9), then explain why moving to -4 does not follow safely from the slope clue.",
+    "answer": "Teacher explanation: J(0.75) = 3.0625; J(1.25) = 5.0625; slope is 2 / 0.5 = 4. J(1) = 4 and J(0.9) = 3.61, so a small decrease helps. J(-4) = 9: a large decrease overshoots.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Divide by the step only",
+      "A symmetric comparison spans from centre minus step to centre plus step, a width of twice the step."
+    ],
+    [
+      "Negative loss slope means negative loss",
+      "The slope describes change; squared loss itself remains nonnegative."
+    ],
+    [
+      "Zero slope always means finished",
+      "Stationary points need additional evidence; some are not minima."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Near w = 1, use two symmetric nearby values: 0.9 and 1.1. Their losses are 1.21 and 0.81. Change in loss divided by change in w gives (0.81 - 1.21) / (1.1 - 0.9) = -2. This symmetric estimate describes change near the centre w = 1."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "def loss(w):\n    return (w - 2) ** 2\n\ndef local_slope(w, step):\n    if step <= 0:\n        raise ValueError(\"Step must be positive\")\n    return (loss(w + step) - loss(w - step)) / (2 * step)\n\nfor w in [1, 2, 3]:\n    print(w, round(local_slope(w, 0.1), 6))\n# Slopes near these centres: -2, 0, 2"
+      },
+      {
+        "type": "paragraph",
+        "text": "For this quadratic, the symmetric estimate equals the exact slope 2(w - 2) in exact arithmetic. Numerical estimates for other functions are generally approximate. Smaller steps can reduce some approximation errors, but extremely small steps can suffer from computer rounding."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "At centre w = 0, use step 0.5. Calculate L(-0.5), L(0.5) and the symmetric slope."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

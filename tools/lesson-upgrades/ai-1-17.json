@@ -1,0 +1,43 @@
+{
+  "week": "ai-1/17",
+  "title": "Prediction Is Not Fact",
+  "outcome": "By the end, I can keep predicted and observed outcomes separate and audit a disagreement.",
+  "scenario": "A fictional drying trial uses a fixed rule and later measures what actually happened.",
+  "given": [
+    "Model D predicts slow when moisture score is at least 5; quick otherwise.",
+    "Observation policy: slow if drying takes above 8 minutes; quick otherwise. Trial T has score 4 and measured time 9 minutes."
+  ],
+  "steps": [
+    {
+      "label": "Prediction input",
+      "icon": "sensor",
+      "detail": "T has moisture score 4."
+    },
+    {
+      "label": "Predict",
+      "icon": "model",
+      "detail": "4 is below 5, so D predicts quick."
+    },
+    {
+      "label": "Observe later",
+      "icon": "clock",
+      "detail": "Measured time is 9 minutes; above 8 means observed slow."
+    },
+    {
+      "label": "Compare evidence",
+      "icon": "check",
+      "detail": "Prediction quick disagrees with observation slow."
+    }
+  ],
+  "explanation": "The moisture score generates a prediction; it is not the observed drying time. The later measurement supplies separate evidence under the stated observation policy. Save both values and their units. Altering the recorded time to match D would destroy the evaluation rather than repair the model.",
+  "counterfactual": {
+    "change": "Keep score 4 but measure exactly 8 minutes.",
+    "prediction": "The observed label becomes quick and agrees with the prediction.",
+    "reason": "Above 8 is strict: equality is quick under this policy."
+  },
+  "student_task": "Which field changes the observation label, and which field changes the model prediction?",
+  "teacher_answer": "Time changes the observation; moisture score changes the prediction. At score 4 and time 8, both labels are quick.",
+  "project_evidence": "In sorter trials, record predicted categories before collecting reference evidence, then retain disagreements for investigation.",
+  "limits": "One failure does not prove every prediction is wrong; one agreement does not establish reliability on future trials.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice."
+}

@@ -1,0 +1,270 @@
+{
+  "week": "ai-4/12",
+  "title": "Nearest Neighbors",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Compute absolute distances and rank training neighbours",
+    "Apply a declared neighbour count and distance tie rule",
+    "Evaluate neighbour predictions without using validation labels as neighbours"
+  ],
+  "primary_topic": "Nearest neighbours and distances",
+  "vocabulary": [
+    [
+      "Distance",
+      "A numerical measure of difference between selected feature values"
+    ],
+    [
+      "Neighbour",
+      "A stored training example close under the chosen distance"
+    ],
+    [
+      "k",
+      "The number of neighbours selected for a prediction"
+    ],
+    [
+      "Vote",
+      "A contribution of a selected neighbour\u2019s label to the predicted class"
+    ]
+  ],
+  "worked_example": {
+    "title": "Separate feature distance from label evidence",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Three selected neighbours for query 3",
+        "columns": [
+          "Stored example",
+          "Feature distance",
+          "One label vote"
+        ],
+        "rows": [
+          [
+            "A at 2 cm",
+            "abs 2 minus 3 is 1",
+            "blocked"
+          ],
+          [
+            "B at 4 cm",
+            "abs 4 minus 3 is 1",
+            "clear"
+          ],
+          [
+            "C at 8 cm",
+            "abs 8 minus 3 is 5",
+            "clear"
+          ]
+        ],
+        "caption": "Select neighbours by feature distance and the declared ID tie rule. Read their training labels to vote only after selecting them."
+      },
+      {
+        "type": "paragraph",
+        "text": "Store the training examples and the method settings. At prediction time, compare the query only with stored training examples. Do not add the query\u2019s reference label or other validation labels to the neighbour pool. No cutoff or tree is fitted here, but retaining training examples is still part of the learning method."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Why do A and B tie for distance to query 3? Which wins for k=1 under our rule, and why does k=3 predict differently? Does the ID rule establish which label is true?",
+        "lines": 4
+      },
+      {
+        "type": "paragraph",
+        "text": "A vote share of two out of three describes these neighbours. It is not a verified two-thirds probability that the new scene is clear. A prediction can be wrong even when the nearest examples agree."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Apply neighbour and tie rules",
+    "prompt": "For query 3, list the selected IDs and predictions for k=1 and k=3 using alphabetical ID order on equal distances. Explain what changes and what remains the same.",
+    "answer": "For k=1 select A and predict blocked. For k=3 select A,B,C and predict clear from two clear votes. Training data, distance and ID tie rule stay the same; the number of voting neighbours changes.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Changed independent case",
+    "task": "Training points: A length1 healthy, B length5 spotted, C length9 healthy. Query length7. Use absolute distance; for a nearest-neighbor tie choose the alphabetically earlier ID. Compare k=1 and k=3.",
+    "answer": "Distances A6,B2,C2. The specified tie rule selects B for k=1, predicting spotted. With k=3, two healthy labels outvote one spotted. State the distance and tie policy; this tiny case establishes no wider accuracy.",
+    "source": "new parallel transfer case"
+  },
+  "misconceptions": [
+    [
+      "A negative difference is a negative distance",
+      "Take the absolute difference; in this example distance is nonnegative regardless of which reading is larger."
+    ],
+    [
+      "Odd k prevents every kind of tie",
+      "Three binary votes avoid a label tie, but neighbours can still tie in distance, including at the selection boundary."
+    ],
+    [
+      "An exact match proves the label",
+      "It matches the selected feature only. Other conditions, annotation errors or contradictory examples can remain."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/c97b711284074d48ae2f18a4349425eadcbe117c9a4d04cf458b664619c7b698",
+        "alt": "Week 12 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/0fa955bd5569fe35ee8020415a5a89f62b4739cde88e8332cc9f3680433dd93e",
+        "alt": "Week 12 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/995b1922c336454e76d239ca2380ab1a2e8f2939ae2d43c30ccd9fbd1cf4683d",
+        "alt": "Week 12 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Calculate distances and compare k=1 with k=3."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  k-nearest neighbors predicts from nearby labeled examples under a chosen feature scale, distance rule, and value of k."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  New leaf has normalized features (2, 3). Using Manhattan distance, add the absolute coordinate differences. Training leaves at (2, 2), (4, 3), and (1, 5) have distances 1, 2, and 3 from (2, 3).",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "train = [(\"A\", 2, \"blocked\"), (\"B\", 4, \"clear\"),\n         (\"C\", 8, \"clear\"), (\"D\", 10, \"blocked\"),\n         (\"E\", 12, \"clear\")]\nquery = 3\nranked = sorted((abs(x - query), item_id, label)\n                for item_id, x, label in train)\nnear = ranked[:3]\nlabels = [row[2] for row in near]\nprediction = \"clear\"\nif labels.count(\"blocked\") > labels.count(\"clear\"):\n    prediction = \"blocked\"\nprint([row[1] for row in near])\nprint(prediction)"
+      },
+      {
+        "type": "paragraph",
+        "text": "For query 3, distances to A through E are 1,1,5,7,9 cm. sorted orders tuples by distance first, then the unique ID. ranked[:3] takes the first three rows. The output is ['A', 'B', 'C'] then clear: one blocked vote and two clear votes."
+      },
+      {
+        "type": "paragraph",
+        "text": "If k were 1 under the same distance tie rule, A would win and predict blocked. Changing k can change a prediction. We declared k=3 for this exercise; do not choose k after seeing the desired answer and pretend the method was unchanged."
+      },
+      {
+        "type": "paragraph",
+        "text": "The code assumes unique IDs, numeric readings, only clear or blocked labels and at least three training rows. It does not validate those conditions. A larger k than the stored row count would not produce the promised number of votes. Keep unresolved review labels under a separate documented policy."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 12 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 12 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 12 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 12 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

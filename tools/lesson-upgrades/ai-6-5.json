@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/5",
+  "title": "Authentication and authorisation",
+  "outcome": "Explain authentication and authorisation using the deciding step in this fictional service.",
+  "scenario": "A verified reader cannot edit. Jo logs in as a verified museum volunteer and asks to edit card C.",
+  "given": [
+    "Trusted policy grants volunteers read access to C; only curators may edit it."
+  ],
+  "steps": [
+    {
+      "label": "Identify Jo",
+      "icon": "person",
+      "detail": "Authentication establishes Jo’s identity and volunteer role."
+    },
+    {
+      "label": "Check the action",
+      "icon": "shield",
+      "detail": "Editing C requires curator authority."
+    },
+    {
+      "label": "Deny the edit",
+      "icon": "output",
+      "detail": "Keep C unchanged; the authenticated volunteer lacks this permission."
+    }
+  ],
+  "explanation": "Authentication establishes identity. Authorisation compares that identity with the requested action and resource.",
+  "counterfactual": {
+    "change": "Use a verified curator permitted to edit C.",
+    "prediction": "The authorisation gate allows the edit, subject to other declared checks.",
+    "reason": "The trusted role now matches this operation and object."
+  },
+  "student_task": "Explain why Jo’s valid volunteer login does not permit editing C. Which trusted role change allows the action, and why is a role written in the request insufficient?",
+  "teacher_answer": "Authentication establishes Jo’s identity and volunteer role. Editing C requires curator authority. Keep C unchanged; the authenticated volunteer lacks this permission. Changed case: The authorisation gate allows the edit, subject to other declared checks. The trusted role now matches this operation and object. A role claim written in the request is untrusted and cannot replace the role established by authentication.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "A role written in an ordinary request is not a trusted authentication claim.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

@@ -1,0 +1,152 @@
+{
+  "week": "ai-5/4",
+  "title": "Activation functions",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Trace identity ReLU and sigmoid on a numerical score",
+    "Explain how a nonlinear activation changes a computation",
+    "Distinguish an activation output from a final class or verified probability"
+  ],
+  "primary_topic": "Activation functions",
+  "vocabulary": [
+    [
+      "Activation function",
+      "A function applied to a computed score"
+    ],
+    [
+      "ReLU",
+      "The function max(0, z), retaining positive scores and replacing negative scores with zero"
+    ],
+    [
+      "Sigmoid",
+      "The function 1 / (1 + exp(-z)), mapping finite real scores into the interval between 0 and 1"
+    ],
+    [
+      "Nonlinear function",
+      "A function that cannot be represented by one fixed slope and offset over its entire domain"
+    ]
+  ],
+  "worked_example": {
+    "title": "Compare transformations without mixing the rules",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Three functions receive the same score",
+        "columns": [
+          "Same incoming score",
+          "Apply one function",
+          "Activation output"
+        ],
+        "rows": [
+          [
+            "z is -2",
+            "Identity of z",
+            "-2"
+          ],
+          [
+            "z is -2",
+            "ReLU of z",
+            "0"
+          ],
+          [
+            "z is -2",
+            "Sigmoid of z",
+            "About 0.1192"
+          ]
+        ],
+        "caption": "Each row starts again from the same score -2 and applies one function. The functions are alternatives here, not successive steps. These outputs are activation values, not class labels."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "For z = -1 and z = 1, give identity and ReLU outputs. Using sigmoid(-1) = 0.2689 and sigmoid(1) = 0.7311, give classes under the rule a >= 0.5.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Apply a declared class rule",
+    "prompt": "Use the lesson sigmoid values for -2, 0, 2. Predict classes under a >= 0.5, then explain the zero-score case.",
+    "answer": "Teacher explanation: Classes are 0, 1, 1. Sigmoid(0) equals 0.5 and the declared >= comparison includes equality.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Trace a new chain independently",
+    "task": "Let z = x - 2, a = ReLU(z), y = 2a + 1. For x = 0, 2, 5, record every z, a and y. Then replace ReLU with identity and give all three y values. Which inputs have the same ReLU output, and why?",
+    "answer": "Teacher explanation: For x = 0, 2, 5: z = -2, 0, 3; a = 0, 0, 3; y = 1, 1, 7. Identity gives y = -3, 1, 7. Inputs 0 and 2 both give a = 0 because ReLU maps negative and zero scores to zero.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "ReLU returns a class label",
+      "Positive scores retain magnitude, so ReLU(2) is 2. A final class rule is separate."
+    ],
+    [
+      "A bounded number is a calibrated probability",
+      "A range restriction comes from the formula. Calibration needs appropriate evidence."
+    ],
+    [
+      "Nonlinearity guarantees a better result",
+      "It changes which functions can be represented; data, fitting and valid evaluation still determine model quality."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Sigmoid is 1 / (1 + exp(-z)). Here exp(t) means e raised to power t, where e is approximately 2.718. A calculator or the supplied Python code can evaluate it; no calculus is required this week. For z = -2, 0 and 2, sigmoid outputs are approximately 0.1192, 0.5 and 0.8808."
+      },
+      {
+        "type": "paragraph",
+        "text": "For every finite mathematical input, sigmoid is strictly between 0 and 1, though computer rounding can produce an endpoint for extreme scores. Negative inputs produce values below 0.5, zero gives 0.5, and positive inputs give values above 0.5. A class rule still needs to be stated: if class 1 means sigmoid(z) >= 0.5, these three predictions are 0, 1 and 1."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "from math import exp\n\ndef sigmoid(z):\n    if z >= 0:\n        return 1 / (1 + exp(-z))\n    e = exp(z)\n    return e / (1 + e)\n\nfor z in [-2, 0, 2]:\n    print(z, max(0, z), round(sigmoid(z), 4))"
+      },
+      {
+        "type": "paragraph",
+        "text": "The two algebraically equivalent branches avoid taking exp of a large positive number. A value within [0, 1] is not automatically a reliable probability: its interpretation depends on the fitted task and evaluation evidence."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the lesson sigmoid values for -2, 0, 2. Predict classes under a >= 0.5, then explain the zero-score case."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

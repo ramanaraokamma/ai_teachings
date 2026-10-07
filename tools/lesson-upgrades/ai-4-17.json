@@ -1,0 +1,60 @@
+{
+  "week": "ai-4/17",
+  "title": "Precision and Recall",
+  "outcome": "By the end, I can explain precision and recall using a traced example and a stated limitation.",
+  "scenario": "Put precision and recall denominators on the picture instead of memorising names.",
+  "given": [
+    "Positive means spotted. TP=6, FP=2, FN=4, TN=8 in twenty fictional leaves.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Predicted positives",
+      "icon": "chart",
+      "detail": "Eight leaves were flagged: precision=6/(6+2)=75%."
+    },
+    {
+      "label": "Actual positives",
+      "icon": "data",
+      "detail": "Ten leaves were spotted: recall=6/(6+4)=60%."
+    },
+    {
+      "label": "Keep goals separate",
+      "icon": "check",
+      "detail": "Precision asks how reliable flags are; recall asks how many spotted leaves were caught."
+    }
+  ],
+  "explanation": "Read the picture in order. Precision asks how reliable flags are; recall asks how many spotted leaves were caught. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Correct two false negatives into true positives.",
+    "prediction": "Precision becomes8/10=80%; recall becomes8/10=80%.",
+    "reason": "TP becomes8 and FN 2; FP remains2, so the two denominators happen to equal10."
+  },
+  "student_task": "Were the original precision and recall denominators the same? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "No. Precision used8 predicted-positive leaves; recall used10 actual-positive leaves. Their meanings remain distinct even when numbers later coincide. Changed-case check: Precision becomes8/10=80%; recall becomes8/10=80%. TP becomes8 and FN 2; FP remains2, so the two denominators happen to equal10.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "If a relevant denominator is zero, report that metric as undefined under the chosen convention rather than silently inventing success.",
+  "review_note": "Reviewed Precision and Recall against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Keep precision and recall denominators distinct",
+    "cells": [
+      [
+        6,
+        4
+      ],
+      [
+        2,
+        8
+      ]
+    ],
+    "row_labels": [
+      "actual spotted",
+      "actual healthy"
+    ],
+    "column_labels": [
+      "predicted spotted",
+      "predicted healthy"
+    ]
+  }
+}

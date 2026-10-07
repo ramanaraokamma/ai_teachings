@@ -1,0 +1,60 @@
+{
+  "week": "ai-2/22",
+  "title": "Nearest Neighbor Reasoning",
+  "outcome": "By the end, I can order training neighbours, apply k and keep query labels out of prediction.",
+  "scenario": "A fictional one-feature classifier predicts compact or extended book format.",
+  "given": [
+    "Stored training rows: A at 2 units compact, B at 6 extended, C at 8 compact, D at 12 extended. Query is 7.",
+    "Distance is absolute difference; ties sort by ID; tied category vote chooses compact."
+  ],
+  "steps": [
+    {
+      "label": "Measure distances",
+      "icon": "chart",
+      "detail": "From 7: A=5, B=1, C=1, D=5."
+    },
+    {
+      "label": "Order neighbours",
+      "icon": "data",
+      "detail": "Distance then ID gives B,C,A,D."
+    },
+    {
+      "label": "k=1 prediction",
+      "icon": "model",
+      "detail": "First neighbour B is extended: predict extended."
+    },
+    {
+      "label": "k=3 prediction",
+      "icon": "model",
+      "detail": "B,C,A vote extended,compact,compact: predict compact."
+    }
+  ],
+  "explanation": "Changing k changes how many training neighbours vote, even though all distances remain fixed. The query’s reference label must not enter the stored pool before predicting. Tie policies make ordering reproducible; without them, list order could unexpectedly determine the single-neighbour result.",
+  "counterfactual": {
+    "change": "Move query from 7 to 9 while keeping training fixed.",
+    "prediction": "Order becomes C,B,D,A; k=1 predicts compact and k=3 predicts extended.",
+    "reason": "Distances are C=1,B=3,D=3,A=7; B beats D by the ID tie rule."
+  },
+  "student_task": "Why do k=1 and k=3 disagree for the original query?",
+  "teacher_answer": "The closest tied neighbour selected by ID is extended B, while the first three include two compact votes.",
+  "project_evidence": "Retain recommender neighbour IDs, distances, k and tie decisions so similar-book explanations can be audited.",
+  "limits": "Nearest-neighbour votes depend on feature representation; they are not calibrated probabilities or guaranteed correct labels.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Distances from query 7",
+    "labels": [
+      "A at 2",
+      "B at 6",
+      "C at 8",
+      "D at 12"
+    ],
+    "values": [
+      5,
+      1,
+      1,
+      5
+    ],
+    "unit": "absolute distance units"
+  }
+}

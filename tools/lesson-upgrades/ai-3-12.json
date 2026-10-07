@@ -1,0 +1,43 @@
+{
+  "week": "ai-3/12",
+  "title": "Speech and Audio Systems",
+  "outcome": "By the end, I can separate speech recognition, calculation and speech output when diagnosing an error.",
+  "scenario": "A fictional learner dictates a calculation to a voice assistant.",
+  "given": [
+    "Known audio phrase: “thirteen plus seven”. Transcript: “thirty plus seven”. Calculator returns 37.",
+    "Synthetic voice says “thirty-seven”. The example supplies ground truth; no real audio was analysed."
+  ],
+  "steps": [
+    {
+      "label": "Recognise speech",
+      "icon": "model",
+      "detail": "Transcription changes thirteen into thirty."
+    },
+    {
+      "label": "Calculate text",
+      "icon": "code",
+      "detail": "30+7=37 is correct for the mistaken transcript."
+    },
+    {
+      "label": "Speak result",
+      "icon": "output",
+      "detail": "Speech synthesis repeats 37; fluent voice does not validate the input."
+    },
+    {
+      "label": "Confirm intended input",
+      "icon": "person",
+      "detail": "Read back the recognised expression; intended 13+7=20."
+    }
+  ],
+  "explanation": "The first error occurs before arithmetic. Blaming the calculator would target a stage that correctly processed its supplied text. Read-back or on-screen confirmation lets the user catch a number misunderstanding before action. Retain the original audio and transcript, where permitted, to separate recognition defects from later processing errors.",
+  "counterfactual": {
+    "change": "Correct the transcript to “thirteen plus seven” with all later stages unchanged.",
+    "prediction": "The calculator and spoken result should become 20 under the declared pipeline.",
+    "reason": "13+7=20; the changed input removes the earlier recognition error."
+  },
+  "student_task": "Which stage was initially wrong, and which stage was correctly operating on a wrong input?",
+  "teacher_answer": "Speech recognition was wrong. The calculator correctly computed 30+7; synthesis correctly repeated that wrong-for-intent result.",
+  "project_evidence": "Show Study Buddy recognised questions before calculating or retrieving important answers, especially numbers and dates.",
+  "limits": "These supplied transcript facts do not establish how an actual recogniser performs for accents, noise or different speakers.",
+  "review_note": "Individually designed fictional worked case, distinct from the reserved assessment. Toy model simplifications, arithmetic and source authority reviewed explicitly."
+}

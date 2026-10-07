@@ -1,0 +1,59 @@
+{
+  "week": "ai-7/10",
+  "title": "Confounders and controls",
+  "outcome": "Explain confounders and controls using the records and boundaries of this fictional investigation.",
+  "scenario": "Separate background from class. Training data show every healthy leaf on white paper and every spotted leaf on blue paper.",
+  "given": [
+    "Goal is leaf condition, not paper colour. A proposed check uses both paper colours for each condition."
+  ],
+  "steps": [
+    {
+      "icon": "data",
+      "label": "Identify coupled variables",
+      "detail": "Condition and background change together in the original collection."
+    },
+    {
+      "icon": "experiment",
+      "label": "Cross the conditions",
+      "detail": "Collect healthy-white, healthy-blue, spotted-white and spotted-blue cases."
+    },
+    {
+      "icon": "check",
+      "label": "Inspect the shortcut",
+      "detail": "Compare predictions when the same leaf’s background changes under a controlled test."
+    }
+  ],
+  "explanation": "A confounder can provide an alternative explanation for a result. Crossing conditions makes the intended feature and the nuisance feature less entangled.",
+  "counterfactual": {
+    "change": "New cases still use only healthy-white and spotted-blue.",
+    "prediction": "The collection does not resolve the background confounding.",
+    "reason": "The same two variables remain coupled instead of being varied separately."
+  },
+  "student_task": "Draw the four condition/background combinations. Which variables were coupled before, and why would collecting only healthy-white and spotted-blue again leave the confounding unresolved?",
+  "teacher_answer": "Condition and background change together in the original collection. Collect healthy-white, healthy-blue, spotted-white and spotted-blue cases. Compare predictions when the same leaf’s background changes under a controlled test. Changed case: The collection does not resolve the background confounding. The same two variables remain coupled instead of being varied separately.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "A changed-background test can diagnose sensitivity; it does not prove the model’s complete internal reasoning.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Cross class with paper background",
+    "cells": [
+      [
+        "Collect",
+        "Collect"
+      ],
+      [
+        "Collect",
+        "Collect"
+      ]
+    ],
+    "row_labels": [
+      "Healthy",
+      "Spotted"
+    ],
+    "column_labels": [
+      "White paper",
+      "Blue paper"
+    ]
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "week": "ai-5/33",
+  "title": "Capstone hypothesis and baseline",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Write a testable capstone hypothesis and a credible baseline",
+    "Specify data roles and a selection rule before inspecting results",
+    "Calculate baseline MSE and distinguish a success criterion from a result"
+  ],
+  "primary_topic": "Capstone hypothesis and baseline",
+  "vocabulary": [
+    [
+      "Hypothesis",
+      "A testable expectation with a stated comparison and outcome"
+    ],
+    [
+      "Baseline",
+      "A specified reference procedure evaluated on the same cases"
+    ],
+    [
+      "Success criterion",
+      "A rule written before evaluation for judging the measured result"
+    ],
+    [
+      "Reserved test",
+      "Cases kept out of fitting, tuning and selection"
+    ]
+  ],
+  "worked_example": {
+    "title": "Write criteria before observing outcomes",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "The validation criterion is candidate MSE strictly below baseline MSE on V1 and V2. Equality does not pass. The final criterion is lower MSE than the same baseline on the sealed final rows. Report both scores and every raw prediction whether or not the criterion passes. Record the rule, training rows, update count, learning rate, loss, data versions and code version. A criterion specifies how to judge a future result; it is not evidence that the result already happened."
+      },
+      {
+        "type": "paragraph",
+        "text": "Keep validation and final criteria separate. Do not silently add epochs or change preprocessing after seeing a weak result. A changed plan is a new version and needs an honest account of what evidence informed it."
+      }
+    ]
+  },
+  "guided_practice": {
+    "title": "Calculate the reference score",
+    "prompt": "Compute baseline predictions, errors, squared errors and MSE on V1 and V2. State the denominator.",
+    "answer": "Teacher explanation: Predictions 3 and 4; errors -3 and -4; squared errors 9 and 16; MSE 12.5 over two rows.",
+    "lines": 6,
+    "id": "W2"
+  },
+  "independent_case": {
+    "title": "Plan a new case independently",
+    "task": "A new task predicts max(0, a*x), with baseline a = 1. Training rows are (1,3) and (2,6); validation rows are (3,9) and (4,12); final rows are sealed. Specify a candidate starting at 1 with learning rate 0.1 and two full-batch updates. Calculate baseline validation MSE and write a strict improvement criterion. Has the candidate succeeded yet?",
+    "answer": "Teacher explanation: Baseline predictions 3 and 4, errors -6 and -8, squared errors 36 and 64, MSE 50 over two rows. Candidate is fixed at two updates with rate 0.1 on training only; success means candidate validation MSE < 50. No candidate results have been supplied, so success is unknown.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A hypothesis is a result",
+      "A hypothesis states an expectation before the comparison. Results may support or contradict it."
+    ],
+    [
+      "A weak baseline proves neural networks help",
+      "An initial-weight reference checks improvement from that starting point, not superiority to a fitted line."
+    ],
+    [
+      "Renaming a used test restores independence",
+      "A new name cannot undo using its results for selection."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "table",
+        "rows": [
+          [
+            "Role and ID",
+            "x",
+            "y"
+          ],
+          [
+            "Training T1",
+            "1",
+            "2"
+          ],
+          [
+            "Training T2",
+            "2",
+            "4"
+          ],
+          [
+            "Validation V1",
+            "3",
+            "6"
+          ],
+          [
+            "Validation V2",
+            "4",
+            "8"
+          ],
+          [
+            "Final test",
+            "Sealed",
+            "Sealed"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Training rows determine updates. Validation rows compare the prespecified candidate with the baseline. The final-test inputs and targets remain sealed until the procedure and reporting plan are frozen. MSE = sum of squared prediction errors divided by the number of evaluated rows. Baseline predictions on V1 and V2 are 3 and 4. Errors are -3 and -4, squared errors 9 and 16, and validation MSE is 25/2 = 12.5. There are two validation cases."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Keep the evidence roles separate",
+        "columns": [
+          "Plan or input",
+          "Procedure",
+          "Permitted conclusion"
+        ],
+        "rows": [
+          [
+            "T1 and T2",
+            "Fit two updates",
+            "Training result only"
+          ],
+          [
+            "V1 and V2",
+            "Compare with a = 1",
+            "Validation comparison"
+          ],
+          [
+            "Sealed final rows",
+            "Evaluate frozen procedure",
+            "Final evidence on those rows"
+          ]
+        ],
+        "caption": "Each arrow preserves a distinct data role. Opening final rows to choose a learning rate changes their role."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Compute baseline predictions, errors, squared errors and MSE on V1 and V2. State the denominator."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

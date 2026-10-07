@@ -1,0 +1,74 @@
+{
+  "week": "ai-2/23",
+  "title": "Recommendation Scores",
+  "outcome": "By the end, I can rank only eligible options with a transparent weighted score.",
+  "scenario": "A fictional book-activity chooser has a 14-minute limit.",
+  "given": [
+    "Score=2×interest+practice. A=(interest3,practice2,time14); B=(4,3,15); C=(2,5,12).",
+    "Require whole nonnegative feature values; time must be at most the limit. Highest score wins; tie by ID."
+  ],
+  "steps": [
+    {
+      "label": "Eligibility first",
+      "icon": "shield",
+      "detail": "A and C fit time; B takes 15 and is excluded."
+    },
+    {
+      "label": "Scores",
+      "icon": "code",
+      "detail": "A:2×3+2=8. C:2×2+5=9."
+    },
+    {
+      "label": "Choose",
+      "icon": "output",
+      "detail": "C wins at score 9 among eligible activities."
+    },
+    {
+      "label": "Explain exclusion",
+      "icon": "check",
+      "detail": "B’s score 11 cannot override its failed time requirement."
+    }
+  ],
+  "explanation": "A score combines preferences according to explicitly chosen weights; it does not erase hard constraints. Computing a high score for an excluded item can be useful in an audit, but it must not allow that item back into the candidate set. Store both eligibility reasons and score components for explanations.",
+  "counterfactual": {
+    "change": "Change interest weight from 2 to 3, keeping time limit 14.",
+    "prediction": "A scores 11; C also scores 11; tie-by-ID chooses A.",
+    "reason": "B remains too long; changing preferences changes only ranking of A and C."
+  },
+  "student_task": "Why does B not become the winner when its score is largest?",
+  "teacher_answer": "Its time 15 exceeds the 14-minute maximum, so it is ineligible before ranking.",
+  "project_evidence": "Publish the recommender’s constraints, score formula and tie rule; include component-level reasons in each suggestion.",
+  "limits": "Toy interest scores are supplied inputs, not measured enjoyment or a universal definition of a good activity.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Time filtering and scores",
+    "cells": [
+      [
+        14,
+        8,
+        "eligible"
+      ],
+      [
+        15,
+        11,
+        "excluded"
+      ],
+      [
+        12,
+        9,
+        "eligible"
+      ]
+    ],
+    "row_labels": [
+      "A",
+      "B",
+      "C"
+    ],
+    "column_labels": [
+      "Minutes",
+      "Score",
+      "Status"
+    ]
+  }
+}

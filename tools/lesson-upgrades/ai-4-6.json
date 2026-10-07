@@ -1,0 +1,38 @@
+{
+  "week": "ai-4/6",
+  "title": "Label Quality",
+  "outcome": "By the end, I can explain label quality using a traced example and a stated limitation.",
+  "scenario": "Write a label rule that resolves the visible boundary case.",
+  "given": [
+    "Toy spotted-leaf rule: at least one fully visible brown spot means spotted; occluded leaves require review. X has one visible spot; Y has none; Z is half hidden.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Apply visible rule",
+      "icon": "rule",
+      "detail": "X is spotted; Y is healthy under this exercise’s definition."
+    },
+    {
+      "label": "Handle uncertainty",
+      "icon": "question",
+      "detail": "Z requires review; hidden tissue cannot be treated as visibly spot-free."
+    },
+    {
+      "label": "Review disagreement",
+      "icon": "person",
+      "detail": "If an annotator labels X healthy, compare the image and declared spot rule before changing the label."
+    }
+  ],
+  "explanation": "Read the picture in order. If an annotator labels X healthy, compare the image and declared spot rule before changing the label. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Z receives a new fully visible image with no brown spots.",
+    "prediction": "Label the new observation healthy under the toy rule.",
+    "reason": "The missing visual evidence is now supplied; the earlier uncertain image was not proof of health."
+  },
+  "student_task": "Why should two annotators not vote away Z’s missing evidence? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Agreement or a majority cannot reveal hidden tissue. Seek an adequate observation and preserve the review status until then. Changed-case check: Label the new observation healthy under the toy rule. The missing visual evidence is now supplied; the earlier uncertain image was not proof of health.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Visible brown spots are a simplified classroom target, not a diagnosis of plant disease.",
+  "review_note": "Reviewed Label Quality against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

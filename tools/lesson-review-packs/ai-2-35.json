@@ -1,0 +1,299 @@
+{
+  "week": "ai-2/35",
+  "title": "Improve and Challenge",
+  "grade": 7,
+  "project": "Transparent Book Recommender",
+  "goals": [
+    "Repair a specific observed failure",
+    "Check that earlier behavior still works",
+    "Keep a truthful change and failure record"
+  ],
+  "primary_topic": "Improving without hiding failures",
+  "vocabulary": [
+    [
+      "Regression suite",
+      "Earlier cases rerun after a change"
+    ],
+    [
+      "Change log",
+      "A record of what changed and why"
+    ],
+    [
+      "Root cause",
+      "The underlying reason for a failure"
+    ],
+    [
+      "Residual risk",
+      "A limitation or possible failure remaining after a repair"
+    ]
+  ],
+  "worked_example": {
+    "title": "Predict before running",
+    "blocks": [
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Would changing the condition to minutes <= limit + 1 correctly repair the boundary? Explain with a revealing input.",
+        "lines": 6
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Test neighbors",
+    "prompt": "For limit 15, give expected eligibility at 14, 15 and 16.",
+    "answer": "True, True, False.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Repair independently",
+    "task": "Write the eligibility predicate for at most 12 minutes and a regression set including 11,12,13 and 0. Add one chooser tie case and one invalid-data case to rerun.",
+    "answer": "Use minutes <= limit after validation. Expectations True, True, False, True. Include a deterministic tie case and a schema-invalid row that never reaches selection; state expected outcomes.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A successful run proves the conclusion",
+      "A clean regression run does not erase the earlier failure. Keep before/after evidence and remaining limitations. If a fix was informed by reserved evaluation cases, report that contamination and obtain new independent cases."
+    ],
+    [
+      "Matching the example is enough",
+      "Require the new W4 case, explicit predictions and an explanation. Fresh retry: rating validity should include 0 through 5 but a bug uses 0 < rating < 5. Repair to inclusive bounds; test -1,0,1,5,6 giving False,True,True,True,False."
+    ],
+    [
+      "A convenient shortcut preserves meaning",
+      "Changing the expected boundary result to False would make the test pass while violating the requirement. Keep the requirement and independently calculated expectation; repair the implementation. If requirements truly change, document that as a policy change."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/df08e6a15fb31d08ccbe2a0d24d872d6f32604649f7818a27c57a733aed3ea11",
+        "alt": "INPUT stage for Improve and Challenge",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/28cf21b726c937181a44b820cdf75b198760c4c6d14cb3dda277d472f4d1b6f9",
+        "alt": "PROCESS stage for Improve and Challenge",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/793c190d5a6f4abcec27816a64053c59b54c1cda4479ce7e70389706f9032ab6",
+        "alt": "OUTPUT stage for Improve and Challenge",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "def eligible(minutes, limit):\n    return minutes <= limit\n\nfor minutes, expected in [(9, True), (10, True), (11, False)]:\n    actual = eligible(minutes, 10)\n    assert actual == expected\n    print(minutes, actual)"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow the evidence",
+        "columns": [
+          "Step or case",
+          "Evidence",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "Before fix",
+            "10 < 10 is False",
+            "Violates at most rule"
+          ],
+          [
+            "After fix",
+            "10 <= 10 is True",
+            "Boundary accepted"
+          ],
+          [
+            "Neighbor check",
+            "11 <= 10 is False",
+            "Over-limit still excluded"
+          ]
+        ],
+        "caption": "Read each row from left to right and connect the evidence to the stated rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "The repaired predicate prints 9 True, 10 True and 11 False. It assumes validated numeric durations; it is not a replacement for the schema validator. A focused change is easier to explain and evaluate than unrelated edits made at the same time."
+      },
+      {
+        "type": "subheading",
+        "text": "Repair the rule, then keep the evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "At most includes equality. For a limit of 10, the durations 9 and 10 qualify while 11 does not. The strict comparison minutes < limit wrongly rejects 10; changing it to minutes <= limit repairs that boundary. Check below, at and above the boundary, then rerun earlier tie and invalid-input cases. Keep the original failure record so another person can understand what changed and which evidence supports the repair."
+      },
+      {
+        "type": "subheading",
+        "text": "Apply the connected idea: Testing functions and interfaces"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "def score(item):\n    return 2 * item[\"fun\"] + item[\"learning\"]\n\ncases = [( {\"fun\": 0, \"learning\": 0}, 0),\n         ( {\"fun\": 3, \"learning\": 2}, 8),\n         ( {\"fun\": 5, \"learning\": 5}, 15)]\nfor item, expected in cases:\n    assert score(item) == expected\nprint(\"3 score cases passed\")"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow the evidence",
+        "columns": [
+          "Step or case",
+          "Evidence",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "Unit",
+            "Score 3 and 2",
+            "Expect 8"
+          ],
+          [
+            "Integration",
+            "Invalid high-score row",
+            "Must never win"
+          ],
+          [
+            "Report",
+            "No eligible rows",
+            "Explain no suggestion"
+          ]
+        ],
+        "caption": "Read each row from left to right and connect the evidence to the stated rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "The code prints its success message only if all assertions pass. It checks the scoring component but says nothing about duration filtering, malformed records, ties or reporting. Add focused cases for those requirements. Use the production functions from earlier weeks rather than rewriting a second copy just for tests."
+      },
+      {
+        "type": "subheading",
+        "text": "Test the connections as well as the pieces"
+      },
+      {
+        "type": "paragraph",
+        "text": "A score unit test asks whether the scoring function calculates the specified number. An integration test asks whether validation, filtering, scoring and reporting work together. A correct score does not establish that invalid records were rejected or that a tie was resolved correctly. Predict the full report from the input records before running. Check its counts and reasons as well as its selected name, and repeat a tie case with reversed input order."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1f18213ba3d74c99072fa04ad7520b53eee0b2e9e845b0d8a61ccdda1b41f3f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fed8318cf337134a2c31a8d2c90831db67a27a43d3c6f85b25079c53ec37ff9a",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/75f964dbe29000347e518a59e2717387d7109bd1f947abdafa07e931a61cf754",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4d936b6648b81ac897fc99370c2788f8e0b135d8fc31cfd77afceee66a92128c",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

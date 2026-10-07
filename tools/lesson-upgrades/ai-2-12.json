@@ -1,0 +1,60 @@
+{
+  "week": "ai-2/12",
+  "title": "Accuracy as a Fraction",
+  "outcome": "By the end, I can compare accuracy with class-specific performance in an imbalanced evaluation.",
+  "scenario": "A fictional shelf classifier predicts repair needed or not needed.",
+  "given": [
+    "Evaluation reference labels: 16 not-needed and 4 needed. Positive class is needed.",
+    "Always-not-needed baseline is correct on 16. Candidate has TP=3,FN=1,FP=2,TN=14."
+  ],
+  "steps": [
+    {
+      "label": "Reference population",
+      "icon": "data",
+      "detail": "20 labelled cases, including four repair-needed books."
+    },
+    {
+      "label": "Baseline",
+      "icon": "chart",
+      "detail": "16/20=80% accuracy; catches 0/4 needed cases."
+    },
+    {
+      "label": "Candidate",
+      "icon": "chart",
+      "detail": "(3+14)/20=85% accuracy; catches 3/4=75% needed cases."
+    },
+    {
+      "label": "Compare costs",
+      "icon": "person",
+      "detail": "Candidate also raises two false alarms; discuss both missed repairs and extra checks."
+    }
+  ],
+  "explanation": "A majority-class baseline can look accurate while missing every positive case. The candidate improves overall agreement and repair detection in this table, but false alarms still matter. Use the same cases, denominators and positive-class definition for both. Do not infer that a single metric identifies the best policy for every library.",
+  "counterfactual": {
+    "change": "A candidate instead marks every book repair needed.",
+    "prediction": "Recall is 4/4=100%, but accuracy is only 4/20=20%.",
+    "reason": "All 16 not-needed books become false alarms."
+  },
+  "student_task": "Why is 100% repair detection not sufficient to declare the changed classifier best?",
+  "teacher_answer": "It catches all four repairs but wrongly flags all 16 others, creating many extra checks; consequences must be assessed.",
+  "project_evidence": "Compare recommender choices with a simple baseline and report relevant rare-category failures, not only aggregate accuracy.",
+  "limits": "These selected cases do not establish future rates or specify the real cost of each error.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Accuracy can hide missed repair cases",
+    "labels": [
+      "Baseline accuracy",
+      "Baseline repair recall",
+      "Candidate accuracy",
+      "Candidate repair recall"
+    ],
+    "values": [
+      80,
+      0,
+      85,
+      75
+    ],
+    "unit": "percent"
+  }
+}

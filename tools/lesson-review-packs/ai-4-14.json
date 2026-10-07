@@ -1,0 +1,258 @@
+{
+  "week": "ai-4/14",
+  "title": "Scores and Calibration Intuition",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Interpret calibration using groups of forecasts",
+    "Compare average predicted probability with observed frequency",
+    "Distinguish calibration from individual correctness"
+  ],
+  "primary_topic": "Calibration as a group property",
+  "vocabulary": [
+    [
+      "Calibration",
+      "Agreement between predicted probabilities and outcome frequencies across comparable groups"
+    ],
+    [
+      "Bin",
+      "A declared interval grouping predictions"
+    ],
+    [
+      "Observed frequency",
+      "Positive outcomes divided by cases in a group"
+    ],
+    [
+      "Reliability diagram",
+      "A plot comparing group average prediction with observed frequency"
+    ]
+  ],
+  "worked_example": {
+    "title": "Explain the visual",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Calibration as a group property at a glance",
+        "columns": [
+          "Part",
+          "Evidence or action",
+          "Interpretation"
+        ],
+        "rows": [
+          [
+            "Low probability group",
+            "Average .2",
+            "Observed 2 of 10"
+          ],
+          [
+            "High probability group",
+            "Average .8",
+            "Observed 6 of 10"
+          ],
+          [
+            "Compare groups",
+            "Prediction versus frequency",
+            "Keep group sizes visible"
+          ]
+        ],
+        "caption": "Plot average prediction on the horizontal axis and observed frequency on the vertical axis. The two points are (.2,.2) and (.8,.6). Agreement lies along the diagonal. Use the average score within a bin, not automatically the bin midpoint. Small groups make frequencies uncertain."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Which worked group overstates positive frequency and by how much? Explain the steps or evidence behind your response.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Locate the discrepancy",
+    "prompt": "Which worked group overstates positive frequency and by how much?",
+    "answer": "Teacher explanation: The .8 group exceeds observed .6 by .2, or 20 percentage points in this sample.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Apply independently",
+    "task": "Twenty cases all predict .3 with eight positives; ten all predict .7 with seven positives. Give plot points and interpret.",
+    "answer": "Teacher explanation: Points (.3,.4) and (.7,.7). The first understates observed frequency by .1; the second agrees on this sample. Group sizes still limit claims.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A final answer is enough",
+      "Ask for the relevant counts, units, procedure or saved record. For this week: 2/10=.2 and 6/10=.6."
+    ],
+    [
+      "A stronger claim makes a stronger project",
+      "The reported improvement reuses the answers used for adjustment; evaluate the frozen adjustment on separate data."
+    ],
+    [
+      "The new case can be copied from the example",
+      "The independent task changes the evidence. Require a fresh explanation: Points (.3,.4) and (.7,.7). The first understates observed frequency by .1; the second agrees on this sample. Group sizes still limit claims."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a6c0eb91240bc316bf72b5081ef320f3514eccb442819b9712f93b8af6d45d1b",
+        "alt": "Week 14 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/dd025ed43f9363835f2361156d96cc0285e01f6581dfb0037d0ab8469be2220f",
+        "alt": "Week 14 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/7ecd5a655958c984e285945c8423d077484848f627dadd76900ffec7aefd3400",
+        "alt": "Week 14 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Bin prediction scores and compare average score with observed correctness."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  A model score can rank predictions without matching the real frequency of correct outcomes."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  For this example, each score estimates the probability that the selected label is correct. Ten predictions have scores near 0.8; six are correct, so observed correctness is 6/10=60%. If instead scores mean probability of the spotted class, compare them with the fraction of reference-spotted leaves.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "In a fictional held-out check, ten cases all have predicted probability .2 and two are positive. Another ten all have probability .8 and six are positive. Average predictions are .2 and .8; observed frequencies are 2/10=.2 and 6/10=.6. The second group is overconfident for positives in this sample."
+      },
+      {
+        "type": "code",
+        "title": "Python 3 check",
+        "text": "groups = [(0.2, 10, 2), (0.8, 10, 6)]\nfor score, count, positives in groups:\n    if count == 0:\n        print(\"No evidence in this group\")\n    else:\n        print(score, positives / count)\n# Compare each score with its observed fraction.\n# A group fraction is not an individual guarantee."
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the calculation on paper before running this optional Python check. Use the stated fictional inputs and compare intermediate values. The code checks this example; your independent workbook case uses different evidence."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 14 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 14 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 14 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 14 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

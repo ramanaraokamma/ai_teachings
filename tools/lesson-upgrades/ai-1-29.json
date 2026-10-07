@@ -1,0 +1,43 @@
+{
+  "week": "ai-1/29",
+  "title": "Find a Real Problem",
+  "outcome": "By the end, I can turn a recorded problem into a bounded, measurable project goal.",
+  "scenario": "A fictional class loses time finding the correct craft tray.",
+  "given": [
+    "In eight recorded requests, three selected trays lack a required tool; five match.",
+    "The teacher permits a paper finder using fictional requests and an approved tray list, with no pupil names."
+  ],
+  "steps": [
+    {
+      "label": "Observe problem",
+      "icon": "data",
+      "detail": "Three mismatches are recorded out of eight requests."
+    },
+    {
+      "label": "Define need",
+      "icon": "question",
+      "detail": "Help users choose a tray containing every requested tool."
+    },
+    {
+      "label": "Set success test",
+      "icon": "check",
+      "detail": "Compare selected tray against the approved inventory for each new case."
+    },
+    {
+      "label": "Bound the project",
+      "icon": "shield",
+      "detail": "Use fictional tool requests; do not collect identity or purchase equipment."
+    }
+  ],
+  "explanation": "The mismatch record describes a concrete need. A measurable goal checks whether the chosen tray satisfies the request; calling the system smart would not tell us how to evaluate it. Start with a transparent paper baseline, and keep unsatisfied requests visible instead of selecting a near match without warning.",
+  "counterfactual": {
+    "change": "The approved list contains no tray with every requested tool.",
+    "prediction": "The finder should report no suitable tray rather than guess.",
+    "reason": "Success includes honestly identifying unsatisfied requirements."
+  },
+  "student_task": "Write a one-sentence project goal and say what evidence would count as a failure.",
+  "teacher_answer": "Goal: choose an inventory-confirmed tray containing all requested tools or report none. A selected tray missing a required tool is a failure.",
+  "project_evidence": "For the Helpful Classroom Sorter, retain the problem record, permitted scope, baseline and observable acceptance criteria.",
+  "limits": "Eight requests do not show the problem’s frequency across the entire school or prove AI is necessary.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment."
+}

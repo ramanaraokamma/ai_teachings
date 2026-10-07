@@ -1,0 +1,269 @@
+{
+  "week": "ai-3/8",
+  "title": "Structured Output and Schemas",
+  "grade": 8,
+  "project": "Verified Study Buddy",
+  "goals": [
+    "Separate JSON parsing, schema validation and source support checks",
+    "Reject invalid types and unexpected fields under a closed schema",
+    "Trace a validly formatted but unsupported claim"
+  ],
+  "primary_topic": "Structured outputs and validation",
+  "vocabulary": [
+    [
+      "Syntax validation",
+      "Checking whether text can be parsed under the format grammar"
+    ],
+    [
+      "Schema validation",
+      "Checking fields, types and allowed combinations in a parsed value"
+    ],
+    [
+      "Semantic validation",
+      "Checking meaning and consistency with sources or domain rules"
+    ],
+    [
+      "Closed schema",
+      "A contract rejecting fields beyond the stated set"
+    ]
+  ],
+  "worked_example": {
+    "title": "Inspect a well-formatted unsupported answer",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Suppose sources P and Q approve room B and give capacity 12. The complete object {\"status\":\"supported\",\"room\":\"B\",\"capacity\":99,\"source_ids\":[\"P\",\"Q\"]} parses and satisfies the stated field types, but its capacity is unsupported by Q. Reject it at semantic validation. Listing a real source ID does not prove that source supports the associated claim."
+      },
+      {
+        "type": "paragraph",
+        "text": "An object with needs_review and room B violates the conditional schema rule even if its source IDs are real. An object with supported, room B and capacity 12 but source ID Z fails the known-source rule. Require the linked current approval and capacity records to support the same room."
+      }
+    ]
+  },
+  "guided_practice": {
+    "title": "Audit types and fields",
+    "prompt": "Why do string \"12\",boolean true,missing capacity and an extra action field violate this contract?",
+    "answer": "Teacher explanation: Capacity must be an integer for supported and null for needs_review, with the field present. A Boolean is explicitly excluded. Extra fields violate the closed schema; string values are not silently converted.",
+    "lines": 6,
+    "id": "W2"
+  },
+  "independent_case": {
+    "title": "Validate new objects independently",
+    "task": "Sources A approve room F and B register F capacity 9. Object X has supported,F,9,[A,B] with exactly the required fields. Y replaces 9 with \"9\". Z keeps integer 9 but names room G. Trace the first failing layer for each and explain the difference.",
+    "answer": "Teacher explanation: X passes parsing, schema and source validation. Y parses but fails schema because capacity is a string. Z parses and satisfies field types but fails semantic support because sources name F, not G. Assuming these values are encoded as proper JSON, syntax is not the failure.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Valid JSON means correct answer",
+      "JSON syntax says nothing about schema or source truth."
+    ],
+    [
+      "Python treats bool as int, so it is acceptable",
+      "The contract explicitly excludes Booleans; an implementation must check accordingly."
+    ],
+    [
+      "A valid report authorises a side effect",
+      "Reporting and booking have different permissions."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/557714ea4ca6f11c2f5344cdfb685b4483ca2094804228896e40b238c723f5ed",
+        "alt": "INPUT stage for Structured Output and Schemas",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/52fe2372811b508664c3ebfc2122526bf04485a2149d9f4c70b26b2c7eb87cf3",
+        "alt": "PROCESS stage for Structured Output and Schemas",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/e92950d785d7cb11a06a14385b2e143938706d87f86b742262658313ad9ac8d8",
+        "alt": "OUTPUT stage for Structured Output and Schemas",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "table",
+        "rows": [
+          [
+            "Response fragment",
+            "Layer that rejects it",
+            "Reason"
+          ],
+          [
+            "{status: supported}",
+            "Syntax",
+            "JSON keys/strings need quotes"
+          ],
+          [
+            "{\"capacity\":\"12\"}",
+            "Schema in a complete object",
+            "String does not satisfy integer capacity"
+          ],
+          [
+            "{\"capacity\":true}",
+            "Schema in a complete object",
+            "Boolean is not accepted as an integer"
+          ],
+          [
+            "An extra booking field",
+            "Closed schema",
+            "Unexpected field"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "These fragments illustrate failures, not complete candidate objects. A real check receives the whole object and verifies every required field. Do not repair a string capacity automatically unless a separate documented conversion policy permits it; otherwise report validation failure. A null value differs from missing a field."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Keep the evidence roles separate",
+        "columns": [
+          "Plan or input",
+          "Procedure",
+          "Permitted conclusion"
+        ],
+        "rows": [
+          [
+            "Generated text",
+            "JSON parse",
+            "A value or syntax error"
+          ],
+          [
+            "Parsed value",
+            "Closed-schema check",
+            "Contract match or schema error"
+          ],
+          [
+            "Contract-valid object",
+            "Match claims to current sources",
+            "Supported or semantic error"
+          ]
+        ],
+        "caption": "Each passed layer still leaves later layers to check."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/baa081bb74d63b3556ecfd5951cdc8779d64ec1813de34614621c4e969a973f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/5e6557194a1470352d07b6a509da5d673d81767981996dd1b685f799a5582b76",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/8e1f2e3affdd81449df265675243cda4511c1e88dd8cd9583d4ea42f6083c297",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a54f0c40e48e47ca92a4c36ebbc98f08b4a78c72cd385d85b0a5a7f07f558757",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

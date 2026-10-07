@@ -1,0 +1,43 @@
+{
+  "week": "ai-3/13",
+  "title": "Multimodal Evidence",
+  "outcome": "By the end, I can combine evidence from modalities without treating hidden content as visible.",
+  "scenario": "A fictional Study Buddy audits a desk description and a separate caption.",
+  "given": [
+    "Description: one open transparent box visibly contains three pencils; one closed opaque box hides its contents.",
+    "Caption: “There are five pencils on this desk.” No other evidence reveals the closed box."
+  ],
+  "steps": [
+    {
+      "label": "Visible evidence",
+      "icon": "sensor",
+      "detail": "Three pencils are explicitly visible in the open box."
+    },
+    {
+      "label": "Hidden region",
+      "icon": "question",
+      "detail": "The closed box’s pencil count is unknown."
+    },
+    {
+      "label": "Caption claim",
+      "icon": "book",
+      "detail": "Five total requires two additional pencils if these are the only relevant locations."
+    },
+    {
+      "label": "Supported response",
+      "icon": "output",
+      "detail": "At least three are supported; total five is not established by the description."
+    }
+  ],
+  "explanation": "A caption is another claim, not a way of seeing through an opaque object. Keep observable information separate from inferences. The visible three give a lower bound under the stated desk scope; there is no supplied maximum for the closed box. Do not replace unknown contents with zero merely because none are visible.",
+  "counterfactual": {
+    "change": "Open the closed box and a verified observation shows two pencils inside, with no other desk locations.",
+    "prediction": "The total is now supported as five.",
+    "reason": "3 visible initially plus 2 newly observed gives 5 under the complete-location assumption."
+  },
+  "student_task": "Why were both “exactly three” and “exactly five” unsupported before opening the box?",
+  "teacher_answer": "Three were visible, but hidden contents were unknown. The closed box could contain additional pencils, and none had yet been observed.",
+  "project_evidence": "Label Study Buddy claims by their visual, audio or text evidence and retain uncertainty when modalities omit information.",
+  "limits": "The conclusion depends on the supplied description’s accuracy; no actual image inspection or exhaustive room inventory was performed.",
+  "review_note": "Individually designed fictional worked case, distinct from the reserved assessment. Toy model simplifications, arithmetic and source authority reviewed explicitly."
+}

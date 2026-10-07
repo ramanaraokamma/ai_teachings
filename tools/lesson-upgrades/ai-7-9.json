@@ -1,0 +1,59 @@
+{
+  "week": "ai-7/9",
+  "title": "Experimental units and independence",
+  "outcome": "Explain experimental units and independence using the records and boundaries of this fictional investigation.",
+  "scenario": "Photos are not always independent plants. A dataset has twelve photos: three views of each of four plants. The intended use is identifying new plants.",
+  "given": [
+    "Plant IDs P1–P4 each have three views. All views of a plant must stay in one split."
+  ],
+  "steps": [
+    {
+      "icon": "data",
+      "label": "Identify the unit",
+      "detail": "Four plants, not twelve independent plants, generated the observations."
+    },
+    {
+      "icon": "rule",
+      "label": "Group before splitting",
+      "detail": "Assign whole plant IDs to training or evaluation."
+    },
+    {
+      "icon": "check",
+      "label": "Trace a valid split",
+      "detail": "Train on P1,P2 and evaluate on P3,P4: six photos per split."
+    }
+  ],
+  "explanation": "Repeated views from one object share information. Counting them as independent units or scattering them across splits can exaggerate evidence for new-object performance.",
+  "counterfactual": {
+    "change": "Put one P1 view into evaluation while other P1 views train.",
+    "prediction": "Flag object-level leakage for this new-plant target.",
+    "reason": "Evaluation now includes a plant already represented during training."
+  },
+  "student_task": "Count independent plants and photo views. Construct the stated group-correct split, then explain why placing a P1 view in evaluation creates leakage for the new-plant goal.",
+  "teacher_answer": "Four plants, not twelve independent plants, generated the observations. Assign whole plant IDs to training or evaluation. Train on P1,P2 and evaluate on P3,P4: six photos per split. Changed case: Flag object-level leakage for this new-plant target. Evaluation now includes a plant already represented during training.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "Four plants offer little population coverage; even a group-correct split may be too small for broad conclusions.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Keep all views of a plant together",
+    "cells": [
+      [
+        "P1",
+        "P2"
+      ],
+      [
+        "P3",
+        "P4"
+      ]
+    ],
+    "row_labels": [
+      "Train: 6 photos",
+      "Evaluate: 6 photos"
+    ],
+    "column_labels": [
+      "Plant with 3 views",
+      "Plant with 3 views"
+    ]
+  }
+}

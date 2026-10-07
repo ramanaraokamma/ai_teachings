@@ -1,0 +1,60 @@
+{
+  "week": "ai-3/2",
+  "title": "A Distribution of Possibilities",
+  "outcome": "By the end, I can multiply conditional probabilities to compare paths instead of only first tokens.",
+  "scenario": "A fictional two-stage token tree illustrates next-token prediction.",
+  "given": [
+    "First token probabilities: sun 0.55, rain 0.45. Given sun: end 0.4, more 0.6. Given rain: end 0.9, more 0.1.",
+    "These are complete toy branches; end paths stop, more paths do not."
+  ],
+  "steps": [
+    {
+      "label": "First distribution",
+      "icon": "chart",
+      "detail": "sun 0.55, rain 0.45: greedy first choice is sun."
+    },
+    {
+      "label": "Sun branches",
+      "icon": "network",
+      "detail": "sun→end:0.55×0.4=0.22; sun→more:0.55×0.6=0.33."
+    },
+    {
+      "label": "Rain branches",
+      "icon": "network",
+      "detail": "rain→end:0.45×0.9=0.405; rain→more:0.45×0.1=0.045."
+    },
+    {
+      "label": "Compare end paths",
+      "icon": "check",
+      "detail": "rain→end is the more probable of the two complete end paths."
+    }
+  ],
+  "explanation": "Conditional probabilities describe what follows a particular prefix. Multiplying along a path gives its joint probability. The four branch products sum to 1, but the two end paths sum to 0.625 because more branches have not ended. Greedy decoding selects sun then more; it does not guarantee the most likely complete sequence.",
+  "counterfactual": {
+    "change": "Raise end-given-sun to 0.8 and lower more-given-sun to 0.2.",
+    "prediction": "sun→end becomes 0.44, beating unchanged rain→end 0.405.",
+    "reason": "Changing one conditional distribution changes its path products while the first-token probabilities remain fixed."
+  },
+  "student_task": "Why is 0.625 not a broken probability sum?",
+  "teacher_answer": "It counts only the two paths ending now; the remaining 0.375 belongs to sun→more and rain→more.",
+  "project_evidence": "Explain Study Buddy generation as conditional choices, while checking the finished factual claims against sources.",
+  "limits": "These word labels and tiny tables are illustrative; path probability is not a measure of real-world truth.",
+  "review_note": "Individually designed fictional worked case, distinct from the reserved assessment. Toy model simplifications, arithmetic and source authority reviewed explicitly.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Joint probabilities of the four toy branches",
+    "labels": [
+      "sun→end",
+      "sun→more",
+      "rain→end",
+      "rain→more"
+    ],
+    "values": [
+      0.22,
+      0.33,
+      0.405,
+      0.045
+    ],
+    "unit": "probability"
+  }
+}

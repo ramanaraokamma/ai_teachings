@@ -1,0 +1,65 @@
+{
+  "week": "ai-7/24",
+  "title": "Reproducible environment and records",
+  "outcome": "Explain reproducible environment and records using the records and boundaries of this fictional investigation.",
+  "scenario": "A reproducible calculation record. A teammate must rerun a three-value mean without guessing the input or software version.",
+  "given": [
+    "Data file contains 2,4,6. Recorded script sums values and divides by count; environment and file hash are saved."
+  ],
+  "steps": [
+    {
+      "icon": "data",
+      "label": "Identify exact input",
+      "detail": "Use the three recorded values, not a similarly named edited file."
+    },
+    {
+      "icon": "code",
+      "label": "Trace calculation",
+      "detail": "Sum is 12; count is 3; mean is 4."
+    },
+    {
+      "icon": "book",
+      "label": "Save provenance",
+      "detail": "Retain script version, environment description and data hash with the output."
+    }
+  ],
+  "explanation": "Reproducibility needs the materials and decisions that produced a result. A screenshot of 4 does not specify which data or calculation generated it.",
+  "counterfactual": {
+    "change": "The data file changes to 2,4,9.",
+    "prediction": "The mean becomes 15/3=5, and the saved input hash must change.",
+    "reason": "The calculation is the same but its input records differ."
+  },
+  "student_task": "Trace the recorded mean for 2,4,6 and its changed result for 2,4,9. Which artefacts must accompany the output so another team can identify the exact run?",
+  "teacher_answer": "Use the three recorded values, not a similarly named edited file. Sum is 12; count is 3; mean is 4. Retain script version, environment description and data hash with the output. Changed case: The mean becomes 15/3=5, and the saved input hash must change. The calculation is the same but its input records differ.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "Environment records support rerunning; they do not certify correct sampling, labels or scientific interpretation.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Recorded mean calculation",
+    "cells": [
+      [
+        2,
+        4,
+        6,
+        4
+      ],
+      [
+        2,
+        4,
+        9,
+        5
+      ]
+    ],
+    "row_labels": [
+      "Original data",
+      "Changed data"
+    ],
+    "column_labels": [
+      "Value 1",
+      "Value 2",
+      "Value 3",
+      "Mean"
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "week": "python-bridge/4",
+  "title": "Boolean conditions",
+  "outcome": "Trace boolean conditions and explain the changed program before running it.",
+  "scenario": "Two conditions for entry. A toy club accepts integer ages from 12 through 15 inclusive.",
+  "given": [
+    "Python 3: age=15; allowed=(age>=12) and (age<=15); print(allowed). No type validation is implemented here."
+  ],
+  "steps": [
+    {
+      "icon": "rule",
+      "label": "Check lower boundary",
+      "detail": "15>=12 is True."
+    },
+    {
+      "icon": "rule",
+      "label": "Check upper boundary",
+      "detail": "15<=15 is also True."
+    },
+    {
+      "icon": "output",
+      "label": "Combine with and",
+      "detail": "Both comparisons are True, so allowed is True."
+    }
+  ],
+  "explanation": "A Boolean condition represents a yes-or-no result. And requires both conditions; checking only one boundary would accept values outside the intended interval.",
+  "counterfactual": {
+    "change": "Change age to 16.",
+    "prediction": "The result becomes False.",
+    "reason": "The lower condition remains True, but the upper condition fails."
+  },
+  "student_task": "Give both comparison results for ages 11, 15 and 16. Which comparison rejects each outside value, and why does and matter?",
+  "teacher_answer": "Age 11 gives False/True, so False. Age 15 gives True/True, so True. Age 16 gives True/False, so False. Both interval boundaries must hold.",
+  "project_evidence": "For Python readiness before the Responsible Plant Classifier, retain a trace of the values, the predicted outputs and the changed-case explanation. Use actual Python 3 results to check the prediction after reasoning first.",
+  "limits": "This condition checks a declared numeric interval, not identity or authorisation; unexpected input types need separate handling.",
+  "review_note": "Individually authored supported practice; distinct from the reserved independent case. Python semantics are checked on standalone snippets; no learned model or real pupil result is implied."
+}

@@ -1,0 +1,297 @@
+{
+  "week": "ai-4/26",
+  "title": "Reproducible Experiments",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Record enough detail to reproduce a run",
+    "Distinguish reproducibility from validity",
+    "Report all planned seeds instead of selecting the best"
+  ],
+  "primary_topic": "Experimental records and seeds",
+  "vocabulary": [
+    [
+      "Seed",
+      "An initial value controlling a pseudo-random process"
+    ],
+    [
+      "Run record",
+      "A saved account of inputs, settings and outputs"
+    ],
+    [
+      "Reproducibility",
+      "Ability to repeat a specified procedure"
+    ],
+    [
+      "Cherry-picking",
+      "Reporting favorable results while hiding relevant others"
+    ]
+  ],
+  "worked_example": {
+    "title": "Explain the visual",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Experimental records and seeds at a glance",
+        "columns": [
+          "Part",
+          "Evidence or action",
+          "Interpretation"
+        ],
+        "rows": [
+          [
+            "Before running",
+            "Declare 11 22 33",
+            "Save data and settings"
+          ],
+          [
+            "Observed results",
+            "70 80 60 percent",
+            "Keep all three runs"
+          ],
+          [
+            "Summary",
+            "Mean 70 percent",
+            "Range 20 points"
+          ]
+        ],
+        "caption": "The seed is part of the procedure, not evidence that a split represents the target population. Reproducing leakage perfectly reproduces a mistake. Check group separation and legitimate features before celebrating identical outputs."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "A file contains only seed 22 and 80 percent. Name four missing items. Explain the steps or evidence behind your response.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Improve a record",
+    "prompt": "A file contains only seed 22 and 80 percent. Name four missing items.",
+    "answer": "Teacher explanation: Examples: data version, split IDs, model settings, code version, metric denominator and full planned-run results.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Apply independently",
+    "task": "Declared seeds 1, 2, 3 produce 9/12, 8/12, 10/12 correct. Compute the mean accuracy and range.",
+    "answer": "Teacher explanation: Mean 27/36=75 percent; range(10-8)/12=1/6 about 16.7 percentage points. Retain all three runs.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A final answer is enough",
+      "Ask for the relevant counts, units, procedure or saved record. For this week: Mean 70 percent; range 80-60=20 percentage points, across the three declared runs."
+    ],
+    [
+      "A stronger claim makes a stronger project",
+      "Record the failed run, cause and any retry; disclose which runs contributed to summaries and do not invent its score."
+    ],
+    [
+      "The new case can be copied from the example",
+      "The independent task changes the evidence. Require a fresh explanation: Mean 27/36=75 percent; range(10-8)/12=1/6 about 16.7 percentage points. Retain all three runs."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/5e4dc534f92b326a4fd56b8c87a244b7a5fb6a5dfc30d54e45e8ab4bfe5dc6c2",
+        "alt": "Week 26 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/0d7730417e01cff0628719841b57725bb6457d4ff4572699d4756787d0ab8220",
+        "alt": "Week 26 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/addc82e98051d914ac320d6afbbe30c706ea8711e259f832e6306e64d8983fd7",
+        "alt": "Week 26 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Reproduce a peer's run from an experiment card."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  A result is reproducible only when another builder can recreate the data, split, code, settings, seed, and metric calculation."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Record data=v2, split=grouped-s1, code=commit A7, seed=42. Record preprocessing, features, model type, settings, and library versions.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "A team declares seeds 11, 22, 33 before running. Validation accuracies are 14/20, 16/20, 12/20:70, 80, 60 percent. Mean accuracy is 70 percent, with a 20-percentage-point range. Reporting only seed 22 as the model result hides the declared experiment."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before continuing, underline the decision rule and circle the evidence that supports the conclusion. Explain the example to a partner without replacing the counts or conditions with a stronger claim. Keep the distinction between an observed result and a proposed next step."
+      },
+      {
+        "type": "subheading",
+        "text": "Apply the connected idea: Versioned experiments"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "items = [{\"name\": \"A\", \"fun\": 4, \"learning\": 1},\n         {\"name\": \"B\", \"fun\": 2, \"learning\": 4}]\nfor version, fun_weight, learning_weight in [(\"v1\", 2, 1), (\"v2\", 1, 2)]:\n    scores = []\n    for item in items:\n        scores.append(fun_weight * item[\"fun\"]\n                      + learning_weight * item[\"learning\"])\n    print(version, scores)"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow the evidence",
+        "columns": [
+          "Step or case",
+          "Evidence",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "v1 weights 2 and 1",
+            "A 9; B 8",
+            "A ranks first"
+          ],
+          [
+            "v2 weights 1 and 2",
+            "A 6; B 10",
+            "B ranks first"
+          ]
+        ],
+        "caption": "Read each row from left to right and connect the evidence to the stated rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "The ranking changes because the preference weights changed. That is a policy comparison, not proof that v2 is more accurate. Keep the same data and constraints when comparing weights, and record why a policy better fits the stated goal."
+      },
+      {
+        "type": "subheading",
+        "text": "Compare one planned change at a time"
+      },
+      {
+        "type": "paragraph",
+        "text": "For the worked records, v1 gives A a score of 2 times 4 plus 1, or 9, and B a score of 2 times 2 plus 4, or 8. v2 gives A 4 plus 2 times 1, or 6, and B 2 plus 2 times 4, or 10. The winner changes because the weights changed. Keep the records fixed so this explanation can be checked. A different preference policy is not automatically a more accurate model."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 26 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 26 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 26 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 26 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

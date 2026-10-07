@@ -1,0 +1,37 @@
+{
+  "week": "ai-7/19",
+  "title": "Research ethics and consent",
+  "outcome": "Explain research ethics and consent using the records and boundaries of this fictional investigation.",
+  "scenario": "Consent is specific, not universal. A fictional study asks adults to submit anonymous drawings for one pattern-recognition investigation.",
+  "given": [
+    "Consent covers this study only. It excludes public posting of originals and unrelated face-recognition research."
+  ],
+  "steps": [
+    {
+      "icon": "person",
+      "label": "State the purpose",
+      "detail": "Explain the drawing task and planned use before participation."
+    },
+    {
+      "icon": "shield",
+      "label": "Respect exclusions",
+      "detail": "Do not publish originals or transfer them to the unrelated project."
+    },
+    {
+      "icon": "check",
+      "label": "Keep the agreement",
+      "detail": "Record permitted uses and the approved withdrawal procedure."
+    }
+  ],
+  "explanation": "Research ethics includes what people agree to, how they can decline and how risks are addressed. A contribution does not grant unlimited reuse.",
+  "counterfactual": {
+    "change": "A new project requests the same drawings for an excluded purpose.",
+    "prediction": "Do not reuse them under the existing consent; seek the required new authorisation.",
+    "reason": "The new purpose falls outside the stated agreement."
+  },
+  "student_task": "Identify which uses the drawing consent permits and excludes. Can the unrelated project reuse the drawings under this agreement, and what new authorisation would be needed?",
+  "teacher_answer": "Explain the drawing task and planned use before participation. Do not publish originals or transfer them to the unrelated project. Record permitted uses and the approved withdrawal procedure. Changed case: Do not reuse them under the existing consent; seek the required new authorisation. The new purpose falls outside the stated agreement.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "This fictional adult scenario is not approval for research with children; real oversight and applicable rules are separate requirements.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted."
+}

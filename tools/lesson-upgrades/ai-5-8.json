@@ -1,0 +1,51 @@
+{
+  "week": "ai-5/8",
+  "title": "Loss functions",
+  "outcome": "By the end, I can explain loss functions using a traced example and a stated limitation.",
+  "scenario": "Compare candidate losses with the same targets and denominator.",
+  "given": [
+    "Targets [1, 3]; A predicts [0, 4]; B predicts [1, 5]. Use MSE over both cases.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "A squared errors",
+      "icon": "chart",
+      "detail": "A residuals [-1, 1] give squares [1, 1], MSE1."
+    },
+    {
+      "label": "B squared errors",
+      "icon": "chart",
+      "detail": "B residuals [0, 2] give squares [0, 4], MSE2."
+    },
+    {
+      "label": "Compare objective",
+      "icon": "check",
+      "detail": "A wins under MSE; both MAEs equal1."
+    }
+  ],
+  "explanation": "For this loss calculation, the signed error is prediction minus target. MSE squares each error before averaging; MAE takes its absolute value. A spreads its error equally across both cases, while B concentrates it in one case. Squaring makes the larger individual error count more. State the objective before selecting a model, because these two objectives give different comparisons.",
+  "counterfactual": {
+    "change": "Choose MAE instead of MSE as the sole criterion.",
+    "prediction": "A and B tie at MAE1.",
+    "reason": "Squared error penalises B\u2019s concentrated error more, while absolute errors both sum 2."
+  },
+  "student_task": "Why must the report name the chosen loss? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "The same predictions produce a strict A win under MSE and a tie under MAE; \u201cbetter\u201d depends on the declared objective. Changed-case check: A and B tie at MAE1. Squared error penalises B\u2019s concentrated error more, while absolute errors both sum 2.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Training loss is not automatically a held-out performance estimate or a complete measure of use consequences.",
+  "review_note": "Reviewed Loss functions against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "MSE comparison on shared targets",
+    "labels": [
+      "model A",
+      "model B"
+    ],
+    "values": [
+      1,
+      2
+    ],
+    "unit": "squared target units"
+  }
+}

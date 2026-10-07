@@ -1,0 +1,143 @@
+{
+  "week": "ai-7/12",
+  "title": "Uncertainty intervals",
+  "grade": 12,
+  "project": "Reproducible AI Research Study",
+  "goals": [
+    "Explain the mechanism and terminology of uncertainty intervals",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Uncertainty intervals",
+  "vocabulary": [
+    [
+      "Standard error",
+      "The model-based variation of an estimate"
+    ],
+    [
+      "Confidence interval",
+      "An interval procedure with declared repeated-sampling coverage"
+    ],
+    [
+      "Known sigma",
+      "A supplied population standard deviation assumption"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Observed mean10, n16, sigma2. Compute standard error, margin and interval."
+      },
+      {
+        "type": "paragraph",
+        "text": "SE=2/4=.5; margin=.98; interval[9.02, 10.98]. Under assumptions, the method covers the fixed population mean in95% of repeated samples."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      },
+      {
+        "type": "paragraph",
+        "text": "Optional local lab: predict the printed result before running this standalone Python 3 example. Change one relevant boundary input, record the outcome and state the contract or statistical assumptions. The program uses fictional values and the Python standard library; it performs no external operations."
+      },
+      {
+        "type": "code",
+        "text": "from math import sqrt\n\ndef known_sigma_interval(mean, sigma, n, critical=1.96):\n    \"\"\"Assume independent normal sampling and a known population sigma.\"\"\"\n    if type(n) is not int or n < 1 or sigma < 0 or (critical <= 0):\n        raise ValueError('interval settings')\n    se = sigma / sqrt(n)\n    margin = critical * se\n    return (se, mean - margin, mean + margin)\n\nprint(known_sigma_interval(10, 2, 16))"
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "Observed mean10, n16, sigma2. Compute standard error, margin and interval. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: SE=2/4=.5; margin=.98; interval[9.02, 10.98]. Under assumptions, the method covers the fixed population mean in95% of repeated samples.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "Mean20, n25, known sigma5 and critical1.96. Compute interval and name one assumption.",
+    "answer": "Teacher explanation: SE1, margin1.96, interval[18.04, 21.96]. Require independent normal sampling and known sigma; bias is not repaired by the interval.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "A narrow interval can be precisely biased; sampling independence and representativeness must be justified."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "For this constructed exercise assume independent normal measurements with known population standard deviation2. A95% mean interval uses supplied normal critical value1.96:mean plus/minus1.96*sigma/sqrt(n). Unknown sigma requires a different justified method."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Uncertainty intervals \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "Observed mean10, n16, sigma2. Compute standard error, margin and interval.",
+            "For this constructed exercise assume independent normal measurements with known population standard deviation2. A95% mean interval uses supplied normal critical value1.96:mean plus/minus1.96*sigma/sqrt(n). Unknown sigma requires a different justified method.",
+            "SE=2/4=.5; margin=.98; interval[9.02, 10.98]. Under assumptions, the method covers the fixed population mean in95% of repeated samples."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Observed mean10, n16, sigma2. Compute standard error, margin and interval. Show the intermediate steps and give the conclusion with its scope."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "week": "python-bridge/8",
+  "title": "Functions and arguments",
+  "outcome": "Trace functions and arguments and explain the changed program before running it.",
+  "scenario": "Match arguments to parameters. A function prints the difference between capacity and reserved spaces.",
+  "given": [
+    "Python 3: def show_free(capacity,reserved): print(capacity-reserved). Calls: show_free(11,3); show_free(3,11)."
+  ],
+  "steps": [
+    {
+      "icon": "code",
+      "label": "Define without calling",
+      "detail": "The definition creates the function but prints nothing yet."
+    },
+    {
+      "icon": "data",
+      "label": "Match first arguments",
+      "detail": "capacity=11 and reserved=3 give a printed 8."
+    },
+    {
+      "icon": "output",
+      "label": "Trace reversed call",
+      "detail": "capacity=3 and reserved=11 give -8 under the same arithmetic."
+    }
+  ],
+  "explanation": "Positional arguments match parameter names in order. A function definition is not an execution of its body; separate calls supply separate input values.",
+  "counterfactual": {
+    "change": "Remove both calls and leave the definition only.",
+    "prediction": "No output is printed.",
+    "reason": "The body runs only when the function is called."
+  },
+  "student_task": "Match every argument to a parameter for the two calls. Why do outputs differ, and what prints when both calls are removed?",
+  "teacher_answer": "The first call binds 11 to capacity and 3 to reserved, printing 8. The second reverses those bindings and prints -8. A definition with no calls prints nothing.",
+  "project_evidence": "For Python readiness before the Responsible Plant Classifier, retain a trace of the values, the predicted outputs and the changed-case explanation. Use actual Python 3 results to check the prediction after reasoning first.",
+  "limits": "The arithmetic permits negative results; a real capacity contract may reject reserved>capacity instead of treating it as free space.",
+  "review_note": "Individually authored supported practice; distinct from the reserved independent case. Python semantics are checked on standalone snippets; no learned model or real pupil result is implied."
+}

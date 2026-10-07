@@ -1,0 +1,64 @@
+{
+  "week": "python-bridge/11",
+  "title": "Reading structured data",
+  "outcome": "Trace reading structured data and explain the changed program before running it.",
+  "scenario": "Read rows with a missing-field policy. A toy table is represented as a list of dictionaries; count only rows with a recorded count.",
+  "given": [
+    "Python 3 records: [{\"count\":2},{\"count\":0},{}]. Policy: include existing numeric counts, including zero; skip an absent field."
+  ],
+  "steps": [
+    {
+      "icon": "data",
+      "label": "Inspect three rows",
+      "detail": "Two rows contain count; the third does not."
+    },
+    {
+      "icon": "code",
+      "label": "Accumulate values",
+      "detail": "The included values sum to 2+0=2, with denominator 2."
+    },
+    {
+      "icon": "chart",
+      "label": "Report coverage and mean",
+      "detail": "Mean is 1; measured coverage is 2 of 3 rows."
+    }
+  ],
+  "explanation": "Structured data need a row policy before aggregation. Treating missing as zero changes the statistic and can conceal incomplete coverage; real zero remains an observation.",
+  "counterfactual": {
+    "change": "Add {\"count\":4} as a fourth row.",
+    "prediction": "Sum becomes 6, denominator 3, mean 2; coverage is 3 of 4.",
+    "reason": "Only the added recorded value contributes; the existing absent field remains skipped."
+  },
+  "student_task": "Circle the included rows, calculate the sum and mean, and state coverage. Repeat after adding the fourth row with count four.",
+  "teacher_answer": "Initially values 2 and 0 give sum 2 and mean 1 across two observations, coverage 2/3. Adding 4 gives sum 6, mean 2 across three observations, coverage 3/4.",
+  "project_evidence": "For Python readiness before the Responsible Plant Classifier, retain a trace of the values, the predicted outputs and the changed-case explanation. Use actual Python 3 results to check the prediction after reasoning first.",
+  "limits": "This worked row policy is explicit; file parsing, malformed values and data provenance require additional checks.",
+  "review_note": "Individually authored supported practice; distinct from the reserved independent case. Python semantics are checked on standalone snippets; no learned model or real pupil result is implied.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Included values and absent field",
+    "cells": [
+      [
+        2,
+        "Yes"
+      ],
+      [
+        0,
+        "Yes"
+      ],
+      [
+        "Absent",
+        "No"
+      ]
+    ],
+    "row_labels": [
+      "Row 1",
+      "Row 2",
+      "Row 3"
+    ],
+    "column_labels": [
+      "Count value",
+      "Include in mean?"
+    ]
+  }
+}

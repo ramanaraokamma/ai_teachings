@@ -1,0 +1,38 @@
+{
+  "week": "ai-3/30",
+  "title": "Bias and Representation",
+  "outcome": "By the end, I can explain bias and representation using a traced example and a stated limitation.",
+  "scenario": "Compare study-answer support rates when groups have different numbers of questions.",
+  "given": [
+    "Group Birch has 6 supported answers in 8 cases; group Pine has 9 supported answers in 12 cases. Both groups use the same support rubric.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Keep denominators",
+      "icon": "data",
+      "detail": "Birch: 6/8. Pine: 9/12."
+    },
+    {
+      "label": "Compare rates",
+      "icon": "chart",
+      "detail": "Both support rates are 75%; Pine has more correct answers because it has more cases."
+    },
+    {
+      "label": "Inspect errors",
+      "icon": "question",
+      "detail": "Check the two Birch and three Pine failures before deciding what revision each needs."
+    }
+  ],
+  "explanation": "Read the picture in order. Check the two Birch and three Pine failures before deciding what revision each needs. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Pine instead has 6 supported answers out of 12.",
+    "prediction": "Pine is 50%, which is 25 percentage points below Birch.",
+    "reason": "Equal correct counts do not imply equal rates when denominators differ."
+  },
+  "student_task": "Explain why comparing six correct answers in each group would mislead. Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Birch has 6/8=75%; changed Pine has 6/12=50%. Counts must be paired with the number of opportunities. Changed-case check: Pine is 50%, which is 25 percentage points below Birch. Equal correct counts do not imply equal rates when denominators differ.",
+  "project_evidence": "For your Verified Study Buddy, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "These groups are fictional; small samples and unmatched question difficulty limit conclusions about fairness.",
+  "review_note": "Reviewed Bias and Representation against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

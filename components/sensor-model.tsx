@@ -1,0 +1,3 @@
+"use client";
+import {useState} from "react";
+export function SensorModel(){const [reading,setReading]=useState(18);return <figure><h3>The sensor measures. The rule decides.</h3><p>This model uses a made-up light scale, from 0 (darker) to 100 (brighter).</p><label>Light reading: <output>{reading}</output><input type="range" min={0} max={100} step={1} value={reading} onChange={e=>setReading(Number(e.target.value))} aria-label="Light reading" /></label><p>Rule: if reading is below 30, turn the lamp on; otherwise turn it off.</p><strong>{reading<30?"Lamp ON":"Lamp OFF"}</strong><p>Try 29, then 30. Which part measured the light, and which part chose the action?</p></figure>}

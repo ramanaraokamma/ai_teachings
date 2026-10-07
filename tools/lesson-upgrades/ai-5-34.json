@@ -1,0 +1,50 @@
+{
+  "week": "ai-5/34",
+  "title": "Capstone controlled experiments",
+  "outcome": "Explain capstone controlled experiments with a traceable toy-network case and a bounded conclusion.",
+  "scenario": "One controlled network change. The capstone compares two fixed networks on the same six labelled toy patterns. Only one feature connection is added.",
+  "given": [
+    "A scores [1,1,0,1,0,1]; B scores [1,1,1,1,0,1]. Settings, labels and scoring remain fixed. Binary entries mean 1=correct and 0=incorrect."
+  ],
+  "steps": [
+    {
+      "icon": "model",
+      "label": "Identify the intervention",
+      "detail": "B adds the centre-feature connection; all other declared settings stay fixed."
+    },
+    {
+      "icon": "chart",
+      "label": "Count outcomes",
+      "detail": "A is 4/6 correct; B is 5/6."
+    },
+    {
+      "icon": "check",
+      "label": "Inspect paired cases",
+      "detail": "Only case three changes correctness; case five fails for both."
+    }
+  ],
+  "explanation": "Controlled experiments vary the specified component while retaining comparable cases. Pairing the outcomes by pattern shows where the score difference comes from instead of hiding it in an overall average.",
+  "counterfactual": {
+    "change": "Change B’s training set as well as the feature connection.",
+    "prediction": "The experiment no longer isolates the connection change.",
+    "reason": "A training-data difference supplies an alternative explanation for the observed result."
+  },
+  "student_task": "Compute the two correct counts and identify the changed case. Why would changing B’s training data weaken the conclusion about its added connection?",
+  "teacher_answer": "A has four correct, B five; case three explains the count gain and case five fails for both. Changing training data alongside the connection entangles two interventions, so the gain cannot be attributed to the connection alone.",
+  "project_evidence": "For the Image-pattern Network Investigation, save the labelled trace and the changed-case explanation beside the experiment record. State exactly what this example supports before linking it to the wider capstone claim.",
+  "limits": "These descriptive toy results do not establish significance, stable superiority or the full learned mechanism.",
+  "review_note": "Individually authored fictional supported practice distinct from the reserved independent assessment. Arithmetic and experimental conditions are explicit; no real network training or pupil result is claimed.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Controlled toy-pattern comparison",
+    "labels": [
+      "A",
+      "B"
+    ],
+    "values": [
+      4,
+      5
+    ],
+    "unit": "correct labels out of 6 shared patterns"
+  }
+}

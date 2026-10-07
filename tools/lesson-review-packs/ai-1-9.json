@@ -1,0 +1,297 @@
+{
+  "week": "ai-1/9",
+  "title": "Algorithms as Recipes",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Trace an ordered algorithm using the current value after every instruction",
+    "Explain how changing the initial state or instruction order can change the result",
+    "Locate the first incorrect update and distinguish copying a value from linking two variables"
+  ],
+  "primary_topic": "Algorithms and changing state",
+  "vocabulary": [
+    [
+      "Algorithm",
+      "A precise procedure for carrying out a task"
+    ],
+    [
+      "Variable",
+      "A named place for a value that can be updated"
+    ],
+    [
+      "State",
+      "The current values being tracked at a particular point in a process"
+    ],
+    [
+      "Initial state",
+      "The values before the first instruction is carried out"
+    ],
+    [
+      "Trace",
+      "A record of the state as instructions are carried out in order"
+    ]
+  ],
+  "worked_example": {
+    "title": "Order matters and copies do not stay linked",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Stage from score 4",
+          "Add then double",
+          "Double then add"
+        ],
+        "rows": [
+          [
+            "After first instruction",
+            "Add 3 gives 7",
+            "Double gives 8"
+          ],
+          [
+            "After second instruction",
+            "Double gives 14",
+            "Add 3 gives 11"
+          ],
+          [
+            "After subtracting 2",
+            "Report 12",
+            "Report 9"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Both procedures use add 3, double and subtract 2, but the first two operations are exchanged. Doubling after the addition also doubles the extra 3. Adding afterward does not. The final difference comes from the order, even though both procedures started at 4."
+      },
+      {
+        "type": "paragraph",
+        "text": "Now use two number boxes: A starts at 2 and B starts at 0. Copy the current value of A into B, then add 5 to A. After the copy, A is 2 and B is 2. After the addition, A is 7 and B remains 2. Copying stores the value at that moment; it does not create a lasting connection between these number boxes. Record both values after each instruction, including the one that did not change."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Distinguish replacement from addition",
+    "prompt": "Two procedures start score at 6. Procedure A sets score to 4, then adds 2. Procedure B adds 4 to score, then adds 2. Trace both and explain why the first instructions are different.",
+    "lines": 6,
+    "answer": "A traces 6, 4, 6. B traces 6, 10, 12. Setting replaces the current value with 4; adding increases the current 6 by 4. The procedures therefore have different intermediate and final states."
+  },
+  "independent_case": {
+    "title": "Trace two changing number boxes",
+    "task": "For a new display, X starts at 4 and Y starts at 1. Copy the current X into Y; add 3 to X; double Y; report both and stop. Record X and Y initially and after each instruction. Explain why Y does not become 7 when X changes. Then swap the first two instructions and trace the new procedure from the same initial state.",
+    "answer": "Original trace in X,Y order: 4,1 then 4,4 then 7,4 then 7,8. Reporting leaves 7,8 unchanged. Copying captured X as 4; it did not link Y to later changes in X. With the first two instructions swapped: 4,1 then 7,1 then 7,7 then 7,14. The changed order makes the copy capture 7 instead of 4.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Every instruction uses the original number",
+      "Point to the most recent trace entry. Double after add reads the updated number, not the initial one."
+    ],
+    [
+      "Set and add mean the same thing",
+      "Start at 6: setting to 4 gives 4 while adding 4 gives 10. Ask which value remains in the box."
+    ],
+    [
+      "Copying keeps number boxes linked",
+      "Copy A 2 into B, then change only A to 7. B still contains the copied number 2."
+    ],
+    [
+      "A matching final value proves the whole process",
+      "Compare 10,12,10 with 10,14,10. The final values match but the steps do not."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/f67d19a14f8d874982d08715d1f29475890d0da749c8893379ed590e5798ba4e",
+        "alt": "Visual card for the input stage: goal, starting state, and available objects",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ff0669621a96b42bc6eeab10014cfbcc4cfa6f088a487866969b5a6611c8839c",
+        "alt": "Visual card for the process stage: follow ordered unambiguous steps",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b384bae83ebb7e0d220c8c4fcd6db0d164f8b61e5b27210ed3802acfcaa52f90",
+        "alt": "Visual card for the output stage: completed task or a visible failure point",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  goal, starting state, and available objects"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  follow ordered unambiguous steps"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  completed task or a visible failure point"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  An algorithm is an ordered, testable procedure, with or without code.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  An algorithm is a finite procedure whose steps and control flow can be executed. Correctness depends on assumptions, preconditions, order, and termination. Code is one representation of an algorithm, not the definition itself.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Write the initial state first. For each instruction, read the latest value, perform the operation, and record the new state. A transition is the change from one recorded state to the next."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow the current score through three updates",
+        "columns": [
+          "State before",
+          "Instruction",
+          "State after"
+        ],
+        "rows": [
+          [
+            "Score is 4",
+            "Add 3 to score",
+            "Score becomes 7"
+          ],
+          [
+            "Score is 7",
+            "Double score",
+            "Score becomes 14"
+          ],
+          [
+            "Score is 14",
+            "Subtract 2 from score",
+            "Score becomes 12"
+          ]
+        ],
+        "caption": "Read the rows from top to bottom. Each row starts with the state produced by the previous row. Reporting the final score gives 12; reporting does not change the value."
+      },
+      {
+        "type": "paragraph",
+        "text": "In words, double score means calculate twice its current value and store that result in score. Add 3 to score means increase the current value by 3. Set score to 3 means replace it with 3 instead. These instructions sound similar but do different things: if score is 7, adding 3 produces 10, while setting it to 3 produces 3."
+      },
+      {
+        "type": "paragraph",
+        "text": "A trace is evidence of one execution from one initial state. To compare two procedures fairly, keep the initial state the same and list every intermediate value. Then you can point to the first difference instead of only comparing the final numbers."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/3bcc7b4876274ae71e67367f4c265f6d71ac1fc224bb0c03fd51248db2d1daef",
+        "alt": "Comparison picture for Pack a bag: choose item, open bag, place item; ordered task",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fa8aeb08f85d92fe7fe9a0975a0cf245282d44deb56b922f8b381f00e8669037",
+        "alt": "Comparison picture for Make it ready: meaning is unstated; ambiguous instruction",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/679bbefa8a96c879cfa8052e7339f9e057392aac3912e12973198bd13c6662c5",
+        "alt": "Comparison picture for Draw a square: four turns and moves; testable procedure",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/42fa0d2440fd128288300d2c12fc5214154beeee98fe06db9974b23a66aa807c",
+        "alt": "Comparison picture for Choose the best book: needs criteria; goal without algorithm",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Pack a bag  Clue: choose item, open bag, place item. Meaning: ordered task."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Make it ready  Clue: meaning is unstated. Meaning: ambiguous instruction."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Draw a square  Clue: four turns and moves. Meaning: testable procedure."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Choose the best book  Clue: needs criteria. Meaning: goal without algorithm."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  A goal is not yet an algorithm; each step must tell the actor what to do.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

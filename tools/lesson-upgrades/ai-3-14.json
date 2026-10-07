@@ -1,0 +1,43 @@
+{
+  "week": "ai-3/14",
+  "title": "Hallucination Failure Types",
+  "outcome": "By the end, I can distinguish supported, contradicted and unsupported generated claims.",
+  "scenario": "A fictional Study Buddy drafts a field-trip summary from one approved record.",
+  "given": [
+    "Source S: trail length 12 km; planned constant speed 4 km/h, excluding stops; departure 09:00.",
+    "Draft: “The walk takes two hours, starts at 09:00 and includes free lunch.” No lunch record is supplied."
+  ],
+  "steps": [
+    {
+      "label": "Compute duration",
+      "icon": "code",
+      "detail": "12÷4=3 hours, excluding stops."
+    },
+    {
+      "label": "Contradicted claim",
+      "icon": "shield",
+      "detail": "Two-hour duration disagrees with the calculation from S."
+    },
+    {
+      "label": "Supported claim",
+      "icon": "check",
+      "detail": "Departure 09:00 is stated in S."
+    },
+    {
+      "label": "Unsupported claim",
+      "icon": "question",
+      "detail": "Free lunch has no source; missing evidence is not a confirmed no-lunch fact."
+    }
+  ],
+  "explanation": "Different errors need different repairs. Recalculate the duration; keep the supported departure; remove or seek evidence for lunch. These categories are more informative than calling the whole answer wrong. Arithmetic inherits assumptions such as constant speed and no stops, so avoid turning the three-hour walking calculation into a guaranteed arrival time.",
+  "counterfactual": {
+    "change": "Add a planned 30-minute stop while preserving speed and distance.",
+    "prediction": "Planned total elapsed time becomes 3.5 hours.",
+    "reason": "Three moving hours plus half an hour stopped; walking-time calculation itself stays three."
+  },
+  "student_task": "Can we conclude there will definitely be no lunch from S alone?",
+  "teacher_answer": "No. Lunch is unknown from S, not disproved. Say the source does not supply lunch information.",
+  "project_evidence": "Audit Study Buddy outputs claim by claim, recording contradiction, missing support and correct calculations separately.",
+  "limits": "The fictional plan does not establish actual speed, delays or what eventually occurred on a real trip.",
+  "review_note": "Individually designed fictional worked case, distinct from the reserved assessment. Toy model simplifications, arithmetic and source authority reviewed explicitly."
+}

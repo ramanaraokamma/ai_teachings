@@ -1,0 +1,303 @@
+{
+  "week": "ai-1/22",
+  "title": "Missing and Unbalanced Examples",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Name the target collection, selection list and cases actually assessed",
+    "Use a coverage table to identify missing conditions before making a claim",
+    "Propose a selection plan that addresses a stated gap without promising certainty"
+  ],
+  "primary_topic": "Sampling and coverage",
+  "vocabulary": [
+    [
+      "Target population",
+      "The whole collection of cases a question is about"
+    ],
+    [
+      "Sample",
+      "The selected cases used to investigate a larger collection"
+    ],
+    [
+      "Sampling frame",
+      "The list or source from which cases can be selected"
+    ],
+    [
+      "Coverage",
+      "Which relevant kinds of cases the list or sample includes"
+    ],
+    [
+      "Selection bias",
+      "Systematic distortion caused by how cases enter an investigation"
+    ]
+  ],
+  "worked_example": {
+    "title": "Match the selection plan to the purpose",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Plan",
+          "What it helps with",
+          "Limit to report"
+        ],
+        "rows": [
+          [
+            "Take cards at the front",
+            "Quick initial check",
+            "Front position may restrict conditions"
+          ],
+          [
+            "Draw from all 24 IDs by chance",
+            "Every listed card can be selected",
+            "A small draw need not balance conditions"
+          ],
+          [
+            "Choose 2 distinct cards per condition",
+            "Includes all four conditions",
+            "8 cards do not establish all 24 outcomes"
+          ],
+          [
+            "Assess all 24 distinct cards",
+            "Covers this entire fixed collection",
+            "Does not prove performance on future images"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "For a broad estimate, a chance-based plan should start from a suitable complete list and use a documented selection procedure. For investigating missing conditions, deliberately selecting cases from each condition can be useful. State which purpose you chose. A set built to expose problems is not automatically a faithful miniature of everyday use."
+      },
+      {
+        "type": "paragraph",
+        "text": "Selection bias is about a systematic feature of the selection process, not whether a person had bad intentions. Choosing only easy-to-reach, bright cards can leave harder conditions out. More cases from the same narrow source may repeat that gap. A larger sample cannot by itself repair a frame that excludes relevant cases."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Separate files from distinct cases",
+    "prompt": "Each of the six original sampled cards is photographed twice. State the number of image files and distinct cards. Has this covered a new shape or lighting condition? Explain why the counts need different labels.",
+    "lines": 6,
+    "answer": "There are 12 image files but still 6 distinct cards, all bright circles. No new shape or lighting condition has been covered. Multiple records of the same cases are not 12 distinct sampled cards and do not resolve the missing conditions."
+  },
+  "independent_case": {
+    "title": "Audit a new sound-recognition claim",
+    "task": "A fixed target has 20 invented clips: 5 quiet bells, 5 noisy bells, 5 quiet claps and 5 noisy claps. A tester selects 4 distinct quiet bells from a quiet-bell-only list; 3 are correctly labelled and 1 is wrong. Write a supported result, name missing conditions and explain why the result is not established for all 20 clips. Propose an 8-clip plan that includes every condition, with no clip selected twice.",
+    "answer": "The recogniser is correct on 3 of 4 assessed quiet-bell clips. No noisy bells, quiet claps or noisy claps were assessed; even one quiet-bell clip remains unassessed. The restricted frame and sample cannot establish the all-20 result. Select 2 distinct clips from each of the four conditions using the complete target list, document selection before outcomes and report remaining limits. Eight clips improve condition coverage but are not all 20.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "More records always remove bias",
+      "A restricted source can keep excluding the same conditions as its record count grows."
+    ],
+    [
+      "Random selection repairs an incomplete list",
+      "Excluded cases cannot be selected from a list that does not contain them."
+    ],
+    [
+      "Every feature value appears, so every combination appears",
+      "Bright circles and dim squares still omit dim circles and bright squares."
+    ],
+    [
+      "Zero assessed means every case failed",
+      "Zero assessed means no observed recognition outcomes for that group."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/667fdd654c4828a13d2ca88ed7fff0b4227c192ed16c534be7e17343146e2639",
+        "alt": "Visual card for the input stage: example set with represented and absent conditions",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/56fcf30e8c8b2da5c16f5503a823ae8564a310788f72400f220e2f596b9de011",
+        "alt": "Visual card for the process stage: learn patterns from available coverage",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/580a26667fd351e75c777bc1c2881191238b3de7cbe32eebf7c7ddeacdf32461",
+        "alt": "Visual card for the output stage: uneven performance across conditions",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  example set with represented and absent conditions"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  learn patterns from available coverage"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  uneven performance across conditions"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  What is absent can shape a system's failures.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Sampling imbalance changes the empirical distribution seen during training. Missing subgroups or conditions cannot contribute error signals, so average success may hide systematic failure. Rebalancing requires relevant examples, not arbitrary duplication alone.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Coverage is about cases as well as counts",
+        "columns": [
+          "Card condition",
+          "Target count",
+          "Assessed count"
+        ],
+        "rows": [
+          [
+            "Bright circles",
+            "6 cards",
+            "6 assessed"
+          ],
+          [
+            "Dim circles",
+            "6 cards",
+            "0 assessed"
+          ],
+          [
+            "Bright squares",
+            "6 cards",
+            "0 assessed"
+          ],
+          [
+            "Dim squares",
+            "6 cards",
+            "0 assessed"
+          ]
+        ],
+        "caption": "All 6 assessed cases come from one of four conditions. An assessed count of zero means no evidence for that condition; it does not mean the recogniser failed every case in it."
+      },
+      {
+        "type": "paragraph",
+        "text": "The target has 24 distinct cards, but the sample covers only the 6 bright circles. Photographing each sampled card twice would create 12 image records without adding a new card or covering a missing condition. Record the identity of the underlying case as well as the number of files."
+      },
+      {
+        "type": "paragraph",
+        "text": "Both shape and lighting matter to this question. A sample with bright circles and dim squares includes each shape and each lighting label, yet still misses dim circles and bright squares. Check combinations when the interaction could matter, not just whether each individual label appears somewhere."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fa44a58fba5a8fbdcd8a11fac8968fe70b9a1f403fcf2d9f9812d3846ba700be",
+        "alt": "Comparison picture for Day photos: many clear examples; strong represented condition",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/203bfa2f4cc27d8337948ae37bfd6338af0fb0c51ae657e4711c579006937fba",
+        "alt": "Comparison picture for Night photos: none available; coverage gap",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fd8dfadef3b8004ff962490f1851799c2408af2ea7227bc0b71bd503b1a8c702",
+        "alt": "Comparison picture for Cats 90, dogs 10: uneven class counts; class imbalance",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/354913b99fb03d8e6360308b20ed3b9a45a697aa61042f4189051823b1e40d3d",
+        "alt": "Comparison picture for One dog copied 20 times: count rises, variety does not; weak repair",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Day photos  Clue: many clear examples. Meaning: strong represented condition."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Night photos  Clue: none available. Meaning: coverage gap."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Cats 90, dogs 10  Clue: uneven class counts. Meaning: class imbalance."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 One dog copied 20 times  Clue: count rises, variety does not. Meaning: weak repair."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Balance is about useful representation, not forcing every count to be identical without reason.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

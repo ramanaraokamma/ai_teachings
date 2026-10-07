@@ -1,0 +1,43 @@
+{
+  "week": "ai-2/7",
+  "title": "Rows Columns and Data Types",
+  "outcome": "By the end, I can read a table schema and distinguish a numeric value from its text representation.",
+  "scenario": "A fictional approved book catalogue has three fields per row.",
+  "given": [
+    "Schema: id is nonempty text; pages is an integer 1–300; illustrated is Boolean True or False.",
+    "Rows A={id:\"B7\",pages:90,illustrated:True}; B={id:\"B8\",pages:\"90\",illustrated:False}; C={id:\"\",pages:80,illustrated:True}."
+  ],
+  "steps": [
+    {
+      "label": "Column contract",
+      "icon": "book",
+      "detail": "Field names identify values; order is not the only guide."
+    },
+    {
+      "label": "Validate A",
+      "icon": "check",
+      "detail": "B7 is text, 90 is allowed integer, True is Boolean: valid."
+    },
+    {
+      "label": "Validate B",
+      "icon": "shield",
+      "detail": "Quoted \"90\" is text, so pages fails the integer contract."
+    },
+    {
+      "label": "Validate C",
+      "icon": "shield",
+      "detail": "Empty id fails even though its other two values have allowed types."
+    }
+  ],
+  "explanation": "A schema makes row meanings and expected types explicit. The string \"90\" looks like a number when printed but does not meet this strict integer schema. A repair can be authorised later, but must not be assumed silently. Missing or empty identifiers also prevent tracing an item back to its source.",
+  "counterfactual": {
+    "change": "Change B’s pages from \"90\" to integer 90 using an approved repair.",
+    "prediction": "B now satisfies the declared schema.",
+    "reason": "Its id is nonempty and illustrated is Boolean; the page-type defect is removed."
+  },
+  "student_task": "Which two rows originally fail, and do they fail for the same reason?",
+  "teacher_answer": "B fails pages type; C fails empty id. A passes all three field checks.",
+  "project_evidence": "Publish the recommender’s row schema and validation results before ranking books, preserving repair provenance.",
+  "limits": "Schema validity does not confirm that the book really has 90 pages or that its metadata is accurate.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment."
+}

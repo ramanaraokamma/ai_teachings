@@ -1,0 +1,151 @@
+{
+  "week": "ai-5/30",
+  "title": "Dataset shift in neural models",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Explain how a changed input mix can change overall accuracy",
+    "Calculate group and overall results with the correct denominators",
+    "Plan a shift investigation while preserving independent evaluation"
+  ],
+  "primary_topic": "Dataset shift in neural models",
+  "vocabulary": [
+    [
+      "Dataset shift",
+      "A change in the distribution of inputs, labels or their relationship between settings"
+    ],
+    [
+      "Subgroup",
+      "A declared subset of examples sharing a relevant condition"
+    ],
+    [
+      "Group mix",
+      "The proportions of examples belonging to different groups"
+    ],
+    [
+      "Monitoring",
+      "Repeatedly checking recorded inputs, outputs and available outcomes against a reference"
+    ]
+  ],
+  "worked_example": {
+    "title": "Read the mix and the errors together",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "The same group rates meet a different mix",
+        "columns": [
+          "Group",
+          "Development share",
+          "New-use share"
+        ],
+        "rows": [
+          [
+            "Clear, 90% correct",
+            "80 of 100",
+            "20 of 100"
+          ],
+          [
+            "Dim, 50% correct",
+            "20 of 100",
+            "80 of 100"
+          ]
+        ],
+        "caption": "The weaker group becomes more common. Overall mistakes rise from 18 of 100 to 42 of 100 without any change in these observed within-group accuracy rates."
+      },
+      {
+        "type": "paragraph",
+        "text": "The arithmetic explains this constructed aggregate difference. It does not prove that dim lighting caused each real error or that these group rates will stay fixed in future samples. Report group counts and uncertainty about generalisation. Review specific errors and reference labels as in Week 29."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "If a new cohort has 50 clear and 50 dim cases, and exactly 90 percent and 50 percent are correct respectively, how many correct cases and what overall accuracy result? State the assumption behind this calculation.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Use the right denominator",
+    "prompt": "Calculate overall correct counts, accuracy and errors in both cohorts, plus the percentage-point drop. Explain why averaging 90 percent and 50 percent without weights gives the wrong overall result here.",
+    "answer": "Teacher explanation: Development has 82 correct and 18 errors out of 100, or 82 percent accuracy. New use has 58 correct and 42 errors out of 100, or 58 percent. The drop is 24 percentage points. An unweighted mean gives 70 percent and ignores the unequal group sizes.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Analyse a new mixture independently",
+    "task": "A separate audit has development groups P: 60 cases, 48 correct and Q: 40 cases, 20 correct. New-use groups are P: 20 cases, 16 correct and Q: 80 cases, 40 correct. Compute each group rate, both overall accuracies, and the percentage-point change. Under the same group rates, what accuracy would equal-sized P and Q groups have?",
+    "answer": "Teacher explanation: P is 80 percent correct and Q is 50 percent correct in both cohorts. Development accuracy is 68 of 100, or 68 percent; new-use accuracy is 56 of 100, or 56 percent. The drop is 12 percentage points. Equal-sized groups at those rates give 65 percent accuracy.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Average the percentages regardless of group sizes",
+      "Overall accuracy is total correct divided by total cases; group accuracies need weights proportional to group size."
+    ],
+    [
+      "A shift alert proves a loss of accuracy",
+      "Input changes may help, hurt or leave accuracy unchanged; verified outcomes are needed to measure performance."
+    ],
+    [
+      "An unchanged input summary proves nothing changed",
+      "A summary can miss relevant differences, and the input-label relationship or labelling policy can change without an obvious input shift."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Development accuracy is (72 + 10) / (80 + 20) = 82 percent. New-use accuracy is (18 + 40) / (20 + 80) = 58 percent. The drop is 24 percentage points. Taking the unweighted mean of 90 and 50 gives 70 percent, which is not either cohort\u2019s overall accuracy because neither cohort has equal group sizes."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "def accuracy(groups):\n    if not groups:\n        raise ValueError(\"Need at least one group\")\n    total = correct = 0\n    for n, k in groups:\n        if n <= 0 or not 0 <= k <= n:\n            raise ValueError(\"Invalid group counts\")\n        total += n\n        correct += k\n    return correct / total\n\ndevelopment = [(80, 72), (20, 10)]\nnew_use = [(20, 18), (80, 40)]\nold = accuracy(development)\nnew = accuracy(new_use)\nprint(round(100 * old, 1))  # 82.0\nprint(round(100 * new, 1))  # 58.0\nprint(round(100 * (old - new), 1))  # 24.0"
+      },
+      {
+        "type": "paragraph",
+        "text": "Each pair is (cases, correct), and the function assumes integer counts for non-overlapping groups. It rejects empty inputs, groups with no cases and impossible correct counts. A group with no observed cases has an undefined empirical accuracy, not zero accuracy. Do not count the same example in two groups when forming an overall total."
+      },
+      {
+        "type": "paragraph",
+        "text": "Equivalently, weight each group accuracy by its share of cases: development is 0.80 times 0.90 + 0.20 times 0.50 = 0.82; new use is 0.20 times 0.90 + 0.80 times 0.50 = 0.58."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Calculate overall correct counts, accuracy and errors in both cohorts, plus the percentage-point drop. Explain why averaging 90 percent and 50 percent without weights gives the wrong overall result here."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

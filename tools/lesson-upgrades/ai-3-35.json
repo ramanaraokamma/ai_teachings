@@ -1,0 +1,38 @@
+{
+  "week": "ai-3/35",
+  "title": "Capstone Evaluate and Improve",
+  "outcome": "By the end, I can explain capstone evaluate and improve using a traced example and a stated limitation.",
+  "scenario": "Choose a study-buddy revision using task performance and a mandatory privacy gate.",
+  "given": [
+    "On eight fixed validation cases, baseline passes 5 and candidate passes 7. One candidate response includes a restricted teacher note; privacy requires zero such exposures.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Compare totals",
+      "icon": "chart",
+      "detail": "Baseline: 5/8. Candidate: 7/8."
+    },
+    {
+      "label": "Apply privacy gate",
+      "icon": "shield",
+      "detail": "The restricted-note exposure fails the mandatory release condition."
+    },
+    {
+      "label": "Revise and retest",
+      "icon": "experiment",
+      "detail": "Repair source filtering; use validation to revise, then reserve genuinely fresh cases for final evaluation."
+    }
+  ],
+  "explanation": "Read the picture in order. Repair source filtering; use validation to revise, then reserve genuinely fresh cases for final evaluation. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "A repaired candidate passes 6/8 with zero restricted-note exposures.",
+    "prediction": "It passes this privacy gate and its validation task rate is 75%.",
+    "reason": "A smaller task total does not override the mandatory boundary; fresh final checks are still needed."
+  },
+  "student_task": "May the team call the repaired validation cases an untouched final test? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "No. Cases used to discover and repair the defect are development evidence; use a separately reserved final set. Changed-case check: It passes this privacy gate and its validation task rate is 75%. A smaller task total does not override the mandatory boundary; fresh final checks are still needed.",
+  "project_evidence": "For your Verified Study Buddy, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Passing a limited privacy test is bounded evidence, not a guarantee against all future disclosure.",
+  "review_note": "Reviewed Capstone Evaluate and Improve against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

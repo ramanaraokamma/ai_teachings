@@ -1,0 +1,181 @@
+{
+  "week": "ai-5/35",
+  "title": "Capstone limitations and revision",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Evaluate a frozen candidate and baseline on final rows",
+    "Identify a distribution limitation from raw errors",
+    "Distinguish revision checks from new independent evaluation"
+  ],
+  "primary_topic": "Capstone limitations and revision",
+  "vocabulary": [
+    [
+      "Frozen procedure",
+      "A recorded procedure fixed before final evaluation"
+    ],
+    [
+      "Residual",
+      "Prediction minus observed target"
+    ],
+    [
+      "Revision",
+      "A documented change informed by earlier evidence"
+    ],
+    [
+      "Coverage limitation",
+      "A condition or group missing or poorly represented in the evidence"
+    ]
+  ],
+  "worked_example": {
+    "title": "Explain a failure before proposing a repair",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "The ReLU output cannot be negative. When targets are negative, no choice of this scalar weight can produce the required negative output. More epochs do not remove that output constraint. A proposed signed linear output a*x would represent negative targets, but it changes the architecture. It needs a new version, appropriate fitting and selection, and fresh reserved evaluation."
+      },
+      {
+        "type": "paragraph",
+        "text": "Running that proposal on F3 and F4 checks the revealed failures. It does not create new independent final evidence. Preserve the original test result and label later scores as revision or regression checks. Do not replace the earlier failure report with a score from a new model on already inspected rows."
+      }
+    ]
+  },
+  "guided_practice": {
+    "title": "Compare with the baseline",
+    "prompt": "Compute both overall MSE values and the candidate negative-input MSE. Apply the strict final criterion.",
+    "answer": "Teacher explanation: Baseline MSE 20.25; candidate MSE 5. Candidate negative-input MSE 10 over two rows. Candidate passes the lower-overall-MSE criterion but has a structural negative-output limitation.",
+    "lines": 6,
+    "id": "W2"
+  },
+  "independent_case": {
+    "title": "Evaluate new evidence independently",
+    "task": "A frozen ReLU candidate with a = 3 is compared with baseline a = 1 on final rows (2,6),(4,12),(-1,-3),(-2,-6). Compute both MSE values and candidate MSE on negative inputs. Write a bounded conclusion.",
+    "answer": "Teacher explanation: Baseline squared errors 16,64,9,36 total 125, MSE 31.25. Candidate squared errors 0,0,9,36 total 45, MSE 11.25. Negative-input MSE 22.5 over two rows. Candidate improves overall on these four constructed cases but still cannot represent negative outputs.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Passing a criterion means no failures remain",
+      "An aggregate improvement can coexist with systematic subgroup errors."
+    ],
+    [
+      "Training longer fixes any output constraint",
+      "A nonnegative output cannot express a negative target."
+    ],
+    [
+      "A repaired test score is a new final test",
+      "The revealed cases informed the repair and now serve as development or regression checks."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "table",
+        "rows": [
+          [
+            "ID",
+            "x",
+            "y",
+            "Baseline prediction",
+            "Candidate prediction"
+          ],
+          [
+            "F1",
+            "5",
+            "10",
+            "5",
+            "10"
+          ],
+          [
+            "F2",
+            "6",
+            "12",
+            "6",
+            "12"
+          ],
+          [
+            "F3",
+            "-1",
+            "-2",
+            "0",
+            "0"
+          ],
+          [
+            "F4",
+            "-2",
+            "-4",
+            "0",
+            "0"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Baseline squared errors are 25,36,4,16, so MSE is 81/4 = 20.25. Candidate squared errors are 0,0,4,16, so MSE is 20/4 = 5. The candidate passes the strict lower-MSE final criterion on these four rows. On the two negative-input rows its MSE is (4+16)/2 = 10; on the positive rows it is zero."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Keep the evidence roles separate",
+        "columns": [
+          "Plan or input",
+          "Procedure",
+          "Permitted conclusion"
+        ],
+        "rows": [
+          [
+            "Frozen candidate a = 2",
+            "Final MSE = 5",
+            "Improves on baseline 20.25"
+          ],
+          [
+            "Negative x cases",
+            "Predictions forced to zero",
+            "A structural limitation"
+          ],
+          [
+            "Change output rule",
+            "Check revealed failures",
+            "New final evidence needed"
+          ]
+        ],
+        "caption": "A passed aggregate criterion and a known structural failure can both be true."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Compute both overall MSE values and the candidate negative-input MSE. Apply the strict final criterion."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

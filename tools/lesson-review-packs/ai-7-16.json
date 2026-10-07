@@ -1,0 +1,135 @@
+{
+  "week": "ai-7/16",
+  "title": "Ablation studies",
+  "grade": 12,
+  "project": "Reproducible AI Research Study",
+  "goals": [
+    "Explain the mechanism and terminology of ablation studies",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Ablation studies",
+  "vocabulary": [
+    [
+      "Ablation",
+      "Removing or disabling a component in a comparison"
+    ],
+    [
+      "Conditional contribution",
+      "An effect given the other components"
+    ],
+    [
+      "Interaction",
+      "An effect depending on another factor's setting"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Full system8/10, without retrieval5/10, without validation7/10; the last permits an unauthorised action."
+      },
+      {
+        "type": "paragraph",
+        "text": "Drops3 and1 passes respectively in this sample. Validation's critical action boundary is not captured by pass-count magnitude alone."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "Full system8/10, without retrieval5/10, without validation7/10; the last permits an unauthorised action. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: Drops3 and1 passes respectively in this sample. Validation's critical action boundary is not captured by pass-count magnitude alone.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "Full12/15, without A9/15, without B11/15. Compute sample drops and state interaction limit.",
+    "answer": "Teacher explanation: Drops3/15=20 percentage points and1/15\u22486.667 points. Effects are conditional on remaining components; not additive universal contributions.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "Removing a component changes a complete procedure; attribution depends on the controlled design and possible interactions."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Compare full system, without retrieval and without validation on identical cases and scoring. Hold other settings fixed; record changed failure categories, not just totals."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Ablation studies \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "Full system8/10, without retrieval5/10, without validation7/10; the last permits an unauthorised action.",
+            "Compare full system, without retrieval and without validation on identical cases and scoring. Hold other settings fixed; record changed failure categories, not just totals.",
+            "Drops3 and1 passes respectively in this sample. Validation's critical action boundary is not captured by pass-count magnitude alone."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Full system8/10, without retrieval5/10, without validation7/10; the last permits an unauthorised action. Show the intermediate steps and give the conclusion with its scope."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

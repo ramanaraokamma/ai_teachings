@@ -1,0 +1,193 @@
+{
+  "week": "python-bridge/5",
+  "title": "Branching and boundary tests",
+  "grade": 8,
+  "project": "Python readiness portfolio",
+  "goals": [
+    "Trace the selected branch in an if elif else chain",
+    "Use indentation to identify which statements belong to a branch",
+    "Test values at and around a decision boundary"
+  ],
+  "primary_topic": "Branching and boundary tests",
+  "vocabulary": [
+    [
+      "Branch",
+      "A possible path through a program"
+    ],
+    [
+      "Condition",
+      "An expression used to decide which path to take"
+    ],
+    [
+      "Indentation",
+      "Leading spaces that identify a Python code block"
+    ],
+    [
+      "Boundary",
+      "A value where a classification may change"
+    ],
+    [
+      "Regression check",
+      "A previous test rerun after an edit to detect a new failure"
+    ]
+  ],
+  "worked_example": {
+    "title": "Check the boundary deliberately",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Input minutes",
+          "Expected label",
+          "Reason for this test"
+        ],
+        "rows": [
+          [
+            "-1",
+            "Invalid",
+            "Negative input rejection"
+          ],
+          [
+            "0",
+            "Short",
+            "Lowest valid duration"
+          ],
+          [
+            "11",
+            "Short",
+            "Just below the upper boundary"
+          ],
+          [
+            "12",
+            "Short",
+            "Exact upper boundary"
+          ],
+          [
+            "13",
+            "Long",
+            "Just above the boundary"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "These tests exercise every branch and the equality case. A change from <= 12 to < 12 is exposed by 12; testing 11 alone misses it. Branch coverage means every branch was exercised, but it does not prove every condition is correct."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Suppose the program uses < 12 instead of <= 12. What is printed for 12, why does that violate the written rule, and which earlier test should still pass after repair?",
+        "lines": 5
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the tested path",
+    "prompt": "For -1, 12 and 13, record checked conditions, skipped conditions and the final label. Run each as a fresh script after predicting.",
+    "answer": "-1: first True, second skipped, Invalid. 12: first False, second True, Short. 13: both False, else selected, Long. Retain observed results separately.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Trace branch order",
+    "task": "Predict the action for 30, then trace 29 and -1. Explain why validity is checked before the lamp decision.",
+    "code": "reading = 30\nif not 0 <= reading <= 100:\n    action = \"invalid\"\nelif reading < 30:\n    action = \"on\"\nelse:\n    action = \"off\"\nprint(action)\n",
+    "expected_stdout": "off\n",
+    "answer": "30 gives off, 29 gives on, -1 gives invalid. Checking validity first prevents an invalid negative reading from being accepted as a lamp-on decision.",
+    "source": "new parallel Python readiness case"
+  },
+  "misconceptions": [
+    [
+      "Every condition in the chain always runs",
+      "Once one condition succeeds, later alternatives are skipped."
+    ],
+    [
+      "Two if statements behave like if then elif",
+      "Independent if statements can both run and overwrite a result."
+    ],
+    [
+      "Indentation is cosmetic",
+      "Leading spaces define the branch body."
+    ],
+    [
+      "Every branch tested means every input correct",
+      "A missing equality case can hide a wrong comparison."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "One chain chooses one label",
+        "columns": [
+          "Input",
+          "Checks in order",
+          "Selected label"
+        ],
+        "rows": [
+          [
+            "-1",
+            "Below zero is True",
+            "Invalid"
+          ],
+          [
+            "12",
+            "Below zero False; <= 12 True",
+            "Short"
+          ],
+          [
+            "13",
+            "Both checks False",
+            "Long"
+          ]
+        ],
+        "caption": "Later branches in this chain are skipped after a condition succeeds."
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "minutes = 12\nif minutes < 0:\n    label = \"Invalid\"\nelif minutes <= 12:\n    label = \"Short\"\nelse:\n    label = \"Long\"\nprint(label)"
+      },
+      {
+        "type": "paragraph",
+        "text": "The output is Short. For 12, the first condition is false and the second is true. The else block is skipped. print(label) is not indented, so it runs after the selected branch. Each path assigns label before this line reads it. Change only minutes and save before each fresh run."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "For -1, 12 and 13, record checked conditions, skipped conditions and the final label. Run each as a fresh script after predicting."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

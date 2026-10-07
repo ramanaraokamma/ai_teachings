@@ -1,0 +1,250 @@
+{
+  "week": "ai-2/34",
+  "title": "Test Diverse Users",
+  "grade": 7,
+  "project": "Transparent Book Recommender",
+  "goals": [
+    "Evaluate across varied cases",
+    "Report failures with their denominators",
+    "Separate development evidence from final checks"
+  ],
+  "primary_topic": "Evaluating varied cases",
+  "vocabulary": [
+    [
+      "Evaluation set",
+      "Cases used to assess a specified version"
+    ],
+    [
+      "Failure category",
+      "A type of scenario where an expected result is missed"
+    ],
+    [
+      "Pass rate",
+      "Passing cases divided by executed cases"
+    ],
+    [
+      "Coverage",
+      "The variety of requirements and conditions tested"
+    ]
+  ],
+  "worked_example": {
+    "title": "Predict before running",
+    "blocks": [
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "If ten copies of one passing ordinary case are added, what becomes the pass fraction? Does coverage improve?",
+        "lines": 6
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Plan coverage",
+    "prompt": "Name five distinct categories for the chooser evaluation.",
+    "answer": "Ordinary selection, duration boundaries, invalid records, empty/no-match input and ties/order reversal.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Evaluate independently",
+    "task": "Given ordinary 3/3, boundary 1/2, invalid 2/2 and tie 0/1, compute overall results and prioritize issues.",
+    "answer": "6/8 pass, 2 fail; boundary has one failure and ties fail the only case. Report both and avoid treating 75 percent as production accuracy.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A successful run proves the conclusion",
+      "For a rule-based chooser, evaluate conformance to its policy separately from whether users find suggestions useful. Neither a pass fraction nor an invented satisfaction score proves educational benefit."
+    ],
+    [
+      "Matching the example is enough",
+      "Require the new W4 case, explicit predictions and an explanation. Fresh retry: ordinary 2/2, empty 0/1, boundary 2/2 gives 4/5 overall; the empty case still fails. Require the failure record and a fresh-case plan."
+    ],
+    [
+      "A convenient shortcut preserves meaning",
+      "Hiding the tie failure in an average conceals an unmet requirement. Preserve the failed input, expected result, actual result and version. If you repair using it, classify it as development/regression evidence and reserve new final cases."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/c9da4503a7f613e9c4c7d643d349fd77667f373b1bf3541a9c2858ea60d0dc10",
+        "alt": "INPUT stage for Test Diverse Users",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/8ceea9c0d8ca629033989e2dd5a1a6b090e509e87fe0eaadfd8c2d881d0a95ea",
+        "alt": "PROCESS stage for Test Diverse Users",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/eca4dfbcfaba9949d3497e99eeee25e64473a09a906002a1555a821bbcf23382",
+        "alt": "OUTPUT stage for Test Diverse Users",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "checks = [{\"category\": \"ordinary\", \"passed\": True},\n          {\"category\": \"ordinary\", \"passed\": True},\n          {\"category\": \"boundary\", \"passed\": True},\n          {\"category\": \"invalid\", \"passed\": True},\n          {\"category\": \"empty\", \"passed\": True},\n          {\"category\": \"tie\", \"passed\": False}]\npassed = 0\nfor check in checks:\n    if check[\"passed\"]:\n        passed = passed + 1\nprint(passed, len(checks))"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow the evidence",
+        "columns": [
+          "Step or case",
+          "Evidence",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "Overall",
+            "5 of 6",
+            "One failure remains"
+          ],
+          [
+            "Tie category",
+            "0 of 1",
+            "Known weakness"
+          ],
+          [
+            "Other categories",
+            "Limited cases",
+            "No universal guarantee"
+          ]
+        ],
+        "caption": "Read each row from left to right and connect the evidence to the stated rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "The script reports 5 and 6. About 83.3 percent of these checks pass, but that is not an accuracy estimate for all future use. The cases were deliberately chosen, their frequencies are artificial, and each category has few cases."
+      },
+      {
+        "type": "subheading",
+        "text": "Look inside the overall result"
+      },
+      {
+        "type": "paragraph",
+        "text": "The six development checks include ordinary, boundary, invalid, empty and tie cases. Five pass, but the only tie case fails. Saying five out of six pass is true; saying the tie rule works is false. Keep both statements visible. A category table helps you choose the next repair. Adding many copies of passing ordinary cases can raise the overall fraction without checking a new condition or fixing the failed requirement."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1f18213ba3d74c99072fa04ad7520b53eee0b2e9e845b0d8a61ccdda1b41f3f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fed8318cf337134a2c31a8d2c90831db67a27a43d3c6f85b25079c53ec37ff9a",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/75f964dbe29000347e518a59e2717387d7109bd1f947abdafa07e931a61cf754",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4d936b6648b81ac897fc99370c2788f8e0b135d8fc31cfd77afceee66a92128c",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

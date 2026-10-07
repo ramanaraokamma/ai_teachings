@@ -1,0 +1,50 @@
+{
+  "week": "ai-7/13",
+  "title": "Effect size and practical importance",
+  "outcome": "Explain effect size and practical importance using the records and boundaries of this fictional investigation.",
+  "scenario": "An improvement with a practical threshold. A team compares error rates against a predeclared practical threshold.",
+  "given": [
+    "A makes 20 errors in 1000 tasks; B makes 15. Practical improvement requires at least 10 fewer errors per 1000."
+  ],
+  "steps": [
+    {
+      "icon": "chart",
+      "label": "Compute rates",
+      "detail": "A is 2%; B is 1.5%."
+    },
+    {
+      "icon": "rule",
+      "label": "Compute effect size",
+      "detail": "B has 5 fewer errors per 1000, a 0.5-percentage-point reduction."
+    },
+    {
+      "icon": "check",
+      "label": "Apply practical threshold",
+      "detail": "Five is less than ten, so the observed change misses this threshold."
+    }
+  ],
+  "explanation": "Effect size describes how much the outcome changes. Practical importance depends on the real decision criterion; relative changes can sound large while absolute changes remain small.",
+  "counterfactual": {
+    "change": "B makes 8 errors in 1000.",
+    "prediction": "The reduction becomes 12 per 1000 and meets the stated practical threshold.",
+    "reason": "Twenty minus eight exceeds the required ten fewer errors."
+  },
+  "student_task": "Calculate the absolute error-rate reduction from 20/1000 to 15/1000. Does it meet the ten-fewer-errors threshold, and what changes when B has eight errors?",
+  "teacher_answer": "A is 2%; B is 1.5%. B has 5 fewer errors per 1000, a 0.5-percentage-point reduction. Five is less than ten, so the observed change misses this threshold. Changed case: The reduction becomes 12 per 1000 and meets the stated practical threshold. Twenty minus eight exceeds the required ten fewer errors.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "No uncertainty or statistical significance is supplied; these counts alone cannot establish a general effect.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Errors on 1000 tasks",
+    "labels": [
+      "A",
+      "B"
+    ],
+    "values": [
+      20,
+      15
+    ],
+    "unit": "errors per 1000 tasks"
+  }
+}

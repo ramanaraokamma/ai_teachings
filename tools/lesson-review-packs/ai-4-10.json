@@ -1,0 +1,270 @@
+{
+  "week": "ai-4/10",
+  "title": "Baselines First",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Fit a majority label baseline using training labels only",
+    "Score fixed predictions on the same validation examples",
+    "Explain what a baseline comparison does and does not establish"
+  ],
+  "primary_topic": "A baseline before a model",
+  "vocabulary": [
+    [
+      "Baseline",
+      "A simple reference method used to judge a more complex approach"
+    ],
+    [
+      "Majority label",
+      "The label with more examples than the other label in this binary task"
+    ],
+    [
+      "Accuracy",
+      "Correct predictions divided by the number of scored examples"
+    ],
+    [
+      "Percentage point",
+      "A unit for the difference between two percentages"
+    ]
+  ],
+  "worked_example": {
+    "title": "Compare on the same examples",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Suppose a candidate method supplies blocked, clear, clear, clear for the four validation rows in the table. These are supplied predictions for a comparison exercise; we have not fitted that candidate. It gets three of four correct, or 75 percent. The baseline gets two of four, or 50 percent. The candidate is ahead by one correct example and 25 percentage points on this set."
+      },
+      {
+        "type": "paragraph",
+        "text": "Use identical row IDs, reference labels, exclusions and metric for both methods. Match predictions to their rows even if files are reordered. A score on easier examples is not a fair comparison. Neither this four-row result nor beating one baseline proves that the candidate will perform well on future trips."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "The candidate misses the third validation row. Which rows does the baseline miss? Explain how the candidate changes the number correct. Why is the improvement 25 percentage points rather than a claim of 25 percent relative improvement?",
+        "lines": 5
+      },
+      {
+        "type": "paragraph",
+        "text": "Record training counts, the fixed prediction and tie rule, validation IDs and labels, prediction lists and correct/total counts. Keep the final test separate from development decisions. Next week we will search candidate rules using training evidence, then compare choices carefully."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Calculate the validation score",
+    "prompt": "List the four baseline predictions and mark which validation rows are correct. Give correct/total and accuracy. Explain why 4/6 is not the answer.",
+    "answer": "Predictions are clear, clear, clear, clear. Rows 2 and 4 match, giving 2/4 or 50 percent. The fraction 4/6 describes clear labels in training, not correct predictions on the four validation rows.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Fit and compare independently",
+    "task": "New training labels are blocked, clear, blocked, blocked, clear. New validation labels are clear, blocked, clear, blocked. Fit the same baseline rule and list its four predictions. A supplied candidate predicts clear, blocked, blocked, blocked. Score both on these rows and state the difference in correct examples and percentage points. What claim remains unsupported?",
+    "answer": "Training counts are three blocked and two clear, so predict blocked four times. The baseline matches rows 2 and 4: 2/4 or 50 percent. The candidate matches rows 1,2,4: 3/4 or 75 percent. It gains one correct example and 25 percentage points. This tiny validation comparison does not prove future performance or readiness for use.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A simple baseline does not need training data",
+      "This method learns its constant from training label counts, although it ignores input features."
+    ],
+    [
+      "Training majority share is validation accuracy",
+      "Fit using training labels, then count matches separately on validation rows. Their label proportions can differ."
+    ],
+    [
+      "Beating a baseline proves the system is ready",
+      "It is one comparison on specified examples. Error types, coverage, uncertainty and final evaluation remain relevant."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/d591bd8fe6939bb2aee949f53596f1dbfb2a414ca84e562ef09988c0fa2d8b49",
+        "alt": "Week 10 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/f71cb29788a1eb62d5b2e0ec0ae418caa8c7f3cb3ee24a9c569c75bcf2d77450",
+        "alt": "Week 10 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/010143c90d9d0400e63552d9ff9bb8ecf59dba9dbdd492659e8942332288188e",
+        "alt": "Week 10 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Build majority-class and one-rule baselines, then calculate their results."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  A model must be compared with a simple transparent strategy on the same untouched examples."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Test set has 12 healthy and 8 spotted leaves. Always-healthy baseline gets 12 \u00f7 20 = 60% accuracy but 0% spotted recall.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "train = [\"clear\", \"clear\", \"blocked\",\n         \"clear\", \"blocked\", \"clear\"]\nvalid = [\"blocked\", \"clear\", \"blocked\", \"clear\"]\nprediction = \"clear\"\nif train.count(\"blocked\") > train.count(\"clear\"):\n    prediction = \"blocked\"\ncorrect = 0\nfor label in valid:\n    if prediction == label:\n        correct = correct + 1\nprint(prediction, correct, len(valid))"
+      },
+      {
+        "type": "paragraph",
+        "text": "The output is clear 2 4. The fixed prediction matches two of the four validation labels, so accuracy is 2/4 or 50 percent. The training majority share, 4/6, is not the validation accuracy. The baseline does not inspect the validation labels to decide which constant to predict."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Keep fitting separate from scoring",
+        "columns": [
+          "Evidence",
+          "Operation",
+          "Result"
+        ],
+        "rows": [
+          [
+            "Training labels only",
+            "Count clear and blocked",
+            "Store prediction clear"
+          ],
+          [
+            "New validation examples",
+            "Repeat stored prediction",
+            "clear for every row"
+          ],
+          [
+            "Validation labels",
+            "Compare after prediction",
+            "2 correct out of 4"
+          ]
+        ],
+        "caption": "The baseline uses training labels to choose its constant. Validation labels are used to score that fixed constant, not to refit it."
+      },
+      {
+        "type": "paragraph",
+        "text": "The code assumes nonempty training data with only clear and blocked labels. It counts matches on the supplied validation list; a percentage also requires a nonempty validation set. Do not run it on empty training data and describe the default clear value as learned evidence. Other labels and unresolved review statuses need an explicit policy."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 10 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 10 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 10 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 10 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

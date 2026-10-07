@@ -1,0 +1,68 @@
+{
+  "week": "ai-2/20",
+  "title": "Repair Bias in Data",
+  "outcome": "By the end, I can distinguish a biased collection process from a mere small dataset.",
+  "scenario": "A fictional school polls learners about adding comic recommendations.",
+  "given": [
+    "Library-club respondents: 12 Yes out of 15. Other respondents: 3 Yes out of 15.",
+    "The full grade has 30 club members and 90 others. These respondents were volunteers, not random selections."
+  ],
+  "steps": [
+    {
+      "label": "Group rates",
+      "icon": "chart",
+      "detail": "Club:12/15=80%; others:3/15=20%."
+    },
+    {
+      "label": "Respondent total",
+      "icon": "code",
+      "detail": "15 Yes out of 30 respondents =50%."
+    },
+    {
+      "label": "Check representation",
+      "icon": "question",
+      "detail": "Respondents split 50/50, but the grade is 25% club and 75% other."
+    },
+    {
+      "label": "Repair collection",
+      "icon": "experiment",
+      "detail": "Plan including equality, documented invitations and report nonresponse by group."
+    }
+  ],
+  "explanation": "The combined respondent result gives club members more influence than their share of the grade. A weighted illustration using 25% and 75% gives 0.25×80%+0.75×20%=35%, but volunteers may differ within each group, so weighting alone does not establish the true grade preference. Improve the collection process rather than announcing the weighted number as fact.",
+  "counterfactual": {
+    "change": "Recruit more club volunteers only.",
+    "prediction": "Sample size increases without fixing missing representation of other learners.",
+    "reason": "The added respondents come from the already overrepresented group."
+  },
+  "student_task": "Why must 35% be labelled an illustration rather than the measured grade-wide Yes rate?",
+  "teacher_answer": "It assumes each volunteer group rate represents its whole group; that assumption has not been established.",
+  "project_evidence": "Broaden recommender feedback collection and show respondent group coverage before making user-preference claims.",
+  "limits": "Neither raw nor weighted volunteer rates prove the whole grade’s opinion; privacy and consent rules still apply.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Volunteer group comparison",
+    "cells": [
+      [
+        12,
+        15,
+        30
+      ],
+      [
+        3,
+        15,
+        90
+      ]
+    ],
+    "row_labels": [
+      "Club",
+      "Others"
+    ],
+    "column_labels": [
+      "Yes responses",
+      "Respondents",
+      "Grade members"
+    ]
+  }
+}

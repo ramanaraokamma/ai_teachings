@@ -1,0 +1,241 @@
+{
+  "week": "ai-2/16",
+  "title": "Overfitting Intuition",
+  "grade": 7,
+  "project": "Transparent Book Recommender",
+  "goals": [
+    "Compare training and validation evidence for model capacity",
+    "Explain overfitting without assuming every gap proves it",
+    "Use a declared selection rule instead of perfect training fit"
+  ],
+  "primary_topic": "Overfitting and model capacity",
+  "vocabulary": [
+    [
+      "Capacity",
+      "Flexibility of a model to represent patterns"
+    ],
+    [
+      "Overfitting",
+      "Learning details that fail to generalize well"
+    ],
+    [
+      "Underfitting",
+      "Failing to capture useful structure"
+    ],
+    [
+      "Generalization",
+      "Performance on relevant unseen examples"
+    ]
+  ],
+  "worked_example": {
+    "title": "Explain the visual",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Overfitting and model capacity at a glance",
+        "columns": [
+          "Part",
+          "Evidence or action",
+          "Interpretation"
+        ],
+        "rows": [
+          [
+            "Constant",
+            "Training 5",
+            "Validation 6"
+          ],
+          [
+            "Line",
+            "Training 2",
+            "Validation 3"
+          ],
+          [
+            "Flexible curve",
+            "Training 0",
+            "Validation 8"
+          ]
+        ],
+        "caption": "The curve result is consistent with overfitting, but a gap alone does not prove its cause. A changed population, bad labels or a split error could also produce a gap. Inspect the procedure before claiming a diagnosis. The constant may miss useful structure, but these numbers alone do not identify the true relationship."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Does a training-validation gap alone prove overfitting? Explain the steps or evidence behind your response.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Interpret a gap",
+    "prompt": "Does a training-validation gap alone prove overfitting?",
+    "answer": "Teacher explanation: No. It is consistent with overfitting but may also reflect shift, data quality or split problems.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Apply independently",
+    "task": "Models A training 4 validation 5, B training 1 validation 2, C training 0 validation 2. Lowest validation MAE then simpler; B is simpler than C. Choose and justify.",
+    "answer": "Teacher explanation: B wins the validation tie by the declared simplicity rule. C is not selected merely for its zero training error.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A final answer is enough",
+      "Ask for the relevant counts, units, procedure or saved record. For this week: Choose the line with validation MAE 3. The curve training MAE 0 does not compensate for validation MAE 8."
+    ],
+    [
+      "A stronger claim makes a stronger project",
+      "Check data provenance, split grouping, label quality and repeated development results; inspect representative residuals without using final test feedback to tune."
+    ],
+    [
+      "The new case can be copied from the example",
+      "The independent task changes the evidence. Require a fresh explanation: B wins the validation tie by the declared simplicity rule. C is not selected merely for its zero training error."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/6f990403ad7eab805f6e1b8be092221305ba011f6f943eba48524dfa8ca750bb",
+        "alt": "INPUT stage for Overfitting Intuition",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ec7ceeaac9dd54572568e1bcd504777a81c4f4564653b1f369896d565c93b371",
+        "alt": "PROCESS stage for Overfitting Intuition",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4ec5d1cfb6f545d6b62e3a40cf61bf9dcf74c9a78c0994d5a9de2980b4dd6606",
+        "alt": "OUTPUT stage for Overfitting Intuition",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "On the same regression split, a constant has training MAE 5 and validation 6, a line has training 2 and validation 3, and a highly flexible curve has training 0 and validation 8. Under smallest validation MAE, choose the line. The curve has the lowest training loss but the worst validation result."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before continuing, underline the decision rule and circle the evidence that supports the conclusion. Explain the example to a partner without replacing the counts or conditions with a stronger claim. Keep the distinction between an observed result and a proposed next step."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1f18213ba3d74c99072fa04ad7520b53eee0b2e9e845b0d8a61ccdda1b41f3f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fed8318cf337134a2c31a8d2c90831db67a27a43d3c6f85b25079c53ec37ff9a",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/75f964dbe29000347e518a59e2717387d7109bd1f947abdafa07e931a61cf754",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4d936b6648b81ac897fc99370c2788f8e0b135d8fc31cfd77afceee66a92128c",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

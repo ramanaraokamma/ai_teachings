@@ -1,0 +1,38 @@
+{
+  "week": "ai-5/12",
+  "title": "Training a small network",
+  "outcome": "By the end, I can explain training a small network using a traced example and a stated limitation.",
+  "scenario": "Train a single output weight while clearly marking the frozen hidden computation.",
+  "given": [
+    "Toy h=ReLU(x), y=vh. One training pair x = 3, target 3; start v = 0; squared loss; rate 1/18.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Freeze hidden step",
+      "icon": "network",
+      "detail": "h=3 for this pair; only v is trainable."
+    },
+    {
+      "label": "Compute initial gradient",
+      "icon": "code",
+      "detail": "Loss9; gradient 2(3v-3)\u00d73=-18 at v=0."
+    },
+    {
+      "label": "Update and verify",
+      "icon": "chart",
+      "detail": "v becomes1; prediction 3 and loss 0. Next gradient is 0."
+    }
+  ],
+  "explanation": "Only the output weight v is being fitted in this toy network; the hidden ReLU is fixed. The training input gives hidden value three. Squared-error slope points v from zero towards one, and this specially chosen rate reaches one in a single update. Zero loss on one training pair is exact fitting of that pair, not evidence about other inputs.",
+  "counterfactual": {
+    "change": "Change target from 3 to6 and restart v = 0 with the same rate.",
+    "prediction": "First gradient=-36; v becomes2; prediction 6 and loss 0.",
+    "reason": "The hidden value remains3, but the target residual and required output weight double."
+  },
+  "student_task": "Which parameter changed, and which part was not trained? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Only output weight v changed. The fixed ReLU hidden function h=ReLU(x) retained its declared computation. Changed-case check: First gradient=-36; v becomes2; prediction 6 and loss 0. The hidden value remains3, but the target residual and required output weight double.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "A zero loss on one example is memorised fit to that example, not proof of a generally useful image classifier.",
+  "review_note": "Reviewed Training a small network against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation."
+}

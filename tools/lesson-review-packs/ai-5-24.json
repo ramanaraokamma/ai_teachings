@@ -1,0 +1,148 @@
+{
+  "week": "ai-5/24",
+  "title": "Augmentation and leakage",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Check whether a transformation preserves the task label",
+    "Keep related examples in one split using source groups",
+    "Compare augmentation fairly without inflating independent evidence"
+  ],
+  "primary_topic": "Augmentation and leakage",
+  "vocabulary": [
+    [
+      "Augmentation",
+      "Creating transformed training examples under a declared procedure"
+    ],
+    [
+      "Label preservation",
+      "A transformation leaving the correct target unchanged for the stated task"
+    ],
+    [
+      "Source group",
+      "An identifier joining records that must stay together when splitting"
+    ],
+    [
+      "Leakage",
+      "Information crossing an evaluation boundary in a way that undermines the intended independent check"
+    ]
+  ],
+  "worked_example": {
+    "title": "Split source groups before making variants",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Every variant stays with its source group",
+        "columns": [
+          "Source group",
+          "Assigned split",
+          "Derived records"
+        ],
+        "rows": [
+          [
+            "A",
+            "Training",
+            "A original and A row swap"
+          ],
+          [
+            "B",
+            "Validation",
+            "B original only"
+          ],
+          [
+            "C",
+            "Final test",
+            "C original only"
+          ]
+        ],
+        "caption": "Assign source groups before generating training variants. A new filename does not make a derived image independent. Evaluation examples follow a fixed declared protocol, not random training augmentation."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "A training image has source ID A. Its row-swapped copy is called A2 and placed in validation. No filenames match across splits. Is the split valid for evaluating unseen source images? Describe the repair.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Keep the equality boundary",
+    "prompt": "For rows [1, 0], [0, 1], compute d and class before and after a column swap. Why is always replacing a label by 1 minus the label incorrect?",
+    "answer": "Teacher explanation: Both differences are 0 and both labels are class 0. Complementing class 0 would give class 1, which is wrong for ties.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Design a grouped split independently",
+    "task": "Six fictional source groups J, K, L, M, N and O each have one original and three derived records. Assign J, K and L to training, M to validation and N, O to final test. Keep all four records per training group but only originals for evaluation. Give source and retained-record counts per split, total retained records and excluded derived records.",
+    "answer": "Teacher explanation: Training: 3 groups and 12 records. Validation: 1 group and 1 record. Final test: 2 groups and 2 records. Total retained records are 15. Nine derived evaluation records are excluded. No group crosses splits; the small group counts still limit evaluation evidence.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Every image flip preserves the label",
+      "Validity depends on the task; column swaps change non-tie labels here."
+    ],
+    [
+      "Different filenames prove independence",
+      "Lineage, shared subjects and identical content can connect different filenames."
+    ],
+    [
+      "More augmented files mean more independent examples",
+      "Variants retain dependence on their source; report both group and record counts."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "This code assumes valid 2 by 2 binary lists. It constructs new lists instead of changing the input. The label function encodes the classroom task rule, not a general method for recovering unknown real-world labels."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "def difference(x):\n    return x[0][0] + x[1][0] - x[0][1] - x[1][1]\n\ndef label(x):\n    return int(difference(x) > 0)\n\ndef swap_rows(x):\n    return [x[1][:], x[0][:]]\n\ndef swap_columns(x):\n    return [row[::-1] for row in x]\n\nx = [[1, 0], [0, 0]]\nassert label(x) == label(swap_rows(x)) == 1\nassert label(swap_columns(x)) == 0\ntie = [[1, 0], [0, 1]]\nassert label(tie) == label(swap_columns(tie)) == 0\nassert x == [[1, 0], [0, 0]]"
+      },
+      {
+        "type": "paragraph",
+        "text": "If an allowed transformation changes a known target, the transformed example needs a justified new label. Do not invent labels for ambiguous cases. Keep the source ID, transformation and resulting label with every derived image so a teacher can audit what happened."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "For rows [1, 0], [0, 1], compute d and class before and after a column swap. Why is always replacing a label by 1 minus the label incorrect?"
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

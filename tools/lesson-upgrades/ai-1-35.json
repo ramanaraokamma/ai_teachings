@@ -1,0 +1,43 @@
+{
+  "week": "ai-1/35",
+  "title": "Improve One Cause",
+  "outcome": "By the end, I can repair one identified cause and rerun cases that previously passed.",
+  "scenario": "A fictional quiet-activity chooser has a boundary bug and a proposed repair.",
+  "given": [
+    "A: quiet Yes, 8 minutes; B: quiet No, 5 minutes. Request quiet required Yes.",
+    "U0 accepts only duration<available time. U1 fixes ≤ but accidentally removes the quiet requirement."
+  ],
+  "steps": [
+    {
+      "label": "Boundary failure",
+      "icon": "check",
+      "detail": "At 8 minutes, U0 rejects A and rejects noisy B: none."
+    },
+    {
+      "label": "Expected repair",
+      "icon": "rule",
+      "detail": "Correct logic must allow A when time equals 8."
+    },
+    {
+      "label": "Regression case",
+      "icon": "experiment",
+      "detail": "At 6 quiet-required minutes, correct output is none."
+    },
+    {
+      "label": "Bad revision",
+      "icon": "shield",
+      "detail": "U1 selects noisy B at 6; fixing equality introduced a new failure."
+    }
+  ],
+  "explanation": "A repair must preserve the full contract, not just make one failing example pass. The quiet condition and duration comparison are separate requirements. Changing only the inequality targets the recorded cause; removing the quiet check changes another behavior. Save previously passing cases to reveal such regressions.",
+  "counterfactual": {
+    "change": "Use U2, which changes < to ≤ and keeps the quiet check.",
+    "prediction": "At 8 return A; at 6 return none.",
+    "reason": "Equality is repaired while B remains ineligible because it is noisy."
+  },
+  "student_task": "Explain why “our repaired version now picks something” is not enough to show success at 6.",
+  "teacher_answer": "Any chosen activity must be quiet and fit the time. B is noisy, so picking it violates the contract; none is the correct output.",
+  "project_evidence": "Maintain sorter regression tests and compare complete version traces, retaining new failures rather than hiding them.",
+  "limits": "Two examples establish only these outcomes; further cases are needed before generalising the repair.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment."
+}

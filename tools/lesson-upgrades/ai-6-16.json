@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/16",
+  "title": "Timeouts retries and cancellation",
+  "outcome": "Explain timeouts retries and cancellation using the deciding step in this fictional service.",
+  "scenario": "Retry within declared limits. A read-only lookup allows two attempts of at most one second each. Cancellation forbids further attempts.",
+  "given": [
+    "First attempt times out at 1 second. Second succeeds in 0.4 seconds. Ignore overhead. No cancellation occurs."
+  ],
+  "steps": [
+    {
+      "label": "Bound first wait",
+      "icon": "clock",
+      "detail": "Stop attempt one after its one-second allowance."
+    },
+    {
+      "label": "Check retry",
+      "icon": "rule",
+      "detail": "One attempt remains, and cancellation has not occurred."
+    },
+    {
+      "label": "Complete next attempt",
+      "icon": "output",
+      "detail": "Accept the checked record; total waiting is 1.4 seconds."
+    }
+  ],
+  "explanation": "A timeout bounds waiting; a retry tries again; cancellation withdraws the request. They are separate conditions on the next action.",
+  "counterfactual": {
+    "change": "Cancellation arrives after the first timeout.",
+    "prediction": "Do not start the second attempt.",
+    "reason": "Cancellation overrides the unused retry allowance."
+  },
+  "student_task": "Calculate waiting time for a one-second timeout followed by a 0.4-second success. What changes if cancellation arrives after the first attempt but before the retry?",
+  "teacher_answer": "Stop attempt one after its one-second allowance. One attempt remains, and cancellation has not occurred. Accept the checked record; total waiting is 1.4 seconds. Changed case: Do not start the second attempt. Cancellation overrides the unused retry allowance.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "The arithmetic excludes overhead; retries of side-effecting operations require separate duplicate and recovery controls.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

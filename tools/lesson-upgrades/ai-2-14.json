@@ -1,0 +1,43 @@
+{
+  "week": "ai-2/14",
+  "title": "Decision Trees",
+  "outcome": "By the end, I can fit a one-question tree using training labels and an explicit candidate comparison.",
+  "scenario": "A fictional toy classifier predicts whether a book needs an illustration label.",
+  "given": [
+    "Training rows (colour_cover,diagram_inside,label): (1,1,Yes),(1,0,No),(0,1,Yes),(0,0,No).",
+    "Candidates ask colour_cover or diagram_inside; each leaf uses its training majority. A leaf tie chooses No. Select fewer training errors."
+  ],
+  "steps": [
+    {
+      "label": "Colour candidate",
+      "icon": "rule",
+      "detail": "Both colour leaves tie Yes/No, choose No: two training errors."
+    },
+    {
+      "label": "Diagram candidate",
+      "icon": "rule",
+      "detail": "Diagram 1 leaf predicts Yes; diagram 0 leaf predicts No: zero errors."
+    },
+    {
+      "label": "Select tree",
+      "icon": "model",
+      "detail": "Choose the diagram question using the training comparison."
+    },
+    {
+      "label": "Apply new input",
+      "icon": "output",
+      "detail": "A new (1,0) row follows diagram=0 and predicts No."
+    }
+  ],
+  "explanation": "A question becomes a fitted tree only after its leaves and selection procedure are specified. The training comparison prefers the feature that separates these labels. Prediction follows the selected question; it does not reselect the tree using a new case’s answer. Save candidate leaves and errors so the choice can be repeated.",
+  "counterfactual": {
+    "change": "New input becomes (0,1).",
+    "prediction": "The fitted tree predicts Yes.",
+    "reason": "It follows diagram=1; cover colour is not the selected question."
+  },
+  "student_task": "Why does changing colour alone not change this tree’s prediction?",
+  "teacher_answer": "The fitted tree branches only on diagram_inside; colour was considered but not selected.",
+  "project_evidence": "Fit or hand-specify recommender classification rules transparently, retaining candidate definitions and training-only selection evidence.",
+  "limits": "Zero errors on four toy examples do not establish that diagrams always determine a real book’s classification.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment."
+}

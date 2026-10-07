@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/12",
+  "title": "Logs traces and privacy",
+  "outcome": "Explain logs traces and privacy using the deciding step in this fictional service.",
+  "scenario": "Trace without storing private text. A learner request is retrieved and checked under trace identifier R17.",
+  "given": [
+    "R17 is the request trace ID; C8 is the retrieved source ID. Allowed fields also include validation pass and duration 240 ms. Raw question text is excluded."
+  ],
+  "steps": [
+    {
+      "label": "Connect events",
+      "icon": "network",
+      "detail": "R17 links the request, retrieval and validation events."
+    },
+    {
+      "label": "Inspect duration",
+      "icon": "clock",
+      "detail": "240 ms describes this request, not the service average."
+    },
+    {
+      "label": "Minimise fields",
+      "icon": "shield",
+      "detail": "Keep allowed metadata; omit private question text and names."
+    }
+  ],
+  "explanation": "Logs record events; traces connect related events. Useful debugging fields should remain within the declared privacy policy.",
+  "counterfactual": {
+    "change": "A developer logs the full learner question.",
+    "prediction": "That additional field violates this logging policy.",
+    "reason": "Debugging convenience does not authorise storing more personal information."
+  },
+  "student_task": "Identify the purpose of R17, C8 and 240 ms in the trace. Which field is deliberately omitted, and why would logging the whole question violate this design?",
+  "teacher_answer": "R17 links the request, retrieval and validation events. 240 ms describes this request, not the service average. Keep allowed metadata; omit private question text and names. Changed case: That additional field violates this logging policy. Debugging convenience does not authorise storing more personal information. R17 links events for one request, C8 identifies the retrieved source, and 240 ms is this request’s duration.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "Trace identifiers can be linkable too; specify their access, retention and deletion rules.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

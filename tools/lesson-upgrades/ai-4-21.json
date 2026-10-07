@@ -1,0 +1,38 @@
+{
+  "week": "ai-4/21",
+  "title": "Absolute Error and MAE",
+  "outcome": "By the end, I can explain absolute error and mae using a traced example and a stated limitation.",
+  "scenario": "Compare absolute and squared error without losing track of units.",
+  "given": [
+    "Residuals are [-1, 2, 3] cm. Use MAE=mean absolute residual and MSE=mean squared residual.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Absolute errors",
+      "icon": "chart",
+      "detail": "Absolute values1, 2, 3 give MAE6/3=2 cm."
+    },
+    {
+      "label": "Squared errors",
+      "icon": "code",
+      "detail": "Squares1, 4, 9 give MSE14/3 cm², approximately = 4.67 cm²."
+    },
+    {
+      "label": "Root squared error",
+      "icon": "check",
+      "detail": "RMSE=sqrt(14/3), approximately2.16 cm."
+    }
+  ],
+  "explanation": "Read the picture in order. RMSE=sqrt(14/3), approximately2.16 cm. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Convert every residual to millimetres.",
+    "prediction": "MAE becomes20 mm; MSE becomes1400/3 mm²; RMSE becomes about21.60 mm.",
+    "reason": "Residuals scale by10; squares scale by100, while the square root returns a length unit."
+  },
+  "student_task": "Why is quoting MSE as4.67 cm misleading? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Its unit is cm², not cm. RMSE is the corresponding square-root statistic with cm units. Changed-case check: MAE becomes20 mm; MSE becomes1400/3 mm²; RMSE becomes about21.60 mm. Residuals scale by10; squares scale by100, while the square root returns a length unit.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Different loss functions weight large misses differently; a smaller selected loss is not automatically better for every consequence.",
+  "review_note": "Reviewed Absolute Error and MAE against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

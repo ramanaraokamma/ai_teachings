@@ -1,0 +1,38 @@
+{
+  "week": "ai-4/5",
+  "title": "Inspect Before Modeling",
+  "outcome": "By the end, I can explain inspect before modeling using a traced example and a stated limitation.",
+  "scenario": "Spot a duplicate, an impossible value and a valid boundary before fitting.",
+  "given": [
+    "Toy heights table: A=3, B=5, B=5, C=-2, D=0 cm. Each plant should have exactly one nonnegative height record.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Count rows",
+      "icon": "data",
+      "detail": "Five raw rows represent four distinct IDs; B is duplicated."
+    },
+    {
+      "label": "Check schema",
+      "icon": "rule",
+      "detail": "C violates the nonnegative-height rule; D=0 is valid under this contract."
+    },
+    {
+      "label": "Flag before fitting",
+      "icon": "check",
+      "detail": "Flag duplicate B and invalid C. Do not count B twice or silently replace C."
+    }
+  ],
+  "explanation": "Read the picture in order. Flag duplicate B and invalid C. Do not count B twice or silently replace C. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "The teacher confirms B’s second row is an accidental duplicate.",
+    "prediction": "Remove that duplicate with a recorded reason; C still needs correction or explicit exclusion.",
+    "reason": "Resolving one defect does not resolve a separate impossible measurement."
+  },
+  "student_task": "Which original information should the inspection log preserve? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Keep raw row count 5, distinct IDs 4, duplicate B and invalid C, plus any confirmed correction and its reason. Changed-case check: Remove that duplicate with a recorded reason; C still needs correction or explicit exclusion. Resolving one defect does not resolve a separate impossible measurement.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "A plausible nonnegative value can still be incorrectly measured; schema checks do not establish truth.",
+  "review_note": "Reviewed Inspect Before Modeling against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

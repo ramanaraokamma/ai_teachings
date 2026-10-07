@@ -1,0 +1,298 @@
+{
+  "week": "ai-1/21",
+  "title": "Good Data, Bad Data",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Check records against a stated format, unit and meaning before using them",
+    "Distinguish an evidence-based correction from an unsupported guess",
+    "Keep original values and a change log, then report what remains unresolved"
+  ],
+  "primary_topic": "Data quality and documented repair",
+  "vocabulary": [
+    [
+      "Schema",
+      "A description of required fields, formats, units and allowed values"
+    ],
+    [
+      "Validation",
+      "Checking a record against stated requirements"
+    ],
+    [
+      "Provenance",
+      "A record of where information came from"
+    ],
+    [
+      "Correction",
+      "A change supported by evidence about the intended value"
+    ],
+    [
+      "Change log",
+      "A record of what changed, why, when and on what evidence"
+    ]
+  ],
+  "worked_example": {
+    "title": "Choose an action that the evidence supports",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Problem",
+          "Permitted action here",
+          "Unsupported shortcut"
+        ],
+        "rows": [
+          [
+            "Invalid height 60",
+            "Check C2; correct to 6",
+            "Guess by deleting a zero"
+          ],
+          [
+            "Missing travel",
+            "Keep missing; seek source",
+            "Fill with the class average"
+          ],
+          [
+            "Repeated T1 ID",
+            "Confirm one trial on C1; count once",
+            "Treat every repeated number as a duplicate"
+          ],
+          [
+            "Two sources disagree",
+            "Flag conflict; ask for resolution",
+            "Pick the value that improves the result"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "A conversion changes units while preserving the quantity. If an authorised source records 50 mm, that is 5 cm because 10 mm equals 1 cm. Write the original unit, conversion and resulting unit in the log. A bare value 50 without a known unit does not justify assuming millimetres."
+      },
+      {
+        "type": "paragraph",
+        "text": "A plausible value can still be a transcription error: 7 would pass the height rule even if its source said 6. Conversely, an unusual but supported value is not automatically wrong. Checking format and checking agreement with a source are different jobs. A source can itself contain an error, so retain its identity and any unresolved concern."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Write a traceable correction",
+    "prompt": "C2 says T2 height is 6 cm and travel is 5 cm; the export says height 60 cm. Write a change-log entry with ID, field, old and new values with units, evidence, reason, reviewer and date. Use a fictional reviewer and date. Explain where the raw export is kept.",
+    "lines": 6,
+    "answer": "Example: T2; height; 60 cm to 6 cm; source C2; transcription error; reviewer R; review date 16 September 2026. Preserve the original export unchanged and apply the correction to a separate working copy. The source supports 6; the invalid 60 alone would not reveal the intended number."
+  },
+  "independent_case": {
+    "title": "Audit an independent paper-plane log",
+    "task": "Each flight ID must be unique; distance is a whole number from 0 through 20 cm. Raw rows: F1 8 cm; F2 120 cm; F3 blank; F4 0 cm; another F1 8 cm. Source S1 confirms one F1 flight. S2 says F2 travelled 12 cm. S3 is blank. S4 confirms zero. Preserve the raw rows, describe supported repairs and give the number of distinct flights. Report how many assessed flights travelled at least 10 cm, including missing records separately.",
+    "answer": "Correct F2 distance from 120 to 12 cm using S2 and log the change. Link the duplicate F1 row using S1 and count F1 once. Keep F3 missing and F4 at measured zero. Four distinct flights remain; three have recorded distances 8, 12 and 0. Only F2 meets at least 10 cm: 1 of 3 assessed, with 1 missing. Retain all five raw rows and the evidence for both repair actions.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Every valid value is true",
+      "Schema compliance does not prove agreement with an observation or establish that the source was accurate."
+    ],
+    [
+      "A blank means zero",
+      "Zero is a known value; a blank is missing information."
+    ],
+    [
+      "Matching measurements must be duplicates",
+      "Distinct trials can have equal measurements; investigate identity and provenance."
+    ],
+    [
+      "A repair should make the result look better",
+      "Corrections follow evidence, regardless of whether the result improves."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/c69652445a3213cf26ef13587bb90e421e201389c3ec966bc50460999e839576",
+        "alt": "Visual card for the input stage: collected examples and labels",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/3edb398f77ec1ce3f263220973f70a8b942bbea21fc957227ae8c3912c93a466",
+        "alt": "Visual card for the process stage: audit coverage, correctness, relevance, and duplication",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/48ee96b03f94df3eef60fe307d75fb86ee256fe5b2d43aa61f7f5968286629c7",
+        "alt": "Visual card for the output stage: accept, repair, or reject the dataset",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  collected examples and labels"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  audit coverage, correctness, relevance, and duplication"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  accept, repair, or reject the dataset"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  Coverage, correctness, and relevance matter more than raw quantity.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Data quality is multidimensional. More rows can amplify duplicates, systematic labeling errors, stale conditions, or irrelevant fields. Fitness depends on the intended population and decision, not a universal quality score.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Preserve the original and explain each decision",
+        "columns": [
+          "Original record",
+          "Evidence check",
+          "Working decision"
+        ],
+        "rows": [
+          [
+            "T2 height 60 cm",
+            "Card C2 says 6 cm",
+            "Correct to 6; log C2"
+          ],
+          [
+            "T3 travel blank",
+            "Card C3 also blank",
+            "Keep missing; flag"
+          ],
+          [
+            "T4 travel 0 cm",
+            "Card C4 confirms zero",
+            "Keep measured zero"
+          ]
+        ],
+        "caption": "C2 supports correcting T2. C3 cannot supply a missing measurement. C4 shows that zero is a recorded observation, not a placeholder for missing data."
+      },
+      {
+        "type": "paragraph",
+        "text": "The complete raw table is T1: height 4, travel 3, card C1; T2: height 60, travel 5, card C2; T3: height 5, travel blank, card C3; T4: height 6, travel 0, card C4. A second export row repeats T1 with height 4, travel 3 and C1. C1 confirms one trial T1, not two. C2 reads height 6 and travel 5. C3 has no travel measurement. C4 reads height 6 and travel 0."
+      },
+      {
+        "type": "paragraph",
+        "text": "Work in a separate corrected copy. Record T2 height 60 to 6, evidence C2, transcription error, reviewer and review date. Link the repeated T1 export row to the first T1; count that single trial once and keep both raw rows. Do not remove two different trials merely because their measured numbers match."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/cd8e98c2eff42cb097964832c8e72cfa556b8ac634ad7e56bf8e065dcf52afde",
+        "alt": "Comparison picture for 1,000 duplicates: high count, low variety; weak coverage",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/71e89f8c4d41c823e5dbce36c677f9650595e2f9f5f8b11daccc596df70f76c7",
+        "alt": "Comparison picture for 120 varied photos: settings and types represented; stronger coverage",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/40c6c3485b696ca5591c5353b5119ae0204ef65e12629b20d9e0b59d15424053",
+        "alt": "Comparison picture for Wrong labels: targets conflict with reality; correctness failure",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/17957e755bfdf2591fd817447aedc17c42bd39d4a373eb8bdc3bc1ca3b404aa9",
+        "alt": "Comparison picture for Owner birthday: unrelated to animal type; irrelevant/private",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 1,000 duplicates  Clue: high count, low variety. Meaning: weak coverage."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 120 varied photos  Clue: settings and types represented. Meaning: stronger coverage."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Wrong labels  Clue: targets conflict with reality. Meaning: correctness failure."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Owner birthday  Clue: unrelated to animal type. Meaning: irrelevant/private."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Large quantity cannot compensate for systematic absence or incorrect labels.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

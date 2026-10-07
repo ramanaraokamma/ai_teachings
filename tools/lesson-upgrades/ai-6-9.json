@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/9",
+  "title": "Integration tests and fixtures",
+  "outcome": "Explain integration tests and fixtures using the deciding step in this fictional service.",
+  "scenario": "Catch a wrong adapter connection. A service reads a fake catalogue fixture and answers a request for item N.",
+  "given": [
+    "Fixture M=\"map\", N=\"notebook\". No external network is involved."
+  ],
+  "steps": [
+    {
+      "label": "Load fixture",
+      "icon": "data",
+      "detail": "The test supplies fixed records M and N."
+    },
+    {
+      "label": "Follow identifier",
+      "icon": "network",
+      "detail": "The application must request N from its adapter."
+    },
+    {
+      "label": "Check full reply",
+      "icon": "check",
+      "detail": "The returned item should be notebook with source N."
+    }
+  ],
+  "explanation": "Integration testing checks how components connect. Each component can work alone while their identifier exchange is wrong.",
+  "counterfactual": {
+    "change": "The adapter returns M when N was requested.",
+    "prediction": "Fail the integration check: map is the wrong item.",
+    "reason": "The request now reaches evidence for another identifier."
+  },
+  "student_task": "Follow request N through the fixture and adapter. Which source and item should appear in the reply, and what precisely fails when the adapter returns M?",
+  "teacher_answer": "The test supplies fixed records M and N. The application must request N from its adapter. The returned item should be notebook with source N. Changed case: Fail the integration check: map is the wrong item. The request now reaches evidence for another identifier.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "A controlled fixture does not prove a live catalogue behaves identically; also review live adapter contracts.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

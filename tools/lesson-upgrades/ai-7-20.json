@@ -1,0 +1,37 @@
+{
+  "week": "ai-7/20",
+  "title": "Privacy and data governance",
+  "outcome": "Explain privacy and data governance using the records and boundaries of this fictional investigation.",
+  "scenario": "Govern data by purpose and access. A fictional project needs task scores and random participant codes, but not names.",
+  "given": [
+    "The analysis table holds codes and scores. A separate restricted key links codes to names only for authorised withdrawal handling."
+  ],
+  "steps": [
+    {
+      "icon": "data",
+      "label": "Separate tables",
+      "detail": "Keep analysis records apart from the identity key."
+    },
+    {
+      "icon": "shield",
+      "label": "Limit access",
+      "detail": "Analysts receive scores and codes, not the name linkage."
+    },
+    {
+      "icon": "clock",
+      "label": "Define retention",
+      "detail": "Apply the approved deletion schedule to both stores and listed copies."
+    }
+  ],
+  "explanation": "Pseudonymous codes reduce routine exposure but are not the same as irreversible anonymity. Governance specifies purpose, readers, locations and retention.",
+  "counterfactual": {
+    "change": "Publish the identity key with the analysis table.",
+    "prediction": "The records become directly linkable to names and breach this access design.",
+    "reason": "Separation only helps while the linkage key remains restricted."
+  },
+  "student_task": "Point to the analysis table and the restricted identity key. Why are the codes pseudonymous rather than guaranteed anonymous, and what changes if the key is published?",
+  "teacher_answer": "Keep analysis records apart from the identity key. Analysts receive scores and codes, not the name linkage. Apply the approved deletion schedule to both stores and listed copies. Changed case: The records become directly linkable to names and breach this access design. Separation only helps while the linkage key remains restricted. The restricted linkage key makes these pseudonymous records, not guaranteed anonymous ones.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "Small groups or unusual records may still be identifiable without names; evaluate re-identification risk.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted."
+}

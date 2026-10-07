@@ -1,0 +1,284 @@
+{
+  "week": "ai-3/23",
+  "title": "Block to Python Bridge",
+  "grade": 8,
+  "project": "Verified Study Buddy",
+  "goals": [
+    "Translate a short paper calculation into a Python script",
+    "Predict and explain the order of executed statements",
+    "Keep expected and observed output separate when checking a program"
+  ],
+  "primary_topic": "From a paper algorithm to Python",
+  "vocabulary": [
+    [
+      "Algorithm",
+      "An ordered procedure for solving a stated problem"
+    ],
+    [
+      "Program",
+      "Instructions written in a language a computer can execute"
+    ],
+    [
+      "Interpreter",
+      "Software that executes Python instructions"
+    ],
+    [
+      "Assignment",
+      "Binding a name to the value of an expression"
+    ],
+    [
+      "Output",
+      "Information a program displays or returns"
+    ]
+  ],
+  "worked_example": {
+    "title": "Trace before running",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "After line",
+          "Names and values",
+          "Displayed output"
+        ],
+        "rows": [
+          [
+            "packs = 4",
+            "packs is 4",
+            "Nothing yet"
+          ],
+          [
+            "per_pack = 6",
+            "packs is 4; per_pack is 6",
+            "Nothing yet"
+          ],
+          [
+            "total = packs * per_pack",
+            "total is 24",
+            "Nothing yet"
+          ],
+          [
+            "print(total)",
+            "Values are unchanged",
+            "24"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Write 24 as the expected output before running. Then copy the actual output into a separate column. A matching result supports this case, not every possible input. A saved file may contain an old edit: save again and rerun the whole script. Do not type the expected number into the output record without running."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Why is there no displayed output after the third line? What changes if print(total) is placed first in a fresh run, before any assignment? Explain using which names exist.",
+        "lines": 5
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Predict then observe",
+    "prompt": "Make records for 4 packs of 6, then 5 packs of 6. Predict before running. Record actual output, any error and what changed. If working on paper, label both results as traces.",
+    "answer": "Expected 24 then 30. Accept actual errors with an accurate account; do not replace observations. Record the changed pack count, saved file and run or trace status. Two matching cases do not show all inputs are handled.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Changed independent case",
+    "task": "Set total=0, then for values2,4,9 perform total=total+value. Trace the result. What changes if total=0 moves inside the loop before that addition?",
+    "answer": "Running totals are2,6,15. Resetting inside the loop produces2,4,9, leaving9. Initialization location changes the written procedure; neither version trains a model.",
+    "source": "new parallel transfer case"
+  },
+  "misconceptions": [
+    [
+      "An equals sign displays the answer",
+      "Assignment binds a name; print produces the displayed output."
+    ],
+    [
+      "A successful run means the requirement was met",
+      "Compare the output with the paper rule and expected result."
+    ],
+    [
+      "Python guesses the intended order",
+      "A name must be assigned before this script reads it."
+    ],
+    [
+      "Typing a program trains an AI model",
+      "These statements apply an explicit multiplication rule."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/94dbb5b977577df1afa1168e9204907aa3def658316b79db8f74d725220c7091",
+        "alt": "INPUT stage for Block-to-Python Bridge",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/24521bb004e04bd353e2602e74d111bc50296ec5260db0b1bbf73326cf05c9c0",
+        "alt": "PROCESS stage for Block-to-Python Bridge",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fd726b2cf52e61a9c933ce1e01f52bb17953a945a7f2e9faa33529676f3679f3",
+        "alt": "OUTPUT stage for Block-to-Python Bridge",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "A calculation from paper to output",
+        "columns": [
+          "Paper step",
+          "Python instruction",
+          "Effect"
+        ],
+        "rows": [
+          [
+            "Record pack count",
+            "packs = 4",
+            "Name holds 4"
+          ],
+          [
+            "Multiply two quantities",
+            "total = packs * per_pack",
+            "Name holds product"
+          ],
+          [
+            "Show the answer",
+            "print(total)",
+            "Displays the value"
+          ]
+        ],
+        "caption": "Assign per_pack before the multiplication. This diagram summarises the steps; the complete script below includes that assignment."
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "packs = 4\nper_pack = 6\ntotal = packs * per_pack\nprint(total)"
+      },
+      {
+        "type": "paragraph",
+        "text": "Read the script from top to bottom. The equals sign assigns the value on its right to the name on its left. The star means multiplication. print(total) displays the value of total; it does not display the letters in the name. Type ordinary straight characters and keep the parentheses. The Python prompt symbols >>> are not part of this saved script."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/baa081bb74d63b3556ecfd5951cdc8779d64ec1813de34614621c4e969a973f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/5e6557194a1470352d07b6a509da5d673d81767981996dd1b685f799a5582b76",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/8e1f2e3affdd81449df265675243cda4511c1e88dd8cd9583d4ea42f6083c297",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a54f0c40e48e47ca92a4c36ebbc98f08b4a78c72cd385d85b0a5a7f07f558757",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

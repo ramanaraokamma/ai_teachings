@@ -1,0 +1,71 @@
+{
+  "week": "ai-1/9",
+  "title": "Algorithms as Recipes",
+  "outcome": "By the end, I can trace changing state and explain why instruction order matters.",
+  "scenario": "A fictional paper badge machine transforms an initial score using an ordered recipe.",
+  "given": [
+    "Start score=3. Recipe A: double, add 4, subtract 1, report.",
+    "Recipe B swaps the first two operations but keeps the same starting score."
+  ],
+  "steps": [
+    {
+      "label": "Start",
+      "icon": "data",
+      "detail": "Both runs begin at 3."
+    },
+    {
+      "label": "Recipe A",
+      "icon": "code",
+      "detail": "3 → 6 after doubling → 10 after adding 4 → 9 after subtracting 1."
+    },
+    {
+      "label": "Recipe B",
+      "icon": "code",
+      "detail": "3 → 7 after adding 4 → 14 after doubling → 13 after subtracting 1."
+    },
+    {
+      "label": "Compare outputs",
+      "icon": "check",
+      "detail": "Same operations, different order: outputs 9 and 13."
+    }
+  ],
+  "explanation": "Every instruction reads the current score, not the original one unless explicitly told to. In B, doubling also doubles the added 4. In A, the extra 4 is added after doubling. The final difference of 4 follows from that order, not from different starting data.",
+  "counterfactual": {
+    "change": "Change the starting score to 0 for both recipes.",
+    "prediction": "A reports 3 and B reports 7.",
+    "reason": "A: 0→0→4→3. B: 0→4→8→7."
+  },
+  "student_task": "Use the arrows to explain where the two zero-start runs first differ.",
+  "teacher_answer": "They first differ after operation one: A has 0 and B has 4. Their reports are 3 and 7.",
+  "project_evidence": "Write the sorter’s steps in order, showing which values each step updates so a partner can reproduce the result.",
+  "limits": "One traced input checks one run; it does not establish every recipe is equivalent or validate an entire program.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Changing instruction order",
+    "cells": [
+      [
+        3,
+        6,
+        10,
+        9
+      ],
+      [
+        3,
+        7,
+        14,
+        13
+      ]
+    ],
+    "row_labels": [
+      "Recipe A",
+      "Recipe B"
+    ],
+    "column_labels": [
+      "Start",
+      "After step 1",
+      "After step 2",
+      "Report"
+    ]
+  }
+}

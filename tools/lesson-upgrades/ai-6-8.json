@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/8",
+  "title": "Testing model-dependent behaviour",
+  "outcome": "Explain testing model-dependent behaviour using the deciding step in this fictional service.",
+  "scenario": "Judge two summaries with a rubric. A summariser must preserve two supplied facts and use at most 20 words.",
+  "given": [
+    "Facts: club meets Friday, room B. Recorded replies: \"Friday in room B\" and \"Friday in room D\"."
+  ],
+  "steps": [
+    {
+      "label": "Identify facts",
+      "icon": "book",
+      "detail": "The answer must retain Friday and room B."
+    },
+    {
+      "label": "Check first reply",
+      "icon": "model",
+      "detail": "Its four words preserve both supplied facts."
+    },
+    {
+      "label": "Check second reply",
+      "icon": "check",
+      "detail": "It is short, but room D contradicts room B."
+    }
+  ],
+  "explanation": "A behaviour contract can accept different wording while requiring the same facts. Short, fluent text may still fail factual support.",
+  "counterfactual": {
+    "change": "Use a 25-word answer that preserves both facts.",
+    "prediction": "It passes support but fails the length requirement.",
+    "reason": "Every mandatory criterion must pass; facts do not erase a length violation."
+  },
+  "student_task": "Score \"Friday in room B\" and \"Friday in room D\" against both mandatory criteria. Would a correct 25-word response pass, and why?",
+  "teacher_answer": "The answer must retain Friday and room B. Its four words preserve both supplied facts. It is short, but room D contradicts room B. Changed case: It passes support but fails the length requirement. Every mandatory criterion must pass; facts do not erase a length violation.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "Two recorded replies do not estimate future reliability; define run conditions and test wider case coverage.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

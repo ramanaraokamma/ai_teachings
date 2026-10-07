@@ -1,84 +1,76 @@
-> **Curriculum 3 update:** The rebuilt Grade 6 sequence (Weeks 1–36) and Grade 7 AI 2 Weeks 1–36, plus Grade 8 AI 3 Weeks 1–36 and Grade 9 AI 4 Weeks 1–32, now have matching web, Word and PDF resources. The seven-level map marks the remaining 112 weeks as planned. See [CURRICULUM3.md](CURRICULUM3.md) for scope, access and validation.
+# Repository and website
 
-# AI Academy — Grade 6 Entry Edition
+This root contains the complete offline AI Academy programme and its protected Cloudflare website. Website setup and publishing instructions are in [CLOUDFLARE_DEPLOYMENT.md](CLOUDFLARE_DEPLOYMENT.md). Run `npm test` to build the website and verify its unified curriculum and role access. For local offline reading, open `START_HERE.html`.
 
-The redesign reviews all 144 existing weeks across four levels, with prerequisite retrieval, fresh transfer assessments, optional hints and teacher-only solutions. Typical entry grades are 6–9; readiness determines placement. See [the week-by-week review](GRADE6_REVIEW.md). This is an extension and correction of the existing four-level curriculum, not the proposed seven-level replacement.
+# AI Academy — Complete Learning Programme
 
-There are 258 authored vocabulary definitions, filling 288 empty student definition cells and their corresponding teacher meanings. The ML code labs retain Python indentation and include executable source examples. Use the portal print action for the current edition; original protected DOCX downloads are explicitly marked as the earlier edition.
+Open **START_HERE.html** for the complete programme. Read **TEACHING_METHOD.html** for the teaching cycle and **student/LEARNING_GUIDE.html** for learner instructions. Read **PROGRAMME_GUIDE.html** for placement, pacing, projects, assessment and distribution.
 
-Cloudflare Worker hosting, signed sessions and student/teacher permissions are retained. Runtime secrets are unchanged. The response edition header is `grade6-entry-2026-09-14`. `npm run build` now also works on macOS without Linux flock or GNU timeout.
+The goal is a complete AI education programme for children, with everything their teachers need to teach it: clear explanations, worked examples, visual traces, investigations, independent assessment and cumulative projects. Learners progress from understanding simple decisions to designing, building, testing and explaining AI systems responsibly.
 
-A protected learning portal containing the complete AI‑1 through AI‑4 curriculum.
+## Contents
 
-## What is included
+- Seven levels, 36 weeks each: 252 main weeks.
+- Twelve additional Python preparation lessons, required before the Machine Learning coding pathway unless equivalent readiness is demonstrated.
+- 792 weekly HTML resources: 264 student lessons, 264 teacher guides and 264 workbooks.
+- Matching Word and PDF editions under downloads/student, downloads/teacher and downloads/workbook.
+- 1,874 active original instructional images, plus corrected native diagrams and an interactive sensor example.
+- Every original Curriculum 2.0 week retains its full teaching content. Every later source lesson is integrated into a required week or the Python bridge.
 
-- AI‑1 Explorer, AI‑2 Thinker, AI‑3 Creator and AI‑4 ML Builder
-- 36 weeks per level, organized into six curriculum phases
-- 144 illustrated student lessons
-- 144 teacher guides
-- 144 aligned workbook missions
-- Student and Teacher role dashboards
-- Server-side passcode validation and signed, HTTP-only sessions
-- Teacher-only guide protection
-- Original story and vocabulary artwork, plus 144 topic-specific HTML/SVG teaching diagrams
-- 292 editable Word downloads: 144 student modules, 144 teacher guides and four workbooks
-- On-page response fields and print layouts (responses are cleared on navigation or reload)
-- Responsive desktop, tablet and mobile layouts
-- Complete continuous student lesson books with all chapters, worked reasoning and practice
-- Pixel grids, signal traces, fraction models, confusion matrices, context windows, proportional partitions, decision paths, code traces and learning curves selected for the actual weekly concept
-- A misconception discussion, worked-case panel and comparison practice in every lesson
-- AI-1 Week 3 sensor-matching diagrams and an interactive light-sensor / fixed-rule demonstration
-- A topic-specific diagram and teaching prompt in all 144 teacher guides; matching practice prompts in all 144 workbook missions
-- Larger text for younger learners, expandable illustrations, illustrated week cards, and complete chapter-based print styling
-- Build-time checks for all 144 visual plans, source curriculum coverage and all 292 downloads; missing media stops the build
+| Level | Typical grade | Focus | Cumulative project |
+|---|---|---|---|
+| 1 | 6 | Foundations | Helpful Classroom Sorter |
+| 2 | 7 | Algorithms and Data | Transparent Book Recommender |
+| 3 | 8 | Generative AI Systems | Verified Study Buddy |
+| 4 | 9 | Machine Learning | Responsible Plant Classifier |
+| 5 | 10 | Neural Networks | Image-pattern Network Investigation |
+| 6 | 11 | AI Engineering | Grounded Learning Service |
+| 7 | 12 | Research and Advanced Projects | Reproducible AI Research Study |
 
-The original 292 DOCX files are retained unchanged. These refinements apply to the website and printable HTML. Generic raster stage/case cards are replaced in the main student reading flow; original instructional text is retained. The separately delivered offline collection contains 432 HTML resources (144 lessons, 144 guides, 144 workbook pages), including teacher answers, and must not be put in a public static folder.
+Grade labels are placement guidance; prerequisites and demonstrated independence determine readiness. Begin with three 45-minute sessions for the core week and reserve more sessions for connected topics, investigations and project construction. The expanded content is not claimed to fit one fixed 90-minute lesson.
 
-## Access configuration
+## Organisation
 
-The application reads three server-side environment values:
+- student/: full weekly teaching model, fourteen sections; two original coding weeks retain a fifteenth laboratory.
+- teacher/: preparation, explanation, guided teaching, misconceptions, assessment answers and progression; original laboratory guidance is retained.
+- workbook/: original activities, integrated examples, independent cases and project evidence.
+- content/programme.json: canonical content, including teacher answers.
+- tools/: preserved source inputs, rebuild scripts and validation scripts.
+- reports/: content, browser and download checks, source coverage and week-by-week review.
+- assets/: offline images, shared styles and response/sensor behaviour.
 
-- `STUDENT_PASSCODE`
-- `TEACHER_PASSCODE`
-- `ACADEMY_SESSION_SECRET`
+The first four levels preserve the original sequence. The later topics supplement that sequence rather than replacing it with five short sections. Twenty-six otherwise unrepresented later lessons are integrated into appropriate weeks. This includes attention, retrieval, file operations, experiment versioning and distribution shift.
 
-For this edition, configure the requested passcodes as `student1234` and `teacher1234`. Use a long random value for `ACADEMY_SESSION_SECRET`.
+## Privacy and distribution
 
-Passcodes are read from runtime secrets, never from browser JavaScript. The example values appear only in administrator documentation and test fixtures.
+The complete folder contains teacher solutions and is intended for the teacher. Give learners the separate **ai-academy-student-bundle.zip** in the parent outputs folder; it includes student lessons and workbooks without teacher documents or canonical answer data. Teacher pages are separate files, not protected by authentication in this offline package.
 
-## Local build
+Student typed responses are retained only while the HTML page remains open. Print or save a PDF to keep them. All supplied content uses fictional or teacher-approved data. The supplied lesson examples do not require a paid account or live API.
 
-```bash
-npm ci
-npm run build
-```
+## Sources and reproducibility
 
-The Cloudflare Worker output is written to `dist/server`, and its static assets are written to `dist/client`.
+Original source: commit 16554c5564e721ecde6dbbad5cf4caf330a74076. Later source: recovery/before-16554c55-restoration at cbcdd6675ae628a5c96e64bb7b4e0488f0e36543. The preserved source JSON is bundled under tools/source-inputs.json. Seven inconsistent worked-image cards are replaced by corrected native diagrams; original cards are retained only in private source provenance. The dedicated programme contains local corrections and does not alter the restored root project.
 
-## Cloudflare hosting
+Rebuild canonical content with Python 3 tools/build_programme.py, then tools/render_programme.py and tools/build_guide.py. Generate Word files with tools/export_word.py (python-docx and Pillow). Generate PDFs and browser checks with Node tools/export_pdf.mjs (playwright-core and Chrome; PLAYWRIGHT_MODULE and CHROME_PATH can override local paths). Validate content with tools/validate_content.py and exported editions with tools/validate_downloads.py.
 
-Follow [CLOUDFLARE_DEPLOYMENT.md](CLOUDFLARE_DEPLOYMENT.md). This portal must be deployed as a Worker application; deploying only the static asset folder would remove its access protection.
+Technical review references for the corrected concepts: [probability calibration](https://scikit-learn.org/stable/modules/calibration.html), [data leakage](https://scikit-learn.org/stable/common_pitfalls.html), [diffusion pipelines](https://huggingface.co/docs/diffusers/using-diffusers/write_own_pipeline), [paired comparisons and uncertainty](https://arxiv.org/abs/1606.05328), and [copyright fair use](https://www.copyright.gov/fair-use/).
 
-## Curriculum refresh
+This is a reviewed teaching package, not a classroom trial. Teacher observation must establish suitable pacing, support and readiness for actual learners. Nothing has been deployed.
 
-The website data is produced from the refined Word curriculum by `scripts/convert_full_curriculum.py`. The generated data, resource manifest and encrypted media are included and ready to build. To refresh all content, use Python with python-docx and cryptography:
+## Teaching-method revision
 
-```bash
-python scripts/convert_full_curriculum.py /absolute/path/to/refined-document-folders
-npm run build
-```
+All 264 lessons now include retrieval, modelling, fading help, individual reasoning checks, independent transfer, feedback and delayed return. All 264 selected assessment prompts are distinct; 33 repeated source lessons have new parallel cases and the 12 Python readiness lessons have new executable cases. These checks establish curriculum structure and answer alignment, not effectiveness with real learners. Use reports/classroom-pilot.csv to record actual evidence.
 
-The converter preserves paragraph headings, code indentation, table response rows and diagrams within galleries. It rotates the content encryption key whenever resources are regenerated; deploy the manifest, server key and encrypted assets together.
+Current PDFs use tools/export_pdf_local.py (PyMuPDF Story), with long comparison tables printed as labelled rows to preserve pagination because Chrome could not launch under the current workspace restrictions. Browser layout and interactive checks for this revision remain pending; archived previous-edition results do not apply to revised pages. Word pagination has not been rendered.
 
-## Verification
+After rebuilding content, run tools/build_method_guides.py, tools/validate_teaching_method.py and tools/validate_links.py in addition to the existing checks.
 
-```bash
-npx tsc --noEmit
-node scripts/verify-curriculum.mjs --decrypt
-npm run build
-node --loader ./tests/cloudflare-loader.mjs tests/academy-access.mjs
-```
+## Weekly examples and pictorial teaching
 
-The integration suite exercises the compiled Worker with a Node environment-binding shim. It covers public landing content, passcode and session handling, role restrictions, student and teacher pages, encrypted media, Word downloads and logout. It does not emulate Cloudflare resource limits or replace a post-deployment smoke check.
+Three lesson agents each owned 88 weekly reviews, covering all 252 main weeks and 12 readiness lessons. Every week now has an explicit end goal, a topic-specific worked case, a labelled pictorial trace, a changed-condition comparison, an explanation question, a reasoned teacher key and project evidence. There are 264 new trace diagrams and 110 additional numerical plots/grids/weighted models, distributed as editable SVG and high-resolution PNG.
 
-Shared passcodes provide two access modes; there are no individual student accounts, synchronized progress records or cloud-saved answers in this edition.
+Open PICTORIAL_LESSONS.html to find a worked picture and its complete lesson. The original sections remain intact. Supported picture practice is distinct from the separately selected independent assessment. Python readiness checks follow the actual twelve topic titles; base and changed/error programs are executed.
+
+Editorial review covers every case:176 received author-to-author review and 88 root peer review. Reports record limitations and resolved findings. Current Word/PDF checks verify the new pictures as well as text. Classroom impact and browser layout remain unverified under the current restrictions.
+
+Rebuild after authoring with tools/draw_lesson_visuals.py and tools/draw_topic_visuals.py (PyMuPDF), tools/build_programme.py, tools/render_programme.py, tools/build_pictorial_hub.py, tools/build_method_guides.py and tools/build_guide.py. The READY.json manifest gates the full 264-case integration; validate with tools/validate_lesson_upgrades.py and tools/validate_bridge_alignment.py as well as the existing checks.

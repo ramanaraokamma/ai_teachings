@@ -1,0 +1,289 @@
+{
+  "week": "ai-1/2",
+  "title": "Input, Process, Output",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Trace information through a system without confusing information with a physical action",
+    "Explain which details a representation preserves or discards",
+    "Locate the earliest stage at which an incorrect result could have arisen"
+  ],
+  "primary_topic": "Representations and information paths",
+  "vocabulary": [
+    [
+      "Representation",
+      "A way of recording information so that it can be stored, communicated or processed"
+    ],
+    [
+      "Input",
+      "Information supplied to a particular process"
+    ],
+    [
+      "Process",
+      "An operation that changes, selects or interprets information"
+    ],
+    [
+      "Output",
+      "The result produced by a process"
+    ],
+    [
+      "Information loss",
+      "Details that cannot be recovered from the retained representation"
+    ]
+  ],
+  "worked_example": {
+    "title": "What a representation keeps",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Consider two catalogue records. Book A has 90 pages and is about a child solving a seaside mystery. Book B has 90 pages and is about a lost spaceship. If we keep only page count, both become the number 90. The number is useful for a length limit, but it cannot tell us which story is a mystery. Information that was never retained cannot be recovered just by calculating harder."
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Representation kept",
+          "Question it can help answer",
+          "Question it cannot settle alone"
+        ],
+        "rows": [
+          [
+            "Page count 90",
+            "Is the book under 100 pages?",
+            "Is its story a mystery?"
+          ],
+          [
+            "Genre tag mystery",
+            "Does it match a mystery request?",
+            "Will this particular reader enjoy it?"
+          ],
+          [
+            "Short summary",
+            "What does the description say happens?",
+            "What exact sentence occurs on page 42?"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "The phrase cannot settle alone matters. A genre tag might be inaccurate, and a reader might enjoy an unfamiliar genre. A representation is useful only in relation to a question and its limits. More detail is not automatically better: unnecessary personal information can add risk without helping the task."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Finish the visitor example",
+    "prompt": "A record stores only total visitors=3. Give two different arrival schedules that produce this total. Can the total tell us the busiest hour? Explain.",
+    "lines": 5,
+    "answer": "Examples: three visitors at 09:00, or one each at 09:00, 10:00 and 11:00. Both total 3, but their busiest-hour patterns differ. The total lacks arrival-time information, so the busiest hour cannot be recovered from it alone."
+  },
+  "independent_case": {
+    "title": "Investigate a new loss of information",
+    "task": "A classroom device receives four scores and stores only their total, 20. A student claims that every score must be 5. Give two different lists of four nonnegative whole-number scores with total 20. Explain precisely what the stored total establishes and what it does not.",
+    "answer": "For example [5,5,5,5] and [2,4,6,8] both total 20. The stored total establishes the sum under the stated recording process, but not the individual scores or their equality. A list with fewer than four entries or a different total is not a valid counterexample.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Every output is the final action",
+      "Trace an output entering the next stage. Ask whether the borrowing or speech stage exists and has run."
+    ],
+    [
+      "More calculation can recover discarded details",
+      "Ask students to distinguish two original records with the same retained value. No deterministic calculation of that value alone can know which original occurred."
+    ],
+    [
+      "A data type tells us what the data means",
+      "Compare a title, a summary and a full chapter. All can be text while supporting different questions."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2c140020bb56a07a0453863888c287e1211cdb1799804351b26ada2ba5387a31",
+        "alt": "Visual card for the input stage: songs played, liked, or skipped",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/482f391e2142784a5360737be88beffe78a1f67a8f64ddbf5ec416386f0f16f3",
+        "alt": "Visual card for the process stage: compare clues and rank possible songs",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/20e3995fe47fd7f75688fc45b66ab5bced9459738e09caf4b53206e63e7f61e9",
+        "alt": "Visual card for the output stage: a suggested song or a not-sure result",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  songs played, liked, or skipped"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  compare clues and rank possible songs"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  a suggested song or a not-sure result"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  A system transforms information; it does not simply 'know.'",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Input, process, and output are functional roles. The process may contain human choices, fixed rules, calculations, retrieval, or a learned model. Naming the three stages prevents magical explanations of computer behavior.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Two possible library information paths",
+        "columns": [
+          "Input",
+          "Process",
+          "Output"
+        ],
+        "rows": [
+          [
+            "Genre request mystery and catalogue tags",
+            "Keep matching catalogue records",
+            "Three matching titles"
+          ],
+          [
+            "Three titles from the first stage",
+            "A separate speech system if available",
+            "Spoken titles rather than whole books"
+          ],
+          [
+            "A selected title and an available copy",
+            "A person completes the borrowing process",
+            "A recorded loan and a borrowed copy"
+          ]
+        ],
+        "caption": "The first row is the kiosk as described. The later rows require additional components and actions. Arrows show information dependencies; they do not establish that every stage has actually run."
+      },
+      {
+        "type": "paragraph",
+        "text": "Notice the difference between a title, a description and an entire book. All three can be text, but they represent different amounts of information. Even a speech stage receiving three titles can speak only those supplied titles; it has not thereby read the full books. Always identify the content of an input, not just its data type."
+      },
+      {
+        "type": "paragraph",
+        "text": "A recommendation is also different from a loan. Selecting a title does not reserve a copy unless an authorised reservation step exists. Keeping these distinctions clear prevents us from crediting a system with actions it did not take."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b026a3c48a930a32b96cef16cc6762041bd5ec5b4179ecb01cd4859879b81178",
+        "alt": "Comparison picture for Camera app: photo enters before any result; input",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/0619acd39f697b91064240debee4a76d19ca09f16e48c7756dd2fd6406a9a6db",
+        "alt": "Comparison picture for Music ranking: choices are compared and scored; process",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/c4ec70875468cfe5d9c8dff67830ebcdaac4fa37c1fd745dec718d321ee3e2ca",
+        "alt": "Comparison picture for Song suggestion: a result is shown to the user; output",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1574dc31ab11d7acd51d8f67eee0b425bc7f5af1d6951424af5a745c3e9c7c3f",
+        "alt": "Comparison picture for No listening history: important input is missing; not-sure case",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Camera app  Clue: photo enters before any result. Meaning: input."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Music ranking  Clue: choices are compared and scored. Meaning: process."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Song suggestion  Clue: a result is shown to the user. Meaning: output."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 No listening history  Clue: important input is missing. Meaning: not-sure case."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  The output is not proof that the system understood the input as a person would.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,302 @@
+{
+  "week": "ai-4/29",
+  "title": "Feature Engineering",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Create features available at prediction time",
+    "Fit feature transformations using training evidence only",
+    "Compare a feature change without changing the evaluation set"
+  ],
+  "primary_topic": "Feature engineering",
+  "vocabulary": [
+    [
+      "Feature engineering",
+      "Constructing model inputs from available measurements"
+    ],
+    [
+      "Derived feature",
+      "An input computed from other inputs"
+    ],
+    [
+      "Leakage",
+      "Information entering a model that would not be available legitimately"
+    ],
+    [
+      "Availability",
+      "Whether a value exists when a prediction is needed"
+    ]
+  ],
+  "worked_example": {
+    "title": "Explain the visual",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Feature engineering at a glance",
+        "columns": [
+          "Part",
+          "Evidence or action",
+          "Interpretation"
+        ],
+        "rows": [
+          [
+            "Raw measurements",
+            "Length and width",
+            "Available before prediction"
+          ],
+          [
+            "Derived area",
+            "Multiply length by width",
+            "Units square cm"
+          ],
+          [
+            "Centering",
+            "Subtract training mean",
+            "Reuse frozen value"
+          ]
+        ],
+        "caption": "Area is a deterministic transformation; it adds a representation, not a new measured fact. It may help a limited model express a relationship, or may do nothing useful. Compare original versus extended features under the same split, metric and development policy."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Center the validation area using the frozen training mean. Explain the steps or evidence behind your response.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Transform validation",
+    "prompt": "Center the validation area using the frozen training mean.",
+    "answer": "Teacher explanation: Area 10; centered 10-20/3=10/3 square cm. Validation does not change the fitted mean.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Apply independently",
+    "task": "Training areas [4, 8, 12]. A new rectangle has length 3 width 4. Compute the training mean and centered new feature; state units.",
+    "answer": "Teacher explanation: Training mean 8 square cm; new area 12 square cm; centered feature 4 square cm.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A final answer is enough",
+      "Ask for the relevant counts, units, procedure or saved record. For this week: Areas 6, 8, 6 square cm; training mean 20/3 square cm."
+    ],
+    [
+      "A stronger claim makes a stronger project",
+      "Compare with and without area on the same validation records, fitting all transformations on training and reporting the declared metric and feature availability."
+    ],
+    [
+      "The new case can be copied from the example",
+      "The independent task changes the evidence. Require a fresh explanation: Training mean 8 square cm; new area 12 square cm; centered feature 4 square cm."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/000291f83ccb8ff5a39d8d7d3419a0b2192ef244fea388d15674d66013c4231a",
+        "alt": "Week 29 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/73098bc750df29fea0014821867193465e9a196d59ad5277d3d27c40039566dc",
+        "alt": "Week 29 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/3ba89df9451ddc9de20db01563c89d73f5a3f5050f05d43b21fe286887880a10",
+        "alt": "Week 29 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Create and justify two plant measurement features."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  Feature engineering transforms raw inputs into useful structure while preserving prediction-time availability and avoiding leakage."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Raw leaf length=8 cm and width=4 cm. Derived aspect_ratio = 4 \u00f7 8 = 0.5.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Training rectangles have lengths [2, 4, 6] and widths [3, 2, 1], so areas are[6, 8, 6] square cm. Training mean area is 20/3. A validation rectangle length 5 width 2 has area 10 and centered area 10-20/3=10/3. Freeze the training mean; do not recompute it with validation."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before continuing, underline the decision rule and circle the evidence that supports the conclusion. Explain the example to a partner without replacing the counts or conditions with a stronger claim. Keep the distinction between an observed result and a proposed next step."
+      },
+      {
+        "type": "subheading",
+        "text": "Apply the connected idea: Relationships and confounding"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "rows = [{\"hours\": 1, \"score\": 4},\n        {\"hours\": 2, \"score\": 6},\n        {\"hours\": 3, \"score\": 8}]\nfor row in rows:\n    print(row[\"hours\"], row[\"score\"])"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow the evidence",
+        "columns": [
+          "Step or case",
+          "Evidence",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "Observed",
+            "More practice with higher scores",
+            "Association"
+          ],
+          [
+            "Possible other factor",
+            "Prior experience",
+            "May affect both"
+          ],
+          [
+            "Missing evidence",
+            "Comparable starting conditions",
+            "Limits causal claim"
+          ]
+        ],
+        "caption": "Read each row from left to right and connect the evidence to the stated rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "The numbers rise together in these three invented records. A description such as higher practice hours went with higher scores is supported. A claim that one extra hour guarantees two more points goes beyond the observations. No statistical calculation is required to see this limit."
+      },
+      {
+        "type": "subheading",
+        "text": "Separate a pattern from a cause"
+      },
+      {
+        "type": "paragraph",
+        "text": "The three records show that higher practice time goes with higher scores. They do not tell us what would happen if the same learner practised for one more hour. Prior experience could make someone both practise more and score higher. That is a possible confounder: another influence connected to both quantities. First describe the pattern accurately. Then propose a comparison that addresses alternative explanations rather than treating the pattern as a guarantee."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 29 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 29 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 29 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 29 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

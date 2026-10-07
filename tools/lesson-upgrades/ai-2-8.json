@@ -1,0 +1,74 @@
+{
+  "week": "ai-2/8",
+  "title": "Operational Labels",
+  "outcome": "By the end, I can resolve label disagreement by checking an operational definition at equality.",
+  "scenario": "Two fictional catalogue reviewers label books compact or extended.",
+  "given": [
+    "Agreed policy: compact means at most 80 pages; extended means more than 80.",
+    "Reviewer A uses pages<80; reviewer B uses pages<=80. Inspect books of 79,80,81 pages."
+  ],
+  "steps": [
+    {
+      "label": "Shared definition",
+      "icon": "book",
+      "detail": "At most 80 includes a book with exactly 80 pages."
+    },
+    {
+      "label": "Reviewer A",
+      "icon": "rule",
+      "detail": "79 compact; 80 and 81 extended."
+    },
+    {
+      "label": "Reviewer B",
+      "icon": "rule",
+      "detail": "79 and 80 compact; 81 extended."
+    },
+    {
+      "label": "Repair boundary",
+      "icon": "check",
+      "detail": "A must use <=80; retain the disagreement and changed policy implementation."
+    }
+  ],
+  "explanation": "The reviewers agree on two of three examples, but that fraction does not decide which definition to keep. The documented policy decides the equality case. Repairing A’s implementation aligns its labels with the agreed meaning. Rechecking 79 and 81 ensures the boundary fix preserves adjacent decisions.",
+  "counterfactual": {
+    "change": "Change the documented policy to fewer than 80 instead.",
+    "prediction": "A’s original labels now match; B must change its equality behavior.",
+    "reason": "The authoritative definition changed, not the physical books."
+  },
+  "student_task": "Why can we not resolve the disagreement merely by taking a majority of reviewers?",
+  "teacher_answer": "A vote does not apply the agreed operational definition. The policy includes 80, so the original correct label there is compact.",
+  "project_evidence": "Give Transparent Book Recommender metadata labels explicit definitions and boundary examples for reviewers.",
+  "limits": "A shared definition improves consistency but does not prove the category captures every learner’s needs.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Operational label boundary",
+    "cells": [
+      [
+        79,
+        "compact",
+        "compact"
+      ],
+      [
+        80,
+        "extended",
+        "compact"
+      ],
+      [
+        81,
+        "extended",
+        "extended"
+      ]
+    ],
+    "row_labels": [
+      "Book 1",
+      "Book 2",
+      "Book 3"
+    ],
+    "column_labels": [
+      "Pages",
+      "A labels",
+      "B labels"
+    ]
+  }
+}

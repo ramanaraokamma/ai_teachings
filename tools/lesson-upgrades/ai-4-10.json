@@ -1,0 +1,38 @@
+{
+  "week": "ai-4/10",
+  "title": "Baselines First",
+  "outcome": "By the end, I can explain baselines first using a traced example and a stated limitation.",
+  "scenario": "Make a simple baseline earn its place before claiming a better classifier.",
+  "given": [
+    "Training labels: healthy, healthy, spotted. Majority baseline predicts healthy. Validation references: healthy, spotted, healthy, spotted.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Fit baseline",
+      "icon": "model",
+      "detail": "Training majority is healthy: 2 of 3 labels."
+    },
+    {
+      "label": "Score baseline",
+      "icon": "chart",
+      "detail": "Always healthy matches 2/4 validation cases: 50%."
+    },
+    {
+      "label": "Compare candidate",
+      "icon": "check",
+      "detail": "Supplied candidate predictions healthy, spotted, spotted, spotted match 3/4: 75%."
+    }
+  ],
+  "explanation": "Read the picture in order. Supplied candidate predictions healthy, spotted, spotted, spotted match 3/4: 75%. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Change the third candidate prediction from spotted to healthy.",
+    "prediction": "Candidate becomes correct on all 4 validation cases.",
+    "reason": "Only the previously wrong third decision changes; baseline stays fixed at 2/4."
+  },
+  "student_task": "Can the candidate’s training accuracy replace this validation comparison? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "No. Compare candidate and baseline on the same held-out cases and references; training fit answers a different question. Changed-case check: Candidate becomes correct on all 4 validation cases. Only the previously wrong third decision changes; baseline stays fixed at 2/4.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "These supplied predictions illustrate comparison. No actual model was trained, and four cases are limited evidence.",
+  "review_note": "Reviewed Baselines First against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

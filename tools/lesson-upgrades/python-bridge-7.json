@@ -1,0 +1,56 @@
+{
+  "week": "python-bridge/7",
+  "title": "Lists and indexing",
+  "outcome": "Trace lists and indexing and explain the changed program before running it.",
+  "scenario": "Indexes are positions, not values. A list of shelf counts is read by position.",
+  "given": [
+    "Python 3: counts=[6,1,8]; print(counts[0]); print(counts[-1]); print(len(counts))."
+  ],
+  "steps": [
+    {
+      "icon": "data",
+      "label": "Draw positions",
+      "detail": "Indexes 0,1,2 contain 6,1,8 respectively."
+    },
+    {
+      "icon": "code",
+      "label": "Read two positions",
+      "detail": "Index 0 returns 6; index -1 returns the final value 8."
+    },
+    {
+      "icon": "check",
+      "label": "Check length boundary",
+      "detail": "Length is 3, but index 3 is beyond the final valid positive index 2."
+    }
+  ],
+  "explanation": "List positions begin at zero. A negative index counts from the end; the list length counts entries and is not itself a valid positive index for the final entry.",
+  "counterfactual": {
+    "change": "Replace the second print with print(counts[3]).",
+    "prediction": "The first print shows 6, then IndexError stops the script before the length print.",
+    "reason": "The attempted position does not exist."
+  },
+  "student_task": "Label the three index positions. Predict all original outputs, then name the first output and stopping point after using index 3.",
+  "teacher_answer": "Original outputs are 6,8,3. After the change, 6 prints first, counts[3] raises IndexError, and the third print does not execute.",
+  "project_evidence": "For Python readiness before the Responsible Plant Classifier, retain a trace of the values, the predicted outputs and the changed-case explanation. Use actual Python 3 results to check the prediction after reasoning first.",
+  "limits": "A valid position does not establish that the stored count is accurate; empty lists also have no final element to read.",
+  "review_note": "Individually authored supported practice; distinct from the reserved independent case. Python semantics are checked on standalone snippets; no learned model or real pupil result is implied.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Zero-based list positions",
+    "cells": [
+      [
+        6,
+        1,
+        8
+      ]
+    ],
+    "row_labels": [
+      "Stored counts"
+    ],
+    "column_labels": [
+      "Index 0",
+      "Index 1",
+      "Index 2"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "week": "ai-5/18",
+  "title": "Debugging shapes and gradients",
+  "outcome": "By the end, I can explain debugging shapes and gradients using a traced example and a stated limitation.",
+  "scenario": "Catch a gradient -order bug before the optimiser changes parameters.",
+  "given": [
+    "Toy y=2a+3c, target 4, start [a, c]=[1, 0]. Loss (y-4)\u00b2. Program claims gradient [-12,-8] in order [a, c].",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Compute correct gradient",
+      "icon": "network",
+      "detail": "y = 2, residual -2: gradient [-8,-12], not [-12,-8]."
+    },
+    {
+      "label": "Check coordinates",
+      "icon": "code",
+      "detail": "Step 0.1: a losses 3.24, 4.84 give -8; c losses 2.89, 5.29 give -12."
+    },
+    {
+      "label": "Apply correct update",
+      "icon": "check",
+      "detail": "At rate 0.01: new [a, c]=[1.08, 0.12]; y = 2.52, loss 2.1904."
+    }
+  ],
+  "explanation": "Array shape and coordinate meaning both matter. A vector with two entries can have the right length but assign each derivative to the wrong parameter. Label the entries a and c, then perturb one coordinate at a time to check their slopes. Repairing the coordinate mapping is necessary before using the gradient to update the network.",
+  "counterfactual": {
+    "change": "The program changes its declared order to [c, a] and returns [-12,-8].",
+    "prediction": "That vector now matches the declared coordinate order.",
+    "reason": "Gradient values are meaningful only when their parameter names and array positions agree."
+  },
+  "student_task": "What should a debugging record pair with every gradient value? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Parameter name and index, expected shape, analytic derivative and numerical check; correct [a, c] gradient is [-8,-12]. Changed-case check: That vector now matches the declared coordinate order. Gradient values are meaningful only when their parameter names and array positions agree.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "A correct gradient at one point does not establish every batch, shape or activation path is implemented correctly.",
+  "review_note": "Reviewed Debugging shapes and gradients against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation."
+}

@@ -1,0 +1,38 @@
+{
+  "week": "ai-3/31",
+  "title": "Safety Boundaries",
+  "outcome": "By the end, I can explain safety boundaries using a traced example and a stated limitation.",
+  "scenario": "Make a strict lookup identifier boundary visible.",
+  "given": [
+    "Toy lookup accepts exactly two uppercase ASCII letters followed by one digit. Accepted example: AB7. No trimming or extra characters are allowed.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Check pattern",
+      "icon": "code",
+      "detail": "AB7 has two permitted letters and one digit, with no extra characters."
+    },
+    {
+      "label": "Reject extra text",
+      "icon": "shield",
+      "detail": "AB7; send() violates the exact identifier pattern."
+    },
+    {
+      "label": "Separate authority",
+      "icon": "rule",
+      "detail": "Pattern acceptance only allows the next lookup check; it grants no access to restricted records."
+    }
+  ],
+  "explanation": "Read the picture in order. Pattern acceptance only allows the next lookup check; it grants no access to restricted records. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Change AB7 to Ab7.",
+    "prediction": "Reject it under the exact uppercase rule.",
+    "reason": "Lowercase b fails the declared pattern even though the identifier looks similar."
+  },
+  "student_task": "If AB7 passes the pattern, may it access teacher-only material? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Not from pattern validity alone. The server must separately enforce the authenticated user’s access rights. Changed-case check: Reject it under the exact uppercase rule. Lowercase b fails the declared pattern even though the identifier looks similar.",
+  "project_evidence": "For your Verified Study Buddy, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Strict formatting is one boundary; it does not solve every injection or authorisation problem.",
+  "review_note": "Reviewed Safety Boundaries against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

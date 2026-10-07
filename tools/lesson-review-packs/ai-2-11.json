@@ -1,0 +1,262 @@
+{
+  "week": "ai-2/11",
+  "title": "Training and Testing",
+  "grade": 7,
+  "project": "Transparent Book Recommender",
+  "goals": [
+    "Choose a split unit that matches the intended prediction claim",
+    "Keep related examples together and audit group overlap",
+    "Record split roles counts and limits before model evaluation"
+  ],
+  "primary_topic": "Splits and related examples",
+  "vocabulary": [
+    [
+      "Training set",
+      "Examples used to fit a model"
+    ],
+    [
+      "Validation set",
+      "Separate examples used to compare choices during development"
+    ],
+    [
+      "Test set",
+      "Held out examples used for final evaluation after choices are fixed"
+    ],
+    [
+      "Group",
+      "Related examples that must stay together for a stated evaluation goal"
+    ]
+  ],
+  "worked_example": {
+    "title": "Repair a split at the group level",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Suppose A1 and A2 are in training while A3 is in test. The frame IDs differ, but A appears in both sets. Shuffling the rows does not remove this relationship. For our new-trip claim, move all A frames to one chosen role and record the revised assignment before evaluating a model. Do not copy A3 into both roles."
+      },
+      {
+        "type": "paragraph",
+        "text": "Audit that every source frame occurs exactly once, no group crosses roles and the assigned counts sum to the source count. In our worked plan the row counts are six training, two validation and four test: twelve total. A fixed random seed can reproduce a random split, but it cannot make a flawed grouping choice fair."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "A learner moves D2 from validation to training but leaves D1 in validation. Give the new row counts and shared trip ID. Explain why different frame IDs and a fixed seed do not repair the overlap.",
+        "lines": 5
+      },
+      {
+        "type": "paragraph",
+        "text": "A split record names the prediction goal, source version, group definition, exact assignments, row and group counts, date and any random method or seed used. For this hand-assigned example, record that there was no random sampling. Keep label-rule versions and unresolved review statuses traceable as in Week 5."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Distinguish frames from groups",
+    "prompt": "For the worked A through F plan, give training, validation and test counts first in groups and then in rows. Interpret [] from the code and state one problem it cannot detect.",
+    "answer": "Group counts are 3,1,2; row counts are 6,2,4. The empty list means no trip ID overlaps between any pair of the listed sets. The code cannot detect wrong metadata, an omitted frame, a disguised duplicate or an outcome feature.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Audit and repair independently",
+    "task": "Eight frames come from trips P (P1 P2 P3), Q (Q1 Q2), R (R1), S (S1 S2). A proposed split is training P1 Q1 R1; validation P2 S1; test Q2 P3 S2. Identify shared groups for each pair of sets. Repair it by assigning P and Q to training, R to validation and S to test. List all frames in each role and give row and group counts. State one limit of the repaired plan.",
+    "answer": "Training/validation share P; training/test share P and Q; validation/test share P and S. Repaired training is P1 P2 P3 Q1 Q2 (5 rows,2 groups), validation R1 (1 row,1 group), test S1 S2 (2 rows,1 group). Every frame appears once and groups are disjoint. This tiny plan does not establish reliable performance, correct metadata, label coverage or success on new routes.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Different row IDs mean independent examples",
+      "Different frames may share a trip or source. Choose group metadata based on the claim and verify it against the source."
+    ],
+    [
+      "A fixed percentage guarantees a fair test",
+      "Percentages do not remove overlap or ensure enough groups and relevant cases. The goal and dependencies determine the split."
+    ],
+    [
+      "An empty overlap list proves there is no leakage",
+      "The audit checks listed group IDs only. Wrong metadata, copied content, outcome features or preprocessing fitted on all sets can still invalidate evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/3c8145208d815ccfb8419219a2a2985c87b2da755cf4805f665d122c9fda2ac2",
+        "alt": "INPUT stage for Training and Testing",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/951c6733e5d6a6957b88108faf2f3d9e02aeac1e1c0c22f522d2e0c98f9c3bbe",
+        "alt": "PROCESS stage for Training and Testing",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1d5253685b5478f3b9c9b4dd34a66cdca71030b0e1407dfefa12b8996b3f4aa0",
+        "alt": "OUTPUT stage for Training and Testing",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Training data fits the model. Validation data helps compare choices such as candidate rules. Keep the test set for a final check after those choices are fixed. A learner who repeatedly changes the model after seeing test results has used that set for development; its score is no longer an untouched final check."
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "train_groups = {\"A\", \"B\", \"C\"}\nvalid_groups = {\"D\"}\ntest_groups = {\"E\", \"F\"}\nshared = ((train_groups & valid_groups)\n          | (train_groups & test_groups)\n          | (valid_groups & test_groups))\nprint(sorted(shared))\nprint(len(train_groups), len(valid_groups),\n      len(test_groups))"
+      },
+      {
+        "type": "paragraph",
+        "text": "The first line of output is []: no trip ID is shared between any pair of sets. The second is 3 1 2: training, validation and test contain three, one and two trip groups. The symbol & finds shared values and | combines sets. These are group counts, not frame counts."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Keep each trip in one role",
+        "columns": [
+          "Whole groups",
+          "Role",
+          "Purpose"
+        ],
+        "rows": [
+          [
+            "A B C with all frames",
+            "Training",
+            "Fit from examples"
+          ],
+          [
+            "D with all frames",
+            "Validation",
+            "Compare choices"
+          ],
+          [
+            "E F with all frames",
+            "Test",
+            "Final check after choices"
+          ]
+        ],
+        "caption": "Keep related frames together. Separate group IDs prevent this form of overlap; they do not prove that every other source of leakage is absent."
+      },
+      {
+        "type": "paragraph",
+        "text": "This audit assumes the lists correctly describe every frame assignment. It cannot find an omitted frame, a wrong trip ID, a copied image with a different ID or a feature containing the answer. Check the assignment table and source records too."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1f18213ba3d74c99072fa04ad7520b53eee0b2e9e845b0d8a61ccdda1b41f3f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fed8318cf337134a2c31a8d2c90831db67a27a43d3c6f85b25079c53ec37ff9a",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/75f964dbe29000347e518a59e2717387d7109bd1f947abdafa07e931a61cf754",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4d936b6648b81ac897fc99370c2788f8e0b135d8fc31cfd77afceee66a92128c",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

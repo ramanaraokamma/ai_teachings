@@ -1,0 +1,59 @@
+{
+  "week": "ai-6/29",
+  "title": "Performance and cost experiments",
+  "outcome": "Explain performance and cost experiments using the deciding step in this fictional service.",
+  "scenario": "Measure time and cost. Two fixed configurations answer the same six questions and meet the same quality rubric.",
+  "given": [
+    "A totals 18 seconds and 12 cost units. B totals 12 seconds and 18 units."
+  ],
+  "steps": [
+    {
+      "label": "Compute mean time",
+      "icon": "clock",
+      "detail": "A averages 3 seconds; B averages 2 seconds per case."
+    },
+    {
+      "label": "Compute mean cost",
+      "icon": "chart",
+      "detail": "A averages 2 units; B averages 3 units per case."
+    },
+    {
+      "label": "Compare trade-off",
+      "icon": "rule",
+      "detail": "B saves one second but costs one extra unit per case."
+    }
+  ],
+  "explanation": "A fair performance experiment holds the workload and measurement procedure fixed. Faster is not automatically preferable under a budget.",
+  "counterfactual": {
+    "change": "Require at most 2 cost units per case.",
+    "prediction": "A meets the budget; B does not.",
+    "reason": "The mandatory resource condition changes the decision."
+  },
+  "student_task": "Calculate per-case seconds and cost units for A and B. Which meets a budget of at most 2 cost units per case, and what speed trade-off does that choice make?",
+  "teacher_answer": "A averages 3 seconds; B averages 2 seconds per case. A averages 2 units; B averages 3 units per case. B saves one second but costs one extra unit per case. Changed case: A meets the budget; B does not. The mandatory resource condition changes the decision.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "Means hide variation; disclose workload, repeated runs and slow-case results before generalising.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Mean resource use per case",
+    "cells": [
+      [
+        3,
+        2
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "row_labels": [
+      "A",
+      "B"
+    ],
+    "column_labels": [
+      "Seconds/case",
+      "Cost units/case"
+    ]
+  }
+}

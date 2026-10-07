@@ -1,0 +1,308 @@
+{
+  "week": "ai-1/14",
+  "title": "Build a Human Classifier",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Construct a classifier with a stated input format, selected rule and recorded output",
+    "Trace valid, boundary and invalid inputs through different paths",
+    "Distinguish an input check from evidence that a prediction is correct"
+  ],
+  "primary_topic": "Constructing a classifier",
+  "vocabulary": [
+    [
+      "Classifier",
+      "A procedure that assigns a predicted category to an input"
+    ],
+    [
+      "Input contract",
+      "The format and conditions an input must satisfy for a procedure to accept it"
+    ],
+    [
+      "Validation",
+      "Checking whether an input satisfies the stated contract"
+    ],
+    [
+      "No prediction",
+      "An explicit outcome when the classifier does not assign a category"
+    ],
+    [
+      "Model version",
+      "A name that identifies the particular model used for a prediction"
+    ]
+  ],
+  "worked_example": {
+    "title": "Keep validation separate from correctness",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Input",
+          "Contract result",
+          "Outcome"
+        ],
+        "rows": [
+          [
+            "1 cm",
+            "Accepted at lower endpoint",
+            "Predict short"
+          ],
+          [
+            "9 cm",
+            "Accepted",
+            "Predict tall"
+          ],
+          [
+            "10 cm",
+            "Accepted at upper endpoint",
+            "Predict tall"
+          ],
+          [
+            "0 cm",
+            "Outside 1 through 10",
+            "No prediction"
+          ],
+          [
+            "60 mm",
+            "Unit is not cm",
+            "No prediction"
+          ],
+          [
+            "4.5 cm",
+            "Not a whole number",
+            "No prediction"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "A valid 9 cm input receives a tall prediction, but the input check does not establish that the prediction matches its comparison label. Validation checks the contract. Evaluation checks predictions against appropriate evidence. Keep these questions separate."
+      },
+      {
+        "type": "paragraph",
+        "text": "Sixty millimetres equals six centimetres, but this version accepts cm records only. It does not contain a conversion step. Ask for a correctly recorded cm measurement or deliberately design and check a conversion step in a new version. Do not silently treat the digits 60 as centimetres. A missing height must not become an invented zero either."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Construct both outcome paths",
+    "prompt": "Write numbered instructions for Tower1, including input checks, the stopping path after a failed check, the threshold rule and the record to keep. Your partner must be able to use them without supplying an unstated rule.",
+    "lines": 8,
+    "answer": "Check present height and cm unit, then whole number in 1 through 10. On failure, record original input, Tower1, no prediction and the reason; stop that record. Otherwise predict tall if height is at least 6, short otherwise. Record original input, Tower1 and prediction. Equivalent clear branches are acceptable."
+  },
+  "independent_case": {
+    "title": "Build an independent ribbon classifier",
+    "task": "Design Ribbon1 for ribbon lengths recorded as whole centimetres from 1 through 12 inclusive, with unit cm required. Predict long at 8 cm or more and short otherwise. Write complete instructions and trace 7 cm, 8 cm, a blank length and 13 cm. Include reasons for no prediction and the model version in each record.",
+    "answer": "Check present length, cm unit, whole number and range 1 through 12; otherwise record no prediction with reason and stop. For accepted inputs, use at least 8 for long, otherwise short. Ribbon1 at 7 cm predicts short; at 8 cm predicts long; blank gives no prediction because length is missing; 13 cm gives no prediction because outside range. Each record includes original input, Ribbon1 and outcome, plus reason when rejected.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Any numeric input must receive a category",
+      "Check the stated unit, whole-number condition and supported range before comparing the threshold."
+    ],
+    [
+      "An accepted input proves a correct prediction",
+      "Ask separately whether the input satisfies the contract and whether the prediction agrees with evaluation evidence."
+    ],
+    [
+      "No prediction means a third category of tower",
+      "It is a system outcome indicating that no short or tall category was assigned."
+    ],
+    [
+      "Writing a rejection is enough even if processing continues",
+      "Follow the failed path to an explicit stop so the later rule cannot overwrite the outcome."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/68d758791af7160dbcb28655e637d5c9347b12f026779a4c03fceccc3b9ce936",
+        "alt": "Visual card for the input stage: creature features",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/54dbf43ce39faeec599c6e6195bef7a30472276abc118ff39e46ab161bcddad5",
+        "alt": "Visual card for the process stage: compare the feature point with a boundary",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/d0fb66da5b64354250a6b412e1f3cf513c517a708e1aa4acda546ef096b15e2d",
+        "alt": "Visual card for the output stage: category A, category B, or not sure",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  creature features"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  compare the feature point with a boundary"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  category A, category B, or not sure"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  Classification maps features to a category using a decision boundary.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  A classifier partitions feature space into decision regions. A decision boundary is where the predicted category changes. Different boundaries may fit the same training examples but behave differently on unseen or borderline inputs.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Three records through the Tower1 classifier",
+        "columns": [
+          "Input record",
+          "Check and rule",
+          "Recorded outcome"
+        ],
+        "rows": [
+          [
+            "5 cm",
+            "Accepted; 5 is below 6",
+            "Tower1 predicts short"
+          ],
+          [
+            "6 cm",
+            "Accepted; 6 is at least 6",
+            "Tower1 predicts tall"
+          ],
+          [
+            "Height blank",
+            "Missing height; stop before rule",
+            "Tower1; no prediction"
+          ]
+        ],
+        "caption": "Read each row from left to right. An accepted input reaches the threshold rule. A missing input stops before that rule and receives an explicit no prediction outcome."
+      },
+      {
+        "type": "paragraph",
+        "text": "For every record, first check that a height is present and its stated unit is cm. Then check that it is a whole number from 1 through 10. If any check fails, record no prediction and the reason, then stop processing that record. Do not continue into the threshold comparison."
+      },
+      {
+        "type": "paragraph",
+        "text": "If all checks pass, compare the height with 6. At least 6 gives the prediction tall; otherwise give short. Record the original input, model version Tower1 and the prediction. For a rejected record, record the original input, Tower1, no prediction and a reason. Tower1 identifies the intended model even when its threshold was not used."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/f164c1a2b6da049f4a460c3b99a01357360c7c5d4a6586c77ad7fb929e567bcd",
+        "alt": "Comparison picture for Two antennae, many spots: far inside region A; stable A prediction",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1c1a585c2c934a2d85c8e6451972476b8040af3447b20d57cf62607c7afb57de",
+        "alt": "Comparison picture for No antennae, no spots: far inside region B; stable B prediction",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/5b66ff86f9df4d2dd52c146cf1d8f292854434926faf919bd47511c866231188",
+        "alt": "Comparison picture for One antenna, some spots: near boundary; uncertain",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/614a5e489656bbf33a70567c5a3fef21530b03c6c95a0bd923557d0430413fed",
+        "alt": "Comparison picture for New wing feature: not represented on map; boundary may be incomplete",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Two antennae, many spots  Clue: far inside region A. Meaning: stable A prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 No antennae, no spots  Clue: far inside region B. Meaning: stable B prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 One antenna, some spots  Clue: near boundary. Meaning: uncertain."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 New wing feature  Clue: not represented on map. Meaning: boundary may be incomplete."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  A drawn boundary describes the classifier's decision, not a natural law about the objects.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

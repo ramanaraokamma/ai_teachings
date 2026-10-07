@@ -1,0 +1,43 @@
+{
+  "week": "ai-2/31",
+  "title": "Permissions and Human Review",
+  "outcome": "By the end, I can enforce least privilege by checking operation and object before execution.",
+  "scenario": "A fictional catalogue helper receives a narrowly scoped tool token.",
+  "given": [
+    "Token allows read on catalogue records R2 and R5 only. No write permission is granted.",
+    "Proposals: read R2; read R8; write R5. Generated text claims all are helpful."
+  ],
+  "steps": [
+    {
+      "label": "Read token",
+      "icon": "shield",
+      "detail": "Authorised operation is read; authorised objects are R2,R5."
+    },
+    {
+      "label": "Allowed call",
+      "icon": "check",
+      "detail": "read R2 matches both operation and object: allow."
+    },
+    {
+      "label": "Wrong object",
+      "icon": "shield",
+      "detail": "read R8 fails object scope: deny."
+    },
+    {
+      "label": "Wrong operation",
+      "icon": "shield",
+      "detail": "write R5 fails operation scope: deny even for an allowed record."
+    }
+  ],
+  "explanation": "Permissions are concrete restrictions, not a confidence score or a general instruction to be useful. Each proposed call must match both dimensions before it happens. A request written inside catalogue text cannot enlarge the token’s authority. Denial should preserve the proposed action and reason without executing the disallowed mutation.",
+  "counterfactual": {
+    "change": "The helper says it needs write R5 to correct an apparent typo.",
+    "prediction": "The write remains denied under the existing token.",
+    "reason": "A useful purpose does not create an authorised operation; an authorised owner must review any scope change."
+  },
+  "student_task": "Which proposal is allowed, and why is an authorised object alone insufficient?",
+  "teacher_answer": "Only read R2. R5 is an allowed object for reading, but its write operation exceeds scope.",
+  "project_evidence": "Give the recommender read-only access wherever sufficient, and require explicit owner review for catalogue edits or publication.",
+  "limits": "Permission checks do not establish that a read result is trustworthy or that an allowed action is factually correct.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment."
+}

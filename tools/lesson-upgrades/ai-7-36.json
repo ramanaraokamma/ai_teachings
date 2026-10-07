@@ -1,0 +1,50 @@
+{
+  "week": "ai-7/36",
+  "title": "Research defense and next questions",
+  "outcome": "Explain research defense and next questions using the records and boundaries of this fictional investigation.",
+  "scenario": "Defend the next research question. A research defence identifies a observed weakness and a testable follow-up.",
+  "given": [
+    "A frozen model is correct on 8/10 clear images and 4/10 shaded images. Source objects are grouped within each condition."
+  ],
+  "steps": [
+    {
+      "icon": "chart",
+      "label": "State slice outcomes",
+      "detail": "Clear is 80%; shaded is 40%."
+    },
+    {
+      "icon": "question",
+      "label": "Limit the interpretation",
+      "detail": "Shade sensitivity is plausible, but camera or object differences may also matter."
+    },
+    {
+      "icon": "experiment",
+      "label": "Design follow-up",
+      "detail": "Photograph the same held-out objects under both light conditions using one camera and fixed scoring."
+    }
+  ],
+  "explanation": "A defence should explain results, uncertainty and what would discriminate between explanations next. A controlled paired follow-up is more informative than simply collecting extra easy images.",
+  "counterfactual": {
+    "change": "Change cameras as well as lighting in the follow-up.",
+    "prediction": "The design again entangles two conditions.",
+    "reason": "A camera difference provides another explanation for any performance gap."
+  },
+  "student_task": "Compute the clear and shaded rates and identify alternative explanations. How does the same-object, one-camera follow-up help, and why does changing cameras again reintroduce confounding?",
+  "teacher_answer": "Clear is 80%; shaded is 40%. Shade sensitivity is plausible, but camera or object differences may also matter. Photograph the same held-out objects under both light conditions using one camera and fixed scoring. Changed case: The design again entangles two conditions. A camera difference provides another explanation for any performance gap.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "Even a paired follow-up needs adequate independent objects and justified analysis; no causal conclusion is claimed yet.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Defence: different condition slices",
+    "labels": [
+      "Clear",
+      "Shaded"
+    ],
+    "values": [
+      8,
+      4
+    ],
+    "unit": "correct cases out of 10 per slice"
+  }
+}

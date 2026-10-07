@@ -1,0 +1,153 @@
+{
+  "week": "ai-5/26",
+  "title": "Embeddings and neighbourhoods",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Look up a vector using a token ID and preserve sequence shape",
+    "Calculate nearest neighbours with an explicit distance and tie rule",
+    "Distinguish constructed vectors from learned features and limit similarity claims"
+  ],
+  "primary_topic": "Embeddings and neighbourhoods",
+  "vocabulary": [
+    [
+      "Embedding table",
+      "A table assigning a fixed-length numerical vector to each token ID"
+    ],
+    [
+      "Embedding dimension",
+      "The number of components in each embedding vector"
+    ],
+    [
+      "Neighbourhood",
+      "Nearby candidates under a stated representation and distance rule"
+    ],
+    [
+      "Squared Euclidean distance",
+      "The sum of squared component differences between two vectors"
+    ]
+  ],
+  "worked_example": {
+    "title": "Preserve tied neighbours",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "One query can have two closest candidates",
+        "columns": [
+          "Candidate vector",
+          "Query vector",
+          "Squared distance"
+        ],
+        "rows": [
+          [
+            "GO [2, 0]",
+            "[1, 0]",
+            "1"
+          ],
+          [
+            "TURN [1, 1]",
+            "[1, 0]",
+            "1"
+          ],
+          [
+            "WAIT [0, 1]",
+            "[1, 0]",
+            "2"
+          ],
+          [
+            "STOP [0, 2]",
+            "[1, 0]",
+            "5"
+          ]
+        ],
+        "caption": "The nearest set is GO and TURN. Alphabetical display order does not break the mathematical tie or make one candidate more similar."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Using STOP [0, 2] as the query, calculate distances to GO, TURN and WAIT. Exclude STOP itself and both reserved entries. Which candidate is nearest?",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Calculate distances and a tie",
+    "prompt": "For query [1, 0], compute squared distances to GO, TURN, STOP and WAIT in the original table. Return all nearest candidates.",
+    "answer": "Teacher explanation: Distances are 1, 1, 5 and 2 respectively. The nearest set is GO and TURN; ordering their names does not remove the tie.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Find a neighbourhood independently",
+    "task": "A separate table contains A [0, 0], B [2, 0] and C [1, 2]. For query [1, 0], give all squared distances and every nearest candidate. Then calculate the mean of A and B and compare it with the query. Can that mean identify which ordered pair produced it?",
+    "answer": "Teacher explanation: Distances to A, B and C are 1, 1 and 4. A and B tie. Their mean is [1, 0], equal to the query. Reversing A B to B A gives the same mean, so the mean alone cannot identify the order.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Token ID differences define embedding distances",
+      "The ID selects a row; distances are computed between row vectors."
+    ],
+    [
+      "Nearest always means interchangeable",
+      "Closeness depends on representation, metric and candidates, and need not preserve task labels or meaning."
+    ],
+    [
+      "A learned embedding cannot lose identity",
+      "Two rows can coincide, and sequence aggregation can create additional collisions."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Use squared Euclidean distance: square each component difference and add. From GO [2, 0] to TURN [1, 1], the distance is (2 - 1) squared + (0 - 1) squared = 2. To STOP it is 8; to WAIT it is 5. TURN is therefore the nearest of those three under this table and metric."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "table = [[0, 0], [-1, -1], [2, 0],\n         [1, 1], [0, 2], [0, 1]]\nknown = {\"GO\": 2, \"TURN\": 3, \"STOP\": 4, \"WAIT\": 5}\n\ndef distance2(a, b):\n    if len(a) != len(b) or not a:\n        raise ValueError(\"Need equal nonempty dimensions\")\n    return sum((x - y)**2 for x, y in zip(a, b))\n\ndef nearest(query, candidates):\n    if not candidates:\n        raise ValueError(\"Need candidates\")\n    scores = {name: distance2(query, vector)\n              for name, vector in candidates.items()}\n    best = min(scores.values())\n    return sorted(name for name, d in scores.items() if d == best)\n\ncandidates = {name: table[i] for name, i in known.items()\n              if name != \"GO\"}\nassert nearest(table[2], candidates) == [\"TURN\"]"
+      },
+      {
+        "type": "paragraph",
+        "text": "The candidate set excludes PAD, UNK and the query token itself. Otherwise a query would normally retrieve itself at distance zero. This code assumes finite numeric components and uses exact ties, appropriate for these integer examples. Floating-point comparisons in other experiments need a declared precision policy."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "For query [1, 0], compute squared distances to GO, TURN, STOP and WAIT in the original table. Return all nearest candidates."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

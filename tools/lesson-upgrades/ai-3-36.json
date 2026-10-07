@@ -1,0 +1,38 @@
+{
+  "week": "ai-3/36",
+  "title": "Creator Defense",
+  "outcome": "By the end, I can explain creator defense using a traced example and a stated limitation.",
+  "scenario": "Defend a study-buddy project using separate claims and matching evidence.",
+  "given": [
+    "Set A: 15 answerable questions, with 12 relevant retrievals and 9 supported answers. Separate set B: 5 missing-source questions, with 4 appropriate fallbacks. No speed measurements exist.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Retrieval claim",
+      "icon": "book",
+      "detail": "Relevant retrieval rate is 12/15=80%."
+    },
+    {
+      "label": "Answer claim",
+      "icon": "chart",
+      "detail": "Supported-answer rate is 9/15=60%; retrieval success is not answer success."
+    },
+    {
+      "label": "Fallback claim",
+      "icon": "shield",
+      "detail": "Appropriate fallback is 4/5=80%. Make no measured speed claim."
+    }
+  ],
+  "explanation": "Read the picture in order. Appropriate fallback is 4/5=80%. Make no measured speed claim. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Only the retrieval rate is put on the presentation poster.",
+    "prediction": "The poster omits the lower supported-answer rate and cannot imply 80% fully correct answers.",
+    "reason": "Retrieving useful evidence is an intermediate step, not proof that the final answer uses it correctly."
+  },
+  "student_task": "Which numbers would you display to make the defense honest? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Display 12/15 retrieval, 9/15 support and 4/5 fallback with separate set A and set B definitions; say speed was not measured. Changed-case check: The poster omits the lower supported-answer rate and cannot imply 80% fully correct answers. Retrieving useful evidence is an intermediate step, not proof that the final answer uses it correctly.",
+  "project_evidence": "For your Verified Study Buddy, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "These invented counts illustrate defense structure; the class must replace them with its own documented evidence.",
+  "review_note": "Reviewed Creator Defense against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

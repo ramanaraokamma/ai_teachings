@@ -1,0 +1,38 @@
+{
+  "week": "ai-4/28",
+  "title": "Learning Curves",
+  "outcome": "By the end, I can explain learning curves using a traced example and a stated limitation.",
+  "scenario": "Read a learning curve with repeated-run spread rather than drawing a certainty arrow.",
+  "given": [
+    "At 10 training plants validation errors across3 runs are [6, 5, 7]; at 20 plants errors [4, 5, 3], on the same 10-case validation set.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Summarise first size",
+      "icon": "chart",
+      "detail": "Mean6 errors; range5–7, corresponding to mean 40% accuracy."
+    },
+    {
+      "label": "Summarise larger size",
+      "icon": "data",
+      "detail": "Mean4 errors; range3–5, corresponding to mean 60% accuracy."
+    },
+    {
+      "label": "State bounded pattern",
+      "icon": "check",
+      "detail": "More training plants improved the average in these supplied runs; variability remains."
+    }
+  ],
+  "explanation": "Read the picture in order. More training plants improved the average in these supplied runs; variability remains. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "A30-plant experiment gives errors [4, 4, 4].",
+    "prediction": "Mean remains4; this additional size does not improve the observed mean over20 plants.",
+    "reason": "Learning curves are measured patterns, not a guarantee of improvement at every data size."
+  },
+  "student_task": "What comparison is valid if the validation set changes between sizes? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "The raw change is confounded by changed evaluation cases. Prefer a fixed appropriately reserved validation set and record repeated-run variation. Changed-case check: Mean remains4; this additional size does not improve the observed mean over20 plants. Learning curves are measured patterns, not a guarantee of improvement at every data size.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "These toy runs do not establish that data quantity alone caused improvement; collection quality and conditions matter.",
+  "review_note": "Reviewed Learning Curves against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

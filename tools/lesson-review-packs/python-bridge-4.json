@@ -1,0 +1,193 @@
+{
+  "week": "python-bridge/4",
+  "title": "Boolean conditions",
+  "grade": 8,
+  "project": "Python readiness portfolio",
+  "goals": [
+    "Translate stated requirements into comparisons",
+    "Combine Boolean values with and or and not",
+    "Choose a case that distinguishes two conditions"
+  ],
+  "primary_topic": "Boolean conditions",
+  "vocabulary": [
+    [
+      "Comparison",
+      "An expression that checks a relation between values"
+    ],
+    [
+      "Boolean",
+      "A type with the values True and False"
+    ],
+    [
+      "Conjunction",
+      "A requirement that both conditions hold"
+    ],
+    [
+      "Inclusive or",
+      "A condition satisfied when either or both parts hold"
+    ],
+    [
+      "Counterexample",
+      "A case that shows a claim or rule is wrong"
+    ]
+  ],
+  "worked_example": {
+    "title": "Compare all Boolean combinations",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "A",
+          "B",
+          "A and B",
+          "A or B"
+        ],
+        "rows": [
+          [
+            "False",
+            "False",
+            "False",
+            "False"
+          ],
+          [
+            "False",
+            "True",
+            "False",
+            "True"
+          ],
+          [
+            "True",
+            "False",
+            "False",
+            "True"
+          ],
+          [
+            "True",
+            "True",
+            "True",
+            "True"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "With Boolean operands, and needs both parts True. Inclusive or needs at least one True, so both True is allowed. not reverses a Boolean: not True is False and not False is True. Python can also apply and and or to other types; keep operands Boolean here so this table directly describes the result."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "A game requires a pencil or a crayon. If both are available, does inclusive or accept the case? Explain how this differs from requiring exactly one.",
+        "lines": 5
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace separate checks",
+    "prompt": "For (minutes, quiet) cases (11, True), (12, False), and (13, True), write the time comparison and final suitability values before running the program.",
+    "answer": "Time results are True, True, False. Combined results are True, False, False; the second case fails quiet and the third fails time.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Separate a boundary from validity",
+    "task": "Predict both booleans for readings 29, 30 and -1. Why is the first condition alone insufficient to validate a reading?",
+    "code": "reading = 29\nprint(reading < 30, 0 <= reading <= 100)\n",
+    "expected_stdout": "True True\n",
+    "answer": "29: True True; 30: False True; -1: True False. The threshold can be true for an invalid input, so validity needs its own condition.",
+    "source": "new parallel Python readiness case"
+  },
+  "misconceptions": [
+    [
+      "At most excludes the boundary",
+      "At most 12 includes 12; compare < and <= at exactly 12."
+    ],
+    [
+      "or means exactly one",
+      "Inclusive or also accepts two True values."
+    ],
+    [
+      "A single equals sign tests equality",
+      "= assigns; == compares."
+    ],
+    [
+      "A True result proves a fact about the world",
+      "It establishes only that the supplied values satisfy this expression."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Two requirements must both hold",
+        "columns": [
+          "Input case",
+          "Time check",
+          "Combined result"
+        ],
+        "rows": [
+          [
+            "12 min, quiet False",
+            "12 <= 12 is True",
+            "True and False is False"
+          ],
+          [
+            "12 min, quiet True",
+            "12 <= 12 is True",
+            "True and True is True"
+          ],
+          [
+            "15 min, quiet True",
+            "15 <= 12 is False",
+            "False and True is False"
+          ]
+        ],
+        "caption": "Passing only one requirement does not make the activity suitable."
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "minutes = 12\nquiet = False\ntime_ok = minutes <= 12\nsuitable = time_ok and quiet\nprint(time_ok)\nprint(suitable)"
+      },
+      {
+        "type": "paragraph",
+        "text": "The script prints True then False. The first result concerns time only. The second requires time_ok and quiet. These are separate claims. Trace each input before explaining the combined result; a result without its conditions can be misleading."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "For (minutes, quiet) cases (11, True), (12, False), and (13, True), write the time comparison and final suitability values before running the program."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

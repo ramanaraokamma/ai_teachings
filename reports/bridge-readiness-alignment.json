@@ -1,0 +1,185 @@
+{
+  "lessons_aligned": 12,
+  "base_programs": 12,
+  "changed_and_error_cases": 15,
+  "errors": [],
+  "alignment": [
+    {
+      "week": "python-bridge/1",
+      "topic": "From a paper algorithm to Python",
+      "assessed_skills": "Paper instructions, ordered assignments and arithmetic",
+      "case_title": "Trace variables and a change",
+      "base_passed": true
+    },
+    {
+      "week": "python-bridge/2",
+      "topic": "Values variables and types",
+      "assessed_skills": "Integer, text, float, Boolean and reassignment snapshots",
+      "case_title": "Trace values, types and reassignment",
+      "base_passed": true
+    },
+    {
+      "week": "python-bridge/3",
+      "topic": "Expressions and operator order",
+      "assessed_skills": "Parentheses, precedence, ordinary division, quotient and remainder",
+      "case_title": "Group an expression deliberately",
+      "base_passed": true
+    },
+    {
+      "week": "python-bridge/4",
+      "topic": "Boolean conditions",
+      "assessed_skills": "AND, OR, NOT and separating required conditions",
+      "case_title": "Combine requirements without replacing AND",
+      "base_passed": true
+    },
+    {
+      "week": "python-bridge/5",
+      "topic": "Branching and boundary tests",
+      "assessed_skills": "Ordered branches, valid inputs and equality boundary",
+      "case_title": "Trace branch order",
+      "base_passed": true
+    },
+    {
+      "week": "python-bridge/6",
+      "topic": "Loops and trace tables",
+      "assessed_skills": "Range stopping, initialisation and empty iteration",
+      "case_title": "Count iterations and a stopping point",
+      "base_passed": true
+    },
+    {
+      "week": "python-bridge/7",
+      "topic": "Lists and indexing",
+      "assessed_skills": "Index positions, negative indexing and out-of-range stopping",
+      "case_title": "Distinguish a value from an index",
+      "base_passed": true
+    },
+    {
+      "week": "python-bridge/8",
+      "topic": "Functions and arguments",
+      "assessed_skills": "Definitions, calls and noncommutative positional arguments",
+      "case_title": "Match positional arguments to parameters",
+      "base_passed": true
+    },
+    {
+      "week": "python-bridge/9",
+      "topic": "Return values and local state",
+      "assessed_skills": "Returned values, separate local state and missing return",
+      "case_title": "Use returns and keep local state local",
+      "base_passed": true
+    },
+    {
+      "week": "python-bridge/10",
+      "topic": "Dictionaries and records",
+      "assessed_skills": "Named record fields, updates and absent-versus-zero values",
+      "case_title": "Read, update and pass a dictionary record",
+      "base_passed": true
+    },
+    {
+      "week": "python-bridge/11",
+      "topic": "Reading structured data",
+      "assessed_skills": "Structured-record traversal, observed sum, denominator and coverage",
+      "case_title": "Preserve records and report measured coverage",
+      "base_passed": true
+    },
+    {
+      "week": "python-bridge/12",
+      "topic": "Testing and debugging functions",
+      "assessed_skills": "Revealing boundary assertions, first failure, repair and regression cases",
+      "case_title": "Use boundary tests to reveal a function defect",
+      "base_passed": true
+    }
+  ],
+  "variants": [
+    {
+      "week": "python-bridge/1",
+      "stdout": "35\n",
+      "expected_error": null,
+      "passed": true
+    },
+    {
+      "week": "python-bridge/2",
+      "stdout": "3 4 0.0 True\nint str float bool\n",
+      "expected_error": null,
+      "passed": true
+    },
+    {
+      "week": "python-bridge/3",
+      "stdout": "2\n18\n3.4 3 2\n",
+      "expected_error": null,
+      "passed": true
+    },
+    {
+      "week": "python-bridge/4",
+      "stdout": "False\nFalse\nTrue\nTrue\n",
+      "expected_error": null,
+      "passed": true
+    },
+    {
+      "week": "python-bridge/5",
+      "stdout": "on\n",
+      "expected_error": null,
+      "passed": true
+    },
+    {
+      "week": "python-bridge/5",
+      "stdout": "invalid\n",
+      "expected_error": null,
+      "passed": true
+    },
+    {
+      "week": "python-bridge/6",
+      "stdout": "0\n",
+      "expected_error": null,
+      "passed": true
+    },
+    {
+      "week": "python-bridge/7",
+      "stdout": "9\n",
+      "expected_error": "IndexError",
+      "passed": true
+    },
+    {
+      "week": "python-bridge/7",
+      "stdout": "",
+      "expected_error": "IndexError",
+      "passed": true
+    },
+    {
+      "week": "python-bridge/8",
+      "stdout": "",
+      "expected_error": null,
+      "passed": true
+    },
+    {
+      "week": "python-bridge/9",
+      "stdout": "",
+      "expected_error": "TypeError",
+      "passed": true
+    },
+    {
+      "week": "python-bridge/9",
+      "stdout": "6 10 16\n",
+      "expected_error": "NameError",
+      "passed": true
+    },
+    {
+      "week": "python-bridge/10",
+      "stdout": "missing\n3\nmissing\n",
+      "expected_error": null,
+      "passed": true
+    },
+    {
+      "week": "python-bridge/11",
+      "stdout": "0 0 3 None\n",
+      "expected_error": null,
+      "passed": true
+    },
+    {
+      "week": "python-bridge/12",
+      "stdout": "",
+      "expected_error": "AssertionError",
+      "passed": true
+    }
+  ],
+  "scope": "Topic alignment was editorially reviewed against the actual twelve lesson goals. Executions verify specified outputs and failure points, not learner readiness by themselves."
+}

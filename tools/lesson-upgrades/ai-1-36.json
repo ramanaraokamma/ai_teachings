@@ -1,0 +1,56 @@
+{
+  "week": "ai-1/36",
+  "title": "Expo and Defense",
+  "outcome": "By the end, I can defend a project using measured results, limits and an honest baseline comparison.",
+  "scenario": "A fictional paper sorter team prepares an exhibition evidence board.",
+  "given": [
+    "Both prototype and manual baseline attempt the same 10 reserved cases. Prototype passes 8; baseline passes 9.",
+    "Two additional planned cases are unrun. No timing or pupil-satisfaction measures were collected."
+  ],
+  "steps": [
+    {
+      "label": "Describe contract",
+      "icon": "book",
+      "detail": "Show the task, inputs, rule and reserved case selection."
+    },
+    {
+      "label": "Show results",
+      "icon": "chart",
+      "detail": "Prototype 8/10=80%; baseline 9/10=90% on attempted cases."
+    },
+    {
+      "label": "Keep incomplete work",
+      "icon": "question",
+      "detail": "Two unrun cases remain visible, without pass/fail labels."
+    },
+    {
+      "label": "Defend conclusion",
+      "icon": "person",
+      "detail": "Prototype did not beat baseline on this measured outcome; explain its failures."
+    }
+  ],
+  "explanation": "An exhibition should make the evidence inspectable. A polished demonstration is not a substitute for the reserved-case record. The shared cases allow a direct descriptive comparison of pass rates; missing timing data prevents a claim that the prototype is faster. Unrun cases must not be treated as successes.",
+  "counterfactual": {
+    "change": "Someone adds the two unrun cases to the denominator as failures.",
+    "prediction": "That reports a different measure, 8/12 completed successes out of planned cases.",
+    "reason": "It cannot be called the original attempted-case pass rate; distinguish completion from evaluated correctness."
+  },
+  "student_task": "Write one defensible success statement and one claim the evidence cannot support.",
+  "teacher_answer": "Defensible: 8 of 10 attempted reserved cases passed. Unsupported: the prototype is faster or more accurate than the baseline.",
+  "project_evidence": "Present the Helpful Classroom Sorter’s versions, test records, baseline, failures and next investigation as an evidence portfolio.",
+  "limits": "This fictional evaluation does not demonstrate classroom learning impact or performance on every future request.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Shared reserved-case comparison",
+    "labels": [
+      "Prototype",
+      "Manual baseline"
+    ],
+    "values": [
+      8,
+      9
+    ],
+    "unit": "passes out of 10 attempted"
+  }
+}

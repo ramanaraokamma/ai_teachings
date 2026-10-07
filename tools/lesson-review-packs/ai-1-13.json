@@ -1,0 +1,323 @@
+{
+  "week": "ai-1/13",
+  "title": "Learning from Examples",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Fit a threshold by tracing predictions and counting disagreements for every candidate",
+    "Apply an explicit tie rule while recording what the fitting examples leave unresolved",
+    "Use a selected rule on a new input and explain why fit alone does not establish future correctness"
+  ],
+  "primary_topic": "Fitting a pattern from examples",
+  "vocabulary": [
+    [
+      "Candidate model",
+      "One possible rule being compared during fitting"
+    ],
+    [
+      "Fitting set",
+      "The examples used to choose or adjust a model"
+    ],
+    [
+      "Disagreement count",
+      "The number of predictions that differ from their comparison labels"
+    ],
+    [
+      "Tie rule",
+      "An explicit method for choosing between equally scoring candidates"
+    ],
+    [
+      "Generalisation",
+      "How well a fitted model works on new cases beyond its fitting examples"
+    ]
+  ],
+  "worked_example": {
+    "title": "Make ties visible",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Height and supplied label",
+          "Prediction under threshold 5",
+          "Prediction under threshold 6"
+        ],
+        "rows": [
+          [
+            "2 cm short",
+            "Short",
+            "Short"
+          ],
+          [
+            "4 cm short",
+            "Short",
+            "Short"
+          ],
+          [
+            "6 cm tall",
+            "Tall",
+            "Tall"
+          ],
+          [
+            "8 cm tall",
+            "Tall",
+            "Tall"
+          ],
+          [
+            "5 cm label not yet supplied",
+            "Tall",
+            "Short"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "The first four rows are fitting examples. The final row asks what the two tied candidates predict at a height missing from that set. Our tie rule selects 5, so the selected model predicts tall at 5. The fitting examples alone do not tell us whether that new prediction matches the task label."
+      },
+      {
+        "type": "paragraph",
+        "text": "A tie rule makes the selection reproducible. It does not prove that the chosen threshold is the true boundary. Record that 6 tied with 5 and that they disagree at height 5. Hiding the tie would hide a real limitation of the available evidence."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Explain a tied fit",
+    "prompt": "Thresholds 5 and 6 both have zero disagreements on the W1 fitting set. The tie rule chooses the smaller threshold. Which is selected? Give a whole-number height where the two candidates disagree and both predictions. Explain what the tie rule does not prove.",
+    "lines": 6,
+    "answer": "Select 5. At height 5 cm, threshold 5 predicts tall and threshold 6 predicts short. Choosing the smaller threshold makes the procedure definite; it does not prove which prediction matches a label not supplied by the fitting set."
+  },
+  "independent_case": {
+    "title": "Fit a new distance task",
+    "task": "Imaginary map markers have distances 1, 3, 5 and 7 units, with supplied labels near, far, far and far. Compare candidates that predict far when distance is at least 2, 4 or 6 units. List every prediction and error count, select the lowest-error candidate, then predict at distance 2 before any comparison label is supplied. Limit your conclusion.",
+    "answer": "Threshold 2 predicts near, far, far, far with 0 errors. Threshold 4 predicts near, near, far, far with 1 error at 3. Threshold 6 predicts near, near, near, far with 2 errors at 3 and 5. Select 2 and predict far at exactly 2. This fits the four labels among these candidates; it does not establish the unknown label at 2 or all future distances.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The lowest error count is added across candidates",
+      "Reset to zero for each candidate so all totals describe the same examples under one rule."
+    ],
+    [
+      "A tie rule proves the selected boundary is correct",
+      "Compare tied thresholds at height 5, which was absent from the original fitting set."
+    ],
+    [
+      "Zero fitting errors guarantee future correctness",
+      "Separate the evidence used to choose the rule from new labelled cases used to evaluate it."
+    ],
+    [
+      "Disagreeing labels should be changed to match the model",
+      "Inspect original measurements, units, omitted information and label definitions; model agreement is not sufficient grounds for editing a record."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b118057c97f2bb5c6ab3cd72b3d9cdb8bd97754f8e4a2afefc37e26ae806b757",
+        "alt": "Visual card for the input stage: labeled example cards",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/659baae7ff4ebdf98a8aa4e40ba06422c075faa615a19c5a458cf5f4dd2e105e",
+        "alt": "Visual card for the process stage: adjust a decision pattern from recurring clues",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/47b9b08ff9b092a09083aa78b4d1a831cd71d36c265d4618121d9bc6efccfde9",
+        "alt": "Visual card for the output stage: prediction for a new card",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  labeled example cards"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  adjust a decision pattern from recurring clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  prediction for a new card"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  Training examples influence how a model handles later inputs.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Supervised learning uses labeled examples to fit a mapping from represented inputs to outputs. The model does not store a human rule automatically; its fitted behavior reflects correlations, coverage, labels, and optimization choices.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "bars",
+        "title": "Disagreements on the four fitting examples",
+        "axis": "Number of label disagreements out of four examples",
+        "items": [
+          [
+            "Threshold 3",
+            1
+          ],
+          [
+            "Threshold 5",
+            0
+          ],
+          [
+            "Threshold 6",
+            0
+          ],
+          [
+            "Threshold 7",
+            1
+          ]
+        ],
+        "max": 4,
+        "columns": [
+          "Candidate",
+          "Disagreements"
+        ],
+        "rows": [
+          [
+            "Threshold 3",
+            "1 of 4"
+          ],
+          [
+            "Threshold 5",
+            "0 of 4"
+          ],
+          [
+            "Threshold 6",
+            "0 of 4"
+          ],
+          [
+            "Threshold 7",
+            "1 of 4"
+          ]
+        ],
+        "caption": "All candidates use the same four examples and the same zero to four scale. Thresholds 5 and 6 have zero-length bars. They tie; our stated smaller-threshold rule selects 5."
+      },
+      {
+        "type": "paragraph",
+        "text": "Threshold 3 incorrectly calls the height 4 tower tall. Threshold 7 incorrectly calls the height 6 tower short. Thresholds 5 and 6 agree with all four supplied labels. Check each disagreement against the individual example instead of trusting a total without its trace."
+      },
+      {
+        "type": "paragraph",
+        "text": "The bar chart compares disagreement counts, so a shorter bar is better on this fitting set. Zero is a measured count here, not missing data. This chart says nothing yet about the error count on new towers."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b5961651a3bab3c3bd5a62e82f7a0e7a7f7226145aa352f593955171282e2b56",
+        "alt": "Comparison picture for Balanced shapes: colors vary within each shape; shape clue becomes clearer",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1252c8aeb887d0f83b90daf4a0f9c7d923f077d309c624800e487460b9137b84",
+        "alt": "Comparison picture for All triangles striped: stripe and triangle always co-occur; confounded clue",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/c7a0a6df04bed635a2890ddf670b545bfbbd5ad8327f2e767208a28a3d8d2528",
+        "alt": "Comparison picture for Mislabeled circle: target is incorrect; label noise",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/076c0150079ec2cb08c47dc15062e4ada11d00a76f1908a27e23f90e22ec2cd6",
+        "alt": "Comparison picture for New dotted triangle: unseen combination; tests learned behavior",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Balanced shapes  Clue: colors vary within each shape. Meaning: shape clue becomes clearer."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 All triangles striped  Clue: stripe and triangle always co-occur. Meaning: confounded clue."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Mislabeled circle  Clue: target is incorrect. Meaning: label noise."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 New dotted triangle  Clue: unseen combination. Meaning: tests learned behavior."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Learning from examples is not the same as memorizing every example or understanding the concept like a person.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

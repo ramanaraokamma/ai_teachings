@@ -1,0 +1,258 @@
+{
+  "week": "ai-4/17",
+  "title": "Precision and Recall",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Choose the denominator that answers the question",
+    "Calculate precision and recall with a declared positive class",
+    "Report undefined ratios honestly"
+  ],
+  "primary_topic": "Precision recall and denominators",
+  "vocabulary": [
+    [
+      "Precision",
+      "True positives divided by all predicted positives"
+    ],
+    [
+      "Recall",
+      "True positives divided by all reference positives"
+    ],
+    [
+      "Denominator",
+      "The group counted in the bottom of a fraction"
+    ],
+    [
+      "Undefined",
+      "A ratio with no valid value because its denominator is zero"
+    ]
+  ],
+  "worked_example": {
+    "title": "Explain the visual",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Precision recall and denominators at a glance",
+        "columns": [
+          "Part",
+          "Evidence or action",
+          "Interpretation"
+        ],
+        "rows": [
+          [
+            "Precision",
+            "3 correct flags",
+            "7 total flags"
+          ],
+          [
+            "Recall",
+            "3 found blocked cases",
+            "4 reference blocked"
+          ],
+          [
+            "Accuracy",
+            "15 correct labels",
+            "20 total records"
+          ]
+        ],
+        "caption": "Draw a box around the predicted-blocked column for precision and around the reference-blocked row for recall. Their overlap is TP. A model can flag nearly everything and find most blocked cases while producing many false alarms. Conversely, a model can flag very few cases accurately while missing many positives."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Calculate precision, recall and accuracy for the worked matrix. Explain the steps or evidence behind your response.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Calculate both ratios",
+    "prompt": "Calculate precision, recall and accuracy for the worked matrix.",
+    "answer": "Teacher explanation: Precision 3/7 about 42.9 percent, recall 3/4=75 percent, accuracy 15/20=75 percent.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Apply independently",
+    "task": "Use [[8, 2],[3, 6]]. Give TP, FP, FN, precision, recall and accuracy.",
+    "answer": "Teacher explanation: TP=6, FP=2, FN=3. Precision 6/8=75 percent; recall 6/9 about 66.7 percent; accuracy 14/19 about 73.7 percent.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A final answer is enough",
+      "Ask for the relevant counts, units, procedure or saved record. For this week: Predicted positives TP+FP=7; reference positives TP+FN=4."
+    ],
+    [
+      "A stronger claim makes a stronger project",
+      "Request TP, FP, FN, sample size, positive class and precision. Finding every positive can coexist with many false alarms."
+    ],
+    [
+      "The new case can be copied from the example",
+      "The independent task changes the evidence. Require a fresh explanation: TP=6, FP=2, FN=3. Precision 6/8=75 percent; recall 6/9 about 66.7 percent; accuracy 14/19 about 73.7 percent."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/16b5dcdff31488b7d3796fc971cbf6fef794367c568d7f5781ee6075f2181ca3",
+        "alt": "Week 17 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/7dbf90c2eeb76d41dff417d83ef3471c6f3d0fb70ebeb7311e6f11d3cc4b5bf8",
+        "alt": "Week 17 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b896a344c22167e12c7283299b5c8ef9264cb7bc0b2148afaff7f611c0fdc391",
+        "alt": "Week 17 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Calculate both and choose a priority for two consequence scenarios."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  Precision measures how many positive predictions are right; recall measures how many actual positives are found."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Confusion counts: TP=8, FP=2, FN=4, TN=16. Precision = 8 \u00f7 (8+2) = 80%.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "For matrix [[12, 4],[1, 3]], TN=12, FP=4, FN=1, TP=3. There are seven predicted positives and four reference positives. Precision is 3/7, about 42.9 percent. Recall is 3/4=75 percent. Accuracy is 15/20=75 percent. A correct denominator matters more than memorizing a percentage."
+      },
+      {
+        "type": "code",
+        "title": "Python 3 check",
+        "text": "tn, fp, fn, tp = 12, 4, 1, 3\nprecision = tp / (tp + fp) if tp + fp else None\nrecall = tp / (tp + fn) if tp + fn else None\naccuracy = (tn + tp) / (tn + fp + fn + tp)\nprint(precision, recall, accuracy)\n# None means unavailable, not zero or perfect."
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the calculation on paper before running this optional Python check. Use the stated fictional inputs and compare intermediate values. The code checks this example; your independent workbook case uses different evidence."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 17 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 17 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 17 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 17 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

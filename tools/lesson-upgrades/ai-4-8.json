@@ -1,0 +1,69 @@
+{
+  "week": "ai-4/8",
+  "title": "Leakage",
+  "outcome": "By the end, I can explain leakage using a traced example and a stated limitation.",
+  "scenario": "Split by plant identity when testing generalisation to new plants.",
+  "given": [
+    "Plants Cedar, Elm and Fir each have three views. Aim: recognise previously unseen plants. Plan: Cedar and Elm train; Fir final test.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Group related views",
+      "icon": "data",
+      "detail": "All three Cedar views stay together; likewise Elm and Fir."
+    },
+    {
+      "label": "Assign groups",
+      "icon": "shield",
+      "detail": "Training receives six views from Cedar/Elm; test receives three Fir views."
+    },
+    {
+      "label": "State claim",
+      "icon": "check",
+      "detail": "The final test probes one unseen plant, not three independent plants."
+    }
+  ],
+  "explanation": "Read the picture in order. The final test probes one unseen plant, not three independent plants. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Move Fir’s first view into training while retaining its other two in test.",
+    "prediction": "The unseen-plant evaluation is compromised.",
+    "reason": "Fir’s identity now appears in training; different view IDs do not remove the shared plant relationship."
+  },
+  "student_task": "How many independently new plant identities are in the original test? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "One: Fir. Its three photos are related views, so report both photo count 3 and plant count 1. Changed-case check: The unseen-plant evaluation is compromised. Fir’s identity now appears in training; different view IDs do not remove the shared plant relationship.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "A correct group split still needs enough representative plants; this tiny exercise is not a reliable population estimate.",
+  "review_note": "Reviewed Leakage against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Split by plant, not by view",
+    "cells": [
+      [
+        "train",
+        "train",
+        "train"
+      ],
+      [
+        "train",
+        "train",
+        "train"
+      ],
+      [
+        "test",
+        "test",
+        "test"
+      ]
+    ],
+    "row_labels": [
+      "Cedar",
+      "Elm",
+      "Fir"
+    ],
+    "column_labels": [
+      "view1",
+      "view2",
+      "view3"
+    ]
+  }
+}

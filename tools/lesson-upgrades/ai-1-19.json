@@ -1,0 +1,71 @@
+{
+  "week": "ai-1/19",
+  "title": "Similarity",
+  "outcome": "By the end, I can calculate similarity under a declared feature rule and explain a changed ranking.",
+  "scenario": "A fictional craft-card matcher compares each candidate with a target.",
+  "given": [
+    "Target: red, round, smooth. A: red,square,smooth. B: blue,round,smooth. C: red,round,rough.",
+    "Initially each exact feature match scores 1; return all highest scorers.",
+    "For the second comparison only, colour and shape matches score 1 each and a texture match scores 3."
+  ],
+  "steps": [
+    {
+      "label": "Target features",
+      "icon": "data",
+      "detail": "Compare colour, shape and texture separately."
+    },
+    {
+      "label": "Equal weights",
+      "icon": "chart",
+      "detail": "A matches colour+texture=2; B shape+texture=2; C colour+shape=2."
+    },
+    {
+      "label": "Initial result",
+      "icon": "output",
+      "detail": "All three tie at 2."
+    },
+    {
+      "label": "Texture weight 3",
+      "icon": "rule",
+      "detail": "New scores A=4, B=4, C=2; A and B remain tied."
+    }
+  ],
+  "explanation": "Similarity is defined by the chosen representation and weights. The cards did not change when texture gained weight; the comparison rule did. Two high scores need not mean two identical cards. A complete rule also says what to do with tied scores, rather than choosing whichever appears first by accident.",
+  "counterfactual": {
+    "change": "Keep original weights but change the target texture to rough.",
+    "prediction": "C scores 3; A and B each score 1.",
+    "reason": "C now matches all three target features; the others lose their smooth-texture match."
+  },
+  "student_task": "Point to the matches supporting C’s new score and explain why there is no tie.",
+  "teacher_answer": "C matches red, round and rough: 3. A matches only red and B only round: 1 each.",
+  "project_evidence": "Declare sorter similarity features, weights and tie behavior before using scores to explain recommendations.",
+  "limits": "A high feature-match score does not establish usefulness or suitability beyond the features represented.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Declared weights change similarity",
+    "cells": [
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        2
+      ]
+    ],
+    "row_labels": [
+      "A",
+      "B",
+      "C"
+    ],
+    "column_labels": [
+      "All weights 1",
+      "Texture weight 3"
+    ]
+  }
+}

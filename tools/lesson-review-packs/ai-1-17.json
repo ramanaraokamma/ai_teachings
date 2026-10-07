@@ -1,0 +1,293 @@
+{
+  "week": "ai-1/17",
+  "title": "Prediction Is Not Fact",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Separate a recorded prediction from the observation used to check it",
+    "Compare matching cases using a stated outcome rule and preserve unresolved evidence",
+    "Report checked results without counting missing observations as successes or failures"
+  ],
+  "primary_topic": "Predictions and observations",
+  "vocabulary": [
+    [
+      "Prediction",
+      "A model output recorded before consulting the comparison outcome"
+    ],
+    [
+      "Observation",
+      "A recorded measurement or event used as evidence"
+    ],
+    [
+      "Outcome rule",
+      "The agreed method for turning observed evidence into the category being checked"
+    ],
+    [
+      "Mismatch",
+      "A prediction that differs from an established comparison outcome"
+    ],
+    [
+      "Unassessed",
+      "A case whose prediction has not yet been judged against adequate outcome evidence"
+    ]
+  ],
+  "worked_example": {
+    "title": "Decide whether the evidence supports a comparison",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Record",
+          "Evidence available",
+          "Status under the outcome rule"
+        ],
+        "rows": [
+          [
+            "D: height 5 cm; predicts near",
+            "Distance missing",
+            "Unassessed; request the trial record"
+          ],
+          [
+            "E: height 7 cm; predicts far",
+            "Two records say 3 and 4 units",
+            "Unassessed; investigate the conflict"
+          ],
+          [
+            "F: height 6 cm; predicts far",
+            "Verified distance exactly 4 units",
+            "Match; at least 4 includes 4"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "For E, 3 units means near and 4 units means far. The disagreement can change the judgment. Check the trial ID, original measurement and recording procedure. Do not choose the distance that makes Ramp1 look better. If the conflict cannot be resolved, retain both reports and mark the comparison unassessed."
+      },
+      {
+        "type": "paragraph",
+        "text": "An observation is evidence, not an automatic guarantee of truth. A wrong trial ID, unclear unit or copying error can make the comparison unreliable. If a supported correction is made, retain the original entry, the correction, its source and the reason. Remeasuring a new trial does not reveal what happened in the old one."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Check a boundary without changing the rule",
+    "prompt": "Trial F has height 6 cm and verified travel distance exactly 4 units. Apply Ramp1 and the outcome rule. A partner says exactly 4 is near because far means greater than 4. Use the stated rule to resolve the disagreement.",
+    "lines": 6,
+    "answer": "Ramp1 predicts far at height 6. The observation is far because the stated outcome rule is at least 4, including equality. The prediction matches. Greater than 4 would be a different rule and must not replace the agreed one after viewing the result."
+  },
+  "independent_case": {
+    "title": "Transfer the check to drying predictions",
+    "task": "In a fictional paper test, Dry1 predicts slow for a moisture score of at least 7, quick otherwise. Allowed scores are whole numbers 1 through 10. The observed outcome is slow if drying time is greater than 10 minutes, quick otherwise. Records are P: score 6, time 12; Q: score 7, time 10; R: score 9, time 14; S: score 5, time missing. Record all predictions, observed categories and comparison statuses. Summarise matches out of assessed cases, name the unassessed count, and limit the conclusion.",
+    "answer": "P predicts quick, observed slow, mismatch. Q predicts slow, observed quick because exactly 10 is not greater than 10, mismatch. R predicts slow, observed slow, match. S predicts quick, observed outcome unavailable, unassessed. One match out of three assessed cases, with one unassessed. This describes the assessed cases and does not establish the result for S or future trials.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Running the rule correctly proves the prediction correct",
+      "Rule execution and agreement with the observed outcome are separate checks."
+    ],
+    [
+      "A missing outcome is a success or a failure",
+      "Mark it unassessed and report the missing count alongside assessed results."
+    ],
+    [
+      "Every recorded observation must be true",
+      "Check the trial identity, units and evidence; document supported corrections."
+    ],
+    [
+      "A new trial repairs the old observation",
+      "A new trial has its own ID and result; the old outcome may remain unknown."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1a7ea9707aa0226d1269c672263303964bb0e2891ec81428de581eeadb3b7e2f",
+        "alt": "Visual card for the input stage: available evidence",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ffc54c22e1a454cd55db011d82ce12fdb1130b1ed31167a068717bc5dcc783b2",
+        "alt": "Visual card for the process stage: use a rule or model to estimate an unseen outcome",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/f68728a0b247aa37dbfbf4cc26ecd877b7442be292ba8756a5c75f37fd2625c8",
+        "alt": "Visual card for the output stage: prediction that must remain separate from verified fact",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  available evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  use a rule or model to estimate an unseen outcome"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  prediction that must remain separate from verified fact"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  A prediction is a fallible output supported by clues.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Prediction estimates a target that is unknown at decision time. Evidence supports the estimate; ground truth is the later or independently established outcome. Treating predictions as labels can create self-confirming records.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Two records meet at a comparison",
+        "columns": [
+          "Before the trial",
+          "After the trial",
+          "Comparison"
+        ],
+        "rows": [
+          [
+            "A: height 4 cm",
+            "Distance 3 units",
+            "Near matches near"
+          ],
+          [
+            "B: height 6 cm",
+            "Distance 3 units",
+            "Far differs from near"
+          ],
+          [
+            "C: height 8 cm",
+            "Distance 5 units",
+            "Far matches far"
+          ]
+        ],
+        "caption": "Ramp1 predicts from height: A near, B far, C far. The observation is travel distance. Apply the distance outcome rule separately, then compare categories for the same trial."
+      },
+      {
+        "type": "paragraph",
+        "text": "For B, the input 6 cm produces the prediction far. The later distance of 3 units produces the observed category near. This is a mismatch. Retain far as the original prediction and near as the observed category. Changing the old prediction to near would hide the mistake rather than improve the original result."
+      },
+      {
+        "type": "paragraph",
+        "text": "For A and C, the categories match. These two matches provide evidence about these trials. They do not show that every future prediction will be correct. Even a correctly computed prediction can disagree with an observation because following the model rule and matching the world are different checks."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b1c0d34b8542af1eeaea2a8a856602f4a47e0d127d06cf78cae61e3081b5b8b1",
+        "alt": "Comparison picture for Rain may start: forecast output; prediction",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/142cb64a237ef84492f8009b8de66feb07e297d1bd64fa9a19bc7cb58f3df743",
+        "alt": "Comparison picture for Dark clouds: observed condition; evidence",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/614899d62d50dc60392552d87019fb8d56b0feb2cf3fd3bab1a0f2b4b927fd4a",
+        "alt": "Comparison picture for Rain gauge recorded water: later measurement; fact for evaluation",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/c5d8760a449e1a581151f5982a5efef9b3629af9cda073fcb9b1f97745bb1fb7",
+        "alt": "Comparison picture for Animal label from model: unverified output; prediction, not fact",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Rain may start  Clue: forecast output. Meaning: prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Dark clouds  Clue: observed condition. Meaning: evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Rain gauge recorded water  Clue: later measurement. Meaning: fact for evaluation."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Animal label from model  Clue: unverified output. Meaning: prediction, not fact."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Do not copy a model prediction into the answer column and later call it ground truth.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

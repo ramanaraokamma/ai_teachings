@@ -1,0 +1,38 @@
+{
+  "week": "ai-4/24",
+  "title": "Train, Validation, Test",
+  "outcome": "By the end, I can explain train, validation, test using a traced example and a stated limitation.",
+  "scenario": "Assign a separate job to training, validation and final test evidence.",
+  "given": [
+    "Candidates A and B have training MAE1 and 0 cm; validation MAE2 and 3 cm. Selection rule is smallest validation MAE.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Fit on training",
+      "icon": "model",
+      "detail": "Both candidates are built using training data; B fits it more closely."
+    },
+    {
+      "label": "Select on validation",
+      "icon": "chart",
+      "detail": "Choose A because2 cm is below3 cm."
+    },
+    {
+      "label": "Reserve final test",
+      "icon": "shield",
+      "detail": "Freeze A before scoring final cases; do not select again using their labels."
+    }
+  ],
+  "explanation": "Read the picture in order. Freeze A before scoring final cases; do not select again using their labels. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "A and B both have validation MAE2 cm; A is simpler under a predeclared tie rule.",
+    "prediction": "Select A using the predeclared simpler-model tie-break.",
+    "reason": "The validation errors tie, so the stated second a = ry rule decides without consulting final data."
+  },
+  "student_task": "Why does B’s zero training MAE not settle the original choice? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Model selection is based on held-out validation error here. Lower training error can reflect fitting the training details rather than better new-case prediction. Changed-case check: Select A using the predeclared simpler-model tie-break. The validation errors tie, so the stated second a = ry rule decides without consulting final data.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Repeated validation use can itself overfit model choices; keep a genuinely untouched final evaluation.",
+  "review_note": "Reviewed Train, Validation, Test against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

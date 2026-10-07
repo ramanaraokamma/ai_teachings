@@ -1,0 +1,72 @@
+{
+  "week": "ai-2/21",
+  "title": "Similarity by Selected Traits",
+  "outcome": "By the end, I can calculate a feature distance and state how scaling changes its meaning.",
+  "scenario": "A fictional toy book matcher represents two preferences with numeric features.",
+  "given": [
+    "Target vector [2,5]. Candidate A=[2,2], B=[4,5], C=[3,4].",
+    "Use Manhattan distance: add absolute coordinate differences; return all smallest-distance candidates."
+  ],
+  "steps": [
+    {
+      "label": "Distance A",
+      "icon": "code",
+      "detail": "|2\u22122|+|5\u22122|=0+3=3."
+    },
+    {
+      "label": "Distance B",
+      "icon": "code",
+      "detail": "|2\u22124|+|5\u22125|=2+0=2."
+    },
+    {
+      "label": "Distance C",
+      "icon": "code",
+      "detail": "|2\u22123|+|5\u22124|=1+1=2."
+    },
+    {
+      "label": "Choose closest",
+      "icon": "output",
+      "detail": "B and C tie at distance 2; keep the tie visible."
+    }
+  ],
+  "explanation": "Each coordinate contributes according to the declared distance rule. Smaller distance means closer in this representation, not automatically a better reading experience. If one coordinate uses a much larger numerical scale, it can dominate the sum even when it is not more important. Feature units and scaling belong in the method record.",
+  "counterfactual": {
+    "change": "Give the first-coordinate difference weight 2 while the second keeps weight 1.",
+    "prediction": "Distances become A=3, B=4, C=3; A and C tie.",
+    "reason": "The representation\u2019s comparison rule changes; the supplied vectors stay the same."
+  },
+  "student_task": "Explain why B ceases to be a closest option without any candidate data changing.",
+  "teacher_answer": "Its first-coordinate gap 2 now contributes 4, raising its distance above A and C\u2019s 3.",
+  "project_evidence": "Specify recommender feature meanings, units, scaling and tie policy before explaining nearest matches.",
+  "limits": "A toy numeric encoding does not establish meaningful interpersonal distances or suitability of a recommendation.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment.",
+  "mini_visual": {
+    "kind": "scatter",
+    "title": "Toy feature positions",
+    "points": [
+      {
+        "x": 2,
+        "y": 2,
+        "label": "A"
+      },
+      {
+        "x": 4,
+        "y": 5,
+        "label": "B"
+      },
+      {
+        "x": 3,
+        "y": 4,
+        "label": "C"
+      }
+    ],
+    "query": {
+      "x": 2,
+      "y": 5,
+      "label": "Target"
+    },
+    "metric": "Manhattan distance; horizontal=first feature, vertical=second feature",
+    "x_label": "first toy feature",
+    "y_label": "second toy feature"
+  }
+}

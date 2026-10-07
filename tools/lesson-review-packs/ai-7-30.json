@@ -1,0 +1,135 @@
+{
+  "week": "ai-7/30",
+  "title": "Writing the methods section",
+  "grade": 12,
+  "project": "Reproducible AI Research Study",
+  "goals": [
+    "Explain the mechanism and terminology of writing the methods section",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Writing the methods section",
+  "vocabulary": [
+    [
+      "Methods section",
+      "The record of study design and computation"
+    ],
+    [
+      "Design choice",
+      "A decision affecting what evidence means"
+    ],
+    [
+      "Analysis assumption",
+      "A condition required by a statistical procedure"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Methods says used AI on data and got good scores; code and split are absent."
+      },
+      {
+        "type": "paragraph",
+        "text": "It omits model/procedure version, data identity, units/splits, baseline, metric and scoring. Reproduction and validity cannot be assessed from the description."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "Methods says used AI on data and got good scores; code and split are absent. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: It omits model/procedure version, data identity, units/splits, baseline, metric and scoring. Reproduction and validity cannot be assessed from the description.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "Methods names a dataset and metric, but not whether near-duplicate sources cross the split. What detail matters?",
+    "answer": "Teacher explanation: Describe grouping/deduplication and exact split assignment, including related examples. File names alone do not establish independence.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "A detailed methods section can reveal limitations; it does not guarantee a correct design."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Report question, units, sampling, permissions, data roles, baseline, procedure, metrics, uncertainty assumptions, missing/exclusion handling and versions. Distinguish prespecified and later changes."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Writing the methods section \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "Methods says used AI on data and got good scores; code and split are absent.",
+            "Report question, units, sampling, permissions, data roles, baseline, procedure, metrics, uncertainty assumptions, missing/exclusion handling and versions. Distinguish prespecified and later changes.",
+            "It omits model/procedure version, data identity, units/splits, baseline, metric and scoring. Reproduction and validity cannot be assessed from the description."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Methods says used AI on data and got good scores; code and split are absent. Show the intermediate steps and give the conclusion with its scope."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

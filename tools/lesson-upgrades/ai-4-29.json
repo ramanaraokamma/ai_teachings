@@ -1,0 +1,38 @@
+{
+  "week": "ai-4/29",
+  "title": "Feature Engineering",
+  "outcome": "By the end, I can explain feature engineering using a traced example and a stated limitation.",
+  "scenario": "Engineer a feature with a transformation defined before evaluating a new leaf.",
+  "given": [
+    "Training rectangular leaf cards have areas [2, 6, 10] cm². Area=length×width; center by training mean. Query length 2, width 4 cm.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Construct area",
+      "icon": "rule",
+      "detail": "Query area=2×4=8 cm²."
+    },
+    {
+      "label": "Fit centering",
+      "icon": "data",
+      "detail": "Training mean=(2+6+10)/3=6 cm²."
+    },
+    {
+      "label": "Apply unchanged transform",
+      "icon": "code",
+      "detail": "Centered query feature=8-6=2 cm²."
+    }
+  ],
+  "explanation": "Read the picture in order. Centered query feature=8-6=2 cm². The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Include the query in the centering mean.",
+    "prediction": "Mean becomes26/4=6.5 cm² and query feature1.5 cm²; this changes the fitted transformation.",
+    "reason": "A held-out input should not silently redefine a training-fitted preprocessing step."
+  },
+  "student_task": "What should be saved so another group transforms the query identically? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "The area definition, cm² units and training mean 6; the correct declared centered feature is 2 cm². Changed-case check: Mean becomes26/4=6.5 cm² and query feature1.5 cm²; this changes the fitted transformation. A held-out input should not silently redefine a training-fitted preprocessing step.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Area is a geometric toy feature. Useful predictive relationships need separate evaluation, and real leaves need a suitable measurement definition.",
+  "review_note": "Reviewed Feature Engineering against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

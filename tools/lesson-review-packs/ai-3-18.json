@@ -1,0 +1,293 @@
+{
+  "week": "ai-3/18",
+  "title": "Retrieval Augmented Generation",
+  "grade": 8,
+  "project": "Verified Study Buddy",
+  "goals": [
+    "Explain the mechanism and terminology of building a grounded answer",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Building a grounded answer",
+  "vocabulary": [
+    [
+      "Grounded claim",
+      "A claim supported by the available task evidence"
+    ],
+    [
+      "Qualifier",
+      "A condition restricting a statement"
+    ],
+    [
+      "Evidence table",
+      "A mapping from each claim to its supporting record"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Current source P approves room C; Q lists C capacity 10. Draft says room C is approved, seats 10 and offers lunch."
+      },
+      {
+        "type": "paragraph",
+        "text": "Approval and capacity are supported by P and Q; lunch lacks evidence. A grounded answer reports the first two claims and does not invent lunch."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "Current source P approves room C; Q lists C capacity 10. Draft says room C is approved, seats 10 and offers lunch. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: Approval and capacity are supported by P and Q; lunch lacks evidence. A grounded answer reports the first two claims and does not invent lunch.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "Source A approves room H; B lists H capacity 7, except maintenance limit 4. Maintenance status is unknown. Write a grounded response.",
+    "answer": "Teacher explanation: Room H approval is supported. State the conditional capacities 7 normally and 4 during maintenance, with status unresolved; do not choose an unconditional capacity.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "Grounding requires support for the exact claim, including conditions; attaching a source name is insufficient."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/cf328881435d8017d057561c27ae4b377ff034489023d202baaac11cb855908a",
+        "alt": "INPUT stage for Retrieval-Augmented Generation",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/880d27ff1e2bbf92a1001113bbbf347af6d99c2a785605f1b75b22f70d0e363b",
+        "alt": "PROCESS stage for Retrieval-Augmented Generation",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/edad13239e89ff51c9d0f3b7b10326f5522717755cd03dedc0d5f5e08bed73ce",
+        "alt": "OUTPUT stage for Retrieval-Augmented Generation",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Build a claim-evidence table before final wording. Preserve source versions and qualifiers, omit unsupported claims or explicitly state the gap, then validate the answer against the table."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Building a grounded answer \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "Current source P approves room C; Q lists C capacity 10. Draft says room C is approved, seats 10 and offers lunch.",
+            "Build a claim-evidence table before final wording. Preserve source versions and qualifiers, omit unsupported claims or explicitly state the gap, then validate the answer against the table.",
+            "Approval and capacity are supported by P and Q; lunch lacks evidence. A grounded answer reports the first two claims and does not invent lunch."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Apply the connected idea: Chunking and document structure"
+      },
+      {
+        "type": "paragraph",
+        "text": "Give each chunk its document/version ID, section and offsets. Preserve qualifiers or link adjacent material. Overlap can repeat information; repeated chunks are not independent sources."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Chunking and document structure \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "A notice says capacity 20, followed by during maintenance capacity 8. Separate chunks contain each sentence but retrieval returns only the first.",
+            "Give each chunk its document/version ID, section and offsets. Preserve qualifiers or link adjacent material. Overlap can repeat information; repeated chunks are not independent sources.",
+            "The first chunk alone lacks the applicable exception. Retrieve the linked condition and determine maintenance status before asserting capacity 20."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Apply the connected idea: Lexical and vector retrieval"
+      },
+      {
+        "type": "paragraph",
+        "text": "For a toy lexical score, count distinct query terms present after lowercase exact-word matching. For a toy vector score use a stated dot product. Compare relevance using independent judgments, not score magnitude alone."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Lexical and vector retrieval \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "Query terms red sensor. D1 text red sensor manual; D2 text red paint. Their lexical scores are 2 and 1. Vector query [1, 0], D1=[.4, .9], D2=[.8, .1].",
+            "For a toy lexical score, count distinct query terms present after lowercase exact-word matching. For a toy vector score use a stated dot product. Compare relevance using independent judgments, not score magnitude alone.",
+            "Lexical ranks D1 first; dot product ranks D2 first (.8 versus .4). The supplied task relevance favours the sensor manual; vector ranking alone does not prove relevance."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/baa081bb74d63b3556ecfd5951cdc8779d64ec1813de34614621c4e969a973f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/5e6557194a1470352d07b6a509da5d673d81767981996dd1b685f799a5582b76",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/8e1f2e3affdd81449df265675243cda4511c1e88dd8cd9583d4ea42f6083c297",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a54f0c40e48e47ca92a4c36ebbc98f08b4a78c72cd385d85b0a5a7f07f558757",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

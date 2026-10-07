@@ -1,0 +1,60 @@
+{
+  "week": "ai-4/15",
+  "title": "Confusion Matrix",
+  "outcome": "By the end, I can explain confusion matrix using a traced example and a stated limitation.",
+  "scenario": "Read the confusion matrix as four distinct stories about a plant decision.",
+  "given": [
+    "Positive means spotted. Toy results: TP=4, FN=1, FP=3, TN=12. Rows are actual spotted/healthy; columns predicted spotted/healthy.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Fill actual spotted row",
+      "icon": "data",
+      "detail": "Actual spotted: [4, 1]. Four caught; one missed."
+    },
+    {
+      "label": "Fill actual healthy row",
+      "icon": "chart",
+      "detail": "Actual healthy: [3, 12]. Three false alarms; twelve correctly clear."
+    },
+    {
+      "label": "Compute accuracy",
+      "icon": "check",
+      "detail": "Correct=4+12=16 of total 20, giving80%."
+    }
+  ],
+  "explanation": "Read the picture in order. Correct=4+12=16 of total 20, giving80%. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "A review corrects one missed spotted leaf, moving it from FN to TP.",
+    "prediction": "Counts become TP 5, FN 0, FP 3, TN 12; accuracy is 17/20=85%.",
+    "reason": "One decision becomes correct while the total number of evaluated leaves remains20."
+  },
+  "student_task": "Why is adding TP alone without reducing FN an incorrect revision? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "The same leaf changes category; it does not become a new evaluated case. Move one count from FN to TP to preserve the total 20. Changed-case check: Counts become TP 5, FN 0, FP 3, TN 12; accuracy is 17/20=85%. One decision becomes correct while the total number of evaluated leaves remains20.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "The matrix depends on positive-class definition and reference labels. Accuracy alone hides the difference between misses and false alarms.",
+  "review_note": "Reviewed Confusion Matrix against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Positive means spotted",
+    "cells": [
+      [
+        4,
+        1
+      ],
+      [
+        3,
+        12
+      ]
+    ],
+    "row_labels": [
+      "actual spotted",
+      "actual healthy"
+    ],
+    "column_labels": [
+      "predicted spotted",
+      "predicted healthy"
+    ]
+  }
+}

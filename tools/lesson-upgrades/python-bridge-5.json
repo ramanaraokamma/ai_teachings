@@ -1,0 +1,37 @@
+{
+  "week": "python-bridge/5",
+  "title": "Branching and boundary tests",
+  "outcome": "Trace branching and boundary tests and explain the changed program before running it.",
+  "scenario": "Check invalid values before branching. A toy shelf label uses fewer than five books as \"small\", otherwise \"large\", but negative counts are invalid.",
+  "given": [
+    "Python 3: if count<0: label=\"invalid\"; elif count<5: label=\"small\"; else: label=\"large\". Read as indented branches."
+  ],
+  "steps": [
+    {
+      "icon": "shield",
+      "label": "Check validity",
+      "detail": "For count=-2, the first condition selects invalid."
+    },
+    {
+      "icon": "rule",
+      "label": "Check small boundary",
+      "detail": "For count=4, validity passes and count<5 selects small."
+    },
+    {
+      "icon": "output",
+      "label": "Handle equality",
+      "detail": "For count=5, both earlier conditions fail, so large is selected."
+    }
+  ],
+  "explanation": "An if/elif/else chain selects the first matching branch. Putting invalid handling first prevents a negative count from being mislabelled as a small valid collection.",
+  "counterfactual": {
+    "change": "Remove the first negative-count branch.",
+    "prediction": "A count of -2 would incorrectly receive small.",
+    "reason": "Negative two is less than five, but it is not a permitted measured count."
+  },
+  "student_task": "Trace -2, 4 and 5 through the branches. Explain why the negative check comes first and what label -2 gets if it is removed.",
+  "teacher_answer": "The labels are invalid, small and large. The first branch stops negative inputs before the small rule. Without it, -2<5 produces small and breaks the input contract.",
+  "project_evidence": "For Python readiness before the Responsible Plant Classifier, retain a trace of the values, the predicted outputs and the changed-case explanation. Use actual Python 3 results to check the prediction after reasoning first.",
+  "limits": "The toy procedure assumes numeric counts; validate types and define missing-value behaviour before using it in a real service.",
+  "review_note": "Individually authored supported practice; distinct from the reserved independent case. Python semantics are checked on standalone snippets; no learned model or real pupil result is implied."
+}

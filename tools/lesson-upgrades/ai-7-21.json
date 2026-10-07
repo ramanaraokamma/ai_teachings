@@ -1,0 +1,37 @@
+{
+  "week": "ai-7/21",
+  "title": "Predefining an analysis plan",
+  "outcome": "Explain predefining an analysis plan using the records and boundaries of this fictional investigation.",
+  "scenario": "Freeze decisions before the result. A team records its outcome, exclusions and analysis before evaluating a reserved set.",
+  "given": [
+    "Plan: compare correct counts on 12 cases; exclude only unreadable files identified before scoring; report all version results."
+  ],
+  "steps": [
+    {
+      "icon": "book",
+      "label": "Write the rule first",
+      "detail": "Record the outcome and justified unreadable-file exclusion."
+    },
+    {
+      "icon": "shield",
+      "label": "Protect the reserved set",
+      "detail": "Do not choose exclusions from which cases each model fails."
+    },
+    {
+      "icon": "check",
+      "label": "Report deviations",
+      "detail": "If the plan changes, mark the change and give its reason."
+    }
+  ],
+  "explanation": "An analysis plan limits flexibility after outcomes are known. Necessary changes can be transparent, but they should not be silently presented as the original plan.",
+  "counterfactual": {
+    "change": "Exclude two readable cases because the new model fails them.",
+    "prediction": "That outcome-driven exclusion violates the recorded rule.",
+    "reason": "Model failure is not the predeclared unreadable-file criterion."
+  },
+  "student_task": "Apply the recorded exclusion rule. Can two readable model failures be removed, and how must a necessary later plan change be disclosed?",
+  "teacher_answer": "Record the outcome and justified unreadable-file exclusion. Do not choose exclusions from which cases each model fails. If the plan changes, mark the change and give its reason. Changed case: That outcome-driven exclusion violates the recorded rule. Model failure is not the predeclared unreadable-file criterion.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "A plan cannot correct poor sampling or guarantee valid assumptions; it makes decisions auditable.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted."
+}

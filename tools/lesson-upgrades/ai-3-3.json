@@ -1,0 +1,70 @@
+{
+  "week": "ai-3/3",
+  "title": "Tokens and Context",
+  "outcome": "By the end, I can budget context and preserve evidence needed to interpret a requested fact.",
+  "scenario": "A fictional assistant has a small context budget for answering an event-capacity question.",
+  "given": [
+    "Total budget 100 toy tokens; instructions 20, question 10, output reserve 25. Evidence capacity is the remainder.",
+    "Current capacity record A costs 18; its safety exception B costs 20; unrelated slogan C costs 12. A says 20 seats; B caps this event at 12."
+  ],
+  "steps": [
+    {
+      "label": "Compute budget",
+      "icon": "code",
+      "detail": "100−20−10−25=45 evidence tokens."
+    },
+    {
+      "label": "Select relevant pair",
+      "icon": "book",
+      "detail": "A+B costs 38 and preserves the capacity exception."
+    },
+    {
+      "label": "Reject incomplete shortcut",
+      "icon": "shield",
+      "detail": "A+C costs 30 but leaves out the exception that changes the answer."
+    },
+    {
+      "label": "Answer with scope",
+      "icon": "output",
+      "detail": "For this event, the declared cap is 12, with both A and B retained."
+    }
+  ],
+  "explanation": "A context window limits how much information is available in one model call. Selecting the shortest passage is not always sufficient: an exception can change the meaning of a general statement. Keep the relevant source relationship visible. Toy token costs are supplied here; real token counts depend on the model’s tokenizer.",
+  "counterfactual": {
+    "change": "Increase B’s cost to 30 with all other costs fixed.",
+    "prediction": "A+B costs 48 and no longer fits the 45-token evidence capacity.",
+    "reason": "Do not silently omit the exception; use an approved source-preserving summary, another retrieval step or an honest incomplete-evidence response."
+  },
+  "student_task": "Can A alone justify answering 20 seats after the exception is known?",
+  "teacher_answer": "No. The relevant exception limits this event to 12; omitting it would knowingly lose decisive evidence.",
+  "project_evidence": "Design Study Buddy retrieval to preserve current facts, exceptions and source identity within its context budget.",
+  "limits": "Fitting in context does not guarantee attention, correct interpretation or accurate generation.",
+  "review_note": "Individually designed fictional worked case, distinct from the reserved assessment. Toy model simplifications, arithmetic and source authority reviewed explicitly.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Context budget allocations",
+    "cells": [
+      [
+        20
+      ],
+      [
+        10
+      ],
+      [
+        25
+      ],
+      [
+        45
+      ]
+    ],
+    "row_labels": [
+      "Instructions",
+      "Question",
+      "Output reserve",
+      "Evidence available"
+    ],
+    "column_labels": [
+      "Toy tokens"
+    ]
+  }
+}

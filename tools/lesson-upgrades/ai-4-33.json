@@ -1,0 +1,38 @@
+{
+  "week": "ai-4/33",
+  "title": "Model Cards and Human Review",
+  "outcome": "By the end, I can explain model cards and human review using a traced example and a stated limitation.",
+  "scenario": "Write a model card whose performance statement can be traced to a concrete evaluation.",
+  "given": [
+    "Toy v = 3 classifier scored16/20 on five unseen plants with four views each, under indoor tablet lighting. Baseline scored14/20.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Name evidence",
+      "icon": "book",
+      "detail": "Record v = 3, 20 photo cases, 5 plant identities, group-separated split and indoor tablet conditions."
+    },
+    {
+      "label": "Compare baseline",
+      "icon": "chart",
+      "detail": "v = 3 accuracy 80%; baseline70% on the same 20 cases."
+    },
+    {
+      "label": "State limits",
+      "icon": "shield",
+      "detail": "Do not claim all cameras, outdoor conditions or disease diagnosis were validated."
+    }
+  ],
+  "explanation": "Read the picture in order. Do not claim all cameras, outdoor conditions or disease diagnosis were validated. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "The publicity sentence becomes “80% accurate for every plant”.",
+    "prediction": "Reject that unbounded statement.",
+    "reason": "The measured rate belongs to twenty related indoor photos, not every plant or setting."
+  },
+  "student_task": "Write a bounded replacement for the publicity sentence. Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "“v = 3 matched16 of20 reference labels on five held-out plants photographed indoors by tablet; baseline matched14 of20 under the same conditions.” Changed-case check: Reject that unbounded statement. The measured rate belongs to twenty related indoor photos, not every plant or setting.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "A model card communicates evidence; it is not certification of safety, fairness or suitability for consequential plant decisions.",
+  "review_note": "Reviewed Model Cards and Human Review against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

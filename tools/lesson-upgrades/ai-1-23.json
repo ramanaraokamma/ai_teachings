@@ -1,0 +1,60 @@
+{
+  "week": "ai-1/23",
+  "title": "Fair for Whom?",
+  "outcome": "By the end, I can compare group fractions and combine unequal-sized groups correctly.",
+  "scenario": "A fictional badge reader is evaluated on bright and dim cards with known reference labels.",
+  "given": [
+    "Version M is correct on 9 of 10 bright cards and 3 of 6 dim cards.",
+    "Version N uses the same cards: 8 of 10 bright and 5 of 6 dim correct."
+  ],
+  "steps": [
+    {
+      "label": "Bright group",
+      "icon": "chart",
+      "detail": "M:9/10=90%; N:8/10=80%."
+    },
+    {
+      "label": "Dim group",
+      "icon": "chart",
+      "detail": "M:3/6=50%; N:5/6≈83.3%."
+    },
+    {
+      "label": "Combined counts",
+      "icon": "code",
+      "detail": "M:(9+3)/16=75%; N:(8+5)/16=81.25%."
+    },
+    {
+      "label": "Discuss trade-off",
+      "icon": "person",
+      "detail": "N improves total and dim results but loses one bright success."
+    }
+  ],
+  "explanation": "Adding correct counts and denominators weights each tested card once. Averaging 90% and 50% would incorrectly give unequal groups equal size in the all-card rate. The group breakdown reveals a trade-off hidden by the total. Decide what matters with the relevant users rather than announcing that one number proves fairness.",
+  "counterfactual": {
+    "change": "Give bright and dim groups equal weight as an explicitly different metric.",
+    "prediction": "M scores 70%; N scores about 81.7%.",
+    "reason": "This averages group rates and is not the original 16-card agreement rate."
+  },
+  "student_task": "Which group loses performance under N, and can total improvement erase that fact?",
+  "teacher_answer": "Bright drops from 90% to 80%. No; retain the subgroup result alongside the improved total.",
+  "project_evidence": "Report sorter outcomes by relevant conditions and record whose failures matter when choosing a revision.",
+  "limits": "Six dim cards supply limited evidence; these descriptive rates do not prove a system is fair for all users.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Group rates compared on the same cards",
+    "labels": [
+      "M bright",
+      "M dim",
+      "N bright",
+      "N dim"
+    ],
+    "values": [
+      90,
+      50,
+      80,
+      83.33333333333333
+    ],
+    "unit": "percent correct"
+  }
+}

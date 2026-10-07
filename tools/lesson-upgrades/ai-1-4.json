@@ -1,0 +1,56 @@
+{
+  "week": "ai-1/4",
+  "title": "Rules or Learned Patterns?",
+  "outcome": "By the end, I can distinguish choosing a rule from applying an already chosen rule.",
+  "scenario": "A fictional paper sorter learns a size boundary for toy pebbles.",
+  "given": [
+    "Training diameters are 1,3,5,7 cm with labels small,small,large,large.",
+    "Compare large-at-least-3 with large-at-least-5; choose fewer errors."
+  ],
+  "steps": [
+    {
+      "label": "Training examples",
+      "icon": "data",
+      "detail": "Diameters 1,3,5,7 have reference labels S,S,L,L."
+    },
+    {
+      "label": "Candidate 3",
+      "icon": "rule",
+      "detail": "Predictions S,L,L,L: one disagreement at 3."
+    },
+    {
+      "label": "Candidate 5",
+      "icon": "rule",
+      "detail": "Predictions S,S,L,L: zero disagreements."
+    },
+    {
+      "label": "New pebble",
+      "icon": "model",
+      "detail": "Selected boundary 5 predicts small for a new diameter 4."
+    }
+  ],
+  "explanation": "The learning procedure compares candidate rules against supplied examples and selects boundary 5. Applying that boundary to diameter 4 is a later prediction step. An explicit threshold can be selected from data; being easy to write does not make its origin unknowable.",
+  "counterfactual": {
+    "change": "Give a new pebble diameter 5 instead of 4.",
+    "prediction": "The selected rule predicts large.",
+    "reason": "At least includes equality, so 5 meets the boundary."
+  },
+  "student_task": "Show which stage used labels and which stage used only the new measurement.",
+  "teacher_answer": "Selection used all four training labels. The new prediction compares diameter with 5 without seeing its reference label.",
+  "project_evidence": "Document whether the sorter’s rules were teacher-written or chosen from examples, retaining candidate errors.",
+  "limits": "Zero training disagreements do not prove every future pebble receives the correct label.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Training errors by candidate boundary",
+    "labels": [
+      "Boundary 3",
+      "Boundary 5"
+    ],
+    "values": [
+      1,
+      0
+    ],
+    "unit": "disagreements"
+  }
+}

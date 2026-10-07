@@ -1,0 +1,298 @@
+{
+  "week": "ai-1/15",
+  "title": "Save New Examples for Testing",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Separate examples used to choose a model from examples reserved for its final evaluation",
+    "Record a fixed model and its predictions before revealing comparison labels",
+    "Explain how test feedback changes the evidence available for a revised model"
+  ],
+  "primary_topic": "Keeping final tests unseen",
+  "vocabulary": [
+    [
+      "Development examples",
+      "Examples available for fitting, comparing or revising a model"
+    ],
+    [
+      "Held-out test set",
+      "Examples reserved from development for evaluating a fixed model"
+    ],
+    [
+      "Freeze",
+      "Record a model and stop changing it for a particular evaluation"
+    ],
+    [
+      "Test leakage",
+      "Information from a reserved test influencing model development"
+    ],
+    [
+      "Evaluation record",
+      "A record of the tested model, predictions, comparison labels and results"
+    ]
+  ],
+  "worked_example": {
+    "title": "Report the original test before making improvements",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Reserved height",
+          "Saved TowerA prediction",
+          "Revealed comparison label"
+        ],
+        "rows": [
+          [
+            "3 cm",
+            "Short",
+            "Short"
+          ],
+          [
+            "5 cm",
+            "Tall",
+            "Short"
+          ],
+          [
+            "7 cm",
+            "Tall",
+            "Tall"
+          ],
+          [
+            "9 cm",
+            "Tall",
+            "Tall"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "TowerA agrees on three of these four reserved examples and disagrees at 5 cm. That is evidence about this fixed model on this small set. It does not prove a success rate for every future tower. The labels, range of examples and way records were selected also matter."
+      },
+      {
+        "type": "paragraph",
+        "text": "After seeing the 5 cm label, the team changes the threshold to 6 and names the revision TowerB. TowerB agrees on all four of these now-seen examples. The change may be useful, but those examples have influenced its development. Four agreements on them are not an independent final test result for TowerB. Keep TowerA\u2019s original three-of-four record."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Preserve the original result",
+    "prompt": "TowerA uses threshold 5 on reserved heights 3, 5, 7 and 9 cm. The labels are short, short, tall and tall. Write its predictions, agreements and disagreement. Then state why TowerB with threshold 6, selected after seeing these labels, cannot claim four independent test successes on these same records.",
+    "lines": 7,
+    "answer": "TowerA predicts short, tall, tall, tall: three agreements and one disagreement at 5. TowerB predicts short, short, tall, tall, matching all four, but the revealed labels influenced its selection. Report its four agreements as a result on examples used in development, preserving TowerA\u2019s original test record."
+  },
+  "independent_case": {
+    "title": "Run a separate ribbon experiment",
+    "task": "Before receiving any test labels, freeze RibbonA: whole cm lengths 1 through 12, long at least 6 cm and short otherwise. Save predictions for 5, 7, 9 and 11 cm. Ask your teacher to reveal the reserved labels, then record agreements, disagreements and a limited result statement. If you later choose threshold 8 after seeing these labels, explain how you must describe its result on the same records.",
+    "answer": "Saved predictions are short, long, long, long. Reveal labels only after predictions are saved: short, short, long, long. RibbonA has three agreements and one disagreement at 7 on four reserved records. Threshold 8 then gives short, short, long, long, but it was chosen after feedback. Its four agreements are on now-seen development examples, not a new independent test. Do not alter the saved RibbonA predictions.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A new file makes old records unseen",
+      "Trace whether records or copies already influenced development, regardless of their file names."
+    ],
+    [
+      "Only labels copied into training can leak",
+      "A test score can guide rule selection even when individual labels remain hidden."
+    ],
+    [
+      "Testing means the model can never improve",
+      "Improve openly, preserve the original result, and obtain fresh independent evidence for the revision."
+    ],
+    [
+      "A perfect reserved score proves universal correctness",
+      "Check sample size, variety, relation to development records and intended use; keep the conclusion within the evidence."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/0e68ba5c930fce1b6c382634930e55df9c176390207384d78ad8199fa81f1da6",
+        "alt": "Visual card for the input stage: all labeled cards",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/7a9a3021b841aa993b7f7122ab70e35332f31f481337cf412652d2b81a034308",
+        "alt": "Visual card for the process stage: separate training and untouched testing before rule creation",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/6bbed20878790eda44473c3396ee722bb1655e3ca02d8a4139a0b218cc54091d",
+        "alt": "Visual card for the output stage: honest performance evidence on new cards",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  all labeled cards"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  separate training and untouched testing before rule creation"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  honest performance evidence on new cards"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  A fair test uses examples not used to create the decision process.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Evaluation on training data is optimistically biased. A holdout test set estimates behavior on unseen examples only if it remains untouched during design. Repeatedly tuning to test results leaks information and turns the test into training.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Different roles for development and final testing",
+        "columns": [
+          "Evidence available",
+          "Allowed step",
+          "Record to keep"
+        ],
+        "rows": [
+          [
+            "Development examples",
+            "Fit and select a model",
+            "Choice and its reasons"
+          ],
+          [
+            "Reserved inputs; labels hidden",
+            "Use the frozen model",
+            "Predictions and version"
+          ],
+          [
+            "Reserved labels revealed",
+            "Compare without revising",
+            "Results for that version"
+          ]
+        ],
+        "caption": "Read the rows in order. Information from the final comparison must not travel back into model selection while the result is still described as an independent final test of that model."
+      },
+      {
+        "type": "paragraph",
+        "text": "In the completed experiment, development towers at heights 2, 4, 6 and 8 cm have labels short, short, tall and tall. Candidates predict tall at or above 5 or 6 cm. Both fit all four labels; the stated smaller-threshold tie rule selects 5. The team freezes model TowerA with threshold 5."
+      },
+      {
+        "type": "paragraph",
+        "text": "The reserved inputs are different records at heights 3, 5, 7 and 9 cm. TowerA accepts whole cm heights from 1 through 10. It predicts short, tall, tall and tall. These predictions are saved before the reserved labels are opened. The comparison below records what happened, including the failure."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4fe1738493efe4e147111e3d2247511ec740a163618a9643c325dfc93f4dcf5f",
+        "alt": "Comparison picture for Card used to write rule: belongs in learn pile; training evidence",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/d543831b958b67a2b59c37ecf3d044a3b91bb7eea4697f97c6f71a260b540f17",
+        "alt": "Comparison picture for Sealed card: unseen until final run; test evidence",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b296c8d38bf991b92431ec29a8bb7ab32388909dd408c3b5b3872f10cf48b92f",
+        "alt": "Comparison picture for Peek then revise: test influenced process; leakage",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/9c0a253ee1dfc81d6ec7521652bcffbae5fb791272d7f32ce5079957af9730d7",
+        "alt": "Comparison picture for Fresh local card: new after design; strong transfer check",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Card used to write rule  Clue: belongs in learn pile. Meaning: training evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Sealed card  Clue: unseen until final run. Meaning: test evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Peek then revise  Clue: test influenced process. Meaning: leakage."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Fresh local card  Clue: new after design. Meaning: strong transfer check."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  A test set stops being independent when its answers guide revisions.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "week": "ai-2/34",
+  "title": "Test Diverse Users",
+  "outcome": "By the end, I can evaluate varied case types and prioritise an important failure slice.",
+  "scenario": "A fictional recommender is tested on distinct ordinary, equality, invalid-input and tie cases.",
+  "given": [
+    "Recorded full passes: ordinary 4/4; equality 1/3; invalid 2/3; ties 1/2.",
+    "Categories are disjoint and every case was run on the same frozen version with the same contract."
+  ],
+  "steps": [
+    {
+      "label": "Total count",
+      "icon": "code",
+      "detail": "Passes 4+1+2+1=8; cases 4+3+3+2=12."
+    },
+    {
+      "label": "Overall rate",
+      "icon": "chart",
+      "detail": "8/12≈66.7% full passes."
+    },
+    {
+      "label": "Find weak slices",
+      "icon": "chart",
+      "detail": "Equality 1/3; invalid 2/3; ties 1/2; ordinary 4/4."
+    },
+    {
+      "label": "Prioritise repair",
+      "icon": "person",
+      "detail": "Inspect failed equality traces and any invalid-input safety consequence, not only the total."
+    }
+  ],
+  "explanation": "Varied tests expose behavior an ordinary demonstration misses. The overall result combines disjoint cases once each; overlapping labels would require unique-case accounting. Prioritisation also depends on consequences: a malformed input that triggers an unauthorised action can be more serious than a harmless tie-order failure. Retain each failed case and its expected output.",
+  "counterfactual": {
+    "change": "Someone reports only the ordinary slice.",
+    "prediction": "The claim becomes 4/4 on ordinary cases, not 100% across all tests.",
+    "reason": "Eight nonordinary cases and their failures have been omitted."
+  },
+  "student_task": "Can these records establish performance for different user groups?",
+  "teacher_answer": "No. They describe input-case types. No user-group membership or group-specific outcomes were supplied.",
+  "project_evidence": "Build a recommender evaluation matrix with routine, boundary, missing, invalid and tie cases, then add separately planned user-condition coverage.",
+  "limits": "Twelve designed cases describe this test suite, not an unbiased estimate of future usage accuracy.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Disjoint evaluation categories",
+    "cells": [
+      [
+        4,
+        4
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "row_labels": [
+      "Ordinary",
+      "Equality",
+      "Invalid",
+      "Ties"
+    ],
+    "column_labels": [
+      "Full passes",
+      "Cases run"
+    ]
+  }
+}

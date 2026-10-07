@@ -1,0 +1,38 @@
+{
+  "week": "ai-3/18",
+  "title": "Retrieval Augmented Generation",
+  "outcome": "By the end, I can explain retrieval augmented generation using a traced example and a stated limitation.",
+  "scenario": "Turn a short science source into an answer with a visible claim-to-source map.",
+  "given": [
+    "Approved note S4 says: ice is solid water; warming can melt ice into liquid water. No temperature or speed is supplied.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Read source",
+      "icon": "book",
+      "detail": "S4 supports the material identity and the solid-to-liquid change."
+    },
+    {
+      "label": "Draft two claims",
+      "icon": "model",
+      "detail": "Draft: ice is solid water; warming can turn it into liquid water."
+    },
+    {
+      "label": "Check each claim",
+      "icon": "check",
+      "detail": "Both claims match S4. A claim that melting takes exactly two minutes would not match."
+    }
+  ],
+  "explanation": "Read the picture in order. Both claims match S4. A claim that melting takes exactly two minutes would not match. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "The question asks exactly how long this ice takes to melt.",
+    "prediction": "Say that S4 does not provide a time.",
+    "reason": "A general change of state does not determine a duration for an unspecified sample."
+  },
+  "student_task": "Which part of the source supports a two-minute melting claim? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "None. Keep the supported state-change explanation and explicitly say the time is not supplied. Changed-case check: Say that S4 does not provide a time. A general change of state does not determine a duration for an unspecified sample.",
+  "project_evidence": "For your Verified Study Buddy, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "This source-grounding exercise does not establish that every source is complete or scientifically authoritative.",
+  "review_note": "Reviewed Retrieval Augmented Generation against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

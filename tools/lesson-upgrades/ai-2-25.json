@@ -1,0 +1,43 @@
+{
+  "week": "ai-2/25",
+  "title": "Text as Pieces",
+  "outcome": "By the end, I can encode and decode text using a specified vocabulary and matching rule.",
+  "scenario": "A fictional tokenizer converts a short catalogue phrase into tokens.",
+  "given": [
+    "Vocabulary entries: book, books and the space character. At each position choose the longest matching entry; preserve the actual space.",
+    "Text is “books book”. Exclamation marks have no token; zero-based character positions are used."
+  ],
+  "steps": [
+    {
+      "label": "Read prefix",
+      "icon": "book",
+      "detail": "At position 0, longest matching entry is books, not book."
+    },
+    {
+      "label": "Encode phrase",
+      "icon": "code",
+      "detail": "Tokens: books, space-character, book; three tokens."
+    },
+    {
+      "label": "Decode",
+      "icon": "output",
+      "detail": "Joining token text returns exactly books book."
+    },
+    {
+      "label": "Unknown character",
+      "icon": "shield",
+      "detail": "For books book!, the ! at position 10 has no token: stop with error."
+    }
+  ],
+  "explanation": "A token is defined by the vocabulary and encoding rule; it need not be one word or one character. Longest matching matters where vocabulary entries overlap. Counting text tokens here does not count letters. Preserve spaces during decoding so the reconstructed text matches the original exactly.",
+  "counterfactual": {
+    "change": "Use a character vocabulary covering b,o,k,s and space instead.",
+    "prediction": "The same phrase uses ten character tokens.",
+    "reason": "There are five letters, one space and four letters; its decoded text remains unchanged."
+  },
+  "student_task": "Why is the unknown ! at position 10 rather than position 9?",
+  "teacher_answer": "books occupies 0–4, space is 5, book is 6–9, so ! is character 10.",
+  "project_evidence": "Document the recommender’s text representation and unknown-token behavior rather than assuming every model counts words identically.",
+  "limits": "This deterministic toy tokenizer omits real subword training, Unicode handling and model-specific special tokens.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment."
+}

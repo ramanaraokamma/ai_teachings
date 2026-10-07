@@ -1,0 +1,258 @@
+{
+  "week": "ai-4/20",
+  "title": "Mean, Median, and Baselines",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Fit mean and median constant baselines on training targets",
+    "Compare constant predictions on separate records",
+    "Keep fitted constants independent of evaluation answers"
+  ],
+  "primary_topic": "Constant prediction baselines",
+  "vocabulary": [
+    [
+      "Constant baseline",
+      "One fixed prediction for every query"
+    ],
+    [
+      "Training mean",
+      "Sum of training targets divided by their count"
+    ],
+    [
+      "Training median",
+      "Middle value of sorted training targets"
+    ],
+    [
+      "Absolute error",
+      "Magnitude of observed minus predicted"
+    ]
+  ],
+  "worked_example": {
+    "title": "Explain the visual",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Constant prediction baselines at a glance",
+        "columns": [
+          "Part",
+          "Evidence or action",
+          "Interpretation"
+        ],
+        "rows": [
+          [
+            "Training targets",
+            "Fit mean 6",
+            "Freeze constant"
+          ],
+          [
+            "Training targets",
+            "Fit median 5",
+            "Freeze constant"
+          ],
+          [
+            "Evaluation targets",
+            "Compare fixed predictions",
+            "Both MAE 2 here"
+          ]
+        ],
+        "caption": "Mean and median answer different training objectives. A mean minimizes total squared error among constants; a median minimizes total absolute error. This does not guarantee either wins on a new evaluation set. With extreme values, the mean can move much more than the median."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Calculate MAE for both baselines on [4, 8]. Explain the steps or evidence behind your response.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Score separately",
+    "prompt": "Calculate MAE for both baselines on [4, 8].",
+    "answer": "Teacher explanation: Both score 2; their per-record absolute errors differ.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Apply independently",
+    "task": "Training [1, 3, 5, 15], evaluation [3, 9]. Fit both constants and calculate MAE.",
+    "answer": "Teacher explanation: Mean 6 and median 4. Mean errors [3, 3] MAE 3; median errors [1, 5] MAE 3.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A final answer is enough",
+      "Ask for the relevant counts, units, procedure or saved record. For this week: Mean 6; median 5."
+    ],
+    [
+      "A stronger claim makes a stronger project",
+      "It fits using evaluation answers and makes the baseline unavailable for genuinely unseen cases."
+    ],
+    [
+      "The new case can be copied from the example",
+      "The independent task changes the evidence. Require a fresh explanation: Mean 6 and median 4. Mean errors [3, 3] MAE 3; median errors [1, 5] MAE 3."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/38f9fa192d668bc412ef7962f4f39cecaeecdd2056e03393538bceeffd612314",
+        "alt": "Week 20 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/8ad715a1089d08d96f248609646e41fef85aff6f7af353322bb49432e09a7174",
+        "alt": "Week 20 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/e047ed82403e8bb50c20aa44b2ddf8dc375dbecc3c71ffdbb3d877fb09a44ac7",
+        "alt": "Week 20 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Choose and justify a baseline under an extreme value."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  Mean and median are transparent regression baselines; outliers affect them differently."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Heights are 10, 11, 12, 13, and 54 cm. Mean = 100 \u00f7 5 = 20 cm.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Training targets [2, 4, 6, 12] have mean 24/4=6 and median (4+6)/2=5. On separate targets [4, 8], the mean baseline predicts [6, 6] with absolute errors [2, 2], averaging 2. The median baseline predicts [5, 5] with errors [1, 3], also averaging 2."
+      },
+      {
+        "type": "code",
+        "title": "Python 3 check",
+        "text": "from statistics import mean, median\ntraining = [2, 4, 6, 12]\nvalidation = [4, 8]\nfor name, value in [(\"mean\", mean(training)),\n                    (\"median\", median(training))]:\n    mae = mean(abs(y - value) for y in validation)\n    print(name, value, mae)\n# Both validation MAEs are 2; constants differ."
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the calculation on paper before running this optional Python check. Use the stated fictional inputs and compare intermediate values. The code checks this example; your independent workbook case uses different evidence."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 20 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 20 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 20 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 20 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

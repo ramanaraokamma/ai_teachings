@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/15",
+  "title": "Approval gates and idempotency",
+  "outcome": "Explain approval gates and idempotency using the deciding step in this fictional service.",
+  "scenario": "One approval, one reservation. A desk tool needs approval for the exact request and deduplicates repeated request keys.",
+  "given": [
+    "K9 reserves desk 4 and is approved once. Two copies of K9 arrive."
+  ],
+  "steps": [
+    {
+      "label": "Check approval",
+      "icon": "person",
+      "detail": "The approved identifier and desk match K9."
+    },
+    {
+      "label": "Execute first copy",
+      "icon": "shield",
+      "detail": "No result is stored yet, so perform the approved reservation once."
+    },
+    {
+      "label": "Handle duplicate",
+      "icon": "check",
+      "detail": "Return the stored K9 result without another reservation."
+    }
+  ],
+  "explanation": "Approval answers whether an action may proceed. Idempotency prevents repeated handling of that action from creating duplicate effects.",
+  "counterfactual": {
+    "change": "A new K10 asks for desk 5 without approval.",
+    "prediction": "Stop K10 at the approval gate.",
+    "reason": "K9’s approval does not apply to a different action."
+  },
+  "student_task": "Trace the two deliveries of approved K9. How many reservations should occur, and why can a new K10 for desk 5 not borrow K9’s approval?",
+  "teacher_answer": "The approved identifier and desk match K9. No result is stored yet, so perform the approved reservation once. Return the stored K9 result without another reservation. Changed case: Stop K10 at the approval gate. K9’s approval does not apply to a different action.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "Deduplication requires reliable stored keys; this illustration does not prove crash-safe exactly-once execution.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

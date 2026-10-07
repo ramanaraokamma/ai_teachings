@@ -1,0 +1,245 @@
+{
+  "week": "ai-2/24",
+  "title": "Feedback Loops",
+  "grade": 7,
+  "project": "Transparent Book Recommender",
+  "goals": [
+    "Implement a deterministic recommender",
+    "Handle ties and no eligible options",
+    "Explain recommendations with their limits"
+  ],
+  "primary_topic": "Implementing a recommender",
+  "vocabulary": [
+    [
+      "Recommender",
+      "A procedure that suggests options using a stated policy"
+    ],
+    [
+      "Tie",
+      "Two options have the same comparison score"
+    ],
+    [
+      "Deterministic",
+      "The same inputs and rules produce the same result"
+    ],
+    [
+      "Explanation",
+      "Evidence describing how a result was obtained"
+    ]
+  ],
+  "worked_example": {
+    "title": "Predict before running",
+    "blocks": [
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Predict the result if the list order is reversed, and if the limit is 8.",
+        "lines": 6
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Handle no match",
+    "prompt": "State recommend([], 10) and the worked items with limit 8.",
+    "answer": "Both return None; the caller should display no eligible option.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Implement independently",
+    "task": "Use the function with X (fun 4, learning 1, minutes 12), Y (3,3,10), Z (5,5,13), limit 12. Predict the winner, reverse the list and retest. Also test limit 9.",
+    "answer": "X and Y score 9; Z is excluded. X wins alphabetically in either order. Limit 9 returns None.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A successful run proves the conclusion",
+      "The recommendation follows a written scoring policy. It does not learn preferences, prove learning benefit or authorize an action. Display the chosen rule and let a person review whether an option is suitable."
+    ],
+    [
+      "Matching the example is enough",
+      "Require the new W4 case, explicit predictions and an explanation. Fresh retry: B (2,4,8), C (3,2,8), A (5,5,9), limit 8. B/C tie at 8; B wins. Limit 7 returns None."
+    ],
+    [
+      "A convenient shortcut preserves meaning",
+      "Updating best on score >= best_score makes the last tied item win, so reordering can change results. Use the explicit name comparison for ties. Test both orders and a no-match case after the repair."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/c387fa6a8dadd8d8cbe8441e98ed0ab9d4d5a445a396b616730ec4878d45f042",
+        "alt": "INPUT stage for Feedback Loops",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/72ef757b33af83c9e70bdd7122082f05f5ee31dfa601e6358bcd72214fda1fcf",
+        "alt": "PROCESS stage for Feedback Loops",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b4b9e6772a0c39a429f01554c404543a858a93b4edee14cc72bb60e416567030",
+        "alt": "OUTPUT stage for Feedback Loops",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "def recommend(items, limit):\n    best = None\n    best_score = None\n    for item in items:\n        if item[\"minutes\"] <= limit:\n            score = 2 * item[\"fun\"] + item[\"learning\"]\n            if (best is None or score > best_score\n                or (score == best_score and item[\"name\"] < best)):\n                best = item[\"name\"]\n                best_score = score\n    return best\n\nitems = [{\"name\": \"B\", \"fun\": 3, \"learning\": 2, \"minutes\": 10},\n         {\"name\": \"A\", \"fun\": 2, \"learning\": 4, \"minutes\": 9}]\nprint(recommend(items, 10))"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow the evidence",
+        "columns": [
+          "Step or case",
+          "Evidence",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "B",
+            "Eligible score 8",
+            "Temporary best B"
+          ],
+          [
+            "A",
+            "Eligible score 8",
+            "Alphabetical tie gives A"
+          ]
+        ],
+        "caption": "Read each row from left to right and connect the evidence to the stated rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "The function prints nothing; the caller prints A. best starts as None to mean no eligible option found. Python short-circuits or: when best is None, later comparisons in that condition need not run. After selecting an item, best_score is numeric. An empty list or no eligible item returns None."
+      },
+      {
+        "type": "subheading",
+        "text": "Trace the best-so-far record"
+      },
+      {
+        "type": "paragraph",
+        "text": "Write a trace table with item, eligible, score and best-so-far. In the worked list, B qualifies and scores 8, so B becomes the current best. A also qualifies and scores 8. The scores tie, so the written alphabetical rule changes the best to A. Starting with A gives the same final answer. If no item qualifies, best stays None; do not invent a winner or quietly relax the limit."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1f18213ba3d74c99072fa04ad7520b53eee0b2e9e845b0d8a61ccdda1b41f3f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fed8318cf337134a2c31a8d2c90831db67a27a43d3c6f85b25079c53ec37ff9a",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/75f964dbe29000347e518a59e2717387d7109bd1f947abdafa07e931a61cf754",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4d936b6648b81ac897fc99370c2788f8e0b135d8fc31cfd77afceee66a92128c",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "week": "ai-2/2",
+  "title": "Decompose a Goal",
+  "outcome": "By the end, I can decompose a calculation into a function with explicit arguments and a returned result.",
+  "scenario": "A fictional library computes total spine labels needed for several equal shelves.",
+  "given": [
+    "Define labels(shelves,per_shelf): return shelves*per_shelf.",
+    "Call needed=labels(4,6), then print(needed). No other side effects are defined."
+  ],
+  "steps": [
+    {
+      "label": "Call with arguments",
+      "icon": "code",
+      "detail": "The call supplies shelves=4 and per_shelf=6 locally."
+    },
+    {
+      "label": "Function body",
+      "icon": "rule",
+      "detail": "Multiply 4×6 to calculate 24."
+    },
+    {
+      "label": "Return value",
+      "icon": "output",
+      "detail": "return sends 24 back to the caller; it does not print."
+    },
+    {
+      "label": "Caller prints",
+      "icon": "code",
+      "detail": "needed receives 24; print(needed) displays 24."
+    }
+  ],
+  "explanation": "A function separates one named job from the surrounding program. Arguments supply data for this call; return supplies its result. A print statement in the caller is a different action. Clear parameter names help detect swapping or misusing inputs without assuming every function prints automatically.",
+  "counterfactual": {
+    "change": "Call labels(4,0) instead.",
+    "prediction": "The returned result is 0, and the caller prints 0.",
+    "reason": "Four shelves times zero labels per shelf is zero."
+  },
+  "student_task": "What happens visibly if the caller stores needed but omits print(needed)?",
+  "teacher_answer": "The calculation returns 24 and needed stores it, but the shown program displays nothing because no print runs.",
+  "project_evidence": "Give the recommender separate validation, eligibility and scoring functions whose inputs and results can be tested independently.",
+  "limits": "This function assumes compatible numeric inputs; it does not reject negative shelves or verify real shelf contents.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment."
+}

@@ -1,0 +1,37 @@
+{
+  "week": "ai-7/3",
+  "title": "Finding primary research",
+  "outcome": "Explain finding primary research using the records and boundaries of this fictional investigation.",
+  "scenario": "Find the source behind a summary. A blog describes a fictional benchmark improvement and links an original study report.",
+  "given": [
+    "Blog says \"90% reliable\". Original report records 9/10 correct on one fixed fictional task set and describes its labels."
+  ],
+  "steps": [
+    {
+      "icon": "book",
+      "label": "Follow the primary link",
+      "detail": "Open the original report rather than treating the blog as the measurement."
+    },
+    {
+      "icon": "data",
+      "label": "Locate methods and results",
+      "detail": "Identify the ten cases, labels and nine correct results."
+    },
+    {
+      "icon": "check",
+      "label": "Record source details",
+      "detail": "Keep report version and page or table reference with the exact scoped result."
+    }
+  ],
+  "explanation": "Primary research exposes the procedure and observations behind a summary. It still needs scrutiny; being original does not make every interpretation correct.",
+  "counterfactual": {
+    "change": "The original report is unavailable and only the blog remains.",
+    "prediction": "Mark the measurement as unverified rather than filling in absent methods.",
+    "reason": "The summary cannot supply details that have not been inspected."
+  },
+  "student_task": "Separate what the blog claims from what the original report records. Which methods and denominator must be inspected, and what status is honest if the original report is unavailable?",
+  "teacher_answer": "Open the original report rather than treating the blog as the measurement. Identify the ten cases, labels and nine correct results. Keep report version and page or table reference with the exact scoped result. Changed case: Mark the measurement as unverified rather than filling in absent methods. The summary cannot supply details that have not been inspected.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "This example names fictional documents; it is a source-tracing exercise, not a real literature citation.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted."
+}

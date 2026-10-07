@@ -1,0 +1,43 @@
+{
+  "week": "ai-3/16",
+  "title": "Verify Numbers and Dates",
+  "outcome": "By the end, I can verify numbers and dates without inventing the intended correction.",
+  "scenario": "A fictional Study Buddy checks a science-club summary against supplied counts and calendar facts.",
+  "given": [
+    "Record: 15 of 20 fictional model trials passed. Draft: “70% passed; the meeting is on June 31.”",
+    "June has 30 days. No authoritative record gives the intended meeting date."
+  ],
+  "steps": [
+    {
+      "label": "Check denominator",
+      "icon": "data",
+      "detail": "There are 15 passes out of 20 total trials."
+    },
+    {
+      "label": "Calculate percentage",
+      "icon": "code",
+      "detail": "15÷20×100=75%, not 70%."
+    },
+    {
+      "label": "Validate date",
+      "icon": "clock",
+      "detail": "June 31 is invalid because June has 30 days."
+    },
+    {
+      "label": "Resolve missing intent",
+      "icon": "question",
+      "detail": "Ask the event owner for the correct date; do not assume June 30 or July 1."
+    }
+  ],
+  "explanation": "A percentage requires the correct numerator and denominator. Calendar validation identifies an impossible date, but it cannot discover what date the author intended. These checks use different evidence: arithmetic repairs the percentage from the supplied counts, while the date needs another authoritative source before publication.",
+  "counterfactual": {
+    "change": "The count is revised to 14 passes out of 20, but no date record is added.",
+    "prediction": "70% now matches the count; June 31 remains invalid and unresolved.",
+    "reason": "14÷20×100=70%; changing a count provides no new calendar evidence."
+  },
+  "student_task": "Which part can be corrected immediately from existing evidence, and which needs follow-up?",
+  "teacher_answer": "Correct percentage to 75% in the original case. The intended date needs confirmation from the responsible event source.",
+  "project_evidence": "Make Study Buddy check quantities, units, dates and source support separately; record unresolved fields instead of guessing.",
+  "limits": "This check confirms internal arithmetic and date validity, not whether the fictional trial measurements themselves were reliable.",
+  "review_note": "Individually designed fictional worked case, distinct from the reserved assessment. Toy model simplifications, arithmetic and source authority reviewed explicitly."
+}

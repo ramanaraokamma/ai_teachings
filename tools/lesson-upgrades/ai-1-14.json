@@ -1,0 +1,43 @@
+{
+  "week": "ai-1/14",
+  "title": "Build a Human Classifier",
+  "outcome": "By the end, I can build a complete classifier that validates inputs before predicting.",
+  "scenario": "A fictional ribbon sorter uses a fixed instruction card called RibbonR.",
+  "given": [
+    "Valid input: whole-number length from 0 to 15 with unit cm.",
+    "Predict long at least 9 cm; otherwise short. Missing, wrong-unit or out-of-range values request clarification."
+  ],
+  "steps": [
+    {
+      "label": "Input contract",
+      "icon": "shield",
+      "detail": "Check that length is present, whole, within 0–15, and in cm."
+    },
+    {
+      "label": "Valid cases",
+      "icon": "rule",
+      "detail": "8 cm → short; 9 cm → long."
+    },
+    {
+      "label": "Invalid cases",
+      "icon": "question",
+      "detail": "16 cm and blank length → clarification, not a forced label."
+    },
+    {
+      "label": "Keep records",
+      "icon": "output",
+      "detail": "Store input, contract result, rule version and prediction."
+    }
+  ],
+  "explanation": "A prediction boundary answers a different question from input validation. Length 9 passes the contract and meets the long boundary. Length 16 must not receive long merely because it exceeds 9: it violates the allowed range first. Zero is permitted and receives short.",
+  "counterfactual": {
+    "change": "Provide length 9 with unit mm.",
+    "prediction": "Request clarification rather than predicting long.",
+    "reason": "RibbonR requires cm; the unit mismatch fails its declared input contract."
+  },
+  "student_task": "Trace 0 cm and explain why clarification is different from predicting short.",
+  "teacher_answer": "0 is a valid whole-number centimetre input, so RibbonR predicts short. Clarification means no supported prediction was made because required input checks failed.",
+  "project_evidence": "Create a sorter instruction card covering valid values, equality, missing fields and who can resolve clarification requests.",
+  "limits": "Contract validity does not prove the predicted category agrees with a checked reference label.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice."
+}

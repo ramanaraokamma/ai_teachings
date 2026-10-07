@@ -1,0 +1,63 @@
+{
+  "week": "ai-5/21",
+  "title": "Convolution as a local operation",
+  "outcome": "By the end, I can explain convolution as a local operation using a traced example and a stated limitation.",
+  "scenario": "Draw the exact patch-by-patch arithmetic of a local image operation.",
+  "given": [
+    "Image rows [1, 2, 3],[4, 5, 6]; kernel rows [1, 0],[0,-1]. Use unflipped kernel, no padding, stride1, bias0.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "First patch",
+      "icon": "network",
+      "detail": "1\u00d71+2\u00d70+4\u00d70+5\u00d7(-1)=-4."
+    },
+    {
+      "label": "Second patch",
+      "icon": "network",
+      "detail": "2\u00d71+3\u00d70+5\u00d70+6\u00d7(-1)=-4."
+    },
+    {
+      "label": "Feature map",
+      "icon": "output",
+      "detail": "Output shape1\u00d72 and map [[-4,-4]]; the same kernel is reused at each position."
+    }
+  ],
+  "explanation": "A local kernel combines the values in one small image window with a fixed set of weights. Slide that same kernel to the next valid window and repeat the products. Sharing weights lets the operation look for the same local pattern at different positions. This example declares an unflipped kernel; adding bias changes each window result without changing which pixels were used.",
+  "counterfactual": {
+    "change": "Add shared bias2 after each patch sum.",
+    "prediction": "Feature map becomes [[-2,-2]].",
+    "reason": "Bias adds2 to each output; it does not change patch products or output shape."
+  },
+  "student_task": "Why is flipping the kernel an implementation change here? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "The declared operation uses an unflipped kernel, often called cross-correlation. Flipping it changes the arithmetic contract and may change results. Changed-case check: Feature map becomes [[-2,-2]]. Bias adds2 to each output; it does not change patch products or output shape.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "A local filter detects a numerical pattern; one feature map does not establish recognition or learned visual understanding.",
+  "review_note": "Reviewed Convolution as a local operation against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Image used by both local kernel windows",
+    "cells": [
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        4,
+        5,
+        6
+      ]
+    ],
+    "row_labels": [
+      "row0",
+      "row1"
+    ],
+    "column_labels": [
+      "col0",
+      "col1",
+      "col2"
+    ]
+  }
+}

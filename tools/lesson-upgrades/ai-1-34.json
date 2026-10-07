@@ -1,0 +1,43 @@
+{
+  "week": "ai-1/34",
+  "title": "Test Edge Cases and Fairness",
+  "outcome": "By the end, I can design boundary and coverage tests instead of assuming routine success is enough.",
+  "scenario": "A fictional craft-book chooser accepts requests for whole available minutes from 0 to 20.",
+  "given": [
+    "Booklet A takes 6 minutes; B takes 12. Return first duration at most available time.",
+    "Check 5,6,7; also 0,20,21 and blank. Same catalogue applies to every user."
+  ],
+  "steps": [
+    {
+      "label": "Near a boundary",
+      "icon": "chart",
+      "detail": "At 5: none. At 6 and 7: A."
+    },
+    {
+      "label": "Valid extremes",
+      "icon": "rule",
+      "detail": "0: none. 20: A, because first-fit order remains fixed."
+    },
+    {
+      "label": "Invalid inputs",
+      "icon": "shield",
+      "detail": "21 and blank require clarification, not ordinary search."
+    },
+    {
+      "label": "Coverage record",
+      "icon": "data",
+      "detail": "Record each user condition tested; do not invent unrun outcomes."
+    }
+  ],
+  "explanation": "Adjacent values below, at and above 6 expose an accidental strict inequality. Zero is valid even though no activity fits. The top valid input does not require selecting the longest activity: catalogue order still controls selection. Coverage also asks whose conditions were tested, which cannot be inferred from these numbers alone.",
+  "counterfactual": {
+    "change": "Faulty code uses duration strictly below available time.",
+    "prediction": "Request 6 now wrongly returns none.",
+    "reason": "A’s duration equals the available time and should be eligible under at most."
+  },
+  "student_task": "Which single boundary run most directly detects the strict-comparison bug, and why?",
+  "teacher_answer": "6: intended A, faulty none. Inputs 5 and 7 alone would miss this exact equality defect.",
+  "project_evidence": "Add sorter boundary cases, missing fields and relevant user conditions to the test plan before making fairness claims.",
+  "limits": "Equal written rules do not prove equally good outcomes for every group; actual condition-specific evidence is still needed.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment."
+}

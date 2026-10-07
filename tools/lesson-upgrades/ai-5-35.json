@@ -1,0 +1,50 @@
+{
+  "week": "ai-5/35",
+  "title": "Capstone limitations and revision",
+  "outcome": "Explain capstone limitations and revision with a traceable toy-network case and a bounded conclusion.",
+  "scenario": "Revise a limited claim after a slice failure. A toy network works better on centred patterns than on shifted patterns, so the team narrows its initial claim.",
+  "given": [
+    "Centred slice: 7/8 correct. Shifted slice: 3/8 correct. The network and label rubric are frozen."
+  ],
+  "steps": [
+    {
+      "icon": "chart",
+      "label": "Compute slice rates",
+      "detail": "Centred is 87.5%; shifted is 37.5%."
+    },
+    {
+      "icon": "question",
+      "label": "Revise the claim",
+      "detail": "Do not describe the network as shift-robust on this evidence."
+    },
+    {
+      "icon": "experiment",
+      "label": "Plan a fair revision",
+      "detail": "Use separate shifted development patterns, then assess the frozen revision on reserved shifted cases."
+    }
+  ],
+  "explanation": "A limitation guides a better next experiment. Training on a failed evaluation example may help development, but that exposed example cannot remain the untouched evidence for the revision.",
+  "counterfactual": {
+    "change": "Train the revision on all eight failed-slice evaluation patterns and rescore them.",
+    "prediction": "Treat the score as exposed-case development, not independent evidence of shift robustness.",
+    "reason": "The evaluation records now influenced learning and model selection."
+  },
+  "student_task": "Calculate the slice rates and explain the claim revision. If the team trains on the shifted evaluation patterns, what kind of evidence does their rerun provide?",
+  "teacher_answer": "The rates are 87.5% and 37.5%; the shift-robust claim is unsupported here. Training on those evaluation patterns makes a rerun development evidence on exposed cases, requiring fresh reserved cases for an independent check.",
+  "project_evidence": "For the Image-pattern Network Investigation, save the labelled trace and the changed-case explanation beside the experiment record. State exactly what this example supports before linking it to the wider capstone claim.",
+  "limits": "Small slices may vary; this example diagnoses an observed weakness without inventing a population rate or cause.",
+  "review_note": "Individually authored fictional supported practice distinct from the reserved independent assessment. Arithmetic and experimental conditions are explicit; no real network training or pupil result is claimed.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Toy network condition slices",
+    "labels": [
+      "Centred",
+      "Shifted"
+    ],
+    "values": [
+      7,
+      3
+    ],
+    "unit": "correct cases out of 8 per condition"
+  }
+}

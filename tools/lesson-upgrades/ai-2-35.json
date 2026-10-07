@@ -1,0 +1,43 @@
+{
+  "week": "ai-2/35",
+  "title": "Improve and Challenge",
+  "outcome": "By the end, I can make a focused repair and challenge it with regression and order-invariance tests.",
+  "scenario": "A fictional recommender excludes books at an intended including equality page limit.",
+  "given": [
+    "Contract: pages<=100; highest interest; ties choose smaller ID. Old code uses pages<100.",
+    "Rows A pages100 interest5; B pages90 interest3; C pages101 interest5."
+  ],
+  "steps": [
+    {
+      "label": "Identify cause",
+      "icon": "check",
+      "detail": "A wrongly excluded at equality, so old code selects B."
+    },
+    {
+      "label": "Focused repair",
+      "icon": "code",
+      "detail": "Replace <100 with <=100 without changing ranking or type checks."
+    },
+    {
+      "label": "Expected revised result",
+      "icon": "output",
+      "detail": "A becomes eligible and wins; C remains excluded."
+    },
+    {
+      "label": "Challenge repair",
+      "icon": "experiment",
+      "detail": "Rerun 99,100,101; invalid pages; tied scores; reversed row order."
+    }
+  ],
+  "explanation": "A focused change makes the claim about what caused the error testable: the equality comparison rule caused this specific failure. Regression tests check surrounding behavior that should remain unchanged. A tie case and reversed input order are necessary because a correct boundary does not ensure deterministic selection. Log the old failure and revised replay separately.",
+  "counterfactual": {
+    "change": "An alternative patch simply increases the limit to 101.",
+    "prediction": "C is wrongly admitted as well as A.",
+    "reason": "Changing the maximum alters the contract instead of repairing its comparison."
+  },
+  "student_task": "Why are tests at both 100 and 101 needed?",
+  "teacher_answer": "100 confirms equality is accepted; 101 confirms values above the unchanged maximum remain rejected.",
+  "project_evidence": "For each recommender revision, retain cause, code change, targeted test, regression results and unresolved issues.",
+  "limits": "Passing a small regression suite does not prove all behavior unchanged; record the suite’s actual coverage.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment."
+}

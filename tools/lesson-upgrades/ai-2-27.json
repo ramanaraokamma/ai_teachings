@@ -1,0 +1,58 @@
+{
+  "week": "ai-2/27",
+  "title": "Predictive vs Generative",
+  "outcome": "By the end, I can distinguish a generated continuation from a prediction checked against the world.",
+  "scenario": "A fictional toy generator predicts the next word after “The box is”.",
+  "given": [
+    "Observed training continuations: full 6, empty 3, unknown 1.",
+    "Use counts divided by total 10. The current physical box is separately checked and found empty."
+  ],
+  "steps": [
+    {
+      "label": "Count table",
+      "icon": "data",
+      "detail": "Continuation counts are 6,3,1; total 10."
+    },
+    {
+      "label": "Probabilities",
+      "icon": "chart",
+      "detail": "full=0.6; empty=0.3; unknown=0.1."
+    },
+    {
+      "label": "Greedy continuation",
+      "icon": "model",
+      "detail": "Largest probability chooses full for this toy prefix."
+    },
+    {
+      "label": "Check reality",
+      "icon": "sensor",
+      "detail": "Current observation says empty; frequent wording is not a present inventory reading."
+    }
+  ],
+  "explanation": "The table predicts a continuation in a text exercise, not the contents of the current box. Generating the most frequent token is a model-defined decision. A factual inventory statement needs current evidence. The numerical table is intentionally small; real generative systems condition on richer context and do not simply consult these three counts.",
+  "counterfactual": {
+    "change": "Change the training table to full 2, empty 7, unknown 1.",
+    "prediction": "Greedy output becomes empty with probability 0.7.",
+    "reason": "The continuation distribution changed; the independently observed box has not changed."
+  },
+  "student_task": "Does matching the physical box in the changed table prove the generator measures boxes?",
+  "teacher_answer": "No. It happens to match here; its mechanism still selects a token from supplied counts rather than sensing contents.",
+  "project_evidence": "Use approved book facts for recommender explanations; generated fluency is not a replacement for catalogue evidence.",
+  "limits": "A one-step toy distribution does not describe every predictive or generative model or validate factual accuracy.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Toy next-word distribution",
+    "labels": [
+      "full",
+      "empty",
+      "unknown"
+    ],
+    "values": [
+      0.6,
+      0.3,
+      0.1
+    ],
+    "unit": "probability"
+  }
+}

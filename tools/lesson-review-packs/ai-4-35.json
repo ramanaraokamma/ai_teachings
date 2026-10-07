@@ -1,0 +1,253 @@
+{
+  "week": "ai-4/35",
+  "title": "Capstone Train, Analyze, Improve",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Run a frozen final evaluation with complete accounting",
+    "Separate error analysis from an untouched-test claim",
+    "Document revisions and their evidence status"
+  ],
+  "primary_topic": "Capstone evaluation and revision",
+  "vocabulary": [
+    [
+      "Final evaluation",
+      "Assessment of the frozen procedure on held-out evidence"
+    ],
+    [
+      "Error audit",
+      "A documented inspection of mistakes and missing predictions"
+    ],
+    [
+      "Revision log",
+      "A record of changes, reasons and affected evidence"
+    ],
+    [
+      "Evidence status",
+      "Whether a result is development, untouched test or post-test reuse"
+    ]
+  ],
+  "worked_example": {
+    "title": "Explain the visual",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Capstone evaluation and revision at a glance",
+        "columns": [
+          "Part",
+          "Evidence or action",
+          "Interpretation"
+        ],
+        "rows": [
+          [
+            "Frozen version",
+            "Saved before labels",
+            "Candidate v 1"
+          ],
+          [
+            "First test",
+            "9 correct of 12",
+            "Report full error table"
+          ],
+          [
+            "Proposed revision",
+            "Uses observed errors",
+            "Needs fresh evaluation"
+          ]
+        ],
+        "caption": "Compare the result with validation without claiming they should be identical. Check error types and coverage. A one-case accuracy difference on twelve rows supports a cautious classroom comparison, not a general reliability guarantee. Keep the original prediction ledger unchanged."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "What does the one-correct-case improvement establish? Explain the steps or evidence behind your response.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Audit a difference",
+    "prompt": "What does the one-correct-case improvement establish?",
+    "answer": "Teacher explanation: It establishes a difference on these 12 examples under the saved procedure, not reliable improvement for every future population.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Apply independently",
+    "task": "Frozen candidate[[6, 2],[1, 3]] and baseline[[8, 0],[4, 0]] on 12 cases. Compute candidate metrics and compare error types.",
+    "answer": "Teacher explanation: Candidate accuracy 9/12=75 percent, precision 3/5=60 percent, recall 3/4=75 percent. Baseline FP 0 FN 4 versus candidate FP 2 FN 1; baseline accuracy 8/12.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A final answer is enough",
+      "Ask for the relevant counts, units, procedure or saved record. For this week: Candidate accuracy 9/12=75 percent, precision 2/3, recall 2/4; baseline 8/12 about 66.7 percent, with all four blocked cases missed."
+    ],
+    [
+      "A stronger claim makes a stronger project",
+      "Version 1 frozen results, reason for change, reused-evidence status and the fact that version 2 has no new independent final evaluation."
+    ],
+    [
+      "The new case can be copied from the example",
+      "The independent task changes the evidence. Require a fresh explanation: Candidate accuracy 9/12=75 percent, precision 3/5=60 percent, recall 3/4=75 percent. Baseline FP 0 FN 4 versus candidate FP 2 FN 1; baseline accuracy 8/12."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/bdf42fb5297f2e9e21b219a86365289b53b7d5c57c6bff7e2d69dac928b9c069",
+        "alt": "Week 35 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/75868988bcd36048b0f4fccff9bbafae5a62dc2607690ff8af4dcdc0e371f250",
+        "alt": "Week 35 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b47a7ca3cd974702de871e028e0d074aadce8b2da3943be708e638d767e4b4b7",
+        "alt": "Week 35 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Train, audit, change one factor, and compare against the same validation set."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  One evidence-based improvement follows a reproducible training run, metric audit, error clusters, and subgroup analysis."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Model v1 passes 14/20 validation cases; evening accuracy is 40%. The six failed cases are low-light cases. One of those same six also has a disputed reference label; that is an overlapping review flag, not a seventh failed case.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Illustrative frozen test has 12 rows: candidate[[7, 1],[2, 2]], baseline[[8, 0],[4, 0]], blocked positive. Candidate accuracy 9/12=75 percent, precision 2/3 and recall 2/4; baseline accuracy 8/12 about 66.7 percent. The candidate adds one false alarm and misses two rather than four blocked cases."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before continuing, underline the decision rule and circle the evidence that supports the conclusion. Explain the example to a partner without replacing the counts or conditions with a stronger claim. Keep the distinction between an observed result and a proposed next step."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 35 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 35 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 35 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 35 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

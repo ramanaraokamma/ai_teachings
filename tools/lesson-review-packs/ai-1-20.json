@@ -1,0 +1,298 @@
+{
+  "week": "ai-1/20",
+  "title": "Recommendations",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Apply eligibility requirements before ranking candidates by preferences",
+    "Explain a recommendation using its actual scoring rule and limits",
+    "Interpret feedback in the context of what was shown and distinguish clicks from satisfaction"
+  ],
+  "primary_topic": "Recommendations and feedback",
+  "vocabulary": [
+    [
+      "Eligibility",
+      "Whether an item meets the requirements for consideration"
+    ],
+    [
+      "Preference",
+      "A desired feature used to rank eligible choices"
+    ],
+    [
+      "Recommendation",
+      "A suggested option produced under a stated process"
+    ],
+    [
+      "Exposure",
+      "An opportunity for a person to see an item"
+    ],
+    [
+      "Feedback loop",
+      "A process in which earlier recommendations influence the feedback used for later recommendations"
+    ]
+  ],
+  "worked_example": {
+    "title": "Read feedback without inventing a motive",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Recorded event",
+          "What it establishes",
+          "What it does not establish"
+        ],
+        "rows": [
+          [
+            "J was shown",
+            "There was a recorded exposure",
+            "The reader noticed or liked it"
+          ],
+          [
+            "J was clicked",
+            "A recorded interaction occurred",
+            "The reader enjoyed the book"
+          ],
+          [
+            "Reader said J was too long",
+            "A stated reason in this context",
+            "All space books are unwanted"
+          ],
+          [
+            "K was never shown",
+            "No exposure recorded for K",
+            "The reader rejected K"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "A click can reflect interest, curiosity or a mistaken tap. No click can reflect a missed display, lack of time or a decision not to choose it. Preserve the observed event separately from any interpretation. More direct feedback may clarify a reason, but one response still describes one person and occasion."
+      },
+      {
+        "type": "paragraph",
+        "text": "Useful feedback records name the item, what was shown, the system version, the event and any stated reason. Use only information needed for the task. Our paper exercises use invented feedback; they do not require accounts or recording classmates\u2019 browsing behaviour."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Explain a recommendation honestly",
+    "prompt": "Write an explanation of why J was recommended that mentions one preference it does not match. A marketer adds guaranteed enjoyment. Explain why that phrase is unsupported.",
+    "lines": 6,
+    "answer": "J is available in English and its space topic earns 2, the highest score among eligible choices; it is prose rather than the preferred comic. The rule supplies a ranking, not evidence guaranteeing enjoyment."
+  },
+  "independent_case": {
+    "title": "Transfer the process to activities",
+    "task": "A fictional learner needs an indoor activity lasting at most 20 minutes. Preferences score 2 for drawing and 1 for solo. Candidates: A drawing, solo, outdoor, 10 minutes; B drawing, group, indoor, 20 minutes; C music, solo, indoor, 15 minutes; D drawing, group, indoor, 18 minutes. Filter, score and return all highest scorers. Only B is then shown and selected; C and D are not shown. State what the feedback establishes and what remains unknown.",
+    "answer": "A excluded because outdoor. B eligible scores 2; C eligible scores 1; D eligible scores 2. Return B and D. Exactly 20 minutes passes at most 20. The log establishes B shown and selected, not enjoyment. Preferences about unshown C and D are unknown; selecting B does not prove rejection of D or validate the choice to hide it.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A high score can cancel a failed requirement",
+      "Filter on requirements before ranking preferences."
+    ],
+    [
+      "A click proves enjoyment",
+      "It is an interaction; motive and satisfaction need further evidence."
+    ],
+    [
+      "No clicks means dislike even without exposure",
+      "An unseen option has not received a meaningful opportunity for a response."
+    ],
+    [
+      "No eligible result means the system must choose anyway",
+      "Return no verified eligible option and explain exclusions or missing facts."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/d04d2bf089f12e1ef3405777311ab30cce2f00bfd1d2be961234d81f2e4618f2",
+        "alt": "Visual card for the input stage: reader goals and candidate-book traits",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/f389c569050f4a4b86d37637f8ede997ac81964206711f67df5865b5b3753813",
+        "alt": "Visual card for the process stage: score and rank candidates with chosen tradeoffs",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2573af2115044d9d7100601064e81e6915a8adf2226a05354ca8ca73de718e47",
+        "alt": "Visual card for the output stage: ordered recommendations plus reasons",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  reader goals and candidate-book traits"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  score and rank candidates with chosen tradeoffs"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  ordered recommendations plus reasons"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  A recommender ranks possibilities using goals, information, and tradeoffs.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Recommendation is ranking, not merely classification. An objective combines relevance signals and constraints; tradeoffs may include familiarity, diversity, novelty, safety, and availability. The top score reflects the objective, not universal quality.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Requirements come before preference scores",
+        "columns": [
+          "Candidate",
+          "Eligibility check",
+          "Result"
+        ],
+        "rows": [
+          [
+            "J: space and prose",
+            "English; available",
+            "Eligible; 2 points"
+          ],
+          [
+            "K: animals and comic",
+            "English; available",
+            "Eligible; 1 point"
+          ],
+          [
+            "L and M",
+            "Language or stock fails",
+            "Excluded from ranking"
+          ]
+        ],
+        "caption": "BookRec1 recommends J from this candidate set. L and M match both preferences but fail a requirement. The recommendation does not guarantee that the reader will enjoy J."
+      },
+      {
+        "type": "paragraph",
+        "text": "J passes both requirements and scores 2. K passes and scores 1. L fails the English requirement; M fails availability. Do not place L or M above J because they would earn 3 preference points. They are excluded before the eligible scores are compared."
+      },
+      {
+        "type": "paragraph",
+        "text": "A faithful explanation says J is available in English and has the highest eligible score because its space topic matches the stated preference. It should also mention that J is prose, not comic. Claiming that the system knows the reader will love J would go beyond the computation and the evidence."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/52dcb8d896bd89fe5467679af67844dc6ae6d910fc7b9508a08535227c4e445f",
+        "alt": "Comparison picture for Reader A: likes survival and long books; rank adventure higher",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/6d8f4a260212f3ea4ecef470c53b98577bc195077df6fe764a8917d73c68f656",
+        "alt": "Comparison picture for Reader B: wants short humor; rank comedy higher",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/83407ca4711a6a70a876eb0c4834d2e0744cc46105e2cf224cf8ce950f713932",
+        "alt": "Comparison picture for Same score: two books tie; need tie policy",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a737ea0dba35ee25585b6fef7bece9dc39620bc374bfdbe7f9bd26f42e406510",
+        "alt": "Comparison picture for Unavailable book: high relevance but unusable; constraint changes rank",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Reader A  Clue: likes survival and long books. Meaning: rank adventure higher."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Reader B  Clue: wants short humor. Meaning: rank comedy higher."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Same score  Clue: two books tie. Meaning: need tie policy."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Unavailable book  Clue: high relevance but unusable. Meaning: constraint changes rank."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  A recommendation optimizes chosen goals and data; it does not discover what a person truly wants.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

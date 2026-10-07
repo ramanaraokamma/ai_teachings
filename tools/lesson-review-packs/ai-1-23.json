@@ -1,0 +1,293 @@
+{
+  "week": "ai-1/23",
+  "title": "Fair for Whom?",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Compute a correct-out-of-assessed fraction and explain its denominator",
+    "Compare systems on shared cases while checking performance within conditions",
+    "Combine counts correctly and keep missing outcomes separate from assessed errors"
+  ],
+  "primary_topic": "Fractions and performance comparisons",
+  "vocabulary": [
+    [
+      "Numerator",
+      "The count above the fraction line; here, assessed correct cases"
+    ],
+    [
+      "Denominator",
+      "The count below the fraction line; here, all assessed cases"
+    ],
+    [
+      "Equivalent fractions",
+      "Different written fractions that represent the same proportion"
+    ],
+    [
+      "Accuracy",
+      "The fraction of assessed classification cases labelled correctly under a stated rule"
+    ],
+    [
+      "Aggregate",
+      "A result formed by combining the counts of several groups"
+    ]
+  ],
+  "worked_example": {
+    "title": "Look inside a total before choosing a system",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Question",
+          "Version A",
+          "Version B"
+        ],
+        "rows": [
+          [
+            "Bright-card accuracy",
+            "8/8 = 1",
+            "6/8 = 3/4"
+          ],
+          [
+            "Dim-card accuracy",
+            "1/4",
+            "2/4 = 1/2"
+          ],
+          [
+            "Combined accuracy",
+            "(8 + 1)/(8 + 4) = 9/12",
+            "(6 + 2)/(8 + 4) = 8/12"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "The bright group has twice as many assessed cards as the dim group. Each individual card counts once in the combined result, so add correct counts and assessed counts. Do not simply average the two group percentages and call it the all-card accuracy: that would give each group equal weight despite their different sizes."
+      },
+      {
+        "type": "paragraph",
+        "text": "If the intended task especially needs dim-card performance, inspect that result and gather suitable additional evidence before choosing. An overall leader can still be weaker in a relevant condition. This table alone also does not tell us whether particular mistakes have different consequences. The scoring rule must match the purpose."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Compare totals and conditions",
+    "prompt": "Compare A and B on the shared 12-card test and on its bright and dim groups. State the leader in each and explain why the overall result does not imply that one version wins in every condition.",
+    "lines": 6,
+    "answer": "Overall A leads 9/12 to B\u2019s 8/12. On bright cards A leads 8/8 to 6/8. On dim cards B leads 2/4 to A\u2019s 1/4. The overall count combines unequal groups; A\u2019s overall lead does not mean a lead in the dim group or a guarantee for future cards."
+  },
+  "independent_case": {
+    "title": "Compare a new shared sound test",
+    "task": "Versions X and Y label the same 20 previously unseen clips: 12 quiet and 8 noisy, with no missing outcomes. X is correct on 10 quiet and 2 noisy clips; Y on 9 quiet and 5 noisy clips. Calculate each combined fraction and percentage, identify the overall leader and compare the leaders within each group. Explain why an overall result cannot guarantee the next clip\u2019s outcome.",
+    "answer": "X has (10 + 2)/(12 + 8) = 12/20 = 3/5 = 60%. Y has (9 + 5)/20 = 14/20 = 7/10 = 70%, so Y leads overall. X leads quiet clips 10/12 to 9/12, while Y leads noisy clips 5/8 to 2/8. These are observed results on this shared test; they do not determine the outcome of the next clip or show that Y is better in every condition.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Only correct cases belong in the denominator",
+      "All assessed cases, including errors, belong in the assessed-accuracy denominator."
+    ],
+    [
+      "Equivalent fractions mean equal test sizes",
+      "The proportions match, but 4 assessed cases are not 100 assessed cases; preserve actual counts."
+    ],
+    [
+      "The overall leader wins in every condition",
+      "The lesson\u2019s dim group and W4\u2019s quiet group provide counterexamples."
+    ],
+    [
+      "Average group percentages to get all-case accuracy",
+      "Add correct counts and assessed counts when each individual case is weighted equally."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/6c41f2890a7512418dec260bd2c7d5af4a777cbba6e8f06a560beda6b7f79bb8",
+        "alt": "Visual card for the input stage: test cases grouped by relevant user or condition",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/f173f1710e309316c2af23ed0b6fca658660ea761fcff610ee8b3923b31250e5",
+        "alt": "Visual card for the process stage: compare outcomes and error types by group",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/d3a7c394b7fc04442797a327e487a565689f5efc69aa7aafaa19dcc01fb3dc4b",
+        "alt": "Visual card for the output stage: identify gaps and choose a repair or boundary",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  test cases grouped by relevant user or condition"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  compare outcomes and error types by group"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  identify gaps and choose a repair or boundary"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  Fairness requires checking outcomes for different users and situations.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Fairness is context-specific and cannot be established by overall accuracy alone. Compare performance, error costs, access, and remedy across relevant groups while avoiding stereotypes and protecting privacy.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Combine correct and assessed counts",
+        "columns": [
+          "Condition",
+          "Version A",
+          "Version B"
+        ],
+        "rows": [
+          [
+            "Bright: 8 cards",
+            "8 correct of 8",
+            "6 correct of 8"
+          ],
+          [
+            "Dim: 4 cards",
+            "1 correct of 4",
+            "2 correct of 4"
+          ],
+          [
+            "All: 12 cards",
+            "9 of 12 = 3 of 4",
+            "8 of 12 = 2 of 3"
+          ]
+        ],
+        "caption": "A has the higher overall accuracy on these same 12 cards, while B has the higher accuracy on the 4 dim cards. The overall fraction does not describe every condition equally."
+      },
+      {
+        "type": "paragraph",
+        "text": "With the same denominator 12, compare the numerators: 9 is greater than 8. A is correct on one more of these cards. This establishes the ordering on this test under this scoring rule; it does not prove that A will always outperform B on future cards."
+      },
+      {
+        "type": "paragraph",
+        "text": "To compare fractions with different denominators, rewrite them as equivalent fractions with a common denominator. For example, 3/4 equals 9/12 and 2/3 equals 8/12. Changing the written denominator does not create new test cases: it only helps compare the proportions."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/09741f8c4c6ddb66e47c3ced78169db5972aabb90a511d259f7cbcc4c36c5838",
+        "alt": "Comparison picture for Loud speakers: 9 of 10 commands work; high success",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/284e3bfab2f7c7701e7bdd10b853f5c9be97a4a17a0232c4ce5978b979d1d07e",
+        "alt": "Comparison picture for Quiet speakers: 5 of 10 commands work; performance gap",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/e2826834c1c9d23adc14ae7a5df4b4c29c100909fc5aa7c576f52daddefaf9d4",
+        "alt": "Comparison picture for Overall 14 of 20: 70 percent total; hides difference",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/33192b1eb83a89c210587c46583b6b5cbb41dcb216a365a8dbba7b731a1a9418",
+        "alt": "Comparison picture for Text control: alternate access path; possible remedy",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Loud speakers  Clue: 9 of 10 commands work. Meaning: high success."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Quiet speakers  Clue: 5 of 10 commands work. Meaning: performance gap."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Overall 14 of 20  Clue: 70 percent total. Meaning: hides difference."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Text control  Clue: alternate access path. Meaning: possible remedy."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Fairness work should reduce burdens without turning group labels into stereotypes.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

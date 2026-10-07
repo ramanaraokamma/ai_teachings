@@ -1,0 +1,66 @@
+{
+  "week": "ai-5/22",
+  "title": "Pooling and spatial information",
+  "outcome": "By the end, I can explain pooling and spatial information using a traced example and a stated limitation.",
+  "scenario": "Pool a small map and show the detail it cannot retain.",
+  "given": [
+    "Feature map rows [1, 4, 2, 0],[3, 2, 5, 1]. Pool non-overlapping2\u00d72 windows, stride2, no padding.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Left window",
+      "icon": "chart",
+      "detail": "Values1, 4, 3, 2: max 4, mean 2.5."
+    },
+    {
+      "label": "Right window",
+      "icon": "chart",
+      "detail": "Values2, 0, 5, 1: max 5, mean 2."
+    },
+    {
+      "label": "Compare summaries",
+      "icon": "output",
+      "detail": "Max map [[4, 5]], mean map [[2.5, 2]], both shape1\u00d72."
+    }
+  ],
+  "explanation": "Pooling compresses each local window into a summary. Maximum keeps its largest value; mean keeps its average. Neither summary records where each value appeared. Swapping values inside one window leaves both summaries unchanged here, so the pooled output cannot reconstruct the original arrangement. The chosen window, stride and boundary policy determine the output shape.",
+  "counterfactual": {
+    "change": "Swap1 and 4 within the left window.",
+    "prediction": "Both pooled maps remain unchanged.",
+    "reason": "Max and mean ignore the positions of values inside the same window."
+  },
+  "student_task": "Can the max map reveal where the 4 originally appeared? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "No. The original 4 was top-right in the left window, but after swapping it is top-left; the pooled value 4 is identical. Changed-case check: Both pooled maps remain unchanged. Max and mean ignore the positions of values inside the same window.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Pooling is a declared aggregation, not automatic improvement; losing location can harm tasks that need precise positions.",
+  "review_note": "Reviewed Pooling and spatial information against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Two adjacent pooling windows",
+    "cells": [
+      [
+        1,
+        4,
+        2,
+        0
+      ],
+      [
+        3,
+        2,
+        5,
+        1
+      ]
+    ],
+    "row_labels": [
+      "row0",
+      "row1"
+    ],
+    "column_labels": [
+      "left0",
+      "left1",
+      "right0",
+      "right1"
+    ]
+  }
+}

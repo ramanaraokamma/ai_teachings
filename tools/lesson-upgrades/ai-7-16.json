@@ -1,0 +1,50 @@
+{
+  "week": "ai-7/16",
+  "title": "Ablation studies",
+  "outcome": "Explain ablation studies using the records and boundaries of this fictional investigation.",
+  "scenario": "Remove one component at a time. A retrieval pipeline has search plus a relevance filter. A team tests the filter’s contribution.",
+  "given": [
+    "Full pipeline: 8/10 correct. Filter removed: 6/10 on the same cases, with all other settings fixed."
+  ],
+  "steps": [
+    {
+      "icon": "network",
+      "label": "Name the component",
+      "detail": "The relevance filter is the single declared change."
+    },
+    {
+      "icon": "experiment",
+      "label": "Run the ablation",
+      "detail": "Remove only the filter and preserve cases and scoring."
+    },
+    {
+      "icon": "chart",
+      "label": "Compare outcomes",
+      "detail": "Correctness falls from 80% to 60%, two cases in this set."
+    }
+  ],
+  "explanation": "An ablation probes a component by removing or changing it while holding the rest fixed. It supports a scoped comparison, not a claim that the component always helps.",
+  "counterfactual": {
+    "change": "Remove the filter and also change the model version.",
+    "prediction": "The comparison no longer isolates the filter.",
+    "reason": "Two simultaneous changes provide alternative explanations."
+  },
+  "student_task": "Calculate the filter ablation’s two rates and count change. Which single component is altered, and why does also changing the model prevent isolating the filter?",
+  "teacher_answer": "The relevance filter is the single declared change. Remove only the filter and preserve cases and scoring. Correctness falls from 80% to 60%, two cases in this set. Changed case: The comparison no longer isolates the filter. Two simultaneous changes provide alternative explanations.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "Interactions and small-sample variability remain; this illustrative difference is not a universal causal estimate.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Relevance-filter ablation",
+    "labels": [
+      "Full pipeline",
+      "Filter removed"
+    ],
+    "values": [
+      8,
+      6
+    ],
+    "unit": "correct answers out of 10 shared cases"
+  }
+}

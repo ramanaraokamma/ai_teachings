@@ -1,0 +1,37 @@
+{
+  "week": "python-bridge/3",
+  "title": "Expressions and operator order",
+  "outcome": "Trace expressions and operator order and explain the changed program before running it.",
+  "scenario": "Parentheses change an expression. A toy shelf calculator compares adding a fixed cost after multiplication with multiplying an entire group.",
+  "given": [
+    "Python 3: print(3+2*5); print((3+2)*5). Inputs are dimensionless for this arithmetic exercise."
+  ],
+  "steps": [
+    {
+      "icon": "rule",
+      "label": "Use precedence",
+      "detail": "In 3+2*5, multiplication happens first."
+    },
+    {
+      "icon": "code",
+      "label": "Compute first result",
+      "detail": "2*5 is 10; adding 3 gives 13."
+    },
+    {
+      "icon": "code",
+      "label": "Compute grouped result",
+      "detail": "Parentheses give 3+2=5 first; multiplying by 5 gives 25."
+    }
+  ],
+  "explanation": "Parentheses explicitly group an operation. Without them, Python multiplication takes priority over addition; the same numerals can therefore describe different procedures.",
+  "counterfactual": {
+    "change": "Replace the final multiplier 5 with 4 in both expressions.",
+    "prediction": "The first result is 11; the grouped result is 20.",
+    "reason": "3+2*4=3+8; (3+2)*4=5*4."
+  },
+  "student_task": "Trace the operation order in both expressions. Identify which picture step changes with parentheses and predict both results when the multiplier becomes four.",
+  "teacher_answer": "Without grouping, multiply before adding: 13. With grouping, add before multiplying: 25. Changing the multiplier to 4 gives 11 and 20 respectively.",
+  "project_evidence": "For Python readiness before the Responsible Plant Classifier, retain a trace of the values, the predicted outputs and the changed-case explanation. Use actual Python 3 results to check the prediction after reasoning first.",
+  "limits": "Arithmetic correctness does not decide which expression matches a real problem; the written model must define the intended quantities.",
+  "review_note": "Individually authored supported practice; distinct from the reserved independent case. Python semantics are checked on standalone snippets; no learned model or real pupil result is implied."
+}

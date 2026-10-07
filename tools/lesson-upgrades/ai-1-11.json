@@ -1,0 +1,80 @@
+{
+  "week": "ai-1/11",
+  "title": "Repeating Efficiently",
+  "outcome": "By the end, I can check a loop condition before each update and count iterations.",
+  "scenario": "A fictional paper counter advances through a display until its condition becomes false.",
+  "given": [
+    "Start at 2. While the current counter is below 10, add 3.",
+    "Test before each addition; report when the condition is false."
+  ],
+  "steps": [
+    {
+      "label": "First test",
+      "icon": "rule",
+      "detail": "2<10 is true: update to 5."
+    },
+    {
+      "label": "Repeat",
+      "icon": "code",
+      "detail": "5<10: update to 8. 8<10: update to 11."
+    },
+    {
+      "label": "Stop test",
+      "icon": "check",
+      "detail": "11<10 is false; do not add again."
+    },
+    {
+      "label": "Report",
+      "icon": "output",
+      "detail": "Final counter 11 after three additions."
+    }
+  ],
+  "explanation": "The condition checks whether to do the next update; it does not constrain every resulting value to stay below 10. The final 11 is therefore allowed by this procedure. Record both the condition and counter to distinguish a correct stop from an assumed endpoint.",
+  "counterfactual": {
+    "change": "Start at 10 instead of 2.",
+    "prediction": "The loop runs zero times and reports 10.",
+    "reason": "Its first condition is already false, so no addition happens."
+  },
+  "student_task": "Trace a fresh start of 9. How many additions occur, and must the report equal 10?",
+  "teacher_answer": "9<10 is true, so it becomes 12. Then 12<10 is false: one addition, report 12; equality with 10 is not required.",
+  "project_evidence": "Give any repeated sorter step an explicit stopping condition and trace a zero-iteration example.",
+  "limits": "This loop stops because positive increments eventually cross the limit. Other updates can fail to make progress.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Condition checks before additions",
+    "cells": [
+      [
+        2,
+        "true",
+        5
+      ],
+      [
+        5,
+        "true",
+        8
+      ],
+      [
+        8,
+        "true",
+        11
+      ],
+      [
+        11,
+        "false",
+        "stop"
+      ]
+    ],
+    "row_labels": [
+      "Check 1",
+      "Check 2",
+      "Check 3",
+      "Check 4"
+    ],
+    "column_labels": [
+      "Current",
+      "Below 10?",
+      "Next"
+    ]
+  }
+}

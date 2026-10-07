@@ -1,0 +1,51 @@
+{
+  "week": "ai-5/31",
+  "title": "Efficiency and resource measurement",
+  "outcome": "By the end, I can explain efficiency and resource measurement using a traced example and a stated limitation.",
+  "scenario": "Compare speed and quality under the same case count and acceptance contract.",
+  "given": [
+    "Both evaluate40 cases. P times [0.32, 0.40, 0.48]seconds, 38 correct; Q times [0.20, 0.24, 0.28]seconds, 36 correct. Requireaccuracy>=93% and mean amortised time<=12ms/case.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Summarise P",
+      "icon": "clock",
+      "detail": "Mean time0.40s; 10ms/case; accuracy 38/40=95%: passesboth."
+    },
+    {
+      "label": "Summarise Q",
+      "icon": "clock",
+      "detail": "Mean time0.24s; 6ms/case; accuracy 36/40=90%: failsquality."
+    },
+    {
+      "label": "Choose eligible candidate",
+      "icon": "check",
+      "detail": "P meets the declared contract; Q is faster but ineligible."
+    }
+  ],
+  "explanation": "Compare models on the same workload and apply every required condition. P meets both quality and time limits; Q\u2019s speed does not compensate for missing the quality gate. Dividing total run duration by forty gives an amortised time per case. It does not measure the wait for one isolated request, which needs its own timed experiment.",
+  "counterfactual": {
+    "change": "Lower the accuracy requirement to90% before a new selection exercise.",
+    "prediction": "Both become eligible; Q has the smaller measured mean amortised time.",
+    "reason": "The acceptance contract changed; Q\u2019s measured accuracy did not improve."
+  },
+  "student_task": "Why is 10ms/case not necessarily a single-request latency? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "It divides the mean duration of a 40-case run by 40. Batch overhead and processing overlap mean individual request latency needs its own measurement. Changed-case check: Both become eligible; Q has the smaller measured mean amortised time. The acceptance contract changed; Q\u2019s measured accuracy did not improve.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Record hardware, batching, warm-up and variability; these supplied timings are toy measurements, not actual benchmark runs.",
+  "review_note": "Reviewed Efficiency and resource measurement against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Mean amortised time, not single-request latency",
+    "labels": [
+      "P",
+      "Q"
+    ],
+    "values": [
+      10,
+      6
+    ],
+    "unit": "ms per case"
+  }
+}

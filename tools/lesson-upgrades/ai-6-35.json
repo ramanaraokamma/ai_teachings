@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/35",
+  "title": "Capstone release review",
+  "outcome": "Explain capstone release review using the deciding step in this fictional service.",
+  "scenario": "Review every mandatory gate. A capstone release needs factual, access and deletion gates to pass.",
+  "given": [
+    "Factual and access checks pass. Deletion fails because a listed backup remains. All three gates are mandatory."
+  ],
+  "steps": [
+    {
+      "label": "List evidence",
+      "icon": "chart",
+      "detail": "Record two passes and the specific deletion failure."
+    },
+    {
+      "label": "Apply decision rule",
+      "icon": "shield",
+      "detail": "Block release; a majority of passes is insufficient."
+    },
+    {
+      "label": "Specify repair",
+      "icon": "check",
+      "detail": "Remove the listed copy and verify it before a fresh review."
+    }
+  ],
+  "explanation": "Release review applies explicit conditions to a specific candidate version. Completed coding is not evidence that all operational obligations are satisfied.",
+  "counterfactual": {
+    "change": "Every listed deletion location passes new verification.",
+    "prediction": "That gate can pass; review the complete current evidence before approving release.",
+    "reason": "One repaired gate does not automatically refresh evidence for every other gate."
+  },
+  "student_task": "Apply the three mandatory release gates to the recorded results. Why do two passes not outweigh the deletion failure, and what evidence must follow its repair?",
+  "teacher_answer": "Record two passes and the specific deletion failure. Block release; a majority of passes is insufficient. Remove the listed copy and verify it before a fresh review. Changed case: That gate can pass; review the complete current evidence before approving release. One repaired gate does not automatically refresh evidence for every other gate.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "Approval cannot guarantee zero future faults; retain ownership, monitoring and recovery arrangements.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

@@ -1,0 +1,146 @@
+{
+  "week": "python-bridge/12",
+  "title": "Testing and debugging functions",
+  "grade": 8,
+  "project": "Python readiness portfolio",
+  "goals": [
+    "Design revealing tests for a function",
+    "Compare expected and actual results",
+    "Repair a defect and rerun earlier cases"
+  ],
+  "primary_topic": "Testing and debugging functions",
+  "vocabulary": [
+    [
+      "Test case",
+      "Inputs and an expected result"
+    ],
+    [
+      "Boundary",
+      "An edge of a permitted range"
+    ],
+    [
+      "Regression",
+      "A previously working case that fails after a change"
+    ],
+    [
+      "Assertion",
+      "A check that raises an error when its condition is false"
+    ]
+  ],
+  "worked_example": {
+    "title": "Predict before running",
+    "blocks": [
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Would replacing the body with return 5 pass every worked case? Identify the first revealing test.",
+        "lines": 6
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Find a revealing case",
+    "prompt": "A faulty function always returns 4. Which of your three cases pass and fail?",
+    "answer": "Only (6, 2) passes. The full and unused cases fail.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Report coverage with the result",
+    "task": "Trace the supplied missing-value policy and predict the output. State the mean denominator and coverage. What should be reported if every row is missing its score?",
+    "code": "rows = [{\"score\": 2}, {\"score\": 6}, {}]\nvalues = []\nfor row in rows:\n    value = row.get(\"score\")\n    if value is not None:\n        values.append(value)\nif len(values) > 0:\n    mean = sum(values) / len(values)\nelse:\n    mean = None\nprint(len(values), len(rows), mean)\n",
+    "expected_stdout": "2 3 4.0\n",
+    "answer": "Output 2 3 4.0: mean 4 over two supplied scores, coverage 2/3, one unmeasured score. With three empty rows, output is 0 3 None; no observed mean exists. Missing records are not zero scores.",
+    "source": "new parallel Python readiness case"
+  },
+  "misconceptions": [
+    [
+      "A successful run proves the conclusion",
+      "Passing this small suite supports these particular cases. It neither proves every allowed input correct nor checks invalid input handling. A test outside the contract needs a separately specified expected behavior."
+    ],
+    [
+      "Matching the example is enough",
+      "Require the new W4 case, explicit predictions and an explanation. Fresh retry: bundles * 3 + singles with (3, 1), (0, 1), (3, 0) expects 10, 1, 9. A constant return 10 passes only the first."
+    ],
+    [
+      "A convenient shortcut preserves meaning",
+      "A faulty return capacity + used gives 11, 16 and 8. The unused case passes even though the rule is wrong. Repair the operator to subtraction and rerun all three cases. Never change an expected result merely to match faulty output."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "def remaining(capacity, used):\n    return capacity - used\n\ncases = [(8, 3, 5), (8, 8, 0), (8, 0, 8)]\nfor capacity, used, expected in cases:\n    actual = remaining(capacity, used)\n    print(actual == expected)"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow the evidence",
+        "columns": [
+          "Step or case",
+          "Evidence",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "Ordinary case",
+            "8 and 3",
+            "Expect 5"
+          ],
+          [
+            "Full case",
+            "8 and 8",
+            "Expect 0"
+          ],
+          [
+            "Unused case",
+            "8 and 0",
+            "Expect 8"
+          ]
+        ],
+        "caption": "Read each row from left to right and connect the evidence to the stated rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "Each parenthesized group is a tuple, an ordered group of values. The loop unpacks each group into three names. Equality compares the actual result to the independently calculated expected result. The worked script prints True three times. An assert actual == expected could instead stop at the first mismatch with AssertionError."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "A faulty function always returns 4. Which of your three cases pass and fail?"
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

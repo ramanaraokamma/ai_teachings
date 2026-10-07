@@ -1,0 +1,50 @@
+{
+  "week": "ai-7/31",
+  "title": "Writing results and limitations",
+  "outcome": "Explain writing results and limitations using the records and boundaries of this fictional investigation.",
+  "scenario": "Write results without enlarging them. A fictional study evaluates answer support on twelve fixed questions from one approved collection.",
+  "given": [
+    "A supports 9/12 answers; B supports 10/12. No user learning outcomes are recorded."
+  ],
+  "steps": [
+    {
+      "icon": "chart",
+      "label": "Report the observation",
+      "detail": "A is 75%; B is about 83.3%, a one-case improvement."
+    },
+    {
+      "icon": "book",
+      "label": "Link to the method",
+      "detail": "Name the collection, rubric and twelve-case denominator."
+    },
+    {
+      "icon": "shield",
+      "label": "State limits",
+      "detail": "Do not infer that children learn more from this answer-support measure."
+    }
+  ],
+  "explanation": "Results describe what was measured; limitations prevent substitution of a different outcome or population. A small descriptive improvement needs its scope attached.",
+  "counterfactual": {
+    "change": "Write \"B makes every student smarter\".",
+    "prediction": "Remove that sentence as unsupported by the study.",
+    "reason": "The measured unit was answers, not student understanding or intelligence."
+  },
+  "student_task": "Compute the supported-answer rates for 9/12 and 10/12. What actual outcome was measured, and why is a claim that every student becomes smarter outside this evidence?",
+  "teacher_answer": "A is 75%; B is about 83.3%, a one-case improvement. Name the collection, rubric and twelve-case denominator. Do not infer that children learn more from this answer-support measure. Changed case: Remove that sentence as unsupported by the study. The measured unit was answers, not student understanding or intelligence.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "No significance or stable population effect is established; broader task and learner evidence would require another study.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Supported answers in one collection",
+    "labels": [
+      "A",
+      "B"
+    ],
+    "values": [
+      9,
+      10
+    ],
+    "unit": "supported answers out of 12"
+  }
+}

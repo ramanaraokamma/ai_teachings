@@ -1,0 +1,38 @@
+{
+  "week": "ai-4/11",
+  "title": "Decision Trees",
+  "outcome": "By the end, I can explain decision trees using a traced example and a stated limitation.",
+  "scenario": "Trace a small fitted tree, including its exact boundary.",
+  "given": [
+    "Toy stored tree: if visible_spots>=2 predict spotted; otherwise healthy. Missing visible_spots requires review. Inputs L=1, M=2, N=None.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Read first branch",
+      "icon": "rule",
+      "detail": "L: 1>=2 is false, so predict healthy."
+    },
+    {
+      "label": "Read boundary",
+      "icon": "model",
+      "detail": "M: 2>=2 is true, so predict spotted."
+    },
+    {
+      "label": "Stop missing path",
+      "icon": "question",
+      "detail": "N lacks a count, so use review rather than inventing zero."
+    }
+  ],
+  "explanation": "Read the picture in order. N lacks a count, so use review rather than inventing zero. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "The stored rule changes to visible_spots>2.",
+    "prediction": "M is now predicted healthy.",
+    "reason": "Changing >= to > moves the exact value 2 to the other branch."
+  },
+  "student_task": "Which input distinguishes the original and changed tree? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "M with exactly 2 spots. Values 1 and missing keep their earlier declared paths; 2 is the boundary probe. Changed-case check: M is now predicted healthy. Changing >= to > moves the exact value 2 to the other branch.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Applying a stored tree is inference. Selecting a threshold from labelled training data is a separate fitting step.",
+  "review_note": "Reviewed Decision Trees against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

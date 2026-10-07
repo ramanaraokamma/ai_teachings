@@ -1,0 +1,233 @@
+{
+  "week": "ai-3/36",
+  "title": "Creator Defense",
+  "grade": 8,
+  "project": "Verified Study Buddy",
+  "goals": [
+    "Explain the mechanism and terminology of generative systems defense",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Generative systems defense",
+  "vocabulary": [
+    [
+      "Defense claim",
+      "A statement tied to inspectable project evidence"
+    ],
+    [
+      "Reproduction packet",
+      "Artifacts needed to repeat a reported procedure"
+    ],
+    [
+      "Unmeasured outcome",
+      "A property for which the experiment supplies no observation"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "System reports 9/10 retrieved relevant records, 7/10 supported answers and zero actions in a read-only run. Presenter claims 90% fully correct and faster than baseline."
+      },
+      {
+        "type": "paragraph",
+        "text": "Retrieval rate 90% and support rate 70% differ. Action trace supports zero actions in that run; no timing evidence supports speed. Correct the full-correctness and speed claims."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "System reports 9/10 retrieved relevant records, 7/10 supported answers and zero actions in a read-only run. Presenter claims 90% fully correct and faster than baseline. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: Retrieval rate 90% and support rate 70% differ. Action trace supports zero actions in that run; no timing evidence supports speed. Correct the full-correctness and speed claims.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "A defense has retrieval 8/10, support 6/10, fallback 3/4 and no measured latency. State the three rates and reject one unsupported claim.",
+    "answer": "Teacher explanation: 80% retrieval, 60% support, 75% appropriate fallback; denominators differ. Speed and universal correctness are unmeasured; present limitations and source versions.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "A defense should preserve negative evidence and uncertainty rather than treating polished presentation as proof."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/05bb7e405fd2e87b30655002d7dbcabc5e11241a543bc0d53b033cf4def4b0e7",
+        "alt": "INPUT stage for Creator Defense",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1e19f722cd1c475e634afedb1d1cb5f7d1439ee09cc1d2bb7932769e35709a01",
+        "alt": "PROCESS stage for Creator Defense",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/3a48a8c82a8d43f9f0319275bca54d10e3783e57d28a1c6cfad7c87861f41d8c",
+        "alt": "OUTPUT stage for Creator Defense",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Link each claim to a recorded result. State the distinction between retrieval relevance, claim support, fallback and permissions. Give a reproduction packet and answer challenges without inventing missing measurements."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Generative systems defense \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "System reports 9/10 retrieved relevant records, 7/10 supported answers and zero actions in a read-only run.",
+            "Link each claim to a recorded result. State the distinction between retrieval relevance, claim support, fallback and permissions. Give a reproduction packet and answer challenges without inventing missing measurements.",
+            "Retrieval rate 90% and support rate 70% differ. Action trace supports zero actions in that run; no timing evidence supports speed. Correct the full-correctness and speed claims."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/baa081bb74d63b3556ecfd5951cdc8779d64ec1813de34614621c4e969a973f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/5e6557194a1470352d07b6a509da5d673d81767981996dd1b685f799a5582b76",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/8e1f2e3affdd81449df265675243cda4511c1e88dd8cd9583d4ea42f6083c297",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a54f0c40e48e47ca92a4c36ebbc98f08b4a78c72cd385d85b0a5a7f07f558757",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

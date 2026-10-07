@@ -1,0 +1,50 @@
+{
+  "week": "ai-6/11",
+  "title": "Failure budgets and service objectives",
+  "outcome": "Explain failure budgets and service objectives using the deciding step in this fictional service.",
+  "scenario": "A reliability allowance. A practice service requires at least 98 successes in each window of 100 eligible requests.",
+  "given": [
+    "Current window has 97 successes and 3 failures. Success includes a correct refusal within the agreed time limit."
+  ],
+  "steps": [
+    {
+      "label": "Define success",
+      "icon": "rule",
+      "detail": "Use the same predeclared correctness and timing criteria."
+    },
+    {
+      "label": "Compute allowance",
+      "icon": "chart",
+      "detail": "The target permits at most 2 failures in 100 requests."
+    },
+    {
+      "label": "Compare record",
+      "icon": "check",
+      "detail": "Three failures misses the target by one request."
+    }
+  ],
+  "explanation": "An objective needs a measurement window, denominator and success definition. An honest refusal can be success under an agreed contract.",
+  "counterfactual": {
+    "change": "Repair one failed request into a success in this window.",
+    "prediction": "98 successes and 2 failures meet the stated window target.",
+    "reason": "One recorded outcome changes while the denominator stays 100."
+  },
+  "student_task": "Calculate the maximum allowed failures among 100 requests. Does 97 successes and 3 failures meet the target, and what changes after one failure becomes a success?",
+  "teacher_answer": "Use the same predeclared correctness and timing criteria. The target permits at most 2 failures in 100 requests. Three failures misses the target by one request. Changed case: 98 successes and 2 failures meet the stated window target. One recorded outcome changes while the denominator stays 100.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "Meeting one window does not guarantee the next; monitor repeated windows and distinguish failure types.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Failure count in one 100-request window",
+    "labels": [
+      "Allowed maximum",
+      "Observed"
+    ],
+    "values": [
+      2,
+      3
+    ],
+    "unit": "failed requests out of 100"
+  }
+}

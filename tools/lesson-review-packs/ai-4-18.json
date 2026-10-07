@@ -1,0 +1,258 @@
+{
+  "week": "ai-4/18",
+  "title": "Error Analysis",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Categorize development errors using evidence",
+    "Design a controlled change with a stated hypothesis",
+    "Preserve failures and test boundaries"
+  ],
+  "primary_topic": "Error analysis and controlled follow-up",
+  "vocabulary": [
+    [
+      "Error analysis",
+      "Inspection of mistakes to propose explanations"
+    ],
+    [
+      "Hypothesis",
+      "A testable proposed explanation"
+    ],
+    [
+      "Controlled comparison",
+      "A comparison that changes one planned factor while holding relevant conditions fixed"
+    ],
+    [
+      "Regression",
+      "A new failure introduced by a change"
+    ]
+  ],
+  "worked_example": {
+    "title": "Explain the visual",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Error analysis and controlled follow-up at a glance",
+        "columns": [
+          "Part",
+          "Evidence or action",
+          "Interpretation"
+        ],
+        "rows": [
+          [
+            "Inspect",
+            "IDs and conditions",
+            "Propose a hypothesis"
+          ],
+          [
+            "Change",
+            "One planned factor",
+            "Keep comparison fixed"
+          ],
+          [
+            "Evaluate",
+            "All validation records",
+            "Report gains and regressions"
+          ]
+        ],
+        "caption": "After the change, the same validation groups have 2/12 and 4/18 errors. Total errors fall from 7 to 6, but bright-light errors increase from 3 to 4. Report both results. A net improvement does not mean every part improved, and repeated experiments can overfit validation."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Does the difference prove dim light causes model errors? Explain the steps or evidence behind your response.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Explain the limit",
+    "prompt": "Does the difference prove dim light causes model errors?",
+    "answer": "Teacher explanation: No. Other conditions and label quality may differ; it motivates a hypothesis.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Apply independently",
+    "task": "Old errors are 5/10 on route A and 2/20 on B. New errors are 3/10 and 5/20. State total and group changes and a justified next step.",
+    "answer": "Teacher explanation: Total worsens 7/30 to 8/30. A improves 50 to 30 percent, B worsens 10 to 25 percent. Investigate B and keep the original as a comparison; do not claim overall improvement.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A final answer is enough",
+      "Ask for the relevant counts, units, procedure or saved record. For this week: Dim 4/12 about 33.3 percent; bright 3/18 about 16.7 percent."
+    ],
+    [
+      "A stronger claim makes a stronger project",
+      "The models are evaluated on different selected records. Apply one documented review policy and compare both on the same versioned set."
+    ],
+    [
+      "The new case can be copied from the example",
+      "The independent task changes the evidence. Require a fresh explanation: Total worsens 7/30 to 8/30. A improves 50 to 30 percent, B worsens 10 to 25 percent. Investigate B and keep the original as a comparison; do not claim overall improvement."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/925823facdb38970e0f627674ed515a82c9d3f33cffe0aa1198ddc283c0a6af8",
+        "alt": "Week 18 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ba8cfeaec9eb033c971f0dbac5adcbdd353b3bfb51e85b10123d0cb34b6d66e4",
+        "alt": "Week 18 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ac03e02d9d7c493918238bb8d633675d09ec56faedbbaa1c712fafda1a7bed40",
+        "alt": "Week 18 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Cluster mistakes and propose cause-specific next tests."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  Grouping errors by observable conditions connects a metric problem to possible data, label, feature, or model causes."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Twelve errors are grouped: 6 low light, 3 blurred, 2 label disagreements, 1 unusual species. Largest cluster suggests a lighting representation problem, not proof of the cause.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "A validation audit has 12 dim-light cases with 4 errors and 18 bright-light cases with 3 errors. Rates are 4/12=1/3 and 3/18=1/6. Dim lighting is a useful lead, not proof of causation: camera, route or labels may also differ. A planned change uses a training-fitted brightness normalization while keeping split and classifier settings fixed."
+      },
+      {
+        "type": "code",
+        "title": "Python 3 check",
+        "text": "old_errors = [4, 3]\nnew_errors = [2, 4]\ncounts = [12, 18]\nfor old, new, n in zip(old_errors, new_errors, counts):\n    print(old / n, new / n)\nprint(sum(old_errors), sum(new_errors))\n# Total errors fall from 7 to 6; one group worsens."
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the calculation on paper before running this optional Python check. Use the stated fictional inputs and compare intermediate values. The code checks this example; your independent workbook case uses different evidence."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 18 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 18 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 18 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 18 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

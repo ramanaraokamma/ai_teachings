@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/28",
+  "title": "Accessibility and user feedback",
+  "outcome": "Explain accessibility and user feedback using the deciding step in this fictional service.",
+  "scenario": "Make feedback accessible. An app marks an incomplete answer with a red circle only; a revision adds equivalent text and keyboard access.",
+  "given": [
+    "New text: \"More explanation needed\". The next-action link is labelled and focusable; status is exposed to assistive technology."
+  ],
+  "steps": [
+    {
+      "label": "Find the barrier",
+      "icon": "person",
+      "detail": "Colour alone may not communicate the status to every learner."
+    },
+    {
+      "label": "Provide meaning",
+      "icon": "output",
+      "detail": "Text and programmatic status explain the same result."
+    },
+    {
+      "label": "Test next action",
+      "icon": "check",
+      "detail": "A keyboard user can reach the labelled explanation link."
+    }
+  ],
+  "explanation": "Accessibility offers the same meaning and actions through usable channels. Feedback should say what to improve, not merely show a mark.",
+  "counterfactual": {
+    "change": "Change the circle to orange without labels.",
+    "prediction": "The colour-only communication barrier remains.",
+    "reason": "A different hue supplies no textual or programmatic equivalent."
+  },
+  "student_task": "Explain what each text, keyboard and assistive-technology change adds to the feedback. Why does changing the red circle to orange alone not solve the communication barrier?",
+  "teacher_answer": "Colour alone may not communicate the status to every learner. Text and programmatic status explain the same result. A keyboard user can reach the labelled explanation link. Changed case: The colour-only communication barrier remains. A different hue supplies no textual or programmatic equivalent.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "One keyboard check is not a complete accessibility audit; test relevant assistive technologies and gather user feedback.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

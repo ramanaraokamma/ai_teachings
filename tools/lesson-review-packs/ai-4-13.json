@@ -1,0 +1,311 @@
+{
+  "week": "ai-4/13",
+  "title": "Train a Classifier",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Connect training-only scaling and neighbour prediction in one pipeline",
+    "Reproduce predictions from recorded data settings and fitted values",
+    "Audit a pipeline for refitting feature-order errors and evaluation leakage"
+  ],
+  "primary_topic": "A reproducible classifier pipeline",
+  "vocabulary": [
+    [
+      "Pipeline",
+      "An ordered sequence of data transformations and prediction steps"
+    ],
+    [
+      "Fitted state",
+      "The learned values and stored examples needed to make predictions"
+    ],
+    [
+      "Reproduce",
+      "Obtain the same result using the same recorded inputs and procedure"
+    ],
+    [
+      "Input contract",
+      "The documented feature names order units and accepted values"
+    ]
+  ],
+  "worked_example": {
+    "title": "Trace what is fitted and what is reused",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Two stages with one fitted state",
+        "columns": [
+          "Stage",
+          "Input and action",
+          "Result"
+        ],
+        "rows": [
+          [
+            "Fit once",
+            "Training rows only",
+            "Scale plus stored rows"
+          ],
+          [
+            "Predict each query",
+            "Raw pair plus state",
+            "Neighbour ID and label"
+          ],
+          [
+            "Evaluate afterward",
+            "Prediction plus reference",
+            "Recorded match or error"
+          ]
+        ],
+        "caption": "Reference labels are used after prediction to score results. They do not enter the fitted scale or stored neighbour pool."
+      },
+      {
+        "type": "paragraph",
+        "text": "For raw query (11,120), scale gives (0.1,0.2). Distances to A,B,C are 0.9,1.1,1.7, so the function returns A and clear. It does not recalculate minima or add the query to stored rows. The returned ID is useful for checking the reasoning, but it is not evidence that the label is true."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Trace (11,120) through both functions. What does fit store, what does predict reuse, and at which point may a validation reference label be compared?",
+        "lines": 4
+      },
+      {
+        "type": "paragraph",
+        "text": "Store the fitted state together with the input contract and method settings. A model without its scale or feature order is incomplete. Swapping the raw pair to (120,11) produces B and blocked here; the function cannot detect that the caller swapped the meanings."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace and score the saved run",
+    "prompt": "Give the IDs and labels printed for V1,V2,V3. Use references clear,blocked,clear to calculate accuracy and the training-majority baseline. Which error should repeat in an unchanged rerun?",
+    "answer": "V1 selects A clear, V2 C blocked, V3 B blocked. Accuracy is 2/3. The training-majority blocked baseline is correct only for V2, scoring 1/3. V3 is the repeatable error; repeated output does not turn it into a correct prediction.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Build and trace a fresh fitted state",
+    "task": "Use P (0,60) blocked, Q (20,20) clear, R (20,60) clear as new training rows. Fit the same pipeline. Predict validation queries (2,28),(18,56),(4,12) with references blocked,clear,blocked. Give fitted minima and ranges, transformed queries, selected IDs, predictions, accuracy and training-majority baseline.",
+    "answer": "Minima (0,20), ranges (20,40). Scaled queries are (0.1,0.2),(0.9,0.9),(0.2,-0.2). Selected IDs P,R,Q give blocked,clear,clear. Accuracy is 2/3; the training-majority clear baseline gets 1/3. The third query remains wrong. Validation rows do not change the fitted state.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A pipeline prevents every leak automatically",
+      "Correct sequencing cannot fix a fit call that receives held-out rows or features unavailable at prediction time."
+    ],
+    [
+      "A seed is the whole reproducibility record",
+      "This program is deterministic. Data code split feature order settings and runtime still matter; a seed cannot repair changed inputs."
+    ],
+    [
+      "Same score means same predictions",
+      "Compare predictions by example ID. Different error patterns can produce the same accuracy."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/752b511a8d8711e176bfaf9e3c4eee6d287f23ca9acaacc10b597003d878fe9b",
+        "alt": "Week 13 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/20484c78e24e772e1c289d5a75d355475b97824630c13b23bcfd06079a410e2b",
+        "alt": "Week 13 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/e1df8a2b2c324e4b200456dfb127243234ae18911b1e3102e4ef0e040f7533e8",
+        "alt": "Week 13 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Run a starter classifier and record data version, split, settings, and predictions."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  Training fits model parameters from labeled examples; prediction applies the frozen fitted model to new feature rows."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Load data version v1 and a saved train/test split. Fit preprocessing on training rows only, then fit the classifier.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "def scale(x, low, span):\n    return tuple((x[j] - low[j]) / span[j] for j in range(2))\n\ndef fit(rows):\n    xs = [x for item_id, x, label in rows]\n    low = tuple(min(x[j] for x in xs) for j in range(2))\n    span = tuple(max(x[j] for x in xs) - low[j]\n                 for j in range(2))\n    if 0 in span:\n        raise ValueError(\"Review a constant training feature\")\n    stored = tuple((i, scale(x, low, span), y) for i, x, y in rows)\n    return low, span, stored\n\ndef predict(x, model):\n    low, span, stored = model\n    q = scale(x, low, span)\n    ranked = sorted((sum(abs(a - b) for a, b in zip(q, v)), i, y)\n                    for i, v, y in stored)\n    return ranked[0][1], ranked[0][2]\n\ntrain = [(\"A\", (10, 200), \"clear\"),\n         (\"B\", (20, 100), \"blocked\"),\n         (\"C\", (20, 200), \"blocked\")]\nmodel = fit(train)\nqueries = [(11, 120), (19, 190), (12, 80)]\nfor x in queries:\n    print(predict(x, model))"
+      },
+      {
+        "type": "paragraph",
+        "text": "fit returns minima (10,100), ranges (10,100) and scaled training examples. predict transforms a raw query with that state, ranks distances, then returns the selected ID and label. zip pairs matching features; sum adds their absolute differences. sorted uses distance first and unique ID second."
+      },
+      {
+        "type": "paragraph",
+        "text": "Run the whole script in Python 3. It prints ('A', 'clear'), ('C', 'blocked'), ('B', 'blocked') on separate lines. No validation labels enter fit or predict. This is a small pipeline written with functions, not the scikit-learn Pipeline class."
+      },
+      {
+        "type": "subheading",
+        "text": "Apply the connected idea: Searching candidate rules"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "train = [(2, \"blocked\"), (4, \"blocked\"),\n         (6, \"clear\"), (8, \"clear\")]\nbest_errors = len(train) + 1\nbest_cutoff = None\nfor cutoff in [3, 5, 7]:\n    errors = 0\n    for distance, label in train:\n        guess = \"clear\"\n        if distance <= cutoff:\n            guess = \"blocked\"\n        if guess != label:\n            errors = errors + 1\n    print(cutoff, errors)\n    if errors < best_errors:\n        best_errors = errors\n        best_cutoff = cutoff\nprint(\"chosen\", best_cutoff)"
+      },
+      {
+        "type": "paragraph",
+        "text": "The output lines are 3 1, 5 0, 7 1, then chosen 5. Cutoff 3 misses the blocked row at 4 cm. Cutoff 5 matches all four training labels. Cutoff 7 wrongly marks the 6 cm clear row as blocked. Fitting stores cutoff 5; prediction then applies that stored rule to a new distance."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Separate search from later scoring",
+        "columns": [
+          "Stage",
+          "Evidence",
+          "Decision"
+        ],
+        "rows": [
+          [
+            "Try cutoffs 3 5 7",
+            "Training labels",
+            "Count 1 0 1 errors"
+          ],
+          [
+            "Store cutoff 5",
+            "Smallest training error",
+            "Freeze this rule"
+          ],
+          [
+            "Compare with baseline",
+            "Same validation rows",
+            "Report both scores"
+          ]
+        ],
+        "caption": "The supplied search chooses a cutoff using training errors. A perfect training fit does not establish performance on new examples."
+      },
+      {
+        "type": "paragraph",
+        "text": "best_errors starts above any possible mistake count. The strict < keeps the first tied candidate; ascending order makes that the smaller cutoff. The code assumes nonempty training data, numeric distances and the two allowed labels. Validate those assumptions before using another dataset."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 13 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 13 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 13 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 13 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

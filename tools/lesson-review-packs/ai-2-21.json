@@ -1,0 +1,245 @@
+{
+  "week": "ai-2/21",
+  "title": "Similarity by Selected Traits",
+  "grade": 7,
+  "project": "Transparent Book Recommender",
+  "goals": [
+    "Represent items with numeric features",
+    "Calculate a simple distance",
+    "Explain how units and chosen features affect similarity"
+  ],
+  "primary_topic": "Distance between feature vectors",
+  "vocabulary": [
+    [
+      "Feature vector",
+      "An ordered list of numeric features"
+    ],
+    [
+      "Distance",
+      "A number describing difference under a chosen rule"
+    ],
+    [
+      "Manhattan distance",
+      "The sum of absolute feature differences"
+    ],
+    [
+      "Normalization",
+      "Rescaling features to a comparable scale"
+    ]
+  ],
+  "worked_example": {
+    "title": "Predict before running",
+    "blocks": [
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Find the distance from target [2, 4] to [2, 4] and to [3, 3].",
+        "lines": 6
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Compute distances",
+    "prompt": "From target [1, 2], find distances to A [2, 2] and B [0, 4].",
+    "answer": "A: 1 + 0 = 1; B: 1 + 2 = 3.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Rank independently",
+    "task": "Target is [3, 2]. Options A [1, 2], B [3, 4], C [4, 2]. Calculate distances, select the closest, and identify a tie among the others.",
+    "answer": "Distances A 2, B 2, C 1. C is closest; A and B tie. Do not claim a unique ranking of the tied pair without a rule.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A successful run proves the conclusion",
+      "Similarity depends on the features collected and the distance rule. Missing accessibility, cost or preference information can make the closest item unsuitable. Hard requirements should be checked separately."
+    ],
+    [
+      "Matching the example is enough",
+      "Require the new W4 case, explicit predictions and an explanation. Fresh retry: target [2, 3]; X [0, 3], Y [2, 2], Z [3, 4] have distances 2, 1, 2. Y wins and X/Z tie."
+    ],
+    [
+      "A convenient shortcut preserves meaning",
+      "If one feature is duration in minutes up to 60 and another a rating up to 5, raw distance may be dominated by duration. Specify scaling or weights before ranking; do not silently change units to get a preferred winner."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/3dcb2fbd216e373cfd5c2ca801ea51fc2a3c1acd8ace06e8866eb03d42515035",
+        "alt": "INPUT stage for Similarity by Selected Traits",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/0ac8ff91dc484003be72f6326205ae73a9b713cfe11f3889818254e5385a684d",
+        "alt": "PROCESS stage for Similarity by Selected Traits",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b4db7454d6871252356a6fed3501a6042ed99fff33d3c0227ad65a3ce51d2546",
+        "alt": "OUTPUT stage for Similarity by Selected Traits",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "target = [2, 4]\noptions = {\"Sketch\": [1, 3], \"Relay\": [5, 4]}\nfor name in options:\n    features = options[name]\n    distance = (abs(features[0] - target[0])\n                + abs(features[1] - target[1]))\n    print(name, distance)"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow the evidence",
+        "columns": [
+          "Step or case",
+          "Evidence",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "Sketch [1, 3]",
+            "1 + 1",
+            "Distance 2"
+          ],
+          [
+            "Relay [5, 4]",
+            "3 + 0",
+            "Distance 3"
+          ]
+        ],
+        "caption": "Read each row from left to right and connect the evidence to the stated rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "abs gives a nonnegative gap. Under this rule Sketch is closer. Feature order must match: first energy, then group work. Both scales are 0 to 5, but that does not prove one unit has identical practical meaning in both features."
+      },
+      {
+        "type": "subheading",
+        "text": "Calculate a gap one feature at a time"
+      },
+      {
+        "type": "paragraph",
+        "text": "Keep the features in the same order: energy first, group work second. For target [2,4] and Sketch [1,3], the gaps are abs(1-2)=1 and abs(3-4)=1; the distance is 2. Relay [5,4] has gaps 3 and 0, so its distance is 3. Smaller means closer under this particular rule. It does not mean better in every way, because the two recorded features leave out other needs."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1f18213ba3d74c99072fa04ad7520b53eee0b2e9e845b0d8a61ccdda1b41f3f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fed8318cf337134a2c31a8d2c90831db67a27a43d3c6f85b25079c53ec37ff9a",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/75f964dbe29000347e518a59e2717387d7109bd1f947abdafa07e931a61cf754",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4d936b6648b81ac897fc99370c2788f8e0b135d8fc31cfd77afceee66a92128c",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

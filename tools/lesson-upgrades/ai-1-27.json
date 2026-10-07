@@ -1,0 +1,58 @@
+{
+  "week": "ai-1/27",
+  "title": "Verify Important Outputs",
+  "outcome": "By the end, I can verify quantities with consistent units and separate arithmetic from unsupported claims.",
+  "scenario": "A fictional craft sheet calculates ribbon left after making bookmarks.",
+  "given": [
+    "Four rolls each contain exactly 150 cm. Eight bookmarks use exactly 50 cm each.",
+    "No other ribbon loss is assumed; no competition result is recorded."
+  ],
+  "steps": [
+    {
+      "label": "Available ribbon",
+      "icon": "data",
+      "detail": "4×150=600 cm."
+    },
+    {
+      "label": "Ribbon used",
+      "icon": "code",
+      "detail": "8×50=400 cm."
+    },
+    {
+      "label": "Remainder",
+      "icon": "chart",
+      "detail": "600−400=200 cm=2 m."
+    },
+    {
+      "label": "Audit draft",
+      "icon": "check",
+      "detail": "“200 m remains and everyone wins” fails unit and evidence checks."
+    }
+  ],
+  "explanation": "All arithmetic first uses centimetres. Converting only after subtraction avoids mixing units. The record supports available, used and remaining lengths under its no-loss assumption. It does not support a promise about winning. A numerically correct total elsewhere in a draft cannot rescue a wrong unit or an invented claim.",
+  "counterfactual": {
+    "change": "Make ten bookmarks instead of eight.",
+    "prediction": "100 cm, or 1 m, remains.",
+    "reason": "600−10×50=100 cm."
+  },
+  "student_task": "Correct the draft and identify which part needs another source rather than a calculation.",
+  "teacher_answer": "It should say 200 cm or 2 m remains. Winning needs genuine result evidence; remove the unsupported promise.",
+  "project_evidence": "Check sorter calculations with explicit units and verify explanation claims against their actual catalogue evidence.",
+  "limits": "Real cutting losses or inaccurate roll lengths would change this toy calculation; the assumption must be declared.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Ribbon quantities in one consistent unit",
+    "labels": [
+      "Available",
+      "Used",
+      "Remaining"
+    ],
+    "values": [
+      600,
+      400,
+      200
+    ],
+    "unit": "centimetres"
+  }
+}

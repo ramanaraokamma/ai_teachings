@@ -1,0 +1,43 @@
+{
+  "week": "ai-1/32",
+  "title": "Build a Paper Prototype",
+  "outcome": "By the end, I can build and operate a paper prototype while recording actual traces.",
+  "scenario": "A fictional team turns a storage-bin specification into movable instruction cards.",
+  "given": [
+    "Bins X capacity 3 then Y capacity 7; valid count 1–9. Select first capacity at least count.",
+    "For request 4, write baseline Y before operating cards. Prototype cards mistakenly stop with X immediately."
+  ],
+  "steps": [
+    {
+      "label": "Expected result",
+      "icon": "book",
+      "detail": "Baseline checks X then Y and expects Y for count 4."
+    },
+    {
+      "label": "Operate literally",
+      "icon": "person",
+      "detail": "Follow the current prototype cards without secretly repairing them."
+    },
+    {
+      "label": "Actual trace",
+      "icon": "code",
+      "detail": "Prototype stops at X; it never performs the capacity comparison."
+    },
+    {
+      "label": "Record mismatch",
+      "icon": "check",
+      "detail": "Expected Y, actual X: locate the missing check."
+    }
+  ],
+  "explanation": "A paper prototype is executable when another person can follow its instructions without guessing your intention. Record the actual wrong result separately from the expected one. Discovering a missing comparison is useful evidence for repair; pretending the operator followed the intended rule would hide the defect.",
+  "counterfactual": {
+    "change": "Insert “if capacity is below count, continue” before accepting a bin.",
+    "prediction": "The revised trace rejects X and accepts Y for 4.",
+    "reason": "3<4 is true; 7<4 is false, so Y fits."
+  },
+  "student_task": "What should appear in the test log before and after the repair?",
+  "teacher_answer": "Keep original version: expected Y, actual X, missing comparison. Add revised version: expected Y, actual Y, with its full trace.",
+  "project_evidence": "Save sorter instruction cards, dated versions and operator traces alongside the manual expected outputs.",
+  "limits": "One repaired paper case does not establish usability, correctness on every input or performance of a later software implementation.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment."
+}

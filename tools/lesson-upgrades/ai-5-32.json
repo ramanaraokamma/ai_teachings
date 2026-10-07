@@ -1,0 +1,53 @@
+{
+  "week": "ai-5/32",
+  "title": "Documenting a network experiment",
+  "outcome": "By the end, I can explain documenting a network experiment using a traced example and a stated limitation.",
+  "scenario": "Document checkpoint selection so another team can reconstruct every reported number.",
+  "given": [
+    "Run R8 predicts ReLU(a\u00d7x). Validation V4 has x = 2, target 3. Baseline a = 0.5; checkpoints a = 1 and 1.25; choose minimum validation squared error.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Baseline prediction",
+      "icon": "chart",
+      "detail": "At a = 0.5, prediction 1, error\u00b2 = 4."
+    },
+    {
+      "label": "Checkpoint comparison",
+      "icon": "chart",
+      "detail": "At a = 1, prediction 2, loss 1; at 1.25, prediction 2.5, loss 0.25."
+    },
+    {
+      "label": "Select and record",
+      "icon": "book",
+      "detail": "Choose a = 1.25; save R8, inputs, formula, checkpoint values, loss rule and validation role."
+    }
+  ],
+  "explanation": "A reproducible record includes the actual input, formula, parameters and scoring rule, together with each dataset\u2019s role. The validation case selects the best supplied checkpoint, so it is part of development. Save that selection history and freeze the checkpoint before evaluating fresh final cases. Renaming the same case a test does not change how it was used.",
+  "counterfactual": {
+    "change": "A teammate calls V4 a final test after using it to select a=1.25.",
+    "prediction": "Correct its role to validation; it was used for selection.",
+    "reason": "Changing the label on a dataset does not make its evidence untouched."
+  },
+  "student_task": "What additional evidence is needed for a final performance claim? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Freeze the selected checkpoint, then evaluate an independently reserved final set; retain run settings, baseline and selection history. Changed-case check: Correct its role to validation; it was used for selection. Changing the label on a dataset does not make its evidence untouched.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Reconstructing one run verifies arithmetic and provenance, not population performance or educational learning impact.",
+  "review_note": "Reviewed Documenting a network experiment against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Validation squared loss by checkpoint",
+    "labels": [
+      "baseline a = 0.5",
+      "checkpoint a = 1",
+      "checkpoint a = 1.25"
+    ],
+    "values": [
+      4,
+      1,
+      0.25
+    ],
+    "unit": "squared error"
+  }
+}

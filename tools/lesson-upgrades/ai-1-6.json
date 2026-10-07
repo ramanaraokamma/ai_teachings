@@ -1,0 +1,74 @@
+{
+  "week": "ai-1/6",
+  "title": "Sound Becomes a Signal",
+  "outcome": "By the end, I can connect ordered sound samples to timing and explain what a maximum loses.",
+  "scenario": "A fictional microphone display records five samples during a short classroom tap.",
+  "given": [
+    "Times are 0,1,2,3,4 ms in order.",
+    "Signal A: 0,3,0,1,0. Signal B: 0,1,0,3,0. Toy values are signed measurement units; these happen to be nonnegative."
+  ],
+  "steps": [
+    {
+      "label": "Timed sampling",
+      "icon": "sensor",
+      "detail": "Associate every measurement with its sampling time."
+    },
+    {
+      "label": "Signal A",
+      "icon": "chart",
+      "detail": "Its largest sample 3 occurs at 1 ms."
+    },
+    {
+      "label": "Signal B",
+      "icon": "chart",
+      "detail": "Its largest sample 3 occurs at 3 ms."
+    },
+    {
+      "label": "Maximum summary",
+      "icon": "output",
+      "detail": "Both maxima are 3, but the strongest recorded tap arrives at different times."
+    }
+  ],
+  "explanation": "The sequences contain the same values in different orders. Keeping the maximum preserves peak recorded value while losing its timing. A graph should keep time on the horizontal axis; shuffling samples changes the recorded signal even if its maximum stays fixed.",
+  "counterfactual": {
+    "change": "Retain only samples at 0,2,4 ms.",
+    "prediction": "Both retained sequences are 0,0,0.",
+    "reason": "The selected times omit both nonzero samples from each signal."
+  },
+  "student_task": "Does the all-zero retained record prove the full signal was silent? Use the picture.",
+  "teacher_answer": "No. The full supplied signals contain nonzero values at 1 and 3 ms; those measurements were discarded.",
+  "project_evidence": "Record the sorter’s sampling interval and retain relevant sequences when a decision depends on changes over time.",
+  "limits": "These sparse toy values cannot establish perceived loudness, pitch or what happened between sampling times.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Same peak, different sample timing",
+    "cells": [
+      [
+        0,
+        3,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        3,
+        0
+      ]
+    ],
+    "row_labels": [
+      "Signal A",
+      "Signal B"
+    ],
+    "column_labels": [
+      "0 ms",
+      "1 ms",
+      "2 ms",
+      "3 ms",
+      "4 ms"
+    ]
+  }
+}

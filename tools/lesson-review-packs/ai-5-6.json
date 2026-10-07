@@ -1,0 +1,148 @@
+{
+  "week": "ai-5/6",
+  "title": "Forward passes by hand",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Record scores and activations in dependency order",
+    "Locate the first incorrect value in a forward trace",
+    "Separate a final output from evidence of model accuracy"
+  ],
+  "primary_topic": "Forward passes by hand",
+  "vocabulary": [
+    [
+      "Trace",
+      "A record of intermediate values in a computation"
+    ],
+    [
+      "Preactivation",
+      "A weighted score before an activation function"
+    ],
+    [
+      "Dependency",
+      "An earlier value needed to compute a later value"
+    ],
+    [
+      "Regression check",
+      "A retained test rerun after a change to detect a new error"
+    ]
+  ],
+  "worked_example": {
+    "title": "Find the first divergence",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Correct a trace from the earliest error",
+        "columns": [
+          "Trace stage at x is 0",
+          "Expected value",
+          "Submitted value"
+        ],
+        "rows": [
+          [
+            "Scores",
+            "[-1, 2]",
+            "[-1, 2]"
+          ],
+          [
+            "ReLU activations",
+            "[0, 2]",
+            "[-1, 2]"
+          ],
+          [
+            "Output",
+            "-3",
+            "-4"
+          ]
+        ],
+        "caption": "The columns compare expected and submitted traces. The first disagreement is the activation of -1, not the final addition. Recompute all dependent values after repairing it."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Trace x = 2, recording both scores, both activations and y. What happens to the second unit at its zero-score boundary?",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Locate a bias omission",
+    "prompt": "At x = 3 a trace gives z = [5, -1], h = [5, 0] and y = 5. Identify the first incorrect stage and repair it.",
+    "answer": "Teacher explanation: Scores and activations are correct. The output omitted bias 1; y should be 6.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Audit a different network independently",
+    "task": "Use z1 = x + 1, z2 = 2 - 2x, h = ReLU(z) component by component, and y = 2h1 + h2 - 3. Trace x = 0 and x = 2. A submitted x = 2 trace uses h = [3, -2] and y = 1. Find its first error and correct all later values.",
+    "answer": "Teacher explanation: At 0: z = [1, 2], h = [1, 2], y = 1. At 2: z = [3, -2], h = [3, 0], y = 3. The first submitted error is h2 = -2 rather than 0; the corrected output is 3.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "ReLU means the output cannot be negative",
+      "Only the hidden scores receive ReLU here. The output formula can be negative."
+    ],
+    [
+      "Fix just the final number",
+      "Repair the earliest incorrect operation and recompute every dependent value."
+    ],
+    [
+      "One passing case proves the network",
+      "Cases with equal activations or positive scores can hide specific defects."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "For x = 0, the first score is -1, which ReLU changes to 0. The second score is 2, which ReLU leaves at 2. Therefore y = 0 - 4 + 1 = -3. Negative output is allowed because this output layer uses identity."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "def trace(x):\n    z = [2 * x - 1, -x + 2]\n    h = [max(0, value) for value in z]\n    y = h[0] - 2 * h[1] + 1\n    return z, h, y\n\nfor x in [0, 1, 3]:\n    print(x, trace(x))"
+      },
+      {
+        "type": "paragraph",
+        "text": "This optional Python uses only numeric inputs. Compare every returned component against the table. The same code being run twice is a repeatability check; comparing it with a separately calculated expectation is a stronger check of correctness."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "At x = 3 a trace gives z = [5, -1], h = [5, 0] and y = 5. Identify the first incorrect stage and repair it."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

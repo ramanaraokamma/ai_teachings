@@ -1,0 +1,285 @@
+{
+  "week": "ai-1/6",
+  "title": "Sound Becomes a Signal",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Interpret an ordered sequence of sound-signal samples with a stated time interval",
+    "Explain why summaries or sparse samples can omit changes",
+    "Separate an audio recording, a transcript and an interpretation of meaning"
+  ],
+  "primary_topic": "Sound as sampled information",
+  "vocabulary": [
+    [
+      "Signal",
+      "A changing physical or recorded quantity that can carry information"
+    ],
+    [
+      "Sample",
+      "A recorded value of a signal at a particular time in this lesson"
+    ],
+    [
+      "Sampling interval",
+      "The time between successive recorded samples"
+    ],
+    [
+      "Waveform",
+      "A representation of how a signal value changes over time"
+    ],
+    [
+      "Transcript",
+      "A text representation of spoken words, which may contain errors or omit sound details"
+    ]
+  ],
+  "worked_example": {
+    "title": "A summary can hide change",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "The largest value in 0,2,0,2,0 is 2. The largest value in 0,0,2,0,0 is also 2. The first sequence reaches 2 twice at different times, while the second does so once. Keeping only the maximum loses that distinction, just as counting black pixels lost their arrangement."
+      },
+      {
+        "type": "paragraph",
+        "text": "Sparse measurements can also miss changes. If we inspect the first sequence only at times 0, 2 and 4 milliseconds, all retained values are 0. The two intervening values of 2 disappear from the record. It would be incorrect to conclude from these retained samples alone that the signal stayed at zero between them."
+      },
+      {
+        "type": "paragraph",
+        "text": "More frequent sampling can preserve faster changes under suitable recording conditions, but sampling frequency alone does not make every recording clear. Microphone placement, background sound, clipping and the recording format can also matter. We are studying one source of missing information, not a complete audio engineering specification."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Inspect what was discarded",
+    "prompt": "Retain only times 0,4,8 from W1. Write the retained values. Give one claim about the original signal that these retained values do not justify.",
+    "lines": 5,
+    "answer": "The retained values are 0,0,0. They do not justify saying the signal was always zero or had no changes between those times; the original had values 3 and 1 at omitted times."
+  },
+  "independent_case": {
+    "title": "Construct a new hidden change",
+    "task": "A record keeps values 0 at times 0,3,6 milliseconds. Construct two seven-sample sequences for every whole-millisecond time from 0 through 6 that agree with those retained values but differ at omitted times. Explain why the retained record cannot prove that nothing changed between measurements.",
+    "answer": "One pair is [0,0,0,0,0,0,0] and [0,2,1,0,3,1,0]. Both have zero at indices/times 0,3,6, but the second changes at omitted times. The retained record is compatible with both, so it cannot establish an unchanged intervening signal. Any valid seven-value pair with those constraints is acceptable.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Five samples make five gaps",
+      "Place five cards in a row and point to each space between them. The span ends at the last sample."
+    ],
+    [
+      "Equal recorded zeros prove the signal stayed zero",
+      "Reveal hidden sample cards between retained zeros. Construct both changing and unchanging originals."
+    ],
+    [
+      "A transcript is the recording in another file type",
+      "Compare the information each representation retains. Text estimates words and need not preserve sound details or exact wording."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/f22769ff5504ce6b271f7783353fd74df4f3133e3d0553267a9a010a7fcb54e2",
+        "alt": "Visual card for the input stage: changing air pressure",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/813168b21fe7be65ed56be2f837e260b3e240850534a90f48c5aa137ab9d8f79",
+        "alt": "Visual card for the process stage: sample the signal and compare a clap pattern",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/9c30529fba825331453d7e793a7a0d56f6028c577d37cd25323231cce8fba634",
+        "alt": "Visual card for the output stage: clap detected, not detected, or uncertain",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  changing air pressure"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  sample the signal and compare a clap pattern"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  clap detected, not detected, or uncertain"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  Computers receive changing measurements, not human-like hearing.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Audio is represented by samples taken over time. Sample rate describes how often measurements are taken; amplitude describes signal strength. Noise can overlap the target pattern, so detection requires a decision rule or model and an uncertainty policy.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Three stages in a speech system",
+        "columns": [
+          "Input",
+          "Operation",
+          "Output"
+        ],
+        "rows": [
+          [
+            "Sound reaching a microphone",
+            "Measure the changing signal at successive times",
+            "Ordered samples and timing information"
+          ],
+          [
+            "Recorded audio",
+            "Speech recognition estimates the words",
+            "A transcript that may contain errors"
+          ],
+          [
+            "Transcript and an explicit request",
+            "A separate rule or model processes the text",
+            "An answer or proposed action"
+          ]
+        ],
+        "caption": "Recording, transcribing and interpreting are separate operations. A later stage can correctly process an incorrectly transcribed number."
+      },
+      {
+        "type": "table",
+        "rows": [
+          [
+            "Time in milliseconds",
+            "0",
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          [
+            "Invented signal value",
+            "0",
+            "2",
+            "0",
+            "2",
+            "0"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "There are five samples with four gaps between the first and last. Each gap is 1 millisecond, so the elapsed time from first to last is 4 milliseconds. If the same five values were spaced 2 milliseconds apart, they would span 8 milliseconds. Equal value lists with different timing do not describe the same time pattern."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/88ad4d2d54507a5d0c1483422b29bd4986b4dfba4a71fe46670555be42b81908",
+        "alt": "Comparison picture for One clap: single sharp peak; target pattern",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/f29822c3bb15ef30e87c618f0094905b76c4a3526b2ba694387aa6dfe1443edc",
+        "alt": "Comparison picture for Two claps: two separated peaks; different timing pattern",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/3d0a8bb6b955c012d9238ea560442a85f06e7fa68e21f7a2c98546c255f3a6d9",
+        "alt": "Comparison picture for Talking: many irregular changes; possible false trigger",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/dfad204ee52dc9eff6b0a5b2f000bacc1944ae967537aa37fce1192825fe25b3",
+        "alt": "Comparison picture for Quiet room: small background values; baseline",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 One clap  Clue: single sharp peak. Meaning: target pattern."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Two claps  Clue: two separated peaks. Meaning: different timing pattern."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Talking  Clue: many irregular changes. Meaning: possible false trigger."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Quiet room  Clue: small background values. Meaning: baseline."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  A microphone measures a signal; it does not understand a speaker's meaning by itself.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

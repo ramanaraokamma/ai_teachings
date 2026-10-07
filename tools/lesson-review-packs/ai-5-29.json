@@ -1,0 +1,147 @@
+{
+  "week": "ai-5/29",
+  "title": "Uncertainty and failure analysis",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Distinguish a predicted class, confidence score and observed correctness",
+    "Calculate accuracy and coverage for a review policy",
+    "Investigate failure patterns without claiming an untested cause"
+  ],
+  "primary_topic": "Uncertainty and failure analysis",
+  "vocabulary": [
+    [
+      "Confidence score",
+      "The model\u2019s score for its selected class, which may not match observed reliability"
+    ],
+    [
+      "Calibration",
+      "Agreement between predicted probabilities and observed frequencies across many comparable cases"
+    ],
+    [
+      "Abstention",
+      "Withholding an automatic prediction and following a declared alternative process"
+    ],
+    [
+      "Coverage",
+      "The fraction of all cases on which a system makes an automatic prediction"
+    ]
+  ],
+  "worked_example": {
+    "title": "Make review a complete policy",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Confidence does not remove every error",
+        "columns": [
+          "Cases",
+          "At cutoff 0.80",
+          "Observed result"
+        ],
+        "rows": [
+          [
+            "A, B, C, F",
+            "Accept automatically",
+            "2 correct, 2 wrong"
+          ],
+          [
+            "D, E",
+            "Defer for review",
+            "1 correct, 1 wrong"
+          ]
+        ],
+        "caption": "The policy accepts confidence at least 0.80. Coverage is 4 / 6 and accepted-case accuracy is 2 / 4. The confident errors B and F remain."
+      },
+      {
+        "type": "paragraph",
+        "text": "Deferred cases are not automatically repaired. A review workflow needs an assigned reviewer, suitable evidence, a decision record and an outcome check. Report review workload and the final system\u2019s results separately; we have no reviewer outcomes here. Do not erase deferred cases from the report or count them as correct."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Raise the cutoff to 0.95 for the same six cases. Which cases are accepted, what are coverage and accepted-case accuracy, and why does that result not guarantee perfect future predictions?",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Count both types of error",
+    "prompt": "For all six cases, list false positives and false negatives, count true positives and true negatives, and calculate overall accuracy. Why might a single accuracy hide useful information?",
+    "answer": "Teacher explanation: False positives are B and D; the false negative is F. A and C are the two true positives; E is the one true negative. Accuracy is 3 of 6, or 50 percent. It hides which errors occur and how their consequences differ.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Analyse new outputs independently",
+    "task": "Four new cases have (p1, reference label): K (0.85, 0), L (0.70, 1), M (0.30, 0), N (0.05, 0). Give predictions and confidences, overall accuracy, and accepted cases at cutoff 0.80. Calculate coverage and accepted-case accuracy. Does this policy improve accuracy on the accepted subset here?",
+    "answer": "Teacher explanation: Predictions are 1, 1, 0, 0; confidences are 0.85, 0.70, 0.70, 0.95. L, M and N are correct, so overall accuracy is 3 of 4. K and N are accepted; coverage is 2 of 4 and accepted accuracy is 1 of 2. Accepted accuracy is lower than overall accuracy in this example.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A low p1 always means low confidence",
+      "For a binary model, p1 = 0.10 selects class 0 with confidence 0.90."
+    ],
+    [
+      "Reviewing uncertain cases fixes all errors",
+      "B and F remain confidently wrong; deferred outcomes also need measurement."
+    ],
+    [
+      "A shared condition proves the cause",
+      "A small error pattern motivates investigation; label checks, controlled examples and independent evaluation are still needed."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "The predictions for A through F are 1, 1, 1, 1, 0, 0. A, C and E are correct, so overall accuracy is 3 / 6 = 50 percent. There are two false positives (B and D), one false negative (F), two true positives and one true negative. Different errors can matter differently; a single accuracy number hides that distinction."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "rows = [(0.95, 1), (0.90, 0), (0.80, 1),\n        (0.60, 0), (0.45, 0), (0.10, 1)]\n\ndef report(rows, cutoff):\n    if not rows or not 0.5 <= cutoff <= 1:\n        raise ValueError(\"Need rows and cutoff in [0.5, 1]\")\n    correct = accepted = accepted_correct = 0\n    for p1, label in rows:\n        if not 0 <= p1 <= 1 or label not in (0, 1):\n            raise ValueError(\"Invalid score or label\")\n        pred = int(p1 >= 0.5)\n        ok = int(pred == label)\n        correct += ok\n        if max(p1, 1 - p1) >= cutoff:\n            accepted += 1\n            accepted_correct += ok\n    return (correct / len(rows), accepted / len(rows),\n            accepted_correct / accepted if accepted else None)\n\nprint(report(rows, 0.8))  # (0.5, 4/6, 0.5) approximately"
+      },
+      {
+        "type": "paragraph",
+        "text": "The function returns overall accuracy, coverage and accuracy among accepted cases. It assumes numeric scores and binary labels. None means no cases were accepted, so accepted-case accuracy is undefined, not zero or perfect. Keep counts with proportions and declare the comparison at the boundary."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "For all six cases, list false positives and false negatives, count true positives and true negatives, and calculate overall accuracy. Why might a single accuracy hide useful information?"
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

@@ -1,0 +1,285 @@
+{
+  "week": "ai-1/5",
+  "title": "Pictures Become Numbers",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Encode and reconstruct a small image using an explicit grid convention",
+    "Explain why pixel counts alone cannot recover an arrangement",
+    "Distinguish numerical image data from a model's interpretation of that data"
+  ],
+  "primary_topic": "Images as numerical grids",
+  "vocabulary": [
+    [
+      "Pixel",
+      "One position in a digital image grid with a recorded value or values"
+    ],
+    [
+      "Encoding",
+      "A convention for representing information with symbols or numbers"
+    ],
+    [
+      "Resolution",
+      "The number of positions in an image grid, often given as width by height"
+    ],
+    [
+      "Spatial arrangement",
+      "Where elements are located relative to one another"
+    ],
+    [
+      "Interpretation",
+      "A meaning or category assigned to a representation using a rule, model or human judgment"
+    ]
+  ],
+  "worked_example": {
+    "title": "A count loses the arrangement",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Suppose we discard the row records and retain only black pixel count=5. That count matches the cross, but it also matches rows 1,1,1 then 1,1,0 then 0,0,0. The second arrangement fills the top row and two positions below it. Both have five black pixels and nine pixels in total, yet they are different images."
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Stored information",
+          "What it establishes",
+          "What remains unknown"
+        ],
+        "rows": [
+          [
+            "Width 3 and height 3",
+            "There are 9 positions",
+            "The value at each position"
+          ],
+          [
+            "Black pixel count 5",
+            "Five positions are black under this code",
+            "Which five positions"
+          ],
+          [
+            "Dimensions and all three ordered rows",
+            "The full binary grid under this convention",
+            "What a viewer or model will call the picture"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "A pixel count can still be a useful feature for some tasks. For example, it can separate empty grids from grids with at least one mark. But it cannot separate every shape. To judge a feature, ask whether it retains the distinctions required by the task."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Preserve the missing field",
+    "prompt": "A message contains 1,0,0,1,1,0 but gives no dimensions. Show a one-row arrangement and a two-row arrangement using the same values. Name the extra information that would distinguish them.",
+    "lines": 6,
+    "answer": "One row of width 6 is [1,0,0,1,1,0]. Two rows of width 3 are [1,0,0] and [1,1,0]. Specify width and height, plus reading order and colour convention. The values alone do not choose the shape."
+  },
+  "independent_case": {
+    "title": "Design a new counterexample",
+    "task": "Create two different images of width 4 and height 2, each with exactly three black pixels. Write both complete row encodings. Explain which fact their shared count retains and which difference it discards.",
+    "answer": "One valid pair is A [1,1,1,0]/[0,0,0,0] and B [1,0,0,0]/[0,1,0,1]. Both have two rows of four values and three ones. Count retains the number of black positions but discards their locations. Other valid pairs are accepted if dimensions, counts and arrangements meet the constraints.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The number one always means black",
+      "Our convention states that meaning. Other encodings use different scales or channels; read their specification."
+    ],
+    [
+      "A pixel count is the picture",
+      "Have students reconstruct two different arrangements with the same count."
+    ],
+    [
+      "Storing pixels recognises the object",
+      "A grid decoder only reconstructs the representation. A separate interpretation step assigns a category."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/3859632be34bcaf3b872913144836ba3d0e8d7036751ebab798d230a175d59ba",
+        "alt": "Visual card for the input stage: light measured at grid locations",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2759b520120c6acc2b16cab66ae8f993dceeb3986b4b2afb6da8d4c083535c32",
+        "alt": "Visual card for the process stage: store and transform pixel values",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/e203a088f536ae28a42a55208d2eab2951a0ce8529f95e12e2d1ae897ce7d17c",
+        "alt": "Visual card for the output stage: a displayed, resized, blurred, or classified image",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  light measured at grid locations"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  store and transform pixel values"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  a displayed, resized, blurred, or classified image"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  A digital image is a grid of measured color values.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Digital images sample a scene across a spatial grid. Each pixel stores channel values, commonly red, green, and blue. Resolution controls sampling density; transformations operate on numbers, not on an intact object inside the computer.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "grid",
+        "title": "A three by three binary image",
+        "values": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "key": "Read rows top to bottom. Within each row read left to right. 1 is black and 0 is white.",
+        "caption": "The image has width 3 and height 3, so it contains 9 pixels. Five are black. The row records preserve where those five black pixels occur."
+      },
+      {
+        "type": "paragraph",
+        "text": "The first row is 0,1,0, so only its middle pixel is black. The second row is 1,1,1, so all three are black. The third row repeats the first. This reconstructs the displayed cross-like pattern under our convention."
+      },
+      {
+        "type": "paragraph",
+        "text": "A flattened record would be 0,1,0,1,1,1,0,1,0. Without the grid dimensions, the same nine values could also be drawn in one row of nine. Keep the shape information with the values. Width times height counts pixels; it does not tell us their contents."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/04fea6c764aea4080248a3d54c2b28442bfd8f185f3a0be033b4aaddcca86958",
+        "alt": "Comparison picture for Black/white icon: 0 and 1 values; two possible brightness levels",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/22d8670c6a64560fed3ef54354cead3df166aa4b2cbbed283d31b3fa28f6735a",
+        "alt": "Comparison picture for Gray image: one brightness number per pixel; many light levels",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/65f3178f98311ae8fd68166490721896d4dc3c03eb402e0588495e21e61e1b93",
+        "alt": "Comparison picture for Color image: red, green, blue values; three channels",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b86e3f58e56db7680587e7d8fc1ee652dcecbf7c0e8be8377f4b3bae313c80d6",
+        "alt": "Comparison picture for Blur: nearby values are mixed; detail is reduced",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Black/white icon  Clue: 0 and 1 values. Meaning: two possible brightness levels."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Gray image  Clue: one brightness number per pixel. Meaning: many light levels."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Color image  Clue: red, green, blue values. Meaning: three channels."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Blur  Clue: nearby values are mixed. Meaning: detail is reduced."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  A pixel is a measurement at a location, not a tiny copy of the object.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

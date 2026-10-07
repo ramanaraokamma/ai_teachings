@@ -11,7 +11,7 @@ export function PortalHeader({ mode, sessionRole, edition = "2.0" }: { mode: Aca
     <header className="portal-header">
       <Link href={`/learn/${mode}${suffix}`} className="brand" aria-label="AI Academy dashboard">
         <span className="brand-mark"><Sparkles aria-hidden="true" /></span>
-        <span><strong>AI Academy</strong><small>Curriculum {edition}</small></span>
+        <span><strong>AI Academy</strong><small>Complete learning programme</small></span>
       </Link>
       <nav className="mode-nav" aria-label="Portal mode">
         <Badge className={`role-badge role-${mode}`}>

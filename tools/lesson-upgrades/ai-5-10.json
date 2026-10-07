@@ -1,0 +1,38 @@
+{
+  "week": "ai-5/10",
+  "title": "Gradients with a numerical check",
+  "outcome": "By the end, I can explain gradients with a numerical check using a traced example and a stated limitation.",
+  "scenario": "Check each coordinate of a gradient while holding the other parameter fixed.",
+  "given": [
+    "Model y=2w+b, target 3. At [w, b]=[1, 0], y = 2, residual y-target=-1; loss is residual\u00b2.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Check w direction",
+      "icon": "network",
+      "detail": "Analytic derivative2\u00d7residual\u00d72=-4."
+    },
+    {
+      "label": "Check b direction",
+      "icon": "network",
+      "detail": "Analytic derivative2\u00d7residual=-2."
+    },
+    {
+      "label": "Numerical check",
+      "icon": "code",
+      "detail": "With step 0.1: w losses 0.64, 1.44 give -4; b losses 0.81, 1.21 give -2."
+    }
+  ],
+  "explanation": "A gradient lists the slope for each parameter, in a declared order. Changing w by a small amount changes the prediction twice as much as changing b by the same amount. That explains the different derivative magnitudes. Perturb one coordinate while holding the other fixed, then compare the numerical slope with its analytic counterpart.",
+  "counterfactual": {
+    "change": "Swap the two gradient components in the program output.",
+    "prediction": "The coordinate-wise numerical check exposes the mismatch.",
+    "reason": "The w perturbation changes y twice as strongly as the same b perturbation."
+  },
+  "student_task": "Why should the numerical checks perturb one coordinate at a time? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "They estimate a partial derivative. Changing both coordinates would mix their effects and would not independently verify [-4,-2]. Changed-case check: The coordinate-wise numerical check exposes the mismatch. The w perturbation changes y twice as strongly as the same b perturbation.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "The exact agreement occurs for this quadratic toy case; finite differences in larger models involve rounding and step-size limits.",
+  "review_note": "Reviewed Gradients with a numerical check against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation."
+}

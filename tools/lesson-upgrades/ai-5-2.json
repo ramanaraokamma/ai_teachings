@@ -1,0 +1,53 @@
+{
+  "week": "ai-5/2",
+  "title": "Dot products and weighted sums",
+  "outcome": "By the end, I can explain dot products and weighted sums using a traced example and a stated limitation.",
+  "scenario": "Draw each input\u2019s contribution to a toy weighted brightness score.",
+  "given": [
+    "Inputs [2, 5]; weights [3,-1]; no bias. Score is 2\u00d73+5\u00d7(-1).",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Multiply first input",
+      "icon": "network",
+      "detail": "Left contribution=2\u00d73=6."
+    },
+    {
+      "label": "Multiply second input",
+      "icon": "network",
+      "detail": "Right contribution=5\u00d7(-1)=-5."
+    },
+    {
+      "label": "Add contributions",
+      "icon": "output",
+      "detail": "Weighted sum=6-5=1; this is a score, not a probability."
+    }
+  ],
+  "explanation": "A weight controls how strongly an input contributes to the score. The left connection adds three times its measurement; the negative right connection subtracts its measurement. Calculate each contribution before adding them. This dot product is a signed score; it becomes a probability only if a separate, justified transformation and interpretation are supplied.",
+  "counterfactual": {
+    "change": "Increase only the right input from 5 to6.",
+    "prediction": "The score becomes6-6=0.",
+    "reason": "The right weight is-1, so adding1 to that input lowers the score by1."
+  },
+  "student_task": "Which connection explains why more right brightness lowers this score? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "The right connection has negative weight-1. Its contribution changes from-5 to-6 while the left contribution stays6. Changed-case check: The score becomes6-6=0. The right weight is-1, so adding1 to that input lowers the score by1.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "These declared weights are hand-chosen toy parameters; no network training or calibrated probability is claimed.",
+  "review_note": "Reviewed Dot products and weighted sums against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation.",
+  "mini_visual": {
+    "kind": "weights",
+    "title": "Weighted brightness score",
+    "inputs": [
+      2,
+      5
+    ],
+    "weights": [
+      3,
+      -1
+    ],
+    "bias": 0,
+    "activation": "identity",
+    "output": 1
+  }
+}

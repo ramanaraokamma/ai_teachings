@@ -1,0 +1,298 @@
+{
+  "week": "ai-1/28",
+  "title": "Humans Set Boundaries",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Distinguish a system\u2019s capability, the correctness of its output and permission to take an action",
+    "Match an action to the person, version, audience and limits covered by an approval",
+    "Explain when to proceed within an existing permission and when a changed action needs review"
+  ],
+  "primary_topic": "Human authority and permission",
+  "vocabulary": [
+    [
+      "Capability",
+      "What a person or system is able to do"
+    ],
+    [
+      "Authority",
+      "Responsibility and power to make a specified decision"
+    ],
+    [
+      "Permission",
+      "An allowed action within stated limits"
+    ],
+    [
+      "Scope",
+      "The boundaries of what a permission covers"
+    ],
+    [
+      "Approval record",
+      "A note of who approved which action and under what conditions"
+    ]
+  ],
+  "worked_example": {
+    "title": "Keep content review separate from permission",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Check",
+          "Question in the exhibition story",
+          "What it does not establish"
+        ],
+        "rows": [
+          [
+            "Factual support",
+            "Do Thursday and Room 6 match the source?",
+            "Permission to publish anywhere"
+          ],
+          [
+            "Scope of approval",
+            "Does this action match the teacher\u2019s limits?",
+            "That every statement is correct"
+          ],
+          [
+            "Available capability",
+            "Does the tool offer this action?",
+            "Authority to use that action"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Suppose a current room record changes the exhibition to Room 8. The editor makes version B with Room 8, which is now factually supported. The old approval explicitly covered exactly A. The editor should hold publication and show B and the changed room record to the teacher. Publishing the now-outdated A just because it was approved would fail the factual check."
+      },
+      {
+        "type": "paragraph",
+        "text": "A useful review request makes the choice concrete: \u201cThe room record now says Room 8. Here is version B with only that change. May the editor post B on the classroom board today, once?\u201d A request to review a specific change is easier to assess than an unexplained \u201cIs this okay?\u201d The teacher can approve, decline or request another change before anything is posted."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Read an approval without enlarging it",
+    "prompt": "List the decision maker, allowed actor, version, destination, timing and number of postings in the original exhibition approval. Before any posting and with no changes to the facts or permission, explain whether the editor can carry out that exact action without asking again.",
+    "lines": 6,
+    "answer": "Teacher; class editor; exactly A; classroom noticeboard; today; once. Yes, after confirming those conditions still hold and the one posting has not been used. The explicit unchanged permission already covers the action."
+  },
+  "independent_case": {
+    "title": "Transfer the permission check to a new case",
+    "task": "In a fictional library, the librarian controls the internal shelf list. The librarian tells assistant Jo: \u201cReplace the internal list with checked version L2 on Friday, once. Do not change the public catalogue.\u201d It is Friday, L2 remains checked, and no replacement has occurred. A tool offers both destinations. Assess these proposals separately: Jo replaces the internal list with L2; Jo updates the public catalogue with L2; visitor Sam replaces the internal list with L2; Jo replaces the internal list with a changed L3. Identify the approval detail that settles each case.",
+    "answer": "Jo using L2 internally on Friday once is within scope and needs no duplicate approval. The public catalogue is explicitly excluded. Sam is not the approved actor. L3 is not the approved version. These last three actions are not covered; hold them and refer any proposed change to the librarian rather than treating available buttons or correct text as permission.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A working button grants permission",
+      "Capability does not establish who may use it or for what purpose."
+    ],
+    [
+      "A correct answer can always be published",
+      "Check the approved actor, action and audience as well as accuracy."
+    ],
+    [
+      "Always ask again even when nothing changed",
+      "Use an explicit, still-valid permission within its stated limits."
+    ],
+    [
+      "The draft can announce its own approval",
+      "Read the actual decision maker\u2019s approval record."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ae2b0422922d9d64d1c163a4e369679a35ad86644151a500c73228615661ac6a",
+        "alt": "Visual card for the input stage: human-defined goal, permissions, and system output",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/557e61be54be4b52c4cf8b1467b649ad56191782fe5efbe4ad2a710f05c16b8d",
+        "alt": "Visual card for the process stage: apply review and escalation gates",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/f8eab70e119eaa28e8fdcbb6aaa9de76725f9809b55413692a4852a33856546f",
+        "alt": "Visual card for the output stage: approved action, revision, or refusal",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  human-defined goal, permissions, and system output"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  apply review and escalation gates"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  approved action, revision, or refusal"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  People decide goals, permissions, review points, and consequences.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Governance surrounds the model: people define scope, access, thresholds, logging, escalation, and accountability. Human oversight is meaningful only when reviewers have authority, information, time, and a safe way to override.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Match the proposed action to its permission",
+        "columns": [
+          "Proposed action",
+          "Check against approval",
+          "Decision"
+        ],
+        "rows": [
+          [
+            "Version A on class board",
+            "Today, once, by editor",
+            "Within scope"
+          ],
+          [
+            "Version A on public site",
+            "Public posting excluded",
+            "Outside scope"
+          ],
+          [
+            "Changed version B",
+            "Only A was approved",
+            "Review changed version"
+          ],
+          [
+            "Post A a second time",
+            "Once has been used",
+            "Outside scope"
+          ]
+        ],
+        "caption": "Each decision uses the approval in this story. An unchanged, unused permission can be acted on without requesting it again."
+      },
+      {
+        "type": "paragraph",
+        "text": "An approval record should identify the decision maker, the person or system allowed to act, the action, its audience or destination, and any version, time or quantity limit. These details make a permission usable. \u201cLooks good\u201d could mean the wording is clear; without context it may not mean \u201cpublish this publicly\u201d. If the intended action is unclear, clarify that action with the person responsible."
+      },
+      {
+        "type": "paragraph",
+        "text": "Here, the teacher has already approved the editor\u2019s one posting of A on the class board today. Once the editor verifies that these conditions still hold, repeatedly requesting the same permission adds no new information. But a classmate saying \u201cPost it everywhere\u201d does not expand the teacher\u2019s approval: the classmate has no authority over publication in this story."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b710b9b4c3e29f77bb9e591e17c44a69ea91d696a4c09b70e31025dd552c4f22",
+        "alt": "Comparison picture for Suggest bin: low-stakes output; student may confirm",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/aef7a6c65a298ee274aaa1aa2378d1815d39a8647c586fcc0e5462dde7637f3a",
+        "alt": "Comparison picture for Identify owner: personal decision; adult permission required",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2a80792693d7b188335e907975527a0c82ca26d11be5a4b9e46483e4858c4cfa",
+        "alt": "Comparison picture for Not sure: weak evidence; review gate",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/663f2c853f6a244b81eb88119dfbe57e79305161f282fb000d6ca8671e1a2b4e",
+        "alt": "Comparison picture for Repeated error: pattern of failure; pause and redesign",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Suggest bin  Clue: low-stakes output. Meaning: student may confirm."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Identify owner  Clue: personal decision. Meaning: adult permission required."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Not sure  Clue: weak evidence. Meaning: review gate."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Repeated error  Clue: pattern of failure. Meaning: pause and redesign."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  A human in the room is not meaningful oversight if the person cannot understand or change the outcome.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

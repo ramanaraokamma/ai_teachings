@@ -1,0 +1,43 @@
+{
+  "week": "ai-3/1",
+  "title": "Predictive and Generative AI",
+  "outcome": "By the end, I can identify generation and prediction objectives without confusing either with verified truth.",
+  "scenario": "A fictional learning tool first classifies a question, then drafts an answer from a supplied note.",
+  "given": [
+    "A fitted classifier labels a question science; its training used labelled questions.",
+    "Approved note N: evaporation changes liquid water into water vapour. A generator drafts: “Water evaporates into vapour and always disappears forever.”"
+  ],
+  "steps": [
+    {
+      "label": "Predict category",
+      "icon": "model",
+      "detail": "The classifier predicts science from the new question."
+    },
+    {
+      "label": "Retrieve note",
+      "icon": "book",
+      "detail": "N supplies a specific statement about evaporation."
+    },
+    {
+      "label": "Generate draft",
+      "icon": "output",
+      "detail": "The draft adds “always disappears forever” beyond N."
+    },
+    {
+      "label": "Verify claims",
+      "icon": "check",
+      "detail": "Keep the supported change-of-state claim; remove or review the unsupported addition."
+    }
+  ],
+  "explanation": "Classification predicts a category under a trained mapping. Generation produces a sequence of words under a language objective. Supplying a note can support factual grounding, but the draft still requires claim-level checking. The category being correct does not prove every sentence in the answer is correct.",
+  "counterfactual": {
+    "change": "The classifier instead predicts history while N and the draft stay unchanged.",
+    "prediction": "The category prediction changes, but the same unsupported draft claim still needs checking.",
+    "reason": "Stages can fail independently; one result does not validate another."
+  },
+  "student_task": "Identify the first unsupported claim and explain what source would be needed before asserting it.",
+  "teacher_answer": "“Always disappears forever” is unsupported and misleading as phrased; do not assert it. The approved note supports liquid changing into vapour, not disappearance.",
+  "project_evidence": "For the Verified Study Buddy, separate routing predictions, source retrieval and generated explanations in its evidence record.",
+  "limits": "This example does not expose a real model’s architecture or prove that source-fed generation always stays grounded.",
+  "review_note": "Individually designed fictional worked case, distinct from the reserved assessment. Toy model simplifications, arithmetic and source authority reviewed explicitly."
+}

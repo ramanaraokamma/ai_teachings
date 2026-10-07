@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/2",
+  "title": "Architecture and data flow",
+  "outcome": "Explain architecture and data flow using the deciding step in this fictional service.",
+  "scenario": "Four boxes for a library reply. A learner asks when the map room closes. Follow the request through the service.",
+  "given": [
+    "Approved schedule R says 17:30. The model may phrase facts but cannot replace them."
+  ],
+  "steps": [
+    {
+      "label": "Receive question",
+      "icon": "person",
+      "detail": "The interface forwards the map-room question."
+    },
+    {
+      "label": "Retrieve R",
+      "icon": "book",
+      "detail": "The application retrieves the approved time, 17:30."
+    },
+    {
+      "label": "Draft and check",
+      "icon": "model",
+      "detail": "A draft cites R and states 17:30; validation checks agreement before returning it."
+    }
+  ],
+  "explanation": "An architecture assigns responsibilities and carries data between components. Retrieval provides evidence; drafting supplies wording.",
+  "counterfactual": {
+    "change": "Disconnect retrieval from the application.",
+    "prediction": "Return review status rather than inventing a time.",
+    "reason": "The supported-answer path lacks its required evidence input."
+  },
+  "student_task": "Label what moves along the library request, retrieval and drafting arrows. Where does 17:30 come from, and why must the service stop if the retrieval arrow is disconnected?",
+  "teacher_answer": "The interface forwards the map-room question. The application retrieves the approved time, 17:30. A draft cites R and states 17:30; validation checks agreement before returning it. Changed case: Return review status rather than inventing a time. The supported-answer path lacks its required evidence input.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "A drawing needs comparison with actual traces; it does not prove the implementation follows the arrows.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

@@ -1,0 +1,135 @@
+{
+  "week": "ai-7/3",
+  "title": "Finding primary research",
+  "grade": 12,
+  "project": "Reproducible AI Research Study",
+  "goals": [
+    "Explain the mechanism and terminology of finding primary research",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Finding primary research",
+  "vocabulary": [
+    [
+      "Primary source",
+      "A record reporting its own study"
+    ],
+    [
+      "Version identifier",
+      "A label distinguishing revisions"
+    ],
+    [
+      "Secondary source",
+      "A summary or interpretation of another source"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "A blog says experiment had100 cases; original methods say40 and supplementary version says60 after revision."
+      },
+      {
+        "type": "paragraph",
+        "text": "Track versions and use the correct original record for the claim. The blog is secondary; the two original versions must not be merged silently."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "A blog says experiment had100 cases; original methods say40 and supplementary version says60 after revision. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: Track versions and use the correct original record for the claim. The blog is secondary; the two original versions must not be merged silently.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "A search result describes a benchmark score, but the linked paper uses a different dataset. What should the comparison record contain?",
+    "answer": "Teacher explanation: Exact paper/version, dataset, metric and reported result; mark the search-summary mismatch rather than borrowing its number.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "Being primary does not guarantee soundness; methods and evidence still require assessment."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Record title, authors, version, date, identifier and access location. Distinguish paper, code, data and commentary. Verify that a quoted claim belongs to the cited version."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Finding primary research \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "A blog says experiment had100 cases; original methods say40 and supplementary version says60 after revision.",
+            "Record title, authors, version, date, identifier and access location. Distinguish paper, code, data and commentary. Verify that a quoted claim belongs to the cited version.",
+            "Track versions and use the correct original record for the claim. The blog is secondary; the two original versions must not be merged silently."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "A blog says experiment had100 cases; original methods say40 and supplementary version says60 after revision. Show the intermediate steps and give the conclusion with its scope."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

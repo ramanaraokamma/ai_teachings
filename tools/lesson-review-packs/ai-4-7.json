@@ -1,0 +1,266 @@
+{
+  "week": "ai-4/7",
+  "title": "Sampling and Intended Use",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Inspect row meaning missing values and repeated records",
+    "Document dataset source schema and limitations",
+    "Separate observed quality flags from justified corrections"
+  ],
+  "primary_topic": "Dataset inspection and cards",
+  "vocabulary": [
+    [
+      "Provenance",
+      "Where data came from and how it was created"
+    ],
+    [
+      "Schema",
+      "The stated meaning types units and rules for fields"
+    ],
+    [
+      "Missing value",
+      "An unknown or unavailable value rather than a measured zero"
+    ],
+    [
+      "Dataset card",
+      "A concise record of dataset contents creation intended use and limitations"
+    ]
+  ],
+  "worked_example": {
+    "title": "Write a card another person can use",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "For Robot practice v1, record the purpose as practising inspection, the source as teacher-authored fictional data, and the row meaning as an intended single indoor trip. Record the five-row count, the ID field, minutes as the duration unit and None as unknown. List the duplicate-ID and invalid-duration findings. State that no cleaning has occurred, no train/test split is assigned, and no model has been evaluated."
+      },
+      {
+        "type": "paragraph",
+        "text": "Add intended use, excluded uses, known gaps, version and a contact or owner. Here the lesson teacher maintains the practice copy; its allowed classroom purpose is inspection practice. Do not describe it as validated navigation data. For a real external dataset, also verify its actual permission or licence and collection context; an absent field in the documentation is an unanswered question, not permission to invent a value."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "What fraction of the five raw rows has unknown duration? Can you subtract two missing rows, one negative row and one extra ID occurrence from five to count distinct usable trips? Explain using the B rows.",
+        "lines": 5
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Interpret the audit counts",
+    "prompt": "Explain each number in 5 4 2 1. How many extra ID occurrences are there, and how many rows belong to a repeated-ID group?",
+    "answer": "The numbers mean 5 raw rows, 4 distinct IDs, 2 missing durations and 1 negative duration. There is 1 extra ID occurrence; 2 rows belong to the repeated-ID group B. These are different counts.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Changed independent case",
+    "task": "Training plant photos are all indoors on one phone. Intended use includes outdoor photos on other cameras. Plan a sampling check before making a general accuracy claim.",
+    "answer": "Collect and evaluate relevant outdoor and camera conditions, recording source and condition coverage. Group related views of each plant when splitting. More indoor photos alone do not establish outdoor performance; report the limits of measured slices.",
+    "source": "new parallel transfer case"
+  },
+  "misconceptions": [
+    [
+      "A complete card certifies data quality",
+      "The card records evidence and gaps; its claims still need checking. Documentation does not prove suitability."
+    ],
+    [
+      "Missing means zero",
+      "None is unknown; zero is a specific allowed value in this exercise. Substitution without evidence changes the meaning."
+    ],
+    [
+      "Flag counts can always be added",
+      "The same row can have multiple flags. Count rows or unique events under an explicit policy and retain the raw denominator."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/8c6402f5c6fd1363213635666e51719d69a658a4fd94416e1a62f212f1e9a2cb",
+        "alt": "Week 7 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/975b5e32df57a58c0920d5b4784ada2906231229cc08360990f3b929f9327875",
+        "alt": "Week 7 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2c013634500a13f6296bdd81d13ca008779e0851adce1c7eedc5dba843a74ed8",
+        "alt": "Week 7 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Compare two samples against a deployment population and identify missing conditions."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  Training examples should represent the people, objects, conditions, and devices described by the intended-use statement."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Intended use includes indoor classroom plants under day and evening light. Sample A has 90% daylight photos from one camera.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "rows = [(\"A\", 8), (\"B\", None), (\"B\", None),\n        (\"C\", -2), (\"D\", 12)]\nids = set()\nmissing = 0\nnegative = 0\nfor trip_id, minutes in rows:\n    ids.add(trip_id)\n    if minutes is None:\n        missing = missing + 1\n    elif minutes < 0:\n        negative = negative + 1\nprint(len(rows), len(ids), missing, negative)"
+      },
+      {
+        "type": "paragraph",
+        "text": "A set stores each distinct ID once. The output is 5 4 2 1: five rows, four distinct IDs, two rows with unknown duration and one row with a negative duration. There is one extra occurrence beyond the four distinct IDs. This is not a count of all rows in repeated-ID groups: both B rows belong to that group."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Turn an observation into a documented action",
+        "columns": [
+          "Finding",
+          "What it establishes",
+          "Next action"
+        ],
+        "rows": [
+          [
+            "B appears twice",
+            "Identity needs review",
+            "Check export history"
+          ],
+          [
+            "Two None values",
+            "2 of 5 rows lack duration",
+            "Keep unknown explicit"
+          ],
+          [
+            "C has minus 2",
+            "Invalid elapsed duration",
+            "Check source and units"
+          ]
+        ],
+        "caption": "Flags can overlap: both rows with ID B also have missing duration. Do not add flag counts as if they were separate groups."
+      },
+      {
+        "type": "paragraph",
+        "text": "The code assumes every row is a pair and each duration is a number or None. It is a small audit, not full schema validation. It does not check text values, units, source truth or whether IDs refer to real unique events. A successful run does not certify data quality."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 7 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 7 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 7 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 7 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

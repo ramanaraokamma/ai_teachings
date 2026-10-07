@@ -1,0 +1,43 @@
+{
+  "week": "ai-2/3",
+  "title": "Branching Logic",
+  "outcome": "By the end, I can order branches so each input receives exactly its intended category.",
+  "scenario": "A fictional reading-time labeler uses one Python if/elif/else chain.",
+  "given": [
+    "Whole minutes below 0: Invalid; 0: Empty; 1–10: Short; above 10: Long.",
+    "Order checks as minutes<0, minutes==0, minutes<=10, otherwise. Print the assigned label once."
+  ],
+  "steps": [
+    {
+      "label": "Negative check",
+      "icon": "shield",
+      "detail": "−1 takes Invalid and skips later branches."
+    },
+    {
+      "label": "Zero check",
+      "icon": "rule",
+      "detail": "0 takes Empty, not Short."
+    },
+    {
+      "label": "Inclusive short range",
+      "icon": "rule",
+      "detail": "1 and 10 take Short."
+    },
+    {
+      "label": "Remaining inputs",
+      "icon": "output",
+      "detail": "11 takes Long; only the selected branch assigns the label."
+    }
+  ],
+  "explanation": "The third comparison alone would include negative values and zero, but earlier branches already handle them. An elif chain selects its first true branch. Multiple independent if statements would have different behavior and could overwrite an earlier label. Boundary traces show why order belongs to the specification.",
+  "counterfactual": {
+    "change": "Move minutes<=10 to the first branch.",
+    "prediction": "−1 and 0 wrongly receive Short.",
+    "reason": "Both satisfy the earlier comparison before their intended checks are reached."
+  },
+  "student_task": "Give expected labels for −1,0,10,11 and identify the equality boundary for Short.",
+  "teacher_answer": "Invalid, Empty, Short, Long. Ten is included in Short because the comparison uses <=.",
+  "project_evidence": "Validate recommender requests before ranking items, retaining explicit labels for missing or invalid cases.",
+  "limits": "The example assumes whole numeric minutes; strings, missing values and fractional values need a separate declared input contract.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment."
+}

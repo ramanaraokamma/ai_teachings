@@ -1,0 +1,258 @@
+{
+  "week": "ai-4/1",
+  "title": "The ML Lifecycle",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Distinguish fitting a rule from applying a fixed rule",
+    "Trace a small learning lifecycle with separate data",
+    "Report test evidence with its limits"
+  ],
+  "primary_topic": "The machine learning lifecycle",
+  "vocabulary": [
+    [
+      "Feature",
+      "An input value used to make a prediction"
+    ],
+    [
+      "Label",
+      "An observed target value supplied for an example"
+    ],
+    [
+      "Training",
+      "Using examples to select or adjust a model"
+    ],
+    [
+      "Held out data",
+      "Examples reserved from fitting and model choices for evaluation"
+    ]
+  ],
+  "worked_example": {
+    "title": "Freeze the rule and test it",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Freeze means do not change the chosen threshold during this evaluation. With threshold 4, widths 2 and 6 receive predictions 0 and 1. Compare them with the held out labels: both match. Report 2 correct out of 2 held out cards. Training results and test results answer different questions: did the rule fit the examples used to select it, and how did that fixed rule perform on these separate examples?"
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Keep threshold 4 fixed. An additional card has width 4 and observed label 0. Predict its category, decide whether it is correct, and update the held out count from 2 of 2.",
+        "lines": 5
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace one candidate",
+    "prompt": "Use threshold 6 on the four training widths 1, 3, 5 and 7. Write all predictions, identify each error, and explain why threshold 4 is selected.",
+    "answer": "Predictions are 0, 0, 0, 1. The width 5 card is wrong because its label is 1. Threshold 6 has one training mistake; threshold 4 has zero and is selected.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Fit and evaluate independently",
+    "task": "New training cards are (width 2, label 0), (4, 0), (6, 1), (8, 1). Candidates are 3, 5 and 7. Predict 1 when width is at least the threshold. Count training mistakes, select the fewest with smaller threshold breaking ties, and record the choice before testing. Held out cards are (3, 0), (7, 1), (5, 0). Give each test prediction, the correct count and a limited conclusion.",
+    "answer": "Training mistake counts for thresholds 3, 5 and 7 are 1, 0 and 1; select 5 before examining test results. Held out predictions are 0, 1, 1. The width 5 card is wrong, giving 2 correct out of 3. This supports the result on these three cards only, not universal reliability. Preserve threshold 5 for this evaluation.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The model wrote its own task",
+      "People chose the input, label meaning, candidate thresholds and selection rule. Learning here means choosing a parameter using the training examples."
+    ],
+    [
+      "Zero training mistakes means no future mistakes",
+      "Training performance measures the examples used to choose the threshold. The additional width 4 card shows how a fitted model can be wrong on a different example."
+    ],
+    [
+      "A better score makes reused test data independent",
+      "Once test labels influence a revision, the examples are part of development. Preserve the history and use unused cases for a later independent evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/7b8d35c2468d628f7afa4c6b61342e6238e3f26ed62cf47cf81dabd5523a35c7",
+        "alt": "Week 1 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1e8c0d14e405be9815dfd97036eb53985ac822474be97c1d1c0bd0f3290ecb86",
+        "alt": "Week 1 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/5772d09000fdbb76c689341fbb9529e0bd3137927307ea557470d36251464fd3",
+        "alt": "Week 1 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Trace problem \u2192 data \u2192 train \u2192 predict \u2192 evaluate \u2192 improve, and identify where human judgment enters."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  Machine learning is an evidence cycle: define a prediction problem, prepare examples, fit a model, evaluate on unseen data, and improve one diagnosed cause."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Goal: classify a leaf as healthy or spotted for a classroom plant helper. Prepare labeled leaf examples and reserve unseen test examples.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "train = [(1, 0), (3, 0), (5, 1), (7, 1)]\n# Predict 1 when x is at least the threshold; otherwise 0.\ndef predict(x, threshold):\n    return int(x >= threshold)\n\nfor threshold in [2, 4, 6]:\n    errors = 0\n    for x, label in train:\n        if predict(x, threshold) != label:\n            errors = errors + 1\n    print(threshold, errors)"
+      },
+      {
+        "type": "paragraph",
+        "text": "int(True) is 1 and int(False) is 0. For threshold 2, the training predictions are 0, 1, 1, 1: the width 3 card is wrong. For threshold 4, they are 0, 0, 1, 1: none is wrong. For threshold 6, they are 0, 0, 0, 1: the width 5 card is wrong. The printed rows are 2 1, then 4 0, then 6 1. Select threshold 4 using this training evidence and record it. The loop reports errors; the learner makes and records the selection."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Keep fitting and testing separate",
+        "columns": [
+          "Stage",
+          "Information used",
+          "Record"
+        ],
+        "rows": [
+          [
+            "Define and split",
+            "Task and candidate rules",
+            "Training and test cards"
+          ],
+          [
+            "Fit and freeze",
+            "Training labels only",
+            "Threshold 4 selected"
+          ],
+          [
+            "Test and report",
+            "Two held out cards",
+            "2 correct out of 2"
+          ]
+        ],
+        "caption": "Read down the stages. Test results may inform later development, but they must not silently change the rule being tested."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 1 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 1 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 1 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 1 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

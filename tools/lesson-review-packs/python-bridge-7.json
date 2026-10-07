@@ -1,0 +1,188 @@
+{
+  "week": "python-bridge/7",
+  "title": "Lists and indexing",
+  "grade": 8,
+  "project": "Python readiness portfolio",
+  "goals": [
+    "Distinguish a list index from the value stored at that position",
+    "Read and update an item using a valid index",
+    "Trace a loop through list values and test an empty list"
+  ],
+  "primary_topic": "Lists and indexing",
+  "vocabulary": [
+    [
+      "List",
+      "An ordered collection of items"
+    ],
+    [
+      "Index",
+      "An integer position used to access an item"
+    ],
+    [
+      "Length",
+      "The number of items in a collection"
+    ],
+    [
+      "Item",
+      "One value stored in a collection"
+    ],
+    [
+      "IndexError",
+      "An error raised when an index is outside a sequence"
+    ]
+  ],
+  "worked_example": {
+    "title": "Loop through the values",
+    "blocks": [
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "counts = [4, 7, 4]\ntotal = 0\nfor count in counts:\n    total = total + count\nprint(total)"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Item read as count",
+          "total before",
+          "total after"
+        ],
+        "rows": [
+          [
+            "4",
+            "0",
+            "4"
+          ],
+          [
+            "7",
+            "4",
+            "11"
+          ],
+          [
+            "4",
+            "11",
+            "15"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "This fresh script prints 15. for count in counts supplies the stored values, not the indices. Both copies of 4 are processed because both are items. For an empty list written [], the body runs zero times and total stays 0. For [7], it runs once and prints 7."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Change only the list to [2, 0, 5]. Trace the three additions and state the final output. Explain why the middle item is processed even though its value is zero.",
+        "lines": 5
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace an update",
+    "prompt": "Start with counts = [4, 7, 4]. Run counts[0] = 6. Write the resulting list, its length and the value at index 2. Predict before running.",
+    "answer": "The result is [6, 7, 4]; length remains 3; index 2 still holds 4. Only the first item was replaced.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Distinguish a value from an index",
+    "task": "Predict the three outputs. If the second print uses values[3] instead, where does execution stop and which later output is not produced?",
+    "code": "values = [4, 9, 2]\nprint(values[1])\nprint(values[-1])\nprint(len(values))\n",
+    "expected_stdout": "9\n2\n3\n",
+    "answer": "Outputs are 9,2,3. With values[3], the first print produces 9, then IndexError occurs; the final length print is not reached. Positive valid indices are 0,1,2.",
+    "source": "new parallel Python readiness case"
+  },
+  "misconceptions": [
+    [
+      "Length is the last nonnegative index",
+      "Length counts items; the last nonnegative index of a nonempty list is one less."
+    ],
+    [
+      "A loop variable always contains an index",
+      "A direct list loop supplies stored values."
+    ],
+    [
+      "Updating one item grows the list",
+      "Assignment at an existing index replaces that item; length is unchanged."
+    ],
+    [
+      "Repeated values are processed only once",
+      "Each position contributes one item, even when values repeat."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Positions and stored counts",
+        "columns": [
+          "Tray position",
+          "Index",
+          "Value"
+        ],
+        "rows": [
+          [
+            "First",
+            "0",
+            "4"
+          ],
+          [
+            "Second",
+            "1",
+            "7"
+          ],
+          [
+            "Third",
+            "2",
+            "4"
+          ]
+        ],
+        "caption": "Equal stored values do not imply equal positions. There is no item at index 3."
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "counts = [4, 7, 4]\nprint(len(counts))\nprint(counts[0])\nprint(counts[1])\ncounts[1] = 9\nprint(counts)"
+      },
+      {
+        "type": "paragraph",
+        "text": "The printed lines are 3, 4, 7 and [4, 9, 4]. The assignment counts[1] = 9 replaces the item at index 1; it does not add a fourth item or change the two other values. The length stays 3. A recorded count can be changed by code without proving that the physical tray really contains that many objects."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Start with counts = [4, 7, 4]. Run counts[0] = 6. Write the resulting list, its length and the value at index 2. Predict before running."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

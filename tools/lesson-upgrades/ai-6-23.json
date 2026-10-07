@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/23",
+  "title": "Deployment environments",
+  "outcome": "Explain deployment environments using the deciding step in this fictional service.",
+  "scenario": "Separate rehearsal and live service. Staging rehearses a new answer version with fictional records; production serves approved school records.",
+  "given": [
+    "Staging card names trial room Z; production card names room A. Credentials and stores are separate."
+  ],
+  "steps": [
+    {
+      "label": "Use staging data",
+      "icon": "experiment",
+      "detail": "The rehearsal reads fictional room Z."
+    },
+    {
+      "label": "Check actual connection",
+      "icon": "shield",
+      "detail": "Staging credentials must not reach production storage."
+    },
+    {
+      "label": "Review evidence",
+      "icon": "check",
+      "detail": "A passing rehearsal supports release review, not automatic promotion."
+    }
+  ],
+  "explanation": "An environment includes code, configuration, permissions and data. A staging label alone cannot create separation.",
+  "counterfactual": {
+    "change": "Point staging at the production credential.",
+    "prediction": "Stop the rehearsal because its separation boundary is breached.",
+    "reason": "Actual access matters more than the environment label."
+  },
+  "student_task": "Identify the staging data and credential boundary. Why must the rehearsal stop if its credential reaches production even though the process is labelled staging?",
+  "teacher_answer": "The rehearsal reads fictional room Z. Staging credentials must not reach production storage. A passing rehearsal supports release review, not automatic promotion. Changed case: Stop the rehearsal because its separation boundary is breached. Actual access matters more than the environment label.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "Fictional fixtures can miss live edge cases; use approved privacy-safe representative test conditions too.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

@@ -1,0 +1,297 @@
+{
+  "week": "ai-1/10",
+  "title": "If/Then Decisions",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Evaluate a condition using the current state and trace only the selected branch",
+    "Distinguish inclusive and strict boundaries using values below, at and above a threshold",
+    "Design a boundary test and handle an unknown input without silently treating it as false"
+  ],
+  "primary_topic": "Conditions and boundary cases",
+  "vocabulary": [
+    [
+      "Condition",
+      "A test whose result is true or false when the required information is known"
+    ],
+    [
+      "Branch",
+      "The instruction or group of instructions selected by a condition"
+    ],
+    [
+      "Threshold",
+      "The value used as a comparison boundary"
+    ],
+    [
+      "Inclusive boundary",
+      "A boundary whose equality case is included"
+    ],
+    [
+      "Boundary test",
+      "A test using a value at or close to a point where behaviour can change"
+    ]
+  ],
+  "worked_example": {
+    "title": "Trace the selected branch exactly once",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Initial score",
+          "State and condition after adding 2",
+          "Branch and final score"
+        ],
+        "rows": [
+          [
+            "3",
+            "5 is not at least 6",
+            "Add 4 and report 9"
+          ],
+          [
+            "4",
+            "6 is at least 6",
+            "Subtract 3 and report 3"
+          ],
+          [
+            "5",
+            "7 is at least 6",
+            "Subtract 3 and report 4"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "In the first run, the false branch increases 5 to 9. That does not make the earlier decision run again. The procedure has already chosen and carried out the otherwise branch, so it moves on to report and stop. Subtracting 3 afterward would incorrectly run both branches and report 6."
+      },
+      {
+        "type": "paragraph",
+        "text": "This rule applies to one if/else decision. A later, separate condition would be a new test of the state at that later point. Do not invent an extra test or loop because the value crossed the threshold. Follow only the instructions in the procedure."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Read four boundary phrases",
+    "prompt": "The known value at a condition is exactly 6. Decide whether each test is true or false: at least 6; above 6; at most 6; below 6. Explain which phrases include equality. Then name one value below and one value above 6 for neighbouring tests.",
+    "lines": 6,
+    "answer": "At least 6 is true, above 6 is false, at most 6 is true, and below 6 is false. At least and at most include equality; above and below are strict. The nearest whole-number neighbours are 5 and 7; other correctly identified lower and higher values are valid but are less close to the boundary."
+  },
+  "independent_case": {
+    "title": "Transfer the method to a new display",
+    "task": "A paper brightness display adds 3 to its starting number. If the current brightness is at most 7, subtract 2; otherwise add 1. Report and stop. Trace separate runs from starting values 3, 4 and 5. Identify the run that tests equality. Then show how its result changes if at most 7 is accidentally written as below 7.",
+    "answer": "Start 3: 6 at the test, true, subtract 2, report 4. Start 4: 7 at the test, true, subtract 2, report 5. Start 5: 8 at the test, false, add 1, report 9. Starting at 4 tests equality. With below 7, the current 7 fails, so add 1 and report 8 instead of 5. All three runs use current values after adding 3.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The condition reads the starting value",
+      "Trace the initial add-2 instruction first and circle its result before evaluating the comparison."
+    ],
+    [
+      "At least means strictly above",
+      "Put 6 on the boundary and read at least as 6 or more. Compare its true result with above 6, which is false."
+    ],
+    [
+      "Crossing the threshold runs the other branch",
+      "Follow the chosen branch to report and stop. A second test must be explicitly written; it is not implied by the new value."
+    ],
+    [
+      "An unknown value makes the test false",
+      "Show that the unreadable value could be 5 or 6. Different possibilities select different branches, so the exercise requires a pause and clarification."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/dda0cf61341a3404d3d5407acff0ba09df42fb17128908ca81a738e741ace0ad",
+        "alt": "Visual card for the input stage: weather values",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/842a6a324314c1afc9dc5948a3ff65b60f90fb0707c8013cb2399300cea986ef",
+        "alt": "Visual card for the process stage: check ordered if/then conditions",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4fa3b6827e844464d0de6d54fa21d06f1735161de150a912647a214696dd4920",
+        "alt": "Visual card for the output stage: clothing suggestion and reason",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  weather values"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  check ordered if/then conditions"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  clothing suggestion and reason"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  Conditions make an algorithm branch when information changes.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  A conditional evaluates a Boolean expression and selects a branch. Order matters when conditions overlap. Complete decision logic needs explicit handling for boundary values and an else path.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the three values immediately around the threshold. These are the values when the condition is reached, after the initial add-2 instruction. Testing only a value far above 6 would not show whether equality was handled correctly."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Three checks around the threshold",
+        "columns": [
+          "Score at the condition",
+          "Choose one branch",
+          "Score after the branch"
+        ],
+        "rows": [
+          [
+            "Score is 5",
+            "At least 6 is false so add 4",
+            "Score becomes 9"
+          ],
+          [
+            "Score is 6",
+            "At least 6 is true so subtract 3",
+            "Score becomes 3"
+          ],
+          [
+            "Score is 7",
+            "At least 6 is true so subtract 3",
+            "Score becomes 4"
+          ]
+        ],
+        "caption": "At least includes equality. The middle row is essential for checking this boundary. Read each row as a separate run; do not pass the result of one row into the next."
+      },
+      {
+        "type": "paragraph",
+        "text": "Above 6 is different: it means strictly greater than 6, so 6 itself does not pass. At most 6 means 6 or smaller. Below 6 means strictly smaller, so it excludes 6. Say the equality case aloud before using one of these phrases."
+      },
+      {
+        "type": "paragraph",
+        "text": "A condition can be true even when its chosen action makes the number smaller. True describes the test result; it does not mean good, bigger, or a successful game. The written instructions define the action."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/7f2a37c7b5221be951bf62e3c553c366fcb5da74cd3ab1c1dedf5e1e9f5cbd5c",
+        "alt": "Comparison picture for Rain = yes: then choose raincoat; clear binary branch",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1f66a92d4e6d539798dbe6b61402bc6b64703661ac4c62d83bf85f118d1ba589",
+        "alt": "Comparison picture for Temperature < 15 C: then choose warm layer; numeric threshold",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/bb6e6c15f7f758eac04428fc2c6cb5033858492a7d8e02e49ba465f7a515359e",
+        "alt": "Comparison picture for Exactly 15 C: needs boundary rule; edge case",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fb67d54a17deaba2f26e4712eac3012c2f3d81efe168fcc63a1840a87455bf0d",
+        "alt": "Comparison picture for Rain and cold: two conditions overlap; order or combined rule needed",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Rain = yes  Clue: then choose raincoat. Meaning: clear binary branch."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Temperature < 15 C  Clue: then choose warm layer. Meaning: numeric threshold."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Exactly 15 C  Clue: needs boundary rule. Meaning: edge case."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Rain and cold  Clue: two conditions overlap. Meaning: order or combined rule needed."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Never hide an unhandled case between two thresholds.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

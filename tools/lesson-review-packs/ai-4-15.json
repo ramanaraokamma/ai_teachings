@@ -1,0 +1,287 @@
+{
+  "week": "ai-4/15",
+  "title": "Confusion Matrix",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Build a labelled confusion matrix from matched reference and prediction pairs",
+    "Distinguish false positives from false negatives using a declared positive class",
+    "Check matrix totals and explain why equal accuracy can hide different errors"
+  ],
+  "primary_topic": "Confusion matrices",
+  "vocabulary": [
+    [
+      "Confusion matrix",
+      "A table counting reference and prediction combinations"
+    ],
+    [
+      "Positive class",
+      "The class chosen as the condition of interest"
+    ],
+    [
+      "False positive",
+      "A positive prediction when the reference is negative"
+    ],
+    [
+      "False negative",
+      "A negative prediction when the reference is positive"
+    ]
+  ],
+  "worked_example": {
+    "title": "Name each cell using the positive class",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Blocked is the positive class",
+        "columns": [
+          "Reference and prediction",
+          "Cell name",
+          "IDs and count"
+        ],
+        "rows": [
+          [
+            "clear then clear",
+            "True negative TN",
+            "V1 V2 count 2"
+          ],
+          [
+            "clear then blocked",
+            "False positive FP",
+            "V3 count 1"
+          ],
+          [
+            "blocked then clear",
+            "False negative FN",
+            "V4 V5 count 2"
+          ],
+          [
+            "blocked then blocked",
+            "True positive TP",
+            "V6 V7 V8 count 3"
+          ]
+        ],
+        "caption": "Read reference first and prediction second. Here a false positive is a false blocked alarm; a false negative is a missed blocked case."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Place V3 and V4 in the matrix. Explain which is a false positive and which is a false negative when blocked is positive.",
+        "lines": 4
+      },
+      {
+        "type": "paragraph",
+        "text": "True means prediction agrees with the reference. It does not prove that the reference annotation is infallible. Resolve disputed labels with the documented review policy rather than silently changing them to match predictions."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Explain the two error types",
+    "prompt": "Declare blocked positive. Give TP,TN,FP,FN counts and explain V3 and V4 in plain language. Does positive mean a desirable outcome?",
+    "answer": "TP=3, TN=2, FP=1, FN=2. V3 predicts blocked for a reference-clear case, a false alarm or FP. V4 predicts clear for a reference-blocked case, a missed blocked case or FN. Positive names the chosen class; it does not mean desirable.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Changed independent case",
+    "task": "On20 cases: true positives5, false negatives4, false positives2, true negatives9. Build the confusion matrix with actual class as rows and predicted class as columns. Compute accuracy.",
+    "answer": "Actual positive row: predicted positive5, predicted negative4. Actual negative row: predicted positive2, predicted negative9. Total20; correct14; accuracy70%. Actual positives total9. State the positive-class definition before interpreting the errors.",
+    "source": "new parallel transfer case"
+  },
+  "misconceptions": [
+    [
+      "Positive means good",
+      "Positive is the chosen condition of interest; blocked is positive in this exercise."
+    ],
+    [
+      "A matrix has one universal visual orientation",
+      "Check whether rows are references or predictions and inspect class order. Our convention uses reference rows and prediction columns."
+    ],
+    [
+      "Zero errors in a cell means no future risk",
+      "It is an observed count on one evaluation set. Coverage, sample size and future conditions still matter."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/65bfac71da9a28d8e2a2b3388fde7af5c2bbd9311edd2b807adcc88a299b63fb",
+        "alt": "Week 15 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/6c9801cee0184203f3b45678141bf624df41f6f6ecd61e60570f36fbb5a18c29",
+        "alt": "Week 15 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1de566a3593f5d294fe09d883ecec70f22d887c1402fc9a56fbfd4ca8b444946",
+        "alt": "Week 15 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Construct all four cells from twenty predictions and verify the total."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  A confusion matrix separates true positives, false positives, false negatives, and true negatives so error types remain visible."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  For spotted=positive: TP=6, FP=3, FN=2, TN=9. Check total: 6 + 3 + 2 + 9 = 20 cases.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "pairs = [(\"V1\", \"clear\", \"clear\"),\n         (\"V2\", \"clear\", \"clear\"),\n         (\"V3\", \"clear\", \"blocked\"),\n         (\"V4\", \"blocked\", \"clear\"),\n         (\"V5\", \"blocked\", \"clear\"),\n         (\"V6\", \"blocked\", \"blocked\"),\n         (\"V7\", \"blocked\", \"blocked\"),\n         (\"V8\", \"blocked\", \"blocked\")]\nlabels = [\"clear\", \"blocked\"]\nindex = {label: i for i, label in enumerate(labels)}\ncounts = [[0, 0], [0, 0]]\nfor item_id, reference, prediction in pairs:\n    counts[index[reference]][index[prediction]] += 1\nprint(counts)\ncorrect = counts[0][0] + counts[1][1]\nprint(correct, len(pairs))"
+      },
+      {
+        "type": "paragraph",
+        "text": "index maps clear to 0 and blocked to 1. Each paired record adds one to its reference row and prediction column. The script prints [[2, 1], [2, 3]] then 5 8. It assumes unique IDs and only these two labels. Check IDs and missing or unresolved references before counting; the code does not validate all those conditions."
+      },
+      {
+        "type": "table",
+        "rows": [
+          [
+            "Reference rows",
+            "Predicted clear",
+            "Predicted blocked"
+          ],
+          [
+            "Reference clear",
+            "2",
+            "1"
+          ],
+          [
+            "Reference blocked",
+            "2",
+            "3"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "The diagonal cells count correct predictions: 2+3=5. Off-diagonal cells count mistakes: 1+2=3. Every record must contribute exactly once. This is a count matrix, not percentages or probabilities. Keep the axis labels even when copying the numbers."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 15 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 15 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 15 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 15 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

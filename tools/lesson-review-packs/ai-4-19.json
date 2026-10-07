@@ -1,0 +1,258 @@
+{
+  "week": "ai-4/19",
+  "title": "Regression and Residuals",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Distinguish numeric prediction from classification",
+    "Calculate signed residuals with a stated convention",
+    "Use residual patterns to question a model"
+  ],
+  "primary_topic": "Regression and residuals",
+  "vocabulary": [
+    [
+      "Regression",
+      "Prediction of a numeric target"
+    ],
+    [
+      "Residual",
+      "Observed target minus predicted target in this course"
+    ],
+    [
+      "Underprediction",
+      "A prediction below the observed value"
+    ],
+    [
+      "Overprediction",
+      "A prediction above the observed value"
+    ]
+  ],
+  "worked_example": {
+    "title": "Explain the visual",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Regression and residuals at a glance",
+        "columns": [
+          "Part",
+          "Evidence or action",
+          "Interpretation"
+        ],
+        "rows": [
+          [
+            "Observed 4 predicted 5",
+            "Residual minus 1",
+            "Overprediction"
+          ],
+          [
+            "Observed 7 predicted 6",
+            "Residual plus 1",
+            "Underprediction"
+          ],
+          [
+            "Observed 9 predicted 9",
+            "Residual zero",
+            "Exact on this record"
+          ]
+        ],
+        "caption": "To inspect a residual plot, place a feature or prediction on the horizontal axis and residual on the vertical axis. A trend can suggest a missed relationship. It does not by itself identify the cause or validate a new model. Use development data for analysis and preserve an independent final test."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Why does mean residual zero not imply perfect predictions? Explain the steps or evidence behind your response.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Explain cancellation",
+    "prompt": "Why does mean residual zero not imply perfect predictions?",
+    "answer": "Teacher explanation: Negative and positive residuals cancel even when individual errors are nonzero.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Apply independently",
+    "task": "Observed [6, 10, 13], predicted [8, 9, 11] cm. Give residuals, mean residual and error directions.",
+    "answer": "Teacher explanation: Residuals [-2, 1, 2] cm; mean 1/3 cm. First overpredicted, others underpredicted.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A final answer is enough",
+      "Ask for the relevant counts, units, procedure or saved record. For this week: Residuals -1, 1, 0 cm; the first record is overpredicted."
+    ],
+    [
+      "A stronger claim makes a stronger project",
+      "Convert to a shared unit; both represent 2 cm. Document units before comparing or aggregating errors."
+    ],
+    [
+      "The new case can be copied from the example",
+      "The independent task changes the evidence. Require a fresh explanation: Residuals [-2, 1, 2] cm; mean 1/3 cm. First overpredicted, others underpredicted."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/28378f07fcd4337e88823faf653de38c737cb07dccb2683dfd4aba0cf2545698",
+        "alt": "Week 19 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/09914b7c6658c16ca6db6d8068fd65bda324b8716f7c40683a3dff27df0a6973",
+        "alt": "Week 19 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/cd31986631adbd423eac7af3e330474a9756844a4f1e0097aaf831fec6a2a450",
+        "alt": "Week 19 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Plot predictions and calculate positive and negative residuals."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  Regression predicts a number; a residual records signed error and reveals direction as well as size."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Actual plant height is 30 cm; prediction is 27 cm. Residual = actual \u2212 predicted = 30 \u2212 27 = +3 cm.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Observed heights [4, 7, 9] cm and predictions [5, 6, 9] cm give residuals [-1, 1, 0] cm. The first prediction is too high, the second too low and the third exact. Mean signed residual is zero, yet two predictions are wrong. Opposite errors can cancel."
+      },
+      {
+        "type": "code",
+        "title": "Python 3 check",
+        "text": "observed = [4, 7, 9]\npredicted = [5, 6, 9]\nresiduals = [y - p for y, p in zip(observed, predicted)]\nprint(residuals)\nprint(sum(residuals) / len(residuals))\n# Output: [-1, 1, 0] and 0.0.\n# Opposite signed errors can cancel."
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the calculation on paper before running this optional Python check. Use the stated fictional inputs and compare intermediate values. The code checks this example; your independent workbook case uses different evidence."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 19 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 19 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 19 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 19 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

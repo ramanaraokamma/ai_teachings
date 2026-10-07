@@ -1,0 +1,37 @@
+{
+  "week": "python-bridge/10",
+  "title": "Dictionaries and records",
+  "outcome": "Trace dictionaries and records and explain the changed program before running it.",
+  "scenario": "A zero field is still present. A dictionary record describes a shelf. The program distinguishes missing data from an actual zero.",
+  "given": [
+    "Python 3: shelf={\"count\":0,\"name\":\"Atlas\"}; print(shelf[\"count\"]); print(shelf.get(\"price\")); print(\"count\" in shelf)."
+  ],
+  "steps": [
+    {
+      "icon": "data",
+      "label": "Read a stored field",
+      "detail": "count exists with numeric value 0."
+    },
+    {
+      "icon": "question",
+      "label": "Read an absent field",
+      "detail": "get(\"price\") returns None because price is missing and no default was supplied."
+    },
+    {
+      "icon": "check",
+      "label": "Test key membership",
+      "detail": "\"count\" in shelf is True even though its value is zero."
+    }
+  ],
+  "explanation": "Dictionary keys name fields. Presence is different from truthiness of a value; a measured zero should not be discarded as if the field were absent.",
+  "counterfactual": {
+    "change": "Add the field price with value 0.",
+    "prediction": "The price lookup now returns 0 instead of None.",
+    "reason": "A recorded zero is a present value, whereas the earlier lookup had no field."
+  },
+  "student_task": "Predict all three original outputs. Explain the difference between count=0 and missing price, then predict the lookup after price=0 is added.",
+  "teacher_answer": "Outputs are 0, None, True. count is present with zero; price is absent. Adding price=0 makes get(\"price\") return 0 without changing count membership.",
+  "project_evidence": "For Python readiness before the Responsible Plant Classifier, retain a trace of the values, the predicted outputs and the changed-case explanation. Use actual Python 3 results to check the prediction after reasoning first.",
+  "limits": "None is also a possible explicitly stored value; real record contracts must define how missing and null values are represented.",
+  "review_note": "Individually authored supported practice; distinct from the reserved independent case. Python semantics are checked on standalone snippets; no learned model or real pupil result is implied."
+}

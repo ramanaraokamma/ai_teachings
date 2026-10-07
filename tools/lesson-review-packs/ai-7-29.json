@@ -1,0 +1,135 @@
+{
+  "week": "ai-7/29",
+  "title": "Figures that preserve evidence",
+  "grade": 12,
+  "project": "Reproducible AI Research Study",
+  "goals": [
+    "Explain the mechanism and terminology of figures that preserve evidence",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Figures that preserve evidence",
+  "vocabulary": [
+    [
+      "Axis scale",
+      "The mapping between values and plotted positions"
+    ],
+    [
+      "Denominator label",
+      "The sample size underlying a proportion"
+    ],
+    [
+      "Difference plot",
+      "A display of a defined comparison magnitude"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "RatesA80%, B82% are plotted on bars starting79%, making B look several times larger."
+      },
+      {
+        "type": "paragraph",
+        "text": "Difference is2 percentage points; truncated bars exaggerate magnitude. Use zero-baseline bars or a clearly labelled difference plot."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "RatesA80%, B82% are plotted on bars starting79%, making B look several times larger. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: Difference is2 percentage points; truncated bars exaggerate magnitude. Use zero-baseline bars or a clearly labelled difference plot.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "CountsA8/10, B9/15 are plotted as8 versus9 without denominators. Correct.",
+    "answer": "Teacher explanation: Rates80% versus60%; count-only plot hides unequal denominators. Show both counts and rates with sample sizes.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "Visual choices must reflect the intended metric and cannot imply causal certainty from association."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Label axes, units, cases and scope. For simple comparative bars use a zero baseline or explicitly justify another plot. Show condition breakdowns and unassessed counts where relevant."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Figures that preserve evidence \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "RatesA80%, B82% are plotted on bars starting79%, making B look several times larger.",
+            "Label axes, units, cases and scope. For simple comparative bars use a zero baseline or explicitly justify another plot. Show condition breakdowns and unassessed counts where relevant.",
+            "Difference is2 percentage points; truncated bars exaggerate magnitude. Use zero-baseline bars or a clearly labelled difference plot."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "RatesA80%, B82% are plotted on bars starting79%, making B look several times larger. Show the intermediate steps and give the conclusion with its scope."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

@@ -1,0 +1,299 @@
+{
+  "week": "ai-1/4",
+  "title": "Rules or Learned Patterns?",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Execute a stated rule including its boundary",
+    "Select a rule by comparing errors on labelled examples",
+    "Explain why agreement with fitting examples does not establish performance on new cases"
+  ],
+  "primary_topic": "Rules and learned patterns",
+  "vocabulary": [
+    [
+      "Feature",
+      "A recorded property used as an input to a decision or model"
+    ],
+    [
+      "Label",
+      "A recorded category or target associated with an example"
+    ],
+    [
+      "Threshold",
+      "A boundary value used in a comparison"
+    ],
+    [
+      "Fitting",
+      "Choosing or adjusting a model using examples"
+    ],
+    [
+      "Error count",
+      "The number of predictions that disagree with the comparison labels"
+    ]
+  ],
+  "worked_example": {
+    "title": "Compare candidates step by step",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Width in cm",
+          "Supplied label",
+          "Threshold 3 prediction",
+          "Threshold 5 prediction"
+        ],
+        "rows": [
+          [
+            "2",
+            "narrow",
+            "narrow",
+            "narrow"
+          ],
+          [
+            "4",
+            "narrow",
+            "wide",
+            "narrow"
+          ],
+          [
+            "6",
+            "wide",
+            "wide",
+            "wide"
+          ],
+          [
+            "8",
+            "wide",
+            "wide",
+            "wide"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Apply threshold 3 to each width before checking the label. Only width 4 disagrees, so its error count is 1. Threshold 5 agrees on all four examples, so its error count is 0. Of these two candidates, this procedure selects 5. Zero disagreements here means it fits these four labels; it is not a guarantee about all future cards."
+      },
+      {
+        "type": "paragraph",
+        "text": "There can be ties. Threshold 6 also agrees on these four examples because 6 is included by at least. Thresholds 5 and 6 predict differently for width 5, which is absent from the fitting set. The available examples therefore do not uniquely determine how that width should be labelled. A procedure needs an explicit tie rule, and we should record the unresolved case."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Complete the supported comparison",
+    "prompt": "Widths 1, 3, 5, 7 have labels narrow, narrow, wide, wide. For candidates 3 and 5, list all predictions using wide when width is at least the candidate. Count disagreements and select the lower-error candidate.",
+    "lines": 6,
+    "answer": "Threshold 3: narrow, wide, wide, wide; one disagreement at 3. Threshold 5: narrow, narrow, wide, wide; zero disagreements. Select 5 among these candidates based on these examples only."
+  },
+  "independent_case": {
+    "title": "Fit a new paper classifier",
+    "task": "A fictional sorting task has lengths 2, 5, 7, 9 cm with labels short, short, long, long. Candidate rules predict long when length is at least 5 or at least 7. List predictions and errors for both, choose one, and predict a new length of 6 before any label is revealed. State one limit of your conclusion.",
+    "answer": "Threshold 5 predicts short, long, long, long: one error at 5. Threshold 7 predicts short, short, long, long: zero errors. Choose 7 and predict short for 6. This fits these supplied labels among these two candidates; the new label, labels at other lengths and general performance are not established.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A learned rule cannot be written simply",
+      "The selection procedure can fit a single threshold. Complexity is not the definition of fitting."
+    ],
+    [
+      "Zero fitting errors means the model is correct everywhere",
+      "Use thresholds 5 and 6, then input 5. Identical fitting scores leave different unseen predictions."
+    ],
+    [
+      "The label is available when predicting",
+      "Cover the new case's label until the prediction is recorded. Separate information available at fitting time from prediction time."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/3b11a9be715b6a6c6865a3feb3f5279a663715900fc2643dbbed4b1df9ecae0a",
+        "alt": "Visual card for the input stage: a motion value or image values",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4aee35812b413ba75f89492767a0d8f83f5a8bced4981e08f61d5559cc70f449",
+        "alt": "Visual card for the process stage: run an explicit if/then rule or a learned classifier",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/3ac30d762816bcf731ce882ce1e72399fb9d245dbc14fa9f54ab2b5b69d0704e",
+        "alt": "Visual card for the output stage: turn on a light or predict an animal label",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  a motion value or image values"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  run an explicit if/then rule or a learned classifier"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  turn on a light or predict an animal label"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  Fixed instructions and learned behavior can look similar but arise differently.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  A fixed program's decision logic is specified directly by people. A learned model's parameters are fitted from examples. Both are software, both may be complex, and both can fail; the distinction is how the decision behavior was produced.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "How a threshold is selected and then applied",
+        "columns": [
+          "Information available",
+          "Operation",
+          "Result"
+        ],
+        "rows": [
+          [
+            "Widths with supplied narrow or wide labels",
+            "Compare candidate rules by error count",
+            "Select a threshold"
+          ],
+          [
+            "Selected threshold and a new width",
+            "Apply the at least comparison",
+            "Predicted label"
+          ],
+          [
+            "Prediction and a later comparison label",
+            "Check for agreement",
+            "Evidence about this case"
+          ]
+        ],
+        "caption": "The comparison label is available during fitting and later checking. A new prediction must be made before revealing that case's label."
+      },
+      {
+        "type": "paragraph",
+        "text": "For threshold t, our rule predicts wide when width is at least t and narrow otherwise. At least includes equality: with t=5, width 5 is wide. Changing at least to greater than changes the rule and may change the error count."
+      },
+      {
+        "type": "paragraph",
+        "text": "A fitting procedure also contains choices people made: the feature, candidate thresholds, label definition and way of counting errors. Calling a threshold learned does not remove human responsibility for those choices."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/28c674bd50fc97bbb0114bcb098570ee3d1fc6fb1e951d0407986633dd355982",
+        "alt": "Comparison picture for Motion light: IF motion, THEN light on; fixed rule",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/c7c58e08aaa1b596242ce5032e32ac7f5be8fec855d9a1ef76844e7d7bb4cffe",
+        "alt": "Comparison picture for Animal recognizer: trained on labeled images; learned pattern",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/6918b38c4ee32a51e37bedcf21c62881b8303b36a208cf1dbf5003d8cfa809fc",
+        "alt": "Comparison picture for Calculator: follows arithmetic procedures; fixed even when complex",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2b1ad1ae712acddf4750be73db557635b094569b3595e501a10bfde586153ab2",
+        "alt": "Comparison picture for Robot vacuum: behavior alone is incomplete evidence; could be fixed, learned, or mixed",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Motion light  Clue: IF motion, THEN light on. Meaning: fixed rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Animal recognizer  Clue: trained on labeled images. Meaning: learned pattern."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Calculator  Clue: follows arithmetic procedures. Meaning: fixed even when complex."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Robot vacuum  Clue: behavior alone is incomplete evidence. Meaning: could be fixed, learned, or mixed."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Do not use complicated versus simple as a substitute for fixed versus learned.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

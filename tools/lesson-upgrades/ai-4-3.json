@@ -1,0 +1,59 @@
+{
+  "week": "ai-4/3",
+  "title": "Classification or Regression?",
+  "outcome": "By the end, I can explain classification or regression? using a traced example and a stated limitation.",
+  "scenario": "Distinguish predicting growth height from predicting a growth category.",
+  "given": [
+    "Actual heights are [4, 7, 9] cm; estimates are [5, 6, 10] cm. Tall means strictly greater than 6 cm.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Regression errors",
+      "icon": "chart",
+      "detail": "Absolute errors are 1, 1, 1 cm; mean absolute error is 1 cm."
+    },
+    {
+      "label": "Actual categories",
+      "icon": "rule",
+      "detail": "Actual classes are short, tall, tall."
+    },
+    {
+      "label": "Predicted categories",
+      "icon": "check",
+      "detail": "Estimated classes are short, short, tall: 2/3 correct."
+    }
+  ],
+  "explanation": "Read the picture in order. Estimated classes are short, short, tall: 2/3 correct. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Change the category boundary to strictly greater than 7 cm.",
+    "prediction": "Actual and estimated categories both become short, short, tall: 3/3 correct.",
+    "reason": "The numerical estimates did not improve; the decision definition changed."
+  },
+  "student_task": "Did regression MAE improve when the boundary changed? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "No. MAE remains 1 cm. Category agreement rose because the class boundary changed, not because predictions became numerically closer. Changed-case check: Actual and estimated categories both become short, short, tall: 3/3 correct. The numerical estimates did not improve; the decision definition changed.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Regression error and category accuracy measure different targets; neither alone covers every use consequence.",
+  "review_note": "Reviewed Classification or Regression? against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Actual and estimated heights (paired order)",
+    "labels": [
+      "actual1",
+      "estimate1",
+      "actual2",
+      "estimate2",
+      "actual3",
+      "estimate3"
+    ],
+    "values": [
+      4,
+      5,
+      7,
+      6,
+      9,
+      10
+    ],
+    "unit": "cm"
+  }
+}

@@ -1,0 +1,253 @@
+{
+  "week": "ai-4/32",
+  "title": "Proxy Features and Fairness",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Identify possible proxy features",
+    "Explain why removing one field does not guarantee fairness",
+    "Propose a contextual review with concrete evidence"
+  ],
+  "primary_topic": "Proxy features and fairness",
+  "vocabulary": [
+    [
+      "Proxy feature",
+      "A variable that can stand in for another characteristic"
+    ],
+    [
+      "Correlation",
+      "An observed association, not proof of cause"
+    ],
+    [
+      "Sensitive attribute",
+      "A characteristic requiring particular care in a context"
+    ],
+    [
+      "Ablation",
+      "A comparison that removes a feature or component"
+    ]
+  ],
+  "worked_example": {
+    "title": "Explain the visual",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Proxy features and fairness at a glance",
+        "columns": [
+          "Part",
+          "Evidence or action",
+          "Interpretation"
+        ],
+        "rows": [
+          [
+            "North examples",
+            "8 X of 10",
+            "2 other devices"
+          ],
+          [
+            "South examples",
+            "2 X of 10",
+            "8 other devices"
+          ],
+          [
+            "Review question",
+            "What does code represent?",
+            "Check context and errors"
+          ]
+        ],
+        "caption": "A feature may be legitimate for one purpose and inappropriate for another. Ask what is measured, when it is available, why it predicts and who might be disadvantaged. A correlation alone neither authorizes use nor proves harm. Talk through the intended decision and available alternatives."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Why might removing building but keeping device code leave related information? Explain the steps or evidence behind your response.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Find a proxy risk",
+    "prompt": "Why might removing building but keeping device code leave related information?",
+    "answer": "Teacher explanation: Device code is associated with building in the sample and may carry some of that information indirectly.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Apply independently",
+    "task": "A team removes postcode but retains school code and claims all location-related information is gone. Evaluate the claim and request evidence.",
+    "answer": "Teacher explanation: The claim is unsupported: school code may be associated with location. Review provenance and associations, compare ablations and group errors, and state unresolved proxy risks.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A final answer is enough",
+      "Ask for the relevant counts, units, procedure or saved record. For this week: X occurs 8/10 north and 2/10 south in this sample. This supports an association, not a deterministic identity rule or a causal explanation."
+    ],
+    [
+      "A stronger claim makes a stronger project",
+      "No. Other features can retain information and accuracy can hide different errors and consequences."
+    ],
+    [
+      "The new case can be copied from the example",
+      "The independent task changes the evidence. Require a fresh explanation: The claim is unsupported: school code may be associated with location. Review provenance and associations, compare ablations and group errors, and state unresolved proxy risks."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/43fe6dfa7a0d8746e7f234cf75e8b33b89595f387d40e1824ab477d9648b0d74",
+        "alt": "Week 32 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/714a1b1fdb24d115a552dac78235567d46df9209d0e37d8f0a85c88425b1e837",
+        "alt": "Week 32 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fb15514e51f8baf8d9bf3dd16218f47291ffc7406370427b9fd613d2b0d4e4bf",
+        "alt": "Week 32 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Trace suspicious proxies and compare model behavior after a controlled removal."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  A feature may indirectly encode sensitive identity or context, creating unjustified differences even when the original field is absent."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Photo background predicts classroom location and is correlated with camera quality. Model uses background as a shortcut for health labels.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Fictional records show device code X on 8 of 10 north-building examples and 2 of 10 south-building examples. Device and building are associated in this sample. This does not prove device causes model errors or that every X device comes from north. The remaining cases contradict such a universal rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before continuing, underline the decision rule and circle the evidence that supports the conclusion. Explain the example to a partner without replacing the counts or conditions with a stronger claim. Keep the distinction between an observed result and a proposed next step."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 32 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 32 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 32 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 32 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

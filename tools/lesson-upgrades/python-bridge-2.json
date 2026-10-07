@@ -1,0 +1,37 @@
+{
+  "week": "python-bridge/2",
+  "title": "Values variables and types",
+  "outcome": "Trace values variables and types and explain the changed program before running it.",
+  "scenario": "A number and its printed-looking text. A program stores a numeric badge count and a string that looks like that count.",
+  "given": [
+    "Python 3: count=8; tag=\"8\"; print(count+2); print(tag+\"2\")."
+  ],
+  "steps": [
+    {
+      "icon": "data",
+      "label": "Inspect types",
+      "detail": "count is an integer; tag is a string."
+    },
+    {
+      "icon": "code",
+      "label": "Apply addition",
+      "detail": "Integer addition gives 10; string concatenation gives the text 82."
+    },
+    {
+      "icon": "check",
+      "label": "Predict a mixed operation",
+      "detail": "count+tag raises TypeError rather than silently converting tag."
+    }
+  ],
+  "explanation": "Values carry types, not merely appearances. The plus operator performs numeric addition for these integers and concatenation for these strings; the mixed operation is invalid here.",
+  "counterfactual": {
+    "change": "Change count to 10, leaving tag unchanged.",
+    "prediction": "The two valid outputs become 12 and 82.",
+    "reason": "Only the integer variable changes; the string still contains the character 8."
+  },
+  "student_task": "Predict both print outputs and explain why they differ. Does count+tag work, and what happens to each valid output after count becomes ten?",
+  "teacher_answer": "The outputs are 10 and 82. The first adds integers; the second joins strings. count+tag raises TypeError. Changing count to 10 yields 12, while tag+\"2\" remains 82.",
+  "project_evidence": "For Python readiness before the Responsible Plant Classifier, retain a trace of the values, the predicted outputs and the changed-case explanation. Use actual Python 3 results to check the prediction after reasoning first.",
+  "limits": "These examples use built-in integers and strings; operator behaviour depends on types and is not proof of general model reasoning.",
+  "review_note": "Individually authored supported practice; distinct from the reserved independent case. Python semantics are checked on standalone snippets; no learned model or real pupil result is implied."
+}

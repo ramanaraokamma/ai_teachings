@@ -1,0 +1,38 @@
+{
+  "week": "ai-4/36",
+  "title": "ML Builder Expo",
+  "outcome": "By the end, I can explain ml builder expo using a traced example and a stated limitation.",
+  "scenario": "Present a plant-classifier expo claim that another team could check.",
+  "given": [
+    "Toy expo evidence: 15 held-out photos from 5 plants; candidate12 correct, baseline10 correct. Three candidate failures are recorded; no outdoor trial exists.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Show denominator",
+      "icon": "chart",
+      "detail": "Candidate12/15=80%; baseline10/15≈66.7% on the same cases."
+    },
+    {
+      "label": "Show independence",
+      "icon": "data",
+      "detail": "Explain five held-out plant identities and three related views per plant."
+    },
+    {
+      "label": "Show failures",
+      "icon": "person",
+      "detail": "Present the three failure records and indoor-only limitation beside the headline rate."
+    }
+  ],
+  "explanation": "Read the picture in order. Present the three failure records and indoor-only limitation beside the headline rate. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "The poster omits the baseline and calls the model “field ready”.",
+    "prediction": "The headline exceeds the supplied evidence.",
+    "reason": "No outdoor evaluation is supplied, and the comparative benefit is obscured without the same-case baseline."
+  },
+  "student_task": "Which three supporting items should be visible at the expo? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Show split/provenance, candidate-versus-baseline counts, and actual error records with the indoor-only scope. Changed-case check: The headline exceeds the supplied evidence. No outdoor evaluation is supplied, and the comparative benefit is obscured without the same-case baseline.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Clear presentation helps review but does not increase the strength of a tiny or unrepresentative evaluation.",
+  "review_note": "Reviewed ML Builder Expo against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

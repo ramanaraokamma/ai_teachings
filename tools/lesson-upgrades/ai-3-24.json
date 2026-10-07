@@ -1,0 +1,38 @@
+{
+  "week": "ai-3/24",
+  "title": "Prototype a Grounded Assistant",
+  "outcome": "By the end, I can explain prototype a grounded assistant using a traced example and a stated limitation.",
+  "scenario": "Build a minimal grounded study answer with checks between retrieval and display.",
+  "given": [
+    "Source PL2: seedlings need water. Source PL3: this activity checks soil daily. Question: what does this activity check daily?",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Retrieve evidence",
+      "icon": "book",
+      "detail": "PL3 directly supports the daily soil-check claim; PL2 supplies a different fact."
+    },
+    {
+      "label": "Match question",
+      "icon": "question",
+      "detail": "Choose the activity’s soil check, not a general watering recommendation."
+    },
+    {
+      "label": "Validate draft",
+      "icon": "check",
+      "detail": "Display “This activity checks soil daily [PL3]”; reject an invented twice-daily watering schedule."
+    }
+  ],
+  "explanation": "Read the picture in order. Display “This activity checks soil daily [PL3]”; reject an invented twice-daily watering schedule. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "PL3 is absent while PL2 remains.",
+    "prediction": "Explain that the daily check is not specified in the available source.",
+    "reason": "The remaining general water fact does not establish this activity’s schedule."
+  },
+  "student_task": "Can PL2 alone support “check the soil daily”? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "No. PL2 says seedlings need water and does not give the checking schedule; the assistant should report the gap. Changed-case check: Explain that the daily check is not specified in the available source. The remaining general water fact does not establish this activity’s schedule.",
+  "project_evidence": "For your Verified Study Buddy, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "A grounded prototype still needs an evaluation set and permission checks before anyone relies on it.",
+  "review_note": "Reviewed Prototype a Grounded Assistant against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

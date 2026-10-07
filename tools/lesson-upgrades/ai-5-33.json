@@ -1,0 +1,37 @@
+{
+  "week": "ai-5/33",
+  "title": "Capstone hypothesis and baseline",
+  "outcome": "Explain capstone hypothesis and baseline with a traceable toy-network case and a bounded conclusion.",
+  "scenario": "A testable image-pattern hypothesis. A team proposes that including the centre-pixel feature improves a small fixed network’s classification of toy image patterns.",
+  "given": [
+    "Two frozen versions are planned: A uses corner features only; B also uses the centre feature. Eight reserved toy patterns have labels defined before scoring."
+  ],
+  "steps": [
+    {
+      "icon": "question",
+      "label": "Write the prediction",
+      "detail": "B should have more correct labels than A on the same eight patterns."
+    },
+    {
+      "icon": "model",
+      "label": "Declare the baseline",
+      "detail": "A is a documented corner-only network, not a deliberately broken version."
+    },
+    {
+      "icon": "shield",
+      "label": "Reserve evaluation",
+      "detail": "Keep the eight patterns out of model selection and tuning."
+    }
+  ],
+  "explanation": "A capstone hypothesis links a specific architectural change to a measured outcome. A baseline anchors the comparison; frozen labels and held-out patterns protect it from answer-key tuning.",
+  "counterfactual": {
+    "change": "Give only B the eight evaluation labels during training.",
+    "prediction": "The proposed comparison becomes contaminated rather than a valid held-out test.",
+    "reason": "One version has gained privileged information from the reserved evaluation set."
+  },
+  "student_task": "Name the intended change, the baseline and the measured outcome. Why must both versions avoid training on the eight reserved labels?",
+  "teacher_answer": "The change is adding the centre feature; A is corner-only. The outcome is correct labels out of the same eight patterns. Using reserved labels to train B leaks evaluation information and invalidates the unseen comparison.",
+  "project_evidence": "For the Image-pattern Network Investigation, save the labelled trace and the changed-case explanation beside the experiment record. State exactly what this example supports before linking it to the wider capstone claim.",
+  "limits": "Eight toy patterns support a narrow experiment, not claims about real photographs, children or universal architecture superiority.",
+  "review_note": "Individually authored fictional supported practice distinct from the reserved independent assessment. Arithmetic and experimental conditions are explicit; no real network training or pupil result is claimed."
+}

@@ -1,0 +1,143 @@
+{
+  "week": "ai-5/17",
+  "title": "Initialisation and reproducibility",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Trace how starting values affect a fixed training budget",
+    "Explain a simple hidden-unit symmetry",
+    "Record enough information to replay and audit a classroom experiment"
+  ],
+  "primary_topic": "Initialisation and reproducibility",
+  "vocabulary": [
+    [
+      "Initialisation",
+      "The procedure that assigns model parameter values before training"
+    ],
+    [
+      "Seed",
+      "A value used to initialise a pseudorandom generator"
+    ],
+    [
+      "Symmetry",
+      "An equivalence between parts of a model that can keep their computations identical"
+    ],
+    [
+      "Reproducibility record",
+      "Saved data settings code and results that let another person check how an experiment was performed"
+    ]
+  ],
+  "worked_example": {
+    "title": "Recognise identical hidden units",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Identical units receive identical updates",
+        "columns": [
+          "Hidden unit",
+          "Before the update",
+          "After the update"
+        ],
+        "rows": [
+          [
+            "First ReLU unit",
+            "u is 1 and a is 1",
+            "u is 0.8 and a is 0.8"
+          ],
+          [
+            "Second ReLU unit",
+            "v is 1 and b is 1",
+            "v is 0.8 and b is 0.8"
+          ]
+        ],
+        "caption": "In this separate two-unit example there are no biases. At x = 1, output is 2 and target is 1. Each of the four squared-error partial gradients equals 2. A simultaneous update at rate 0.1 changes every weight from 1 to 0.8 and keeps the units identical."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "For x = 1, calculate the two-unit output and squared error before and after the shown simultaneous update. Have the units become different?",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Distinguish equality of loss and parameters",
+    "prompt": "The lesson runs starting at 1 and 3 finish with the same training MSE. Give their final v values and explain the equality without calling the models identical.",
+    "answer": "Teacher explanation: They finish at 1.75 and 2.25. Both are distance 0.25 from 2, so both have MSE 0.15625. Their predictions for nonzero positive inputs differ.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Transfer the starting-value experiment independently",
+    "task": "Use J(a) = (a - 3) squared, gradient 2(a - 3), rate 0.25 and two updates. Restart from a = 1, then restart from a = 5. Calculate both traces and final losses. Explain what can be concluded about these two runs.",
+    "answer": "Teacher explanation: Start 1 gives 1, 2, 2.5 and final loss 0.25. Start 5 gives 5, 4, 3.5 and final loss 0.25. Equal initial distances yield equal final losses under this rule, but the final parameters differ.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The same seed specifies the entire experiment",
+      "Data, call order, batching, code and numerical environment also matter."
+    ],
+    [
+      "Every parameter should start at zero",
+      "The scalar example permits zero, but identical or all-zero multi-unit initialisations can create different limitations."
+    ],
+    [
+      "Equal loss means equal models",
+      "Different parameters can be equally far from a minimum or give the same scalar loss."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "A pseudorandom generator produces a sequence determined by its state. In the same Python setup, recreating a local generator with the same seed and making the same calls reproduces the sequence below. Saving the generated values also removes ambiguity about which draw became which parameter."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "from random import Random\n\ndef initial_values(seed):\n    rng = Random(seed)\n    return [rng.uniform(-1.0, 1.0) for _ in range(4)]\n\ndef train(v):\n    states = [v]\n    for _ in range(2):\n        v = v - 0.1 * 5 * (v - 2)\n        states.append(v)\n    return states\n\nfirst = initial_values(17)\nsecond = initial_values(17)\nassert first == second\nprint(first)\nfor start in [0.0, 1.0, 3.0]:\n    print(start, train(start))"
+      },
+      {
+        "type": "paragraph",
+        "text": "The four random numbers illustrate a saved initialisation sequence; they are not used in the three separate scalar training runs. The range [-1, 1] is a classroom choice, not a general recommendation for network initialisation. An extra random draw before assigning weights shifts which value is used, even if the seed stays the same."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "The lesson runs starting at 1 and 3 finish with the same training MSE. Give their final v values and explain the equality without calling the models identical."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

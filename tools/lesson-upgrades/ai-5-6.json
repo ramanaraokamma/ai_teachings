@@ -1,0 +1,38 @@
+{
+  "week": "ai-5/6",
+  "title": "Forward passes by hand",
+  "outcome": "By the end, I can explain forward passes by hand using a traced example and a stated limitation.",
+  "scenario": "Audit a forward pass by writing every value at its correct stage.",
+  "given": [
+    "Toy scalar network z=2x-1, h=ReLU(z), y=-h+4. Trace x=0 and x=2.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Preactivation",
+      "icon": "network",
+      "detail": "At x=0, z=-1; at x=2, z=3."
+    },
+    {
+      "label": "Activation",
+      "icon": "rule",
+      "detail": "At x=0, h=0; at x=2, h=3."
+    },
+    {
+      "label": "Output",
+      "icon": "output",
+      "detail": "Outputs are4 and 1 respectively."
+    }
+  ],
+  "explanation": "A forward pass applies a fixed network to an input; it does not update weights. Keep the preactivation z, activated value h and final output y in separate trace columns. For zero, ReLU changes minus one to zero. Using the earlier minus one in the output layer is the first error, even if later arithmetic follows that mistaken value correctly.",
+  "counterfactual": {
+    "change": "A submitted x = 0 trace uses h=-1 and y = 5.",
+    "prediction": "Its first error is retaining the negative value after ReLU; correct h = 0 gives y = 4.",
+    "reason": "ReLU(-1)=0, so the output must use0, not the earlier preactivation."
+  },
+  "student_task": "Why should feedback identify h before correcting only y? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "The incorrect output follows from the first unsupported activation step. Repairing h teaches the mechanism and prevents repeating the same error elsewhere. Changed-case check: Its first error is retaining the negative value after ReLU; correct h = 0 gives y = 4. ReLU(-1)=0, so the output must use0, not the earlier preactivation.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "A correct forward trace verifies this declared computation; it does not show that the parameter choices solve a useful task.",
+  "review_note": "Reviewed Forward passes by hand against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation."
+}

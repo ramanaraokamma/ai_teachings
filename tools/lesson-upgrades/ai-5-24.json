@@ -1,0 +1,38 @@
+{
+  "week": "ai-5/24",
+  "title": "Augmentation and leakage",
+  "outcome": "By the end, I can explain augmentation and leakage using a traced example and a stated limitation.",
+  "scenario": "Keep every augmented image with its original source group.",
+  "given": [
+    "Fictional sources A, B, C, D each have original+horizontal-flip copies. A/B train, C validation, D final test.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Track provenance",
+      "icon": "data",
+      "detail": "Each flipped copy retains its source ID and parent image reference."
+    },
+    {
+      "label": "Assign by source",
+      "icon": "shield",
+      "detail": "A/B originals and flips give4 training records; C gives 2 validation; D gives 2 final."
+    },
+    {
+      "label": "Check label meaning",
+      "icon": "question",
+      "detail": "Use a flip only if it preserves the declared target; left-arrow/right-arrow labels would not be unchanged."
+    }
+  ],
+  "explanation": "An augmented image remains related to its source. A horizontal flip changes the view, not the identity of the original example. Assign source groups to training, validation and final evaluation before producing copies. Also check that the transformation preserves the target: flipping an arrow can change its correct direction label.",
+  "counterfactual": {
+    "change": "Move D\u2019s flipped copy into training.",
+    "prediction": "Final-test group separation fails.",
+    "reason": "The transformed D image is still derived from the held-out source, despite a new filename."
+  },
+  "student_task": "How many independent source groups are in the final test? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "One, D, with two related records. Count both source groups and image rows; never describe its flip as a new independent source. Changed-case check: Final-test group separation fails. The transformed D image is still derived from the held-out source, despite a new filename.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Augmentation validity is task-specific, and it cannot manufacture new independent plants or repair inadequate sampling.",
+  "review_note": "Reviewed Augmentation and leakage against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation."
+}

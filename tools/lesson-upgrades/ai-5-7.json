@@ -1,0 +1,63 @@
+{
+  "week": "ai-5/7",
+  "title": "Parameters and architecture",
+  "outcome": "By the end, I can explain parameters and architecture using a traced example and a stated limitation.",
+  "scenario": "Count trainable weights and biases separately from activation functions.",
+  "given": [
+    "Dense toy architecture2 inputs\u21923 hidden units\u21921 output. Every hidden and output unit has one bias; hidden activation is ReLU.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Count first layer",
+      "icon": "network",
+      "detail": "2\u00d73=6 weights plus3 biases gives 9 parameters."
+    },
+    {
+      "label": "Count output layer",
+      "icon": "network",
+      "detail": "3\u00d71=3 weights plus1 bias gives 4 parameters."
+    },
+    {
+      "label": "Total",
+      "icon": "chart",
+      "detail": "Total trainable parameters=9+4=13; ReLU adds no parameters here."
+    }
+  ],
+  "explanation": "Count one weight for each input-to-unit connection and one bias for each receiving unit. Two inputs connecting to three hidden units make six weights. The three hidden outputs connect to one output unit through three more weights. ReLU applies a fixed function and adds no adjustable parameter here. Architecture determines the connection pattern; learned values occupy those connections.",
+  "counterfactual": {
+    "change": "Increase hidden width from 3 to4.",
+    "prediction": "First layer12 parameters; output layer5; total 17.",
+    "reason": "Each new hidden unit adds2 input weights, 1 hidden bias and 1 outgoing weight."
+  },
+  "student_task": "How many new parameters did that one hidden unit add? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Four. The total changes from 13 to17, while the single output bias is not duplicated. Changed-case check: First layer12 parameters; output layer5; total 17. Each new hidden unit adds2 input weights, 1 hidden bias and 1 outgoing weight.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Parameter count describes capacity and storage structure, not accuracy, intelligence or guaranteed generalisation.",
+  "review_note": "Reviewed Parameters and architecture against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Trainable parameter count",
+    "cells": [
+      [
+        6,
+        3,
+        9
+      ],
+      [
+        3,
+        1,
+        4
+      ]
+    ],
+    "row_labels": [
+      "input to hidden",
+      "hidden to output"
+    ],
+    "column_labels": [
+      "weights",
+      "biases",
+      "total"
+    ]
+  }
+}

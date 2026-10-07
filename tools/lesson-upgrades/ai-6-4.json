@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/4",
+  "title": "Configuration and secrets",
+  "outcome": "Explain configuration and secrets using the deciding step in this fictional service.",
+  "scenario": "Settings and a sealed credential. A classroom bot needs a public answer-length setting and a private access token.",
+  "given": [
+    "maximum_words=80 is public configuration. A separate protected store holds a placeholder credential."
+  ],
+  "steps": [
+    {
+      "label": "Load setting",
+      "icon": "rule",
+      "detail": "Read the reviewed maximum_words value of 80."
+    },
+    {
+      "label": "Load credential",
+      "icon": "shield",
+      "detail": "The runtime obtains the token through its protected path."
+    },
+    {
+      "label": "Log safely",
+      "icon": "output",
+      "detail": "Record startup success without printing the token."
+    }
+  ],
+  "explanation": "Configuration controls behaviour. A credential grants access and needs different storage and handling.",
+  "counterfactual": {
+    "change": "Change maximum_words to 60.",
+    "prediction": "The configured answer limit becomes 60; the private token stays unchanged.",
+    "reason": "An ordinary length setting does not require replacing the credential."
+  },
+  "student_task": "Point to the public setting and the protected credential. What changes when maximum_words becomes 60, and which information must never appear in the startup log?",
+  "teacher_answer": "Read the reviewed maximum_words value of 80. The runtime obtains the token through its protected path. Record startup success without printing the token. Changed case: The configured answer limit becomes 60; the private token stays unchanged. An ordinary length setting does not require replacing the credential.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "Protected storage alone cannot prevent leaks through logs, screenshots or excessive runtime permissions.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

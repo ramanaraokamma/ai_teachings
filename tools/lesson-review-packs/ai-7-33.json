@@ -1,0 +1,135 @@
+{
+  "week": "ai-7/33",
+  "title": "Independent reproduction check",
+  "grade": 12,
+  "project": "Reproducible AI Research Study",
+  "goals": [
+    "Explain the mechanism and terminology of independent reproduction check",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Independent reproduction check",
+  "vocabulary": [
+    [
+      "Independent operator",
+      "A person executing from the supplied record"
+    ],
+    [
+      "Reproduction discrepancy",
+      "A mismatch needing documented investigation"
+    ],
+    [
+      "Artifact manifest",
+      "A versioned inventory for the reported computation"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Operator gets different MSE because the supplied script averages absolute errors while paper names squared error."
+      },
+      {
+        "type": "paragraph",
+        "text": "Metric contract mismatch explains a candidate discrepancy. Correct/report script and rerun; preserve original artifact versions and results."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "Operator gets different MSE because the supplied script averages absolute errors while paper names squared error. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: Metric contract mismatch explains a candidate discrepancy. Correct/report script and rerun; preserve original artifact versions and results.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "Reproducer uses different validation split because no split IDs were provided. Diagnose.",
+    "answer": "Teacher explanation: Missing split record prevents exact reproduction; provide IDs and versions, then replay. New split scores are a different evaluation.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "A successful reproduction repeats the original evidence and may preserve its original design limitations."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Provide manifest, fixture data, code, environment and expected metric definition. Record assistance and mismatches; reproduction is not new-data replication."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Independent reproduction check \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "Operator gets different MSE because the supplied script averages absolute errors while paper names squared error.",
+            "Provide manifest, fixture data, code, environment and expected metric definition. Record assistance and mismatches; reproduction is not new-data replication.",
+            "Metric contract mismatch explains a candidate discrepancy. Correct/report script and rerun; preserve original artifact versions and results."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Operator gets different MSE because the supplied script averages absolute errors while paper names squared error. Show the intermediate steps and give the conclusion with its scope."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

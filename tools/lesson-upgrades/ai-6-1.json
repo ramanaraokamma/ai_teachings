@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/1",
+  "title": "Requirements and service boundaries",
+  "outcome": "Explain requirements and service boundaries using the deciding step in this fictional service.",
+  "scenario": "Museum fact desk. A visitor asks the opening year of exhibit P and asks the bot to sell a ticket.",
+  "given": [
+    "Approved card P says 1912. The contract permits reading cards, not selling tickets."
+  ],
+  "steps": [
+    {
+      "label": "Read approved card",
+      "icon": "book",
+      "detail": "The supplied year is 1912."
+    },
+    {
+      "label": "Split the request",
+      "icon": "rule",
+      "detail": "Answering the year and selling a ticket are separate operations."
+    },
+    {
+      "label": "Apply the boundary",
+      "icon": "shield",
+      "detail": "Return 1912 with card P; do not sell a ticket."
+    }
+  ],
+  "explanation": "A service boundary states permitted work; useful information does not grant extra operations.",
+  "counterfactual": {
+    "change": "Replace P with Q, which has no approved card.",
+    "prediction": "The year is unsupported, and the ticket sale is still excluded.",
+    "reason": "Knowledge and permission are separate requirements."
+  },
+  "student_task": "Split the museum visitor’s request into two operations. Which can the service perform for P, and what happens to each operation when Q has no approved card?",
+  "teacher_answer": "The supplied year is 1912. Answering the year and selling a ticket are separate operations. Return 1912 with card P; do not sell a ticket. Changed case: The year is unsupported, and the ticket sale is still excluded. Knowledge and permission are separate requirements.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "An approved card can be outdated; this trace does not independently verify museum history.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

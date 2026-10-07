@@ -1,0 +1,38 @@
+{
+  "week": "ai-3/17",
+  "title": "Model Memory vs Retrieval",
+  "outcome": "By the end, I can explain model memory vs retrieval using a traced example and a stated limitation.",
+  "scenario": "The library assistant remembers an old opening time, but a current notice can be retrieved.",
+  "given": [
+    "Approved notice LIB-v = 2 says Wednesday closes at 16: 00; the model previously produced 15: 00. The question asks the current Wednesday closing time.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Old guess",
+      "icon": "model",
+      "detail": "A remembered-looking answer says 15: 00; no current notice is attached."
+    },
+    {
+      "label": "Find notice",
+      "icon": "book",
+      "detail": "Retrieve authorised LIB-v = 2, which explicitly says Wednesday closes at 16: 00."
+    },
+    {
+      "label": "Ground answer",
+      "icon": "output",
+      "detail": "Answer 16: 00 and attach LIB-v = 2. Its words, rather than the earlier guess, support this claim."
+    }
+  ],
+  "explanation": "Read the picture in order. Answer 16: 00 and attach LIB-v = 2. Its words, rather than the earlier guess, support this claim. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "LIB-v = 2 is unavailable.",
+    "prediction": "Report that the current time cannot be verified.",
+    "reason": "The unsupported old guess does not become current evidence when retrieval fails."
+  },
+  "student_task": "Why can the assistant not certify 15: 00 when the notice is missing? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "15: 00 came from an unsupported earlier output. Missing current evidence requires an uncertainty statement, not substitution. Changed-case check: Report that the current time cannot be verified. The unsupported old guess does not become current evidence when retrieval fails.",
+  "project_evidence": "For your Verified Study Buddy, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "A retrieved document can itself be wrong or outdated; source approval, date and scope still need checking.",
+  "review_note": "Reviewed Model Memory vs Retrieval against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

@@ -1,0 +1,293 @@
+{
+  "week": "ai-1/32",
+  "title": "Build a Paper Prototype",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Build a runnable paper prototype with explicit instructions and visible state",
+    "Record what actually happens without silently repairing the instructions",
+    "Use a trace to distinguish an instruction defect from an execution mistake"
+  ],
+  "primary_topic": "Building and tracing a paper prototype",
+  "vocabulary": [
+    [
+      "Prototype",
+      "An early working version used to explore and test a design"
+    ],
+    [
+      "Instruction",
+      "A precise action or decision for the operator to follow"
+    ],
+    [
+      "Trace",
+      "A record of the steps and state during one run"
+    ],
+    [
+      "Expected result",
+      "The result required by the agreed specification"
+    ],
+    [
+      "Observed result",
+      "What actually happened when this version was run"
+    ]
+  ],
+  "worked_example": {
+    "title": "Record the actual run",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Before operating P1, use the full manual checklist to write the expected result for 9 minutes, Quiet required No. Then run the cards literally. Do not replace a surprising result with the expected one. Recording disagreement gives you something to investigate; hiding it removes useful evidence."
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Trace step for 9 minutes No",
+          "Checks recorded",
+          "Next action or output"
+        ],
+        "rows": [
+          [
+            "1 Validate",
+            "Whole minutes in range; No accepted",
+            "Place marker at B1"
+          ],
+          [
+            "2 Check B1",
+            "10 is greater than 9; quiet unrestricted",
+            "Move to B2"
+          ],
+          [
+            "3 Check B2",
+            "8 is no more than 9; quiet unrestricted",
+            "Suggest B2 with reason; stop"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "This trace agrees with the expected B2 result. It shows that this run followed the instructions. One matching result does not prove that every request will work or that the prototype is faster than the manual checklist. This is a system of written rules, not a model trained on examples."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Run and record the first match",
+    "prompt": "Use the manual checklist to predict P1\u2019s output for 11 minutes No. Then ask a partner to operate your saved cards. Record the expected result separately from the observed steps and output, including the reason. Explain why the operator should stop without checking later rows.",
+    "lines": 6,
+    "answer": "The expected output is B1: 10 is no more than 11, quiet is unrestricted and B1 is first. A correct observed trace validates, starts at B1, passes both checks and suggests B1 with this reason. Stop because the specification selects the first fit. If a pupil observes a different run, retain and investigate that evidence rather than replacing it with this expected trace."
+  },
+  "independent_case": {
+    "title": "Build a new route through a small catalogue",
+    "task": "Independently make and trace instruction cards for this paper equipment catalogue: E1 first, capacity 3 people; E2 second, capacity 6. Valid input is a whole group size from 1 to 8. Suggest the first item whose capacity is at least the group size; no booking occurs. Include invalid input and no match. Write expected results, then operate your cards for groups of 5 and 7. Record both runs and explain every stopping point.",
+    "answer": "Validate whole group size 1 to 8, otherwise clarify and stop. Start E1; if capacity is at least the group size, suggest and stop; otherwise advance to E2. If E2 fails, no match and stop. Expected 5: E1 fails 3 below 5; E2 passes 6 at least 5, suggest E2. Expected 7: both capacities too small, no match. Record actual runs separately and investigate any disagreement.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A correct-looking answer is enough",
+      "Inspect the request, versions and trace to check how it was reached."
+    ],
+    [
+      "The observer should repair missing instructions during a run",
+      "Record the ambiguity, revise a labelled version and rerun separately."
+    ],
+    [
+      "An observed result should be changed to match the expected one",
+      "Preserve disagreement as evidence and investigate its cause."
+    ],
+    [
+      "A successful paper run proves a trained AI works",
+      "These are explicit rules; one run supports only a limited claim about that implementation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/7541bed98da859332679793493d7e9d5acddc6ee5f7d952d73ee272ba9e0ee04",
+        "alt": "Visual card for the input stage: paper item card",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4a0fe58f0e1f368d440a19a72801b16af215ff796fc10909a4c1cee1db7cd594",
+        "alt": "Visual card for the process stage: partner executes the process without improvising",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b282d759043a06b8daab89d59a58a7efca862d9d193b214a99bfadb664dc931a",
+        "alt": "Visual card for the output stage: paper output card and observation notes",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  paper item card"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  partner executes the process without improvising"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  paper output card and observation notes"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  A prototype tests the idea before polish or technology.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  A low-fidelity prototype externalizes assumptions cheaply. Wizard-of-Oz simulation is valid when the human operator follows the specified process and does not secretly add judgment unavailable to the proposed system.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "A paper run that can be checked",
+        "columns": [
+          "Prepare the run",
+          "Operate one step",
+          "Keep the evidence"
+        ],
+        "rows": [
+          [
+            "Request and version labels",
+            "Validate the two fields",
+            "Record pass or clarification"
+          ],
+          [
+            "Marker at current row",
+            "Check time AND quiet",
+            "Record checks and next step"
+          ],
+          [
+            "First fit or end of list",
+            "Suggest or report no match",
+            "Record output and stop"
+          ]
+        ],
+        "caption": "The request stays fixed while the marker advances. Keep the instruction version and trace together."
+      },
+      {
+        "type": "paragraph",
+        "text": "Make a request card with Available minutes and Quiet required fields, a marker for the current catalogue row, and a trace sheet. Head the sheet Run ID, prototype version, catalogue version and request. Below it use columns Step, current row, time check, quiet check and next action or output. Use not checked when validation stops the search."
+      },
+      {
+        "type": "paragraph",
+        "text": "Write instruction cards P1 version 1. Card 1: validate both fields; if invalid, name the field needing correction and stop; otherwise put the marker at B1. Card 2: check the marked row against both compatibility conditions; record both checks. If both pass, suggest that row with the reason and stop. Card 3: if either fails and another row remains, advance exactly one row and return to Card 2; if no row remains, report no match and stop. Begin each new request at Card 1 with a cleared output."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/f5aa3de2dfd63fc9d2b6b259b0e02fce208e4a3680bb7a0a653111c121e3bf7d",
+        "alt": "Comparison picture for Paper cards: fast to revise; good for logic test",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/6444badd7f0ece8b5613158444ebb1537282c27c552b693100652c651ffaa28d",
+        "alt": "Comparison picture for Polished animation: looks complete; may hide weak process",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/0bd8b2f7c761c246ed031bee19fec3d4e49f2030aca2503001f80003295be48d",
+        "alt": "Comparison picture for Operator improvises: adds secret knowledge; invalid simulation",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/cadf3a71979dab61ce2bc7950b7267f042eb12034b95a5231448bb7ce4deb76a",
+        "alt": "Comparison picture for Observer notes pause: reveals confusion; useful evidence",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Paper cards  Clue: fast to revise. Meaning: good for logic test."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Polished animation  Clue: looks complete. Meaning: may hide weak process."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Operator improvises  Clue: adds secret knowledge. Meaning: invalid simulation."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Observer notes pause  Clue: reveals confusion. Meaning: useful evidence."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  A helpful operator can accidentally make a weak design look successful by using unstated human knowledge.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

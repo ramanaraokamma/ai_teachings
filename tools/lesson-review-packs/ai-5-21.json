@@ -1,0 +1,153 @@
+{
+  "week": "ai-5/21",
+  "title": "Convolution as a local operation",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Compute a local weighted sum at each valid image position",
+    "Explain shared weights and predict output dimensions",
+    "Check how stride boundaries and activation affect the result"
+  ],
+  "primary_topic": "Convolution as a local operation",
+  "vocabulary": [
+    [
+      "Kernel",
+      "A small array of weights applied to a local input neighbourhood"
+    ],
+    [
+      "Feature map",
+      "The spatial array of outputs produced by applying a filter"
+    ],
+    [
+      "Stride",
+      "The distance between successive window starting positions"
+    ],
+    [
+      "Padding",
+      "Values added around an input boundary under a declared rule"
+    ]
+  ],
+  "worked_example": {
+    "title": "Separate the window from the output position",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "One shared kernel produces four local sums",
+        "columns": [
+          "Window start",
+          "Kernel rows",
+          "Output value"
+        ],
+        "rows": [
+          [
+            "Row 0 column 0",
+            "[1 -1] and [0 1]",
+            "0"
+          ],
+          [
+            "Row 0 column 1",
+            "[1 -1] and [0 1]",
+            "5"
+          ],
+          [
+            "Row 1 column 0",
+            "[1 -1] and [0 1]",
+            "-1"
+          ],
+          [
+            "Row 1 column 1",
+            "[1 -1] and [0 1]",
+            "-1"
+          ]
+        ],
+        "caption": "Read windows in row order. Each output summarizes one neighbourhood. With stride 1, adjacent windows overlap, but their output values occupy separate cells."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Change only input[0][0] from 1 to 4. Which valid windows include it? Compute the changed feature map and explain why the other three outputs stay the same.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Separate parameters and operations",
+    "prompt": "How many shared kernel weights does the lesson use? How many products are computed over all four valid windows? What changes if one shared bias is added?",
+    "answer": "Teacher explanation: There are four shared weights and sixteen products across four windows. One shared bias raises the parameter count to five and adds the same bias once to each output.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Filter a new image independently",
+    "task": "Use image rows [2, 1, 0], [1, 3, 2] and kernel rows [0, 1], [-1, 2]. Use no padding, stride 1 and bias 0. Give the output shape, both four-product sums and the feature map. Then add a shared bias of -5 and apply ReLU.",
+    "answer": "Teacher explanation: Shape is 1 by 2. First products are 0, 1, -1, 6, summing to 6. Second products are 0, 0, -3, 4, summing to 1. Map is [[6, 1]]. Bias gives [[1, -4]]; ReLU gives [[1, 0]].",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Each window has its own set of learned weights",
+      "The same kernel parameters are reused at every position for this output map."
+    ],
+    [
+      "A negative feature-map value means the code failed",
+      "Signed weighted sums are valid; an activation may later change them."
+    ],
+    [
+      "A local response proves an object was recognised",
+      "The authored filter only computes a local sum; object recognition and probability claims require additional modelling and evidence."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "The following function assumes nonempty rectangular numeric arrays and a positive integer stride. It rejects a kernel larger than the image. It computes one input channel, one output map, zero bias and no padding; no activation is applied inside the function."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "def local_filter(image, kernel, stride=1):\n    h, w = len(image), len(image[0])\n    kh, kw = len(kernel), len(kernel[0])\n    if kh > h or kw > w:\n        raise ValueError(\"Kernel does not fit\")\n    out = []\n    for r in range(0, h - kh + 1, stride):\n        row = []\n        for c in range(0, w - kw + 1, stride):\n            value = sum(image[r+i][c+j] * kernel[i][j]\n                        for i in range(kh) for j in range(kw))\n            row.append(value)\n        out.append(row)\n    return out\n\nx = [[1, 2, 0], [0, 1, 3], [2, 0, 1]]\nk = [[1, -1], [0, 1]]\nassert local_filter(x, k) == [[0, 5], [-1, -1]]\nassert local_filter(x, k, 2) == [[0]]"
+      },
+      {
+        "type": "paragraph",
+        "text": "The kernel weights are reused at all four positions. There are four kernel parameters, not sixteen separate weights. If we add one shared bias for this output map, there are five parameters. The number of multiply operations grows with the number of windows even though the parameter count stays fixed."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "How many shared kernel weights does the lesson use? How many products are computed over all four valid windows? What changes if one shared bias is added?"
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

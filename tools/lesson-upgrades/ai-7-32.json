@@ -1,0 +1,37 @@
+{
+  "week": "ai-7/32",
+  "title": "Peer review and response",
+  "outcome": "Explain peer review and response using the records and boundaries of this fictional investigation.",
+  "scenario": "Respond to a reviewer with evidence. A reviewer asks why four photos of one plant were treated as four independent plants.",
+  "given": [
+    "The original table contains four views of P1 and four views of P2: eight photos from two plants."
+  ],
+  "steps": [
+    {
+      "icon": "book",
+      "label": "Identify the concern",
+      "detail": "The reviewer questions the unit of analysis."
+    },
+    {
+      "icon": "data",
+      "label": "Check the records",
+      "detail": "Plant identifiers confirm two plants, not eight independent plants."
+    },
+    {
+      "icon": "check",
+      "label": "Revise transparently",
+      "detail": "Correct the description and revise any analysis that assumed independence."
+    }
+  ],
+  "explanation": "Peer review should connect a criticism to the actual records and a concrete correction or reasoned response. Polite language alone cannot repair a methodological error.",
+  "counterfactual": {
+    "change": "The team only changes \"photos\" to \"plants\" without revisiting analysis.",
+    "prediction": "The substantive independence issue remains unresolved.",
+    "reason": "Renaming records does not change their shared source objects."
+  },
+  "student_task": "Count photos and underlying plants in the reviewer’s concern. What analysis assumption needs revision, and why does changing only the word photos to plants fail to repair it?",
+  "teacher_answer": "The reviewer questions the unit of analysis. Plant identifiers confirm two plants, not eight independent plants. Correct the description and revise any analysis that assumed independence. Changed case: The substantive independence issue remains unresolved. Renaming records does not change their shared source objects.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "Two plants provide limited coverage; grouping correctly does not create more independent evidence.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted."
+}

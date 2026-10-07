@@ -1,0 +1,148 @@
+{
+  "week": "ai-5/8",
+  "title": "Loss functions",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Calculate per-example squared error and mean squared error",
+    "Distinguish residual cancellation from a low loss",
+    "Separate training loss from independent evaluation"
+  ],
+  "primary_topic": "Loss functions",
+  "vocabulary": [
+    [
+      "Target",
+      "The recorded value a model is intended to predict"
+    ],
+    [
+      "Residual",
+      "Prediction minus target under the sign convention used here"
+    ],
+    [
+      "Squared error",
+      "The square of a numerical residual"
+    ],
+    [
+      "Mean squared error",
+      "The average squared error over the evaluated examples"
+    ]
+  ],
+  "worked_example": {
+    "title": "Compare two candidates on the same cases",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Use the same targets and denominator",
+        "columns": [
+          "Candidate predictions",
+          "Squared errors",
+          "MSE"
+        ],
+        "rows": [
+          [
+            "P is [2, 2, 4]",
+            "[1, 1, 4]",
+            "6 divided by 3 is 2"
+          ],
+          [
+            "Q is [1, 2, 2]",
+            "[0, 1, 0]",
+            "1 divided by 3"
+          ],
+          [
+            "Baseline is [2, 2, 2]",
+            "[1, 1, 0]",
+            "2 divided by 3"
+          ]
+        ],
+        "caption": "Each row evaluates a separate candidate against targets [1, 3, 2]. Q has the lowest MSE on these three cases. The comparison alone does not establish performance on unseen examples."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Candidate R predicts [0, 3, 3] for targets [1, 3, 2]. Calculate residuals, squared errors and MSE. Compare R with the baseline.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Expose cancellation",
+    "prompt": "Targets [0, 4] have predictions [2, 2]. Compare mean residual and MSE.",
+    "answer": "Teacher explanation: Residuals 2 and -2 average to 0; squares 4 and 4 give MSE 4. Both predictions are wrong despite zero mean residual.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Compare an unfamiliar evaluation independently",
+    "task": "Targets are [0, 2, 4]. Model A predicts [1, 2, 3]; model B predicts [0, 2, 2]. Calculate both MSEs and identify the better model under MSE on these cases. Calculate mean absolute errors too. State what changes in the conclusion.",
+    "answer": "Teacher explanation: A residuals [1, 0, -1] give MSE 2/3; B [0, 0, -2] gives MSE 4/3, so A is better under MSE. Both mean absolute errors are 2/3, giving a tie under that metric. Neither ranking establishes future performance.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Average residual is the loss",
+      "Signed residuals can cancel. Apply the specified penalty before averaging."
+    ],
+    [
+      "Ignore perfect predictions in the average",
+      "The denominator includes every valid evaluated pair, including zero-error cases."
+    ],
+    [
+      "One metric gives the universal winner",
+      "Different losses express different penalties. Choose and disclose the criterion."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "For targets [1, 3] and predictions [2, 2], the mean residual is zero because 1 and -1 cancel. MSE is 1, correctly recording that both predictions miss. A mean residual can describe directional tendency, but it is not a substitute for an error magnitude."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "def mse(predictions, targets):\n    if not targets or len(predictions) != len(targets):\n        raise ValueError(\"Need equal nonempty sequences\")\n    errors = [(p - t) ** 2\n              for p, t in zip(predictions, targets)]\n    return sum(errors) / len(errors)\n\nprint(mse([2, 2, 4], [1, 3, 2]))  # 2.0\nprint(mse([2, 2], [1, 3]))        # 1.0"
+      },
+      {
+        "type": "paragraph",
+        "text": "The guard prevents silently ignoring an unmatched example or dividing by zero. It still assumes paired, numeric, valid records. Wrong row alignment produces a meaningless comparison even when list lengths agree."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Targets [0, 4] have predictions [2, 2]. Compare mean residual and MSE."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

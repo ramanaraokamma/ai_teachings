@@ -1,0 +1,37 @@
+{
+  "week": "python-bridge/12",
+  "title": "Testing and debugging functions",
+  "outcome": "Trace testing and debugging functions and explain the changed program before running it.",
+  "scenario": "Use a test that catches the boundary bug. A function should classify an integer as tiny exactly when it is less than three.",
+  "given": [
+    "Python 3 intended function: return x<3. Test cases: (2,True),(3,False),(4,False). Candidate bug: return x<=3."
+  ],
+  "steps": [
+    {
+      "icon": "rule",
+      "label": "Record contract",
+      "detail": "Strict less-than excludes the value 3."
+    },
+    {
+      "icon": "check",
+      "label": "Run boundary cases",
+      "detail": "The intended outputs are True, False, False for 2,3,4."
+    },
+    {
+      "icon": "code",
+      "label": "Locate the bug",
+      "detail": "Using <= passes 2 but fails the test at 3 before the later test."
+    }
+  ],
+  "explanation": "A revealing test distinguishes a correct implementation from a plausible mistake. Checking only values far from the boundary would miss this inclusive-versus-strict bug.",
+  "counterfactual": {
+    "change": "Remove the test at 3 and keep only 2 and 4.",
+    "prediction": "The buggy <= function passes those remaining tests.",
+    "reason": "Both procedures agree away from the equality boundary."
+  },
+  "student_task": "Predict the three correct outputs. Which test first catches <=, and why do tests at only two and four miss the bug?",
+  "teacher_answer": "Expected outputs are True, False, False. The equality input 3 is the first failure for <=. At 2 and 4 the strict and inclusive comparisons agree.",
+  "project_evidence": "For Python readiness before the Responsible Plant Classifier, retain a trace of the values, the predicted outputs and the changed-case explanation. Use actual Python 3 results to check the prediction after reasoning first.",
+  "limits": "Passing these cases does not prove correctness for every type or input; the contract and coverage determine what was actually checked.",
+  "review_note": "Individually authored supported practice; distinct from the reserved independent case. Python semantics are checked on standalone snippets; no learned model or real pupil result is implied."
+}

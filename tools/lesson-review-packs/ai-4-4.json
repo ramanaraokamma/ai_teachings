@@ -1,0 +1,355 @@
+{
+  "week": "ai-4/4",
+  "title": "Python and Table Readiness",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Specify a table schema",
+    "Check types and units as well as names",
+    "Distinguish structural validity from truth"
+  ],
+  "primary_topic": "Rows columns and schemas",
+  "vocabulary": [
+    [
+      "Schema",
+      "Rules for the fields and values in records"
+    ],
+    [
+      "Type",
+      "A category such as integer or text"
+    ],
+    [
+      "Unit",
+      "The quantity scale attached to a number"
+    ],
+    [
+      "Constraint",
+      "A rule a valid record must satisfy"
+    ]
+  ],
+  "worked_example": {
+    "title": "Predict before running",
+    "blocks": [
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Would minutes of 61, \"12\" and 12 each pass? Explain the type distinction.",
+        "lines": 6
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Classify records",
+    "prompt": "Classify minutes values 0, 60, -1 and 61 under this schema.",
+    "answer": "0 and 60 pass; -1 and 61 fail.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Changed independent case",
+    "task": "Supplied values are3,7,14. Compute their mean. What should a function report for an empty list? How should it handle a missing fourth record?",
+    "answer": "Mean=(3+7+14)/3=8. An empty list has no observed mean; return an explicit unavailable result rather than divide by zero or invent0. State the missing-value policy and report coverage3/4 separately if one of four records is missing.",
+    "source": "new parallel transfer case"
+  },
+  "misconceptions": [
+    [
+      "A successful run proves the conclusion",
+      "A row can satisfy every schema rule and still be a wrong observation. Schema validation checks our stated structure and constraints, not whether someone measured honestly or selected a representative sample."
+    ],
+    [
+      "Matching the example is enough",
+      "Require the new W4 case, explicit predictions and an explanation. Fresh retry: define a tray label and integer count 0 through 20. Require tests at 0, 20, -1 and 21 and a text count."
+    ],
+    [
+      "A convenient shortcut preserves meaning",
+      "If one row records 120 seconds in the minutes field, a simple numeric total becomes misleading. Correct the source or explicitly convert and document it; renaming a column alone does not convert values."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/512e63ec5f1f9553f0c66a851eff2bff7932efee7198e7972784c6f97a376ad4",
+        "alt": "Week 4 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/c279fc0d0c7678d55be14b003e3824aa1c1f4a4cd68ad36cba85cb6e436cc605",
+        "alt": "Week 4 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ed8498db01e77b0c1b9b252d50cc4bc4130a620db936984e75d7cb982aa72502",
+        "alt": "Week 4 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Trace a short notebook state and repair two type or missing-field errors."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  Python variables, types, expressions, rows, and columns give a reproducible representation of data and transformations."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  widths = [4.2, 5.0, 6.1] stores three decimal measurements. mean_width = sum(widths) / len(widths) evaluates to 5.1.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "rows = [{\"activity\": \"Reading\", \"minutes\": 12},\n        {\"activity\": \"Sorting\", \"minutes\": 0}]\nfor row in rows:\n    valid = (type(row[\"activity\"]) is str\n             and len(row[\"activity\"]) > 0\n             and type(row[\"minutes\"]) is int\n             and 0 <= row[\"minutes\"] <= 60)\n    print(valid)"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow the evidence",
+        "columns": [
+          "Step or case",
+          "Evidence",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "activity",
+            "Nonempty text",
+            "Names the session activity"
+          ],
+          [
+            "minutes",
+            "Integer 0 through 60",
+            "Duration in minutes"
+          ]
+        ],
+        "caption": "Read each row from left to right and connect the evidence to the stated rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "The worked script prints True twice. type(value) is int checks the exact type here and avoids accepting a Boolean as a count. The chained comparison checks both boundaries. The example assumes both keys exist; next week handles missing fields. A zero duration is allowed by this written schema."
+      },
+      {
+        "type": "subheading",
+        "text": "Check a row in separate steps"
+      },
+      {
+        "type": "paragraph",
+        "text": "A schema is a checklist for what a row must contain. First ask whether the activity name is text and is not empty. Next ask whether minutes is an integer. Then ask whether that integer lies between 0 and 60, including both ends. Keep these checks separate when explaining a rejection. The number 12 and the text \"12\" look similar on a page, but only the number meets this lesson\u2019s minutes rule."
+      },
+      {
+        "type": "subheading",
+        "text": "Apply the connected idea: File input and output"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "with open(\"durations.txt\", \"r\", encoding=\"utf-8\") as handle:\n    lines = handle.read().splitlines()\nvalues = []\nfor line in lines:\n    values.append(int(line))\nprint(sum(values))"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow the evidence",
+        "columns": [
+          "Step or case",
+          "Evidence",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "Local file",
+            "12 then 8 on separate lines",
+            "Read as text"
+          ],
+          [
+            "Conversion",
+            "\"12\" to 12 and \"8\" to 8",
+            "Integer values"
+          ],
+          [
+            "Summary",
+            "12 + 8",
+            "Print 20"
+          ]
+        ],
+        "caption": "Read each row from left to right and connect the evidence to the stated rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "The mode r means read. with closes the file when the block finishes, including when an error occurs. splitlines separates lines without retaining newline characters. This example assumes each line is a valid integer text; an empty line or twelve raises ValueError during int conversion."
+      },
+      {
+        "type": "subheading",
+        "text": "Separate file text from numbers"
+      },
+      {
+        "type": "paragraph",
+        "text": "The file contains characters, not ready-made Python integers. Reading gives text; splitlines separates the lines; int converts each valid line into a number. The lines \"12\" and \"8\" become 12 and 8, so their total is 20. Keep those three stages visible in your trace. A line such as \"twelve\" fails conversion, and a missing file is a different problem. Neither failure means the observed duration was zero."
+      },
+      {
+        "type": "subheading",
+        "text": "Apply the connected idea: Exceptions and recovery"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "def parse_minutes(text):\n    try:\n        value = int(text)\n    except ValueError:\n        return {\"status\": \"invalid text\", \"value\": None}\n    if value < 0 or value > 60:\n        return {\"status\": \"out of range\", \"value\": None}\n    return {\"status\": \"ok\", \"value\": value}\n\nfor text in [\"12\", \"zero\", \"0\", \"61\"]:\n    print(parse_minutes(text))"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow the evidence",
+        "columns": [
+          "Step or case",
+          "Evidence",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "\"12\" or \"0\"",
+            "Conversion and range pass",
+            "ok with numeric value"
+          ],
+          [
+            "\"zero\"",
+            "Conversion fails",
+            "invalid text with None"
+          ],
+          [
+            "\"61\"",
+            "Integer outside range",
+            "out of range with None"
+          ]
+        ],
+        "caption": "Read each row from left to right and connect the evidence to the stated rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "try covers the operation expected to fail; except ValueError handles that known conversion failure. Returning early ends the failing path. This contract expects a string: it does not claim to handle every possible object. Spaces around an integer are accepted by int, and that behavior should be documented."
+      },
+      {
+        "type": "subheading",
+        "text": "Give each failure an honest result"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the function as a decision path. First try to turn the text into an integer. If that conversion raises ValueError, return invalid text and None. If conversion succeeds, check the range. A value outside 0 through 60 returns out of range and None. Only a value passing both stages returns ok and its number. None means there is no accepted number; it must not be added to a duration total."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 4 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 4 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 4 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 4 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "week": "ai-2/30",
+  "title": "Agents and Tools",
+  "outcome": "By the end, I can validate a bounded agent’s transitions and stop after a terminal state.",
+  "scenario": "A fictional read-only catalogue assistant follows a fixed state machine.",
+  "given": [
+    "Allowed edges: ready→searching; searching→checking; checking→done. done has no outgoing edge.",
+    "Trace A: ready→searching→checking→done. Trace B: ready→searching→done."
+  ],
+  "steps": [
+    {
+      "label": "Declare transitions",
+      "icon": "rule",
+      "detail": "A state is a named stage; only listed edges are allowed."
+    },
+    {
+      "label": "Trace A",
+      "icon": "check",
+      "detail": "Every adjacent edge is listed: valid."
+    },
+    {
+      "label": "Trace B",
+      "icon": "shield",
+      "detail": "searching→done is absent: reject at this first invalid transition."
+    },
+    {
+      "label": "Terminal check",
+      "icon": "clock",
+      "detail": "After done, another search requires a separately defined new run."
+    }
+  ],
+  "explanation": "Reaching the desired ending is insufficient if the agent skipped a required check. Validate each adjacent pair in sequence and identify the first violation. A state machine governs control flow; it does not by itself grant permission to call tools or prove retrieved facts correct. Those are separate checks inside the relevant stages.",
+  "counterfactual": {
+    "change": "Add a review state between checking and done, without updating Trace A.",
+    "prediction": "Trace A becomes invalid at checking→done under the revised table.",
+    "reason": "A required new transition changes what constitutes a complete run."
+  },
+  "student_task": "Can the assistant accept Trace B because its final state is done?",
+  "teacher_answer": "No. It skips the checking stage through an unlisted searching→done edge.",
+  "project_evidence": "Make recommender tool workflows explicit, with bounded retries, validation stages and terminal behavior.",
+  "limits": "This toy machine has no retry path; do not invent one or assume real agents always follow these states.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment."
+}

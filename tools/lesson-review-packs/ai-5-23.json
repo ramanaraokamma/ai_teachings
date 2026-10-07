@@ -1,0 +1,148 @@
+{
+  "week": "ai-5/23",
+  "title": "Training a small image model",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Trace a complete image model with fixed features and one trained weight",
+    "Select a checkpoint using a declared validation rule",
+    "Evaluate a frozen model against a baseline and limit the conclusion"
+  ],
+  "primary_topic": "Training a small image model",
+  "vocabulary": [
+    [
+      "Frozen feature",
+      "A feature computation whose parameters are kept unchanged during training"
+    ],
+    [
+      "Checkpoint",
+      "Saved model parameters at a particular training stage"
+    ],
+    [
+      "Selection metric",
+      "The quantity used under a declared rule to choose a model"
+    ],
+    [
+      "Baseline",
+      "A simple comparison method evaluated on the same cases"
+    ]
+  ],
+  "worked_example": {
+    "title": "Select using validation evidence",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Compare the saved checkpoints",
+        "columns": [
+          "Update and weight",
+          "Training MSE",
+          "Validation MSE"
+        ],
+        "rows": [
+          [
+            "0 with a 0",
+            "1",
+            "1"
+          ],
+          [
+            "1 with a 0.3",
+            "0.325",
+            "0.49"
+          ],
+          [
+            "2 with a 0.45",
+            "0.15625",
+            "0.3025"
+          ]
+        ],
+        "caption": "Before training, declare selection by lowest validation MSE among these three checkpoints, with the earliest checkpoint winning an exact tie. Checkpoint 2 is selected. Training loss alone does not define the selection rule."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "At a = 0.3 and a = 0.45, compute the validation scores for E and F and their predicted classes. Why can validation accuracy stay the same while validation MSE changes?",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Check both updates",
+    "prompt": "Starting at a = 0, use gradient 5a - 3 and rate 0.1 for two updates. Give each gradient, new weight and training MSE.",
+    "answer": "Teacher explanation: First gradient -3 gives a = 0.3 and MSE 0.325. Second gradient -1.5 gives a = 0.45 and MSE 0.15625. Each gradient is computed at the current weight before the update.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Choose a checkpoint independently",
+    "task": "A separate model scores bd. Its training examples have d = 1 and -1 with signed targets 1 and -1. Start b = 0; gradient is 2(b - 1), rate 0.25 and budget two updates. Validation differences are 2 and -2 with targets 1 and -1. Calculate all three weights and their validation MSEs, then select by lowest validation MSE.",
+    "answer": "Teacher explanation: Weights are 0, 0.5 and 0.75. Validation scores are [0, 0], [1, -1] and [1.5, -1.5], so validation MSEs are 1, 0 and 0.25. Select update 1 with b = 0.5, even though a later update exists. Training MSE falls from 1 to 0.25 to 0.0625.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "All parameters in a trained model must have been learned",
+      "The declared experiment freezes the feature kernels and adjusts only a."
+    ],
+    [
+      "Perfect accuracy means zero MSE",
+      "Thresholded classes can all be correct while continuous scores differ from signed targets."
+    ],
+    [
+      "The last checkpoint must be best",
+      "Selection depends on the declared validation rule, not update order or training loss alone."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Start a = 0. Use all four training examples in each update, ordinary mean squared error and learning rate 0.1. Save checkpoints at updates 0, 1 and 2. The training loss is 2.5a squared - 3a + 1, with gradient 5a - 3. Subtract learning rate times gradient; this gives a = 0.3 then a = 0.45."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "def feature(image):\n    return image[0][0] + image[1][0] - image[0][1] - image[1][1]\n\ntrain = [([[1, 0], [0, 0]], 1),\n         ([[1, 0], [1, 0]], 1),\n         ([[0, 1], [0, 0]], -1),\n         ([[0, 1], [0, 1]], -1)]\nvalid = [([[0, 0], [1, 0]], 1),\n         ([[0, 0], [0, 1]], -1)]\n\ndef mse(a, rows):\n    return sum((a * feature(x) - t)**2 for x, t in rows) / len(rows)\n\na, checkpoints = 0.0, [0.0]\nfor _ in range(2):\n    gradient = sum(2 * (a * feature(x) - t) * feature(x)\n                   for x, t in train) / len(train)\n    a -= 0.1 * gradient\n    checkpoints.append(a)\nfor step, value in enumerate(checkpoints):\n    print(step, round(value, 6), round(mse(value, train), 6),\n          round(mse(value, valid), 6))"
+      },
+      {
+        "type": "paragraph",
+        "text": "The code assumes valid 2 by 2 numeric images and nonempty labelled lists. It prints update, weight, training MSE and validation MSE. Validation examples are scored but never used in the gradient. A single-channel filter spanning the whole image produces one value here, so no further spatial pooling is needed."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Starting at a = 0, use gradient 5a - 3 and rate 0.1 for two updates. Give each gradient, new weight and training MSE."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

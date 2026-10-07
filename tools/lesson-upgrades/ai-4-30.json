@@ -1,0 +1,38 @@
+{
+  "week": "ai-4/30",
+  "title": "Improve Generalization",
+  "outcome": "By the end, I can explain improve generalization using a traced example and a stated limitation.",
+  "scenario": "Test whether a plant model follows the leaf or a convenient background shortcut.",
+  "given": [
+    "Toy training photos show spotted leaves on red cards and healthy leaves on grey cards. Intended use allows both backgrounds for either class.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Notice correlation",
+      "icon": "data",
+      "detail": "Background colour perfectly tracks the labels in this training sample."
+    },
+    {
+      "label": "Design crossed cases",
+      "icon": "experiment",
+      "detail": "Collect spotted/red, spotted/grey, healthy/red, healthy/grey with plant grouping preserved."
+    },
+    {
+      "label": "Inspect fixed model",
+      "icon": "check",
+      "detail": "Compare predictions for the same leaf on both backgrounds; do not assume an error cause before observing it."
+    }
+  ],
+  "explanation": "Read the picture in order. Compare predictions for the same leaf on both backgrounds; do not assume an error cause before observing it. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "The unchanged model predicts spotted for both red-background classes and healthy for both grey-background classes.",
+    "prediction": "It fails on spotted/grey and healthy/red in the crossed audit.",
+    "reason": "Those supplied predictions follow background rather than the intended leaf target."
+  },
+  "student_task": "What fresh evidence is needed after adding crossed training data? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Freeze the revised model and score new grouped crossed-background examples; reused audit cases remain development evidence. Changed-case check: It fails on spotted/grey and healthy/red in the crossed audit. Those supplied predictions follow background rather than the intended leaf target.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "One controlled audit can reveal a shortcut in this toy setting without proving how every internal feature is represented.",
+  "review_note": "Reviewed Improve Generalization against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

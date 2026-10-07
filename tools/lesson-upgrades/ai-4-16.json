@@ -1,0 +1,60 @@
+{
+  "week": "ai-4/16",
+  "title": "Accuracy and Imbalance",
+  "outcome": "By the end, I can explain accuracy and imbalance using a traced example and a stated limitation.",
+  "scenario": "Show how a common healthy class can hide complete failure to detect spotted leaves.",
+  "given": [
+    "Toy evaluation has 18 healthy and 2 spotted leaves. Always-healthy predicts all healthy. A candidate hasTP2, FN 0, FP 3, TN 15.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Score trivial baseline",
+      "icon": "chart",
+      "detail": "Always healthy is 18/20=90% accurate but detects0/2 spotted leaves."
+    },
+    {
+      "label": "Score candidate",
+      "icon": "model",
+      "detail": "Candidate accuracy is 17/20=85%; spotted recall is 2/2=100%."
+    },
+    {
+      "label": "Compare consequences",
+      "icon": "question",
+      "detail": "Candidate catches both spotted leaves while producing three false alarms; choose with stated costs and review needs."
+    }
+  ],
+  "explanation": "Read the picture in order. Candidate catches both spotted leaves while producing three false alarms; choose with stated costs and review needs. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "The candidate’s three false alarms are corrected without changing its detections.",
+    "prediction": "Candidate accuracy becomes20/20 with spotted recall still100% in this toy set.",
+    "reason": "False alarms move from FP to TN; neither TP nor FN changes."
+  },
+  "student_task": "Why can the 90% baseline still be unsuitable for a detection task? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "It misses every spotted leaf. Accuracy is dominated by18 healthy cases; report class-specific errors and the intended-use consequences. Changed-case check: Candidate accuracy becomes20/20 with spotted recall still100% in this toy set. False alarms move from FP to TN; neither TP nor FN changes.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Perfect performance on twenty supplied cases does not demonstrate dependable detection in other plants or settings.",
+  "review_note": "Reviewed Accuracy and Imbalance against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Candidate decisions",
+    "cells": [
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        15
+      ]
+    ],
+    "row_labels": [
+      "actual spotted",
+      "actual healthy"
+    ],
+    "column_labels": [
+      "predicted spotted",
+      "predicted healthy"
+    ]
+  }
+}

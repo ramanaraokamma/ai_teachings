@@ -1,0 +1,38 @@
+{
+  "week": "ai-3/32",
+  "title": "Human AI Workflow",
+  "outcome": "By the end, I can explain human ai workflow using a traced example and a stated limitation.",
+  "scenario": "A human approval belongs to the exact draft and action reviewed.",
+  "given": [
+    "A teacher approves study handout H1 for classroom printing. H2 adds a pupil email address and proposes public posting. No H2 approval exists.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Identify approval",
+      "icon": "person",
+      "detail": "The recorded approval covers H1 and classroom printing."
+    },
+    {
+      "label": "Inspect change",
+      "icon": "data",
+      "detail": "H2 changes both content and distribution scope."
+    },
+    {
+      "label": "Require review",
+      "icon": "shield",
+      "detail": "Stop public posting and show H2’s changed content and intended audience to the reviewer."
+    }
+  ],
+  "explanation": "Read the picture in order. Stop public posting and show H2’s changed content and intended audience to the reviewer. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "H2 is replaced with unchanged H1 for classroom printing.",
+    "prediction": "The original approval covers that declared action.",
+    "reason": "Both the approved content and its distribution scope now match."
+  },
+  "student_task": "Why can H1’s approval not automatically approve H2? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "The reviewer did not approve the added personal detail or public audience. Approval must match the version and action. Changed-case check: The original approval covers that declared action. Both the approved content and its distribution scope now match.",
+  "project_evidence": "For your Verified Study Buddy, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Human review helps only when the reviewer sees the material changes, evidence and actual consequences.",
+  "review_note": "Reviewed Human AI Workflow against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

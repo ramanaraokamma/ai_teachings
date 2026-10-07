@@ -1,0 +1,38 @@
+{
+  "week": "ai-3/22",
+  "title": "Requests Responses and JSON",
+  "outcome": "By the end, I can explain requests responses and json using a traced example and a stated limitation.",
+  "scenario": "A lunch-count response must satisfy a declared JSON contract.",
+  "given": [
+    "The toy response has exactly class_code text and portions integer 0..30. Example: {\"class_code\":\"R8\",\"portions\": 12}.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Read fields",
+      "icon": "data",
+      "detail": "class_code is nonempty text; portions is the integer 12."
+    },
+    {
+      "label": "Check range",
+      "icon": "rule",
+      "detail": "0 <= 12 <= 30, so the declared count is within range."
+    },
+    {
+      "label": "Accept structure",
+      "icon": "check",
+      "detail": "Accept this response shape; acceptance does not prove that 12 portions were actually counted."
+    }
+  ],
+  "explanation": "Read the picture in order. Accept this response shape; acceptance does not prove that 12 portions were actually counted. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Replace 12 with the text \"12\".",
+    "prediction": "Reject the response under this strict contract.",
+    "reason": "Digits inside quotes represent text, whereas portions requires an integer."
+  },
+  "student_task": "Would converting the text silently prove the source count is correct? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "No. Under the stated strict contract reject the wrong type. Any explicit conversion policy would change the contract, and factual verification remains separate. Changed-case check: Reject the response under this strict contract. Digits inside quotes represent text, whereas portions requires an integer.",
+  "project_evidence": "For your Verified Study Buddy, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "JSON well-formedness, schema validity and real-world truth are different checks.",
+  "review_note": "Reviewed Requests Responses and JSON against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

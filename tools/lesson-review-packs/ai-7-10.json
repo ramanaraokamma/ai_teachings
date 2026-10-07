@@ -1,0 +1,135 @@
+{
+  "week": "ai-7/10",
+  "title": "Confounders and controls",
+  "grade": 12,
+  "project": "Reproducible AI Research Study",
+  "goals": [
+    "Explain the mechanism and terminology of confounders and controls",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Confounders and controls",
+  "vocabulary": [
+    [
+      "Confounder",
+      "A differing condition offering another explanation"
+    ],
+    [
+      "Control",
+      "A design constraint preserving comparison conditions"
+    ],
+    [
+      "Counterbalancing",
+      "Varying order to reduce systematic order differences"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "New method uses better corpus and different queries while old method uses the original set."
+      },
+      {
+        "type": "paragraph",
+        "text": "Corpus and case differences confound the method effect. Rerun matched inputs or report a whole-system comparison without isolation."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "New method uses better corpus and different queries while old method uses the original set. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: Corpus and case differences confound the method effect. Rerun matched inputs or report a whole-system comparison without isolation.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "Every method A run is morning and B run afternoon; network speed varies by time. Propose a repair.",
+    "answer": "Teacher explanation: Counterbalance/randomise method order under matched conditions and record time; otherwise timing remains an alternative explanation.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "Controls address specified alternatives, not every possible unknown confounder."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "For a toy comparison vary only retrieval method while holding corpus, queries, cutoff and relevance rubric fixed. Randomise or counterbalance order when order effects matter."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Confounders and controls \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "New method uses better corpus and different queries while old method uses the original set.",
+            "For a toy comparison vary only retrieval method while holding corpus, queries, cutoff and relevance rubric fixed. Randomise or counterbalance order when order effects matter.",
+            "Corpus and case differences confound the method effect. Rerun matched inputs or report a whole-system comparison without isolation."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "New method uses better corpus and different queries while old method uses the original set. Show the intermediate steps and give the conclusion with its scope."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

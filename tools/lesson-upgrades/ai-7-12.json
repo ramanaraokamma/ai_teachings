@@ -1,0 +1,62 @@
+{
+  "week": "ai-7/12",
+  "title": "Uncertainty intervals",
+  "outcome": "Explain uncertainty intervals using the records and boundaries of this fictional investigation.",
+  "scenario": "Read a supplied uncertainty interval. A fictional study supplies an interval for a mean time difference under its stated sampling model.",
+  "given": [
+    "Estimated difference B−A is -0.8 seconds; supplied 95% confidence interval is [-1.4,-0.2] seconds. Assume the study’s interval method is appropriate."
+  ],
+  "steps": [
+    {
+      "icon": "chart",
+      "label": "Locate the estimate",
+      "detail": "-0.8 lies between the interval endpoints."
+    },
+    {
+      "icon": "rule",
+      "label": "Interpret the sign",
+      "detail": "Negative B−A means B took less time under this measurement convention."
+    },
+    {
+      "icon": "question",
+      "label": "Respect coverage meaning",
+      "detail": "95% describes the method’s long-run coverage, not a 95% probability for this fixed parameter."
+    }
+  ],
+  "explanation": "An uncertainty interval conveys precision under assumptions. Its endpoints, units, comparison direction and method all matter; the interval is supplied here, not calculated from unavailable raw data.",
+  "counterfactual": {
+    "change": "Use a supplied interval [-1.4,0.3] instead.",
+    "prediction": "It includes zero and positive differences, so both no difference and slower B remain compatible with that interval.",
+    "reason": "The new upper endpoint crosses zero."
+  },
+  "student_task": "Locate -0.8 and zero relative to the supplied interval [-1.4,-0.2]. Interpret the sign and confidence-method meaning, then describe what changes with interval [-1.4,0.3].",
+  "teacher_answer": "-0.8 lies between the interval endpoints. Negative B−A means B took less time under this measurement convention. 95% describes the method’s long-run coverage, not a 95% probability for this fixed parameter. Changed case: It includes zero and positive differences, so both no difference and slower B remain compatible with that interval. The new upper endpoint crosses zero.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "An interval does not establish practical value or causality, and invalid sampling assumptions can invalidate its interpretation.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Supplied interval for B minus A time",
+    "cells": [
+      [
+        -1.4,
+        -0.8,
+        -0.2
+      ],
+      [
+        -1.4,
+        "not specified",
+        0.3
+      ]
+    ],
+    "row_labels": [
+      "Original supplied interval",
+      "Changed supplied interval"
+    ],
+    "column_labels": [
+      "Lower endpoint (s)",
+      "Estimate (s)",
+      "Upper endpoint (s)"
+    ]
+  }
+}

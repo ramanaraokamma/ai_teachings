@@ -1,0 +1,68 @@
+{
+  "week": "ai-7/14",
+  "title": "Statistical tests and assumptions",
+  "outcome": "Explain statistical tests and assumptions using the records and boundaries of this fictional investigation.",
+  "scenario": "A small exact paired sign-flip test. Compare three independent task pairs under a null that permits each difference’s sign to flip independently with equal probability.",
+  "given": [
+    "A times [5,8,4] seconds; B [4,6,3]. Differences B−A are [-1,-2,-1]. Use a two-sided statistic: absolute sum of differences. Assume the stated sign-symmetry null is appropriate."
+  ],
+  "steps": [
+    {
+      "icon": "data",
+      "label": "Preserve paired differences",
+      "detail": "Differences are -1,-2,-1; their sum is -4 and mean is -4/3 seconds."
+    },
+    {
+      "icon": "experiment",
+      "label": "Enumerate null sign flips",
+      "detail": "Eight equally likely flips give sums -4,-2,0,2,4 with counts 1,2,2,2,1."
+    },
+    {
+      "icon": "chart",
+      "label": "Count equally extreme sums",
+      "detail": "Only -4 and 4 have absolute sum at least 4: exact two-sided p=2/8=0.25."
+    }
+  ],
+  "explanation": "A test compares an observed statistic with outcomes under a specified null model. Here the sign-flip assumptions make eight arrangements equally likely. At a predeclared 0.05 threshold, p=0.25 does not reject the null; it does not prove no difference.",
+  "counterfactual": {
+    "change": "Break the task pairing and use unrelated A and B measurements.",
+    "prediction": "This paired sign-flip calculation is no longer justified by the stated design.",
+    "reason": "Its differences must come from the same task, with the declared independent sign-symmetry assumptions."
+  },
+  "student_task": "Calculate each paired difference and the observed sum. Count null arrangements with absolute sum at least four, compute p, and explain the decision at threshold 0.05.",
+  "teacher_answer": "The differences are -1,-2,-1 and sum to -4. Two of eight sign arrangements have absolute sum at least 4, so p=0.25. This exceeds 0.05: do not reject under the stated null. This is not proof of equality.",
+  "project_evidence": "For the Reproducible AI Research Study, save paired differences, the null assumptions, all eight sign arrangements and the decision rule.",
+  "limits": "Three pairs provide coarse evidence. The p-value is not the probability that the null is true; invalid independence or symmetry assumptions invalidate this test.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Three independent paired task times",
+    "cells": [
+      [
+        5,
+        4,
+        -1
+      ],
+      [
+        8,
+        6,
+        -2
+      ],
+      [
+        4,
+        3,
+        -1
+      ]
+    ],
+    "row_labels": [
+      "Task 1",
+      "Task 2",
+      "Task 3"
+    ],
+    "column_labels": [
+      "A seconds",
+      "B seconds",
+      "B−A seconds"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "week": "ai-5/13",
+  "title": "Batching and epochs",
+  "outcome": "By the end, I can explain batching and epochs using a traced example and a stated limitation.",
+  "scenario": "Show why an epoch\u2019s example order can matter for single-example updates.",
+  "given": [
+    "Toy y=wx, rate 0.1, squared loss, start w = 0. Training A=(x = 1, target 2), B=(x = 2, target 0).",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "A then B",
+      "icon": "code",
+      "detail": "A gradient -4 gives w = 0.4; B gradient 3.2 then gives w = 0.08."
+    },
+    {
+      "label": "Restart and reverse",
+      "icon": "clock",
+      "detail": "B at w=0 has gradient 0; A then gives w = 0.4."
+    },
+    {
+      "label": "Compare full batch",
+      "icon": "chart",
+      "detail": "At w = 0 mean gradient=(-4+0)/2=-2; one full-batch update gives w = 0.2."
+    }
+  ],
+  "explanation": "A single-example update changes the weight before the next example\u2019s gradient is calculated. Reversing the example order can therefore change the path. A full-batch update computes both gradients at the same starting weight and averages them before changing that weight. The distinction is when the update occurs, not whether the examples have different labels.",
+  "counterfactual": {
+    "change": "Use only one full-batch update after reversing record order.",
+    "prediction": "The updated weight remains 0.2.",
+    "reason": "The same mean of the two starting gradients is unchanged by their order."
+  },
+  "student_task": "Why do the single-example orders finish at different weights? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "The second gradient is evaluated at an already updated weight. Full-batch gradients here share the same starting weight before averaging. Changed-case check: The updated weight remains 0.2. The same mean of the two starting gradients is unchanged by their order.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Different order effects do not mean a universally better batching strategy; compare declared schedules and budgets fairly.",
+  "review_note": "Reviewed Batching and epochs against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation."
+}

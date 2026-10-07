@@ -1,0 +1,43 @@
+{
+  "week": "ai-2/19",
+  "title": "Sampling and Representation",
+  "outcome": "By the end, I can define a population, selection frame and nonresponse report for a survey.",
+  "scenario": "A fictional Grade 7 class wants to understand book-format preferences across its whole grade.",
+  "given": [
+    "Population: all 60 Grade 7 learners. Frame: current school-approved list of those 60, used only by the teacher.",
+    "Teacher randomly invites 15; 12 answer the same neutral comic/prose/either question. No names enter the analysis table."
+  ],
+  "steps": [
+    {
+      "label": "Define target",
+      "icon": "book",
+      "detail": "The question concerns all Grade 7, not only library-club members."
+    },
+    {
+      "label": "Select invitations",
+      "icon": "person",
+      "detail": "Teacher uses the complete approved list and documented random selection."
+    },
+    {
+      "label": "Record responses",
+      "icon": "data",
+      "detail": "12 replies from 15 invited; three nonresponses remain visible."
+    },
+    {
+      "label": "Report scope",
+      "icon": "chart",
+      "detail": "Invitation response rate 12/15=80%; preference counts describe respondents."
+    }
+  ],
+  "explanation": "A sample plan states who could be selected, how selection happens and what happens after invitation. Random invitations do not guarantee that respondents resemble those who declined. Use a neutral question and preserve nonresponse coverage. Learners can discuss aggregate counts without receiving the identifiable selection frame.",
+  "counterfactual": {
+    "change": "Invite only the 15 library-club members instead.",
+    "prediction": "The invitation process no longer covers the whole grade through this frame.",
+    "reason": "Club members may differ in reading interests; selection is now limited to one group."
+  },
+  "student_task": "Can 80% response be reported as 80% of the whole grade responding?",
+  "teacher_answer": "No. Twelve of fifteen invited is 80%; twelve of sixty in the grade is 20%. Denominators answer different questions.",
+  "project_evidence": "Document whose requests inform the recommender and avoid treating an easily reached group as all intended users.",
+  "limits": "Even the random-invitation plan does not remove nonresponse bias or justify revealing identifiable school lists.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment."
+}

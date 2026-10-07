@@ -1,0 +1,50 @@
+{
+  "week": "ai-7/2",
+  "title": "Reading a research claim",
+  "outcome": "Explain reading a research claim using the records and boundaries of this fictional investigation.",
+  "scenario": "Read a claim with its denominator. A fictional paper headline says a prompt is twice as effective. Its table reports four correct cases instead of two.",
+  "given": [
+    "Baseline: 2/10 correct. New prompt: 4/10 on the same ten cases. Scoring is fixed."
+  ],
+  "steps": [
+    {
+      "icon": "book",
+      "label": "Find the measured outcome",
+      "detail": "The table counts correct answers, not learning or satisfaction."
+    },
+    {
+      "icon": "chart",
+      "label": "Calculate both changes",
+      "detail": "20%→40% is twice the rate and a 20-percentage-point increase."
+    },
+    {
+      "icon": "question",
+      "label": "Check claim scope",
+      "detail": "These ten cases support a descriptive comparison, not universal doubling."
+    }
+  ],
+  "explanation": "A research claim compresses a method and result. Unpack the measured variable, denominator and comparison before accepting the headline.",
+  "counterfactual": {
+    "change": "The headline changes to \"every learner improves twice as much\".",
+    "prediction": "That learner claim is unsupported by these answer counts.",
+    "reason": "The outcome and experimental unit have changed in the wording without new evidence."
+  },
+  "student_task": "Calculate the baseline and new rates for 2/10 and 4/10. Explain both twice the rate and the percentage-point change, and say why neither measures every learner’s improvement.",
+  "teacher_answer": "The table counts correct answers, not learning or satisfaction. 20%→40% is twice the rate and a 20-percentage-point increase. These ten cases support a descriptive comparison, not universal doubling. Changed case: That learner claim is unsupported by these answer counts. The outcome and experimental unit have changed in the wording without new evidence.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "Small case counts leave substantial uncertainty; no significance or causal effect is supplied.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Correctness on ten shared cases",
+    "labels": [
+      "Baseline",
+      "New prompt"
+    ],
+    "values": [
+      2,
+      4
+    ],
+    "unit": "correct answers out of 10"
+  }
+}

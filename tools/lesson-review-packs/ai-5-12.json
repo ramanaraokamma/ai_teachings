@@ -1,0 +1,148 @@
+{
+  "week": "ai-5/12",
+  "title": "Training a small network",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Trace repeated forward loss gradient and update steps",
+    "Keep frozen parameters distinct from the trained parameter",
+    "Report training results with their evaluation limits"
+  ],
+  "primary_topic": "Training a small network",
+  "vocabulary": [
+    [
+      "Training loop",
+      "A repeated sequence of prediction, loss calculation, gradient calculation and parameter update"
+    ],
+    [
+      "Frozen parameter",
+      "A model value intentionally held fixed during fitting"
+    ],
+    [
+      "Training budget",
+      "A declared limit on updates or other training resources"
+    ],
+    [
+      "Learning curve",
+      "A record of a performance measure across training steps or time"
+    ]
+  ],
+  "worked_example": {
+    "title": "Trace one iteration completely",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "One full-data update from v is 1",
+        "columns": [
+          "Stage",
+          "Compute with current v",
+          "Result"
+        ],
+        "rows": [
+          [
+            "Forward and loss",
+            "Predictions [1, 2] for targets [2, 4]",
+            "Errors [-1, -2], MSE 2.5"
+          ],
+          [
+            "Gradient",
+            "2 times (-1 times 1 - 2 times 2) / 2",
+            "Gradient -5"
+          ],
+          [
+            "Update with rate 0.1",
+            "1 - 0.1 times -5",
+            "Next v is 1.5"
+          ]
+        ],
+        "caption": "Each row depends on the preceding calculation. Recompute predictions and loss on the next iteration; do not keep using the first gradient after parameters change."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Starting from v = 1.5, calculate both training predictions, errors, MSE, gradient and the next v.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Check the mean convention",
+    "prompt": "At v = 1, the sum of squared errors is 5. A learner uses gradient -10 with rate 0.1. Explain the mismatch with this lesson and give the next v under MSE.",
+    "answer": "Teacher explanation: The stated objective averages two rows. Its gradient is -5, giving v = 1.5. Gradient -10 corresponds to the sum objective and changes the effective update size.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Run a new training case independently",
+    "task": "Keep h = ReLU(x), train only v, and use one pair (2, 2), v = 0 and rate 0.125. Use squared error and gradient 2 times (2v - 2) times 2. Perform two updates, reporting each new v and loss. Explain why the second update changes nothing.",
+    "answer": "Teacher explanation: At start loss 4 and gradient -8. First update gives v = 1 and loss 0. The next gradient is 0, so second update keeps v = 1 with loss 0. This is an exact fit on the one training pair, not proof for every input.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Every parameter was trained",
+      "Only v changes. Hidden weight, hidden bias and output bias were explicitly frozen."
+    ],
+    [
+      "Five printed rows mean five updates",
+      "The initial state is row zero; the loop performs four updates."
+    ],
+    [
+      "Falling training loss proves generalisation",
+      "Report reserved evidence and representation limits separately."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Let errors be v - 2 and 2v - 4. MSE is their squared sum divided by 2, which simplifies to 2.5 times (v - 2) squared. Its gradient with respect to v is 5 times (v - 2). At v = 0 the gradient is -10, so the first update gives v = 0 - 0.1 times -10 = 1."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "train = [(1.0, 2.0), (2.0, 4.0)]\nv = 0.0\nrate = 0.1\nfor step in range(5):\n    hs = [max(0.0, x) for x, target in train]\n    errors = [v * h - target\n              for h, (x, target) in zip(hs, train)]\n    loss = sum(e * e for e in errors) / len(train)\n    print(step, v, loss)\n    if step == 4:\n        break\n    gradient = 2 * sum(e * h for e, h in zip(errors, hs)) / len(train)\n    v = v - rate * gradient"
+      },
+      {
+        "type": "paragraph",
+        "text": "The factor 2 comes from squared error; division by the number of rows makes this the gradient of the mean, not the sum. The code uses every training row for each update. It prints five states but performs only four updates. All data are supplied fictional numbers."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "At v = 1, the sum of squared errors is 5. A learner uses gradient -10 with rate 0.1. Explain the mismatch with this lesson and give the next v under MSE."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

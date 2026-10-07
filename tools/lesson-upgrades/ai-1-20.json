@@ -1,0 +1,78 @@
+{
+  "week": "ai-1/20",
+  "title": "Recommendations",
+  "outcome": "By the end, I can filter requirements before ranking preferences and avoid overinterpreting clicks.",
+  "scenario": "A fictional classroom break chooser recommends a suitable paper activity.",
+  "given": [
+    "Must be quiet and take at most 12 minutes. Score 2 for puzzles and 1 for solo.",
+    "A puzzle,solo,noisy,8 min; B puzzle,group,quiet,12 min; C drawing,solo,quiet,10 min."
+  ],
+  "steps": [
+    {
+      "label": "Requirements",
+      "icon": "shield",
+      "detail": "Reject A because it is noisy despite a preference score of 3."
+    },
+    {
+      "label": "Eligible candidates",
+      "icon": "data",
+      "detail": "B and C both satisfy time and quiet requirements."
+    },
+    {
+      "label": "Preference scores",
+      "icon": "chart",
+      "detail": "B scores 2; C scores 1."
+    },
+    {
+      "label": "Recommend",
+      "icon": "output",
+      "detail": "Choose B; preserve the reasons and any later feedback."
+    }
+  ],
+  "explanation": "A hard requirement determines whether an option can be chosen at all. Preferences rank the eligible options. The apparent best preference match, A, is not suitable under the quiet requirement. If a learner clicks C instead, the event alone does not tell us whether they disliked B, misclicked or wanted variety.",
+  "counterfactual": {
+    "change": "Change the maximum time to 10 minutes.",
+    "prediction": "Only C remains eligible and is recommended.",
+    "reason": "B takes 12 minutes; A is still noisy."
+  },
+  "student_task": "Why does the recommendation change without changing anyone’s preferences?",
+  "teacher_answer": "The requirement changes eligibility. C becomes the only eligible choice even though B would still score more preference points.",
+  "project_evidence": "Separate sorter requirements, preferences and observed feedback; document why a suggestion was eligible.",
+  "limits": "One click is an observed event, not proof of satisfaction or a stable personal preference.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Requirements before preferences",
+    "cells": [
+      [
+        "No",
+        8,
+        3,
+        "excluded"
+      ],
+      [
+        "Yes",
+        12,
+        2,
+        "eligible"
+      ],
+      [
+        "Yes",
+        10,
+        1,
+        "eligible"
+      ]
+    ],
+    "row_labels": [
+      "A",
+      "B",
+      "C"
+    ],
+    "column_labels": [
+      "Quiet",
+      "Minutes",
+      "Score",
+      "Status"
+    ]
+  }
+}

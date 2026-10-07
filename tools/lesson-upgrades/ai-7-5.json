@@ -1,0 +1,50 @@
+{
+  "week": "ai-7/5",
+  "title": "Replication and reproduction",
+  "outcome": "Explain replication and reproduction using the records and boundaries of this fictional investigation.",
+  "scenario": "Same records versus new experiment. A team first reruns a supplied analysis, then collects new records with the same protocol.",
+  "given": [
+    "Original recorded labels: [1,0,1,1]. Analysis counts correct cases. New independent set: [1,1,0,0]. Binary entries mean 1=correct and 0=incorrect."
+  ],
+  "steps": [
+    {
+      "icon": "code",
+      "label": "Reproduce the analysis",
+      "detail": "Reusing the supplied four records gives 3/4=75%."
+    },
+    {
+      "icon": "experiment",
+      "label": "Repeat the protocol",
+      "detail": "The new four-record set gives 2/4=50%."
+    },
+    {
+      "icon": "question",
+      "label": "Compare purposes",
+      "detail": "The first checks computational reproduction; the second probes repeatability with new observations."
+    }
+  ],
+  "explanation": "Reusing data and collecting new data answer different questions. A different new-sample result can arise without a code error; inspect both protocols and variability.",
+  "counterfactual": {
+    "change": "The rerun of the original records outputs 2/4.",
+    "prediction": "Investigate code, version, input or scoring differences.",
+    "reason": "The same fixed records should give the same deterministic count."
+  },
+  "student_task": "Calculate the scores from the original and new four-record sets. Which activity reproduces saved analysis, which repeats the protocol, and why does a different rerun of the original data need investigation?",
+  "teacher_answer": "Reusing the supplied four records gives 3/4=75%. The new four-record set gives 2/4=50%. The first checks computational reproduction; the second probes repeatability with new observations. Changed case: Investigate code, version, input or scoring differences. The same fixed records should give the same deterministic count.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "Four-case samples are illustrative; neither result alone establishes broad reliability.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Different four-record datasets",
+    "labels": [
+      "Saved analysis",
+      "New sample"
+    ],
+    "values": [
+      3,
+      2
+    ],
+    "unit": "correct cases out of 4; samples differ"
+  }
+}

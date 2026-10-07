@@ -1,0 +1,325 @@
+{
+  "week": "ai-3/3",
+  "title": "Tokens and Context",
+  "grade": 8,
+  "project": "Verified Study Buddy",
+  "goals": [
+    "Account for fixed text, evidence and reserved output under a toy budget",
+    "Select complete evidence for a stated question",
+    "Handle insufficient or conflicting evidence explicitly"
+  ],
+  "primary_topic": "Context limits and evidence selection",
+  "vocabulary": [
+    [
+      "Context budget",
+      "The permitted input and output allocation under a stated model or classroom contract"
+    ],
+    [
+      "Evidence selection",
+      "Choosing source material relevant to the requested claim"
+    ],
+    [
+      "Reserved output",
+      "Capacity deliberately kept available for the response"
+    ],
+    [
+      "Truncation",
+      "Removing part of a sequence to meet a limit"
+    ]
+  ],
+  "worked_example": {
+    "title": "Avoid truncating the crucial exception",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "A source may contain an exception after a general statement. Cutting off the last paragraph can reverse its practical meaning. Selection should preserve the passages needed to interpret the requested fact, including scope, version and exceptions. If complete relevant evidence cannot fit, retrieve a smaller authoritative passage or request clarification rather than silently remove a qualifying condition."
+      },
+      {
+        "type": "paragraph",
+        "text": "Including a document in context does not prove the generated answer uses it correctly. After generation, check each claim against its source. A source\u2019s instruction-like content also does not acquire authority just because it fits in the evidence budget."
+      }
+    ]
+  },
+  "guided_practice": {
+    "title": "Choose complete support",
+    "prompt": "Compare A+B,A+C,C+B for fit and support of current approval and capacity.",
+    "answer": "Teacher explanation: A+B costs 50 and supports both. A+C costs 55 and fails budget; C+B costs 45 but uses old approval and fails current-approval support.",
+    "lines": 6,
+    "id": "W2"
+  },
+  "independent_case": {
+    "title": "Budget new evidence independently",
+    "task": "Total 120, instructions 25, question 15, output reserve 30. Source D is current approval, cost 28; E is current capacity, cost 22; F is old approval, cost 18. Compute capacity, compare D+E and E+F, and state an honest fallback if D is missing.",
+    "answer": "Teacher explanation: Evidence capacity 50. D+E costs 50 and supplies both current claims. E+F costs 40 but old approval is insufficient. Without D, report the supported capacity and ask for current approval rather than infer it.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Token count equals word count",
+      "The lesson uses supplied counts; actual counts depend on tokenizer and protocol."
+    ],
+    [
+      "The smallest set is the best evidence",
+      "A set can fit while lacking current support for the requested claims."
+    ],
+    [
+      "Included means verified",
+      "Generation may misread or ignore evidence; verify claims after generation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/28463e9eb8fc246974cd599e65648bccfe3ae3edd66736cad0bd65617dbbbcbb",
+        "alt": "INPUT stage for Tokens and Context",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/f6f67b74ef07dc2458844970c10c7d2185675d9864c9e7e9563ec9ab840f68ff",
+        "alt": "PROCESS stage for Tokens and Context",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/983c88ac4ba5a89eab73b2d47b643fd6a4bd62aae04c8a09af011a70a754453c",
+        "alt": "OUTPUT stage for Tokens and Context",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "table",
+        "rows": [
+          [
+            "Evidence",
+            "Cost",
+            "What it supports"
+          ],
+          [
+            "A: current approval",
+            "30",
+            "Approved room B"
+          ],
+          [
+            "B: current register",
+            "20",
+            "Room B capacity 12"
+          ],
+          [
+            "C: superseded approval",
+            "25",
+            "Old room A approval"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "A+B costs 50 and fits exactly. Together they support both requested claims. A+C costs 55 and exceeds the evidence budget, while C+B fits at 45 but supplies an outdated room decision. A cheap set is not necessarily an adequate set. Preserve document IDs, versions and dates alongside content."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Keep the evidence roles separate",
+        "columns": [
+          "Plan or input",
+          "Procedure",
+          "Permitted conclusion"
+        ],
+        "rows": [
+          [
+            "100 total units",
+            "Subtract 20+10+20",
+            "50 evidence units"
+          ],
+          [
+            "A 30 plus B 20",
+            "Exactly 50 evidence units",
+            "Supports both requested claims"
+          ],
+          [
+            "Insufficient evidence",
+            "Ask or abstain",
+            "Do not invent the missing fact"
+          ]
+        ],
+        "caption": "Arithmetic fit and evidential adequacy are separate checks."
+      },
+      {
+        "type": "subheading",
+        "text": "Apply the connected idea: Attention as weighted information selection"
+      },
+      {
+        "type": "table",
+        "rows": [
+          [
+            "Value",
+            "Weight",
+            "Weighted vector"
+          ],
+          [
+            "[2,0]",
+            "0.5",
+            "[1,0]"
+          ],
+          [
+            "[0,4]",
+            "0.25",
+            "[0,1]"
+          ],
+          [
+            "[4,2]",
+            "0.25",
+            "[1,0.5]"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Adding the weighted vectors gives [2,1.5]. The same weights applied to different values can give a different result; the same values with different weights can also change it. For example weights 0,1,0 yield V2=[0,4]. The result is a representation to be used by later operations, not automatically a generated word."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Keep the evidence roles separate",
+        "columns": [
+          "Plan or input",
+          "Procedure",
+          "Permitted conclusion"
+        ],
+        "rows": [
+          [
+            "Values with equal width",
+            "Multiply by .5, .25, .25",
+            "Contributions [1,0], [0,1], [1,.5]"
+          ],
+          [
+            "Weighted contributions",
+            "Add corresponding coordinates",
+            "Output [2,1.5]"
+          ],
+          [
+            "Mask excludes V3",
+            "Renormalise V1 and V2",
+            "Output [4/3,4/3]"
+          ]
+        ],
+        "caption": "The mask changes the eligible positions and therefore the probability mass assigned to the remaining values."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/baa081bb74d63b3556ecfd5951cdc8779d64ec1813de34614621c4e969a973f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/5e6557194a1470352d07b6a509da5d673d81767981996dd1b685f799a5582b76",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/8e1f2e3affdd81449df265675243cda4511c1e88dd8cd9583d4ea42f6083c297",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a54f0c40e48e47ca92a4c36ebbc98f08b4a78c72cd385d85b0a5a7f07f558757",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

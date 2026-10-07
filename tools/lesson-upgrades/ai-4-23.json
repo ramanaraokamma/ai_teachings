@@ -1,0 +1,60 @@
+{
+  "week": "ai-4/23",
+  "title": "Hold Out Test Data",
+  "outcome": "By the end, I can explain hold out test data using a traced example and a stated limitation.",
+  "scenario": "Open the final hold-out only after recording the frozen model choice.",
+  "given": [
+    "Frozen plant classifier evaluates12 new grouped leaves: TP 3, FN 1, FP 2, TN 6. Positive means spotted.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Record freeze",
+      "icon": "shield",
+      "detail": "Record model version and choices before reading these final references."
+    },
+    {
+      "label": "Calculate metrics",
+      "icon": "chart",
+      "detail": "Accuracy9/12=75%; precision3/5=60%; recall3/4=75%."
+    },
+    {
+      "label": "Bound claim",
+      "icon": "check",
+      "detail": "Report these twelve held-out cases and their collection conditions; preserve all three error records."
+    }
+  ],
+  "explanation": "Read the picture in order. Report these twelve held-out cases and their collection conditions; preserve all three error records. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "The team changes a threshold after inspecting the false negatives.",
+    "prediction": "This set is now development evidence for the revised model.",
+    "reason": "Using final outcomes to change the model breaks the untouched hold-out role."
+  },
+  "student_task": "What is needed for an honest final claim about the revised version? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "A newly reserved final set with appropriate grouping and fixed scoring rules, evaluated after the revision is frozen. Changed-case check: This set is now development evidence for the revised model. Using final outcomes to change the model breaks the untouched hold-out role.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "A hold-out can still be unrepresentative, too small or badly labelled; separation alone does not guarantee reliable estimates.",
+  "review_note": "Reviewed Hold Out Test Data against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Frozen final-test results",
+    "cells": [
+      [
+        3,
+        1
+      ],
+      [
+        2,
+        6
+      ]
+    ],
+    "row_labels": [
+      "actual spotted",
+      "actual healthy"
+    ],
+    "column_labels": [
+      "predicted spotted",
+      "predicted healthy"
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "week": "ai-1/24",
+  "title": "Privacy by Choosing Less",
+  "outcome": "By the end, I can collect only information necessary for a stated task and explain coded-record limits.",
+  "scenario": "A fictional teacher wants to count broken craft tools by type, without contacting borrowers.",
+  "given": [
+    "Needed output: totals for scissors, ruler and hole-punch repairs.",
+    "Draft form requests pupil name, birthday, tool type and repair-needed Yes/No. No borrower follow-up is required."
+  ],
+  "steps": [
+    {
+      "label": "State purpose",
+      "icon": "question",
+      "detail": "Count repairs by tool type, not by person."
+    },
+    {
+      "label": "Choose fields",
+      "icon": "shield",
+      "detail": "Retain tool type and repair-needed status."
+    },
+    {
+      "label": "Remove excess",
+      "icon": "data",
+      "detail": "Name and birthday are unnecessary for this stated task."
+    },
+    {
+      "label": "Report totals",
+      "icon": "output",
+      "detail": "Aggregate each tool type’s Yes count; record the authorised retention plan."
+    }
+  ],
+  "explanation": "A field is justified by what the task needs to do, not by whether it might become useful someday. Names and birthdays do not help these repair totals. Replacing names with codes still leaves linked personal records if someone keeps a name-code key; collecting less can remove the need for that link entirely.",
+  "counterfactual": {
+    "change": "The teacher adds an authorised task to return one repaired tool to its borrower.",
+    "prediction": "A minimal contact mechanism may now be needed for that tool.",
+    "reason": "The purpose changed; reassess necessity rather than restoring every old field."
+  },
+  "student_task": "For the original task, does adding an anonymous-looking pupil code improve the repair count?",
+  "teacher_answer": "No. The totals need tool type and repair status, not pupil identity. A linkable code can also retain personal-data risk.",
+  "project_evidence": "Write the sorter’s purpose, necessary fields, access rules and deletion point before collecting any real classroom information.",
+  "limits": "Removing these fields is not a universal guarantee of anonymity or permission to collect other identifying combinations.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice."
+}

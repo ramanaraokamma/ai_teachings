@@ -1,0 +1,38 @@
+{
+  "week": "ai-4/9",
+  "title": "Dataset Cards",
+  "outcome": "By the end, I can explain dataset cards using a traced example and a stated limitation.",
+  "scenario": "Build a dataset card that reveals what the photo count hides.",
+  "given": [
+    "Teacher-created dataset: 18 photos of 6 fictional plants, 3 views each, one tablet, indoor fluorescent light. Label rule is visible spot/no visible spot/review.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Describe source",
+      "icon": "book",
+      "detail": "Record teacher-created fictional source, one tablet and indoor fluorescent lighting."
+    },
+    {
+      "label": "Describe units",
+      "icon": "data",
+      "detail": "18 photo rows come from only 6 plant identities."
+    },
+    {
+      "label": "Record limits",
+      "icon": "shield",
+      "detail": "Split by plant; state that outdoor use and disease diagnosis have not been evaluated."
+    }
+  ],
+  "explanation": "Read the picture in order. Split by plant; state that outdoor use and disease diagnosis have not been evaluated. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "The dataset adds 6 outdoor photos of the same plants.",
+    "prediction": "Photo count becomes 24, plant count remains 6; lighting coverage changes.",
+    "reason": "Additional views broaden conditions without creating new independent plant identities."
+  },
+  "student_task": "What two counts should the revised card show? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "24 photos and 6 plants, with view relationships, source and indoor/outdoor conditions documented. Changed-case check: Photo count becomes 24, plant count remains 6; lighting coverage changes. Additional views broaden conditions without creating new independent plant identities.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "A dataset card documents evidence and gaps; writing one does not fix biased sampling or inaccurate labels.",
+  "review_note": "Reviewed Dataset Cards against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

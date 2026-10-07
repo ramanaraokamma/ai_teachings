@@ -1,0 +1,74 @@
+{
+  "week": "ai-1/12",
+  "title": "Debug the Cause",
+  "outcome": "By the end, I can choose a test that separates two possible causes of an error.",
+  "scenario": "A fictional paper calculator should double the current value, but a copied instruction behaves strangely.",
+  "given": [
+    "After input 6, the faulty step reports 12. Hypothesis A: add 6. Hypothesis B: double.",
+    "Both hypotheses fit this first observation. A new input may be chosen."
+  ],
+  "steps": [
+    {
+      "label": "Observe",
+      "icon": "data",
+      "detail": "Input 6 produced 12; that fact fits two explanations."
+    },
+    {
+      "label": "Predict alternatives",
+      "icon": "question",
+      "detail": "For input 2, adding 6 predicts 8; doubling predicts 4."
+    },
+    {
+      "label": "Run revealing test",
+      "icon": "experiment",
+      "detail": "The fictional new record is input 2 → output 8."
+    },
+    {
+      "label": "Locate cause",
+      "icon": "check",
+      "detail": "This record supports add-6 over doubling for this comparison."
+    }
+  ],
+  "explanation": "Repeating input 6 would not separate the two hypotheses because both again predict 12. Input 2 makes their predictions different before the test is run. The second record supports investigating an added constant, but inspecting the instruction is still needed to confirm the implementation.",
+  "counterfactual": {
+    "change": "Use input 6 again instead of 2.",
+    "prediction": "Both hypotheses predict 12; the test remains inconclusive.",
+    "reason": "A revealing test requires different predicted outputs, not merely another recorded run."
+  },
+  "student_task": "Propose input 0 and give both predicted outputs without inventing an observed result.",
+  "teacher_answer": "Add-6 predicts 6; doubling predicts 0. No actual result has been supplied for input 0.",
+  "project_evidence": "When the sorter fails, write competing explanations and predicted traces before changing code or instructions.",
+  "limits": "Two toy hypotheses do not exhaust every possible bug; a matching output alone cannot identify arbitrary hidden code.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "A revealing test separates explanations",
+    "cells": [
+      [
+        6,
+        12,
+        12
+      ],
+      [
+        2,
+        8,
+        4
+      ],
+      [
+        0,
+        6,
+        0
+      ]
+    ],
+    "row_labels": [
+      "Original input",
+      "Recorded new input",
+      "Proposed input"
+    ],
+    "column_labels": [
+      "Input",
+      "Add 6 predicts",
+      "Double predicts"
+    ]
+  }
+}

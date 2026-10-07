@@ -1,0 +1,75 @@
+{
+  "week": "ai-3/10",
+  "title": "Image Generation Models",
+  "outcome": "By the end, I can describe a toy denoising process and distinguish generated illustrations from observations.",
+  "scenario": "A fictional lesson poster illustrates one family of image-generation approaches.",
+  "given": [
+    "Toy 2×2 noisy numerical grid: [[0.2,0.8],[0.6,0.3]]. A specified illustrative denoising step gives [[0.1,0.9],[0.4,0.2]].",
+    "These supplied arrays illustrate steps only; they are not outputs from a real trained diffusion model."
+  ],
+  "steps": [
+    {
+      "label": "Noisy representation",
+      "icon": "data",
+      "detail": "Four toy numerical cells form the starting grid."
+    },
+    {
+      "label": "Condition on request",
+      "icon": "model",
+      "detail": "A text request guides the imagined learned denoising process."
+    },
+    {
+      "label": "Illustrative update",
+      "icon": "network",
+      "detail": "Use the supplied second grid to show one change in representation."
+    },
+    {
+      "label": "Check provenance",
+      "icon": "shield",
+      "detail": "Caption it as a generated-process illustration, not a photographed experiment."
+    }
+  ],
+  "explanation": "Diffusion-style generators learn to remove noise in stages, often guided by text, but a real implementation can operate in a latent representation rather than direct pixels. The toy values let us inspect an update without pretending to simulate that trained process. An attractive final image still needs checks for labels, requested relations and factual claims.",
+  "counterfactual": {
+    "change": "Relabel the illustration as a photograph of an actual laboratory measurement.",
+    "prediction": "That caption is unsupported.",
+    "reason": "Its provenance is an invented diagram of a process, not a camera record of an event."
+  },
+  "student_task": "What may these two grids explain, and what can they not establish about a real generator?",
+  "teacher_answer": "They explain an illustrative staged change. They cannot establish learned weights, actual image quality or accurate scientific observation.",
+  "project_evidence": "Use Study Buddy generated diagrams only with clear provenance and checked educational labels.",
+  "limits": "Not all image generators use diffusion; this toy step is neither a complete algorithm nor an executed model.",
+  "review_note": "Individually designed fictional worked case, distinct from the reserved assessment. Toy model simplifications, arithmetic and source authority reviewed explicitly.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Illustrative grids, not executed model outputs",
+    "cells": [
+      [
+        0.2,
+        0.8
+      ],
+      [
+        0.6,
+        0.3
+      ],
+      [
+        0.1,
+        0.9
+      ],
+      [
+        0.4,
+        0.2
+      ]
+    ],
+    "row_labels": [
+      "Before top",
+      "Before bottom",
+      "After top",
+      "After bottom"
+    ],
+    "column_labels": [
+      "Left",
+      "Right"
+    ]
+  }
+}

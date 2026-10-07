@@ -1,0 +1,141 @@
+{
+  "week": "python-bridge/10",
+  "title": "Dictionaries and records",
+  "grade": 8,
+  "project": "Python readiness portfolio",
+  "goals": [
+    "Read and update named dictionary fields",
+    "Connect a record to a function call",
+    "Distinguish missing fields from zero values"
+  ],
+  "primary_topic": "Dictionaries and records",
+  "vocabulary": [
+    [
+      "Dictionary",
+      "A mapping from unique keys to values"
+    ],
+    [
+      "Key",
+      "A name used to look up a value"
+    ],
+    [
+      "Record",
+      "Related fields describing one item"
+    ],
+    [
+      "KeyError",
+      "The error from looking up an absent dictionary key"
+    ]
+  ],
+  "worked_example": {
+    "title": "Predict before running",
+    "blocks": [
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Set used to 12. Predict the returned spaces. Does a used value of 0 mean the field is missing?",
+        "lines": 6
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace an update",
+    "prompt": "Change the Red record used to 9. State remaining spaces and whether capacity changes.",
+    "answer": "Spaces 0; capacity remains 9.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Connect two functions",
+    "task": "Trace the calls for 4,5,11. Then predict badge(0) and badge(10), identifying the comparisons that decide them.",
+    "code": "def in_range(x):\n    return 0 <= x <= 10\ndef badge(x):\n    if not in_range(x):\n        return \"invalid\"\n    if x < 5:\n        return \"low\"\n    return \"high\"\nprint(badge(4), badge(5), badge(11))\n",
+    "expected_stdout": "low high invalid\n",
+    "answer": "Printed labels are low high invalid. Badge(0) is low and badge(10) high; both boundaries are valid. The validity function is used before choosing a category.",
+    "source": "new parallel Python readiness case"
+  },
+  "misconceptions": [
+    [
+      "A successful run proves the conclusion",
+      "Named fields reduce position mistakes but do not prove that a record is accurate. A capacity of 2 with used of 5 is representable in a dictionary and violates this schema."
+    ],
+    [
+      "Matching the example is enough",
+      "Require the new W4 case, explicit predictions and an explanation. Fresh retry: create a Gold record with capacity 11 and used 3; return 8, update used to 11 and return 0. Require field lookups rather than copied literal arguments."
+    ],
+    [
+      "A convenient shortcut preserves meaning",
+      "cupboard[\"Used\"] raises KeyError here because keys are case sensitive. Correct it to \"used\". Adding a new field called \"Used\" would create a second key and leave the original unchanged; it would not repair the intended lookup."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "cupboard = {\"name\": \"Blue\", \"capacity\": 12, \"used\": 4}\ndef remaining(capacity, used):\n    return capacity - used\n\nprint(remaining(cupboard[\"capacity\"], cupboard[\"used\"]))\ncupboard[\"used\"] = 6\nprint(remaining(cupboard[\"capacity\"], cupboard[\"used\"]))"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow the evidence",
+        "columns": [
+          "Step or case",
+          "Evidence",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "Read used",
+            "4",
+            "12 - 4 = 8"
+          ],
+          [
+            "Update used",
+            "6",
+            "12 - 6 = 6"
+          ]
+        ],
+        "caption": "Read each row from left to right and connect the evidence to the stated rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "Square brackets look up the value for a key. The quoted key \"used\" is text; its value is an integer. Assigning to an existing key replaces that field. Other fields remain the same. Dictionary syntax does not enforce our schema: the programmer must check it."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Change the Red record used to 9. State remaining spaces and whether capacity changes."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

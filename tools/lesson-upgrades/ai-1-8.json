@@ -1,0 +1,80 @@
+{
+  "week": "ai-1/8",
+  "title": "Features: Useful Clues",
+  "outcome": "By the end, I can choose task-relevant features and avoid a clue created after the decision.",
+  "scenario": "A fictional shelf accepts a craft box only if width is at most 6 cm and height at most 4 cm.",
+  "given": [
+    "Boxes P=(6,4,stripes), Q=(7,4,stripes), R=(6,5,dots), S=(6,4,dots).",
+    "A green acceptance sticker is attached only after the shelf check."
+  ],
+  "steps": [
+    {
+      "label": "Width check",
+      "icon": "sensor",
+      "detail": "P,Q,R,S have widths 6,7,6,6."
+    },
+    {
+      "label": "Height check",
+      "icon": "sensor",
+      "detail": "Their heights are 4,4,5,4."
+    },
+    {
+      "label": "Apply both limits",
+      "icon": "rule",
+      "detail": "P and S fit; Q fails width; R fails height."
+    },
+    {
+      "label": "Reject a shortcut",
+      "icon": "shield",
+      "detail": "The later sticker cannot be an input available before checking."
+    }
+  ],
+  "explanation": "Comparing P with Q isolates width; comparing P with R isolates height. Comparing P with S changes pattern while both remain accepted. Under this declared policy, pattern is not a deciding feature. A later acceptance sticker leaks the very answer the system should produce.",
+  "counterfactual": {
+    "change": "Change Q’s width to 6 without changing its height.",
+    "prediction": "Q fits the shelf.",
+    "reason": "Both dimensions now meet their including equality limits; stripe pattern does not change the rule."
+  },
+  "student_task": "Point to the pair that tests pattern, then explain why the sticker is a bad early input.",
+  "teacher_answer": "P and S test pattern. The sticker is attached after the decision, so it is unavailable when a new box must be checked.",
+  "project_evidence": "Choose sorter features that exist at decision time and actually connect to the stated classroom requirement.",
+  "limits": "These comparisons establish the written shelf rule, not the importance of pattern for unrelated tasks.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Dimensions determine shelf acceptance",
+    "cells": [
+      [
+        6,
+        4,
+        "fits"
+      ],
+      [
+        7,
+        4,
+        "width fails"
+      ],
+      [
+        6,
+        5,
+        "height fails"
+      ],
+      [
+        6,
+        4,
+        "fits"
+      ]
+    ],
+    "row_labels": [
+      "P stripes",
+      "Q stripes",
+      "R dots",
+      "S dots"
+    ],
+    "column_labels": [
+      "Width cm",
+      "Height cm",
+      "Outcome"
+    ]
+  }
+}

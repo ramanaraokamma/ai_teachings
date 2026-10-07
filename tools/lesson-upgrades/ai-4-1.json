@@ -1,0 +1,38 @@
+{
+  "week": "ai-4/1",
+  "title": "The ML Lifecycle",
+  "outcome": "By the end, I can explain the ml lifecycle using a traced example and a stated limitation.",
+  "scenario": "Follow one complete plant-classifier lifecycle without tuning on the final test.",
+  "given": [
+    "Toy training leaves have widths 1 healthy, 3 healthy, 5 spotted, 7 spotted. Candidates predict spotted at width>=2 or >=4.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Fit using training",
+      "icon": "data",
+      "detail": "Cutoff 2 makes one error at width 3; cutoff 4 makes zero training errors."
+    },
+    {
+      "label": "Freeze candidate",
+      "icon": "model",
+      "detail": "Choose cutoff 4 under the stated training-error rule."
+    },
+    {
+      "label": "Test once",
+      "icon": "check",
+      "detail": "Fresh leaves width 2 healthy and 6 spotted are both predicted correctly: 2/2."
+    }
+  ],
+  "explanation": "Read the picture in order. Fresh leaves width 2 healthy and 6 spotted are both predicted correctly: 2/2. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "The fresh width-6 leaf is actually healthy.",
+    "prediction": "The frozen model is correct on 1/2 test leaves.",
+    "reason": "The supplied reference changed; moving the cutoff after seeing this test would reuse final evidence for development."
+  },
+  "student_task": "Should the team silently retune on the changed test? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "No. Report 1/2 for the frozen model. Any revision needs development data and a newly reserved final evaluation. Changed-case check: The frozen model is correct on 1/2 test leaves. The supplied reference changed; moving the cutoff after seeing this test would reuse final evidence for development.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Two invented test leaves cannot establish useful real-world plant classification.",
+  "review_note": "Reviewed The ML Lifecycle against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

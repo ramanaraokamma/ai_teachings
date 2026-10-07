@@ -1,0 +1,43 @@
+{
+  "week": "ai-3/7",
+  "title": "Iterative Prompting",
+  "outcome": "By the end, I can revise one prompt component and compare paired outputs using the same rubric.",
+  "scenario": "A fictional Study Buddy prompt invents a definition when approved notes omit it.",
+  "given": [
+    "P asks “answer helpfully”. Revision Q adds “if approved notes lack the answer, say not supplied”.",
+    "Hold model settings and four development questions fixed. P passes 1,2; Q passes 1,2,3. Case 4 still fails."
+  ],
+  "steps": [
+    {
+      "label": "Locate failure",
+      "icon": "question",
+      "detail": "The target defect is unsupported answers when notes are missing."
+    },
+    {
+      "label": "One controlled change",
+      "icon": "code",
+      "detail": "Q adds the missing-evidence rule; other instructions remain fixed."
+    },
+    {
+      "label": "Paired results",
+      "icon": "chart",
+      "detail": "P=2/4; Q=3/4; gain is case 3, with case 4 unresolved."
+    },
+    {
+      "label": "Next action",
+      "icon": "check",
+      "detail": "Inspect case 4 and reserve genuinely fresh questions for final evaluation."
+    }
+  ],
+  "explanation": "An iteration should respond to a recorded failure with a precise change. Comparing the same questions reveals whether other behavior changed too. The invented results show a development gain of one case, not a guarantee that the new instruction always works. Save prompt text, settings, source notes and case-level outcomes.",
+  "counterfactual": {
+    "change": "Change model settings and note wording at the same time as the prompt.",
+    "prediction": "The comparison no longer isolates the prompt revision.",
+    "reason": "Several changes could explain the altered outputs; record them or run separate controlled comparisons."
+  },
+  "student_task": "What evidence supports improvement here, and what remains unproven?",
+  "teacher_answer": "Q gains case 3 without losing 1 or 2 on this four-case record; 4 still fails and new-case performance remains unknown.",
+  "project_evidence": "Maintain a Study Buddy experiment log linking failure, single revision and paired rubric results.",
+  "limits": "Stochastic output can vary across runs; a small comparison does not prove an average effect or classroom learning benefit.",
+  "review_note": "Individually designed fictional worked case, distinct from the reserved assessment. Toy model simplifications, arithmetic and source authority reviewed explicitly."
+}

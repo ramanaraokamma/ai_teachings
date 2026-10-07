@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/20",
+  "title": "Data retention and deletion",
+  "outcome": "Explain data retention and deletion using the deciding step in this fictional service.",
+  "scenario": "Delete every listed copy. A fictional policy deletes transcripts at age seven days or older, including listed backups.",
+  "given": [
+    "T1 is six days old. T2 is seven days old with one backup. Scope lists primary storage and that backup only."
+  ],
+  "steps": [
+    {
+      "label": "Check age",
+      "icon": "clock",
+      "detail": "Keep T1 for now; T2 reaches the deletion boundary."
+    },
+    {
+      "label": "Find copies",
+      "icon": "data",
+      "detail": "T2 is present in two declared locations."
+    },
+    {
+      "label": "Verify removal",
+      "icon": "check",
+      "detail": "The scoped deletion passes only after both T2 copies are removed."
+    }
+  ],
+  "explanation": "Retention requires an age rule and an inventory. Deleting the visible copy alone does not demonstrate removal of listed backups.",
+  "counterfactual": {
+    "change": "Primary deletion succeeds but backup deletion fails.",
+    "prediction": "Record incomplete deletion and follow the retry or escalation procedure.",
+    "reason": "One required copy remains in the declared scope."
+  },
+  "student_task": "Apply the seven-day boundary to T1 and T2. How many T2 locations need verification, and may deletion be called complete if its backup remains?",
+  "teacher_answer": "Keep T1 for now; T2 reaches the deletion boundary. T2 is present in two declared locations. The scoped deletion passes only after both T2 copies are removed. Changed case: Record incomplete deletion and follow the retry or escalation procedure. One required copy remains in the declared scope.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "The inventory cannot prove deletion from unknown locations; document scope and investigate untracked copies.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

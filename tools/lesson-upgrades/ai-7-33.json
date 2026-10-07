@@ -1,0 +1,37 @@
+{
+  "week": "ai-7/33",
+  "title": "Independent reproduction check",
+  "outcome": "Explain independent reproduction check using the records and boundaries of this fictional investigation.",
+  "scenario": "An independent rerun with a disagreement. A second team follows the saved protocol on the same fixed data and obtains a different score.",
+  "given": [
+    "Original correct count is 5/6. Rerun is 4/6. Case Q3 is the only scoring disagreement. No new model outputs are generated."
+  ],
+  "steps": [
+    {
+      "icon": "code",
+      "label": "Compare exact artefacts",
+      "detail": "Verify data and rubric versions before changing the result."
+    },
+    {
+      "icon": "data",
+      "label": "Locate disagreement",
+      "detail": "The score difference is concentrated in Q3."
+    },
+    {
+      "icon": "check",
+      "label": "Resolve by the rubric",
+      "detail": "Inspect Q3’s saved answer and rule; document whichever scoring decision is justified."
+    }
+  ],
+  "explanation": "An independent reproduction check can uncover interpretation or implementation differences. Do not average incompatible scores or simply choose the higher one.",
+  "counterfactual": {
+    "change": "Q3’s saved file is missing from the archive.",
+    "prediction": "Mark exact reproduction incomplete until the required artefact is recovered or the limitation disclosed.",
+    "reason": "A missing record prevents checking the contested decision."
+  },
+  "student_task": "Locate the Q3 scoring disagreement between 5/6 and 4/6. What should the teams inspect before choosing a score, and what limitation follows if the saved Q3 file is missing?",
+  "teacher_answer": "Verify data and rubric versions before changing the result. The score difference is concentrated in Q3. Inspect Q3’s saved answer and rule; document whichever scoring decision is justified. Changed case: Mark exact reproduction incomplete until the required artefact is recovered or the limitation disclosed. A missing record prevents checking the contested decision.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "This check concerns saved outputs and scoring, not new-sample replication or future model behaviour.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted."
+}

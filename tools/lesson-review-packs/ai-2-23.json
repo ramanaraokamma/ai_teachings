@@ -1,0 +1,245 @@
+{
+  "week": "ai-2/23",
+  "title": "Recommendation Scores",
+  "grade": 7,
+  "project": "Transparent Book Recommender",
+  "goals": [
+    "Compute a weighted score",
+    "Apply hard constraints before ranking",
+    "Explain how weight choices change outcomes"
+  ],
+  "primary_topic": "Weighted scores and constraints",
+  "vocabulary": [
+    [
+      "Weight",
+      "A multiplier expressing the importance assigned to a feature"
+    ],
+    [
+      "Score",
+      "A number calculated to compare options"
+    ],
+    [
+      "Constraint",
+      "A requirement an option must meet"
+    ],
+    [
+      "Tradeoff",
+      "Improving one preference while giving up another"
+    ]
+  ],
+  "worked_example": {
+    "title": "Predict before running",
+    "blocks": [
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "If enjoyment weight becomes 1 and learning weight becomes 2, find both scores before applying the same duration limit.",
+        "lines": 6
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Check a boundary",
+    "prompt": "Which durations 19, 20, 21 qualify under at most 20?",
+    "answer": "19 and 20 qualify; 21 does not.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Choose independently",
+    "task": "Limit is 15 minutes. A has fun 3, learning 4, minutes 15; B has 5, 1, 16; C has 2, 5, 12. Calculate scores with 2 * fun + learning and choose.",
+    "answer": "Scores A 10, B 11, C 9. B is excluded. A is highest among eligible options.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A successful run proves the conclusion",
+      "Weights represent preferences, not a discovered truth. Explain who chose them and test whether small changes alter the recommendation. Avoid claiming that a larger score proves greater educational value."
+    ],
+    [
+      "Matching the example is enough",
+      "Require the new W4 case, explicit predictions and an explanation. Fresh retry: limit 10, X (fun 1, learning 5, minutes 9), Y (3,2,10), Z (5,5,11). Scores 7, 8, 15; choose Y, exclude Z."
+    ],
+    [
+      "A convenient shortcut preserves meaning",
+      "Choosing the highest score and only then ignoring its duration breaks the requirement. Filter for eligibility first. If no item qualifies, report no eligible option instead of relaxing a requirement silently."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/69a2e3a7dcef8e3047888c1cebb2366a73db662d9c2e349cfb2d25827853d80c",
+        "alt": "INPUT stage for Recommendation Scores",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/828f75001e5c7efb9d51bcd4bbb7347cde854f157f14bea18c19efbce0b256d5",
+        "alt": "PROCESS stage for Recommendation Scores",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fe97910f7ed012e33e87206e179e3e74c7426737b2eca31fb2cd020ea7e23360",
+        "alt": "OUTPUT stage for Recommendation Scores",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "options = [{\"name\": \"A\", \"fun\": 4, \"learning\": 2, \"minutes\": 15},\n           {\"name\": \"B\", \"fun\": 3, \"learning\": 5, \"minutes\": 25}]\nfor item in options:\n    if item[\"minutes\"] <= 20:\n        score = 2 * item[\"fun\"] + item[\"learning\"]\n        print(item[\"name\"], score)"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow the evidence",
+        "columns": [
+          "Step or case",
+          "Evidence",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "A",
+            "2 * 4 + 2 = 10",
+            "Eligible at 15 minutes"
+          ],
+          [
+            "B",
+            "2 * 3 + 5 = 11",
+            "Excluded at 25 minutes"
+          ]
+        ],
+        "caption": "Read each row from left to right and connect the evidence to the stated rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "Only A is printed, with score 10. If B took 20 minutes it would qualify and have the higher score 11. The inclusive boundary matters. Ratings and weights are invented for practice and require justification before use in a real decision."
+      },
+      {
+        "type": "subheading",
+        "text": "Check must-have rules before scoring"
+      },
+      {
+        "type": "paragraph",
+        "text": "Make two decisions in order. First check the duration: A takes 15 minutes and qualifies under the 20-minute limit; B takes 25 minutes and does not. Then calculate scores for eligible choices. A scores 2 times 4 plus 2, or 10. B would score 11, but that score cannot remove the time requirement. Keep the rejection reason beside B instead of calling it a worse-scoring activity."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1f18213ba3d74c99072fa04ad7520b53eee0b2e9e845b0d8a61ccdda1b41f3f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fed8318cf337134a2c31a8d2c90831db67a27a43d3c6f85b25079c53ec37ff9a",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/75f964dbe29000347e518a59e2717387d7109bd1f947abdafa07e931a61cf754",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4d936b6648b81ac897fc99370c2788f8e0b135d8fc31cfd77afceee66a92128c",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "week": "ai-5/25",
+  "title": "Sequence representations",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Encode an ordered sequence with an explicit vocabulary",
+    "Use padding and a mask without inventing real events",
+    "Identify information lost by counts unknown symbols and truncation"
+  ],
+  "primary_topic": "Sequence representations",
+  "vocabulary": [
+    [
+      "Sequence",
+      "An ordered list of elements in which positions can matter"
+    ],
+    [
+      "Token ID",
+      "A numerical identifier assigned to a symbol by a vocabulary"
+    ],
+    [
+      "Padding",
+      "Placeholder positions added to make stored sequences the same length"
+    ],
+    [
+      "Mask",
+      "A list marking which stored positions are real inputs and which are placeholders"
+    ]
+  ],
+  "worked_example": {
+    "title": "Read the mask before the final position",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "A padded log still has two real events",
+        "columns": [
+          "Stored position",
+          "Token ID",
+          "Mask"
+        ],
+        "rows": [
+          [
+            "0",
+            "2 meaning GO",
+            "1 real"
+          ],
+          [
+            "1",
+            "4 meaning STOP",
+            "1 real"
+          ],
+          [
+            "2",
+            "0 meaning PAD",
+            "0 placeholder"
+          ],
+          [
+            "3",
+            "0 meaning PAD",
+            "0 placeholder"
+          ]
+        ],
+        "caption": "The final stored slot is padding. For this right-padded contiguous mask, the real length is the mask sum, and the final real event is at length minus one. A different masking layout would need a different indexing rule."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Encode TURN STOP, give its mask and real length, then identify the final real position and its ID. Why would reading stored position 3 give the wrong event?",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Expose an order collision",
+    "prompt": "Give two logs made of exactly GO, TURN and STOP once each that have equal count vectors but different answers to whether the final event is STOP.",
+    "answer": "Teacher explanation: For example GO TURN STOP and STOP TURN GO both have count vector [1, 1, 1]. The first answer is Yes and the second No. Counts alone cannot distinguish them.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Apply a fresh schema independently",
+    "task": "Use PAD = 0, UNK = 1, OPEN = 2, CLOSE = 3, CHECK = 4 and five stored positions. Encode OPEN CHECK CLOSE and give its mask and final real position. Separately, sensor values [0, 6, 3, 0, 0] have that same mask. Calculate their masked mean and the incorrect mean over all five slots.",
+    "answer": "Teacher explanation: IDs [2, 4, 3, 0, 0], mask [1, 1, 1, 0, 0]; final real position 2 contains CLOSE. Masked sensor mean is (0 + 6 + 3) / 3 = 3. Unmasked mean is 9 / 5 = 1.8. The measured zero must count in the denominator.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Larger token IDs mean more of a concept",
+      "IDs identify symbols; their arithmetic sizes have no declared semantic meaning."
+    ],
+    [
+      "Zero always means missing data",
+      "A measured zero can be real; the mask determines which positions contribute."
+    ],
+    [
+      "A mask automatically fixes every model computation",
+      "The relevant operation must actually use the mask, and later aggregation can still discard order."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Store each log in four positions, padding on the right. A mask value 1 marks a real position and 0 marks padding. The encoder rejects empty logs, logs longer than four, and literal reserved markers. Other unrecognised symbols become UNK and still receive mask 1."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "VOCAB = {\"GO\": 2, \"TURN\": 3, \"STOP\": 4}\n\ndef encode(events):\n    if not 1 <= len(events) <= 4:\n        raise ValueError(\"Need one to four real events\")\n    if any(e in (\"PAD\", \"UNK\") for e in events):\n        raise ValueError(\"Reserved markers are not events\")\n    ids = [VOCAB.get(e, 1) for e in events]\n    n = len(ids)\n    return ids + [0] * (4 - n), [1] * n + [0] * (4 - n)\n\nassert encode([\"GO\", \"STOP\"]) == ([2, 4, 0, 0], [1, 1, 0, 0])\nassert encode([\"WAIT\", \"STOP\"]) == ([1, 4, 0, 0], [1, 1, 0, 0])\nassert encode([\"STOP\", \"GO\"]) == ([4, 2, 0, 0], [1, 1, 0, 0])"
+      },
+      {
+        "type": "paragraph",
+        "text": "The code assumes a list of symbol strings and uses exact spelling. It does not fit a vocabulary from data. If a future project fits vocabulary choices or frequency cutoffs, derive those choices from training data and apply the saved encoding consistently to validation and final cases."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Give two logs made of exactly GO, TURN and STOP once each that have equal count vectors but different answers to whether the final event is STOP."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

@@ -1,0 +1,302 @@
+{
+  "week": "ai-1/12",
+  "title": "Debug the Cause",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Compare expected and observed traces to locate the first difference",
+    "Choose a test that distinguishes competing explanations of a fault",
+    "Repair a stated instruction and rerun both the failing case and earlier passing cases"
+  ],
+  "primary_topic": "Debugging with revealing tests",
+  "vocabulary": [
+    [
+      "Specification",
+      "A statement of what a system is required to do"
+    ],
+    [
+      "Expected result",
+      "The result worked out from the specification before running a test"
+    ],
+    [
+      "Observed result",
+      "The result actually recorded during a test"
+    ],
+    [
+      "First divergence",
+      "The earliest step where observed behaviour differs from expected behaviour"
+    ],
+    [
+      "Regression test",
+      "A repeated check that previously correct behaviour still works after a change"
+    ]
+  ],
+  "worked_example": {
+    "title": "Choose a test that separates explanations",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "For the faulty doubling step, two explanations fit the observed change from 7 to 11. Perhaps the step adds 4. Perhaps it adds the original starting score, which was 4. Repeating the same start 4 cannot separate those explanations because they make the same prediction."
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Start score",
+          "Expected final result",
+          "If step adds 4 or original start"
+        ],
+        "rows": [
+          [
+            "4",
+            "12",
+            "9 under either explanation"
+          ],
+          [
+            "2",
+            "8",
+            "7 if add 4 or 5 if add original 2"
+          ],
+          [
+            "5",
+            "14",
+            "10 if add 4 or 11 if add original 5"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Starting at 2 produces 5 after the first addition. The intended double gives 10 and then reports 8. Adding 4 would give 9 and report 7. Adding the original 2 would give 7 and report 5. The different predictions make this a revealing test."
+      },
+      {
+        "type": "paragraph",
+        "text": "If the observed final result is 7, it supports add 4 over add original among these two explanations. Other faults could still give 7, so inspect the actual instruction or more checkpoints before claiming a unique cause."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Choose between two explanations",
+    "prompt": "In W1 the faulty middle step may add 3, or add the original starting value. Both explain 5 becoming 8 when the start is 3. Choose start 1 or start 3 for a revealing new test. Predict the final result under each explanation and under the intended procedure.",
+    "lines": 6,
+    "answer": "Choose start 1. After add 2 the value is 3. Adding 3 then subtracting 1 reports 5; adding original 1 then subtracting 1 reports 3. Doubling then subtracting 1 should report 5. This separates the two fault explanations, but a final 5 alone cannot separate add 3 from correct doubling on this input; retain the original failing start 3."
+  },
+  "independent_case": {
+    "title": "Debug a new ticket rule",
+    "task": "A paper ticket rule must add 1 to the input count. If the updated count is at least 5, report Group; otherwise report Single. A copied version says above 5. Choose the smallest three consecutive nonnegative starting counts that test just below, exactly at and just above the comparison boundary. Predict both versions, identify the revealing start and state the repair and retests.",
+    "answer": "Use starts 3, 4 and 5, which reach 4, 5 and 6. Intended results are Single, Group, Group. Copied results are Single, Single, Group. Start 4 exposes the equality fault. Restore at least 5 and rerun all three, retaining starts 3 and 5 as previously passing regression cases.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The last wrong number locates the fault",
+      "Compare every aligned checkpoint; an early mismatch can cause several later wrong values."
+    ],
+    [
+      "One revealing test proves the only possible cause",
+      "List the explanations actually compared. A different, untested fault may make the same prediction."
+    ],
+    [
+      "A correct answer on one input proves the repair",
+      "Use the constant-report example and rerun original failing and previously passing cases."
+    ],
+    [
+      "Expected results should follow observed results",
+      "Calculate expectations from the specification first. Clarify genuine specification changes explicitly rather than hiding a failure."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/59af0bbe5c2fbe6d63e88157cb36ab8fe4cf3a598001107503c10f729a9026eb",
+        "alt": "Visual card for the input stage: expected path and actual trace",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/33acb9ffaf1e7d9459ace4f786f63226d67fd19f77d0cd98a1703ae457907bb1",
+        "alt": "Visual card for the process stage: locate the first difference and test one cause",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ffa32a6c71f3dbdeba24b14dd4d4ce37aca7c9e4e378501d84d8c1572fdaa04e",
+        "alt": "Visual card for the output stage: targeted correction plus repeated test",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  expected path and actual trace"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  locate the first difference and test one cause"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  targeted correction plus repeated test"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  Debugging finds the broken assumption or step before changing the solution.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Debugging is causal diagnosis. The first observable divergence narrows the faulty assumption, data, state, condition, or step. Changing multiple things at once destroys evidence about which change repaired the behavior.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Locate the first mismatch",
+        "columns": [
+          "Recorded checkpoint",
+          "Compare the values",
+          "What the evidence tells us"
+        ],
+        "rows": [
+          [
+            "Start",
+            "Expected 4 observed 4",
+            "Values agree"
+          ],
+          [
+            "After add 3",
+            "Expected 7 observed 7",
+            "Values agree"
+          ],
+          [
+            "After double",
+            "Expected 14 observed 11",
+            "First difference"
+          ],
+          [
+            "After subtract 2",
+            "Expected 12 observed 9",
+            "Difference continues"
+          ]
+        ],
+        "caption": "Each row compares the same checkpoint in two traces. Arrows lead from the checkpoint to its comparison and interpretation; they do not represent arithmetic between columns."
+      },
+      {
+        "type": "paragraph",
+        "text": "Record the input, the exact instruction version, expected values, observed values and first mismatch. This makes the failure reproducible: someone else can follow the same procedure with the same starting value and check your observation."
+      },
+      {
+        "type": "paragraph",
+        "text": "Do not rewrite the expected column to match the observed result. If the specification itself seems ambiguous, clarify it first and record that change openly. A test can judge an implementation only against a stated expectation."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a2fc791abc196be35033c1eb59ba55e296ecd9f5de82b239b878374b107d9db4",
+        "alt": "Comparison picture for Wrong turn: first divergence at step 4; inspect orientation assumption",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4d08710f5f4be22ad2b3b527075a80b3f05843af0ab129f8aab4e8d9abceeb5b",
+        "alt": "Comparison picture for Missing card: input absent before step 1; data/setup cause",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ee157d94b8ffb98f5426847512bc7470af7ce4386c8fa914ace365f1b6aac879",
+        "alt": "Comparison picture for Wrong threshold: branch changes at 10; condition cause",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/5cf600808b2b962eb2c86d9400bcd1267369aee9ba6d376958c7ea804fd2c8e1",
+        "alt": "Comparison picture for Random rewrite: many steps changed; weak debugging evidence",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Wrong turn  Clue: first divergence at step 4. Meaning: inspect orientation assumption."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Missing card  Clue: input absent before step 1. Meaning: data/setup cause."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Wrong threshold  Clue: branch changes at 10. Meaning: condition cause."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Random rewrite  Clue: many steps changed. Meaning: weak debugging evidence."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  A successful new run does not prove the diagnosis if several things changed together.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

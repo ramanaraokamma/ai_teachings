@@ -1,0 +1,55 @@
+{
+  "week": "ai-4/27",
+  "title": "Overfitting",
+  "outcome": "By the end, I can explain overfitting using a traced example and a stated limitation.",
+  "scenario": "See overfitting as a gap requiring investigation, not a label based only on model size.",
+  "given": [
+    "Toy model Small: training 85%, validation 80%. Large: training 100%, validation 60%. Same split and scoring rule.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Compute gaps",
+      "icon": "chart",
+      "detail": "Small gap=5 percentage points; Large gap=40 percentage points."
+    },
+    {
+      "label": "Select development candidate",
+      "icon": "model",
+      "detail": "Small has the higher validation accuracy despite its lower training fit."
+    },
+    {
+      "label": "Investigate large model",
+      "icon": "experiment",
+      "detail": "Check capacity, training choices and data mismatch without tuning on final cases."
+    }
+  ],
+  "explanation": "Read the picture in order. Check capacity, training choices and data mismatch without tuning on final cases. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Large’s validation accuracy rises to82% after a development revision.",
+    "prediction": "Its gap is 18 percentage points; it now beats Small on this validation set.",
+    "reason": "Validation performance improved, but the training-validation gap is not a complete release rule."
+  },
+  "student_task": "Does100% training accuracy prove Large was always best? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "No. Originally Large scored60% on validation versus Small80%; training perfection alone did not establish generalisation. Changed-case check: Its gap is 18 percentage points; it now beats Small on this validation set. Validation performance improved, but the training-validation gap is not a complete release rule.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "A gap can also reflect data shift or sampling noise. Inspect evidence before attributing every gap to capacity.",
+  "review_note": "Reviewed Overfitting against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Training and validation accuracy",
+    "labels": [
+      "Small train",
+      "Small validation",
+      "Large train",
+      "Large validation"
+    ],
+    "values": [
+      85,
+      80,
+      100,
+      60
+    ],
+    "unit": "percent"
+  }
+}

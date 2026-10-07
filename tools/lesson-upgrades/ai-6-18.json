@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/18",
+  "title": "Untrusted input boundaries",
+  "outcome": "Explain untrusted input boundaries using the deciding step in this fictional service.",
+  "scenario": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming.",
+  "given": [
+    "Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself."
+  ],
+  "steps": [
+    {
+      "label": "Validate h3",
+      "icon": "code",
+      "detail": "Two characters with the required case and digit pass."
+    },
+    {
+      "label": "Reject wrong shapes",
+      "icon": "shield",
+      "detail": "H3 has wrong case; h30 and the trailing-space input have wrong length."
+    },
+    {
+      "label": "Check authority next",
+      "icon": "rule",
+      "detail": "An accepted identifier still needs trusted authorisation."
+    }
+  ],
+  "explanation": "Input shape and permission answer different questions. Silently normalising these inputs would change the stated contract.",
+  "counterfactual": {
+    "change": "Replace h3 with z0.",
+    "prediction": "The shape passes; resource access is still undecided.",
+    "reason": "Structure contains no evidence of ownership or user permission."
+  },
+  "student_task": "Classify h3, H3, h30 and the trailing-space input by the stated shape contract. Does a valid z0 grant record access, and which separate gate still remains?",
+  "teacher_answer": "Two characters with the required case and digit pass. H3 has wrong case; h30 and the trailing-space input have wrong length. An accepted identifier still needs trusted authorisation. Changed case: The shape passes; resource access is still undecided. Structure contains no evidence of ownership or user permission.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "Some systems normalise inputs explicitly; this fictional contract deliberately does not.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

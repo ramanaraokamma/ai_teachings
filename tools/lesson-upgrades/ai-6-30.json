@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/30",
+  "title": "Security and privacy review",
+  "outcome": "Explain security and privacy review using the deciding step in this fictional service.",
+  "scenario": "Review a private note’s path. A revision service reads a learner’s private practice note; analytics need counts only.",
+  "given": [
+    "Only the learner and assigned teacher may read note text. The dashboard is authorised for aggregate counts, not notes."
+  ],
+  "steps": [
+    {
+      "label": "Map content path",
+      "icon": "data",
+      "detail": "The authorised revision service receives the note."
+    },
+    {
+      "label": "Check readers",
+      "icon": "shield",
+      "detail": "The stated learner and teacher can retrieve its text."
+    },
+    {
+      "label": "Minimise analytics",
+      "icon": "chart",
+      "detail": "Send revision counts without copying private notes."
+    }
+  ],
+  "explanation": "A privacy review follows data and authority through components. A useful dashboard does not automatically need every underlying private detail.",
+  "counterfactual": {
+    "change": "The dashboard starts storing full notes.",
+    "prediction": "Flag the unapproved content path and remove it from the design.",
+    "reason": "Its count-only purpose does not grant note-reading permission."
+  },
+  "student_task": "Trace private note content and analytics counts to their permitted readers. Why is storing full notes in the dashboard outside this design, and what risk can remain for tiny-group counts?",
+  "teacher_answer": "The authorised revision service receives the note. The stated learner and teacher can retrieve its text. Send revision counts without copying private notes. Changed case: Flag the unapproved content path and remove it from the design. Its count-only purpose does not grant note-reading permission. Tiny-group counts can remain identifying, so minimise and review them too.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "Tiny-group aggregates can still reveal individuals; evaluate linkability, access and retention.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

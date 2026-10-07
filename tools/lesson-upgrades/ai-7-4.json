@@ -1,0 +1,50 @@
+{
+  "week": "ai-7/4",
+  "title": "Methods results and limitations",
+  "outcome": "Explain methods results and limitations using the records and boundaries of this fictional investigation.",
+  "scenario": "Separate procedure, finding and limit. A fictional report tests two frozen classifiers on five labelled leaf photos from one camera.",
+  "given": [
+    "A is correct on 3/5; B on 4/5. No outdoor photos appear in the set."
+  ],
+  "steps": [
+    {
+      "icon": "experiment",
+      "label": "Identify the method",
+      "detail": "Same five photos, labels and scoring are used for both models."
+    },
+    {
+      "icon": "chart",
+      "label": "State the result",
+      "detail": "A scores 60%; B scores 80% on this fixed set."
+    },
+    {
+      "icon": "shield",
+      "label": "State the limit",
+      "detail": "The set supplies no outdoor-camera performance evidence."
+    }
+  ],
+  "explanation": "Methods tell how evidence was produced; results state observations; limitations describe what those observations cannot settle. Keeping them distinct prevents a result from becoming an oversized claim.",
+  "counterfactual": {
+    "change": "The conclusion says B is best for outdoor farming.",
+    "prediction": "Reject that extension without outdoor evidence.",
+    "reason": "The reported conditions do not include the proposed use population."
+  },
+  "student_task": "Place the five-photo procedure, 3/5 versus 4/5 finding and missing outdoor evidence in their proper categories. Why cannot the result establish that B is best for outdoor farming?",
+  "teacher_answer": "Same five photos, labels and scoring are used for both models. A scores 60%; B scores 80% on this fixed set. The set supplies no outdoor-camera performance evidence. Changed case: Reject that extension without outdoor evidence. The reported conditions do not include the proposed use population.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "Five observations cannot establish a stable ranking or causal mechanism; source and sampling assumptions remain important.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Two models on five shared photos",
+    "labels": [
+      "A",
+      "B"
+    ],
+    "values": [
+      3,
+      4
+    ],
+    "unit": "correct photos out of 5"
+  }
+}

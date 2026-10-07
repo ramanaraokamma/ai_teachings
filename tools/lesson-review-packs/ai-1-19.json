@@ -1,0 +1,297 @@
+{
+  "week": "ai-1/19",
+  "title": "Similarity",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Calculate similarity using explicitly selected features and a stated scoring rule",
+    "Explain how a change in feature weights can change the highest scoring item",
+    "Handle ties and missing features without claiming that a similarity score proves suitability"
+  ],
+  "primary_topic": "Similarity and selected features",
+  "vocabulary": [
+    [
+      "Similarity",
+      "Closeness under a stated choice of features and comparison rule"
+    ],
+    [
+      "Feature match",
+      "Agreement between two recorded values for a selected feature"
+    ],
+    [
+      "Weight",
+      "The number of points assigned to a feature match in this scoring rule"
+    ],
+    [
+      "Tie",
+      "Two or more candidates sharing the same score"
+    ],
+    [
+      "Candidate",
+      "An item being considered in a comparison"
+    ]
+  ],
+  "worked_example": {
+    "title": "Change one scoring choice and compare again",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Candidate",
+          "Colour and shape points",
+          "Texture worth 3 points",
+          "New total"
+        ],
+        "rows": [
+          [
+            "A",
+            "1 + 1",
+            "0",
+            "2"
+          ],
+          [
+            "B",
+            "0 + 0",
+            "3",
+            "3"
+          ],
+          [
+            "C",
+            "1 + 0",
+            "0",
+            "1"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Suppose texture matters more for the stated comparison. Keep colour and shape worth one point each, but give three points for a texture match. B now scores 3 and becomes the unique highest scoring candidate. No card changed; the rule changed. Record both versions rather than overwriting the first result."
+      },
+      {
+        "type": "paragraph",
+        "text": "Weights express priorities in this designed rule. They need a reason connected to the task and should be set before inspecting the final evaluation results. A convenient winner does not justify a weight. If smooth texture is required without exception, use a requirement check rather than hoping a weighted score will always enforce it."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Explain a changed winner",
+    "prompt": "Keep the same target and candidates but make texture worth 3 points, with colour and shape worth 1 each. Recalculate A, B and C. Explain what changed and what stayed the same.",
+    "lines": 6,
+    "answer": "A stays at 2, B becomes 3 and C stays at 1, so B wins. Only the texture weight changed; candidate values, target and other weights stayed the same. The result is specific to this new comparison rule."
+  },
+  "independent_case": {
+    "title": "Transfer the comparison to books",
+    "task": "A target book has topic space, format comic and language English. Candidates are J: space, prose, English; K: animals, comic, English; L: space, comic, Spanish. Give 1 point per exact match and return all tied highest scorers. Then make topic worth 3 points while keeping the other weights at 1. Report both sets of totals and winners. Explain why a winner may still fail a requirement to read English.",
+    "answer": "Equal weights: J 2, K 2, L 2; all three tie. Topic weighted 3: J 4, K 2, L 4; J and L tie. L remains a highest scorer despite Spanish language, so weighted similarity does not enforce the English requirement. Check language eligibility separately if English is required.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Similar has one objective meaning for every task",
+      "Name the features, comparison rule and purpose."
+    ],
+    [
+      "The highest score proves all requirements are met",
+      "Check mandatory requirements separately."
+    ],
+    [
+      "Equal scores can be resolved by whichever row appears first",
+      "Use the stated tie policy; here return all highest scorers."
+    ],
+    [
+      "Missing texture deserves zero as if it were rough",
+      "Retain an unknown and apply the stated missing-value policy."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ab6c341b4bf643a51111724bdec34e139f502eec4f9c996f7ef997d48229487b",
+        "alt": "Visual card for the input stage: represented traits for candidate items",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/017ef6dfe712bfec3caf47c79c16cbbd55723968a4368e70832ff0ca5fa38d8d",
+        "alt": "Visual card for the process stage: compare distances using selected features",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/78793448c66df2a48f25cb45c0a1130d25e3ebdb74c4c6ecf2ea9993c624ce6b",
+        "alt": "Visual card for the output stage: nearest or most similar items",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  represented traits for candidate items"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  compare distances using selected features"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  nearest or most similar items"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  Recommendations often begin by comparing selected traits, not whole objects.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Similarity is a designed measure over represented features. Distance changes with feature selection, scaling, weighting, and missing values. Nearest does not mean identical, best, or fair.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Three features contribute to a score",
+        "columns": [
+          "Candidate",
+          "Matches with target",
+          "One point per match"
+        ],
+        "rows": [
+          [
+            "A: red round rough",
+            "Colour and shape",
+            "2 points"
+          ],
+          [
+            "B: blue square smooth",
+            "Texture only",
+            "1 point"
+          ],
+          [
+            "C: red square rough",
+            "Colour only",
+            "1 point"
+          ]
+        ],
+        "caption": "The target is red, round and smooth. A has the largest score under equal weights. These points count selected feature matches; they are not probabilities or evidence that A suits every purpose."
+      },
+      {
+        "type": "paragraph",
+        "text": "A receives 1 for colour, 1 for shape and 0 for texture: total 2. B receives 0, 0 and 1: total 1. C receives 1, 0 and 0: total 1. Record the contributions, not just the totals, so another learner can check the computation."
+      },
+      {
+        "type": "paragraph",
+        "text": "A is most similar among these three candidates under this rule. That sentence names the candidate set and the rule. It does not say A is identical to the target, has the right texture or will be the best choice for a task that needs smooth material."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a45b125ab980d55c8978685903667148f573ce30f27c614a1ba86d30147c3399",
+        "alt": "Comparison picture for Same topic, different level: close on topic; far on reading level",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/3551a29cb50bcb8438fd7e1fc5af61bc6e947149c044296a881d481afb4b0fd0",
+        "alt": "Comparison picture for Same length, different mood: close on length; far on mood",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/bcedb103d4a0d07d0e6cd9c79c32decfb42494ac25ce3f4e3b311f31407a635c",
+        "alt": "Comparison picture for Weighted topic: topic counts more; neighbor changes",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a2d19e7ea6176143f90343a907179046ccab72943d4b734e4a8b31932950ba73",
+        "alt": "Comparison picture for Missing feature: distance incomplete; need policy",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Same topic, different level  Clue: close on topic. Meaning: far on reading level."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Same length, different mood  Clue: close on length. Meaning: far on mood."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Weighted topic  Clue: topic counts more. Meaning: neighbor changes."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Missing feature  Clue: distance incomplete. Meaning: need policy."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Similarity is a tool designed for a purpose, not a universal property.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

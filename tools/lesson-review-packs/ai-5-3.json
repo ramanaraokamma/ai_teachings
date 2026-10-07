@@ -1,0 +1,152 @@
+{
+  "week": "ai-5/3",
+  "title": "Bias terms and decision boundaries",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Calculate a weighted score with a bias term",
+    "Locate and test a two-feature decision boundary",
+    "Explain how changing the bias shifts a boundary without training"
+  ],
+  "primary_topic": "Bias terms and decision boundaries",
+  "vocabulary": [
+    [
+      "Bias term",
+      "An additive parameter applied after a weighted sum"
+    ],
+    [
+      "Decision boundary",
+      "Input locations where the declared classification rule changes class"
+    ],
+    [
+      "Affine function",
+      "A weighted sum plus a constant offset"
+    ],
+    [
+      "Threshold rule",
+      "A stated comparison that converts a score into a class"
+    ]
+  ],
+  "worked_example": {
+    "title": "Track the effect of the bias",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Hold the weights fixed while shifting the boundary",
+        "columns": [
+          "Bias",
+          "Score at [3, 3]",
+          "Boundary equation"
+        ],
+        "rows": [
+          [
+            "b is -3",
+            "6 - 3 - 3 gives 0",
+            "height = 2 width - 3"
+          ],
+          [
+            "b is -1",
+            "6 - 3 - 1 gives 2",
+            "height = 2 width - 1"
+          ],
+          [
+            "Increase b by 2",
+            "Every score rises by 2",
+            "Slope remains 2"
+          ]
+        ],
+        "caption": "The boundary moves parallel to itself because the weights stay fixed. An increased score does not always change a class: only inputs crossing the declared threshold change."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "For [3, 4], compare z and prediction with bias -3 and bias -1. Explain which parameter changed.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Plot and label the boundary",
+    "prompt": "For the worked model, find boundary points at width 2 and width 4. Test [4, 4] and [4, 6] to identify the class on each side.",
+    "answer": "Teacher explanation: Boundary points (2, 1) and (4, 5). [4, 4] has z = 1 and class 1; [4, 6] has z = -1 and class 0. With height vertical, class 1 is on or below the line.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Analyse a new model independently",
+    "task": "A new model has w = [-1, 2], b = -2, inputs [u, v] and class 1 when z >= 0. Calculate scores and classes for [2, 1], [2, 2], [2, 3]. Write the boundary as v in terms of u. Then change only b to 0 and recompute [2, 1].",
+    "answer": "Teacher explanation: Scores -2, 0, 2 give classes 0, 1, 1. Boundary -u + 2v - 2 = 0 gives v = u/2 + 1. With b = 0, [2, 1] scores 0 and class 1. The score rose 2 and the boundary moved to v = u/2.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Add bias to each contribution",
+      "Compute the dot product, then add one b. Adding b twice implements a different formula."
+    ],
+    [
+      "Higher scores mean more correct",
+      "Correctness also needs target labels. A shifted boundary can trade one error type for another."
+    ],
+    [
+      "The bias term measures unfairness",
+      "This b is an additive parameter. Evaluating unfairness requires context and evidence about outcomes and use."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Set z to zero to locate the boundary: 2 times width - height - 3 = 0, so height = 2 times width - 3. Plot width on the horizontal axis and height on the vertical axis. Boundary points include (2, 1), (3, 3) and (4, 5). Join them with a straight line and label the axes in cm."
+      },
+      {
+        "type": "paragraph",
+        "text": "At width 3, height 2 gives score 1 and class 1; height 3 gives score 0 and class 1; height 4 gives score -1 and class 0. Under this axis convention class 1 lies on or below the boundary. One point on each side checks that orientation."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "def classify(width, height, bias=-3):\n    score = 2 * width - height + bias\n    return score, int(score >= 0)\n\nfor height in [2, 3, 4]:\n    print(classify(3, height))\n# (1, 1), (0, 1), (-1, 0)"
+      },
+      {
+        "type": "paragraph",
+        "text": "The code assumes valid numerical measurements in the agreed units. Changing >= to > changes the equality case, even though the drawn line remains in the same place."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "For the worked model, find boundary points at width 2 and width 4. Test [4, 4] and [4, 6] to identify the class on each side."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

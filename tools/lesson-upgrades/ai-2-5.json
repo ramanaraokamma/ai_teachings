@@ -1,0 +1,43 @@
+{
+  "week": "ai-2/5",
+  "title": "Loops and Stopping",
+  "outcome": "By the end, I can trace a while-loop and recognise when its update cannot satisfy the stopping test.",
+  "scenario": "A fictional counter starts at 12 and decreases while above a boundary.",
+  "given": [
+    "Python: count=12; while count>3: count=count-4; print after the loop.",
+    "The condition is checked before each subtraction."
+  ],
+  "steps": [
+    {
+      "label": "Initial check",
+      "icon": "rule",
+      "detail": "12>3: true; subtract 4 to get 8."
+    },
+    {
+      "label": "Next check",
+      "icon": "code",
+      "detail": "8>3: true; subtract 4 to get 4."
+    },
+    {
+      "label": "Final update",
+      "icon": "code",
+      "detail": "4>3: true; subtract 4 to get 0."
+    },
+    {
+      "label": "Stop",
+      "icon": "output",
+      "detail": "0>3 is false; report 0 after three updates."
+    }
+  ],
+  "explanation": "The condition does not promise the counter ends exactly at 3. Subtractions can cross the boundary. The count strictly decreases, so the below-or-equal stopping region is eventually reached from this start. A condition requiring exact equality can be unsafe when repeated updates skip that value.",
+  "counterfactual": {
+    "change": "Replace count>3 with count!=3.",
+    "prediction": "From 12, the loop never reaches 3 and does not terminate in this toy model.",
+    "reason": "12,8,4,0,−4,… are multiples of 4; none equals 3."
+  },
+  "student_task": "Why is report 0 correct for the original loop, and why is equality-only stopping risky here?",
+  "teacher_answer": "The original stops as soon as count is not above 3. Exact equality fails because the update sequence skips 3.",
+  "project_evidence": "Use progress and stopping arguments for any repeated recommender process; test inputs that require zero, one and several updates.",
+  "limits": "Do not run an intentionally unbounded loop in class; trace a finite prefix to inspect the defect safely.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment."
+}

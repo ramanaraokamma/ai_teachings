@@ -1,0 +1,43 @@
+{
+  "week": "ai-2/36",
+  "title": "Capstone Expo",
+  "outcome": "By the end, I can defend a complete recommendation with validation, eligibility and reproducible ranking.",
+  "scenario": "A fictional team presents its transparent book recommender on a reserved catalogue.",
+  "given": [
+    "Request maximum 120 pages; score=2×interest+illustrated, where illustrated is 1 for True and 0 for False; tie by ID.",
+    "A pages120 interest3 True; B pages100 interest4 False; C pages121 interest5 True; D pages90 interest\"4\" True. Numeric fields require exact integers."
+  ],
+  "steps": [
+    {
+      "label": "Validate",
+      "icon": "shield",
+      "detail": "D has text interest and is rejected; A,B,C have valid fields."
+    },
+    {
+      "label": "Filter",
+      "icon": "rule",
+      "detail": "A and B meet the page limit; C exceeds it."
+    },
+    {
+      "label": "Rank",
+      "icon": "code",
+      "detail": "A scores 7; B scores 8, so B wins."
+    },
+    {
+      "label": "Defend evidence",
+      "icon": "person",
+      "detail": "Explain two eligible items, one page-limit exclusion and one type rejection."
+    }
+  ],
+  "explanation": "A presentation should let someone rebuild the result from the stated contract. A’s equality is accepted; D is not silently converted; C’s high preference score cannot override the page requirement. Reversing rows must preserve B because it has the unique highest eligible score. Keep the reserved case distinct from practice demonstrations.",
+  "counterfactual": {
+    "change": "An authorised repair converts D’s interest to integer 4.",
+    "prediction": "D becomes eligible and scores 9, so it wins.",
+    "reason": "The evidence-backed input repair changes validation and then ranking; record this as a new case/version."
+  },
+  "student_task": "Give the original winning ID, its score, and counts of eligible, excluded and invalid rows.",
+  "teacher_answer": "B wins with 8. Two rows eligible, one valid-but-too-long row excluded, one type-invalid row rejected.",
+  "project_evidence": "Present the Transparent Book Recommender’s code, baseline, full-case traces, reserved results and limitations, without claiming fictional results as pupil work.",
+  "limits": "A defensible algorithmic trace does not prove B will be liked or that classroom learning improved.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment."
+}

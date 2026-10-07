@@ -1,0 +1,135 @@
+{
+  "week": "ai-7/36",
+  "title": "Research defense and next questions",
+  "grade": 12,
+  "project": "Reproducible AI Research Study",
+  "goals": [
+    "Explain the mechanism and terminology of research defense and next questions",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Research defense and next questions",
+  "vocabulary": [
+    [
+      "Research defense",
+      "A justified account of methods, findings and limits"
+    ],
+    [
+      "Next question",
+      "A new bounded inquiry motivated by a gap"
+    ],
+    [
+      "Negative finding",
+      "A result failing the declared expectation"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Study shows candidate12/16 versus baseline11/16; replay matches; no fresh population sample or user study."
+      },
+      {
+        "type": "paragraph",
+        "text": "75% versus68.75%, gain6.25 points in16 cases; replay supports computational consistency. Broader usefulness and generalisation remain untested."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "Study shows candidate12/16 versus baseline11/16; replay matches; no fresh population sample or user study. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: 75% versus68.75%, gain6.25 points in16 cases; replay supports computational consistency. Broader usefulness and generalisation remain untested.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "Project candidate9/12, baseline10/12; reproduction matches. State result and a useful next question.",
+    "answer": "Teacher explanation: 75% versus83.333%, candidate lower8.333 points. Investigate recorded failure conditions with a revised prespecified method and fresh reserved cases; do not erase the negative result.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "The next question follows evidence gaps; it must not be presented as an answer already obtained."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Present the frozen question, credible baseline, unit design, primary analysis, uncertainty assumptions, failures and reproduction record. Propose next work that resolves a named gap with new evidence."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Research defense and next questions \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "Study shows candidate12/16 versus baseline11/16; replay matches; no fresh population sample or user study.",
+            "Present the frozen question, credible baseline, unit design, primary analysis, uncertainty assumptions, failures and reproduction record. Propose next work that resolves a named gap with new evidence.",
+            "75% versus68.75%, gain6.25 points in16 cases; replay supports computational consistency. Broader usefulness and generalisation remain untested."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Study shows candidate12/16 versus baseline11/16; replay matches; no fresh population sample or user study. Show the intermediate steps and give the conclusion with its scope."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

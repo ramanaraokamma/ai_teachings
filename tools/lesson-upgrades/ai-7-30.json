@@ -1,0 +1,37 @@
+{
+  "week": "ai-7/30",
+  "title": "Writing the methods section",
+  "outcome": "Explain writing the methods section using the records and boundaries of this fictional investigation.",
+  "scenario": "Methods that another team can repeat. A paper describes a toy string-classification experiment using a stated length rule.",
+  "given": [
+    "Inputs: \"oak\", \"pine\", \"willow\". Rule: length at least 4→long, otherwise short. No whitespace trimming occurs."
+  ],
+  "steps": [
+    {
+      "icon": "data",
+      "label": "Record exact inputs",
+      "detail": "Preserve the three strings and no-trimming policy."
+    },
+    {
+      "icon": "rule",
+      "label": "State procedure",
+      "detail": "Apply the inclusive length boundary at four characters."
+    },
+    {
+      "icon": "code",
+      "label": "Show resulting labels",
+      "detail": "Oak is short; pine and willow are long."
+    }
+  ],
+  "explanation": "A methods section specifies inputs, processing, boundaries, versions and scoring. Precise procedures allow a reader to repeat the computation instead of inferring it from the final labels.",
+  "counterfactual": {
+    "change": "Change the rule to length greater than 4.",
+    "prediction": "Pine becomes short; willow stays long and oak stays short.",
+    "reason": "The equality case distinguishes the two procedures."
+  },
+  "student_task": "Apply the inclusive four-character rule to oak, pine and willow. Which label changes under greater-than-four, and what method detail allows another team to reproduce the distinction?",
+  "teacher_answer": "Preserve the three strings and no-trimming policy. Apply the inclusive length boundary at four characters. Oak is short; pine and willow are long. Changed case: Pine becomes short; willow stays long and oak stays short. The equality case distinguishes the two procedures.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "Repeating this deterministic toy rule does not validate a learned model or establish ecological categories.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted."
+}

@@ -1,0 +1,135 @@
+{
+  "week": "ai-6/22",
+  "title": "Queues and asynchronous work",
+  "grade": 11,
+  "project": "Grounded Learning Service",
+  "goals": [
+    "Explain the mechanism and terminology of queues and asynchronous work",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Queues and asynchronous work",
+  "vocabulary": [
+    [
+      "Queue",
+      "A store of work awaiting processing"
+    ],
+    [
+      "Acknowledgement",
+      "A signal allowing delivery completion"
+    ],
+    [
+      "Redelivery",
+      "Receiving a previously delivered job again"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Worker commits job J then crashes before queue acknowledgement. J is delivered again."
+      },
+      {
+        "type": "paragraph",
+        "text": "Consult durable job status; return committed result and acknowledge without repeating the effect. Delivery count is not effect count."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "Worker commits job J then crashes before queue acknowledgement. J is delivered again. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: Consult durable job status; return committed result and acknowledge without repeating the effect. Delivery count is not effect count.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "Jobs A, B, C accepted; A completed, B failed, C pending. How many completed, and may success be claimed for all accepted?",
+    "answer": "Teacher explanation: One complete, one failed, one pending. Acceptance is not completion; report each state.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "Queue ordering and exactly-once properties must be declared, not assumed from a simple mock."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "A queued job is pending, running, completed or failed. Acknowledge only after the declared durable completion step. A repeated completed ID returns its prior result; unknown status needs reconciliation."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Queues and asynchronous work \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "Worker commits job J then crashes before queue acknowledgement. J is delivered again.",
+            "A queued job is pending, running, completed or failed. Acknowledge only after the declared durable completion step. A repeated completed ID returns its prior result; unknown status needs reconciliation.",
+            "Consult durable job status; return committed result and acknowledge without repeating the effect. Delivery count is not effect count."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Worker commits job J then crashes before queue acknowledgement. J is delivered again. Show the intermediate steps and give the conclusion with its scope."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

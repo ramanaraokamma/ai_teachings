@@ -1,0 +1,43 @@
+{
+  "week": "ai-1/31",
+  "title": "Design the Decision Process",
+  "outcome": "By the end, I can design a complete decision flow with validation, search and stopping.",
+  "scenario": "A fictional worksheet routes craft kits by required glue and number of scissors.",
+  "given": [
+    "K1: glue No, scissors 2. K2: glue Yes, scissors 2. K3: glue Yes, scissors 4.",
+    "Request: glue required Yes, scissors needed 2. Return first kit meeting both requirements."
+  ],
+  "steps": [
+    {
+      "label": "Validate fields",
+      "icon": "shield",
+      "detail": "Require Yes/No glue input and whole scissors count 0–4."
+    },
+    {
+      "label": "Evaluate K1",
+      "icon": "rule",
+      "detail": "Scissors fit, but required glue is absent: continue."
+    },
+    {
+      "label": "Evaluate K2",
+      "icon": "rule",
+      "detail": "Glue is present and 2 scissors meet the request: accept."
+    },
+    {
+      "label": "Stop",
+      "icon": "output",
+      "detail": "Return K2 without replacing it with later K3."
+    }
+  ],
+  "explanation": "A complete decision process specifies what to do after each result. One passing requirement is insufficient. After a kit passes both, stopping preserves the first-match contract; automatically choosing the largest later kit would implement a different rule. A full scan with no accepted kit returns no match.",
+  "counterfactual": {
+    "change": "Increase scissors needed to 3.",
+    "prediction": "K3 is selected.",
+    "reason": "K1 lacks glue; K2 has only 2 scissors; K3 has glue and 4."
+  },
+  "student_task": "Where does the first original rejection occur, and why is K3 not originally selected?",
+  "teacher_answer": "K1 fails glue. K2 meets both conditions, so the first-match flow stops before considering K3.",
+  "project_evidence": "Draw the sorter’s decision branches, loop-back arrows, final outputs and invalid-input path so every valid case can terminate.",
+  "limits": "A correct flow depends on accurate catalogue entries and the declared requirements; the picture does not verify inventory.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment."
+}

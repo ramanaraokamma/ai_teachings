@@ -1,0 +1,65 @@
+{
+  "week": "ai-2/24",
+  "title": "Feedback Loops",
+  "outcome": "By the end, I can explain how recommendation exposure can create a feedback loop.",
+  "scenario": "A fictional catalogue repeatedly recommends two books using observed clicks.",
+  "given": [
+    "Initially each click count is 0. Equal counts choose earlier ID A over B.",
+    "Only the recommended book is shown. In an invented three-round record, A is shown and clicked each round; B is never shown."
+  ],
+  "steps": [
+    {
+      "label": "Initial tie",
+      "icon": "rule",
+      "detail": "Counts A=0,B=0; ID rule shows A."
+    },
+    {
+      "label": "Record event",
+      "icon": "data",
+      "detail": "A receives a click, so its count becomes 1; B stays 0."
+    },
+    {
+      "label": "Repeat selection",
+      "icon": "model",
+      "detail": "Higher A count causes A to be shown again; after three clicks A=3,B=0."
+    },
+    {
+      "label": "Interpret carefully",
+      "icon": "question",
+      "detail": "B’s zero may mean no exposure, not dislike."
+    }
+  ],
+  "explanation": "The selection policy changes which evidence is available. A accumulates clicks partly because the system gives it every opportunity, while B has none. These records cannot compare enjoyment of two equally exposed books. Keep display counts separate from click counts; investigate alternatives with a teacher-approved exposure plan rather than treating zero as negative feedback.",
+  "counterfactual": {
+    "change": "On a planned trial, show B once and record no click.",
+    "prediction": "B gains one exposure but still zero clicks.",
+    "reason": "The observation now supports a nonclick on that display, not a permanent dislike."
+  },
+  "student_task": "What extra field would reveal why comparing raw clicks is misleading?",
+  "teacher_answer": "Display or exposure count: A shown three times, B zero. Raw clicks confound opportunities with response.",
+  "project_evidence": "Log recommender exposure, choice and explicit feedback separately; consider whether its own policy narrows future evidence.",
+  "limits": "A click can reflect curiosity or a mistake; even equal exposure does not reveal every reason for selection.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Exposure and clicks after the invented three rounds",
+    "cells": [
+      [
+        3,
+        3
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "row_labels": [
+      "A",
+      "B"
+    ],
+    "column_labels": [
+      "Shown",
+      "Clicked"
+    ]
+  }
+}

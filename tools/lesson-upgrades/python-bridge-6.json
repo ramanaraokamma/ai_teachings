@@ -1,0 +1,69 @@
+{
+  "week": "python-bridge/6",
+  "title": "Loops and trace tables",
+  "outcome": "Trace loops and trace tables and explain the changed program before running it.",
+  "scenario": "Accumulate a short range. A running total adds the integers visited by range(1,5).",
+  "given": [
+    "Python 3: total=0; for value in range(1,5): total+=value; print(total). The print is after the loop."
+  ],
+  "steps": [
+    {
+      "icon": "code",
+      "label": "Visit the range",
+      "detail": "Values are 1,2,3,4; the stop value 5 is excluded."
+    },
+    {
+      "icon": "chart",
+      "label": "Trace running total",
+      "detail": "Totals after each addition are 1,3,6,10."
+    },
+    {
+      "icon": "output",
+      "label": "Print after the loop",
+      "detail": "The final displayed value is 10."
+    }
+  ],
+  "explanation": "A loop repeats an operation for each visited value. A trace table distinguishes the current value from the accumulator; the range stop is not included.",
+  "counterfactual": {
+    "change": "Replace range(1,5) with range(1,1).",
+    "prediction": "No values are visited and the final output is 0.",
+    "reason": "The accumulator starts at zero and an empty loop never changes it."
+  },
+  "student_task": "List the four visited values and their running totals. Explain why 5 is absent and what prints for range(1,1).",
+  "teacher_answer": "The visits are 1,2,3,4 and totals are 1,3,6,10. The stop is exclusive. An empty range leaves total at its initial 0.",
+  "project_evidence": "For Python readiness before the Responsible Plant Classifier, retain a trace of the values, the predicted outputs and the changed-case explanation. Use actual Python 3 results to check the prediction after reasoning first.",
+  "limits": "This bounded loop does not train an AI model; other loop conditions may require separate termination checks.",
+  "review_note": "Individually authored supported practice; distinct from the reserved independent case. Python semantics are checked on standalone snippets; no learned model or real pupil result is implied.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Running total after each visited value",
+    "cells": [
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        10
+      ]
+    ],
+    "row_labels": [
+      "Visit 1",
+      "Visit 2",
+      "Visit 3",
+      "Visit 4"
+    ],
+    "column_labels": [
+      "Current value",
+      "Running total"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "week": "ai-3/34",
+  "title": "Capstone Build",
+  "outcome": "By the end, I can explain capstone build using a traced example and a stated limitation.",
+  "scenario": "Build a claim checker for a draft summary of a fictional class investigation.",
+  "given": [
+    "Approved record E2: three cups were observed for four days. No measured water loss is provided. Draft says “three cups were observed for four days and all lost half their water”.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Extract claims",
+      "icon": "data",
+      "detail": "Separate cup count, observation duration and the claimed water loss."
+    },
+    {
+      "label": "Match evidence",
+      "icon": "book",
+      "detail": "E2 supports three cups and four days; it supplies no water-loss result."
+    },
+    {
+      "label": "Repair draft",
+      "icon": "check",
+      "detail": "Retain the supported procedure facts; state that water-loss results were not supplied."
+    }
+  ],
+  "explanation": "Read the picture in order. Retain the supported procedure facts; state that water-loss results were not supplied. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "E3 supplies losses of 1, 2 and 3 mL.",
+    "prediction": "Report those individual losses, not “half” unless starting volumes are also available.",
+    "reason": "Absolute losses alone do not establish each cup’s fractional loss."
+  },
+  "student_task": "What additional numbers would a half-water claim require? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "The starting volume for each cup and its measured loss. E3’s losses without starting volumes cannot establish a half fraction. Changed-case check: Report those individual losses, not “half” unless starting volumes are also available. Absolute losses alone do not establish each cup’s fractional loss.",
+  "project_evidence": "For your Verified Study Buddy, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "The examples are invented observations; no real classroom investigation or model run is claimed.",
+  "review_note": "Reviewed Capstone Build against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

@@ -1,0 +1,198 @@
+{
+  "6059e023344f635dea321a8e959f85cf44be379a6a80aa72254d2cd7dfb5a613": {
+    "type": "diagram",
+    "kind": "lanes",
+    "title": "Worked evidence for Operational Labels",
+    "columns": [
+      "Step",
+      "Evidence and reasoning"
+    ],
+    "rows": [
+      [
+        "1",
+        "Weak label: \u2018easy book.\u2019"
+      ],
+      [
+        "2",
+        "Operational rule: easy for this reader if difficulty level \u2264 2 and unfamiliar words per page \u2264 3."
+      ],
+      [
+        "3",
+        "Two labelers test the same 8 books."
+      ],
+      [
+        "4",
+        "Agreement of 7/8 identifies one disagreement to review. Check the source, each annotator\u2019s application and the label rule before choosing a repair."
+      ]
+    ],
+    "caption": "Trace these corrected steps. Keep the stated metric, assumptions and interpretation when you change the case."
+  },
+  "be10c2f296955f7900975cf6de4c5f48de7c08b8bc22b6ac48492819216c1e24": {
+    "type": "diagram",
+    "kind": "lanes",
+    "title": "Worked evidence for Image Generation Models",
+    "columns": [
+      "Step",
+      "Evidence and reasoning"
+    ],
+    "rows": [
+      [
+        "1",
+        "In this simplified diffusion-style image generator, begin with random visual noise. Other image-generation methods use different procedures."
+      ],
+      [
+        "2",
+        "At each step, predict a slightly more structured image guided by the prompt."
+      ],
+      [
+        "3",
+        "Learned patterns influence shapes, textures, and relationships."
+      ],
+      [
+        "4",
+        "The result is generated, not retrieved evidence of a real event."
+      ]
+    ],
+    "caption": "Trace these corrected steps. Keep the stated metric, assumptions and interpretation when you change the case."
+  },
+  "0772e307f7831d4a6c240545a43f92ef42c3ce00eb34df331da2a6a5513f816d": {
+    "type": "diagram",
+    "kind": "lanes",
+    "title": "Four-step worked evidence for Week 10: Baselines First",
+    "columns": [
+      "Step",
+      "Evidence and reasoning"
+    ],
+    "rows": [
+      [
+        "1",
+        "Test set has 12 healthy and 8 spotted leaves."
+      ],
+      [
+        "2",
+        "Always-healthy baseline gets 12 \u00f7 20 = 60% accuracy but 0% spotted recall."
+      ],
+      [
+        "3",
+        "On the same 20 leaves, the visible-spot rule correctly labels 5 spotted leaves, misses 3 spotted leaves, correctly labels 10 healthy leaves and falsely marks 2 healthy leaves as spotted. Accuracy=(5+10)/20=75%; spotted recall=5/8=62.5%."
+      ],
+      [
+        "4",
+        "A learned model must beat relevant baseline metrics\u2014not only one convenient total."
+      ]
+    ],
+    "caption": "Trace these corrected steps. Keep the stated metric, assumptions and interpretation when you change the case."
+  },
+  "954aa38afb07f6e414fbafe921f066b9c3ace2927f46b64ced10e9749a5a7173": {
+    "type": "diagram",
+    "kind": "lanes",
+    "title": "Four-step worked evidence for Week 12: Nearest Neighbors",
+    "columns": [
+      "Step",
+      "Evidence and reasoning"
+    ],
+    "rows": [
+      [
+        "1",
+        "New leaf has normalized features (2, 3)."
+      ],
+      [
+        "2",
+        "Using Manhattan distance, add the absolute coordinate differences. Training leaves at (2, 2), (4, 3), and (1, 5) have distances 1, 2, and 3 from (2, 3)."
+      ],
+      [
+        "3",
+        "With k=1, nearest label wins; with k=3, majority among all three wins."
+      ],
+      [
+        "4",
+        "Rescale features and retest because centimeters must not overwhelm a 0\u20131 color score."
+      ]
+    ],
+    "caption": "Trace these corrected steps. Keep the stated metric, assumptions and interpretation when you change the case."
+  },
+  "8942824ccb50b3bbc88d9772a07f13f4bc8c365963b7bea9b5be5b8f7f5d23ce": {
+    "type": "diagram",
+    "kind": "lanes",
+    "title": "Four-step worked evidence for Week 14: Scores and Calibration Intuition",
+    "columns": [
+      "Step",
+      "Evidence and reasoning"
+    ],
+    "rows": [
+      [
+        "1",
+        "Each score estimates the probability that the selected label is correct. Ten predictions have such scores near 0.8."
+      ],
+      [
+        "2",
+        "Only six are correct, so observed correctness is 6 \u00f7 10 = 60%."
+      ],
+      [
+        "3",
+        "The score ranking may still help, but 0.8 should not be stated as an 80% guarantee."
+      ],
+      [
+        "4",
+        "Use bins across many cases and design an uncertain zone requiring human review."
+      ]
+    ],
+    "caption": "Trace these corrected steps. Keep the stated metric, assumptions and interpretation when you change the case."
+  },
+  "99a131bc60d8a509c3e1f06ca437c13533379a5bea5780251acfb1a99892d6ae": {
+    "type": "diagram",
+    "kind": "lanes",
+    "title": "Four-step worked evidence for Week 34: Capstone Dataset and Baseline",
+    "columns": [
+      "Step",
+      "Evidence and reasoning"
+    ],
+    "rows": [
+      [
+        "1",
+        "Freeze dataset card v3 and grouped split s2 with no plant identity crossing sets."
+      ],
+      [
+        "2",
+        "Test set remains sealed; validation supports model choices."
+      ],
+      [
+        "3",
+        "Validation has 12 healthy and 8 spotted leaves. The always-healthy baseline scores 12/20=60% accuracy and 0/8=0% spotted recall. The rule has TP=5, FN=3, TN=10, FP=2: accuracy 75% and spotted recall 62.5%."
+      ],
+      [
+        "4",
+        "Acceptance requires valid citations, metric calculations, subgroup review, and safe escalation."
+      ]
+    ],
+    "caption": "Trace these corrected steps. Keep the stated metric, assumptions and interpretation when you change the case."
+  },
+  "971770235e3203d4469ebd26c02f5d3c6565a08342b92474a24a1f816ecc446d": {
+    "type": "diagram",
+    "kind": "lanes",
+    "title": "Four-step worked evidence for Week 35: Capstone Train, Analyze, Improve",
+    "columns": [
+      "Step",
+      "Evidence and reasoning"
+    ],
+    "rows": [
+      [
+        "1",
+        "Model v1 passes 14/20 validation cases; evening accuracy is 40%."
+      ],
+      [
+        "2",
+        "The six failed cases are low-light cases. One of those same six also has a disputed reference label; that is an overlapping review flag, not a seventh failed case."
+      ],
+      [
+        "3",
+        "Add reviewed low-light training examples while freezing features and model settings."
+      ],
+      [
+        "4",
+        "Model v2 passes 17/20; evening rises to 70%; inspect every old pass and record remaining limits."
+      ]
+    ],
+    "caption": "Trace these corrected steps. Keep the stated metric, assumptions and interpretation when you change the case."
+  }
+}

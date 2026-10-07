@@ -1,0 +1,43 @@
+{
+  "week": "ai-1/1",
+  "title": "AI or Not?",
+  "outcome": "By the end, I can separate a learned prediction, a written rule and a human decision.",
+  "scenario": "A fictional school umbrella display shows TAKE ONE before lunch. What produced that advice?",
+  "given": [
+    "A weather model was fitted on earlier weather records; its forecast is 70% rain.",
+    "A written rule shows TAKE ONE at rain forecasts of 60% or more. The teacher decides whether to distribute umbrellas."
+  ],
+  "steps": [
+    {
+      "label": "Weather records",
+      "icon": "data",
+      "detail": "Earlier observations were used to fit the forecasting model."
+    },
+    {
+      "label": "Forecast",
+      "icon": "model",
+      "detail": "The learned model outputs 70% rain, not a guaranteed shower."
+    },
+    {
+      "label": "Display rule",
+      "icon": "rule",
+      "detail": "70 is at least 60, so the written rule displays TAKE ONE."
+    },
+    {
+      "label": "Final decision",
+      "icon": "person",
+      "detail": "The teacher checks current conditions before distributing umbrellas."
+    }
+  ],
+  "explanation": "The fitting record supports calling the forecasting stage learned. Comparing 70 with 60 is an explicit rule. The final action belongs to a person. Merely seeing TAKE ONE would not reveal any of these mechanisms; the process notes supply that evidence.",
+  "counterfactual": {
+    "change": "Keep the forecast but raise the display boundary to 80%.",
+    "prediction": "The display no longer says TAKE ONE.",
+    "reason": "70 is below 80; changing a display rule does not refit the model."
+  },
+  "student_task": "Point to the learned stage. Does the changed display prove the weather forecast changed?",
+  "teacher_answer": "The forecast stage is learned; it remains 70%. Only the boundary and resulting message changed.",
+  "project_evidence": "For the Helpful Classroom Sorter, annotate which decisions follow written instructions and which, if any, were fitted from examples.",
+  "limits": "A correct rule comparison does not establish that rain will occur or that 70% forecasts are followed by rain on about 70 out of 100 comparable days.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice."
+}

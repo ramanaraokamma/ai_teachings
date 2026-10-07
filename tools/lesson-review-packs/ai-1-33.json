@@ -1,0 +1,298 @@
+{
+  "week": "ai-1/33",
+  "title": "Test Normal Cases",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Plan routine cases with expected results derived from the requirements",
+    "Compare a fixed prototype and manual baseline on the same requests",
+    "Report every result and explain what a small test set cannot establish"
+  ],
+  "primary_topic": "Testing routine cases",
+  "vocabulary": [
+    [
+      "Test case",
+      "A specified input with an expected result and a reason for testing it"
+    ],
+    [
+      "Test set",
+      "A collection of cases used together to check a version"
+    ],
+    [
+      "Pass criterion",
+      "The requirement an observed result must meet to count as a pass"
+    ],
+    [
+      "Coverage",
+      "Which conditions or behaviours the selected tests examine"
+    ],
+    [
+      "Baseline",
+      "A simple comparison method tested under the same conditions"
+    ]
+  ],
+  "worked_example": {
+    "title": "Compare two methods on the same cases",
+    "blocks": [
+      {
+        "type": "table",
+        "headers": [
+          "Case and request",
+          "Expected output and reason",
+          "Fictional observed Q version 0"
+        ],
+        "rows": [
+          [
+            "R1 11 minutes Yes",
+            "B1; 10 fits 11 and B1 is quiet",
+            "B1 with the same correct reason; pass"
+          ],
+          [
+            "R2 9 minutes No",
+            "B2; 8 fits 9, quiet unrestricted, B1 too long",
+            "B2 with the same correct reason; pass"
+          ],
+          [
+            "R3 6 minutes No",
+            "No match; all activities take longer",
+            "No match with the same correct reason; pass"
+          ],
+          [
+            "R4 9 minutes Yes",
+            "No match; B2 is not quiet and other rows take longer",
+            "B2 because 8 fits 9; fail"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "This is an invented record for a comparison prototype Q version 0, not a claim about your P1 runs. Q ignores the quiet condition when searching. Its trace explains the R4 failure. In the same fictional comparison, the manual baseline produced the expected result and correct explanation on all four cases: 4 of 4 full passes. Q achieved 3 of 4. The denominator includes the failed case."
+      },
+      {
+        "type": "paragraph",
+        "text": "On this set Q has fewer full passes than the baseline. This supports investigating its quiet check; it does not establish performance on all requests. Do not claim a speed advantage because we did not measure time. Correct implementations of P1 and the baseline can both pass all four, in which case these results show no correctness advantage for either method."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Run a fair comparison",
+    "prompt": "Operate your saved P1 cards and the manual baseline on all four R cases. Record actual results and traces on your sheet. Summarise full passes over all attempted cases for each method, name any failures and explain why a tie would not prove the prototype improves correctness. Do not invent an observed run.",
+    "lines": 6,
+    "answer": "A correctly executed P1 and baseline both produce B1, B2, no match, no match with correct reasons, giving 4 of 4 each. Accept an honest record of different observed results when the pupil identifies and investigates the disagreements. Both methods must use the same requests, catalogue and pass criterion. A tie establishes no correctness advantage on this set; an unperformed run must remain unperformed."
+  },
+  "independent_case": {
+    "title": "Audit a new test record",
+    "task": "Independently audit this fictional equipment selector. Catalogue E has E1 first with capacity 4 and E2 second with capacity 8. Valid group sizes are whole numbers 1 to 10. Select the first item with capacity at least the group size, or no match; invalid input needs clarification. The saved prototype reports E1 for group 3 with reason \u201c4 holds 3\u201d; E1 for group 6 with reason \u201c4 holds 6\u201d; no match for group 9 with reason \u201cboth too small\u201d. Write all expected results, mark full passes, calculate the fraction and explain the failure. Give one untested input category. No booking occurs.",
+    "answer": "Expected group 3: E1 because 4 holds 3. Group 6: E2 because E1 is too small and 8 holds 6. Group 9: no match because both capacities are too small. The first and third pass; the second fails both output and reason, giving 2 of 3 full passes. The record suggests a capacity-check problem but the saved instructions and trace are needed to locate it. Missing, nonwhole or out-of-range input is untested, as is equality with a capacity.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A correct label is always a full pass",
+      "The agreed criterion also requires a correct explanation."
+    ],
+    [
+      "Remove a failed run because something went wrong",
+      "Keep and investigate it; missing required output cannot count as success."
+    ],
+    [
+      "Four passes prove all inputs work",
+      "The conclusion is limited by the selected cases and conditions."
+    ],
+    [
+      "The prototype must beat the manual baseline",
+      "A correct simple baseline can tie or outperform a prototype; report the evidence."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/bc993d87a8f5fe16e40fe3ec359af386bbdcb780e16aba998fa5f4f459961ad1",
+        "alt": "Visual card for the input stage: planned test input and expected result",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/8101fca9b06ac0b6248fad79b5afeb138e551eac1dfc39285c6844e44b9ecbec",
+        "alt": "Visual card for the process stage: run unchanged prototype and observe",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/69087f399487ef1bc5a40346f9f0e8bf3ac83f6086f130a3037891c4d6e9f197",
+        "alt": "Visual card for the output stage: actual result, pass/fail, and notes",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  planned test input and expected result"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  run unchanged prototype and observe"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  actual result, pass/fail, and notes"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  Repeated success on ordinary cases is necessary but not sufficient.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  A test case includes input, setup, expected behavior, actual behavior, and result. Precommitting expectations reduces hindsight bias. Repeated normal tests establish basic reliability but say little about uncommon conditions.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "From a planned case to evidence",
+        "columns": [
+          "Before the run",
+          "During the run",
+          "After the run"
+        ],
+        "rows": [
+          [
+            "Write input and expected result",
+            "Use the saved version",
+            "Compare with the requirement"
+          ],
+          [
+            "State why the case matters",
+            "Record output and reason",
+            "Mark pass or explain failure"
+          ],
+          [
+            "Label both comparison methods",
+            "Keep every trace",
+            "Report counts and limits"
+          ]
+        ],
+        "caption": "Keep the catalogue, requests and pass criteria the same for the prototype and baseline."
+      },
+      {
+        "type": "paragraph",
+        "text": "Give each case an ID. Record its exact input, purpose, expected output and expected explanation before running it. Then add observed output, observed explanation, pass or fail, and a trace reference. Put the prototype version, catalogue version and baseline method at the top of the sheet. A pass needs the correct result and a reason supported by the checked conditions; the right activity with a false reason is not a full pass."
+      },
+      {
+        "type": "paragraph",
+        "text": "Our routine set R contains four valid requests. R1 is 11 minutes Yes, checking an early quiet match. R2 is 9 minutes No, checking that the search reaches a later fitting row. R3 is 6 minutes No, checking that a valid request can exhaust the list. R4 is 9 minutes Yes, checking that a time fit alone is insufficient. These cases do not cover every accepted input or validation error."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/e0cc9768629851887adac77e8c6a36106176bb884ae1e19b1e6c599e143aa0d4",
+        "alt": "Comparison picture for Pencil: common clear item; normal case",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/735b44875ab33dffe251562652df94d99c1faf1d47bb9e4084bf9ca99251d164",
+        "alt": "Comparison picture for Notebook: common clear item; normal case",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/184f4336ff34f54c29ee9ec2d226b0978447e31b7ca9fd0f6e84f17c0903b238",
+        "alt": "Comparison picture for Expected written later: changed after result; weak evidence",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4724c7c2e4f89093082ecaacdf12b167178f7f6f87e9e1fe86952b9ee24c43d4",
+        "alt": "Comparison picture for Same process each run: controlled setup; reproducible",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Pencil  Clue: common clear item. Meaning: normal case."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Notebook  Clue: common clear item. Meaning: normal case."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Expected written later  Clue: changed after result. Meaning: weak evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Same process each run  Clue: controlled setup. Meaning: reproducible."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Do not change the prototype halfway through a test set and combine results as if one version was tested.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

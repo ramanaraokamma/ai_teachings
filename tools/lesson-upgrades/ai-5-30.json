@@ -1,0 +1,55 @@
+{
+  "week": "ai-5/30",
+  "title": "Dataset shift in neural models",
+  "outcome": "By the end, I can explain dataset shift in neural models using a traced example and a stated limitation.",
+  "scenario": "Separate within-setting performance from changing setting proportions.",
+  "given": [
+    "Toy old-use mix: bright 40 cases32 correct; dim 10 cases5 correct. New-use mix: bright 10 cases8 correct; dim 40 cases20 correct.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Keep slice rates",
+      "icon": "chart",
+      "detail": "Bright is 80% in both mixes; dim is 50% in both."
+    },
+    {
+      "label": "Old pooled rate",
+      "icon": "data",
+      "detail": "Old accuracy 37/50=74%."
+    },
+    {
+      "label": "New pooled rate",
+      "icon": "check",
+      "detail": "New accuracy 28/50=56%; more use now occurs in the harder dim setting."
+    }
+  ],
+  "explanation": "A pooled rate depends on how often each condition appears as well as performance within that condition. Bright and dim accuracy stay fixed in this example. The new use contains more dim cases, so its pooled accuracy falls. Report both group counts and group rates before concluding that the network itself deteriorated.",
+  "counterfactual": {
+    "change": "New-use mix returns to40 bright and 10 dim with the same slice rates.",
+    "prediction": "Pooled accuracy returns to74%.",
+    "reason": "The mixture weights change, while each slice\u2019s conditional performance stays fixed."
+  },
+  "student_task": "Did the supplied model\u2019s dim-light accuracy deteriorate? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "No, it remains50%. The pooled drop from 74% to56% reflects a larger proportion of dim cases, not changed within-slice rates. Changed-case check: Pooled accuracy returns to74%. The mixture weights change, while each slice\u2019s conditional performance stays fixed.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Real shift can also change labels, sensors and within-slice behaviour; this toy decomposition isolates only mixture change.",
+  "review_note": "Reviewed Dataset shift in neural models against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Fixed slice rates, changed pooled accuracy",
+    "labels": [
+      "bright",
+      "dim",
+      "old pooled",
+      "new pooled"
+    ],
+    "values": [
+      80,
+      50,
+      74,
+      56
+    ],
+    "unit": "accuracy percent"
+  }
+}

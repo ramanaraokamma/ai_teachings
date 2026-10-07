@@ -1,0 +1,289 @@
+{
+  "week": "ai-1/1",
+  "title": "AI or Not?",
+  "grade": 6,
+  "project": "Helpful Classroom Sorter",
+  "goals": [
+    "Distinguish an observed result from an explanation of how it was produced",
+    "Identify written rules, learned models and human decisions inside one product",
+    "Explain what additional evidence is needed when a mechanism is unknown"
+  ],
+  "primary_topic": "Evidence and decision mechanisms",
+  "vocabulary": [
+    [
+      "Mechanism",
+      "The process that produces a result"
+    ],
+    [
+      "Written rule",
+      "An instruction specified by a person before the system applies it"
+    ],
+    [
+      "Learned model",
+      "A system whose adjustable values were fitted using examples"
+    ],
+    [
+      "Evidence",
+      "Information that supports or challenges a particular claim"
+    ],
+    [
+      "Hybrid system",
+      "A product that combines more than one kind of process"
+    ]
+  ],
+  "worked_example": {
+    "title": "Work through the evidence",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Question: Does the red display prove that a learned model was used? First separate the claim from the observation. The observation is that the displayed number is red. The claim concerns the process that produced the number. Next find relevant evidence. The engineering note says earlier journeys were used to fit the delay estimator. That note supports a learned-model classification for the estimator. The red colour alone does not."
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Claim",
+          "Relevant evidence",
+          "Conclusion"
+        ],
+        "rows": [
+          [
+            "The estimator uses a learned model",
+            "The note describes fitting on past journeys",
+            "Supported for the estimator"
+          ],
+          [
+            "The red colour proves learning",
+            "Only the displayed colour is observed",
+            "Not supported by colour alone"
+          ],
+          [
+            "The driver override is a model prediction",
+            "A driver selects the replacement message",
+            "Contradicted in this case"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "A strong answer states its limit: I can identify these three mechanisms from the supplied note, but I cannot infer the model's accuracy from one estimate. Even if the bus arrives exactly 12 minutes late, one success does not establish that the estimator will always work."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Complete the photo library explanation",
+    "prompt": "Use the photo-library case from the lesson. Classify the prediction, album-placement rule and owner move. A bicycle photo is in the wrong album. Name the first two records you would inspect.",
+    "lines": 6,
+    "answer": "Prediction is learned because it was fitted using labelled pictures. Album placement is a written rule; the owner move is human control. Inspect the stored prediction and the placement or move record. A wrong album alone cannot distinguish prediction error from a later action."
+  },
+  "independent_case": {
+    "title": "Investigate a new hybrid system",
+    "task": "A school greenhouse estimates tomorrow's temperature using a model fitted on historical weather. A written rule displays CHECK PLANTS above 30 degrees C. A caretaker chooses whether to open a vent. Identify each mechanism and explain why a correct CHECK PLANTS message would not prove an accurate temperature prediction.",
+    "answer": "The forecast is learned-model prediction; the message is a written threshold; vent opening is the caretaker's decision. The message may correctly follow a forecast that is itself inaccurate. Compare the forecast with a predefined temperature observation at the relevant place and time before judging prediction accuracy.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "All rules are outside AI",
+      "Explain that AI also includes symbolic reasoning. In the specific bus case, the simple colour threshold is automation; the full system contains a fitted predictor."
+    ],
+    [
+      "A correct output proves a learned model",
+      "Ask whether a calculator, recording or person could produce the same correct output. Require evidence about fitting or reasoning."
+    ],
+    [
+      "Unknown is a bad answer",
+      "Accept unknown when the learner identifies a specific missing fact and a useful way to obtain it."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Follow the information instead of imagining magic inside the machine."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/47f83f84b52d36587b324b1a13fd46238d6f615411bc25ae8ea8d83192a9f424",
+        "alt": "Visual card for the input stage: a command, signal, photo, sound, or number",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/e85d949f454c2ced969d93be6e71755e44b9ad393a89183137dcb2e5e2c88fca",
+        "alt": "Visual card for the process stage: a human choice, fixed instruction, or learned pattern",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/61ddcada211613762412c71232ae472e943ae149a9b5b1f875e55abd012a7872",
+        "alt": "Visual card for the output stage: movement, calculation, action, or prediction",
+        "width": 168,
+        "height": 126
+      },
+      {
+        "type": "paragraph",
+        "text": "INPUT  a command, signal, photo, sound, or number"
+      },
+      {
+        "type": "paragraph",
+        "text": "PROCESS  a human choice, fixed instruction, or learned pattern"
+      },
+      {
+        "type": "paragraph",
+        "text": "OUTPUT  movement, calculation, action, or prediction"
+      },
+      {
+        "type": "callout",
+        "text": "CORE IDEA  Look for evidence of how the system reasons or learns, not just its label or screen.",
+        "tone": "idea"
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  A system should be classified by its decision mechanism. Human control, fixed automation, and model-based prediction can produce similar visible behavior, so appearance and marketing words are weak evidence.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh example with all three stages:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "The bus display contains three mechanisms",
+        "columns": [
+          "Information entering",
+          "How the decision is made",
+          "Result"
+        ],
+        "rows": [
+          [
+            "Current route and traffic",
+            "Delay model fitted on earlier journeys",
+            "Estimated delay of 12 minutes"
+          ],
+          [
+            "The estimated delay",
+            "Written rule red when delay is greater than 10",
+            "Red display"
+          ],
+          [
+            "Driver reads a closure notice",
+            "Driver chooses an override message",
+            "Display says route closed"
+          ]
+        ],
+        "caption": "Read each row from left to right. The first row predicts a number, the second chooses a colour, and the third shows a human override. A correct colour does not establish that the delay prediction is correct."
+      },
+      {
+        "type": "paragraph",
+        "text": "In the first row, fitting means adjusting a model using examples. Applying the fitted model to a new journey is a different step. The model can produce an incorrect estimate even if it was trained carefully. In the second row, a written threshold compares the estimate with 10. It can follow its instructions perfectly while using a bad estimate. In the third row, a person makes the message decision."
+      },
+      {
+        "type": "paragraph",
+        "text": "AI is a broader field than learning from examples. It also includes approaches that represent knowledge and reason with rules. Therefore, do not use the shortcut that every rule is non-AI. In this case, a simple colour switch is ordinary automation; identifying that switch does not classify every other part of the bus system."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "PICTURE GALLERY"
+      },
+      {
+        "type": "heading",
+        "text": "Four Cases, Four Clues"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use the visual cue, then read the evidence carefully."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4ac59cf82d94b6eca6ff83e51bebb8b78b822d3845e681dccce45971d4cc7d89",
+        "alt": "Comparison picture for Remote car: person sends each steering command; human-controlled",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/0aee48bffaf2003dc2beb0552926ceac6ab4a8caa6c556f9fcc6e8e426543d76",
+        "alt": "Comparison picture for Motion light: written if-motion-then-light rule; fixed automation",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/e79140d87eb95aedd5b8f30a92d7d6169521a76ea5331f416f6c547619889430",
+        "alt": "Comparison picture for Photo sorter: trained model predicts a new label; AI-based",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/d36c19989b91de1b145eebc0aeab52c2a4c063305703fca4108dc816f62ebdc3",
+        "alt": "Comparison picture for Robot vacuum: description hides the mechanism; not enough information",
+        "width": 136,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 1 \u2014 Remote car  Clue: person sends each steering command. Meaning: human-controlled."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 2 \u2014 Motion light  Clue: written if-motion-then-light rule. Meaning: fixed automation."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 3 \u2014 Photo sorter  Clue: trained model predicts a new label. Meaning: AI-based."
+      },
+      {
+        "type": "paragraph",
+        "text": "CASE 4 \u2014 Robot vacuum  Clue: description hides the mechanism. Meaning: not enough information."
+      },
+      {
+        "type": "callout",
+        "text": "BOUNDARY  Do not call a system AI because it looks, moves, or talks like a person.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which two pictures are easiest to confuse? What evidence separates them?"
+      }
+    ]
+  }
+}

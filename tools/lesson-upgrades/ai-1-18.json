@@ -1,0 +1,58 @@
+{
+  "week": "ai-1/18",
+  "title": "Confidence Is Not Correctness",
+  "outcome": "By the end, I can explain why a confidence score is not a guarantee and account for missing outcomes.",
+  "scenario": "A fictional card classifier reports a claimed 80% chance that each chosen label is correct.",
+  "given": [
+    "Ten predictions all have score 80%.",
+    "Later checks find 7 correct, 2 incorrect and 1 outcome unavailable. The selected cards were not a representative survey."
+  ],
+  "steps": [
+    {
+      "label": "Keep scores",
+      "icon": "model",
+      "detail": "Ten chosen labels each carry 80%; this is a claim about uncertainty."
+    },
+    {
+      "label": "Checked outcomes",
+      "icon": "check",
+      "detail": "Seven correct plus two wrong gives nine known outcomes."
+    },
+    {
+      "label": "Report coverage",
+      "icon": "chart",
+      "detail": "Observed agreement is 7/9 among checked cards; outcome coverage is 9/10."
+    },
+    {
+      "label": "Retain unknown",
+      "icon": "question",
+      "detail": "The missing result could change the all-ten correct count to 7 or 8."
+    }
+  ],
+  "explanation": "Do not count the missing outcome as correct or silently remove it from the coverage report. These records allow an all-ten agreement range from 70% to 80%. They do not show that claimed probabilities match checked correctness over many comparable predictions; that requires much more suitable evidence.",
+  "counterfactual": {
+    "change": "The missing outcome is checked and found incorrect.",
+    "prediction": "All-ten agreement is 7/10=70%.",
+    "reason": "There are now three wrong labels and no unknown outcomes."
+  },
+  "student_task": "Was the unknown label guaranteed correct because its confidence was 80%?",
+  "teacher_answer": "No. An 80% score is not certainty. The new evidence records it as incorrect, and the complete agreement rate is 70%.",
+  "project_evidence": "Keep sorter scores, reference outcomes and missingness separately; use review policies instead of treating high scores as facts.",
+  "limits": "This small selected set cannot establish that the claimed probabilities match actual correctness or show performance for all future cards.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Known outcomes and missing evidence",
+    "labels": [
+      "Correct",
+      "Incorrect",
+      "Unknown"
+    ],
+    "values": [
+      7,
+      2,
+      1
+    ],
+    "unit": "predictions"
+  }
+}

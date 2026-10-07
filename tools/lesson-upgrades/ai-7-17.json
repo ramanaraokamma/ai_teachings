@@ -1,0 +1,68 @@
+{
+  "week": "ai-7/17",
+  "title": "Sensitivity analysis",
+  "outcome": "Explain sensitivity analysis using the records and boundaries of this fictional investigation.",
+  "scenario": "A decision sensitive to the cutoff. A toy score rule predicts positive when score is at least the chosen cutoff.",
+  "given": [
+    "Scores are 0.4,0.6,0.8. Cutoff 0.5 marks the last two positive; cutoff 0.7 marks only 0.8 positive."
+  ],
+  "steps": [
+    {
+      "icon": "data",
+      "label": "Hold scores fixed",
+      "detail": "Keep the same three supplied scores."
+    },
+    {
+      "icon": "rule",
+      "label": "Apply cutoff 0.5",
+      "detail": "0.6 and 0.8 meet the boundary."
+    },
+    {
+      "icon": "chart",
+      "label": "Apply cutoff 0.7",
+      "detail": "Only 0.8 meets the new boundary."
+    }
+  ],
+  "explanation": "Sensitivity analysis checks how conclusions change under plausible choices. Changing a cutoff changes the decision rule, not the recorded scores or their accuracy.",
+  "counterfactual": {
+    "change": "Set the cutoff to exactly 0.6.",
+    "prediction": "0.6 and 0.8 are positive because the rule includes equality.",
+    "reason": "The declared at-least boundary includes the threshold value."
+  },
+  "student_task": "Classify 0.4, 0.6 and 0.8 at cutoffs 0.5, 0.7 and exactly 0.6. Which equality rule decides the boundary, and can these unlabelled scores identify the best cutoff?",
+  "teacher_answer": "Keep the same three supplied scores. 0.6 and 0.8 meet the boundary. Only 0.8 meets the new boundary. Changed case: 0.6 and 0.8 are positive because the rule includes equality. The declared at-least boundary includes the threshold value. At cutoff 0.6, equality passes; absent reference labels, no best cutoff is established.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "Without reference labels, these counts do not identify the best cutoff or establish correctness.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Score decisions under inclusive cutoffs",
+    "cells": [
+      [
+        "No",
+        "Yes",
+        "Yes"
+      ],
+      [
+        "No",
+        "No",
+        "Yes"
+      ],
+      [
+        "No",
+        "Yes",
+        "Yes"
+      ]
+    ],
+    "row_labels": [
+      "Cutoff 0.5",
+      "Cutoff 0.7",
+      "Cutoff 0.6"
+    ],
+    "column_labels": [
+      "Score 0.4",
+      "Score 0.6",
+      "Score 0.8"
+    ]
+  }
+}

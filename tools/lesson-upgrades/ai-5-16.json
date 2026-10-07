@@ -1,0 +1,38 @@
+{
+  "week": "ai-5/16",
+  "title": "Regularisation and early stopping",
+  "outcome": "By the end, I can explain regularisation and early stopping using a traced example and a stated limitation.",
+  "scenario": "Separate a regularisation penalty from prediction loss and an early-stopping rule.",
+  "given": [
+    "Toy objective J(a)=(a-3)\u00b2+2a\u00b2; start a = 0; gradient 6a-6; rate 1/6. Separate validation losses:[5, 3, 3, 4], patience 1, no ties as improvement.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Regularised update",
+      "icon": "code",
+      "detail": "At 0 gradient -6; update gives a = 1."
+    },
+    {
+      "label": "Split objective",
+      "icon": "chart",
+      "detail": "At 1 prediction term 4, penalty 2, total 6; at 0 total 9."
+    },
+    {
+      "label": "Early-stop separately",
+      "icon": "clock",
+      "detail": "Best validation checkpoint is 2 with loss 3; checkpoint 3 is no improvement, so stop at 3."
+    }
+  ],
+  "explanation": "Regularisation adds a parameter penalty to the training objective. Here it discourages large a, so the objective balances prediction error against that penalty. Early stopping is a different decision based on the supplied validation sequence. A tied validation loss is not improvement under this policy; stop when the patience allowance is used and restore the best checkpoint.",
+  "counterfactual": {
+    "change": "Change patience from 1 to2 under the same tie rule.",
+    "prediction": "Stop at checkpoint 4; still restore checkpoint 2.",
+    "reason": "Checkpoints 3 and 4 are two consecutive non-improvements; a later stop does not redefine the best checkpoint."
+  },
+  "student_task": "Why should the penalty value not be reported as validation error? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "It is part of the training objective, not the measured validation prediction loss. Report these separate quantities with their definitions. Changed-case check: Stop at checkpoint 4; still restore checkpoint 2. Checkpoints 3 and 4 are two consecutive non-improvements; a later stop does not redefine the best checkpoint.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Regularisation and early stopping are different tools; neither guarantees better performance in every dataset.",
+  "review_note": "Reviewed Regularisation and early stopping against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation."
+}

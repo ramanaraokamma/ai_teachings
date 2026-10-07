@@ -1,0 +1,62 @@
+{
+  "week": "ai-7/6",
+  "title": "A literature comparison matrix",
+  "outcome": "Explain a literature comparison matrix using the records and boundaries of this fictional investigation.",
+  "scenario": "A literature matrix that preserves differences. Two fictional studies evaluate related tools under different conditions.",
+  "given": [
+    "Study S1: 8/10 correct on indoor photos. S2: 16/20 on outdoor photos. Both report 80%."
+  ],
+  "steps": [
+    {
+      "icon": "book",
+      "label": "Record each method",
+      "detail": "Keep population, task, model version and scoring in separate columns."
+    },
+    {
+      "icon": "chart",
+      "label": "Compare rates carefully",
+      "detail": "Both rates are 80%, with different denominators and conditions."
+    },
+    {
+      "icon": "question",
+      "label": "Name missing comparison",
+      "detail": "Neither study directly compares both tools on the same photos."
+    }
+  ],
+  "explanation": "A literature matrix helps compare evidence without flattening differences. Equal percentages do not mean equivalent tasks, samples or methods.",
+  "counterfactual": {
+    "change": "Remove the indoor/outdoor column.",
+    "prediction": "The matrix conceals an important condition difference.",
+    "reason": "A reader might now mistake unlike studies for a controlled head-to-head comparison."
+  },
+  "student_task": "Explain why 8/10 indoors and 16/20 outdoors share a rate but not a controlled comparison. Which condition column must the literature matrix preserve?",
+  "teacher_answer": "Keep population, task, model version and scoring in separate columns. Both rates are 80%, with different denominators and conditions. Neither study directly compares both tools on the same photos. Changed case: The matrix conceals an important condition difference. A reader might now mistake unlike studies for a controlled head-to-head comparison.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "These fictional studies illustrate comparison practice; no real literature finding is asserted.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Same rate, different study conditions",
+    "cells": [
+      [
+        8,
+        10,
+        "Indoor"
+      ],
+      [
+        16,
+        20,
+        "Outdoor"
+      ]
+    ],
+    "row_labels": [
+      "Study S1",
+      "Study S2"
+    ],
+    "column_labels": [
+      "Correct",
+      "Total",
+      "Condition"
+    ]
+  }
+}

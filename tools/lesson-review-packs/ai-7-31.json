@@ -1,0 +1,135 @@
+{
+  "week": "ai-7/31",
+  "title": "Writing results and limitations",
+  "grade": 12,
+  "project": "Reproducible AI Research Study",
+  "goals": [
+    "Explain the mechanism and terminology of writing results and limitations",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Writing results and limitations",
+  "vocabulary": [
+    [
+      "Descriptive estimate",
+      "A quantity calculated from observed data"
+    ],
+    [
+      "Interpretation",
+      "A statement about what results establish"
+    ],
+    [
+      "Limitation linkage",
+      "Connecting each restriction to the claim it limits"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "B passes9/12, A8/12; three B failures all concern conflicting sources. No user study occurred."
+      },
+      {
+        "type": "paragraph",
+        "text": "75% versus66.667%, gain8.333 points on12 cases; conflict failures remain. No classroom usefulness or universal reliability claim is supported."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "B passes9/12, A8/12; three B failures all concern conflicting sources. No user study occurred. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: 75% versus66.667%, gain8.333 points on12 cases; conflict failures remain. No classroom usefulness or universal reliability claim is supported.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "Candidate10/15, baseline9/15; no timings measured. Write result and two limits.",
+    "answer": "Teacher explanation: 66.667% versus60%, gain6.667 points in15 cases. Timing is unmeasured and coverage/population generalisation remain limited.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "A limitation should directly bound the corresponding claim rather than contradict an oversized headline."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Give counts, denominators, effect sizes, valid uncertainty and failed conditions. State missing evidence and preserve the original primary outcome."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Writing results and limitations \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "B passes9/12, A8/12; three B failures all concern conflicting sources. No user study occurred.",
+            "Give counts, denominators, effect sizes, valid uncertainty and failed conditions. State missing evidence and preserve the original primary outcome.",
+            "75% versus66.667%, gain8.333 points on12 cases; conflict failures remain. No classroom usefulness or universal reliability claim is supported."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "B passes9/12, A8/12; three B failures all concern conflicting sources. No user study occurred. Show the intermediate steps and give the conclusion with its scope."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

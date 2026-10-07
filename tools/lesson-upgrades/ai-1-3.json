@@ -1,0 +1,74 @@
+{
+  "week": "ai-1/3",
+  "title": "Sensors Are Messengers",
+  "outcome": "By the end, I can compare sensor readings while controlling where and when they are measured.",
+  "scenario": "Two fictional light sensors disagree in a classroom. Compare them fairly rather than declaring one broken.",
+  "given": [
+    "On the same shelf, simultaneous readings are A: 40,50,60 and B: 45,55,65 in declared toy light units.",
+    "Neither device has been compared with a trusted reference."
+  ],
+  "steps": [
+    {
+      "label": "Same shelf",
+      "icon": "sensor",
+      "detail": "Place both devices together and allow them to settle."
+    },
+    {
+      "label": "Paired readings",
+      "icon": "data",
+      "detail": "Record three matching times: (40,45), (50,55), (60,65)."
+    },
+    {
+      "label": "Compare gaps",
+      "icon": "chart",
+      "detail": "B minus A is 5, 5 and 5 units."
+    },
+    {
+      "label": "Check a reference",
+      "icon": "check",
+      "detail": "A trusted reference is needed to decide which reading is closer."
+    }
+  ],
+  "explanation": "A repeated difference of 5 supports investigating an offset between devices. Matching time and location removes two obvious comparison problems. It does not show which device is correct: both could have errors. Preserve paired readings instead of adjusting them silently.",
+  "counterfactual": {
+    "change": "Move only B into brighter light.",
+    "prediction": "The next gap could change for reasons other than a difference in device accuracy.",
+    "reason": "The comparison now changes location as well as device; there is no supplied reading from the new location."
+  },
+  "student_task": "Why can we calculate the earlier gap but not predict an exact new B reading?",
+  "teacher_answer": "The earlier pairs give 5 each time. No measurement or light-response rule is given for B’s new location.",
+  "project_evidence": "Save sorter measurements with device, location and time so unusual inputs can be checked before decisions.",
+  "limits": "Three pairs do not prove an offset holds at every light level, nor identify the accurate device.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Simultaneous light readings",
+    "cells": [
+      [
+        40,
+        45,
+        5
+      ],
+      [
+        50,
+        55,
+        5
+      ],
+      [
+        60,
+        65,
+        5
+      ]
+    ],
+    "row_labels": [
+      "Time 1",
+      "Time 2",
+      "Time 3"
+    ],
+    "column_labels": [
+      "Sensor A",
+      "Sensor B",
+      "B minus A"
+    ]
+  }
+}

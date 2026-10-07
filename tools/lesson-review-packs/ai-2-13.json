@@ -1,0 +1,275 @@
+{
+  "week": "ai-2/13",
+  "title": "Types of Classification Error",
+  "grade": 7,
+  "project": "Transparent Book Recommender",
+  "goals": [
+    "Build a labelled confusion matrix from matched reference and prediction pairs",
+    "Distinguish false positives from false negatives using a declared positive class",
+    "Check matrix totals and explain why equal accuracy can hide different errors"
+  ],
+  "primary_topic": "Confusion matrices",
+  "vocabulary": [
+    [
+      "Confusion matrix",
+      "A table counting reference and prediction combinations"
+    ],
+    [
+      "Positive class",
+      "The class chosen as the condition of interest"
+    ],
+    [
+      "False positive",
+      "A positive prediction when the reference is negative"
+    ],
+    [
+      "False negative",
+      "A negative prediction when the reference is positive"
+    ]
+  ],
+  "worked_example": {
+    "title": "Name each cell using the positive class",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Blocked is the positive class",
+        "columns": [
+          "Reference and prediction",
+          "Cell name",
+          "IDs and count"
+        ],
+        "rows": [
+          [
+            "clear then clear",
+            "True negative TN",
+            "V1 V2 count 2"
+          ],
+          [
+            "clear then blocked",
+            "False positive FP",
+            "V3 count 1"
+          ],
+          [
+            "blocked then clear",
+            "False negative FN",
+            "V4 V5 count 2"
+          ],
+          [
+            "blocked then blocked",
+            "True positive TP",
+            "V6 V7 V8 count 3"
+          ]
+        ],
+        "caption": "Read reference first and prediction second. Here a false positive is a false blocked alarm; a false negative is a missed blocked case."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Place V3 and V4 in the matrix. Explain which is a false positive and which is a false negative when blocked is positive.",
+        "lines": 4
+      },
+      {
+        "type": "paragraph",
+        "text": "True means prediction agrees with the reference. It does not prove that the reference annotation is infallible. Resolve disputed labels with the documented review policy rather than silently changing them to match predictions."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Explain the two error types",
+    "prompt": "Declare blocked positive. Give TP,TN,FP,FN counts and explain V3 and V4 in plain language. Does positive mean a desirable outcome?",
+    "answer": "TP=3, TN=2, FP=1, FN=2. V3 predicts blocked for a reference-clear case, a false alarm or FP. V4 predicts clear for a reference-blocked case, a missed blocked case or FN. Positive names the chosen class; it does not mean desirable.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Count a fresh evaluation independently",
+    "task": "Each pair below is reference then prediction: R1 clear/clear, R2 clear/blocked, R3 clear/blocked, R4 blocked/blocked, R5 blocked/clear, R6 blocked/blocked. Use clear then blocked on both axes and reference rows. Build the matrix, give row and column totals, name TP,TN,FP,FN with blocked positive, and calculate accuracy.",
+    "answer": "Matrix [[1,2],[1,2]]. Row totals 3,3; column totals 2,4; total 6. TP=2,TN=1,FP=2,FN=1. Accuracy (1+2)/6=3/6=50 percent. False alarms are R2,R3; the missed blocked case is R5.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Positive means good",
+      "Positive is the chosen condition of interest; blocked is positive in this exercise."
+    ],
+    [
+      "A matrix has one universal visual orientation",
+      "Check whether rows are references or predictions and inspect class order. Our convention uses reference rows and prediction columns."
+    ],
+    [
+      "Zero errors in a cell means no future risk",
+      "It is an observed count on one evaluation set. Coverage, sample size and future conditions still matter."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1014bfe34dcdbfe26dab5427f026c6322072749ab554b827f36d2da19c4aa55d",
+        "alt": "INPUT stage for Types of Classification Error",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4e925c60dd915ab443d70e09bb217830ff66fd50e99a43e7fdbcd96d94ee0326",
+        "alt": "PROCESS stage for Types of Classification Error",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/5aed72fc309260397942fe62b0dc6e11c9f3e77bf5975db5676efc5c479aaecd",
+        "alt": "OUTPUT stage for Types of Classification Error",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "pairs = [(\"V1\", \"clear\", \"clear\"),\n         (\"V2\", \"clear\", \"clear\"),\n         (\"V3\", \"clear\", \"blocked\"),\n         (\"V4\", \"blocked\", \"clear\"),\n         (\"V5\", \"blocked\", \"clear\"),\n         (\"V6\", \"blocked\", \"blocked\"),\n         (\"V7\", \"blocked\", \"blocked\"),\n         (\"V8\", \"blocked\", \"blocked\")]\nlabels = [\"clear\", \"blocked\"]\nindex = {label: i for i, label in enumerate(labels)}\ncounts = [[0, 0], [0, 0]]\nfor item_id, reference, prediction in pairs:\n    counts[index[reference]][index[prediction]] += 1\nprint(counts)\ncorrect = counts[0][0] + counts[1][1]\nprint(correct, len(pairs))"
+      },
+      {
+        "type": "paragraph",
+        "text": "index maps clear to 0 and blocked to 1. Each paired record adds one to its reference row and prediction column. The script prints [[2, 1], [2, 3]] then 5 8. It assumes unique IDs and only these two labels. Check IDs and missing or unresolved references before counting; the code does not validate all those conditions."
+      },
+      {
+        "type": "table",
+        "rows": [
+          [
+            "Reference rows",
+            "Predicted clear",
+            "Predicted blocked"
+          ],
+          [
+            "Reference clear",
+            "2",
+            "1"
+          ],
+          [
+            "Reference blocked",
+            "2",
+            "3"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "The diagonal cells count correct predictions: 2+3=5. Off-diagonal cells count mistakes: 1+2=3. Every record must contribute exactly once. This is a count matrix, not percentages or probabilities. Keep the axis labels even when copying the numbers."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1f18213ba3d74c99072fa04ad7520b53eee0b2e9e845b0d8a61ccdda1b41f3f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fed8318cf337134a2c31a8d2c90831db67a27a43d3c6f85b25079c53ec37ff9a",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/75f964dbe29000347e518a59e2717387d7109bd1f947abdafa07e931a61cf754",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4d936b6648b81ac897fc99370c2788f8e0b135d8fc31cfd77afceee66a92128c",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

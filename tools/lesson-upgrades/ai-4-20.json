@@ -1,0 +1,38 @@
+{
+  "week": "ai-4/20",
+  "title": "Mean, Median, and Baselines",
+  "outcome": "By the end, I can explain mean, median, and baselines using a traced example and a stated limitation.",
+  "scenario": "Fit two constant height baselines and compare them on held-out examples.",
+  "given": [
+    "Training heights [2, 4, 6, 20] cm. Evaluation heights [4, 10] cm. Fit constants only from training.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Fit mean",
+      "icon": "chart",
+      "detail": "Training mean=(2+4+6+20)/4=8 cm."
+    },
+    {
+      "label": "Fit median",
+      "icon": "data",
+      "detail": "Training median=(4+6)/2=5 cm."
+    },
+    {
+      "label": "Evaluate constants",
+      "icon": "check",
+      "detail": "Mean MAE=(4+2)/2=3 cm; median MAE=(1+5)/2=3 cm."
+    }
+  ],
+  "explanation": "Read the picture in order. Mean MAE=(4+2)/2=3 cm; median MAE=(1+5)/2=3 cm. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Replace training 20 with 8 while keeping evaluation unchanged.",
+    "prediction": "Both fitted constants become5 cm and both evaluation MAEs remain3 cm.",
+    "reason": "Mean is now20/4=5; median stays5. The earlier training outlier affected the mean."
+  },
+  "student_task": "Does either original baseline win under evaluation MAE? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "No, both have3 cm MAE on the supplied evaluation set; do not claim a strict winner from the training statistic alone. Changed-case check: Both fitted constants become5 cm and both evaluation MAEs remain3 cm. Mean is now20/4=5; median stays5. The earlier training outlier affected the mean.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Mean and median have different loss properties, but their held-out performance depends on the particular evaluation cases.",
+  "review_note": "Reviewed Mean, Median, and Baselines against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

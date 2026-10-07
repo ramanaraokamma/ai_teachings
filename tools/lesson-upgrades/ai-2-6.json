@@ -1,0 +1,78 @@
+{
+  "week": "ai-2/6",
+  "title": "Debugging Strategies",
+  "outcome": "By the end, I can test a function with expected values that distinguish a particular bug.",
+  "scenario": "A fictional shelf function should count books in complete bundles plus loose books.",
+  "given": [
+    "Correct definition: shelf(bundle_count,loose) returns bundle_count*6+loose.",
+    "Faulty copied body returns (bundle_count+loose)*6. Predict tests before running."
+  ],
+  "steps": [
+    {
+      "label": "Expected normal test",
+      "icon": "book",
+      "detail": "For (2,1), correct result is 2×6+1=13."
+    },
+    {
+      "label": "Faulty trace",
+      "icon": "code",
+      "detail": "Copied code gives (2+1)×6=18."
+    },
+    {
+      "label": "Zero-bundle test",
+      "icon": "experiment",
+      "detail": "For (0,3), correct 3; copied code 18."
+    },
+    {
+      "label": "Nonrevealing test",
+      "icon": "check",
+      "detail": "For (2,0), both return 12; a pass does not locate every bug."
+    }
+  ],
+  "explanation": "Test cases need not all expose the same error. Here loose books must be added after multiplying bundles. A zero-loose case cannot distinguish the two formulas because multiplying zero loose books changes nothing. Keep expected and actual columns so an observed output does not quietly become its own expected answer.",
+  "counterfactual": {
+    "change": "Repair the body to bundle_count*6+loose.",
+    "prediction": "Expected results for (2,1),(0,3),(2,0) are 13,3,12.",
+    "reason": "Only bundles are groups of six; loose books are counted individually."
+  },
+  "student_task": "Which test most directly isolates the handling of loose books, and what should it produce?",
+  "teacher_answer": "(0,3) isolates loose books: expected 3. The faulty body gives 18.",
+  "project_evidence": "Test the recommender’s helper functions with normal, zero and boundary inputs before debugging the whole application.",
+  "limits": "These three tests check a specified formula and bug; they do not prove correct handling of every type or invalid request.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Expected outputs versus a specific bug",
+    "cells": [
+      [
+        2,
+        1,
+        13,
+        18
+      ],
+      [
+        0,
+        3,
+        3,
+        18
+      ],
+      [
+        2,
+        0,
+        12,
+        12
+      ]
+    ],
+    "row_labels": [
+      "Test 1",
+      "Test 2",
+      "Test 3"
+    ],
+    "column_labels": [
+      "Bundles",
+      "Loose",
+      "Correct",
+      "Faulty"
+    ]
+  }
+}

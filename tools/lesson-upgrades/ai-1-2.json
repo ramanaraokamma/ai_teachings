@@ -1,0 +1,68 @@
+{
+  "week": "ai-1/2",
+  "title": "Input, Process, Output",
+  "outcome": "By the end, I can trace an information path and name what a summary loses.",
+  "scenario": "A fictional classroom cupboard records coloured pencils, then reports just a total.",
+  "given": [
+    "Box A has 2 red and 4 blue pencils. Box B has 5 red and 1 blue.",
+    "The process adds colour counts and stores only the total, not the two counts."
+  ],
+  "steps": [
+    {
+      "label": "Read colours",
+      "icon": "data",
+      "detail": "A: red 2, blue 4. B: red 5, blue 1."
+    },
+    {
+      "label": "Add counts",
+      "icon": "code",
+      "detail": "A: 2+4=6. B: 5+1=6."
+    },
+    {
+      "label": "Store total",
+      "icon": "output",
+      "detail": "Both records become total 6."
+    },
+    {
+      "label": "Ask a new question",
+      "icon": "question",
+      "detail": "The saved totals cannot tell which box has more red pencils."
+    }
+  ],
+  "explanation": "Adding preserves the number of pencils but discards how that number was divided between colours. Both distinct inputs lead to the same stored output. Working backwards from 6 therefore has several possible answers; it is not an instruction to divide equally.",
+  "counterfactual": {
+    "change": "Store red count alongside total.",
+    "prediction": "The records become (6,2) and (6,5).",
+    "reason": "Blue count can now be recovered by total minus red, assuming these are the only colours."
+  },
+  "student_task": "Use the richer record to find blue pencils in Box B. Explain why total alone was insufficient.",
+  "teacher_answer": "6−5=1 blue pencil. Total 6 alone fits many red/blue combinations, including both boxes.",
+  "project_evidence": "Choose sorter inputs that retain the clues needed for its decision; draw the transformation and identify discarded details.",
+  "limits": "The two-colour assumption matters. Extra colours would prevent inferring blue from total and red alone.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Different colour counts, same total",
+    "cells": [
+      [
+        2,
+        4,
+        6
+      ],
+      [
+        5,
+        1,
+        6
+      ]
+    ],
+    "row_labels": [
+      "Box A",
+      "Box B"
+    ],
+    "column_labels": [
+      "Red",
+      "Blue",
+      "Total"
+    ]
+  }
+}

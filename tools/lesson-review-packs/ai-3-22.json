@@ -1,0 +1,250 @@
+{
+  "week": "ai-3/22",
+  "title": "Requests Responses and JSON",
+  "grade": 8,
+  "project": "Verified Study Buddy",
+  "goals": [
+    "Parse JSON into Python records",
+    "Validate data after parsing",
+    "Document input and output contracts"
+  ],
+  "primary_topic": "JSON and interface contracts",
+  "vocabulary": [
+    [
+      "JSON",
+      "A text format for structured values"
+    ],
+    [
+      "Parsing",
+      "Converting formatted text into program values"
+    ],
+    [
+      "Interface",
+      "The agreed way one part of a system exchanges data with another"
+    ],
+    [
+      "Contract",
+      "Specified inputs, outputs and error behavior"
+    ]
+  ],
+  "worked_example": {
+    "title": "Predict before running",
+    "blocks": [
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "JSON text contains {\"name\": \"Sketch\", \"minutes\": \"12\"}. Does parsing fail, or does validation fail?",
+        "lines": 6
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Separate failures",
+    "prompt": "Classify {\"minutes\": \"5\"} and {minutes: 5} as valid JSON text or malformed JSON.",
+    "answer": "The first is valid JSON but its minutes field fails the integer schema. The second is malformed because the key is not double-quoted.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Specify independently",
+    "task": "Define a JSON contract for {\"label\": \"Box\", \"count\": 4}: nonempty text label, integer count 0 through 10. Give a valid case, a wrong-type case and a missing-field case with expected acceptance.",
+    "answer": "Valid Box/4 accepted; count \"4\" rejected for type; absent count rejected as missing. State that malformed JSON and non-object top levels are also rejected.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A successful run proves the conclusion",
+      "An interface should state what happens for malformed text, wrong structure and invalid values. Do not expose raw private input in error messages. Use only the fictional records supplied for practice."
+    ],
+    [
+      "Matching the example is enough",
+      "Require the new W4 case, explicit predictions and an explanation. Fresh retry: label Tray and score integer 0 through 5. Cases score 0 accepted, score 6 rejected, score null rejected; JSON list rejected before field access."
+    ],
+    [
+      "A convenient shortcut preserves meaning",
+      "Single quotes around property names are not valid JSON syntax. Use double quotes in the JSON text. If the whole parsed value is a list, do not call .get on it: check the top-level type first and report a schema failure."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ba644fc294bb34533bcbda7663ecbae1fcd8c196ad576bf98e41079ec1e0dbc4",
+        "alt": "INPUT stage for Requests, Responses, and JSON",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/198112f2aba14a21b1401f876a9b9dea3d4cfe84277f56f07d6db06c4ef1ffc5",
+        "alt": "PROCESS stage for Requests, Responses, and JSON",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1855a74a72e66ebda7b7299a5023e89730f8172df50b9e75eda2adb344faf41f",
+        "alt": "OUTPUT stage for Requests, Responses, and JSON",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "import json\ntext = '{\"name\": \"Sketch\", \"minutes\": 12}'\nrecord = json.loads(text)\nvalid = (type(record) is dict\n         and type(record.get(\"name\")) is str\n         and len(record[\"name\"]) > 0\n         and type(record.get(\"minutes\")) is int\n         and 0 <= record[\"minutes\"] <= 60)\nresult = {\"accepted\": valid, \"minutes\": record.get(\"minutes\")}\nprint(json.dumps(result))"
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Follow the evidence",
+        "columns": [
+          "Step or case",
+          "Evidence",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "Input text",
+            "JSON object",
+            "Parse with json.loads"
+          ],
+          [
+            "Python value",
+            "Dictionary fields",
+            "Check schema"
+          ],
+          [
+            "Output text",
+            "accepted and minutes",
+            "Serialize with json.dumps"
+          ]
+        ],
+        "caption": "Read each row from left to right and connect the evidence to the stated rule."
+      },
+      {
+        "type": "paragraph",
+        "text": "The output is {\"accepted\": true, \"minutes\": 12}. JSON uses lowercase true, false and null; Python uses True, False and None. json.loads converts between representations. The worked output line assumes the parsed top-level value is a dictionary; a robust interface must reject other top-level types before accessing fields."
+      },
+      {
+        "type": "subheading",
+        "text": "Check the envelope before its fields"
+      },
+      {
+        "type": "paragraph",
+        "text": "JSON is a text format for exchanging values. Parsing asks whether the text follows that format. Schema checking asks whether the parsed value has the structure and values your task requires. Start by checking that the whole value is an object, represented here by a Python dictionary. Only then look up name and minutes. A valid JSON list is still the wrong top-level structure for this contract. Syntax success and acceptance are separate decisions."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/baa081bb74d63b3556ecfd5951cdc8779d64ec1813de34614621c4e969a973f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/5e6557194a1470352d07b6a509da5d673d81767981996dd1b685f799a5582b76",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/8e1f2e3affdd81449df265675243cda4511c1e88dd8cd9583d4ea42f6083c297",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/a54f0c40e48e47ca92a4c36ebbc98f08b4a78c72cd385d85b0a5a7f07f558757",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "week": "ai-3/6",
+  "title": "Examples and Rubrics",
+  "outcome": "By the end, I can use examples to teach a format and a rubric to check support, not imitation.",
+  "scenario": "A fictional Study Buddy creates question cards from a verified animal note.",
+  "given": [
+    "Approved N: a frog is an amphibian. Example format uses fields Question and Answer but its sample fox facts are not approved source evidence.",
+    "Rubric requires both fields, one question and a source-supported answer. Draft asks “What is a frog?” and answers “A mammal”."
+  ],
+  "steps": [
+    {
+      "label": "Separate roles",
+      "icon": "book",
+      "detail": "The example teaches card format; N supplies this card’s facts."
+    },
+    {
+      "label": "Format checks",
+      "icon": "check",
+      "detail": "Question and Answer are present, with one question."
+    },
+    {
+      "label": "Support check",
+      "icon": "shield",
+      "detail": "Mammal contradicts N’s amphibian statement."
+    },
+    {
+      "label": "Repair content",
+      "icon": "output",
+      "detail": "Answer: an amphibian. Keep the same required two-field structure."
+    }
+  ],
+  "explanation": "A few-shot example demonstrates what an output should look like; it does not automatically become factual authority for a different case. The draft satisfies layout while failing meaning. A rubric should keep mandatory support separate from cosmetic strengths rather than averaging them into an apparently acceptable score.",
+  "counterfactual": {
+    "change": "The draft answers amphibian but omits the Question field.",
+    "prediction": "Support passes, format completeness fails.",
+    "reason": "Correct facts do not satisfy a missing mandatory field."
+  },
+  "student_task": "Explain why neither original nor changed draft is a full pass, and provide a complete repaired card.",
+  "teacher_answer": "Original fails factual support; changed fails Question field. Complete card: Question: What is a frog? Answer: An amphibian.",
+  "project_evidence": "Give Study Buddy examples labelled as format demonstrations, then assess source support and required structure separately.",
+  "limits": "One repaired card does not establish the prompt follows every example or generalises to unknown questions.",
+  "review_note": "Individually designed fictional worked case, distinct from the reserved assessment. Toy model simplifications, arithmetic and source authority reviewed explicitly."
+}

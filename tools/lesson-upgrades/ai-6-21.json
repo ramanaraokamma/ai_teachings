@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/21",
+  "title": "Caching and stale information",
+  "outcome": "Explain caching and stale information using the deciding step in this fictional service.",
+  "scenario": "Cache by source version. A service has an opening-time answer cached from version 4, but version 5 is now approved.",
+  "given": [
+    "Version 4 says 09:00; version 5 says 09:30. Cache key contains room and source version."
+  ],
+  "steps": [
+    {
+      "label": "Read authority",
+      "icon": "book",
+      "detail": "The current approved source version is 5."
+    },
+    {
+      "label": "Inspect cached key",
+      "icon": "data",
+      "detail": "The 09:00 entry belongs to version 4."
+    },
+    {
+      "label": "Fetch current evidence",
+      "icon": "check",
+      "detail": "Retrieve and cache version 5’s 09:30 under its own key."
+    }
+  ],
+  "explanation": "A cache saves repeated work but can retain obsolete facts. Version-aware keys distinguish answers grounded in different records.",
+  "counterfactual": {
+    "change": "The next request still uses approved version 5.",
+    "prediction": "The matching version-5 entry can supply 09:30 under the freshness policy.",
+    "reason": "Request and cached source version now agree."
+  },
+  "student_task": "Identify the version mismatch in the cached 09:00 answer. What should the first version-5 request return, and what permits a later version-5 cache hit?",
+  "teacher_answer": "The current approved source version is 5. The 09:00 entry belongs to version 4. Retrieve and cache version 5’s 09:30 under its own key. Changed case: The matching version-5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "Version keys cannot detect silent unversioned edits; the source publication process must update versions reliably.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

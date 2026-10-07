@@ -1,0 +1,148 @@
+{
+  "week": "ai-5/16",
+  "title": "Regularisation and early stopping",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Separate a weight penalty from prediction error",
+    "Trace a regularised update under a stated objective",
+    "Apply a stopping rule and restore the best observed checkpoint"
+  ],
+  "primary_topic": "Regularisation and early stopping",
+  "vocabulary": [
+    [
+      "Regularisation",
+      "A constraint or training procedure intended to limit fitting choices and improve generalisation"
+    ],
+    [
+      "Weight penalty",
+      "An added objective term that discourages specified large parameter values"
+    ],
+    [
+      "Patience",
+      "The allowed run of consecutive non-improving evaluations before stopping under a stated rule"
+    ],
+    [
+      "Restore",
+      "Reload the parameters saved at the selected checkpoint"
+    ]
+  ],
+  "worked_example": {
+    "title": "Make the stopping policy executable on paper",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Patience two with strict improvement",
+        "columns": [
+          "Epoch",
+          "Validation MSE",
+          "Decision"
+        ],
+        "rows": [
+          [
+            "0 then 1 then 2",
+            "4 then 2 then 1.5",
+            "Save each improved state"
+          ],
+          [
+            "3 then 4",
+            "1.6 then 1.4",
+            "Wait once then reset"
+          ],
+          [
+            "5 then 6",
+            "1.45 then 1.46",
+            "Two misses so stop at 6"
+          ]
+        ],
+        "caption": "Initial checkpoint is epoch 0. Evaluate once after each epoch. A strict decrease is improvement; an exact tie is a miss. Reset the miss count after improvement and stop at two consecutive misses. Restore epoch 4, the best observed checkpoint."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "At epochs 3, 4, 5 and 6, record the miss count after evaluation. Which epoch stops training, and which epoch supplies the restored parameters?",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the next update",
+    "prompt": "Start v = 1.6 with lambda = 0.5 and rate 0.1. Calculate both gradient contributions, new v and new prediction MSE.",
+    "answer": "Teacher explanation: Data gradient -2, penalty gradient 1.6, total -0.4. New v = 1.64; prediction MSE is 2.5 times 0.36 squared = 0.324.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Transfer both rules independently",
+    "task": "For a new objective J(a) = (a - 2) squared + a squared, gradient 4a - 4, start a = 0 and take one step at rate 0.25. Give new a, prediction error term, penalty and total J. Separately apply patience 2 with strict improvement to validation values [3, 2, 2, 2, 1] at epochs 0 to 4; report the stop and restored epochs.",
+    "answer": "Teacher explanation: The update gives a = 1. Prediction error 1, penalty 1, total J 2. For the separate curve, epoch 1 is best at 2; ties at 2 and 3 are two misses, so stop at epoch 3 and restore epoch 1. Epoch 4 is not observed by that live policy.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Zero prediction error means no regularised update",
+      "The penalty gradient can remain nonzero."
+    ],
+    [
+      "Early stopping adds a weight penalty",
+      "It limits training duration using a validation rule; a weight penalty changes the objective."
+    ],
+    [
+      "Restore the epoch where stopping happened",
+      "Restore the best observed checkpoint under the declared rule, which can be earlier."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "The data gradient is 5(v - 2). The penalty gradient is 2 times lambda times v, giving total gradient 5(v - 2) + 2 lambda v. At v = 1.5 and lambda = 0.5, these contributions are -2.5 and 1.5, so total gradient is -1. A rate 0.1 step gives v = 1.6."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "def terms(v, penalty):\n    data_loss = 2.5 * (v - 2) ** 2\n    weight_cost = penalty * v * v\n    gradient = 5 * (v - 2) + 2 * penalty * v\n    return data_loss, weight_cost, data_loss + weight_cost, gradient\n\nv = 1.5\npenalty = 0.5\nold = terms(v, penalty)\nv = v - 0.1 * old[3]\nprint(round(v, 6))  # 1.6\nprint([round(x, 6) for x in terms(v, penalty)])\n# [0.4, 1.28, 1.68, -0.4]"
+      },
+      {
+        "type": "paragraph",
+        "text": "Assume finite numeric values and nonnegative penalty. At the new v, data loss is 0.4, penalty 1.28 and total 1.68. Choose penalty strength using a declared validation prediction metric, not by comparing total objectives with different lambdas as if they were the same measure."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Start v = 1.6 with lambda = 0.5 and rate 0.1. Calculate both gradient contributions, new v and new prediction MSE."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

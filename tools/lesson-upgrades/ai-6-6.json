@@ -1,0 +1,37 @@
+{
+  "week": "ai-6/6",
+  "title": "Least privilege and tool scopes",
+  "outcome": "Explain least privilege and tool scopes using the deciding step in this fictional service.",
+  "scenario": "A narrowly scoped weather tool. A school bot holds a token allowing only reading station S2.",
+  "given": [
+    "Requested calls: read S2, write S2, read S5. Trusted scope is read on S2 only."
+  ],
+  "steps": [
+    {
+      "label": "Match scope",
+      "icon": "shield",
+      "detail": "Read S2 matches both the allowed operation and station."
+    },
+    {
+      "label": "Reject extra powers",
+      "icon": "rule",
+      "detail": "Write S2 has the wrong operation; read S5 has the wrong station."
+    },
+    {
+      "label": "Run permitted call",
+      "icon": "output",
+      "detail": "Only read S2 may proceed."
+    }
+  ],
+  "explanation": "Least privilege limits a component to needed powers. Checking only the verb or only the object would leave a gap.",
+  "counterfactual": {
+    "change": "Add read S5 explicitly to the trusted scope.",
+    "prediction": "Read S5 becomes permitted; write S2 remains denied.",
+    "reason": "Adding one station does not grant a write operation."
+  },
+  "student_task": "Classify read S2, write S2 and read S5 as permitted or denied. Identify the operation or station mismatch for each denial, then reconsider after read S5 is added to trusted scope.",
+  "teacher_answer": "Read S2 matches both the allowed operation and station. Write S2 has the wrong operation; read S5 has the wrong station. Only read S2 may proceed. Changed case: Read S5 becomes permitted; write S2 remains denied. Adding one station does not grant a write operation.",
+  "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
+  "limits": "A narrowly scoped credential can still be misused within its scope; protect it and inspect permitted actions.",
+  "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."
+}

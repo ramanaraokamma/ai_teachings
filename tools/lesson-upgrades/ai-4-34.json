@@ -1,0 +1,38 @@
+{
+  "week": "ai-4/34",
+  "title": "Capstone Dataset and Baseline",
+  "outcome": "By the end, I can explain capstone dataset and baseline using a traced example and a stated limitation.",
+  "scenario": "Plan the plant capstone around independent groups and a baseline before collecting more rows.",
+  "given": [
+    "Toy proposed dataset: 8 plants, 3 photos each. Development groupsA–F; final groupsG, H. Target is visible-spot status, with review for hidden leaves.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Define target",
+      "icon": "rule",
+      "detail": "Write visible-spot and review rules before annotation."
+    },
+    {
+      "label": "Split by groups",
+      "icon": "shield",
+      "detail": "Keep all 18 A–F views in development and all 6 G/H views for final evaluation."
+    },
+    {
+      "label": "Plan baseline",
+      "icon": "model",
+      "detail": "Fit majority label only from development training; record metrics and error types."
+    }
+  ],
+  "explanation": "Read the picture in order. Fit majority label only from development training; record metrics and error types. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "A derived crop of plantG is added to training.",
+    "prediction": "The final group separation is violated.",
+    "reason": "The crop retains the same source plant identity even with a new file name."
+  },
+  "student_task": "What provenance field prevents the crop from appearing independent? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Store original_plant_id=G and the parent image ID; all derived G records must remain with their assigned final group. Changed-case check: The final group separation is violated. The crop retains the same source plant identity even with a new file name.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "A well-planned split does not create sufficient sample size; two held-out plants support only a very narrow claim.",
+  "review_note": "Reviewed Capstone Dataset and Baseline against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

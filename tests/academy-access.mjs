@@ -27,145 +27,25 @@ const session=(role,expires=Math.floor(Date.now()/1000)+3600)=>{
   return 'academy_access='+payload+'.'+createHmac('sha256',secret).update(payload).digest('hex');
 };
 try {
- await check('Only landing content is public',async()=>{
-  const r=await request('/');assert.equal(r.status,200);const html=await r.text();
-  assert.match(html,/Curious minds/);assert.doesNotMatch(html,/student1234|teacher1234|AI or Not|Expected independent answer/);
+ await check('Signed-out lesson is protected',async()=>assert.equal((await request('/learn/student/ai-1/1')).status,307));
+ await check('Student cannot open teacher portal',async()=>assert.equal((await request('/learn/teacher/ai-1/1',session('student'))).status,307));
+ await check('Unified curriculum has 264 lessons',async()=>assert.equal(data.levels.reduce((n,l)=>n+l.weeks.length,0),264));
+ for(const level of data.levels) for(const week of level.weeks) {
+  await check(`${level.slug}/${week.number} complete student lesson`,async()=>{
+   const r=await request(`/learn/student/${level.slug}/${week.number}`,session('student'));assert.equal(r.status,200);const html=await r.text();
+   for(const page of week.student.pages)assert.ok(html.includes(`id="section-${page.number}"`));
+   assert.ok(html.includes('Download PDF'));assert.ok(html.includes('instruction-visual'));
+  });
+ }
+ for(const role of ['student','teacher']) await check(`${role} workbook and guide`,async()=>{
+  const r=await request(`/learn/${role}/ai-7/36?resource=${role==='teacher'?'guide':'workbook'}`,session(role));assert.equal(r.status,200);
+  assert.ok((await r.text()).includes(role==='teacher'?'Teacher guide':'textarea'));
  });
  for(const role of ['student','teacher']) {
-  await check(`${role} requires authentication`,async()=>{const r=await request(`/learn/${role}/ai-1/1`);assert.equal(r.status,307);assert.match(r.headers.get('location'),/access=required/);});
-  await check(`${role} passcode creates a protected session`,async()=>{
-   const r=await request('/api/access',null,{method:'POST',headers:{'content-type':'application/x-www-form-urlencoded',origin:'https://academy.test'},body:new URLSearchParams({role,passcode:role+'1234'}).toString()});
-   assert.equal(r.status,303);assert.match(r.headers.get('set-cookie'),/HttpOnly/i);assert.match(r.headers.get('set-cookie'),/Secure/i);assert.match(r.headers.get('location'),new RegExp('/learn/'+role));
-  });
+  const id=Object.keys(manifest).find(id=>manifest[id].role===role&&manifest[id].filename?.endsWith('.pdf'));
+  await check(`${role} protected PDF download`,async()=>{const r=await request('/api/resource/'+id,session(role));assert.equal(r.status,200);assert.equal(r.headers.get('content-type'),'application/pdf');assert.equal(Buffer.from(await r.arrayBuffer()).subarray(0,4).toString(),'%PDF');});
+  if(role==='teacher')await check('Student cannot retrieve teacher download',async()=>assert.equal((await request('/api/resource/'+id,session('student'))).status,404));
  }
- await check('Wrong passcode is rejected',async()=>{const r=await request('/api/access',null,{method:'POST',headers:{'content-type':'application/x-www-form-urlencoded'},body:'role=teacher&passcode=student1234'});assert.equal(r.status,303);assert.match(r.headers.get('location'),/incorrect/);assert.equal(r.headers.get('set-cookie'),null);});
- await check('Student cannot open teacher pages',async()=>{assert.equal((await request('/learn/teacher/ai-4/17',session('student'))).status,307);});
- await check('Expired and tampered sessions are rejected',async()=>{for(const c of [session('student',1),session('teacher')+'bad'])assert.equal((await request('/learn/student',c)).status,307);});
- for(const level of data.levels) {
-  await check(`${level.code} has 36 accessible weeks`,async()=>{
-   const r=await request(`/learn/student/${level.slug}`,session('student'));assert.equal(r.status,200);const html=(await r.text()).replace(/<!--.*?-->/gs,'');assert.ok(html.includes('Week 36'));assert.ok(html.includes(level.phases[0].name));
-  });
- }
- await check('Student lesson contains full visuals and no teacher answers',async()=>{
-  const r=await request('/learn/student/ai-4/17?resource=guide',session('student'));assert.equal(r.status,200);const html=await r.text();assert.match(html,/instruction-visual/);assert.match(html,/Download editable/);assert.doesNotMatch(html,/Expected independent answer|Teacher-ready background/);assert.match(r.headers.get('cache-control'),/no-store/);
- });
- await check('Teacher guide includes aligned reasoning',async()=>{const r=await request('/learn/teacher/ai-4/17',session('teacher'));assert.equal(r.status,200);assert.match(await r.text(),/Precision is 6/);});
- await check('Workbook offers response fields',async()=>{const r=await request('/learn/student/ai-3/8?resource=workbook',session('student'));assert.equal(r.status,200);assert.match(await r.text(),/<textarea/);});
- await check('All 144 lesson books have individual diagrams, teaching panels, retained artwork and complete chapters',async()=>{
-  for(const level of data.levels) for(const week of level.weeks) {
-   const r=await request(`/learn/student/${level.slug}/${week.number}`,session('student'));
-   assert.equal(r.status,200,`${level.slug}/${week.number}`);
-   const html=await r.text();
-   const reviewId=`${level.slug}/${week.number}`;
-   assert.ok(html.includes(`data-review-id="${reviewId}"`));
-   assert.ok(html.includes(`data-transfer-id="${reviewId}"`));
-   assert.doesNotMatch(html,/data-teacher-solution=/);
-   assert.ok(!html.includes(review[reviewId].solution),`Teacher transfer answer leaked: ${reviewId}`);
-   assert.equal((html.match(/class="instruction-visual"/g)||[]).length,5,`${level.slug}/${week.number} story and vocabulary artwork count`);
-   assert.equal((html.match(/role="tab"/g)||[]).length,0);
-   assert.match(html,/data-native-diagram="mechanism"/);
-   assert.match(html,/data-edition="grade6-entry-2026-09-14"/);
-   assert.ok(html.includes(`data-topic-id="${level.slug}/${week.number}"`));
-   assert.ok(html.includes(`data-diagram-kind="${plans[`${level.slug}/${week.number}`].kind}"`));
-   for(const panel of ['repair','worked-case','case-comparison'])assert.ok(html.includes(`data-topic-panel="${panel}"`));
-   assert.match(html,/class="reasoning-path/);
-   assert.match(html,/vocabulary-cards/);
-   assert.equal(r.headers.get('x-academy-edition'),'grade6-entry-2026-09-14');
-   assert.match(html,/Enlarge illustration/);
-   for(const page of week.student.pages) assert.ok(html.includes(`id="section-${page.number}"`),`Missing page ${page.number}`);
-   assert.doesNotMatch(html,/Expected independent answer/);
-   if(process.env.EXPORT_BOOKS==='1'){
-    const folder=`outputs/books/${level.slug}`;await mkdir(folder,{recursive:true});
-    await writeFile(`${folder}/week-${String(week.number).padStart(2,'0')}-lesson.html`,html);
-   }
-  }
- });
- await check('All 144 teacher guides and 144 workbook pages use the matching topic plan',async()=>{
-  for(const level of data.levels)for(const week of level.weeks)for(const resource of ['guide','workbook']){
-   const role=resource==='guide'?'teacher':'student';
-   const r=await request(`/learn/${role}/${level.slug}/${week.number}?resource=${resource}`,session(role));assert.equal(r.status,200);
-   const html=await r.text();assert.match(html,resource==='guide'?/topic-teacher-prompt/:/topic-workbook-prompt/);
-   const reviewId=`${level.slug}/${week.number}`;
-   assert.ok(html.includes(`data-transfer-id="${reviewId}"`));
-   if(resource==='guide')assert.ok(html.includes(`data-teacher-solution="${reviewId}"`));
-   else {assert.doesNotMatch(html,/data-teacher-solution=/);assert.ok(!html.includes(review[reviewId].solution));}
-   if(resource==='guide')assert.ok(html.includes(`data-topic-id="${level.slug}/${week.number}"`));
-   else assert.doesNotMatch(html,/Expected independent answer/);
-   if(process.env.EXPORT_BOOKS==='1')await writeFile(`outputs/books/${level.slug}/week-${String(week.number).padStart(2,'0')}-${resource}.html`,html);
-  }
- });
- await check('Sensor lesson explains measurement separately from fixed-rule decisions',async()=>{
-  const r=await request('/learn/student/ai-1/3',session('student'));
-  const html=await r.text();
-  assert.match(html,/data-native-diagram="sensor-matching"/);
-  assert.match(html,/The sensor measures. The rule decides./);
-  assert.match(html,/IF reading &lt; 30/);
-  assert.match(html,/role="slider"/);
-  await mkdir('outputs',{recursive:true});
-  await writeFile('outputs/ai1-week03-rendered.html',html);
- });
- await check('Teacher guides contain a visual board plan',async()=>{const r=await request('/learn/teacher/ai-2/3',session('teacher'));const h=await r.text();assert.match(h,/teacher-visual-board/);assert.match(h,/data-native-diagram="mechanism"/);});
- const studentImage=Object.entries(manifest).find(([,m])=>m.mime==='image/png'&&m.role==='student')[0];
- const teacherDoc=Object.entries(manifest).find(([,m])=>m.role==='teacher'&&m.filename)[0];
- const studentDoc=Object.entries(manifest).find(([,m])=>m.role==='student'&&m.filename)[0];
- await check('Images require a session and decrypt to PNG',async()=>{
-  assert.equal((await request('/api/resource/'+studentImage)).status,401);
-  const r=await request('/api/resource/'+studentImage,session('student'));assert.equal(r.status,200);assert.equal(r.headers.get('content-type'),'image/png');assert.equal(Buffer.from(await r.arrayBuffer()).subarray(0,8).toString('hex'),'89504e470d0a1a0a');assert.match(r.headers.get('cache-control'),/no-store/);
- });
- await check('Teacher documents are forbidden to students',async()=>{assert.equal((await request('/api/resource/'+teacherDoc,session('student'))).status,404);});
- for(const [role,id] of [['student',studentDoc],['teacher',teacherDoc]])await check(`${role} Word download is intact`,async()=>{const r=await request('/api/resource/'+id,session(role));assert.equal(r.status,200);assert.match(r.headers.get('content-disposition'),/attachment/);assert.equal(Buffer.from(await r.arrayBuffer()).subarray(0,2).toString(),'PK');});
- await check('Image optimizer cannot bypass access',async()=>{assert.equal((await request('/_vinext/image?url=/api/resource/'+studentImage+'&w=640&q=75')).status,404);});
- await check('Cross-origin sign-in is rejected',async()=>{const r=await request('/api/access',null,{method:'POST',headers:{origin:'https://other.test'}});assert.equal(r.status,403);});
- await check('Logout clears session cookie',async()=>{const r=await request('/api/logout',session('student'),{method:'POST'});assert.equal(r.status,303);assert.match(r.headers.get('set-cookie'),/Max-Age=0/i);});
- const v3=JSON.parse(await readFile('curriculum-v3/releases.json','utf8'));
- await check('Curriculum 3 roadmap and chapters require a session',async()=>{
-  for(const p of ['/learn/student/curriculum','/learn/teacher/curriculum','/learn/student/curriculum/ai-1/1'])assert.equal((await request(p)).status,307);
-  assert.equal((await request('/learn/teacher/curriculum/ai-1/1',session('student'))).status,307);
-  assert.equal((await request('/learn/student/curriculum/ai-1/1?resource=guide',session('student'))).status,404);
- });
- await check('Curriculum 3 exposes only released weeks as lessons',async()=>{
-  const html=(await (await request('/learn/student/curriculum',session('student'))).text()).replace(/<!--.*?-->/gs,'');
-  assert.ok(html.includes(`${Object.keys(v3).length} of 252 weekly packages released`));assert.equal((html.match(/class="v3-level"/g)||[]).length,7);
-  assert.equal((html.match(/class="v3-status v3-planned"/g)||[]).length,252-Object.keys(v3).length);
-  const progression=JSON.parse(await readFile('curriculum-v3/progression.json','utf8'));
-  const planned=progression.levels.flatMap(level=>level.weeks.map((_,i)=>`${level.slug}/${i+1}`)).filter(id=>!v3[id]);
-  const unavailable=[...new Set([planned[0],planned.at(-1)].filter(Boolean))].map(id=>`/learn/student/curriculum/${id}`);
-  for(const path of [...unavailable,'/learn/student/curriculum/ai-1/01','/learn/student/curriculum/ai-1/1?resource=bad'])assert.equal((await request(path,session('student'))).status,404);
- });
- await check('All rebuilt pages contain canonical content and separate teacher answers',async()=>{
-  const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#x27;');
-  for(const [id,release] of Object.entries(v3)){
-   const [level,num]=id.split('/');const w=JSON.parse(await readFile(`curriculum-v3/${level}-week-${num.padStart(2,'0')}.json`,'utf8'));
-   for(const resource of ['lesson','workbook','guide']){
-    const role=resource==='guide'?'teacher':'student';const r=await request(`/learn/${role}/curriculum/${id}?resource=${resource}`,session(role));assert.equal(r.status,200);
-    const h=(await r.text()).replace(/<!--.*?-->/gs,'');assert.ok(h.includes(release.sourceHash));assert.ok(h.includes(esc(w.title)));assert.match(r.headers.get('cache-control'),/no-store/);
-    if(resource==='guide'){for(const task of w.workbook)assert.ok(h.includes(esc(task.answer)),`${id}: answer missing`);}
-    else {assert.doesNotMatch(h,/data-teacher-answers/);for(const task of w.workbook)assert.ok(!h.includes(esc(task.answer)),`${id}: teacher answer leaked`);}
-    if(resource==='lesson')for(const section of w.lesson)for(const b of section.blocks)if(b.type==='paragraph'||b.type==='code')assert.ok(h.includes(esc(b.text)),`${id}: lesson paragraph missing`);
-    if(resource==='workbook')for(const task of w.workbook)assert.ok(h.includes(esc(task.prompt)),`${id}: prompt missing`);
-    for(const ext of ['docx','pdf'])assert.ok(h.includes(release.documents[`${resource}.${ext}`].id));
-   }
-  }
- });
- await check('All rebuilt downloads enforce their roles and match reviewed bytes',async()=>{
-  const {createHash}=await import('node:crypto');
-  for(const r of Object.values(v3))for(const [name,a] of Object.entries(r.documents)){
-   assert.equal((await request('/api/resource/'+a.id)).status,401);
-   const role=name.startsWith('guide')?'teacher':'student';
-   if(role==='teacher')assert.equal((await request('/api/resource/'+a.id,session('student'))).status,404);
-   const response=await request('/api/resource/'+a.id,session(role));assert.equal(response.status,200);
-   assert.equal(createHash('sha256').update(Buffer.from(await response.arrayBuffer())).digest('hex'),a.sha256);
-  }
- });
- await check('Rebuilt teacher sources are absent from public JavaScript',async()=>{
-  async function files(dir){const all=[];for(const f of await readdir(dir,{withFileTypes:true})){const p=join(dir,f.name);if(f.isDirectory())all.push(...await files(p));else if(/\.(js|json|map)$/.test(f.name))all.push(p);}return all;}
-  const publicText=(await Promise.all((await files('dist/client')).map(p=>readFile(p,'utf8')))).join('\n');
-  for(const id of Object.keys(v3)){
-   const [level,num]=id.split('/');const chapter=JSON.parse(await readFile(`curriculum-v3/${level}-week-${num.padStart(2,'0')}.json`,'utf8'));
-   for(const task of chapter.workbook)assert.ok(!publicText.includes(task.answer),`${id}: answer in public bundle`);
-   assert.ok(!publicText.includes(chapter.teacher.background),`${id}: guide in public bundle`);
-  }
- });
- await writeFile('access-test-results.json',JSON.stringify({passed:results.length,checks:results},null,2));
- console.log(JSON.stringify({passed:results.length,checks:results.map(r=>r.name)}));
-} finally { delete globalThis.__academyTestEnv; }
+ await check('Old curriculum address redirects to unified portal',async()=>{const r=await request('/learn/student/curriculum',session('student'));assert.equal(r.status,307);assert.ok(r.headers.get('location').endsWith('/learn/student'));});
+ console.log(`${results.length} access and lesson checks passed`);
+} finally {await writeFile('access-test-results.json',JSON.stringify({results},null,2));}

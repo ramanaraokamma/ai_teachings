@@ -1,0 +1,37 @@
+{
+  "week": "ai-7/1",
+  "title": "A question that evidence can answer",
+  "outcome": "Explain a question that evidence can answer using the records and boundaries of this fictional investigation.",
+  "scenario": "A question with a measurable answer. A team wants to know whether giving a diagram changes accuracy on six fixed plant-identification tasks.",
+  "given": [
+    "Candidate questions: \"Are diagrams wonderful?\" and \"Does version B answer more of these six tasks correctly than version A?\""
+  ],
+  "steps": [
+    {
+      "icon": "question",
+      "label": "Narrow the question",
+      "detail": "Name versions A and B, the six tasks and correct-answer scoring."
+    },
+    {
+      "icon": "rule",
+      "label": "Define the comparison",
+      "detail": "Use the same tasks and labels with and without the diagram."
+    },
+    {
+      "icon": "check",
+      "label": "Bound the conclusion",
+      "detail": "The study can compare those versions on those tasks, not all diagrams or learners."
+    }
+  ],
+  "explanation": "An answerable research question connects a change to an observable outcome and a specified population. Opinion words need an operational definition before measurement.",
+  "counterfactual": {
+    "change": "Replace the six tasks with six easier tasks only for B.",
+    "prediction": "The comparison no longer isolates the diagram condition.",
+    "reason": "Task difficulty now changes alongside the proposed intervention."
+  },
+  "student_task": "Which proposed diagram question has a measurable outcome? Name its versions, six-case denominator and fixed scoring, then explain why giving only B easier tasks spoils the comparison.",
+  "teacher_answer": "Name versions A and B, the six tasks and correct-answer scoring. Use the same tasks and labels with and without the diagram. The study can compare those versions on those tasks, not all diagrams or learners. Changed case: The comparison no longer isolates the diagram condition. Task difficulty now changes alongside the proposed intervention.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "This fictional study does not establish effects on children or general classroom learning.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted."
+}

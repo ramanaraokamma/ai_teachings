@@ -1,0 +1,55 @@
+{
+  "week": "ai-7/34",
+  "title": "Final project manuscript",
+  "outcome": "Explain final project manuscript using the records and boundaries of this fictional investigation.",
+  "scenario": "Build a manuscript from claim to record. A capstone manuscript compares two frozen pattern classifiers on ten reserved cases.",
+  "given": [
+    "A is correct on 7/10; B on 8/10. All cases are indoor, from five plants with two views each."
+  ],
+  "steps": [
+    {
+      "icon": "book",
+      "label": "State bounded claim",
+      "detail": "B adds one correct photo on this indoor set."
+    },
+    {
+      "icon": "data",
+      "label": "Describe dependence",
+      "detail": "Ten photos come from five plants; report the grouping."
+    },
+    {
+      "icon": "chart",
+      "label": "Present results",
+      "detail": "Show 70% and 80% with counts and case-level outcomes."
+    },
+    {
+      "icon": "shield",
+      "label": "Preserve limitations",
+      "detail": "Do not claim outdoor robustness or ten independent plants."
+    }
+  ],
+  "explanation": "A final manuscript aligns question, procedure, evidence and scope. Every figure and conclusion should point back to the records that support it.",
+  "counterfactual": {
+    "change": "The abstract calls the study a test on ten independent plants.",
+    "prediction": "Correct it to five plants with two views each.",
+    "reason": "The source-object count, not the photo count, defines the independent plants."
+  },
+  "student_task": "Connect the manuscript’s 7/10 and 8/10 scores to the five-plant grouping. Which abstract claim must be corrected if it says ten independent plants?",
+  "teacher_answer": "B adds one correct photo on this indoor set. Ten photos come from five plants; report the grouping. Show 70% and 80% with counts and case-level outcomes. Do not claim outdoor robustness or ten independent plants. Changed case: Correct it to five plants with two views each. The source-object count, not the photo count, defines the independent plants.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "No population superiority or significance claim is supplied; dependence and sample coverage need explicit treatment.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Indoor capstone photo outcomes",
+    "labels": [
+      "A",
+      "B"
+    ],
+    "values": [
+      7,
+      8
+    ],
+    "unit": "correct photos out of 10; five plants"
+  }
+}

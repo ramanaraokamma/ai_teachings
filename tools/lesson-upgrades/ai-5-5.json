@@ -1,0 +1,38 @@
+{
+  "week": "ai-5/5",
+  "title": "Composing layers",
+  "outcome": "By the end, I can explain composing layers using a traced example and a stated limitation.",
+  "scenario": "Compose two hidden detectors before one output instead of skipping a layer.",
+  "given": [
+    "For input [u, v], h1=ReLU(u-2), h2=ReLU(v-1), y=h1-h2. Input [4, 3].",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "First hidden unit",
+      "icon": "network",
+      "detail": "u-2=2, so h1=2."
+    },
+    {
+      "label": "Second hidden unit",
+      "icon": "network",
+      "detail": "v-1=2, so h2=2."
+    },
+    {
+      "label": "Compose output",
+      "icon": "output",
+      "detail": "y=2-2=0; the output uses activated hidden values, not raw inputs."
+    }
+  ],
+  "explanation": "Composition means one layer\u2019s result becomes the next layer\u2019s input. Compute both hidden units before combining them. At [4,3], their equal outputs cancel. Lowering only the second input removes its positive hidden contribution, so subtracting it no longer reduces the output. The final subtraction must use activated hidden values rather than the raw measurements.",
+  "counterfactual": {
+    "change": "Change only v from 3 to1.",
+    "prediction": "h1 stays2, h2 becomes0, y becomes2.",
+    "reason": "The second hidden unit\u2019s preactivation reaches0 while the first unit is unchanged."
+  },
+  "student_task": "What intermediate value explains the changed output? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "h2 changes from 2 to 0 because ReLU(1-1)=0; subtracting0 rather than2 raises y from 0 to2. Changed-case check: h1 stays2, h2 becomes0, y becomes2. The second hidden unit\u2019s preactivation reaches0 while the first unit is unchanged.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Hand-composed detectors illustrate layer order; they are not evidence of a learned or biologically realistic neural mechanism.",
+  "review_note": "Reviewed Composing layers against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation."
+}

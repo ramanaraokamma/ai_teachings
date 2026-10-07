@@ -1,0 +1,152 @@
+{
+  "week": "ai-5/15",
+  "title": "Training and validation curves",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Compute comparable training and validation losses at saved checkpoints",
+    "Choose among observed checkpoints using a declared validation rule",
+    "Distinguish development evidence from final test evidence"
+  ],
+  "primary_topic": "Training and validation curves",
+  "vocabulary": [
+    [
+      "Checkpoint",
+      "Saved model parameters and the information needed to identify a training state"
+    ],
+    [
+      "Training curve",
+      "A record of a training measure at successive saved states"
+    ],
+    [
+      "Validation curve",
+      "A record of a development measure on separate examples at those states"
+    ],
+    [
+      "Selection rule",
+      "A declared procedure for choosing among candidate models or checkpoints"
+    ]
+  ],
+  "worked_example": {
+    "title": "Follow each curve on a shared scale",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "curves",
+        "title": "Later updates improve only one split",
+        "axis": "Mean squared error",
+        "xLabel": "Completed updates",
+        "xValues": [
+          2,
+          3,
+          4
+        ],
+        "max": 2,
+        "series": [
+          {
+            "label": "Training solid line",
+            "values": [
+              0.625,
+              0.15625,
+              0.0390625
+            ]
+          },
+          {
+            "label": "Validation dashed line",
+            "values": [
+              0,
+              0.78125,
+              1.7578125
+            ]
+          }
+        ],
+        "caption": "This chart shows checkpoints 2 to 4 only, on one MSE scale from 0 to 2. Circles and a solid line mark training; squares and a dashed line mark validation. Lines connect measured checkpoints, not additional evaluations. The full table includes checkpoints 0 and 1."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Using the table, calculate the training and validation loss changes from checkpoint 2 to checkpoint 4. Which saved parameter does the selection rule choose?",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Use the declared rule",
+    "prompt": "Observed validation MSE at checkpoints 0 to 4 is [5, 2, 1, 1, 1.2]. Lowest loss wins with earlier exact ties. Which checkpoint is selected? What if training loss is lowest at checkpoint 4?",
+    "answer": "Teacher explanation: Select checkpoint 2. The tie at 3 does not replace the earlier checkpoint. Lower training loss at 4 does not change a validation-based rule.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Evaluate new checkpoints independently",
+    "task": "Use h = ReLU(x), y = vh, candidate v values 1, 1.5 and 2. Training pairs are (1, 2), (2, 4); validation pairs are (1, 1), (2, 2). Calculate both MSE columns and select by minimum validation MSE. Explain the disagreement with selection by training loss.",
+    "answer": "Teacher explanation: For v = 1, train MSE 2.5 and validation MSE 0. For v = 1.5, both MSE values are 0.625. For v = 2, train MSE 0 and validation MSE 2.5. Validation chooses v = 1; training chooses v = 2. These constructed splits favour different slopes.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The last checkpoint is always best",
+      "Choose by the stated validation criterion and restore the saved parameters."
+    ],
+    [
+      "A gap proves one specific cause",
+      "Check split composition, metrics and evaluation procedures; this demonstration has deliberately different target rules."
+    ],
+    [
+      "Validation is untouched final evidence",
+      "Once used to choose settings or checkpoints, it is development evidence."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "For checkpoint 3, v = 1.75. Training predictions are [1.75, 3.5], residuals [-0.25, -0.5], and MSE 0.15625. Validation predictions are [5.25, 7], residuals [0.75, 1], and MSE 0.78125. All four predictions must use the same saved value."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "def mse(v, rows):\n    if not rows:\n        raise ValueError(\"Need evaluation rows\")\n    return sum((v * max(0.0, x) - target) ** 2\n               for x, target in rows) / len(rows)\n\ntrain = [(1.0, 2.0), (2.0, 4.0)]\nvalid = [(3.0, 4.5), (4.0, 6.0)]\ncheckpoints = [0.0, 1.0, 1.5, 1.75, 1.875]\nvalidation_losses = []\nfor step, v in enumerate(checkpoints):\n    validation_losses.append(mse(v, valid))\n    print(step, mse(v, train), mse(v, valid))\nbest = min(range(len(checkpoints)),\n           key=lambda i: (validation_losses[i], i))\nprint(\"Selected checkpoint\", best)  # 2"
+      },
+      {
+        "type": "paragraph",
+        "text": "The code evaluates supplied checkpoints; it does not train on validation data. It assumes finite numeric pairs and selects the lowest observed validation MSE, breaking exact ties in favour of the earlier checkpoint. The rule is chosen before inspecting the values."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Observed validation MSE at checkpoints 0 to 4 is [5, 2, 1, 1, 1.2]. Lowest loss wins with earlier exact ties. Which checkpoint is selected? What if training loss is lowest at checkpoint 4?"
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

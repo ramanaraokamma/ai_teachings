@@ -1,0 +1,70 @@
+{
+  "week": "ai-2/16",
+  "title": "Overfitting Intuition",
+  "outcome": "By the end, I can use development performance rather than training fit alone to choose model complexity.",
+  "scenario": "A fictional project compares three book-length prediction models on the same development sets.",
+  "given": [
+    "Mean absolute errors in pages: Simple training 5, validation 6; Medium training 2, validation 3; Complex training 0, validation 7.",
+    "Select lowest validation error; untouched final tests are not used for selection."
+  ],
+  "steps": [
+    {
+      "label": "Training comparison",
+      "icon": "chart",
+      "detail": "Complex fits training perfectly with zero error."
+    },
+    {
+      "label": "Validation comparison",
+      "icon": "chart",
+      "detail": "Medium has error 3, versus Simple 6 and Complex 7."
+    },
+    {
+      "label": "Choose for development",
+      "icon": "model",
+      "detail": "Select Medium under the declared lowest-validation-error rule."
+    },
+    {
+      "label": "Final evaluation",
+      "icon": "shield",
+      "detail": "Freeze the selection, then evaluate new reserved cases."
+    }
+  ],
+  "explanation": "A flexible model can fit quirks of its training set without predicting new examples well. Here Complex’s training success occur togethers with the worst validation error. The numbers are invented comparisons, not a claim that complexity always hurts. Choosing Medium uses development evidence; its validation score must not be advertised as an untouched final-test result.",
+  "counterfactual": {
+    "change": "Complex’s validation error becomes 2 on a newly documented, fair development comparison.",
+    "prediction": "The stated rule now selects Complex.",
+    "reason": "The rule compares validation errors; it does not ban complex models."
+  },
+  "student_task": "Does zero training error justify choosing Complex in the original record?",
+  "teacher_answer": "No. The declared criterion is validation error; Medium’s 3 is lowest, while Complex’s validation error is 7.",
+  "project_evidence": "Compare recommender revisions on fixed development cases, reserving new cases for the final presentation.",
+  "limits": "A single small validation set may be noisy; selection evidence does not prove future population performance.",
+  "review_note": "New fictional case individually matched to this topic, with computations and policy traces checked. Use for supported practice; preserve the independent assessment.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Training and validation errors",
+    "cells": [
+      [
+        5,
+        6
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        0,
+        7
+      ]
+    ],
+    "row_labels": [
+      "Simple",
+      "Medium",
+      "Complex"
+    ],
+    "column_labels": [
+      "Training MAE pages",
+      "Validation MAE pages"
+    ]
+  }
+}

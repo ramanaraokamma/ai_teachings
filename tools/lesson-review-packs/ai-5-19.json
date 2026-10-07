@@ -1,0 +1,143 @@
+{
+  "week": "ai-5/19",
+  "title": "Learned representations",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Trace an input through a hidden representation and a decision rule",
+    "Identify distinctions that a representation preserves or loses",
+    "Separate a useful constructed feature from evidence of successful learning"
+  ],
+  "primary_topic": "Learned representations",
+  "vocabulary": [
+    [
+      "Representation",
+      "An encoding of an example used by another computation"
+    ],
+    [
+      "Hidden activation",
+      "A value produced inside a network after applying an activation function"
+    ],
+    [
+      "Collision",
+      "Two different inputs receiving the same representation"
+    ],
+    [
+      "Learned feature",
+      "A feature whose computation depends on parameters adjusted using training data"
+    ]
+  ],
+  "worked_example": {
+    "title": "See a collision and its consequences",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Different rectangles can share a hidden vector",
+        "columns": [
+          "Input in cm",
+          "Hidden vector",
+          "Area in square cm"
+        ],
+        "rows": [
+          [
+            "Width 4 height 2",
+            "[2, 0]",
+            "8"
+          ],
+          [
+            "Width 5 height 3",
+            "[2, 0]",
+            "15"
+          ]
+        ],
+        "caption": "The representation preserves the wider-than-height answer for these examples but discards information needed to recover their different areas. A deterministic head receiving only this vector must give both examples the same output."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Encode [6, 4] and [7, 5]. Give their wider-than-height predictions and areas. Can a head that sees only h always recover the exact area? Explain using this pair.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Prove an information loss",
+    "prompt": "Give the hidden vectors and areas for [4, 2] and [5, 3]. Explain why increasing only the complexity of a deterministic area head cannot make both exact predictions correct.",
+    "answer": "Teacher explanation: Both hidden vectors are [2, 0], while areas are 8 and 15 square cm. Identical inputs to a deterministic head yield identical outputs, so the head cannot return both required values.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Audit a new representation independently",
+    "task": "A different layer uses g = [ReLU(width - height - 1), ReLU(height - width - 1)]. Encode [4, 3] and [3, 4]. State their targets for width strictly greater than height. Can any deterministic head receiving only g classify both correctly?",
+    "answer": "Teacher explanation: Both encode as [0, 0]: the scores are [0, -2] and [-2, 0]. Targets are 1 and 0. No deterministic head receiving only this shared vector can distinguish the pair. The added threshold erased a distinction required by this task.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Two hidden values preserve both input measurements",
+      "Dimension alone does not guarantee recovery; distinct inputs can collide."
+    ],
+    [
+      "A more complex head can always fix lost information",
+      "A deterministic head cannot distinguish identical representations without additional input."
+    ],
+    [
+      "Correct outputs prove human concepts were learned",
+      "The layer here was constructed, and a task score alone does not establish a hidden concept."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "A prediction head is the computation that reads the hidden vector and produces an output. Keeping it separate lets us inspect what information is available before making a decision. This example assumes two finite, positive measurements in cm; it is not a general input validator."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "def represent(width, height):\n    return [max(0, width - height),\n            max(0, height - width)]\n\ndef predict(hidden):\n    return int(hidden[0] > 0)\n\nexamples = [(4, 2), (2, 4), (3, 3), (5, 3)]\nfor width, height in examples:\n    hidden = represent(width, height)\n    print([width, height], hidden, predict(hidden))\n\nassert represent(4, 2) == represent(5, 3)\nassert predict(represent(3, 3)) == 0"
+      },
+      {
+        "type": "paragraph",
+        "text": "The raw difference width - height can be recovered as h1 - h2. The original width and height cannot in general be recovered: many rectangles share a difference. Two hidden components do not guarantee preservation of two input components."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Give the hidden vectors and areas for [4, 2] and [5, 3]. Explain why increasing only the complexity of a deterministic area head cannot make both exact predictions correct."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

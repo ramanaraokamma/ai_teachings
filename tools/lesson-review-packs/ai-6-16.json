@@ -1,0 +1,143 @@
+{
+  "week": "ai-6/16",
+  "title": "Timeouts retries and cancellation",
+  "grade": 11,
+  "project": "Grounded Learning Service",
+  "goals": [
+    "Explain the mechanism and terminology of timeouts retries and cancellation",
+    "Apply the stated procedure to a new case with a traceable result",
+    "Identify an assumption or limitation and design a revealing follow-up"
+  ],
+  "primary_topic": "Timeouts retries and cancellation",
+  "vocabulary": [
+    [
+      "Timeout",
+      "A declared limit on waiting"
+    ],
+    [
+      "Retry budget",
+      "The maximum repeat attempts or resources"
+    ],
+    [
+      "Cancellation",
+      "A request to stop future processing"
+    ]
+  ],
+  "worked_example": {
+    "title": "Worked reasoning",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Three attempts each time out after 4 seconds with gaps 1 and 2. A fourth is proposed."
+      },
+      {
+        "type": "paragraph",
+        "text": "Budget is exhausted after 15 seconds under the model; reject fourth attempt. A late side-effect result must still be reconciled."
+      },
+      {
+        "type": "paragraph",
+        "text": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly."
+      },
+      {
+        "type": "paragraph",
+        "text": "Optional local lab: predict the printed result before running this standalone Python 3 example. Change one relevant boundary input, record the outcome and state the contract or statistical assumptions. The program uses fictional values and the Python standard library; it performs no external operations."
+      },
+      {
+        "type": "code",
+        "text": "def waiting_bound(attempts, per_attempt, gaps):\n    if type(attempts) is not int or attempts < 1 or len(gaps) != attempts - 1:\n        raise ValueError('attempt budget')\n    if per_attempt < 0 or any((g < 0 for g in gaps)):\n        raise ValueError('negative duration')\n    return attempts * per_attempt + sum(gaps)\n\nprint(waiting_bound(3, 4, [1, 2]))"
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Trace the worked case",
+    "prompt": "Three attempts each time out after 4 seconds with gaps 1 and 2. A fourth is proposed. Show the intermediate steps and give the conclusion with its scope.",
+    "answer": "Teacher explanation: Budget is exhausted after 15 seconds under the model; reject fourth attempt. A late side-effect result must still be reconciled.",
+    "lines": 7
+  },
+  "independent_case": {
+    "title": "Apply a new case independently",
+    "task": "Two attempts, each up to 5 seconds, gap 2. Compute bound and decide whether authentication failure should retry.",
+    "answer": "Teacher explanation: Bound12 seconds excluding overhead. Authentication failure is non-transient under this policy; do not retry it.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "The worked result establishes every future case",
+      "A timeout means the caller lacks a timely result, not necessarily that the remote operation did not occur."
+    ],
+    [
+      "A missing input may be replaced without recording the change",
+      "A replacement changes the evidence or contract. Record the change and its justification; do not silently turn unknown into a measured value."
+    ],
+    [
+      "Repeating an assessed case is new independent evidence",
+      "A replay checks consistency. An example used for feedback or revision cannot later be described as untouched final evaluation."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Retry only declared transient failures. Use at most three attempts with waiting gaps 1 and 2 seconds; each attempt may run at most 4 seconds. Worst-case elapsed bound excluding overhead is 3*4+1+2=15 seconds."
+      },
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Timeouts retries and cancellation \u2014 evidence trace",
+        "columns": [
+          "Input and scope",
+          "Check or calculation",
+          "Conclusion and limit"
+        ],
+        "rows": [
+          [
+            "Three attempts each time out after 4 seconds with gaps 1 and 2. A fourth is proposed.",
+            "Retry only declared transient failures. Use at most three attempts with waiting gaps 1 and 2 seconds; each attempt may run at most 4 seconds. Worst-case elapsed bound excluding overhead is 3*4+1+2=15 seconds.",
+            "Budget is exhausted after 15 seconds under the model; reject fourth attempt. A late side-effect result must still be reconciled."
+          ]
+        ],
+        "caption": "The figure connects this chapter's worked input, declared procedure and result. Read the complete worked reasoning for qualifiers and intermediate steps; the abbreviated labels do not replace that reasoning."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before applying the procedure, write its units, denominator or decision boundary where relevant. A partner should be able to repeat each step using the same inputs. If a required input is absent or violates the stated contract, record that condition explicitly instead of quietly replacing it with a convenient value."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "Three attempts each time out after 4 seconds with gaps 1 and 2. A fourth is proposed. Show the intermediate steps and give the conclusion with its scope."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

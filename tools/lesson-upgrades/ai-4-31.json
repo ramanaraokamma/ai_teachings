@@ -1,0 +1,53 @@
+{
+  "week": "ai-4/31",
+  "title": "Subgroup Performance",
+  "outcome": "By the end, I can explain subgroup performance using a traced example and a stated limitation.",
+  "scenario": "Calculate subgroup and pooled error rates without letting the larger group hide a gap.",
+  "given": [
+    "Group Sun: 2 errors in20 photos; Shade: 3 errors in5. Same error definition; related plant views are documented.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Sun rate",
+      "icon": "chart",
+      "detail": "Sun error=2/20=10%."
+    },
+    {
+      "label": "Shade rate",
+      "icon": "sensor",
+      "detail": "Shade error=3/5=60%."
+    },
+    {
+      "label": "Pooled rate",
+      "icon": "check",
+      "detail": "Total error=5/25=20%, which hides the 50-percentage-point subgroup difference."
+    }
+  ],
+  "explanation": "Read the picture in order. Total error=5/25=20%, which hides the 50-percentage-point subgroup difference. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "Shade gains5 new cases with no errors.",
+    "prediction": "Shade error becomes3/10=30%; pooled error becomes5/30≈16.7%.",
+    "reason": "Extra evaluated cases change denominators; existing errors have not disappeared."
+  },
+  "student_task": "Why should the report retain subgroup rates alongside the total? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "The20% original total is dominated by Sun’s larger sample and understates the observed Shade difficulty. Include counts, conditions and uncertainty. Changed-case check: Shade error becomes3/10=30%; pooled error becomes5/30≈16.7%. Extra evaluated cases change denominators; existing errors have not disappeared.",
+  "project_evidence": "For your Responsible Plant Classifier, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "Small subgroup samples have high variability. An observed gap does not by itself establish discrimination or a causal explanation.",
+  "review_note": "Reviewed Subgroup Performance against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Subgroup error rates",
+    "labels": [
+      "Sun (n20)",
+      "Shade (n5)",
+      "pooled (n25)"
+    ],
+    "values": [
+      10,
+      60,
+      20
+    ],
+    "unit": "percent"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "week": "python-bridge/9",
+  "title": "Return values and local state",
+  "outcome": "Trace return values and local state and explain the changed program before running it.",
+  "scenario": "Return values survive their calls. A function returns a local calculation that the caller stores.",
+  "given": [
+    "Python 3: def extra(a,b): result=a+b; return result. Then first=extra(2,5); second=extra(4,1); print(first,second)."
+  ],
+  "steps": [
+    {
+      "icon": "code",
+      "label": "Trace first call",
+      "detail": "Its local result is 7; return assigns 7 to first."
+    },
+    {
+      "icon": "code",
+      "label": "Trace second call",
+      "detail": "Its new local result is 5; return assigns 5 to second."
+    },
+    {
+      "icon": "output",
+      "label": "Read caller values",
+      "detail": "The final print displays 7 5; the second call does not overwrite first."
+    }
+  ],
+  "explanation": "Returning passes a value back to the caller. Local names belong to a function call; storing the returned value creates a separate caller binding.",
+  "counterfactual": {
+    "change": "Add print(result) after the calls in a fresh script with no global result.",
+    "prediction": "NameError occurs because that local name is not defined in the caller.",
+    "reason": "A returned value and the function’s internal name are different things."
+  },
+  "student_task": "Trace the two returned values and explain why first stays seven. What happens if the caller tries to print result directly?",
+  "teacher_answer": "The returns are 7 and 5, stored independently as first and second. result is local to each call; accessing it outside in this fresh script raises NameError.",
+  "project_evidence": "For Python readiness before the Responsible Plant Classifier, retain a trace of the values, the predicted outputs and the changed-case explanation. Use actual Python 3 results to check the prediction after reasoning first.",
+  "limits": "The example uses immutable integers; shared mutable objects require additional reasoning about references.",
+  "review_note": "Individually authored supported practice; distinct from the reserved independent case. Python semantics are checked on standalone snippets; no learned model or real pupil result is implied."
+}

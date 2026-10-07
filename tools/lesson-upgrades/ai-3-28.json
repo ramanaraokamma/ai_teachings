@@ -1,0 +1,38 @@
+{
+  "week": "ai-3/28",
+  "title": "Privacy by Design",
+  "outcome": "By the end, I can explain privacy by design using a traced example and a stated limitation.",
+  "scenario": "Trace deletion through both a working folder and a cache.",
+  "given": [
+    "Fictional retention policy: delete records aged at least 3 days. Ages A=2, B=3, C=4; the cache contains a copy of B.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Compare ages",
+      "icon": "clock",
+      "detail": "A is below 3; B is exactly 3; C is above 3."
+    },
+    {
+      "label": "Delete eligible",
+      "icon": "shield",
+      "detail": "Keep A. Delete B and C from the working folder."
+    },
+    {
+      "label": "Check copies",
+      "icon": "check",
+      "detail": "Delete cached B too; otherwise the declared content remains retained."
+    }
+  ],
+  "explanation": "Read the picture in order. Delete cached B too; otherwise the declared content remains retained. The arrows show which recorded input or intermediate result each decision uses. Explain the deciding step aloud before checking the changed case; pointing to the final answer alone does not show how it follows.",
+  "counterfactual": {
+    "change": "The cache deletion fails.",
+    "prediction": "Report incomplete deletion rather than success.",
+    "reason": "Removing the working copy does not remove the known retained cache copy."
+  },
+  "student_task": "Which IDs and locations must appear in the deletion evidence? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "Working folder B and C, plus cache B, each with completion status. A remains because its age is 2. Changed-case check: Report incomplete deletion rather than success. Removing the working copy does not remove the known retained cache copy.",
+  "project_evidence": "For your Verified Study Buddy, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "This fictional policy is a tracing exercise, not a statement of legal retention requirements.",
+  "review_note": "Reviewed Privacy by Design against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary."
+}

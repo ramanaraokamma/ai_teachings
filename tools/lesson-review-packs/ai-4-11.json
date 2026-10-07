@@ -1,0 +1,265 @@
+{
+  "week": "ai-4/11",
+  "title": "Decision Trees",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Fit a root question and leaf predictions from training examples",
+    "Trace a new example through the learned tree",
+    "Compare a shallow tree with a baseline and state its limits"
+  ],
+  "primary_topic": "Fitting a decision tree",
+  "vocabulary": [
+    [
+      "Root",
+      "The first question asked by a tree"
+    ],
+    [
+      "Branch",
+      "A path selected by the answer to a question"
+    ],
+    [
+      "Leaf",
+      "An endpoint that stores a prediction"
+    ],
+    [
+      "Depth",
+      "The largest number of question steps from root to leaf"
+    ]
+  ],
+  "worked_example": {
+    "title": "Trace the fitted tree on new rows",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Two paths through the learned tree",
+        "columns": [
+          "Root question",
+          "Branch answer",
+          "Learned leaf"
+        ],
+        "rows": [
+          [
+            "Is near equal to 1",
+            "No near is 0",
+            "Predict clear"
+          ],
+          [
+            "Is near equal to 1",
+            "Yes near is 1",
+            "Predict blocked"
+          ]
+        ],
+        "caption": "Both paths start at the same root. Tall is not used by this fitted tree; the leaf labels came from training counts."
+      },
+      {
+        "type": "paragraph",
+        "text": "Validation rows are (near=1,tall=1,blocked), (0,0,clear), (0,1,blocked), (1,0,clear). Follow only near: predictions are blocked, clear, clear, blocked. Two of four match. The training-majority baseline predicts blocked, since training has four blocked and two clear; it also matches two of four validation labels."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Which validation rows does the tree miss, and which does the baseline miss? Explain why the tall value cannot change this tree\u2019s prediction.",
+        "lines": 4
+      },
+      {
+        "type": "paragraph",
+        "text": "Keep the fitted root and leaves unchanged while scoring. Equal accuracy does not mean identical errors, and five correct training predictions out of six is not the validation result."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Verify the candidate scores",
+    "prompt": "For each near branch and each tall branch, count blocked and clear labels and choose a leaf. Give the total errors for each candidate question.",
+    "answer": "Near=0 has 1 blocked and 2 clear, predicts clear with 1 error; near=1 has 3 blocked and 0 clear, predicts blocked with 0 errors. Tall=0 has 2 blocked and 1 clear; tall=1 also has 2 blocked and 1 clear. Both tall leaves predict blocked with 1 error each. Totals are near 1 and tall 2.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Changed independent case",
+    "task": "A stored fitted rule says spots >=5 predicts spotted; otherwise healthy. Trace4,5,6 and a missing count. Policy: missing count requires review. Can test labels be used to choose this cutoff?",
+    "answer": "4 predicts healthy;5 and6 predict spotted; missing requires review. Applying the stored cutoff is inference, not fitting. Choosing it using test labels contaminates the final evaluation; use designated development data.",
+    "source": "new parallel transfer case"
+  },
+  "misconceptions": [
+    [
+      "A near branch must predict blocked",
+      "The branch label is learned from its training labels; W4 deliberately reverses that relationship."
+    ],
+    [
+      "Every feature is used during prediction",
+      "Only questions in the stored tree are followed. Candidate questions rejected during fitting do not affect this tree\u2019s output."
+    ],
+    [
+      "A deeper tree must work better",
+      "More questions can fit training detail. Future performance needs separate evaluation; depth choices must be documented."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58a008ef642b9d634153e162d61c39e2c5babd214f606e1b427dce0cef04f0db",
+        "alt": "Week 11 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/74b20f1393dbabcbb37ada9a48e6599ad8c58e39df46708f723020058ce532c7",
+        "alt": "Week 11 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/0301ae68d9c94f94cfa1b1f40a2a02464d975c00b2d9569220e26158a0668daa",
+        "alt": "Week 11 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Trace, draw, and prune a tiny tree while preserving test behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  A decision tree partitions feature space using ordered questions; each leaf produces a prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Root asks whether spot_count \u2265 3. Yes branch predicts spotted; no branch asks whether yellow_ratio \u2265 0.25.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "rows = [(1, 0, \"blocked\"), (1, 1, \"blocked\"),\n        (1, 0, \"blocked\"), (0, 1, \"clear\"),\n        (0, 0, \"clear\"), (0, 1, \"blocked\")]\ndef majority(labels):\n    if labels.count(\"blocked\") > labels.count(\"clear\"):\n        return \"blocked\"\n    return \"clear\"\nbest_errors = len(rows) + 1\nfor feature in [0, 1]:\n    leaves = {}\n    for value in [0, 1]:\n        labels = [row[2] for row in rows\n                  if row[feature] == value]\n        leaves[value] = majority(labels)\n    errors = 0\n    for row in rows:\n        if leaves[row[feature]] != row[2]:\n            errors = errors + 1\n    print(feature, errors)\n    if errors < best_errors:\n        best_errors = errors\n        tree = (feature, leaves)\nprint(tree[0], tree[1][0], tree[1][1])"
+      },
+      {
+        "type": "paragraph",
+        "text": "Feature 0 is near; feature 1 is tall; row[2] is the label. Output is 0 1, then 1 2, then 0 clear blocked. Near makes one training mistake: near=0 contains two clear labels and one blocked, so that leaf predicts clear. Near=1 contains three blocked labels. Tall makes two mistakes because both its groups have a blocked majority."
+      },
+      {
+        "type": "paragraph",
+        "text": "The stored tree contains the chosen feature and its two learned leaves. The code assumes nonempty data, binary flags, allowed labels and examples on both branches of each candidate. An empty branch would need a declared fallback; this small example does not implement one. The score is total training mistakes, not an average giving small and large branches equal weight."
+      },
+      {
+        "type": "paragraph",
+        "text": "This is an explicitly limited depth-one learner. General tree algorithms can repeat split selection within branches and often use impurity criteria such as Gini. Our code does not implement that full procedure. Keeping the scope small lets you inspect every decision."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 11 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 11 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 11 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 11 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

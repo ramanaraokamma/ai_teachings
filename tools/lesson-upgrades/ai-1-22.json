@@ -1,0 +1,75 @@
+{
+  "week": "ai-1/22",
+  "title": "Missing and Unbalanced Examples",
+  "outcome": "By the end, I can identify missing conditions and design a targeted coverage check.",
+  "scenario": "A fictional badge reader will be used in both bright and dim rooms.",
+  "given": [
+    "Intended target has 8 bright plain,8 bright patterned,8 dim plain,8 dim patterned cards.",
+    "A development sample contains 6 bright plain cards and 2 bright patterned cards; no dim cards."
+  ],
+  "steps": [
+    {
+      "label": "Target conditions",
+      "icon": "data",
+      "detail": "Four lighting-by-pattern groups, eight target cards each."
+    },
+    {
+      "label": "Current sample",
+      "icon": "chart",
+      "detail": "Eight bright cards only; dim groups have zero coverage."
+    },
+    {
+      "label": "Coverage gap",
+      "icon": "question",
+      "detail": "Current results cannot describe dim-room reading."
+    },
+    {
+      "label": "Targeted follow-up",
+      "icon": "experiment",
+      "detail": "Select and record new cases from both dim groups before claiming coverage."
+    }
+  ],
+  "explanation": "Adding more bright cards can increase sample size without addressing the missing condition. A coverage check asks which relevant situations are absent, not merely how many rows exist. Deliberately selecting dim cases helps investigate those conditions, but the resulting test should not be advertised as a random survey unless its selection really was random.",
+  "counterfactual": {
+    "change": "Add eight more bright plain cards and no dim cards.",
+    "prediction": "The sample becomes larger but still has no dim coverage.",
+    "reason": "The missing lighting condition remains untested."
+  },
+  "student_task": "Would testing only dim plain cards close every current gap? Point to the target groups.",
+  "teacher_answer": "No. Dim patterned cards would still be absent; both dim groups need planned coverage.",
+  "project_evidence": "Create a sorter coverage table crossing important classroom conditions, then state which groups each test actually represents.",
+  "limits": "Coverage does not guarantee accuracy, and targeted cases alone do not supply a population-wide success estimate.",
+  "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Target groups and development coverage",
+    "cells": [
+      [
+        8,
+        6
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        8,
+        0
+      ],
+      [
+        8,
+        0
+      ]
+    ],
+    "row_labels": [
+      "Bright plain",
+      "Bright patterned",
+      "Dim plain",
+      "Dim patterned"
+    ],
+    "column_labels": [
+      "Target cards",
+      "Sample cards"
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "week": "ai-5/11",
+  "title": "Updating parameters",
+  "outcome": "By the end, I can explain updating parameters using a traced example and a stated limitation.",
+  "scenario": "Use one explicit gradient update and then recompute the loss.",
+  "given": [
+    "Model y=2w+b, target 5. Start w=1, b=1; learning rate 0.05. Initial y=3, error y\u2212target=\u22122, squared loss 4.",
+    "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
+  ],
+  "steps": [
+    {
+      "label": "Compute gradient",
+      "icon": "network",
+      "detail": "Gradient for [w, b]=[2\u00d7(-2)\u00d72, 2\u00d7(-2)]=[-8,-4]."
+    },
+    {
+      "label": "Update simultaneously",
+      "icon": "code",
+      "detail": "New w=1-0.05\u00d7(-8)=1.4; new b=1.2."
+    },
+    {
+      "label": "Check new loss",
+      "icon": "chart",
+      "detail": "New y=4, residual -1, loss 1: lower than4."
+    }
+  ],
+  "explanation": "Gradient descent subtracts learning rate times gradient. A negative gradient makes this subtraction increase the parameter. Compute both gradients at the original [w,b] before updating either one. The small step brings the prediction closer to five, reducing squared error. A larger step can cross the target and undo that gain, so the new prediction and loss must be recalculated.",
+  "counterfactual": {
+    "change": "Set learning rate 0.2 from the same starting point.",
+    "prediction": "New w=2.6, b=1.8, y=7, squared loss 4: no improvement.",
+    "reason": "The larger update jumps to an equally distant point on the opposite side of the target."
+  },
+  "student_task": "Why must new loss be recomputed rather than assumed smaller? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+  "teacher_answer": "A gradient supplies a local direction, but step size can overshoot. Rate0.2 gives the same loss 4 despite using the correct gradient. Changed-case check: New w = 2.6, b=1.8, y = 7, loss 4: no improvement. The larger update jumps to an equally distant point on the opposite side of the target.",
+  "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
+  "limits": "One successful toy update is not evidence of convergence for a real network or generalisation to unseen data.",
+  "review_note": "Reviewed Updating parameters against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation.",
+  "mini_visual": {
+    "kind": "bars",
+    "title": "Loss before and after rate 0.05 update",
+    "labels": [
+      "before",
+      "after"
+    ],
+    "values": [
+      4,
+      1
+    ],
+    "unit": "squared error"
+  }
+}

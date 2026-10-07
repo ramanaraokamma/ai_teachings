@@ -1,0 +1,258 @@
+{
+  "week": "ai-4/22",
+  "title": "Train a Regression Model",
+  "grade": 9,
+  "project": "Responsible Plant Classifier",
+  "goals": [
+    "Fit a line from a declared training candidate set",
+    "Separate training loss from validation comparison",
+    "Interpret slope and intercept with units"
+  ],
+  "primary_topic": "Fitting a line",
+  "vocabulary": [
+    [
+      "Slope",
+      "Change in predicted target per unit change in x"
+    ],
+    [
+      "Intercept",
+      "Predicted target when x is zero"
+    ],
+    [
+      "Candidate set",
+      "The declared model choices searched"
+    ],
+    [
+      "Fitting",
+      "Selecting model values using training evidence"
+    ]
+  ],
+  "worked_example": {
+    "title": "Explain the visual",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Fitting a line at a glance",
+        "columns": [
+          "Part",
+          "Evidence or action",
+          "Interpretation"
+        ],
+        "rows": [
+          [
+            "Line A",
+            "Slope 1 intercept 1",
+            "Training SSE 5"
+          ],
+          [
+            "Line B",
+            "Slope 2 intercept 0",
+            "Training SSE 3"
+          ],
+          [
+            "Line C",
+            "Slope 2 intercept 1",
+            "Training SSE 0"
+          ]
+        ],
+        "caption": "For separate validation pairs (3, 6),(4, 10), C predicts [7, 9], giving residuals [-1, 1], MAE 1 and MSE 1. The training-mean constant baseline is 3 and gives residuals [3, 7], MAE 5 and MSE 29. The fitted line wins on this small evaluation, without proving performance elsewhere."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Predict at x 3 and x 4 and calculate MAE/MSE. Explain the steps or evidence behind your response.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Score validation",
+    "prompt": "Predict at x 3 and x 4 and calculate MAE/MSE.",
+    "answer": "Teacher explanation: Predictions 7, 9; residuals -1, 1; MAE 1 MSE 1.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Apply independently",
+    "task": "Training (0, 2),(1, 5),(2, 8). Candidates m 2 b 2, m 3 b 1, m 3 b 2. Select by SSE, then score (3, 10),(4, 15) with MAE.",
+    "answer": "Teacher explanation: SSE 5, 3, 0 selects m 3 b 2. Predictions 11, 14; residuals -1, 1; MAE 1.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A final answer is enough",
+      "Ask for the relevant counts, units, procedure or saved record. For this week: A 5 B 3 C 0; choose m 2 b 1."
+    ],
+    [
+      "A stronger claim makes a stronger project",
+      "Training covers a limited range; the relationship and conditions may change outside it."
+    ],
+    [
+      "The new case can be copied from the example",
+      "The independent task changes the evidence. Require a fresh explanation: SSE 5, 3, 0 selects m 3 b 2. Predictions 11, 14; residuals -1, 1; MAE 1."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "ML MECHANISM"
+      },
+      {
+        "type": "heading",
+        "text": "Input \u2192 Model \u2192 Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information, fitted behavior, and evaluation proof separately."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/c5722a9b530056f987d27598f74b65c329a50b527c4b413483c934aa62d00814",
+        "alt": "Week 22 machine-learning flow stage 1",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/d177c06b2ffea9de102a54f49cfaf9868706802abc3854ac9d5c613f1eedb28f",
+        "alt": "Week 22 machine-learning flow stage 2",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/5d072b10903ca6591ef6a96f3a013f36b0d2d4409dfca3643155ad63eb9de808",
+        "alt": "Week 22 machine-learning flow stage 3",
+        "width": 165,
+        "height": 101
+      },
+      {
+        "type": "paragraph",
+        "text": "QUESTION  Run a starter regression and explain slope, prediction, residual, and MAE."
+      },
+      {
+        "type": "paragraph",
+        "text": "MODEL IDEA  A fitted relationship should be interpreted, tested on unseen values, and compared with a simple baseline."
+      },
+      {
+        "type": "paragraph",
+        "text": "PROOF NEEDED  Use an unseen case, visible calculation, error analysis, and a stated limitation."
+      },
+      {
+        "type": "callout",
+        "text": "UNDER THE HOOD  Model predicts height = 4 + 2 \u00d7 weeks. Slope 2 means two predicted centimeters per additional week in this data range.",
+        "tone": "teacher"
+      },
+      {
+        "type": "paragraph",
+        "text": "Draw a fresh data \u2192 model \u2192 prediction \u2192 evaluation trace:"
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Training pairs are (0, 1),(1, 3),(2, 5). Candidate A has m 1 b 1, B m 2 b 0, C m 2 b 1. Predictions are A [1, 2, 3], B [0, 2, 4], C [1, 3, 5]. Training squared-error sums are 5, 3, 0 respectively, so choose C. Ties would use the earlier listed candidate."
+      },
+      {
+        "type": "code",
+        "title": "Python 3 check",
+        "text": "training = [(0, 1), (1, 3), (2, 5)]\ncandidates = [(1, 1), (2, 0), (2, 1)]\ndef sse(line):\n    m, b = line\n    return sum((y - (m * x + b)) ** 2 for x, y in training)\nchosen = min(candidates, key=sse)\nprint([sse(line) for line in candidates])\nprint(chosen)\n# [5, 3, 0], then (2, 1); first candidate wins ties."
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the calculation on paper before running this optional Python check. Use the stated fictional inputs and compare intermediate values. The code checks this example; your independent workbook case uses different evidence."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "EVALUATION DESIGN"
+      },
+      {
+        "type": "heading",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/ccb763c94efa92549d46ba1f29e12c67aabf062e999f69f1d1e47ada5c62c6ee",
+        "alt": "Week 22 normal evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/349865409c86b2cec51691feae54362d5d0e987d6f0b391920d0bfac8857a8e0",
+        "alt": "Week 22 boundary evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/58cb10c89c0584b8459eedb33662ff19d505812b30108ae8bda0d2d8814704ce",
+        "alt": "Week 22 missing evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/2dc6e719fcf374efd15a17ab8f8a9775b6df18d8262ea2e1a716b0c71030dcc2",
+        "alt": "Week 22 shifted evaluation case",
+        "width": 134,
+        "height": 82
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL  Expected data and expected behavior."
+      },
+      {
+        "type": "paragraph",
+        "text": "BOUNDARY  Value close to a threshold, ambiguous label, or uncertain prediction."
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING  Necessary field, label, source, or measurement is unavailable."
+      },
+      {
+        "type": "paragraph",
+        "text": "SHIFTED  New lighting, species, device, subgroup, or time condition."
+      },
+      {
+        "type": "callout",
+        "text": "RELEASE RULE  Passing one case never proves generalization. Predefine expected behavior for all four categories.",
+        "tone": "caution"
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case most threatens today's claim, and why?"
+      }
+    ]
+  }
+}

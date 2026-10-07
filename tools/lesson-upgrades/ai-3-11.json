@@ -1,0 +1,43 @@
+{
+  "week": "ai-3/11",
+  "title": "Visual Composition",
+  "outcome": "By the end, I can check object counts and spatial relations as separate visual requirements.",
+  "scenario": "A fictional Study Buddy requests a science-poster layout, then audits a supplied drawing description.",
+  "given": [
+    "Brief: exactly two labelled bottles left of one beaker; one arrow from bottles toward beaker.",
+    "Supplied drawing description: two labelled bottles are right of a beaker; an arrow points from beaker toward bottles."
+  ],
+  "steps": [
+    {
+      "label": "Count objects",
+      "icon": "check",
+      "detail": "Two bottles and one beaker satisfy the count requirement."
+    },
+    {
+      "label": "Check position",
+      "icon": "shield",
+      "detail": "Bottles on the right fail the required left-of relation."
+    },
+    {
+      "label": "Check direction",
+      "icon": "shield",
+      "detail": "Arrow from beaker to bottles reverses the required flow."
+    },
+    {
+      "label": "Repair brief",
+      "icon": "rule",
+      "detail": "Specify bottles-left, beaker-right, arrow left-to-right; verify the revised output."
+    }
+  ],
+  "explanation": "Having every requested object is not the same as conveying the requested relationship. Position and arrow direction can change a scientific explanation while object counts remain correct. Audit the provided description honestly: no actual image was supplied, so this evaluation concerns its stated layout rather than a claimed visual inspection.",
+  "counterfactual": {
+    "change": "Move bottles left of the beaker but keep the arrow pointing from beaker toward bottles.",
+    "prediction": "Position now passes; arrow direction still fails.",
+    "reason": "Changing object placement does not automatically reverse an arrow’s semantic source and destination."
+  },
+  "student_task": "Which checks pass after that single change, and what still needs repair?",
+  "teacher_answer": "Counts and left-of position pass. Direction still fails: arrow must originate at bottles and point toward beaker.",
+  "project_evidence": "Create Study Buddy diagram rubrics covering counts, readable labels, containment, order and meaningful arrow direction.",
+  "limits": "A compliant layout does not by itself verify the chemistry or procedure represented; content needs source checking.",
+  "review_note": "Individually designed fictional worked case, distinct from the reserved assessment. Toy model simplifications, arithmetic and source authority reviewed explicitly."
+}

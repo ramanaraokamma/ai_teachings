@@ -1,0 +1,258 @@
+{
+  "week": "ai-2/22",
+  "title": "Nearest Neighbor Reasoning",
+  "grade": 7,
+  "project": "Transparent Book Recommender",
+  "goals": [
+    "Compute absolute distances and rank training neighbours",
+    "Apply a declared neighbour count and distance tie rule",
+    "Evaluate neighbour predictions without using validation labels as neighbours"
+  ],
+  "primary_topic": "Nearest neighbours and distances",
+  "vocabulary": [
+    [
+      "Distance",
+      "A numerical measure of difference between selected feature values"
+    ],
+    [
+      "Neighbour",
+      "A stored training example close under the chosen distance"
+    ],
+    [
+      "k",
+      "The number of neighbours selected for a prediction"
+    ],
+    [
+      "Vote",
+      "A contribution of a selected neighbour\u2019s label to the predicted class"
+    ]
+  ],
+  "worked_example": {
+    "title": "Separate feature distance from label evidence",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Three selected neighbours for query 3",
+        "columns": [
+          "Stored example",
+          "Feature distance",
+          "One label vote"
+        ],
+        "rows": [
+          [
+            "A at 2 cm",
+            "abs 2 minus 3 is 1",
+            "blocked"
+          ],
+          [
+            "B at 4 cm",
+            "abs 4 minus 3 is 1",
+            "clear"
+          ],
+          [
+            "C at 8 cm",
+            "abs 8 minus 3 is 5",
+            "clear"
+          ]
+        ],
+        "caption": "Select neighbours by feature distance and the declared ID tie rule. Read their training labels to vote only after selecting them."
+      },
+      {
+        "type": "paragraph",
+        "text": "Store the training examples and the method settings. At prediction time, compare the query only with stored training examples. Do not add the query\u2019s reference label or other validation labels to the neighbour pool. No cutoff or tree is fitted here, but retaining training examples is still part of the learning method."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Why do A and B tie for distance to query 3? Which wins for k=1 under our rule, and why does k=3 predict differently? Does the ID rule establish which label is true?",
+        "lines": 4
+      },
+      {
+        "type": "paragraph",
+        "text": "A vote share of two out of three describes these neighbours. It is not a verified two-thirds probability that the new scene is clear. A prediction can be wrong even when the nearest examples agree."
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Apply neighbour and tie rules",
+    "prompt": "For query 3, list the selected IDs and predictions for k=1 and k=3 using alphabetical ID order on equal distances. Explain what changes and what remains the same.",
+    "answer": "For k=1 select A and predict blocked. For k=3 select A,B,C and predict clear from two clear votes. Training data, distance and ID tie rule stay the same; the number of voting neighbours changes.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Find neighbours independently",
+    "task": "New training rows are P at 1 cm clear, Q at 5 blocked, R at 7 blocked, S at 11 clear, T at 13 blocked. For query 6, give all distances, order the IDs by distance then alphabetically, and predict with k=1 and k=3. Using the same training pool and k=3, score validation (6,blocked),(10,clear),(12,blocked). Compare the training-majority baseline.",
+    "answer": "Query 6 distances P,Q,R,S,T are 5,1,1,5,7. Order Q,R,P,S,T. k=1 predicts blocked from Q; k=3 uses Q,R,P and also predicts blocked. For queries 6,10,12, selected triples are Q R P, S R T, S T R. All predict blocked, matching validation rows 1 and 3: 2/3. Training-majority blocked also scores 2/3.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "A negative difference is a negative distance",
+      "Take the absolute difference; in this example distance is nonnegative regardless of which reading is larger."
+    ],
+    [
+      "Odd k prevents every kind of tie",
+      "Three binary votes avoid a label tie, but neighbours can still tie in distance, including at the selection boundary."
+    ],
+    [
+      "An exact match proves the label",
+      "It matches the selected feature only. Other conditions, annotation errors or contradictory examples can remain."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "VISUAL MECHANISM"
+      },
+      {
+        "type": "paragraph",
+        "text": "Input \u2192 Process \u2192 Output"
+      },
+      {
+        "type": "paragraph",
+        "text": "Trace the information. At each stage, ask what changed and how you could test it."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/0c434a495ee259a3ed8e9dcdac2055edae7e7ed2cff75a5f7fa5601f5b219fb0",
+        "alt": "INPUT stage for Nearest-Neighbor Reasoning",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/b81912a358c82f2eabed09126d43dafd39bd2bd0c9c7931bf884b75f2dc57c66",
+        "alt": "PROCESS stage for Nearest-Neighbor Reasoning",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "\u2193"
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/e9a87b103ca0d7789a8dd74d8faa6a19b45b822410cac96868af6a9abd7b3e18",
+        "alt": "OUTPUT stage for Nearest-Neighbor Reasoning",
+        "width": 437,
+        "height": 171
+      },
+      {
+        "type": "paragraph",
+        "text": "Which stage could fail even when the other two are correct? Explain:"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      },
+      {
+        "type": "subheading",
+        "text": "A closer explanation"
+      },
+      {
+        "type": "code",
+        "title": "Python 3 code",
+        "text": "train = [(\"A\", 2, \"blocked\"), (\"B\", 4, \"clear\"),\n         (\"C\", 8, \"clear\"), (\"D\", 10, \"blocked\"),\n         (\"E\", 12, \"clear\")]\nquery = 3\nranked = sorted((abs(x - query), item_id, label)\n                for item_id, x, label in train)\nnear = ranked[:3]\nlabels = [row[2] for row in near]\nprediction = \"clear\"\nif labels.count(\"blocked\") > labels.count(\"clear\"):\n    prediction = \"blocked\"\nprint([row[1] for row in near])\nprint(prediction)"
+      },
+      {
+        "type": "paragraph",
+        "text": "For query 3, distances to A through E are 1,1,5,7,9 cm. sorted orders tuples by distance first, then the unique ID. ranked[:3] takes the first three rows. The output is ['A', 'B', 'C'] then clear: one blocked vote and two clear votes."
+      },
+      {
+        "type": "paragraph",
+        "text": "If k were 1 under the same distance tie rule, A would win and predict blocked. Changing k can change a prediction. We declared k=3 for this exercise; do not choose k after seeing the desired answer and pretend the method was unchanged."
+      },
+      {
+        "type": "paragraph",
+        "text": "The code assumes unique IDs, numeric readings, only clear or blocked labels and at least three training rows. It does not validate those conditions. A larger k than the stored row count would not produce the promised number of votes. Keep unresolved review labels under a separate documented policy."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "CASE GALLERY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Four Tests, Four Kinds of Evidence"
+      },
+      {
+        "type": "paragraph",
+        "text": "A system is not understood until it survives more than one comfortable example."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/1f18213ba3d74c99072fa04ad7520b53eee0b2e9e845b0d8a61ccdda1b41f3f1",
+        "alt": "NORMAL CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/fed8318cf337134a2c31a8d2c90831db67a27a43d3c6f85b25079c53ec37ff9a",
+        "alt": "BOUNDARY CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "NORMAL CASE: predict and name evidence.     BOUNDARY CASE: predict and name evidence."
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/75f964dbe29000347e518a59e2717387d7109bd1f947abdafa07e931a61cf754",
+        "alt": "MISSING INFORMATION illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "image",
+        "src": "/api/resource/4d936b6648b81ac897fc99370c2788f8e0b135d8fc31cfd77afceee66a92128c",
+        "alt": "TRANSFER CASE illustration",
+        "width": 300,
+        "height": 175
+      },
+      {
+        "type": "paragraph",
+        "text": "MISSING INFORMATION: predict and name evidence.     TRANSFER CASE: predict and name evidence."
+      },
+      {
+        "type": "paragraph",
+        "text": "Which case is most likely to reveal a hidden assumption? Why?"
+      },
+      {
+        "type": "response",
+        "label": "Write or draw your reasoning and evidence.",
+        "lines": 5
+      }
+    ]
+  }
+}

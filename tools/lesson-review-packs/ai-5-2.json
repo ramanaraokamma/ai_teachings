@@ -1,0 +1,148 @@
+{
+  "week": "ai-5/2",
+  "title": "Dot products and weighted sums",
+  "grade": 10,
+  "project": "Image-pattern Network Investigation",
+  "goals": [
+    "Calculate a dot product by matching feature positions",
+    "Explain how a weight changes a score with other inputs fixed",
+    "Distinguish a weighted score from a probability or trained model"
+  ],
+  "primary_topic": "Dot products and weighted sums",
+  "vocabulary": [
+    [
+      "Weight",
+      "A numerical coefficient multiplying one input component"
+    ],
+    [
+      "Dot product",
+      "The sum of products of corresponding vector components"
+    ],
+    [
+      "Contribution",
+      "The product of one input component and its matching weight"
+    ],
+    [
+      "Score",
+      "A numerical output whose interpretation must be specified"
+    ]
+  ],
+  "worked_example": {
+    "title": "Separate contribution from total",
+    "blocks": [
+      {
+        "type": "diagram",
+        "kind": "lanes",
+        "title": "Multiply matching components then add",
+        "columns": [
+          "Position",
+          "Contribution rule",
+          "Worked contribution"
+        ],
+        "rows": [
+          [
+            "1 width",
+            "2 times width",
+            "2 times 4 gives 8"
+          ],
+          [
+            "2 height",
+            "-1 times height",
+            "-1 times 2 gives -2"
+          ],
+          [
+            "Add both",
+            "8 plus -2",
+            "Score 6"
+          ]
+        ],
+        "caption": "The first two rows are separate contributions. The last row combines them; multiplying the final input sum by the final weight sum would be a different operation."
+      },
+      {
+        "type": "response",
+        "id": "guided",
+        "label": "Keep w = [2, -1]. Change [4, 2] to [4, 3]. Compute both contributions and explain the score change.",
+        "lines": 4
+      }
+    ]
+  },
+  "guided_practice": {
+    "id": "W2",
+    "title": "Explain cancellation",
+    "prompt": "For w = [2, -1] and x = [2, 4], explain why score zero does not mean the input contains no information.",
+    "answer": "Teacher explanation: Contributions 4 and -4 cancel. The input still contains width 2 and height 4; zero is the combined score.",
+    "lines": 6
+  },
+  "independent_case": {
+    "title": "Compute a new dot product independently",
+    "task": "Use x = [3, 1, 2] and w = [-2, 4, 0.5]. Give each contribution and the total. Increase only the second component from 1 to 2 and compute the new total. Explain why a two-weight list is invalid for this input.",
+    "answer": "Teacher explanation: Contributions -6, 4, 1 give -1. With second component 2, contributions -6, 8, 1 give 3, a rise of 4. Three input components need three matching weights; silently dropping the final component changes the computation.",
+    "source": "primary source W4, first curriculum occurrence"
+  },
+  "misconceptions": [
+    [
+      "Multiply the sums instead",
+      "The operation is 2 times 4 plus -1 times 2, not (2 - 1) times (4 + 2). That shortcut happens to match for some inputs but is not the rule."
+    ],
+    [
+      "Negative means unimportant",
+      "A negative coefficient changes direction. Units, data and the rest of the model affect interpretation."
+    ],
+    [
+      "The weights have been learned",
+      "These values were supplied. Training would require data, an objective and a fitting procedure."
+    ]
+  ],
+  "existing_explanation": {
+    "title": "See how it works",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Keep w = [2, -1] fixed. For A = [4, 2], the score is 6. For B = [2, 4], it is 4 - 4 = 0. For C = [3, 3], it is 6 - 3 = 3. Swapping input positions without swapping their matching weights changes the computation. A zero score can come from cancellation, even when neither input is zero."
+      },
+      {
+        "type": "code",
+        "title": "Optional Python check",
+        "text": "def dot(weights, inputs):\n    if len(weights) != len(inputs):\n        raise ValueError(\"Mismatched dimensions\")\n    return sum(w * x for w, x in zip(weights, inputs))\n\nfor row in [[4, 2], [2, 4], [3, 3]]:\n    print(dot([2, -1], row))  # 6, 0, 3"
+      },
+      {
+        "type": "paragraph",
+        "text": "The length check matters: Python zip alone stops at the shorter list and could silently omit a feature. The function assumes numeric inputs already validated under the schema. First predict the three printed values on paper, then compare."
+      },
+      {
+        "type": "subheading",
+        "text": "Connect the picture and the explanation",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Point to the input, the deciding step and the result in this week\u2019s visual. Explain the same step in ordinary words. A picture helps when you can say what each part represents.",
+        "teaching_method": {
+          "role": "student",
+          "kind": "visual-explanation"
+        }
+      }
+    ]
+  },
+  "existing_comparison": {
+    "title": "Compare the cases",
+    "blocks": [
+      {
+        "type": "subheading",
+        "text": "Compare a familiar case with a changed case"
+      },
+      {
+        "type": "paragraph",
+        "text": "For w = [2, -1] and x = [2, 4], explain why score zero does not mean the input contains no information."
+      },
+      {
+        "type": "response",
+        "label": "Keep the procedure fixed. Explain what changed in the inputs and result.",
+        "lines": 5
+      }
+    ]
+  }
+}

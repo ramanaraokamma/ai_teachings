@@ -1,0 +1,43 @@
+{
+  "week": "ai-2/10",
+  "title": "Human Classifier Simulation",
+  "outcome": "By the end, I can simulate a classifier with explicit requirements and missing-value behavior.",
+  "scenario": "A fictional librarian wants illustrated mystery books with at most 100 pages.",
+  "given": [
+    "Written rule: choose only genre mystery AND illustrated True AND pages<=100.",
+    "Rows J=(mystery,True,100), K=(mystery,False,90), L=(science,True,80), M=(mystery,True,blank). Missing required fields request review."
+  ],
+  "steps": [
+    {
+      "label": "Read all conditions",
+      "icon": "rule",
+      "detail": "Three requirements must pass, not just a high preference score."
+    },
+    {
+      "label": "Trace J",
+      "icon": "check",
+      "detail": "Mystery, illustrated and exactly 100 pages: choose."
+    },
+    {
+      "label": "Trace K and L",
+      "icon": "shield",
+      "detail": "K fails illustration; L fails genre: do not choose."
+    },
+    {
+      "label": "Trace M",
+      "icon": "question",
+      "detail": "Missing pages means review rather than assuming it is short."
+    }
+  ],
+  "explanation": "This human simulation lets students inspect every decision without needing a trained model. Equality matters at 100. Known failures give reasons for rejection; M lacks enough information for the page check. The order should not turn blank into zero or quietly ignore a required field.",
+  "counterfactual": {
+    "change": "Supply M’s pages as 101.",
+    "prediction": "M is now rejected rather than awaiting page review.",
+    "reason": "The required field is known but fails the maximum-length condition."
+  },
+  "student_task": "Why are J and M initially treated differently even though both are illustrated mysteries?",
+  "teacher_answer": "J has a valid including equality page count, 100. M’s pages are unknown, so eligibility cannot be established.",
+  "project_evidence": "Build a transparent filtering stage for the recommender, storing each failed or unresolved requirement in its explanation.",
+  "limits": "This declared rule checks eligibility, not whether an eligible book will actually be enjoyed.",
+  "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment."
+}

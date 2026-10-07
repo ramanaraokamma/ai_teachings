@@ -1,0 +1,65 @@
+{
+  "week": "ai-7/23",
+  "title": "Power and resource tradeoffs",
+  "outcome": "Explain power and resource tradeoffs using the records and boundaries of this fictional investigation.",
+  "scenario": "A simulated detection-and-resource trade-off. A fictional simulation repeats a study under the same assumed alternative effect, using two independent-unit sample sizes.",
+  "given": [
+    "There are 100 simulation trials per design. At n=20, 60 detect the specified effect; at n=40, 80 detect it. Each independent unit costs 2 resource units. Same test and effect assumptions are used."
+  ],
+  "steps": [
+    {
+      "icon": "chart",
+      "label": "Estimate simulated detection",
+      "detail": "Observed detection fractions are 60/100=60% and 80/100=80%."
+    },
+    {
+      "icon": "code",
+      "label": "Calculate design cost",
+      "detail": "n=20 costs 40 resource units; n=40 costs 80 units."
+    },
+    {
+      "icon": "question",
+      "label": "Compare the trade-off",
+      "detail": "Doubling cost adds 20 percentage points of simulated detection under these assumptions."
+    }
+  ],
+  "explanation": "Power is the probability of detecting a specified effect under a specified model and decision rule. Repeated simulation can estimate it; the estimate depends on effect size, variability, design and test assumptions, not sample size alone.",
+  "counterfactual": {
+    "change": "Change the assumed effect or variability but keep the sample sizes.",
+    "prediction": "The detection fractions need new simulation; the resource costs stay 40 and 80.",
+    "reason": "Power depends on the data-generating assumptions, while this stated unit-cost calculation does not."
+  },
+  "student_task": "Calculate both simulated detection fractions and resource costs. What additional detection is observed for the extra forty units, and does that establish power for an actual classroom study?",
+  "teacher_answer": "The fractions are 60% and 80%; costs are 40 and 80 units. Forty extra units add 20 percentage points here. These simulation estimates do not establish real-study power without justified assumptions.",
+  "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
+  "limits": "Only 100 trials per design produce noisy estimates. They are fictional stipulated results, not executed simulation or evidence about pupils.",
+  "review_note": "Individually authored fictional practice distinct from the reserved independent case. No invented significance, real experiment execution or pupil outcome is asserted.",
+  "mini_visual": {
+    "kind": "grid",
+    "title": "Stipulated simulation and resource records",
+    "cells": [
+      [
+        20,
+        60,
+        100,
+        40
+      ],
+      [
+        40,
+        80,
+        100,
+        80
+      ]
+    ],
+    "row_labels": [
+      "Smaller design",
+      "Larger design"
+    ],
+    "column_labels": [
+      "Independent units",
+      "Detections",
+      "Trials",
+      "Cost units"
+    ]
+  }
+}
