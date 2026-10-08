@@ -22,7 +22,7 @@ export default async function LevelPage({ params }: { params: Promise<{ role: st
   return (
     <main className={`portal-page accent-${level.accent}`}>
       <PortalHeader mode={role} sessionRole={sessionRole} />
-      <section className="level-hero">
+      <section className="level-hero" id="main-content" tabIndex={-1}>
         <Link href={`/learn/${role}`} className="back-link"><ArrowLeft aria-hidden="true" /> All levels</Link>
         <div className="level-hero-main"><div><Badge>{level.ages}</Badge><p>{level.code}</p><h1>{level.name}</h1><span>{level.summary}</span></div><div className="capstone-card"><Award aria-hidden="true" /><small>Final capstone</small><strong>{level.capstone}</strong><span>Built across the final phase</span></div></div>
         <div className="phase-track" aria-label="Curriculum phases">{level.phases.map((phase) => <a href={`#phase-${phase.number}`} key={phase.number}><i>{phase.number}</i><span><strong>{phase.name}</strong><small>Weeks {phase.weeks}</small></span></a>)}</div>

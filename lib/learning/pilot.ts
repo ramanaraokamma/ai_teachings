@@ -1,0 +1,16 @@
+export type PilotCase={task:string;answer:string;code?:string};
+export type PilotTrack={id:string;title:string;goal:string;baseline:PilotCase;post:PilotCase;delayed:PilotCase;sessions:string[][];exposure_note:string};
+export const ratings=['not yet','with support','independent'] as const;
+export type Rating=typeof ratings[number];
+export type PilotRow={track:string;group:string;learnerCode:string;phase:'baseline'|'post'|'delayed';date:string;priorExposure:'no'|'yes'|'unknown';supportUsed:'none'|'hint'|'model';explanation:Rating;trace:Rating;limits:Rating;minutes:number;learnerEvidence:string;confusingPart:string;accessBarrier:string;nextAction:string};
+export const pilotFields=['track','group','learnerCode','phase','date','priorExposure','supportUsed','explanation','trace','limits','minutes','learnerEvidence','confusingPart','accessBarrier','nextAction'] as const;
+export function validPilotRow(value:unknown):value is PilotRow {
+ if(!value||typeof value!=='object')return false;const r=value as PilotRow;
+ return typeof r.track==='string'&&typeof r.group==='string'&&r.group.trim().length>0&&typeof r.learnerCode==='string'&&/^[A-Za-z0-9_-]{1,24}$/.test(r.learnerCode)&&['baseline','post','delayed'].includes(r.phase)&&typeof r.date==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(r.date)&&Number.isFinite(Date.parse(r.date))&&new Date(r.date).toISOString().slice(0,10)===r.date&&['no','yes','unknown'].includes(r.priorExposure)&&['none','hint','model'].includes(r.supportUsed)&&[r.explanation,r.trace,r.limits].every(v=>ratings.includes(v))&&typeof r.minutes==='number'&&Number.isFinite(r.minutes)&&r.minutes>=0&&typeof r.learnerEvidence==='string'&&Boolean(r.learnerEvidence.trim())&&[r.confusingPart,r.accessBarrier,r.nextAction].every(v=>typeof v==='string');
+}
+export function pilotCSV(rows:PilotRow[]){const cell=(v:unknown)=>{let text=String(v??'');if(/^(?:\s*[=+@\-]|[\t\r\n])/.test(text))text="'"+text;return '"'+text.replaceAll('"','""')+'"';};return [pilotFields.map(cell).join(','),...rows.map(row=>pilotFields.map(field=>cell(row[field])).join(','))].join('\r\n');}
+export function pilotSummary(rows:PilotRow[]){
+ const learners=new Map<string,Partial<Record<PilotRow['phase'],PilotRow>>>();for(const row of rows){const key=JSON.stringify([row.track,row.group,row.learnerCode]);const existing=learners.get(key);if(!existing?.[row.phase]||existing[row.phase]!.date<=row.date)learners.set(key,{...existing,[row.phase]:row});}
+ const compare=(phase:'post'|'delayed')=>{const allPairs=[...learners.values()].filter(r=>r.baseline&&r[phase]);const pairs=allPairs.filter(r=>r.baseline!.date<=r[phase]!.date&&r.baseline!.priorExposure==='no'&&r[phase]!.priorExposure==='no');const dimensions=Object.fromEntries(['explanation','trace','limits'].map(dimension=>{const dimensionKey=dimension as 'explanation'|'trace'|'limits';let improved=0,unchanged=0,lower=0;for(const pair of pairs){const change=ratings.indexOf(pair[phase]![dimensionKey])-ratings.indexOf(pair.baseline![dimensionKey]);if(change>0)improved++;else if(change<0)lower++;else unchanged++;}return [dimension,{improved,unchanged,lower}];}));return {pairedLearners:pairs.length,excludedPairs:allPairs.length-pairs.length,dimensions};};
+ return {records:rows.length,learners:learners.size,post:compare('post'),delayed:compare('delayed')};
+}

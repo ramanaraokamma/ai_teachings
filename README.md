@@ -77,3 +77,11 @@ Editorial review covers every case:176 received author-to-author review and 88 r
 Rebuild after authoring with tools/draw_lesson_visuals.py and tools/draw_topic_visuals.py (PyMuPDF), tools/build_programme.py, tools/render_programme.py, tools/build_pictorial_hub.py, tools/build_method_guides.py and tools/build_guide.py. The READY.json manifest gates the full 264-case integration; validate with tools/validate_lesson_upgrades.py and tools/validate_bridge_alignment.py as well as the existing checks.
 
 The completed classroom improvements and validation evidence are in [reports/CLASSROOM_IMPROVEMENTS.md](reports/CLASSROOM_IMPROVEMENTS.md). Hosted drafts and practice progress stay in the current browser; keep printed or downloaded evidence for the portfolio.
+
+## Practice, completed work and classroom pilots
+
+Every week now offers supported questions with feedback and earlier review links. The website exports completed answers and project reflections as HTML or JSON. These are records of work, not automatic mastery scores. Supported Python examples run in a local browser worker with real output, stop controls and a five-second execution limit. Independent assessment tasks remain separate.
+
+The offline edition exports the current page’s completed answers. Open its HTML files directly for reading and paper activities. To execute Python, run `python3 -m http.server 8000 --bind 127.0.0.1` from the programme folder and open `http://127.0.0.1:8000/student/index.html`. Stop the server with Ctrl-C when finished. The Python runtime is included; no hosted execution service is required.
+
+Teachers can use `/learn/teacher/pilot` or `teacher/PILOT_GUIDE.html` for three readiness tracks, held-back learner tasks, observation templates and descriptive comparisons. Actual classroom sessions have not yet been conducted. Use real evidence and anonymous learner codes; download local records before clearing browser data.

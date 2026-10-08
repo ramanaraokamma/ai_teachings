@@ -62,5 +62,6 @@ try {
   if(role==='teacher')await check('Student cannot retrieve teacher download',async()=>assert.equal((await request('/api/resource/'+id,session('student'))).status,404));
  }
  await check('Old curriculum address redirects to unified portal',async()=>{const r=await request('/learn/student/curriculum',session('student'));assert.equal(r.status,307);assert.ok(r.headers.get('location').endsWith('/learn/student'));});
+ await check('Pilot studio is teacher only',async()=>{assert.equal((await request('/learn/teacher/pilot',session('teacher'))).status,200);assert.notEqual((await request('/learn/teacher/pilot',session('student'))).status,200);assert.equal((await request('/learn/student/pilot',session('student'))).status,404);});
  console.log(`${results.length} access and lesson checks passed`);
 } finally {await writeFile('access-test-results.json',JSON.stringify({results},null,2));}

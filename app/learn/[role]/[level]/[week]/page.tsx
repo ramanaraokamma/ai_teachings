@@ -11,6 +11,12 @@ import { getLevel, getWeek, titleWithoutWeek, type AcademyRole } from "@/lib/aca
 
 import { classroom } from "@/lib/classroom";
 import { LessonRoute } from "@/components/lesson-route";
+import learningData from "@/lib/learning-tools.json";
+import type { LearningTools } from "@/lib/learning/tools";
+import { PrerequisiteRepair } from "@/components/prerequisite-repair";
+import { PythonLab } from "@/components/python-lab";
+import { FormativePractice } from "@/components/formative-practice";
+import { PortfolioTools } from "@/components/portfolio-tools";
 import { LearningProgress } from "@/components/learning-progress";
 
 export const dynamic = "force-dynamic";
@@ -29,12 +35,14 @@ export default async function WeekPage({ params, searchParams }: { params: Promi
   const requested = query.resource as Resource | undefined;
   const resource = requested && allowedResources.includes(requested) ? requested : allowedResources[0];
   const title = resource === "guide" ? week.teacher.title : resource === "workbook" ? week.workbook.title : week.student.title;
+  const tools=(learningData as Record<string,LearningTools>)[`${level.slug}/${week.number}`];
+  const preparation=week.teacher.pages.find(page=>page.label==="Prepare, teach and assess")?.number || 1;
   const previous = week.number > 1 ? week.number - 1 : null;
   const next = week.number < level.weeks.length ? week.number + 1 : null;
   return (
     <main className={`portal-page lesson-page level-${level.slug} accent-${level.accent}`}>
       <PortalHeader mode={role} sessionRole={sessionRole} />
-      <section className="lesson-hero">
+      <section className="lesson-hero" id="main-content" tabIndex={-1}>
         <div className="lesson-breadcrumbs"><Link href={`/learn/${role}/${level.slug}`}><ArrowLeft aria-hidden="true" /> {level.code} {level.name}</Link><span>/</span><span>Week {week.number}</span></div>
         <div className={`lesson-hero-grid ${resource === "lesson" ? "book-title-grid" : ""}`}>
           <div className="lesson-title"><div><Badge>{level.code}</Badge><Badge variant="outline">Week {String(week.number).padStart(2, "0")} of {level.weeks.length}</Badge></div><h1>{titleWithoutWeek(title)}</h1><p>{resource === "guide" ? "Teacher-ready background, explanations, lesson flow, interventions, and assessment evidence." : resource === "workbook" ? "A focused practice mission for recording reasoning and demonstrating mastery." : "A complete illustrated lesson with explanations, worked examples, activities, responsibility checks, and mastery proof."}</p></div>
@@ -51,13 +59,17 @@ export default async function WeekPage({ params, searchParams }: { params: Promi
           <a className="resource-action" href={resource === "guide" ? week.teacher.pdf : resource === "workbook" ? week.workbook.pdf : week.student.pdf}>Download PDF</a><PrintResource />
         </div>
       </section>
-      {resource === "guide" && <section className="classroom-panel"><h2>Prepare this week</h2><p>Start with the timing, practice answers, misconception checks and assessment criteria.</p><a href={`#section-${week.teacher.pages.length}`}>Open the preparation and assessment summary</a></section>}
+      {resource === "guide" && <section className="classroom-panel"><h2>Prepare this week</h2><p>Start with the timing, practice answers, misconception checks and assessment criteria.</p><a href={`#section-${preparation}`}>Open the preparation and assessment summary</a></section>}
       {resource === "lesson" && <LessonRoute route={classroom.weeks[`${level.slug}/${week.number}`]} />}
+      {resource === "lesson" && <FormativePractice week={`${level.slug}/${week.number}`} role={role} scenario={tools.scenario} questions={tools.questions} repairs={tools.repairs} />}
+      {resource === "lesson" && tools.labs.length > 0 && <PythonLab week={`${level.slug}/${week.number}`} role={role} labs={tools.labs} />}
+      {resource === "lesson" && <PrerequisiteRepair repairs={tools.repairs} role={role} week={`${level.slug}/${week.number}`} />}
       <section className="lesson-reader-shell">
         {resource === "guide" && <ContentReader pages={week.teacher.pages} responsePrefix={`${level.slug}/${week.number}/guide`} />}
         {resource === "lesson" && <ContentReader pages={week.student.pages} responsePrefix={`${level.slug}/${week.number}/lesson`} />}
         {resource === "workbook" && <ContentReader workbookBlocks={week.workbook.blocks} responsePrefix={`${level.slug}/${week.number}/workbook`} />}
       </section>
+      <PortfolioTools role={role} week={`${level.slug}/${week.number}`} titles={{[`${level.slug}/${week.number}`]:{title:titleWithoutWeek(week.student.title),project:classroom.weeks[`${level.slug}/${week.number}`].project}}} />
       <LearningProgress id={`${level.slug}/${week.number}`} role={role} />
       <nav className="week-pagination" aria-label="Adjacent weeks">
         {previous ? <Link href={`/learn/${role}/${level.slug}/${previous}?resource=${resource}`}><ArrowLeft aria-hidden="true" /><span><small>Previous</small>Week {previous}</span></Link> : <span />}

@@ -8,6 +8,7 @@ import { requireAccess } from "@/lib/access";
 import { levels, type AcademyRole } from "@/lib/academy";
 
 import { classroom } from "@/lib/classroom";
+import { PortfolioTools } from "@/components/portfolio-tools";
 import { LearningProgress } from "@/components/learning-progress";
 
 export const dynamic = "force-dynamic";
@@ -20,11 +21,13 @@ export default async function RoleDashboard({ params }: { params: Promise<{ role
   return (
     <main className="portal-page">
       <PortalHeader mode={role} sessionRole={sessionRole} />
-      <section className="dashboard-hero">
+      <section className="dashboard-hero" id="main-content" tabIndex={-1}>
         <div><Badge variant="outline">{role === "student" ? "Your learning map" : "Your teaching studio"}</Badge><h1>{role === "student" ? "Choose a level. Start the next idea." : "Plan the lesson. Teach the idea. Check mastery."}</h1><p>{role === "student" ? "Every level is a 36-week path with explanations, visual models, practice, challenges, and a capstone." : "Open any level to see its 36-week sequence, teacher guide, student lesson, and workbook practice together."}</p></div>
         <div className="dashboard-stat"><strong>7</strong><span>levels + Python bridge</span><i /><strong>264</strong><span>weeks of learning</span></div>
       </section>
       <section className="classroom-panel"><h2>Your learning sequence</h2><p>Levels 1–3 → Python Readiness Bridge → Level 4 Machine Learning → Levels 5–7. The bridge has 12 lessons; each AI level has 36 weeks. Readiness determines placement.</p><LearningProgress role={role} /></section>
+      <PortfolioTools role={role} titles={Object.fromEntries(levels.flatMap(l=>l.weeks.map(w=>[`${l.slug}/${w.number}`,{title:w.student.title,project:l.capstone}])))} />
+      {role === "teacher" && <section className="classroom-panel"><h2>Try the lessons with a real class</h2><p>Prepare a baseline, independent post-lesson task and delayed review. Keep actual evidence, support and barriers together.</p><Link href="/learn/teacher/pilot">Open the classroom pilot studio</Link></section>}
       <section className="level-grid" aria-label="AI Academy levels">
         {levels.map((level) => (
           <Link href={`/learn/${role}/${level.slug}`} className={`level-card accent-${level.accent}`} key={level.slug}>

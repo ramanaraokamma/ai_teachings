@@ -453,3 +453,34 @@ svg { stroke-width: 1.8; }
 @media print { .classroom-panel {border:0;padding:0;break-inside:auto;} .learning-progress, .interactive-response button {display:none;} .lesson-route {display:block;} .curve-plot {max-height:3in;} .classroom-panel details > * {display:block;} }
 .lesson-section :is(p,h2,h3,td,th), .classroom-panel p { overflow-wrap:anywhere; }
 .lesson-section, .section-blocks { min-width:0; }
+
+.learning-actions { display:flex;flex-wrap:wrap;gap:.75rem;margin:1rem 0; }
+.learning-actions button, .classroom-panel > button { border:1px solid #376882;border-radius:.55rem;background:#eaf4fa;color:#163b52;font:inherit;font-weight:650;padding:.65rem 1rem;min-height:44px;cursor:pointer; }
+.learning-actions button:disabled { opacity:.65;cursor:default; }
+.formative-practice fieldset { border:1px solid #adc5d5;padding:1rem;margin:1rem 0;border-radius:.6rem; }
+.formative-practice legend { font-weight:700;padding:0 .4rem; }
+.formative-practice fieldset label { display:flex;align-items:flex-start;gap:.8rem;padding:.8rem .4rem;line-height:1.65; }
+.formative-practice input { flex:0 0 auto;margin-top:.35rem;width:1.1rem;height:1.1rem; }
+.python-lab > label { display:block;font-weight:700;margin:.8rem 0; }
+.python-lab select { display:block;max-width:100%;border:1px solid #7595ab;background:white;padding:.7rem;color:#183249;border-radius:.4rem;font:inherit; }
+.python-editor { display:block;width:100%;max-width:100%;box-sizing:border-box;padding:1rem;border:1px solid #49687b;border-radius:.6rem;background:#11293d;color:#fff;font:14px/1.7 ui-monospace,monospace;resize:vertical;tab-size:4; }
+.classroom-panel :is(legend,label,summary) { overflow-wrap:anywhere; }
+.skip-link { position:fixed;top:.5rem;left:.5rem;transform:translateY(-180%);z-index:100;background:white;color:#163b52;padding:.8rem;border:2px solid #376882;border-radius:.4rem; }
+.skip-link:focus { transform:translateY(0); }
+@media(prefers-reduced-motion:reduce) { html {scroll-behavior:auto;} *,*::before,*::after {animation:none!important;transition:none!important;} }
+@media print { .learning-actions,.python-lab select,.formative-practice button,.skip-link {display:none!important;} .python-editor {background:white;color:#183249;} .classroom-panel {border-top:1px solid #a4bbc9;} }
+@media print { .python-editor {display:none;} }
+/* Contrast and keyboard fixes from the current axe audit. */
+.brand small, .reader-nav-title, .section-kicker > span { color:#52697a; }
+.interactive-response { color:#405b70; }
+.interactive-response button { color:#405b70;min-height:44px; }
+.resource-nav small { color:#b8cce0; }
+.resource-nav a.active small { color:#435d73; }
+.week-card-meta [data-slot="badge"], .teacher-week-title, .resource-counts, .week-pagination small {color:#4f687c;}
+.level-hero-main [data-slot="badge"] {color:#163b52;}
+.level-hero-main > div:first-child > [data-slot="badge"] {color:#163b52;}
+.pilot-fields {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;}
+.pilot-fields label,.pilot-note {display:block;line-height:1.65;margin:.7rem 0;font-weight:650;}
+.pilot-fields :is(input,select),.pilot-note textarea,.classroom-panel > select {display:block;width:100%;max-width:100%;border:1px solid #7595ab;border-radius:.4rem;padding:.65rem;background:white;color:#183249;font:inherit;min-height:44px;}
+.pilot-note textarea {font-weight:400;}
+@media(max-width:700px){.pilot-fields{grid-template-columns:1fr;}}

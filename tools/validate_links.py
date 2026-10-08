@@ -12,7 +12,7 @@ class Links(HTMLParser):
   self.links += [a[key] for key in ['href','src'] if key in a]
 parsed={}
 pages=[ROOT/name for name in ['START_HERE.html','index.html','PROGRAMME_GUIDE.html','TEACHING_METHOD.html','PICTORIAL_LESSONS.html']]
-pages += [page for role in ['student','teacher','workbook'] for page in (ROOT/role).glob('*.html')]
+pages += [page for role in ['student','teacher','workbook'] for page in (ROOT/role).rglob('*.html')]
 for p in pages:
  parser=Links();parser.feed(p.read_text());parsed[p]=parser
 for p,parser in parsed.items():

@@ -8,8 +8,9 @@ import type { AcademyRole } from "@/lib/academy";
 export function PortalHeader({ mode, sessionRole, edition = "2.0" }: { mode: AcademyRole; sessionRole: AcademyRole; edition?: "2.0" | "3" }) {
   const suffix = edition === "3" ? "/curriculum" : "";
   return (
+    <><a className="skip-link" href="#main-content">Skip to learning content</a>
     <header className="portal-header">
-      <Link href={`/learn/${mode}${suffix}`} className="brand" aria-label="AI Academy dashboard">
+      <Link href={`/learn/${mode}${suffix}`} className="brand">
         <span className="brand-mark"><Sparkles aria-hidden="true" /></span>
         <span><strong>AI Academy</strong><small>Complete learning programme</small></span>
       </Link>
@@ -27,6 +28,6 @@ export function PortalHeader({ mode, sessionRole, edition = "2.0" }: { mode: Aca
           <Button variant="ghost" size="sm" type="submit" className="logout-button"><LogOut aria-hidden="true" /> Sign out</Button>
         </form>
       </nav>
-    </header>
+    </header></>
   );
 }

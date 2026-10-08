@@ -9,13 +9,17 @@ folders=['assets','content','downloads','reports','student','teacher','tools','w
 names=['PICTORIAL_LESSONS.html','PROGRAMME_GUIDE.html','PROGRAMME_GUIDE.pdf','START_HERE.html','TEACHING_METHOD.html','TEACHING_METHOD.pdf','index.html']
 for folder in folders:shutil.copytree(R/folder,O/folder,dirs_exist_ok=True,ignore=shutil.ignore_patterns('__pycache__','*.tmp.pdf'))
 for name in names:shutil.copy2(R/name,O/name)
+shutil.copytree(R/'public/python-runtime',O/'public/python-runtime',dirs_exist_ok=True)
+shutil.copy2(R/'public/python-lab-worker.mjs',O/'public/python-lab-worker.mjs')
 readme=(R/'README.md').read_text();readme=readme[readme.index('# AI Academy — Complete Learning Programme'):]
 (O/'README.md').write_text(readme)
 files=[f for f in O.rglob('*') if f.is_file() and f.name!='file-manifest.json']
 (O/'reports/file-manifest.json').write_text(json.dumps([{'file':str(f.relative_to(O)),'bytes':f.stat().st_size,'sha256':hashlib.sha256(f.read_bytes()).hexdigest()} for f in sorted(files)],indent=2))
 student_files=[O/'PICTORIAL_LESSONS.html']
 for prefix in ['student','workbook','downloads/student','downloads/workbook']:student_files.extend(f for f in (O/prefix).rglob('*') if f.is_file())
-assets={'programme.css','programme.js'}
+assets={'programme.css','programme.js','learning-tools.js'}
+student_files.extend(f for f in (O/'public/python-runtime').rglob('*') if f.is_file())
+student_files.append(O/'public/python-lab-worker.mjs')
 for f in student_files:
  if f.suffix=='.html':assets.update(re.findall(r'(?:\.\./)?assets/([^"\s<>]+)',f.read_text()))
 student_files.extend(O/'assets'/name for name in sorted(assets))

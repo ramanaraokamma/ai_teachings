@@ -14,15 +14,15 @@ const calloutIcon = { idea: Lightbulb, think: MessageCircleQuestion, caution: Al
 
 export function ContentBlockView({ block, storageKey }: { block: ContentBlock; storageKey?:string }) {
   if (block.type === "sensor") return <SensorModel />;
-  if (block.type === "diagram") return <figure className="content-table-wrap"><h3>{block.title || "Visual model"}</h3>{block.rows ? <table><thead><tr>{block.columns?.map((v,i)=><th key={i}>{v}</th>)}</tr></thead><tbody>{block.rows.map((row,i)=><tr key={i}>{row.map((v,j)=><td key={j}>{v}</td>)}</tr>)}</tbody></table> : <div>{block.values && <table><tbody>{block.values.map((row,i)=><tr key={i}>{row.map((value,j)=><td key={j} style={{background:value ? "#13243b" : "white",color:value ? "white" : "#13243b",textAlign:"center",width:48,height:48}}>{value}</td>)}</tr>)}</tbody></table>}{block.series && <CurvePlot series={block.series} xValues={block.xValues} axis={block.axis} xLabel={block.xLabel} max={block.max} />}{block.series && <table><caption>{block.xLabel} / {block.axis}</caption><thead><tr><th>Series</th>{block.xValues?.map(v=><th key={v}>{v}</th>)}</tr></thead><tbody>{block.series.map(series=><tr key={series.label}><th>{series.label}</th>{series.values.map((v,i)=><td key={i}>{v}</td>)}</tr>)}</tbody></table>}</div>}{block.key && <p>{block.key}</p>}{block.caption && <figcaption>{block.caption}</figcaption>}</figure>;
+  if (block.type === "diagram") return <figure className="content-table-wrap" tabIndex={0} aria-label={block.title || "Scrollable visual model"}><h3>{block.title || "Visual model"}</h3>{block.rows ? <table><thead><tr>{block.columns?.map((v,i)=><th key={i}>{v}</th>)}</tr></thead><tbody>{block.rows.map((row,i)=><tr key={i}>{row.map((v,j)=><td key={j}>{v}</td>)}</tr>)}</tbody></table> : <div>{block.values && <table><tbody>{block.values.map((row,i)=><tr key={i}>{row.map((value,j)=><td key={j} style={{background:value ? "#13243b" : "white",color:value ? "white" : "#13243b",textAlign:"center",width:48,height:48}}>{value}</td>)}</tr>)}</tbody></table>}{block.series && <CurvePlot series={block.series} xValues={block.xValues} axis={block.axis} xLabel={block.xLabel} max={block.max} />}{block.series && <table><caption>{block.xLabel} / {block.axis}</caption><thead><tr><th>Series</th>{block.xValues?.map(v=><th key={v}>{v}</th>)}</tr></thead><tbody>{block.series.map(series=><tr key={series.label}><th>{series.label}</th>{series.values.map((v,i)=><td key={i}>{v}</td>)}</tr>)}</tbody></table>}</div>}{block.key && <p>{block.key}</p>}{block.caption && <figcaption>{block.caption}</figcaption>}</figure>;
   if (block.type === "image") return <LessonVisual {...block} />;
   if (block.type === "gallery") return <div className="instruction-gallery">{block.cells.map((cell, i) => <div className="gallery-cell" key={i}>{cell.map((item,j) => <Block key={j} block={item} storageKey={`${storageKey}-cell-${i}-${j}`} />)}</div>)}</div>;
   if (block.type === "title") return <h2 className="content-title">{block.text}</h2>;
   if (block.type === "heading") return <h2 className="content-heading">{block.text}</h2>;
   if (block.type === "subheading") return <h3 id={(block as {anchor?: string}).anchor} className="content-subheading">{block.text}</h3>;
-  if (block.type === "code") return <pre className="code-block"><code>{block.text}</code></pre>;
+  if (block.type === "code") return <pre className="code-block" tabIndex={0} aria-label="Python code example"><code>{block.text}</code></pre>;
   if (block.type === "step") return <div className="step-block">{block.text}</div>;
-  if (block.type === "response") return <div><p>{block.text}</p><ResponseSpace storageKey={storageKey} /></div>;
+  if (block.type === "response") return <div><p>{block.text}</p><ResponseSpace storageKey={storageKey} prompt={block.text} /></div>;
   if (block.type === "list") return <div className={`content-list list-${block.marker}`}><span aria-hidden="true">{block.marker === "number" ? "→" : "•"}</span><p>{block.text}</p></div>;
   if (block.type === "callout") {
     const Icon = calloutIcon[block.tone] || Lightbulb;
@@ -32,7 +32,7 @@ export function ContentBlockView({ block, storageKey }: { block: ContentBlock; s
     const [head, ...rows] = block.rows;
     return (
       <div className="content-table-wrap">
-        <Table>
+        <Table aria-label={head.join(" · ")}>
           <TableHeader><TableRow>{head.map((cell, index) => <TableHead key={index}>{cell}</TableHead>)}</TableRow></TableHeader>
           <TableBody>{rows.map((row, rowIndex) => <TableRow key={rowIndex}>{row.map((cell, cellIndex) => <TableCell key={cellIndex}>{cell}</TableCell>)}</TableRow>)}</TableBody>
         </Table>

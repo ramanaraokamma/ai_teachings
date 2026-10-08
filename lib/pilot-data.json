@@ -1,0 +1,110 @@
+[
+  {
+    "id": "ai-1/1",
+    "title": "Foundations: explain a hybrid system",
+    "goal": "Distinguish an observed result from an explanation of how it was produced",
+    "baseline": {
+      "task": "A classroom door opens when someone approaches. Its label says intelligent entrance. State one observation, one mechanism you cannot determine from that observation, and one record or question that would help distinguish a written rule from a learned model.",
+      "answer": "Opening on approach is an observation. The decision mechanism is unknown. Ask for the rule or training record and trace how an input produced the action; an intelligent label does not establish learning."
+    },
+    "post": {
+      "task": "A school greenhouse estimates tomorrow's temperature using a model fitted on historical weather. A written rule displays CHECK PLANTS above 30 degrees C. A caretaker chooses whether to open a vent. Identify each mechanism and explain why a correct CHECK PLANTS message would not prove an accurate temperature prediction.",
+      "answer": "The forecast is learned-model prediction; the message is a written threshold; vent opening is the caretaker's decision. The message may correctly follow a forecast that is itself inaccurate. Compare the forecast with a predefined temperature observation at the relevant place and time before judging prediction accuracy."
+    },
+    "delayed": {
+      "task": "A bus station estimates the number of waiting passengers using a model fitted on labelled camera frames. A written rule displays CALL ANOTHER BUS at estimates of 35 or more. A dispatcher chooses whether to send a bus. The estimate is 40. Identify the three mechanisms, trace the message, and explain why a correctly displayed message does not prove an accurate passenger estimate.",
+      "answer": "The estimate is a learned-model prediction; the message follows the written threshold (40 >= 35); dispatch is human action. The threshold can be applied correctly to an inaccurate estimate. Compare the estimate with an appropriately timed, predefined passenger count before judging prediction accuracy."
+    },
+    "sessions": [
+      [
+        "Session 1 · Understand · 45 min",
+        "0–7: recall and prerequisite; 7–15: inspect the concrete case and predict; 15–30: teacher models the worked trace; 30–40: learners explain a step using the text and visual; 40–45: check the core idea.",
+        "Sections 1–6; record the brief recall in the workbook."
+      ],
+      [
+        "Session 2 · Practise · 45 min",
+        "0–5: retrieve the procedure; 5–15: W2 completion practice; 15–23: explain and check with a partner; 23–30: each learner answers the misconception check; 30–40: targeted reteaching or a harder variation; 40–45: prepare the investigation.",
+        "Sections 7–10; use the matching workbook W2 and misconception check."
+      ],
+      [
+        "Session 3 · Investigate and transfer · 45 min",
+        "0–5: retrieve the decision rule; 5–20: investigate or trace; 20–30: start the independent case; 30–38: connect the project; 38–43: act on feedback; 43–45: plan the return check.",
+        "Sections 9 and 11–14. Give extra time to finish the full task set; use Section 15 when the week includes a coding lab."
+      ]
+    ],
+    "exposure_note": "Ask whether learners have seen any selected case before. Mark prior exposure; use a genuinely different teacher-checked case when a selected task is familiar."
+  },
+  {
+    "id": "python-bridge/5",
+    "title": "Python: branch order and boundary tests",
+    "goal": "Trace the selected branch in an if elif else chain",
+    "baseline": {
+      "task": "Trace the code for reading=20, then reading=19 and reading=101. Explain why validity is checked before the lamp rule.",
+      "code": "reading = 20\nif not 0 <= reading <= 100:\n    action = \"invalid\"\nelif reading < 20:\n    action = \"on\"\nelse:\n    action = \"off\"\nprint(action)\n",
+      "answer": "20 gives off, 19 gives on, 101 gives invalid. Validity is checked first so invalid inputs cannot be treated as valid lamp decisions."
+    },
+    "post": {
+      "task": "Predict the action for 30, then trace 29 and -1. Explain why validity is checked before the lamp decision.",
+      "code": "reading = 30\nif not 0 <= reading <= 100:\n    action = \"invalid\"\nelif reading < 30:\n    action = \"on\"\nelse:\n    action = \"off\"\nprint(action)\n",
+      "answer": "30 gives off, 29 gives on, -1 gives invalid. Checking validity first prevents an invalid negative reading from being accepted as a lamp-on decision."
+    },
+    "delayed": {
+      "task": "Write or trace a branch chain: valid readings are 0 through 100 inclusive. Invalid readings produce invalid; valid readings below 25 produce on; all other valid readings produce off. Predict 24,25,100,101 and -1, then justify the order and boundaries.",
+      "code": "reading = 25\nif not 0 <= reading <= 100:\n    action = \"invalid\"\nelif reading < 25:\n    action = \"on\"\nelse:\n    action = \"off\"\nprint(action)\n",
+      "answer": "24 on; 25 off; 100 off; 101 invalid; -1 invalid. Check validity before the threshold, include both valid endpoints, and use a strict less-than comparison for on."
+    },
+    "sessions": [
+      [
+        "Session 1 · Understand · 45 min",
+        "0–7: recall and prerequisite; 7–15: inspect the concrete case and predict; 15–30: teacher models the worked trace; 30–40: learners explain a step using the text and visual; 40–45: check the core idea.",
+        "Sections 1–6; record the brief recall in the workbook."
+      ],
+      [
+        "Session 2 · Practise · 45 min",
+        "0–5: retrieve the procedure; 5–15: W2 completion practice; 15–23: explain and check with a partner; 23–30: each learner answers the misconception check; 30–40: targeted reteaching or a harder variation; 40–45: prepare the investigation.",
+        "Sections 7–10; use the matching workbook W2 and misconception check."
+      ],
+      [
+        "Session 3 · Investigate and transfer · 45 min",
+        "0–5: retrieve the decision rule; 5–20: investigate or trace; 20–30: start the independent case; 30–38: connect the project; 38–43: act on feedback; 43–45: plan the return check.",
+        "Sections 9 and 11–14. Give extra time to finish the full task set; use Section 15 when the week includes a coding lab."
+      ]
+    ],
+    "exposure_note": "Ask whether learners have seen any selected case before. Mark prior exposure; use a genuinely different teacher-checked case when a selected task is familiar."
+  },
+  {
+    "id": "ai-4/10",
+    "title": "Machine Learning: fit and compare a baseline",
+    "goal": "Fit a majority label baseline using training labels only",
+    "baseline": {
+      "task": "Training labels are A,A,B. Validation labels are A,B,B. Fit a training-majority baseline and list its three predictions. A candidate predicts A,B,A. Score both on these validation rows, state the difference in correct examples and percentage points, and name an unsupported claim.",
+      "answer": "Fit A from the training majority. Predict A,A,A. Baseline gets row 1: 1/3. Candidate gets rows 1 and 2: 2/3. It gains one correct example and about 33.3 percentage points. This tiny comparison does not establish performance on future cases."
+    },
+    "post": {
+      "task": "New training labels are blocked, clear, blocked, blocked, clear. New validation labels are clear, blocked, clear, blocked. Fit the same baseline rule and list its four predictions. A supplied candidate predicts clear, blocked, blocked, blocked. Score both on these rows and state the difference in correct examples and percentage points. What claim remains unsupported?",
+      "answer": "Training counts are three blocked and two clear, so predict blocked four times. The baseline matches rows 2 and 4: 2/4 or 50 percent. The candidate matches rows 1,2,4: 3/4 or 75 percent. It gains one correct example and 25 percentage points. This tiny validation comparison does not prove future performance or readiness for use."
+    },
+    "delayed": {
+      "task": "Training labels are blue,red,blue,blue,red. Validation labels are blue,red,red,blue,blue. Fit the training-majority baseline and list its five predictions. A candidate predicts red,red,blue,red,blue. Score both, state the difference in correct examples and percentage points, and explain the limit of this comparison.",
+      "answer": "Training has three blue and two red, so predict blue five times. Baseline matches rows 1,4,5: 3/5 or 60%. Candidate matches rows 2,5: 2/5 or 40%. It loses one correct example and is 20 percentage points lower. The small validation set does not establish future performance or suitability for deployment."
+    },
+    "sessions": [
+      [
+        "Session 1 · Understand · 45 min",
+        "0–7: recall and prerequisite; 7–15: inspect the concrete case and predict; 15–30: teacher models the worked trace; 30–40: learners explain a step using the text and visual; 40–45: check the core idea.",
+        "Sections 1–6; record the brief recall in the workbook."
+      ],
+      [
+        "Session 2 · Practise · 45 min",
+        "0–5: retrieve the procedure; 5–15: W2 completion practice; 15–23: explain and check with a partner; 23–30: each learner answers the misconception check; 30–40: targeted reteaching or a harder variation; 40–45: prepare the investigation.",
+        "Sections 7–10; use the matching workbook W2 and misconception check."
+      ],
+      [
+        "Session 3 · Investigate and transfer · 45 min",
+        "0–5: retrieve the decision rule; 5–20: investigate or trace; 20–30: start the independent case; 30–38: connect the project; 38–43: act on feedback; 43–45: plan the return check.",
+        "Sections 9 and 11–14. Give extra time to finish the full task set; use Section 15 when the week includes a coding lab."
+      ]
+    ],
+    "exposure_note": "Ask whether learners have seen any selected case before. Mark prior exposure; use a genuinely different teacher-checked case when a selected task is familiar."
+  }
+]

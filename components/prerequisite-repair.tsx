@@ -1,0 +1,4 @@
+import type {Repair} from "@/lib/learning/tools";
+export function PrerequisiteRepair({repairs,role,week}:{repairs:Repair[];role:string;week:string}){
+ return <section className="classroom-panel prerequisite-repair"><h2>Repair a missing building block</h2><p>Choose an idea you need to revisit. Try its short task, inspect the worked picture, then return to this week and try again.</p>{repairs.length?repairs.map(repair=><details key={repair.week}><summary>{repair.goal}</summary><p><strong>Review:</strong> {repair.title}</p><p><strong>Short practice:</strong> {repair.task}</p><a href={`/learn/${role}/${repair.week}#section-${repair.section}`}>Open the earlier worked explanation</a><p>Use Back to return to {week.replace('/',' · Week ')}. Explain what you changed before retrying.</p></details>):<p>This is the starting lesson. Ask your teacher to model one observation, one written rule and one deciding step, then try your own example.</p>}</section>;
+}
