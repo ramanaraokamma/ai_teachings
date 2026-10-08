@@ -27,6 +27,7 @@ def block(b):
   text='<h3>'+e(b.get('title',''))+'</h3>'
   if b.get('rows'):text+=table([b.get('columns',['Stage','Evidence','Result'])]+b['rows'])
   elif b.get('values'):text+='<p>'+e(b.get('key',''))+'</p>'+table(b['values'])
+  if b.get('series'):text+=table([['Series']+list(map(str,b['xValues']))]+[[s['label']]+list(map(str,s['values'])) for s in b['series']])
   return text+'<p class="caption">'+e(b.get('caption',''))+'</p>'
  if t=='table':return table(b['rows'])
  if t=='code':return '<div class="code">'+''.join('<p>'+e(line).replace(' ','&#160;')+'</p>' for original in text.splitlines() for line in (textwrap.wrap(original,width=76,replace_whitespace=False,drop_whitespace=False,break_on_hyphens=False) or ['']))+'</div>'
@@ -55,4 +56,4 @@ for w in ([] if os.environ.get('ONLY_GUIDES') else D['weeks']+D['python_bridge']
   if len(rows)%90==0:print('Local PDFs:',len(rows),flush=True)
 for file in ['TEACHING_METHOD.html','PROGRAMME_GUIDE.html','student/LEARNING_GUIDE.html']:
  source=(R/file).read_text();body=re.search(r'<main>(.*)</main>',source,re.S).group(1);save(body,R/file.replace('.html','.pdf'))
-if rows:(R/'reports/pdf-rendering.json').write_text(json.dumps({'renderer':'PyMuPDF Story','weekly_files':len(list((R/'downloads').rglob('*.pdf'))),'guide_files':3,'browser_layout_verified':False,'reason':'Chrome launch aborted in restricted workspace; no permission escalation available.'},indent=2))
+if rows:(R/'reports/pdf-rendering.json').write_text(json.dumps({'renderer':'PyMuPDF Story','weekly_files':len(list((R/'downloads').rglob('*.pdf'))),'guide_files':3,'browser_layout_verified':False,'reason':'PyMuPDF generates matching downloads; hosted browser layouts are checked separately.'},indent=2))

@@ -6,7 +6,7 @@ export type AcademyRole = "student" | "teacher";
 
 export type ContentBlock =
   | { type: "sensor"; title: string }
-  | { type: "diagram"; kind: string; title?: string; columns?: string[]; rows?: string[][]; values?: number[][]; series?: {label: string; values: number[]}[]; xValues?: number[]; axis?: string; xLabel?: string; key?: string; caption?: string }
+  | { type: "diagram"; kind: string; max?:number; title?: string; columns?: string[]; rows?: string[][]; values?: number[][]; series?: {label: string; values: number[]}[]; xValues?: number[]; axis?: string; xLabel?: string; key?: string; caption?: string }
   | { type: "image"; src: string; alt: string; width: number; height: number }
   | { type: "gallery"; cells: ContentBlock[][] }
   | { type: "title" | "heading" | "subheading" | "paragraph" | "step" | "code" | "response"; text: string }

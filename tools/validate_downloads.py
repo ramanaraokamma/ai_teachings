@@ -9,7 +9,7 @@ def normal(t):
 def expected(b):
  if b['type']=='image':return []
  if b['type']=='gallery':return [x for cell in b['cells'] for c in cell for x in expected(c)]
- if b['type']=='diagram':return [b.get('title',''),b.get('caption',''),b.get('key','')]+[str(c) for row in b.get('rows',b.get('values',[])) for c in row]
+ if b['type']=='diagram':return [b.get('title',''),b.get('caption',''),b.get('key','')]+[str(c) for row in b.get('rows',b.get('values',[])) for c in row]+[s['label'] for s in b.get('series',[])]+[str(v) for s in b.get('series',[]) for v in s['values']]
  if b['type']=='table':return [str(c) for row in b['rows'] for c in row]
  if b['type']=='response':return [b.get('label','')]
  return [b.get('text','')]

@@ -1,3 +1,5 @@
+> Historical review of the prior offline edition. The current unified website and classroom improvements are documented in [CLASSROOM_IMPROVEMENTS.md](CLASSROOM_IMPROVEMENTS.md). Current browser checks are in classroom-browser-validation.json.
+
 # Final review — dedicated complete programme
 
 The package preserves all 144 original weeks, integrates all 252 later source lessons, and provides 252 main weeks plus 12 Python bridge lessons. Original student, teacher and workbook text and images are retained, apart from documented corrections and removed obsolete mastheads. Additional material is inside required weekly sections and matching workbooks.

@@ -33,7 +33,7 @@ function walk(blocks, role) {
   return images;
 }
 assert.equal(data.version, "complete-programme-2026-10-07");
-assert.deepEqual(data.levels.map(l=>l.slug), [...Array.from({length:7},(_,i)=>`ai-${i+1}`), "python-bridge"]);
+assert.deepEqual(data.levels.map(l=>l.slug), ["ai-1", "ai-2", "ai-3", "python-bridge", "ai-4", "ai-5", "ai-6", "ai-7"]);
 let weeks = 0;
 for (const level of data.levels) {
   const expected = level.slug === "python-bridge" ? 12 : 36;

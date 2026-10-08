@@ -9,6 +9,10 @@ import { Badge } from "@/components/ui/badge";
 import { requireAccess } from "@/lib/access";
 import { getLevel, getWeek, titleWithoutWeek, type AcademyRole } from "@/lib/academy";
 
+import { classroom } from "@/lib/classroom";
+import { LessonRoute } from "@/components/lesson-route";
+import { LearningProgress } from "@/components/learning-progress";
+
 export const dynamic = "force-dynamic";
 
 type Resource = "lesson" | "guide" | "workbook";
@@ -47,16 +51,21 @@ export default async function WeekPage({ params, searchParams }: { params: Promi
           <a className="resource-action" href={resource === "guide" ? week.teacher.pdf : resource === "workbook" ? week.workbook.pdf : week.student.pdf}>Download PDF</a><PrintResource />
         </div>
       </section>
+      {resource === "guide" && <section className="classroom-panel"><h2>Prepare this week</h2><p>Start with the timing, practice answers, misconception checks and assessment criteria.</p><a href={`#section-${week.teacher.pages.length}`}>Open the preparation and assessment summary</a></section>}
+      {resource === "lesson" && <LessonRoute route={classroom.weeks[`${level.slug}/${week.number}`]} />}
       <section className="lesson-reader-shell">
-        {resource === "guide" && <ContentReader pages={week.teacher.pages} />}
-        {resource === "lesson" && <ContentReader pages={week.student.pages} />}
-        {resource === "workbook" && <ContentReader workbookBlocks={week.workbook.blocks} />}
+        {resource === "guide" && <ContentReader pages={week.teacher.pages} responsePrefix={`${level.slug}/${week.number}/guide`} />}
+        {resource === "lesson" && <ContentReader pages={week.student.pages} responsePrefix={`${level.slug}/${week.number}/lesson`} />}
+        {resource === "workbook" && <ContentReader workbookBlocks={week.workbook.blocks} responsePrefix={`${level.slug}/${week.number}/workbook`} />}
       </section>
+      <LearningProgress id={`${level.slug}/${week.number}`} role={role} />
       <nav className="week-pagination" aria-label="Adjacent weeks">
         {previous ? <Link href={`/learn/${role}/${level.slug}/${previous}?resource=${resource}`}><ArrowLeft aria-hidden="true" /><span><small>Previous</small>Week {previous}</span></Link> : <span />}
         <Link className="all-weeks" href={`/learn/${role}/${level.slug}`}>All {level.weeks.length} weeks</Link>
-        {next ? <Link href={`/learn/${role}/${level.slug}/${next}?resource=${resource}`}><span><small>Next</small>Week {next}</span><ArrowRight aria-hidden="true" /></Link> : <span />}
+        {next ? <Link href={`/learn/${role}/${level.slug}/${next}?resource=${resource}`}><span><small>Next</small>Week {next}</span><ArrowRight aria-hidden="true" /></Link> : levelsNext(level.slug, role)}
       </nav>
     </main>
   );
 }
+
+function levelsNext(slug:string, role:string) { const next = classroom.sequence[classroom.sequence.indexOf(slug)+1]; return next ? <Link href={`/learn/${role}/${next}`}><span><small>Next in your learning sequence</small>{next === "python-bridge" ? "Python Readiness Bridge" : `Level ${next.slice(3)}`}</span><ArrowRight aria-hidden="true" /></Link> : <span>Programme complete — present your project evidence.</span>; }

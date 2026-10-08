@@ -5,7 +5,10 @@ import { notFound } from "next/navigation";
 import { PortalHeader } from "@/components/portal-header";
 import { Badge } from "@/components/ui/badge";
 import { requireAccess } from "@/lib/access";
-import { getLevel, learningKind, titleWithoutWeek, type AcademyRole } from "@/lib/academy";
+import { getLevel, titleWithoutWeek, type AcademyRole } from "@/lib/academy";
+
+import { classroom } from "@/lib/classroom";
+import { PythonReadiness } from "@/components/python-readiness";
 
 export const dynamic = "force-dynamic";
 
@@ -22,8 +25,10 @@ export default async function LevelPage({ params }: { params: Promise<{ role: st
       <section className="level-hero">
         <Link href={`/learn/${role}`} className="back-link"><ArrowLeft aria-hidden="true" /> All levels</Link>
         <div className="level-hero-main"><div><Badge>{level.ages}</Badge><p>{level.code}</p><h1>{level.name}</h1><span>{level.summary}</span></div><div className="capstone-card"><Award aria-hidden="true" /><small>Final capstone</small><strong>{level.capstone}</strong><span>Built across the final phase</span></div></div>
-        <div className="phase-track" aria-label="Six curriculum phases">{level.phases.map((phase) => <a href={`#phase-${phase.number}`} key={phase.number}><i>{phase.number}</i><span><strong>{phase.name}</strong><small>Weeks {phase.weeks}</small></span></a>)}</div>
+        <div className="phase-track" aria-label="Curriculum phases">{level.phases.map((phase) => <a href={`#phase-${phase.number}`} key={phase.number}><i>{phase.number}</i><span><strong>{phase.name}</strong><small>Weeks {phase.weeks}</small></span></a>)}</div>
       </section>
+      <section className="classroom-panel"><h2>Before you start</h2><p>{classroom.levels[level.slug].prerequisites}</p><h3>What you will be able to do</h3><p>{classroom.levels[level.slug].outcome}</p><p><strong>Your project:</strong> {classroom.levels[level.slug].project}. Keep each week’s inputs, predictions, test results and revisions in one portfolio.</p></section>
+      {(level.slug === "python-bridge" || level.slug === "ai-4") && <PythonReadiness />}
       <div className="weeks-shell">
         {level.phases.map((phase) => (
           <section className="phase-section" id={`phase-${phase.number}`} key={phase.number}>

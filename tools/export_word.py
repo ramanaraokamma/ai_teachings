@@ -1,6 +1,6 @@
 """Export matching editable Word editions; requires python-docx and Pillow."""
 from pathlib import Path
-import json
+import json,os
 from docx import Document
 from docx.shared import Inches,Pt,RGBColor
 from PIL import Image
@@ -35,6 +35,7 @@ def block(doc,b):
      row.cells[0].width=Inches(.55);row.cells[1].width=Inches(6.55)
   if b.get('values'):
    doc.add_paragraph(b.get('key',''));add_table(doc,b['values'])
+  if b.get('series'):add_table(doc,[['Series']+list(map(str,b['xValues']))]+[[s['label']]+list(map(str,s['values'])) for s in b['series']])
   doc.add_paragraph(b.get('caption',''))
  elif kind=='table':add_table(doc,b['rows'])
  elif kind=='code':
@@ -49,6 +50,7 @@ def block(doc,b):
  else:doc.add_paragraph(txt)
 manifest=[]
 for w in D['weeks']+D['python_bridge']:
+ if os.environ.get('CHECK_WEEKS') and w['id'] not in os.environ['CHECK_WEEKS'].split(','):continue
  for role,key in [('student','sections'),('teacher','teacher'),('workbook','workbook')]:
   doc=Document();sec=doc.sections[0];sec.top_margin=sec.bottom_margin=Inches(.65);sec.left_margin=sec.right_margin=Inches(.7)
   normal=doc.styles['Normal'];normal.font.name='Calibri';normal.font.size=Pt(11);normal.paragraph_format.space_after=Pt(7)
@@ -62,5 +64,5 @@ for w in D['weeks']+D['python_bridge']:
   path=ROOT/'downloads'/role/(stem(w)+'.docx');path.parent.mkdir(parents=True,exist_ok=True);doc.save(path)
   manifest.append({'week':w['id'],'role':role,'file':str(path.relative_to(ROOT))})
  print('Word exports:',len(manifest),flush=True) if len(manifest)% 90==0 else None
-(ROOT/'reports/word-manifest.json').write_text(json.dumps(manifest,indent=2))
+if not os.environ.get('CHECK_WEEKS'):(ROOT/'reports/word-manifest.json').write_text(json.dumps(manifest,indent=2))
 print('Exported',len(manifest),'Word documents')

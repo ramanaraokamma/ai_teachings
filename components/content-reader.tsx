@@ -6,22 +6,23 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import type { ContentBlock, LessonPage } from "@/lib/academy";
 import { ResponseSpace } from "@/components/response-space";
 import { LessonVisual } from "@/components/lesson-visual";
-import { LearningStages } from "@/components/learning-stages";
 import { PredictExplain } from "@/components/predict-explain";
+
+import { CurvePlot } from "@/components/curve-plot";
 
 const calloutIcon = { idea: Lightbulb, think: MessageCircleQuestion, caution: AlertTriangle, teacher: BookMarked, answer: CheckCircle2 };
 
-export function ContentBlockView({ block }: { block: ContentBlock }) {
+export function ContentBlockView({ block, storageKey }: { block: ContentBlock; storageKey?:string }) {
   if (block.type === "sensor") return <SensorModel />;
-  if (block.type === "diagram") return <figure className="content-table-wrap"><h3>{block.title || "Visual model"}</h3>{block.rows ? <table><thead><tr>{block.columns?.map((v,i)=><th key={i}>{v}</th>)}</tr></thead><tbody>{block.rows.map((row,i)=><tr key={i}>{row.map((v,j)=><td key={j}>{v}</td>)}</tr>)}</tbody></table> : <div>{block.values && <table><tbody>{block.values.map((row,i)=><tr key={i}>{row.map((value,j)=><td key={j} style={{background:value ? "#13243b" : "white",color:value ? "white" : "#13243b",textAlign:"center",width:48,height:48}}>{value}</td>)}</tr>)}</tbody></table>}{block.series && <table><caption>{block.xLabel} / {block.axis}</caption><thead><tr><th>Series</th>{block.xValues?.map(v=><th key={v}>{v}</th>)}</tr></thead><tbody>{block.series.map(series=><tr key={series.label}><th>{series.label}</th>{series.values.map((v,i)=><td key={i}>{v}</td>)}</tr>)}</tbody></table>}</div>}{block.key && <p>{block.key}</p>}{block.caption && <figcaption>{block.caption}</figcaption>}</figure>;
+  if (block.type === "diagram") return <figure className="content-table-wrap"><h3>{block.title || "Visual model"}</h3>{block.rows ? <table><thead><tr>{block.columns?.map((v,i)=><th key={i}>{v}</th>)}</tr></thead><tbody>{block.rows.map((row,i)=><tr key={i}>{row.map((v,j)=><td key={j}>{v}</td>)}</tr>)}</tbody></table> : <div>{block.values && <table><tbody>{block.values.map((row,i)=><tr key={i}>{row.map((value,j)=><td key={j} style={{background:value ? "#13243b" : "white",color:value ? "white" : "#13243b",textAlign:"center",width:48,height:48}}>{value}</td>)}</tr>)}</tbody></table>}{block.series && <CurvePlot series={block.series} xValues={block.xValues} axis={block.axis} xLabel={block.xLabel} max={block.max} />}{block.series && <table><caption>{block.xLabel} / {block.axis}</caption><thead><tr><th>Series</th>{block.xValues?.map(v=><th key={v}>{v}</th>)}</tr></thead><tbody>{block.series.map(series=><tr key={series.label}><th>{series.label}</th>{series.values.map((v,i)=><td key={i}>{v}</td>)}</tr>)}</tbody></table>}</div>}{block.key && <p>{block.key}</p>}{block.caption && <figcaption>{block.caption}</figcaption>}</figure>;
   if (block.type === "image") return <LessonVisual {...block} />;
-  if (block.type === "gallery") return <div className="instruction-gallery">{block.cells.map((cell, i) => <div className="gallery-cell" key={i}>{cell.map((item,j) => <Block key={j} block={item} />)}</div>)}</div>;
+  if (block.type === "gallery") return <div className="instruction-gallery">{block.cells.map((cell, i) => <div className="gallery-cell" key={i}>{cell.map((item,j) => <Block key={j} block={item} storageKey={`${storageKey}-cell-${i}-${j}`} />)}</div>)}</div>;
   if (block.type === "title") return <h2 className="content-title">{block.text}</h2>;
   if (block.type === "heading") return <h2 className="content-heading">{block.text}</h2>;
   if (block.type === "subheading") return <h3 id={(block as {anchor?: string}).anchor} className="content-subheading">{block.text}</h3>;
   if (block.type === "code") return <pre className="code-block"><code>{block.text}</code></pre>;
   if (block.type === "step") return <div className="step-block">{block.text}</div>;
-  if (block.type === "response") return <div><p>{block.text}</p><ResponseSpace /></div>;
+  if (block.type === "response") return <div><p>{block.text}</p><ResponseSpace storageKey={storageKey} /></div>;
   if (block.type === "list") return <div className={`content-list list-${block.marker}`}><span aria-hidden="true">{block.marker === "number" ? "→" : "•"}</span><p>{block.text}</p></div>;
   if (block.type === "callout") {
     const Icon = calloutIcon[block.tone] || Lightbulb;
@@ -43,8 +44,9 @@ export function ContentBlockView({ block }: { block: ContentBlock }) {
 
 const Block = ContentBlockView;
 
-function PageBlocks({ page }: { page: LessonPage }) {
-  const explanation = page.number === 13 ? page.blocks.findIndex(b => b.type === "subheading" && /worked explanation/i.test(b.text)) : -1;
+function PageBlocks({ page, responsePrefix }: { page: LessonPage; responsePrefix?:string }) {
+  const explanation = page.blocks.findIndex(b => b.type === "subheading" && /^worked explanation$/i.test(b.text));
+  const end = explanation >= 0 ? page.blocks.findIndex((b,i) => i > explanation && b.type === "subheading") : -1;
   const blocks = explanation >= 0 ? page.blocks.slice(0, explanation) : page.blocks;
   const grouped: ContentBlock[] = [];
   for (let i = 0; i < blocks.length; i++) {
@@ -55,25 +57,11 @@ function PageBlocks({ page }: { page: LessonPage }) {
       grouped.push({ type: "gallery", cells });
     } else grouped.push(blocks[i]);
   }
-  return <>{grouped.map((block, index) => <Block key={index} block={block} />)}{explanation >= 0 && <PredictExplain>{page.blocks.slice(explanation).map((block, index) => <Block key={index} block={block} />)}</PredictExplain>}</>;
+  return <>{grouped.map((block, index) => <Block key={index} block={block} storageKey={`${responsePrefix || "resource"}-section-${page.number}-block-${index}`} />)}{explanation >= 0 && <PredictExplain storageKey={`${responsePrefix || "resource"}-prediction-${page.number}`}>{page.blocks.slice(explanation, end >= 0 ? end : undefined).map((block, index) => <Block key={index} block={block} storageKey={`${responsePrefix || "resource"}-section-${page.number}-explanation-${index}`} />)}</PredictExplain>}{end >= 0 && page.blocks.slice(end).map((block,index)=><Block key={`after-${index}`} block={block} storageKey={`${responsePrefix || "resource"}-section-${page.number}-block-${end+index}`}/>)}</>;
 }
 
-const stageNames: Record<string, string[]> = { ai1: ["Look", "Learn", "Try", "Show"], ai2: ["Notice", "Trace", "Test", "Explain"], ai3: ["Explore", "Create", "Verify", "Defend"], ai4: ["Frame", "Model", "Evaluate", "Defend"] };
-const stageHints: Record<string, string[]> = {
-  ai1: ["Look closely. What do you notice in the pictures? Learn the new words together.", "Follow the pictures and talk through what happens. Predict before revealing the explanation.", "Try the activity with a partner or grown-up. Mistakes help you find what to change.", "Use a fresh example. Show your thinking with a drawing, words, or a demonstration."],
-  ai2: ["Spot the important details and name the idea you will investigate.", "Trace each step. Compare cases and explain why the results differ.", "Run the activity, record evidence, and repair a mistake.", "Solve a new case independently and explain the evidence for your decision."],
-  ai3: ["Identify the system's purpose, inputs, and limits.", "Follow the mechanism and predict the outcome before examining a worked case.", "Test the workflow, verify the evidence, and diagnose its failure modes.", "Apply the idea independently and defend your choices and limitations."],
-  ai4: ["Define the learning problem and the evidence needed to investigate it.", "Trace the model or calculation and explain the assumptions in the worked example.", "Run an experiment, record results, and diagnose errors using evidence.", "Evaluate a fresh case, document limitations, and connect the result to your capstone."]
-};
-
-export function ContentReader({ pages, workbookBlocks, level }: { pages?: LessonPage[]; workbookBlocks?: ContentBlock[]; level?: string }) {
+export function ContentReader({ pages, workbookBlocks, responsePrefix }: { pages?: LessonPage[]; workbookBlocks?: ContentBlock[]; responsePrefix?:string }) {
   const sections = pages ?? [{ number: 1, label: "WORKBOOK PRACTICE", blocks: workbookBlocks ?? [] }];
-  const article = (page: LessonPage) => <article className={`lesson-section section-page-${page.number}`} id={`section-${page.number}`} key={page.number}><div className="section-kicker"><Badge variant="outline">Section {page.number}</Badge><span>{page.label}</span></div><div className="section-blocks"><PageBlocks page={page} /></div></article>;
-  if (level && pages) {
-    const key = level.replace(/-/g, "");
-    const order = [[1,2,5], [3,4,6,13], [8,9,7], [14,12,10,11,15]];
-    return <LearningStages stages={order.map((numbers, i) => ({ title: (stageNames[key] ?? stageNames.ai1)[i], hint: (stageHints[key] ?? stageHints.ai1)[i], content: <div className="reader-content">{numbers.map(n => pages.find(p => p.number === n)).filter((p): p is LessonPage => Boolean(p)).map(article)}</div> }))} />;
-  }
   return (
     <div className="reader-layout">
       <aside className="reader-nav" aria-label="Lesson sections">
@@ -84,7 +72,7 @@ export function ContentReader({ pages, workbookBlocks, level }: { pages?: Lesson
         {sections.map((page) => (
           <article className="lesson-section" id={`section-${page.number}`} key={page.number}>
             <div className="section-kicker"><Badge variant="outline">Section {page.number}</Badge><span>{page.label}</span></div>
-            <div className="section-blocks">{page.blocks.map((block, index) => <Block key={`${page.number}-${index}`} block={block} />)}</div>
+            <div className="section-blocks"><PageBlocks page={page} responsePrefix={responsePrefix} /></div>
           </article>
         ))}
       </div>

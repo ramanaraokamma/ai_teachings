@@ -209,5 +209,6 @@ from teaching_method import apply_method
 programme=apply_method(programme,S)
 from visual_lessons import apply_visual_lessons
 programme=apply_visual_lessons(programme)
-(ROOT/'content/programme.json').write_text(json.dumps(programme,indent=2))
-print('Canonical programme written:',len(weeks),'weeks and',len(bridges),'Python bridge lessons')
+if __name__=='__main__':
+ (ROOT/'content/programme.json').write_text(json.dumps(programme,indent=2))
+ print('Canonical programme written:',len(weeks),'weeks and',len(bridges),'Python bridge lessons')

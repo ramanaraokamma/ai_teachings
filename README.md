@@ -22,6 +22,7 @@ The goal is a complete AI education programme for children, with everything thei
 | 1 | 6 | Foundations | Helpful Classroom Sorter |
 | 2 | 7 | Algorithms and Data | Transparent Book Recommender |
 | 3 | 8 | Generative AI Systems | Verified Study Buddy |
+| Bridge | Readiness | Python preparation after Level 3 | Python readiness portfolio |
 | 4 | 9 | Machine Learning | Responsible Plant Classifier |
 | 5 | 10 | Neural Networks | Image-pattern Network Investigation |
 | 6 | 11 | AI Engineering | Grounded Learning Service |
@@ -31,7 +32,7 @@ Grade labels are placement guidance; prerequisites and demonstrated independence
 
 ## Organisation
 
-- student/: full weekly teaching model, fourteen sections; two original coding weeks retain a fifteenth laboratory.
+- student/: full original weekly teaching model plus lesson routes, goals and finish-and-return checks; two original coding weeks retain a fifteenth laboratory.
 - teacher/: preparation, explanation, guided teaching, misconceptions, assessment answers and progression; original laboratory guidance is retained.
 - workbook/: original activities, integrated examples, independent cases and project evidence.
 - content/programme.json: canonical content, including teacher answers.
@@ -61,7 +62,7 @@ This is a reviewed teaching package, not a classroom trial. Teacher observation 
 
 All 264 lessons now include retrieval, modelling, fading help, individual reasoning checks, independent transfer, feedback and delayed return. All 264 selected assessment prompts are distinct; 33 repeated source lessons have new parallel cases and the 12 Python readiness lessons have new executable cases. These checks establish curriculum structure and answer alignment, not effectiveness with real learners. Use reports/classroom-pilot.csv to record actual evidence.
 
-Current PDFs use tools/export_pdf_local.py (PyMuPDF Story), with long comparison tables printed as labelled rows to preserve pagination because Chrome could not launch under the current workspace restrictions. Browser layout and interactive checks for this revision remain pending; archived previous-edition results do not apply to revised pages. Word pagination has not been rendered.
+Current PDFs use tools/export_pdf_local.py (PyMuPDF Story), with long comparison tables printed as labelled rows to preserve pagination for readable pagination. Current desktop and phone browser navigation and interactive checks pass; see reports/classroom-browser-validation.json. Word pagination has not been rendered.
 
 After rebuilding content, run tools/build_method_guides.py, tools/validate_teaching_method.py and tools/validate_links.py in addition to the existing checks.
 
@@ -74,3 +75,5 @@ Open PICTORIAL_LESSONS.html to find a worked picture and its complete lesson. Th
 Editorial review covers every case:176 received author-to-author review and 88 root peer review. Reports record limitations and resolved findings. Current Word/PDF checks verify the new pictures as well as text. Classroom impact and browser layout remain unverified under the current restrictions.
 
 Rebuild after authoring with tools/draw_lesson_visuals.py and tools/draw_topic_visuals.py (PyMuPDF), tools/build_programme.py, tools/render_programme.py, tools/build_pictorial_hub.py, tools/build_method_guides.py and tools/build_guide.py. The READY.json manifest gates the full 264-case integration; validate with tools/validate_lesson_upgrades.py and tools/validate_bridge_alignment.py as well as the existing checks.
+
+The completed classroom improvements and validation evidence are in [reports/CLASSROOM_IMPROVEMENTS.md](reports/CLASSROOM_IMPROVEMENTS.md). Hosted drafts and practice progress stay in the current browser; keep printed or downloaded evidence for the portfolio.
