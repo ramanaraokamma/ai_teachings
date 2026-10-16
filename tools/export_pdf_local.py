@@ -1,10 +1,12 @@
 """Local paginated PDF fallback; browser interactive/layout checks remain pending."""
+from reading_style import formatted_html,PDF_CSS
 from pathlib import Path
-import json,html,re,os,textwrap
+import json,html,re,os,textwrap,subprocess
 import fitz
 from PIL import Image
 R=Path(__file__).resolve().parents[1];D=json.loads((R/'content/programme.json').read_text());e=lambda x:html.escape(str(x))
 CSS='''body{font-family:sans-serif;font-size:10.5pt;line-height:1.45;color:#183249}h1{font-size:24pt;color:#123b52}h2{font-size:17pt;color:#174c69;page-break-after:avoid}h3{font-size:12pt;color:#126878;page-break-after:avoid}p{margin:8pt 0}table{border-collapse:collapse;width:100%;font-size:9pt;margin:10pt 0}td,th{border:1px solid #bacfdc;padding:7pt;vertical-align:top}th{background-color:#e6f2f5}img{margin:10pt 0}.note{background-color:#fff7e8;padding:10pt}.response{background-color:#f0f6f9;padding:10pt}.code{font-family:monospace;font-size:8.5pt;background-color:#f0f5f8;padding:8pt}.caption{font-size:9pt;color:#466378}'''
+CSS+=PDF_CSS
 def table(rows):
  if not rows:return ''
  headers=rows[0]
@@ -16,6 +18,8 @@ def table(rows):
  return out
 
 def block(b):
+ formatted=formatted_html(b)
+ if formatted is not None:return formatted
  t=b['type'];text=b.get('text','')
  if t=='image':
   name=b['src'].split('/')[-1]+'.png'
@@ -46,14 +50,21 @@ def save(body,path):
   temp=path.with_suffix('.tmp.pdf');doc.save(temp,garbage=4,deflate=True)
  temp.replace(path)
 rows=[]
+selected=set(filter(None,os.environ.get('CHECK_WEEKS','').split(',')))
+formatted=[] if os.environ.get('ONLY_GUIDES') else [w for w in D['weeks']+D['python_bridge'] if w.get('reading_design') and (not selected or w['id'] in selected)]
+if formatted:
+ subprocess.run(['node',str(R/'tools/export_formatted_week.mjs'),','.join(w['id'] for w in formatted)],cwd=R,check=True)
 for w in ([] if os.environ.get('ONLY_GUIDES') else D['weeks']+D['python_bridge']):
  if os.environ.get('CHECK_WEEKS') and w['id'] not in os.environ['CHECK_WEEKS'].split(','):continue
  stem=('bridge-' if w['id'].startswith('python') else f"ai-{w['level']}-")+f"week-{w['week']:02}"
+ if w.get('reading_design'):
+  rows.extend(str((R/'downloads'/role/(stem+'.pdf')).relative_to(R)) for role in ['student','teacher','workbook'])
+  continue
  for role,key in [('student','sections'),('teacher','teacher'),('workbook','workbook')]:
   body='<p>AI Academy · '+e(w['id'])+' · '+role+'</p><h1>'+e(w['title'])+'</h1><p>Project: '+e(w['project'])+'</p>'
   body+=''.join('<h2>'+str(i+1)+'. '+e(s['title'])+'</h2>'+''.join(block(b) for b in s['blocks']) for i,s in enumerate(w[key]))
   path=R/'downloads'/role/(stem+'.pdf');save(body,path);rows.append(str(path.relative_to(R)))
   if len(rows)%90==0:print('Local PDFs:',len(rows),flush=True)
-for file in ['TEACHING_METHOD.html','PROGRAMME_GUIDE.html','student/LEARNING_GUIDE.html']:
+for file in ([] if os.environ.get('SKIP_GUIDES') else ['TEACHING_METHOD.html','PROGRAMME_GUIDE.html','student/LEARNING_GUIDE.html']):
  source=(R/file).read_text();body=re.search(r'<main>(.*)</main>',source,re.S).group(1);save(body,R/file.replace('.html','.pdf'))
-if rows:(R/'reports/pdf-rendering.json').write_text(json.dumps({'renderer':'PyMuPDF Story','weekly_files':len(list((R/'downloads').rglob('*.pdf'))),'guide_files':3,'browser_layout_verified':False,'reason':'PyMuPDF generates matching downloads; hosted browser layouts are checked separately.'},indent=2))
+if rows and not os.environ.get('CHECK_WEEKS'):(R/'reports/pdf-rendering.json').write_text(json.dumps({'renderer':'Chromium for formatted lessons; PyMuPDF Story for guides or legacy lessons','weekly_files':len(list((R/'downloads').rglob('*.pdf'))),'guide_files':3,'browser_layout_verified':False,'reason':'PyMuPDF generates matching downloads; hosted browser layouts are checked separately.'},indent=2))

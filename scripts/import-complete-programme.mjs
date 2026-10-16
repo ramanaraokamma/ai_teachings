@@ -28,11 +28,11 @@ function blocks(items){return items.map(b=>{
  if(b.type==='sensor')return b;
  return b;
 });}
-const pages=sections=>sections.map((s,i)=>({number:i+1,label:s.title,blocks:blocks(s.blocks)}));
+const pages=sections=>sections.map((s,i)=>({number:i+1,label:s.title,...(s.reading_intro?{intro:s.reading_intro}:{}),blocks:blocks(s.blocks)}));
 function week(w){const stem=w.id.startsWith('python-bridge')?`bridge-week-${String(w.week).padStart(2,'0')}`:`ai-${w.level}-week-${String(w.week).padStart(2,'0')}`;
- const result={number:w.week,phase:Math.ceil(w.week/6),hero:resource(`assets/academy-visual-${w.id.replace('/','-')}.png`)};
+ const result={number:w.week,phase:Math.ceil(w.week/6),hero:resource(`assets/${w.graphic_story?.[1]?.asset || 'academy-visual-'+w.id.replace('/','-')}.png`)};
  for(const role of ['student','teacher','workbook']){result[role]={title:`Week ${w.week}: ${w.title}`,download:resource(`downloads/${role}/${stem}.docx`,role==='teacher'?'teacher':'student',true),pdf:resource(`downloads/${role}/${stem}.pdf`,role==='teacher'?'teacher':'student',true)};
- if(role==='workbook')result[role].blocks=w.workbook.flatMap(s=>[{type:'heading',text:s.title},...blocks(s.blocks)]);
+ if(role==='workbook')result[role].blocks=w.workbook.flatMap(s=>[{type:'heading',text:s.title,...(s.reading_intro?{presentation:{kind:'section-heading',context:s.reading_intro}}:{})},...blocks(s.blocks)]);
  else result[role].pages=pages(role==='student'?w.sections:w.teacher);}
  return result;
 }

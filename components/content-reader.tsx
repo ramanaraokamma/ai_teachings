@@ -1,5 +1,6 @@
 import { AlertTriangle, BookMarked, CheckCircle2, Lightbulb, MessageCircleQuestion, PencilLine } from "lucide-react";
 
+import { FormattedReading } from "@/components/formatted-reading";
 import { SensorModel } from "@/components/sensor-model";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -13,10 +14,11 @@ import { CurvePlot } from "@/components/curve-plot";
 const calloutIcon = { idea: Lightbulb, think: MessageCircleQuestion, caution: AlertTriangle, teacher: BookMarked, answer: CheckCircle2 };
 
 export function ContentBlockView({ block, storageKey }: { block: ContentBlock; storageKey?:string }) {
+  if (block.presentation && "text" in block) return <FormattedReading text={block.text} format={block.presentation} />;
   if (block.type === "sensor") return <SensorModel />;
   if (block.type === "diagram") return <figure className="content-table-wrap" tabIndex={0} aria-label={block.title || "Scrollable visual model"}><h3>{block.title || "Visual model"}</h3>{block.rows ? <table><thead><tr>{block.columns?.map((v,i)=><th key={i}>{v}</th>)}</tr></thead><tbody>{block.rows.map((row,i)=><tr key={i}>{row.map((v,j)=><td key={j}>{v}</td>)}</tr>)}</tbody></table> : <div>{block.values && <table><tbody>{block.values.map((row,i)=><tr key={i}>{row.map((value,j)=><td key={j} style={{background:value ? "#13243b" : "white",color:value ? "white" : "#13243b",textAlign:"center",width:48,height:48}}>{value}</td>)}</tr>)}</tbody></table>}{block.series && <CurvePlot series={block.series} xValues={block.xValues} axis={block.axis} xLabel={block.xLabel} max={block.max} />}{block.series && <table><caption>{block.xLabel} / {block.axis}</caption><thead><tr><th>Series</th>{block.xValues?.map(v=><th key={v}>{v}</th>)}</tr></thead><tbody>{block.series.map(series=><tr key={series.label}><th>{series.label}</th>{series.values.map((v,i)=><td key={i}>{v}</td>)}</tr>)}</tbody></table>}</div>}{block.key && <p>{block.key}</p>}{block.caption && <figcaption>{block.caption}</figcaption>}</figure>;
   if (block.type === "image") return <LessonVisual {...block} />;
-  if (block.type === "gallery") return <div className="instruction-gallery">{block.cells.map((cell, i) => <div className="gallery-cell" key={i}>{cell.map((item,j) => <Block key={j} block={item} storageKey={`${storageKey}-cell-${i}-${j}`} />)}</div>)}</div>;
+  if (block.type === "gallery") return <div className={`instruction-gallery ${block.layout === "reading-cards" ? "reading-cards" : ""}`}>{block.cells.map((cell, i) => <div className="gallery-cell" key={i}>{cell.map((item,j) => <Block key={j} block={item} storageKey={`${storageKey}-cell-${i}-${j}`} />)}</div>)}</div>;
   if (block.type === "title") return <h2 className="content-title">{block.text}</h2>;
   if (block.type === "heading") return <h2 className="content-heading">{block.text}</h2>;
   if (block.type === "subheading") return <h3 id={(block as {anchor?: string}).anchor} className="content-subheading">{block.text}</h3>;
@@ -63,7 +65,7 @@ function PageBlocks({ page, responsePrefix }: { page: LessonPage; responsePrefix
 export function ContentReader({ pages, workbookBlocks, responsePrefix }: { pages?: LessonPage[]; workbookBlocks?: ContentBlock[]; responsePrefix?:string }) {
   const sections = pages ?? [{ number: 1, label: "WORKBOOK PRACTICE", blocks: workbookBlocks ?? [] }];
   return (
-    <div className="reader-layout">
+    <div className={`reader-layout ${sections.some(page=>(page.intro || page.blocks.some(block=>block.presentation))) ? "reading-edition" : ""}`}>
       <aside className="reader-nav" aria-label="Lesson sections">
         <p className="reader-nav-title">In this resource</p>
         {sections.map((page) => <a key={page.number} href={`#section-${page.number}`}><span>{String(page.number).padStart(2, "0")}</span>{page.label.toLowerCase()}</a>)}
@@ -72,6 +74,8 @@ export function ContentReader({ pages, workbookBlocks, responsePrefix }: { pages
         {sections.map((page) => (
           <article className="lesson-section" id={`section-${page.number}`} key={page.number}>
             <div className="section-kicker"><Badge variant="outline">Section {page.number}</Badge><span>{page.label}</span></div>
+            {(page.intro || page.blocks.some(block=>block.presentation)) && <h2 className="reading-section-title">{page.label}</h2>}
+            {page.intro&&<p className="reading-section-intro">{page.intro}</p>}
             <div className="section-blocks"><PageBlocks page={page} responsePrefix={responsePrefix} /></div>
           </article>
         ))}

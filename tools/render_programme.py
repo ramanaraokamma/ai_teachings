@@ -1,3 +1,4 @@
+from reading_style import formatted_html,CSS as READING_CSS
 from pathlib import Path
 import json,html,re,hashlib
 ROOT=Path(__file__).resolve().parents[1];D=json.loads((ROOT/'content/programme.json').read_text());esc=lambda s:html.escape(str(s),quote=True)
@@ -5,6 +6,7 @@ CSS='''*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;backgro
 '''
 JS='''document.querySelectorAll('textarea').forEach((t,n)=>{const main=document.querySelector('[data-week]');const key='academy-offline-answer-v1:'+location.pathname+':'+n;try{t.value=localStorage.getItem(key)||'';t.nextElementSibling.textContent=t.value}catch{}t.addEventListener('input',()=>{t.nextElementSibling.textContent=t.value;try{localStorage.setItem(key,t.value)}catch{}});const button=document.createElement('button');button.type='button';button.textContent='Clear this draft';button.addEventListener('click',()=>{t.value='';t.nextElementSibling.textContent='';try{localStorage.removeItem(key)}catch{}});t.parentElement.appendChild(button)});document.querySelectorAll('[data-sensor]').forEach(s=>{const i=s.querySelector('input'),o=s.querySelector('output'),a=s.querySelector('[data-action]');function update(){o.textContent=i.value;a.textContent=Number(i.value)<30?'Lamp ON':'Lamp OFF'}i.addEventListener('input',update);update()});'''
 CSS+='@media print{figure.academy-picture img{max-height:6.5in}}button,select{font:inherit;padding:10px;min-height:44px;border:1px solid #6c8b9e;border-radius:6px;background:#f1f7fb;color:#183249;cursor:pointer}fieldset{border:1px solid #9cb8ca;padding:15px;margin:18px 0}fieldset label{padding:10px;font-weight:normal}fieldset input{margin-right:8px}.offline-python{font:14px/1.7 ui-monospace,monospace}summary{cursor:pointer;padding:10px;font-weight:650}@media print{button,select{display:none}}'
+CSS+=READING_CSS
 (ROOT/'assets/programme.css').write_text(CSS);(ROOT/'assets/programme.js').write_text(JS)
 def table(rows):
  if not rows:return ''
@@ -18,13 +20,15 @@ def diagram(b):
  else:cells='<p>'+esc(b.get('caption',''))+'</p>'
  return '<figure class="diagram"><h3>'+esc(b.get('title','Trace the evidence'))+'</h3>'+cells+'<figcaption>'+esc(b.get('caption',''))+'</figcaption></figure>'
 def block(b):
+ formatted=formatted_html(b)
+ if formatted is not None:return formatted
  t=b['type'];text=b.get('text','')
  if t=='image':
   id=b['src'].split('/')[-1];width=min(b.get('width',600)*2,700)
   picture='<figure'+(' class="academy-picture"' if b.get('academy_visual') else '')+'><a href="../assets/'+id+'.png"><img loading="eager" src="../assets/'+id+'.png" alt="'+esc(b.get('alt','Concept illustration'))+'" style="width:'+str(width)+'px"/></a>'
   if b.get('academy_visual'):picture+='<figcaption>Follow the labelled picture with the matching explanation. <a href="../assets/'+id+'.svg">Open the vector diagram</a></figcaption>'
   return picture+'</figure>'
- if t=='gallery':return '<div class="gallery">'+''.join(''.join(block(x) for x in c) for c in b['cells'])+'</div>'
+ if t=='gallery':return '<div class="gallery'+(' reading-cards' if b.get('layout')=='reading-cards' else '')+'">'+''.join(''.join(block(x) for x in c) for c in b['cells'])+'</div>'
  if t=='diagram':return diagram(b)
  if t=='table':return table(b['rows'])
  if t=='code':return '<pre class="code"><code>'+esc(text)+'</code></pre>'
@@ -48,7 +52,7 @@ for w in D['weeks']+D['python_bridge']:
   contents='<nav class="contents" aria-label="Lesson contents">'+''.join(f'<a href="#section-{i+1}"><span>{i+1:02}</span>{esc(s["title"])}</a>' for i,s in enumerate(sections))+'</nav>'
   body='<main data-audience="'+role+'" data-week="'+w['id']+'"><header class="hero"><p class="kicker">AI Academy · '+('Python readiness bridge' if w['id'].startswith('python') else f"Level {w['level']} · Grade {w['grade']} · Week {w['week']}")+' · '+kind+'</p><h1>'+esc(w['title'])+'</h1><p>'+esc(D['purpose'])+'</p><p>Project: '+esc(w['project'])+'</p></header><div class="actions">'+links+'</div>'+contents
   if role=='student':body+='<section class="chapter"><h2>Before you start</h2><p>'+esc(w['recall'])+'</p><p>Plan time to read, investigate and explain. Keep predictions separate from observations.</p></section>'
-  body+=''.join('<section class="chapter '+('teacher' if role=='teacher' else '')+'" id="section-'+str(i+1)+'" data-section="'+str(i+1)+'"><p class="kicker">'+kind+' · '+str(i+1)+' of '+str(len(sections))+'</p><h2>'+esc(s['title'])+'</h2>'+''.join(block(b) for b in s['blocks'])+'</section>' for i,s in enumerate(sections))
+  body+=''.join('<section class="chapter '+('teacher' if role=='teacher' else '')+'" id="section-'+str(i+1)+'" data-section="'+str(i+1)+'"><p class="kicker">'+kind+' · '+str(i+1)+' of '+str(len(sections))+'</p><h2>'+esc(s['title'])+'</h2>'+('<p class="reading-section-intro">'+esc(s['reading_intro'])+'</p>' if s.get('reading_intro') else '')+''.join(block(b) for b in s['blocks'])+'</section>' for i,s in enumerate(sections))
   if w['id'] in learning:body+='<script id="learning-tools-data" type="application/json">'+json.dumps(learning[w['id']],ensure_ascii=False).replace('<','\\u003c')+'</script>'
   body+='<footer>Save or print your responses for your portfolio. Progress and drafts on the hosted website stay in the current browser. Use only fictional or teacher-approved data.</footer></main>'
   dest=ROOT/role/name;dest.write_text(shell(w['title']+' · '+kind,body));manifest.append({'week':w['id'],'role':role,'file':f'{role}/{name}','sections':len(sections),'sha256':hashlib.sha256(dest.read_bytes()).hexdigest()})

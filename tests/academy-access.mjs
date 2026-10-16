@@ -40,6 +40,7 @@ try {
  for(const level of data.levels) for(const week of level.weeks) {
   await check(`${level.slug}/${week.number} complete student lesson`,async()=>{
    const r=await request(`/learn/student/${level.slug}/${week.number}`,session('student'));assert.equal(r.status,200);const html=await r.text();
+   assert.ok(html.includes("Open this week’s visual concept journey"));const journey=week.student.pages.find(p=>p.label==="Visual concept journey");assert.ok(journey);assert.equal(journey.blocks.filter(b=>b.type==="image").length,6);
    for(const page of week.student.pages)assert.ok(html.includes(`id="section-${page.number}"`));
    assert.ok(html.includes('Download PDF'));assert.ok(html.includes('instruction-visual'));
    assert.ok(html.includes('Your lesson route'));assert.ok(html.includes('Project milestone:'));

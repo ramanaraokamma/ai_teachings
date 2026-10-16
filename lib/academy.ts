@@ -1,20 +1,21 @@
 import "server-only";
+import type {ReadingPresentation} from "./reading-format";
 
 import academyData from "./academy-data.json";
 
 export type AcademyRole = "student" | "teacher";
 
-export type ContentBlock =
+export type ContentBlock = (
   | { type: "sensor"; title: string }
   | { type: "diagram"; kind: string; max?:number; title?: string; columns?: string[]; rows?: string[][]; values?: number[][]; series?: {label: string; values: number[]}[]; xValues?: number[]; axis?: string; xLabel?: string; key?: string; caption?: string }
-  | { type: "image"; src: string; alt: string; width: number; height: number }
-  | { type: "gallery"; cells: ContentBlock[][] }
+  | { type: "image"; src: string; alt: string; width: number; height: number; graphic_journey?: boolean }
+  | { type: "gallery"; cells: ContentBlock[][]; layout?: "reading-cards" }
   | { type: "title" | "heading" | "subheading" | "paragraph" | "step" | "code" | "response"; text: string }
   | { type: "list"; marker: "bullet" | "number"; text: string }
   | { type: "callout"; tone: "idea" | "think" | "caution" | "teacher" | "answer"; text: string }
-  | { type: "table"; rows: string[][] };
+  | { type: "table"; rows: string[][] }) & {presentation?:ReadingPresentation};
 
-export type LessonPage = { number: number; label: string; blocks: ContentBlock[] };
+export type LessonPage = { number: number; label: string; intro?:string; blocks: ContentBlock[] };
 
 export type Week = {
   number: number;

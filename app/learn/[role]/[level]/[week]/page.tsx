@@ -37,6 +37,7 @@ export default async function WeekPage({ params, searchParams }: { params: Promi
   const title = resource === "guide" ? week.teacher.title : resource === "workbook" ? week.workbook.title : week.student.title;
   const tools=(learningData as Record<string,LearningTools>)[`${level.slug}/${week.number}`];
   const preparation=week.teacher.pages.find(page=>page.label==="Prepare, teach and assess")?.number || 1;
+  const visualSection=(resource === "guide" ? week.teacher.pages : week.student.pages).find(page=>page.label==="Visual concept journey")?.number;
   const previous = week.number > 1 ? week.number - 1 : null;
   const next = week.number < level.weeks.length ? week.number + 1 : null;
   return (
@@ -59,6 +60,7 @@ export default async function WeekPage({ params, searchParams }: { params: Promi
           <a className="resource-action" href={resource === "guide" ? week.teacher.pdf : resource === "workbook" ? week.workbook.pdf : week.student.pdf}>Download PDF</a><PrintResource />
         </div>
       </section>
+      {resource !== "workbook" && visualSection && <section className="classroom-panel visual-journey-link"><h2>Explore the concept in six pictures</h2><p>Follow the case, trace the mechanism, inspect the details, test a change and connect the evidence to your project.</p><a href={`#section-${visualSection}`}>Open this week’s visual concept journey</a></section>}
       {resource === "guide" && <section className="classroom-panel"><h2>Prepare this week</h2><p>Start with the timing, practice answers, misconception checks and assessment criteria.</p><a href={`#section-${preparation}`}>Open the preparation and assessment summary</a></section>}
       {resource === "lesson" && <LessonRoute route={classroom.weeks[`${level.slug}/${week.number}`]} />}
       {resource === "lesson" && <FormativePractice week={`${level.slug}/${week.number}`} role={role} scenario={tools.scenario} questions={tools.questions} repairs={tools.repairs} />}

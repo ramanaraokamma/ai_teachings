@@ -15,14 +15,16 @@ def expected(b):
  return [b.get('text','')]
 scope=set(filter(None,os.environ.get("CHECK_WEEKS","").split(",")))
 errors=[];rows=[];total_pages=0;visual_cache={}
-if scope:
- previous=json.loads((ROOT/"reports/download-validation.json").read_text());assert not previous["errors"]
+if scope and not os.environ.get('VALIDATION_SHARD'):
+ previous=json.loads((ROOT/"reports/download-validation.json").read_text())
+ targeted={f"downloads/{role}/{('bridge' if id.startswith('python') else id.split('/')[0])}-week-{int(id.split('/')[1]):02}.{ext}" for id in scope for role in ['student','teacher','workbook'] for ext in ['docx','pdf']}
+ assert all(error.get('file') in targeted for error in previous['errors']), 'Resolve failures outside the requested recheck scope first'
  rows=[row for row in previous["results"] if row["week"] not in scope];total_pages=sum(row["pdf_pages"] for row in rows)
 for w in D['weeks']+D['python_bridge']:
  if scope and w['id'] not in scope:continue
  stem=('bridge-' if w['id'].startswith('python') else f"ai-{w['level']}-")+f"week-{w['week']:02}"
  for role,key in [('student','sections'),('teacher','teacher'),('workbook','workbook')]:
-  wanted=[x for sec in w[key] for b in sec['blocks'] for x in expected(b) if x.strip()]
+  wanted=[x for sec in w[key] for x in [sec.get('reading_intro','')]+[value for b in sec['blocks'] for value in [b.get('presentation',{}).get('context','')]+expected(b)] if x.strip()]
   row={'week':w['id'],'role':role,'checked_text_items':len(wanted)}
   visual_names={b['src'].split('/')[-1]+'.png' for sec in w[key] for b in sec['blocks'] if b.get('academy_visual')}
   expected_visuals=[]
@@ -58,6 +60,7 @@ for w in D['weeks']+D['python_bridge']:
   rows.append(row)
   if len(rows)%90==0:print('Checked export text:',len(rows),flush=True)
 report={'weekly_resources':len(rows),'word_files':len(list((ROOT/'downloads').rglob('*.docx'))),'pdf_files':len(list((ROOT/'downloads').rglob('*.pdf'))),'pdf_pages':total_pages,'pictorial_image_instances_checked':sum(row.get('pictorial_images_checked',0) for row in rows),'errors':errors,'results':rows}
-(ROOT/'reports/download-validation.json').write_text(json.dumps(report,indent=2))
+destination=Path(os.environ.get('VALIDATION_REPORT',str(ROOT/'reports/download-validation.json')))
+destination.write_text(json.dumps(report,indent=2))
 print(json.dumps({k:v if k!='errors' else len(v) for k,v in report.items() if k!='results'},indent=2))
 if errors:raise SystemExit(1)

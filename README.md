@@ -85,3 +85,13 @@ Every week now offers supported questions with feedback and earlier review links
 The offline edition exports the current page’s completed answers. Open its HTML files directly for reading and paper activities. To execute Python, run `python3 -m http.server 8000 --bind 127.0.0.1` from the programme folder and open `http://127.0.0.1:8000/student/index.html`. Stop the server with Ctrl-C when finished. The Python runtime is included; no hosted execution service is required.
 
 Teachers can use `/learn/teacher/pilot` or `teacher/PILOT_GUIDE.html` for three readiness tracks, held-back learner tasks, observation templates and descriptive comparisons. Actual classroom sessions have not yet been conducted. Use real evidence and anonymous learner codes; download local records before clearing browser data.
+
+## Six-picture concept journeys
+
+Every lesson now includes a **Visual concept journey** in its student lesson, teacher guide and workbook. The 264 journeys contain 1,584 illustrations with text explanations, worked changes, claim boundaries and project prompts. Website lessons provide a direct link and a Read labels mode for exploring large graphics on phones. Open [Pictorial lessons](PICTORIAL_LESSONS.html) to browse the offline collection. The approved Week 1 artwork is preserved. See [graphic journey details and validation](reports/GRAPHIC_JOURNEYS.md).
+
+## Week 1 reading-format review
+
+Level 1 Week 1 now has a revised reading hierarchy across all 48 student, teacher and workbook sections, with descriptive headings, clear examples/questions/keys, shorter paragraphs and section-purpose notes. That review was approved, and the same reading hierarchy now covers all 264 lessons and 12,086 sections. See [the Week 1 format report](reports/WEEK1_FORMAT_REVIEW.md).
+
+See [the complete programme formatting report](reports/PROGRAMME_FORMATTING.md) for the rollout, source-preservation checks and printable editions.

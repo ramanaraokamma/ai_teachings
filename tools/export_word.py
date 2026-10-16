@@ -1,4 +1,5 @@
 """Export matching editable Word editions; requires python-docx and Pillow."""
+from reading_style import segments
 from pathlib import Path
 import json,os
 from docx import Document
@@ -16,6 +17,23 @@ def add_table(doc,rows):
  t.rows[0]._tr.get_or_add_trPr().append(__import__('docx').oxml.OxmlElement('w:tblHeader'))
  return t
 def block(doc,b):
+ f=b.get('presentation')
+ if f:
+  if f['kind']=='section-label':return
+  if f['kind']=='checklist':
+   for item in f['items']:doc.add_paragraph(item,style='List Bullet')
+   doc.add_paragraph(f['tail']);return
+  if f.get('label'):doc.add_heading(f['label'],3)
+  if f.get('context'):doc.add_paragraph(f['context'])
+  colors={'concept':'EDF7F3','example':'F1F6FC','question':'F5F1FB','caution':'FFF5E6','note':'F1F6F8','definition':'F4F9FC','step':'F4F9FC'}
+  for text in f.get('paragraphs',[b['text']]):
+   p=doc.add_paragraph();p.paragraph_format.line_spacing=1.4;p.paragraph_format.space_after=Pt(9)
+   if f['kind'] in colors:
+    from docx.oxml import OxmlElement
+    from docx.oxml.ns import qn
+    shade=OxmlElement('w:shd');shade.set(qn('w:fill'),colors[f['kind']]);p._p.get_or_add_pPr().append(shade)
+   for part,strong in segments(text,f.get('emphasis',[])):p.add_run(part).bold=strong or f['kind']=='eyebrow'
+  return
  kind=b['type'];txt=b.get('text','')
  if kind=='gallery':
   for cell in b['cells']:
@@ -60,6 +78,7 @@ for w in D['weeks']+D['python_bridge']:
   if role=='student':doc.add_heading('Before you start',1);doc.add_paragraph(w['recall'])
   for i,s in enumerate(w[key],1):
    doc.add_heading(f"{i:02}. {s['title']}",1)
+   if s.get('reading_intro'):doc.add_paragraph(s['reading_intro'])
    for b in s['blocks']:block(doc,b)
   path=ROOT/'downloads'/role/(stem(w)+'.docx');path.parent.mkdir(parents=True,exist_ok=True);doc.save(path)
   manifest.append({'week':w['id'],'role':role,'file':str(path.relative_to(ROOT))})

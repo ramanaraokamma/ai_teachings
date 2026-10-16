@@ -83,7 +83,7 @@ for id,want in [('ai-4/13','2.5 [0, 1] 2 2'),('ai-4/22','2.0 1.0 [9.0] 1.0')]:
    okay=result.returncode==0 and result.stdout.strip()==want
    code_results.append({'week':id,'passed':okay,'stdout':result.stdout,'expected':want})
    if not okay:errors.append({'original_lab':id,'stdout':result.stdout,'stderr':result.stderr})
-report={'main_weeks':len(D['weeks']),'bridge_lessons':len(D['python_bridge']),'original_weeks_checked':len(rows),'unique_original_images':sum(not name.startswith(('academy-visual-','academy-detail-')) for name in assets),'new_pictorial_diagrams':sum(name.startswith(('academy-visual-','academy-detail-')) for name in assets),'corrected_illustration_cards':len(ns['CORRECTED_ASSETS']),'source_python_examples':len(code_results),'later_lessons_covered':len(covered),'errors':errors,'weeks':rows,'python':code_results}
+report={'main_weeks':len(D['weeks']),'bridge_lessons':len(D['python_bridge']),'original_weeks_checked':len(rows),'unique_original_images':sum(not name.startswith(('academy-visual-','academy-detail-','academy-story-')) for name in assets),'new_pictorial_diagrams':sum(name.startswith(('academy-visual-','academy-detail-')) for name in assets),'new_graphic_journey_images':sum(name.startswith('academy-story-') for name in assets),'corrected_illustration_cards':len(ns['CORRECTED_ASSETS']),'source_python_examples':len(code_results),'later_lessons_covered':len(covered),'errors':errors,'weeks':rows,'python':code_results}
 (ROOT/'reports/content-validation.json').write_text(json.dumps(report,indent=2))
 print(json.dumps({k:v for k,v in report.items() if k not in ['weeks','python']},indent=2))
 if errors:sys.exit(1)
