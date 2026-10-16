@@ -1,3 +1,5 @@
+> A subsequent [complete weekly review](WEEKLY_REVIEW.md) corrected content and refreshed the teaching editions while retaining this approved reading hierarchy. File-preservation statements below describe the original formatting rollout.
+
 # Approved reading format across the complete programme
 
 The approved Level 1 Week 1 design is applied throughout all 264 lessons: seven 36-week levels and the 12-week Python Readiness Bridge. The section audit covers **12,086 sections** in student lessons, teacher guides and workbooks. The approved Week 1 canonical object and its six downloads were retained.

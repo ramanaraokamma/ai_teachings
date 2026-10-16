@@ -1,7 +1,7 @@
 {
   "week": "ai-1/10",
   "title": "If/Then Decisions",
-  "outcome": "By the end, I can trace exactly one branch and test an including equality boundary.",
+  "outcome": "By the end, I can trace exactly one branch and test a boundary that includes equality.",
   "scenario": "A fictional counter begins with a number, adds 2, then chooses one branch.",
   "given": [
     "If the updated value is at least 6, subtract 1; otherwise double it.",
@@ -36,7 +36,7 @@
     "reason": "Updated value 6 fails a strict above comparison and is doubled."
   },
   "student_task": "Which input detects the difference between the two written conditions? Explain its entire run.",
-  "teacher_answer": "Start 4: add 2 gives 6. The including equality rule subtracts 1 to report 5; the strict rule doubles to report 12.",
+  "teacher_answer": "Start 4: add 2 gives 6. The rule that includes equality subtracts 1 to report 5; the strict rule doubles to report 12.",
   "project_evidence": "Include equality examples when reviewing sorter conditions, and trace from original input through output.",
   "limits": "A large reported value need not mean the true branch ran; branch choice depends on the earlier value.",
   "review_note": "New fictional worked case reviewed against the weekly topic and reserved independent assessment. Keep that assessment separate; this picture is supported practice.",

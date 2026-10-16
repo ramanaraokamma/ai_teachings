@@ -618,7 +618,7 @@
           "asset": "academy-story-ai-1-8-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: The later sticker cannot be an input available before checking. Changed condition: Change Q’s width to 6 without changing its height. Expected result: Q fits the shelf. Reason: Both dimensions now meet their including equality limits; stripe pattern does not change the rule.",
+          "alt": "Original case: The later sticker cannot be an input available before checking. Changed condition: Change Q’s width to 6 without changing its height. Expected result: Q fits the shelf. Reason: Both dimensions now meet their limits, with equality allowed; stripe pattern does not change the rule.",
           "width": 1200,
           "height": 695,
           "source": [
@@ -1250,7 +1250,7 @@
           "asset": "academy-story-ai-1-16-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "Block A possibilities: 4 and 5 both satisfy the including equality width limit. → Block B possibilities: 5 fits; 6 does not. → Compare decisions: A has one supported decision; B’s possible decisions disagree. → Review B: Ask a named reviewer to remeasure B using the specified width unit.",
+          "alt": "Block A possibilities: 4 and 5 both satisfy the width limit, which includes equality. → Block B possibilities: 5 fits; 6 does not. → Compare decisions: A has one supported decision; B’s possible decisions disagree. → Review B: Ask a named reviewer to remeasure B using the specified width unit.",
           "width": 1200,
           "height": 876,
           "source": [
@@ -1766,7 +1766,7 @@
           "asset": "academy-story-ai-1-22-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: Select and record new cases from both dim groups before claiming coverage. Changed condition: Add eight more bright plain cards and no dim cards. Expected result: The sample becomes larger but still has no dim coverage. Reason: The missing lighting condition remains untested.",
+          "alt": "Original case: Select and record new cases from both dim groups before claiming coverage. Changed condition: Add the two remaining bright plain cards and no dim cards. Expected result: The sample becomes larger but still has no dim coverage. Reason: The missing lighting condition remains untested.",
           "width": 1200,
           "height": 662,
           "source": [
@@ -2094,9 +2094,9 @@
           "asset": "academy-story-ai-1-26-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: Check labels, two-line format and each factual claim. Changed condition: Add source B naming the same exhibit duration 20 minutes, with B declared current and authoritative. Expected result: Duration becomes 20 minutes. Reason: There is now an authorised source for the previously missing field.",
+          "alt": "Original case: Check labels, two-line format and each factual claim. Changed condition: Update the prompt to authorise sources A and B. Add B naming the same exhibit duration 20 minutes, with B declared current and authoritative. Expected result: Duration becomes 20 minutes. Reason: There is now an authorised source for the previously missing field.",
           "width": 1200,
-          "height": 665,
+          "height": 698,
           "source": [
             "pictorial_case.steps[-1]",
             "pictorial_case.counterfactual"
@@ -4239,7 +4239,7 @@
           "asset": "academy-story-ai-2-16-05",
           "number": 5,
           "title": "Connect the explanation to its limit",
-          "alt": "A flexible model can fit quirks of its training set without predicting new examples well. Here Complex’s training success occur togethers with the worst validation error. The numbers are invented comparisons, not a claim that complexity always hurts. Choosing Medium uses development evidence; its validation score must not be advertised as an untouched final-test result. Limit: A single small validation set may be noisy; selection evidence does not prove future population performance.",
+          "alt": "A flexible model can fit quirks of its training set without predicting new examples well. Here Complex’s training success occurs alongside the worst validation error. The numbers are invented comparisons, not a claim that complexity always hurts. Choosing Medium uses development evidence; its validation score must not be advertised as an untouched final-test result. Limit: A single small validation set may be noisy; selection evidence does not prove future population performance.",
           "width": 1200,
           "height": 620,
           "source": [
@@ -4530,7 +4530,7 @@
           "asset": "academy-story-ai-2-20-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "Group rates: Club:12/15=80%; others:3/15=20%. → Respondent total: 15 Yes out of 30 respondents =50%. → Check representation: Respondents split 50/50, but the grade is 25% club and 75% other. → Repair collection: Plan including equality, documented invitations and report nonresponse by group.",
+          "alt": "Group rates: Club:12/15=80%; others:3/15=20%. → Respondent total: 15 Yes out of 30 respondents =50%. → Check representation: Respondents split 50/50, but the grade is 25% club and 75% other. → Repair collection: Plan invitations that fairly cover the whole grade, document selection and report nonresponse by group.",
           "width": 1200,
           "height": 910,
           "source": [
@@ -4554,7 +4554,7 @@
           "asset": "academy-story-ai-2-20-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: Plan including equality, documented invitations and report nonresponse by group. Changed condition: Recruit more club volunteers only. Expected result: Sample size increases without fixing missing representation of other learners. Reason: The added respondents come from the already overrepresented group.",
+          "alt": "Original case: Plan invitations that fairly cover the whole grade, document selection and report nonresponse by group. Changed condition: Recruit more club volunteers only. Expected result: Sample size increases without fixing missing representation of other learners. Reason: The added respondents come from the already overrepresented group.",
           "width": 1200,
           "height": 665,
           "source": [
@@ -5128,7 +5128,7 @@
           "asset": "academy-story-ai-2-27-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: Current observation says empty; frequent wording is not a present inventory reading. Changed condition: Change the training table to full 2, empty 7, unknown 1. Expected result: Greedy output becomes empty with probability 0.7. Reason: The continuation distribution changed; the independently observed box has not changed.",
+          "alt": "Original case: Current observation says empty; frequent wording is not a present inventory reading. Changed condition: Change the training table to full 2, empty 7, unknown 1. Expected result: Greedy output becomes empty; the model assigns that token probability 0.7. Reason: The continuation distribution changed; the independently observed box has not changed.",
           "width": 1200,
           "height": 662,
           "source": [
@@ -5362,9 +5362,9 @@
           "asset": "academy-story-ai-2-30-03",
           "number": 3,
           "title": "State machines for bounded agents — evidence trace",
-          "alt": "State machines for bounded agents — evidence trace. Trace ready -> looking_up -> review -> looking_up -> done. | States are ready, looking_up, review, done. ready may start lookup; lookup may finish done or request review; review may finish done after authorised evidence. done is terminal. Maximum two lookup attempts. | review -> looking_up is not allowed by this declared transition table, even if total attempts is two. Reject the transition or explicitly redesign and retest the table.",
+          "alt": "State machines for bounded agents — evidence trace. Trace ready -> looking_up -> review -> looking_up -> done. | States are ready, looking_up, review, done. ready may enter looking_up; looking_up may enter done or review; review may enter done after authorised evidence. done is terminal. Maximum two lookup attempts. | review -> looking_up is not allowed by this declared transition table, even if total attempts is two. Reject the transition or explicitly redesign and retest the table.",
           "width": 1200,
-          "height": 655,
+          "height": 688,
           "source": [
             "sections.diagram:State machines for bounded agents — evidence trace"
           ],
@@ -5374,9 +5374,9 @@
           "asset": "academy-story-ai-2-30-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: After done, another search requires a separately defined new run. Changed condition: Add a review state between checking and done, without updating Trace A. Expected result: Trace A becomes invalid at checking→done under the revised table. Reason: A required new transition changes what constitutes a complete run.",
+          "alt": "Original case: After done, another search requires a separately defined new run. Changed condition: Replace the edge checking→done with checking→review and review→done, without updating Trace A. Expected result: Trace A becomes invalid at checking→done under the revised table. Reason: A required new transition changes what constitutes a complete run.",
           "width": 1200,
-          "height": 662,
+          "height": 665,
           "source": [
             "pictorial_case.steps[-1]",
             "pictorial_case.counterfactual"
@@ -5551,7 +5551,7 @@
           "asset": "academy-story-ai-2-32-05",
           "number": 5,
           "title": "Connect the explanation to its limit",
-          "alt": "Planning fixes what success means before code returns an answer. The duration boundary is including equality, and the tie policy prevents accidental list-order dependence. A complete output may include why other rows were excluded. Test expectations should come from the contract rather than copying the first program result. Limit: The supplied interest scores are fictional; the specification does not establish genuine learner preferences.",
+          "alt": "Planning fixes what success means before code returns an answer. The duration boundary includes equality, and the tie policy prevents accidental list-order dependence. A complete output may include why other rows were excluded. Test expectations should come from the contract rather than copying the first program result. Limit: The supplied interest scores are fictional; the specification does not establish genuine learner preferences.",
           "width": 1200,
           "height": 620,
           "source": [
@@ -5747,7 +5747,7 @@
           "asset": "academy-story-ai-2-35-01",
           "number": 1,
           "title": "Improve and Challenge: the case",
-          "alt": "A fictional recommender excludes books at an intended including equality page limit. Supplied facts: Contract: pages<=100; highest interest; ties choose smaller ID. Old code uses pages<100. Rows A pages100 interest5; B pages90 interest3; C pages101 interest5.",
+          "alt": "A fictional recommender excludes books at a page limit that is intended to include equality. Supplied facts: Contract: pages<=100; highest interest; ties choose smaller ID. Old code uses pages<100. Rows A pages100 interest5; B pages90 interest3; C pages101 interest5.",
           "width": 1200,
           "height": 654,
           "source": [
@@ -10787,9 +10787,9 @@
           "asset": "academy-story-ai-4-24-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: Freeze A before scoring final cases; do not select again using their labels. Changed condition: A and B both have validation MAE2 cm; A is simpler under a predeclared tie rule. Expected result: Select A using the predeclared simpler-model tie-break. Reason: The validation errors tie, so the stated second a = ry rule decides without consulting final data.",
+          "alt": "Original case: Freeze A before scoring final cases; do not select again using their labels. Changed condition: A and B both have validation MAE2 cm; A is simpler under a predeclared tie rule. Expected result: Select A using the predeclared simpler-model tie-break. Reason: The validation errors tie, so the stated secondary rule decides without consulting final data.",
           "width": 1200,
-          "height": 695,
+          "height": 662,
           "source": [
             "pictorial_case.steps[-1]",
             "pictorial_case.counterfactual"
@@ -11816,7 +11816,7 @@
           "asset": "academy-story-ai-5-1-01",
           "number": 1,
           "title": "Representing inputs as vectors: the case",
-          "alt": "Encode the same pixel measurements in a fixed vector order. Supplied facts: Toy image features are [left_brightness, right_brightness], each = 0..10. ImageA has left2, right7; imageB has left7, right2. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
+          "alt": "Encode the same pixel measurements in a fixed vector order. Supplied facts: Toy image features are [left_brightness, right_brightness], each = 0..10. ImageA has left 2, right 7; imageB has left 7, right 2. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
           "width": 1200,
           "height": 687,
           "source": [
@@ -11829,7 +11829,7 @@
           "asset": "academy-story-ai-5-1-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "Declare coordinate order: Coordinate0 is left brightness; coordinate1 is right brightness. → Encode both images: A becomes [2, 7]; B becomes [7, 2]. Their sums match but their spatial patterns differ. → Check input contract: Use the same order when training and predicting; record missing measurements rather than guessing.",
+          "alt": "Declare coordinate order: Coordinate 0 is left brightness; coordinate 1 is right brightness. → Encode both images: A becomes [2, 7]; B becomes [7, 2]. Their sums match but their spatial patterns differ. → Check input contract: Use the same order when training and predicting; record missing measurements rather than guessing.",
           "width": 1200,
           "height": 764,
           "source": [
@@ -11935,7 +11935,7 @@
           "asset": "academy-story-ai-5-2-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: Weighted sum=6-5=1; this is a score, not a probability. Changed condition: Increase only the right input from 5 to6. Expected result: The score becomes6-6=0. Reason: The right weight is-1, so adding1 to that input lowers the score by1.",
+          "alt": "Original case: Weighted sum=6-5=1; this is a score, not a probability. Changed condition: Increase only the right input from 5 to6. Expected result: The score becomes 6-6=0. Reason: The right weight is-1, so adding 1 to that input lowers the score by1.",
           "width": 1200,
           "height": 662,
           "source": [
@@ -12017,7 +12017,7 @@
           "asset": "academy-story-ai-5-3-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: The boundary is v=2u-3; the bias sets its position. Changed condition: Change bias from-3 to-1. Expected result: A score becomes2 and B score 0; both predict class 1. Reason: Increasing bias by2 adds2 to every score without changing the weights.",
+          "alt": "Original case: The boundary is v=2u-3; the bias sets its position. Changed condition: Change bias from -3 to-1. Expected result: A score becomes 2 and B score 0; both predict class 1. Reason: Increasing bias by2 adds 2 to every score without changing the weights.",
           "width": 1200,
           "height": 662,
           "source": [
@@ -12075,7 +12075,7 @@
           "asset": "academy-story-ai-5-4-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "Compute preactivation: z values are-2, 0, 1. → Apply ReLU: h values are 0, 0, 1; the negative value is replaced by0. → Compute output: y values are2, 2, 5; x = 1 and x = 3 collapse to the same output.",
+          "alt": "Compute preactivation: z values are -2, 0, 1. → Apply ReLU: h values are 0, 0, 1; the negative value is replaced by0. → Compute output: y values are 2, 2, 5; x = 1 and x = 3 collapse to the same output.",
           "width": 1200,
           "height": 696,
           "source": [
@@ -12099,7 +12099,7 @@
           "asset": "academy-story-ai-5-4-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: y values are2, 2, 5; x = 1 and x = 3 collapse to the same output. Changed condition: Replace ReLU with identity. Expected result: h becomes-2, 0, 1 and outputs become-4, 2, 5. Reason: Identity retains the negative intermediate value instead of clipping it.",
+          "alt": "Original case: y values are 2, 2, 5; x = 1 and x = 3 collapse to the same output. Changed condition: Replace ReLU with identity. Expected result: h becomes -2, 0, 1 and outputs become -4, 2, 5. Reason: Identity retains the negative intermediate value instead of clipping it.",
           "width": 1200,
           "height": 662,
           "source": [
@@ -12181,7 +12181,7 @@
           "asset": "academy-story-ai-5-5-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: y=2-2=0; the output uses activated hidden values, not raw inputs. Changed condition: Change only v from 3 to1. Expected result: h1 stays2, h2 becomes0, y becomes2. Reason: The second hidden unit’s preactivation reaches0 while the first unit is unchanged.",
+          "alt": "Original case: y=2-2=0; the output uses activated hidden values, not raw inputs. Changed condition: Change only v from 3 to1. Expected result: h1 stays 2, h2 becomes 0, y becomes 2. Reason: The second hidden unit’s preactivation reaches 0 while the first unit is unchanged.",
           "width": 1200,
           "height": 662,
           "source": [
@@ -12239,7 +12239,7 @@
           "asset": "academy-story-ai-5-6-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "Preactivation: At x=0, z=-1; at x=2, z=3. → Activation: At x=0, h=0; at x=2, h=3. → Output: Outputs are4 and 1 respectively.",
+          "alt": "Preactivation: At x=0, z=-1; at x=2, z=3. → Activation: At x=0, h=0; at x=2, h=3. → Output: Outputs are 4 and 1 respectively.",
           "width": 1200,
           "height": 696,
           "source": [
@@ -12263,7 +12263,7 @@
           "asset": "academy-story-ai-5-6-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: Outputs are4 and 1 respectively. Changed condition: A submitted x = 0 trace uses h=-1 and y = 5. Expected result: Its first error is retaining the negative value after ReLU; correct h = 0 gives y = 4. Reason: ReLU(-1)=0, so the output must use0, not the earlier preactivation.",
+          "alt": "Original case: Outputs are 4 and 1 respectively. Changed condition: A submitted x = 0 trace uses h=-1 and y = 5. Expected result: Its first error is retaining the negative value after ReLU; correct h = 0 gives y = 4. Reason: ReLU(-1)=0, so the output must use 0, not the earlier preactivation.",
           "width": 1200,
           "height": 662,
           "source": [
@@ -12308,7 +12308,7 @@
           "asset": "academy-story-ai-5-7-01",
           "number": 1,
           "title": "Parameters and architecture: the case",
-          "alt": "Count trainable weights and biases separately from activation functions. Supplied facts: Dense toy architecture2 inputs→3 hidden units→1 output. Every hidden and output unit has one bias; hidden activation is ReLU. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
+          "alt": "Count trainable weights and biases separately from activation functions. Supplied facts: Dense toy architecture 2 inputs→3 hidden units→1 output. Every hidden and output unit has one bias; hidden activation is ReLU. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
           "width": 1200,
           "height": 720,
           "source": [
@@ -12321,7 +12321,7 @@
           "asset": "academy-story-ai-5-7-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "Count first layer: 2×3=6 weights plus3 biases gives 9 parameters. → Count output layer: 3×1=3 weights plus1 bias gives 4 parameters. → Total: Total trainable parameters=9+4=13; ReLU adds no parameters here.",
+          "alt": "Count first layer: 2×3=6 weights plus 3 biases gives 9 parameters. → Count output layer: 3×1=3 weights plus 1 bias gives 4 parameters. → Total: Total trainable parameters=9+4=13; ReLU adds no parameters here.",
           "width": 1200,
           "height": 696,
           "source": [
@@ -12345,7 +12345,7 @@
           "asset": "academy-story-ai-5-7-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: Total trainable parameters=9+4=13; ReLU adds no parameters here. Changed condition: Increase hidden width from 3 to4. Expected result: First layer12 parameters; output layer5; total 17. Reason: Each new hidden unit adds2 input weights, 1 hidden bias and 1 outgoing weight.",
+          "alt": "Original case: Total trainable parameters=9+4=13; ReLU adds no parameters here. Changed condition: Increase hidden width from 3 to4. Expected result: First layer 12 parameters; output layer 5; total 17. Reason: Each new hidden unit adds 2 input weights, 1 hidden bias and 1 outgoing weight.",
           "width": 1200,
           "height": 662,
           "source": [
@@ -12403,7 +12403,7 @@
           "asset": "academy-story-ai-5-8-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "A squared errors: A residuals [-1, 1] give squares [1, 1], MSE1. → B squared errors: B residuals [0, 2] give squares [0, 4], MSE2. → Compare objective: A wins under MSE; both MAEs equal1.",
+          "alt": "A squared errors: A residuals [-1, 1] give squares [1, 1], MSE 1. → B squared errors: B residuals [0, 2] give squares [0, 4], MSE 2. → Compare objective: A wins under MSE; both MAEs equal 1.",
           "width": 1200,
           "height": 696,
           "source": [
@@ -12427,7 +12427,7 @@
           "asset": "academy-story-ai-5-8-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: A wins under MSE; both MAEs equal1. Changed condition: Choose MAE instead of MSE as the sole criterion. Expected result: A and B tie at MAE1. Reason: Squared error penalises B’s concentrated error more, while absolute errors both sum 2.",
+          "alt": "Original case: A wins under MSE; both MAEs equal 1. Changed condition: Choose MAE instead of MSE as the sole criterion. Expected result: A and B tie at MAE 1. Reason: Squared error penalises B’s concentrated error more, while absolute errors both sum 2.",
           "width": 1200,
           "height": 662,
           "source": [
@@ -12509,7 +12509,7 @@
           "asset": "academy-story-ai-5-9-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: Move to a = 0.25: loss 3.0625, below starting loss 4. Changed condition: Move from 0 all the way to5. Expected result: Loss becomes9, exceeding the starting4. Reason: A negative local slope suggests increasing a locally, not that every positive jump decreases loss.",
+          "alt": "Original case: Move to a = 0.25: loss 3.0625, below starting loss 4. Changed condition: Move from 0 all the way to5. Expected result: Loss becomes 9, exceeding the starting 4. Reason: A negative local slope suggests increasing a locally, not that every positive jump decreases loss.",
           "width": 1200,
           "height": 695,
           "source": [
@@ -12567,7 +12567,7 @@
           "asset": "academy-story-ai-5-10-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "Check w direction: Analytic derivative2×residual×2=-4. → Check b direction: Analytic derivative2×residual=-2. → Numerical check: With step 0.1: w losses 0.64, 1.44 give -4; b losses 0.81, 1.21 give -2.",
+          "alt": "Check w direction: Analytic derivative 2×residual×2=-4. → Check b direction: Analytic derivative 2×residual=-2. → Numerical check: With step 0.1: w losses 0.64, 1.44 give -4; b losses 0.81, 1.21 give -2.",
           "width": 1200,
           "height": 696,
           "source": [
@@ -12649,7 +12649,7 @@
           "asset": "academy-story-ai-5-11-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "Compute gradient: Gradient for [w, b]=[2×(-2)×2, 2×(-2)]=[-8,-4]. → Update simultaneously: New w=1-0.05×(-8)=1.4; new b=1.2. → Check new loss: New y=4, residual -1, loss 1: lower than4.",
+          "alt": "Compute gradient: Gradient for [w, b]=[2×(-2)×2, 2×(-2)]=[-8,-4]. → Update simultaneously: New w=1-0.05×(-8)=1.4; new b=1.2. → Check new loss: New y=4, residual -1, loss 1: lower than 4.",
           "width": 1200,
           "height": 696,
           "source": [
@@ -12673,7 +12673,7 @@
           "asset": "academy-story-ai-5-11-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: New y=4, residual -1, loss 1: lower than4. Changed condition: Set learning rate 0.2 from the same starting point. Expected result: New w=2.6, b=1.8, y=7, squared loss 4: no improvement. Reason: The larger update jumps to an equally distant point on the opposite side of the target.",
+          "alt": "Original case: New y=4, residual -1, loss 1: lower than 4. Changed condition: Set learning rate 0.2 from the same starting point. Expected result: New w=2.6, b=1.8, y=7, squared loss 4: no improvement. Reason: The larger update jumps to an equally distant point on the opposite side of the target.",
           "width": 1200,
           "height": 662,
           "source": [
@@ -12731,7 +12731,7 @@
           "asset": "academy-story-ai-5-12-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "Freeze hidden step: h=3 for this pair; only v is trainable. → Compute initial gradient: Loss9; gradient 2(3v-3)×3=-18 at v=0. → Update and verify: v becomes1; prediction 3 and loss 0. Next gradient is 0.",
+          "alt": "Freeze hidden step: h=3 for this pair; only v is trainable. → Compute initial gradient: Loss 9; gradient 2(3v-3)×3=-18 at v=0. → Update and verify: v becomes 1; prediction 3 and loss 0. Next gradient is 0.",
           "width": 1200,
           "height": 696,
           "source": [
@@ -12755,7 +12755,7 @@
           "asset": "academy-story-ai-5-12-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: v becomes1; prediction 3 and loss 0. Next gradient is 0. Changed condition: Change target from 3 to6 and restart v = 0 with the same rate. Expected result: First gradient=-36; v becomes2; prediction 6 and loss 0. Reason: The hidden value remains3, but the target residual and required output weight double.",
+          "alt": "Original case: v becomes 1; prediction 3 and loss 0. Next gradient is 0. Changed condition: Change target from 3 to6 and restart v = 0 with the same rate. Expected result: First gradient=-36; v becomes 2; prediction 6 and loss 0. Reason: The hidden value remains 3, but the target residual and required output weight double.",
           "width": 1200,
           "height": 662,
           "source": [
@@ -12882,7 +12882,7 @@
           "asset": "academy-story-ai-5-14-01",
           "number": 1,
           "title": "Learning rate experiments: the case",
-          "alt": "Compare learning rates with identical starting loss and update counts. Supplied facts: Loss J(a)=(a-4)²; gradient 2(a-4); start a =  = 0. Compare two updates at rates0.25 and 0.75. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
+          "alt": "Compare learning rates with identical starting loss and update counts. Supplied facts: Loss J(a)=(a-4)²; gradient 2(a-4); start a = 0. Compare two updates at rates 0.25 and 0.75. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
           "width": 1200,
           "height": 654,
           "source": [
@@ -12895,7 +12895,7 @@
           "asset": "academy-story-ai-5-14-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "Rate0.25: First a = 2, loss 4; second a = 3, loss 1. → Rate0.75: First a = 6, loss 4; second a = 3, loss 1. → Inspect paths: Both end at 3 and loss 1; larger rate crosses the optimum while smaller rate stays below it.",
+          "alt": "Rate 0.25: First a = 2, loss 4; second a = 3, loss 1. → Rate 0.75: First a = 6, loss 4; second a = 3, loss 1. → Inspect paths: Both end at 3 and loss 1; larger rate crosses the optimum while smaller rate stays below it.",
           "width": 1200,
           "height": 730,
           "source": [
@@ -12919,7 +12919,7 @@
           "asset": "academy-story-ai-5-14-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: Both end at 3 and loss 1; larger rate crosses the optimum while smaller rate stays below it. Changed condition: Add a rate 1 run from a = 0. Expected result: Its path is 8 then 0, with loss 16 at both steps. Reason: The update alternates across4 without reducing the initial loss.",
+          "alt": "Original case: Both end at 3 and loss 1; larger rate crosses the optimum while smaller rate stays below it. Changed condition: Add a rate 1 run from a = 0. Expected result: Its path is 8 then 0, with loss 16 at both steps. Reason: The update alternates across 4 without reducing the initial loss.",
           "width": 1200,
           "height": 665,
           "source": [
@@ -12964,7 +12964,7 @@
           "asset": "academy-story-ai-5-15-01",
           "number": 1,
           "title": "Training and validation curves: the case",
-          "alt": "Plot training and validation loss for checkpoints before opening final cases. Supplied facts: Supplied checkpoint losses: epoch 1 train4, val3; epoch 2 train2, val2; epoch 3 train1, val2.5. Selection: smallest validation loss. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
+          "alt": "Plot training and validation loss for checkpoints before opening final cases. Supplied facts: Supplied checkpoint losses: epoch 1 train 4, val 3; epoch 2 train 2, val 2; epoch 3 train 1, val 2.5. Selection: smallest validation loss. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
           "width": 1200,
           "height": 687,
           "source": [
@@ -12977,7 +12977,7 @@
           "asset": "academy-story-ai-5-15-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "Read training curve: Training loss falls4→2→1. → Read validation curve: Validation loss falls3→2 then rises to2.5. → Choose checkpoint: Select epoch 2, not epoch 3, under the declared validation criterion.",
+          "alt": "Read training curve: Training loss falls 4→2→1. → Read validation curve: Validation loss falls 3→2 then rises to2.5. → Choose checkpoint: Select epoch 2, not epoch 3, under the declared validation criterion.",
           "width": 1200,
           "height": 696,
           "source": [
@@ -13001,7 +13001,7 @@
           "asset": "academy-story-ai-5-15-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: Select epoch 2, not epoch 3, under the declared validation criterion. Changed condition: Epoch3 validation loss is instead1.5. Expected result: Select epoch 3 under the unchanged criterion. Reason: Its measured validation loss is now below epoch 2’s2; the training curve alone never settled selection.",
+          "alt": "Original case: Select epoch 2, not epoch 3, under the declared validation criterion. Changed condition: Epoch 3 validation loss is instead 1.5. Expected result: Select epoch 3 under the unchanged criterion. Reason: Its measured validation loss is now below epoch 2’s2; the training curve alone never settled selection.",
           "width": 1200,
           "height": 695,
           "source": [
@@ -13128,7 +13128,7 @@
           "asset": "academy-story-ai-5-17-01",
           "number": 1,
           "title": "Initialisation and reproducibility: the case",
-          "alt": "Reproduce two training traces by saving their distinct initial values. Supplied facts: LossJ(a)=(a-2)²; gradient 2(a-2); rate 0.25; two updates. Restart from a = 0 and separately a = 4. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
+          "alt": "Reproduce two training traces by saving their distinct initial values. Supplied facts: Loss J(a)=(a-2)²; gradient 2(a-2); rate 0.25; two updates. Restart from a = 0 and separately a = 4. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
           "width": 1200,
           "height": 687,
           "source": [
@@ -13165,7 +13165,7 @@
           "asset": "academy-story-ai-5-17-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: Save initial values, rate, objective and update count; the same final loss hides different parameter paths. Changed condition: Repeat the a = 0 run with identical arithmetic and settings. Expected result: It again reaches1 then 1.5 in this deterministic toy calculation. Reason: Identical initial state and update rules determine the same arithmetic trace.",
+          "alt": "Original case: Save initial values, rate, objective and update count; the same final loss hides different parameter paths. Changed condition: Repeat the a = 0 run with identical arithmetic and settings. Expected result: It again reaches 1 then 1.5 in this deterministic toy calculation. Reason: Identical initial state and update rules determine the same arithmetic trace.",
           "width": 1200,
           "height": 665,
           "source": [
@@ -13305,7 +13305,7 @@
           "asset": "academy-story-ai-5-19-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "Encode A: A becomes [3, 0], with left brighter. → Encode B: B becomes [0, 3], with right brighter. → Compare collapsed summary: If the head receives only h1+h2, both become3 and the target distinction is lost.",
+          "alt": "Encode A: A becomes [3, 0], with left brighter. → Encode B: B becomes [0, 3], with right brighter. → Compare collapsed summary: If the head receives only h1+h2, both become 3 and the target distinction is lost.",
           "width": 1200,
           "height": 696,
           "source": [
@@ -13329,7 +13329,7 @@
           "asset": "academy-story-ai-5-19-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: If the head receives only h1+h2, both become3 and the target distinction is lost. Changed condition: The head keeps both ordered hidden values instead of their sum. Expected result: It can distinguish [3, 0] from [0, 3] in this example. Reason: The representation retains the direction of brightness difference when coordinates stay separate.",
+          "alt": "Original case: If the head receives only h1+h2, both become 3 and the target distinction is lost. Changed condition: The head keeps both ordered hidden values instead of their sum. Expected result: It can distinguish [3, 0] from [0, 3] in this example. Reason: The representation retains the direction of brightness difference when coordinates stay separate.",
           "width": 1200,
           "height": 695,
           "source": [
@@ -13387,7 +13387,7 @@
           "asset": "academy-story-ai-5-20-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "Record HWC shape: Shape is [2, 1, 3]; top green is 4 and bottom green5. → Reorder to CHW: Shape [3, 2, 1]; red plane [[1],[2]], green [[4],[5]], blue [[7],[8]]. → Check same pixel: Bottom green is HWC [1, 0, 1]=5 and CHW [1, 1, 0]=5.",
+          "alt": "Record HWC shape: Shape is [2, 1, 3]; top green is 4 and bottom green 5. → Reorder to CHW: Shape [3, 2, 1]; red plane [[1],[2]], green [[4],[5]], blue [[7],[8]]. → Check same pixel: Bottom green is HWC [1, 0, 1]=5 and CHW [1, 1, 0]=5.",
           "width": 1200,
           "height": 696,
           "source": [
@@ -13456,7 +13456,7 @@
           "asset": "academy-story-ai-5-21-01",
           "number": 1,
           "title": "Convolution as a local operation: the case",
-          "alt": "Draw the exact patch-by-patch arithmetic of a local image operation. Supplied facts: Image rows [1, 2, 3],[4, 5, 6]; kernel rows [1, 0],[0,-1]. Use unflipped kernel, no padding, stride1, bias0. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
+          "alt": "Draw the exact patch-by-patch arithmetic of a local image operation. Supplied facts: Image rows [1, 2, 3],[4, 5, 6]; kernel rows [1, 0],[0,-1]. Use unflipped kernel, no padding, stride 1, bias 0. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
           "width": 1200,
           "height": 687,
           "source": [
@@ -13469,7 +13469,7 @@
           "asset": "academy-story-ai-5-21-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "First patch: 1×1+2×0+4×0+5×(-1)=-4. → Second patch: 2×1+3×0+5×0+6×(-1)=-4. → Feature map: Output shape1×2 and map [[-4,-4]]; the same kernel is reused at each position.",
+          "alt": "First patch: 1×1+2×0+4×0+5×(-1)=-4. → Second patch: 2×1+3×0+5×0+6×(-1)=-4. → Feature map: Output shape 1×2 and map [[-4,-4]]; the same kernel is reused at each position.",
           "width": 1200,
           "height": 696,
           "source": [
@@ -13481,7 +13481,7 @@
           "asset": "academy-story-ai-5-21-03",
           "number": 3,
           "title": "Image used by both local kernel windows",
-          "alt": "Image used by both local kernel windows. row0: col0 = 1, col1 = 2, col2 = 3. row1: col0 = 4, col1 = 5, col2 = 6.",
+          "alt": "Image used by both local kernel windows. row 0: col 0 = 1, col 1 = 2, col 2 = 3. row 1: col 0 = 4, col 1 = 5, col 2 = 6.",
           "width": 1200,
           "height": 677,
           "source": [
@@ -13493,7 +13493,7 @@
           "asset": "academy-story-ai-5-21-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: Output shape1×2 and map [[-4,-4]]; the same kernel is reused at each position. Changed condition: Add shared bias2 after each patch sum. Expected result: Feature map becomes [[-2,-2]]. Reason: Bias adds2 to each output; it does not change patch products or output shape.",
+          "alt": "Original case: Output shape 1×2 and map [[-4,-4]]; the same kernel is reused at each position. Changed condition: Add shared bias 2 after each patch sum. Expected result: Feature map becomes [[-2,-2]]. Reason: Bias adds 2 to each output; it does not change patch products or output shape.",
           "width": 1200,
           "height": 662,
           "source": [
@@ -13538,7 +13538,7 @@
           "asset": "academy-story-ai-5-22-01",
           "number": 1,
           "title": "Pooling and spatial information: the case",
-          "alt": "Pool a small map and show the detail it cannot retain. Supplied facts: Feature map rows [1, 4, 2, 0],[3, 2, 5, 1]. Pool non-overlapping2×2 windows, stride2, no padding. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
+          "alt": "Pool a small map and show the detail it cannot retain. Supplied facts: Feature map rows [1, 4, 2, 0],[3, 2, 5, 1]. Pool non-overlapping 2×2 windows, stride 2, no padding. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
           "width": 1200,
           "height": 687,
           "source": [
@@ -13551,7 +13551,7 @@
           "asset": "academy-story-ai-5-22-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "Left window: Values1, 4, 3, 2: max 4, mean 2.5. → Right window: Values2, 0, 5, 1: max 5, mean 2. → Compare summaries: Max map [[4, 5]], mean map [[2.5, 2]], both shape1×2.",
+          "alt": "Left window: Values 1, 4, 3, 2: max 4, mean 2.5. → Right window: Values 2, 0, 5, 1: max 5, mean 2. → Compare summaries: Max map [[4, 5]], mean map [[2.5, 2]], both shape 1×2.",
           "width": 1200,
           "height": 696,
           "source": [
@@ -13563,7 +13563,7 @@
           "asset": "academy-story-ai-5-22-03",
           "number": 3,
           "title": "Two adjacent pooling windows",
-          "alt": "Two adjacent pooling windows. row0: left0 = 1, left1 = 4, right0 = 2, right1 = 0. row1: left0 = 3, left1 = 2, right0 = 5, right1 = 1.",
+          "alt": "Two adjacent pooling windows. row 0: left 0 = 1, left 1 = 4, right 0 = 2, right 1 = 0. row 1: left 0 = 3, left 1 = 2, right 0 = 5, right 1 = 1.",
           "width": 1200,
           "height": 677,
           "source": [
@@ -13575,7 +13575,7 @@
           "asset": "academy-story-ai-5-22-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: Max map [[4, 5]], mean map [[2.5, 2]], both shape1×2. Changed condition: Swap1 and 4 within the left window. Expected result: Both pooled maps remain unchanged. Reason: Max and mean ignore the positions of values inside the same window.",
+          "alt": "Original case: Max map [[4, 5]], mean map [[2.5, 2]], both shape 1×2. Changed condition: Swap 1 and 4 within the left window. Expected result: Both pooled maps remain unchanged. Reason: Max and mean ignore the positions of values inside the same window.",
           "width": 1200,
           "height": 662,
           "source": [
@@ -13633,7 +13633,7 @@
           "asset": "academy-story-ai-5-23-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "First update: Gradient2(2a-2)×2=-8; new a =  = 0.5, training loss 1. → Second update: Gradient at 0.5 is-4; new a =  = 0.75, training loss 0.25. → Validation score: At reserved d1, target 1: prediction 0.75, squared error0.0625.",
+          "alt": "First update: Gradient 2(2a-2)×2=-8; new a = 0.5, training loss 1. → Second update: Gradient at 0.5 is-4; new a = 0.75, training loss 0.25. → Validation score: At reserved d1, target 1: prediction 0.75, squared error 0.0625.",
           "width": 1200,
           "height": 696,
           "source": [
@@ -13657,7 +13657,7 @@
           "asset": "academy-story-ai-5-23-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: At reserved d1, target 1: prediction 0.75, squared error0.0625. Changed condition: Double the two-update budget while keeping the same training rule. Expected result: Next a values 0.875 and 0.9375; training loss falls to 0.015625. Reason: Each update halves the distance to the training optimum1 in this toy system.",
+          "alt": "Original case: At reserved d1, target 1: prediction 0.75, squared error 0.0625. Changed condition: Double the two-update budget while keeping the same training rule. Expected result: Next a values 0.875 and 0.9375; training loss falls to 0.015625. Reason: Each update halves the distance to the training optimum 1 in this toy system.",
           "width": 1200,
           "height": 662,
           "source": [
@@ -13715,7 +13715,7 @@
           "asset": "academy-story-ai-5-24-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "Track provenance: Each flipped copy retains its source ID and parent image reference. → Assign by source: A/B originals and flips give4 training records; C gives 2 validation; D gives 2 final. → Check label meaning: Use a flip only if it preserves the declared target; left-arrow/right-arrow labels would not be unchanged.",
+          "alt": "Track provenance: Each flipped copy retains its source ID and parent image reference. → Assign by source: A/B originals and flips give 4 training records; C gives 2 validation; D gives 2 final. → Check label meaning: Use a flip only if it preserves the declared target; left-arrow/right-arrow labels would not be unchanged.",
           "width": 1200,
           "height": 764,
           "source": [
@@ -13784,7 +13784,7 @@
           "asset": "academy-story-ai-5-25-01",
           "number": 1,
           "title": "Sequence representations: the case",
-          "alt": "Distinguish padding positions from meaningful zero sensor readings. Supplied facts: Toy tokensPAD0, UNK1, LEFT2, RIGHT3; stored length4. SequenceLEFT RIGHT encodes [2, 3, 0, 0], mask [1, 1, 0, 0]. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
+          "alt": "Distinguish padding positions from meaningful zero sensor readings. Supplied facts: Toy tokens PAD 0, UNK 1, LEFT 2, RIGHT 3; stored length 4. Sequence LEFT RIGHT encodes [2, 3, 0, 0], mask [1, 1, 0, 0]. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
           "width": 1200,
           "height": 654,
           "source": [
@@ -13797,7 +13797,7 @@
           "asset": "academy-story-ai-5-25-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "Encode real tokens: LEFT and RIGHT occupy positions0 and 1. → Mark padding: Positions2 and 3 are storage padding; mask marks them 0. → Compare sensor example: Readings [0, 4, 0, 0] with real length 2 use mask [1, 1, 0, 0]; the first zero is a real measurement.",
+          "alt": "Encode real tokens: LEFT and RIGHT occupy positions 0 and 1. → Mark padding: Positions 2 and 3 are storage padding; mask marks them 0. → Compare sensor example: Readings [0, 4, 0, 0] with real length 2 use mask [1, 1, 0, 0]; the first zero is a real measurement.",
           "width": 1200,
           "height": 730,
           "source": [
@@ -13821,7 +13821,7 @@
           "asset": "academy-story-ai-5-25-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: Readings [0, 4, 0, 0] with real length 2 use mask [1, 1, 0, 0]; the first zero is a real measurement. Changed condition: A missing sequence length causes every numeric0 to be treated as padding in the sensor example. Expected result: The first real sensor reading is incorrectly discarded. Reason: Its numeric value is 0, but its position is real according to the declared length.",
+          "alt": "Original case: Readings [0, 4, 0, 0] with real length 2 use mask [1, 1, 0, 0]; the first zero is a real measurement. Changed condition: A missing sequence length causes every numeric 0 to be treated as padding in the sensor example. Expected result: The first real sensor reading is incorrectly discarded. Reason: Its numeric value is 0, but its position is real according to the declared length.",
           "width": 1200,
           "height": 665,
           "source": [
@@ -13866,7 +13866,7 @@
           "asset": "academy-story-ai-5-26-01",
           "number": 1,
           "title": "Embeddings and neighbourhoods: the case",
-          "alt": "Measure embedding neighbours without turning numerical proximity into factual certainty. Supplied facts: Toy tableP=[0, 1], Q=[3, 1], R=[1, 4]; query [1, 1]. Use squared Euclidean distance. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
+          "alt": "Measure embedding neighbours without turning numerical proximity into factual certainty. Supplied facts: Toy table P =[0, 1], Q=[3, 1], R=[1, 4]; query [1, 1]. Use squared Euclidean distance. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
           "width": 1200,
           "height": 654,
           "source": [
@@ -13879,7 +13879,7 @@
           "asset": "academy-story-ai-5-26-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "Distance to P: (1-0)²+(1-1)²=1. → Distances to Q/R: Q distance4; R distance9. → Select neighbour: P is nearest under the declared metric; this is a geometric result, not proof of meaning.",
+          "alt": "Distance to P: (1-0)²+(1-1)²=1. → Distances to Q/R: Q distance 4; R distance 9. → Select neighbour: P is nearest under the declared metric; this is a geometric result, not proof of meaning.",
           "width": 1200,
           "height": 730,
           "source": [
@@ -13903,7 +13903,7 @@
           "asset": "academy-story-ai-5-26-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: P is nearest under the declared metric; this is a geometric result, not proof of meaning. Changed condition: Move the query to [2, 1]. Expected result: Q becomes nearest with squared distance1; P distance4; R distance10. Reason: Changing the query position changes geometric neighbours while the stored table remains fixed.",
+          "alt": "Original case: P is nearest under the declared metric; this is a geometric result, not proof of meaning. Changed condition: Move the query to [2, 1]. Expected result: Q becomes nearest with squared distance 1; P distance 4; R distance 10. Reason: Changing the query position changes geometric neighbours while the stored table remains fixed.",
           "width": 1200,
           "height": 695,
           "source": [
@@ -13961,7 +13961,7 @@
           "asset": "academy-story-ai-5-27-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "Raw distances: P distance36; Q distance1, so Q is closer in raw coordinates. → Angular similarity: CosineP=1; cosineQ=2/sqrt5≈0.8944, so P aligns more closely. → Normalise: Unit query [1, 0], P [1, 0], Q [2/sqrt5, 1/sqrt5]; normalised distanceP0.",
+          "alt": "Raw distances: P distance 36; Q distance 1, so Q is closer in raw coordinates. → Angular similarity: Cosine P =1; cosine Q =2/sqrt5≈0.8944, so P aligns more closely. → Normalise: Unit query [1, 0], P [1, 0], Q [2/sqrt5, 1/sqrt5]; normalised distance to P is 0.",
           "width": 1200,
           "height": 696,
           "source": [
@@ -13985,7 +13985,7 @@
           "asset": "academy-story-ai-5-27-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: Unit query [1, 0], P [1, 0], Q [2/sqrt5, 1/sqrt5]; normalised distanceP0. Changed condition: Replace P with [0, 0]. Expected result: Cosine and unit normalisation for P are undefined. Reason: The zero vector has norm0, so dividing by its norm is invalid.",
+          "alt": "Original case: Unit query [1, 0], P [1, 0], Q [2/sqrt5, 1/sqrt5]; normalised distance to P is 0. Changed condition: Replace P with [0, 0]. Expected result: Cosine and unit normalisation for P are undefined. Reason: The zero vector has norm 0, so dividing by its norm is invalid.",
           "width": 1200,
           "height": 662,
           "source": [
@@ -14030,7 +14030,7 @@
           "asset": "academy-story-ai-5-28-01",
           "number": 1,
           "title": "Transfer learning: the case",
-          "alt": "Transfer a fixed feature extractor while identifying what is actually refitted. Supplied facts: Frozen extractorh=left+2right. New-task training inputs [1, 0]label0,[2, 1]label0,[1, 3]label1. Class1 whenh>=threshold; candidates3 or5. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
+          "alt": "Transfer a fixed feature extractor while identifying what is actually refitted. Supplied facts: Frozen extractor h =left+2right. New-task training inputs [1, 0]label 0,[2, 1]label 0,[1, 3]label 1. Class 1 when h >=threshold; candidates 3 or5. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
           "width": 1200,
           "height": 687,
           "source": [
@@ -14043,7 +14043,7 @@
           "asset": "academy-story-ai-5-28-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "Extract features: Trainingh values are1, 4, 7. → Fit new head: Threshold3 makes1 mistake; threshold 5 makes0, so choose 5. → Check held-out input: Query [2, 2]has h = 6, so the head predicts class 1; its reference is not supplied.",
+          "alt": "Extract features: Training h values are 1, 4, 7. → Fit new head: Threshold 3 makes 1 mistake; threshold 5 makes 0, so choose 5. → Check held-out input: Query [2, 2]has h = 6, so the head predicts class 1; its reference is not supplied.",
           "width": 1200,
           "height": 696,
           "source": [
@@ -14067,7 +14067,7 @@
           "asset": "academy-story-ai-5-28-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: Query [2, 2]has h = 6, so the head predicts class 1; its reference is not supplied. Changed condition: Query changes to [2, 1]. Expected result: Its h becomes4 and the fitted head predicts class 0. Reason: Extractor stays fixed; the changed input crosses the chosen head’s boundary.",
+          "alt": "Original case: Query [2, 2]has h = 6, so the head predicts class 1; its reference is not supplied. Changed condition: Query changes to [2, 1]. Expected result: Its h becomes 4 and the fitted head predicts class 0. Reason: Extractor stays fixed; the changed input crosses the chosen head’s boundary.",
           "width": 1200,
           "height": 662,
           "source": [
@@ -14194,7 +14194,7 @@
           "asset": "academy-story-ai-5-30-01",
           "number": 1,
           "title": "Dataset shift in neural models: the case",
-          "alt": "Separate within-setting performance from changing setting proportions. Supplied facts: Toy old-use mix: bright 40 cases32 correct; dim 10 cases5 correct. New-use mix: bright 10 cases8 correct; dim 40 cases20 correct. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
+          "alt": "Separate within-setting performance from changing setting proportions. Supplied facts: Toy old-use mix: bright 40 cases 32 correct; dim 10 cases 5 correct. New-use mix: bright 10 cases 8 correct; dim 40 cases 20 correct. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
           "width": 1200,
           "height": 687,
           "source": [
@@ -14276,7 +14276,7 @@
           "asset": "academy-story-ai-5-31-01",
           "number": 1,
           "title": "Efficiency and resource measurement: the case",
-          "alt": "Compare speed and quality under the same case count and acceptance contract. Supplied facts: Both evaluate40 cases. P times [0.32, 0.40, 0.48]seconds, 38 correct; Q times [0.20, 0.24, 0.28]seconds, 36 correct. Requireaccuracy>=93% and mean amortised time<=12ms/case. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
+          "alt": "Compare speed and quality under the same case count and acceptance contract. Supplied facts: Both evaluate 40 cases. P times [0.32, 0.40, 0.48]seconds, 38 correct; Q times [0.20, 0.24, 0.28]seconds, 36 correct. Requireaccuracy>=93% and mean amortised time<=12 ms/case. All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed.",
           "width": 1200,
           "height": 752,
           "source": [
@@ -14289,7 +14289,7 @@
           "asset": "academy-story-ai-5-31-02",
           "number": 2,
           "title": "Follow the deciding steps",
-          "alt": "Summarise P: Mean time0.40s; 10ms/case; accuracy 38/40=95%: passesboth. → Summarise Q: Mean time0.24s; 6ms/case; accuracy 36/40=90%: failsquality. → Choose eligible candidate: P meets the declared contract; Q is faster but ineligible.",
+          "alt": "Summarise P: Mean time 0.40s; 10 ms/case; accuracy 38/40=95%: passes both. → Summarise Q: Mean time 0.24s; 6 ms/case; accuracy 36/40=90%: fails quality. → Choose eligible candidate: P meets the declared contract; Q is faster but ineligible.",
           "width": 1200,
           "height": 696,
           "source": [
@@ -14339,7 +14339,7 @@
           "asset": "academy-story-ai-5-31-06",
           "number": 6,
           "title": "Make the idea visible in your project",
-          "alt": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding. Draw your input, deciding step, result and limit. Supported question: Why is 10ms/case not necessarily a single-request latency? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
+          "alt": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding. Draw your input, deciding step, result and limit. Supported question: Why is 10 ms/case not necessarily a single-request latency? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
           "width": 1200,
           "height": 805,
           "source": [
@@ -14932,7 +14932,7 @@
           "asset": "academy-story-ai-6-3-01",
           "number": 1,
           "title": "Typed contracts and schemas: the case",
-          "alt": "A labelled sample record. A lab tool accepts a string sample_id and an integer count of at least zero. Supplied facts: A={sample_id:\"jar-8\",count:4}; B={sample_id:\"jar-9\",count:\"4\"}. No type conversion is allowed.",
+          "alt": "A labelled sample record. A lab tool accepts a string sample_id and an integer count of at least zero. Supplied facts: A={sample_id:\"jar -8\",count:4}; B={sample_id:\"jar -9\",count:\"4\"}. No type conversion is allowed.",
           "width": 1200,
           "height": 620,
           "source": [
@@ -16446,7 +16446,7 @@
           "asset": "academy-story-ai-6-21-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: Retrieve and cache version 5’s 09:30 under its own key. Changed condition: The next request still uses approved version 5. Expected result: The matching version-5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree.",
+          "alt": "Original case: Retrieve and cache version 5’s 09:30 under its own key. Changed condition: The next request still uses approved version 5. Expected result: The matching version -5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree.",
           "width": 1200,
           "height": 662,
           "source": [
@@ -16472,7 +16472,7 @@
           "asset": "academy-story-ai-6-21-06",
           "number": 6,
           "title": "Make the idea visible in your project",
-          "alt": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it. Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version-5 request return, and what permits a later version-5 cache hit?",
+          "alt": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it. Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
           "width": 1200,
           "height": 772,
           "source": [
@@ -16680,7 +16680,7 @@
           "asset": "academy-story-ai-6-24-03",
           "number": 3,
           "title": "Release and rollback — evidence trace",
-          "alt": "Release and rollback — evidence trace. After deployment v2 creates schema2 records; operator proposes rollback code alone to v1. | Version v2 writes schema2. Version v1 reads only schema1. A rollback to v1 after v2 writes data cannot safely proceed without migration or a compatible reader. | Code-only rollback is incompatible with stored schema2. Use the tested recovery plan or compatible migration; preserve data and failure evidence.",
+          "alt": "Release and rollback — evidence trace. After deployment v2 creates schema 2 records; operator proposes rollback code alone to v1. | Version v2 writes schema 2. Version v1 reads only schema 1. A rollback to v1 after v2 writes data cannot safely proceed without migration or a compatible reader. | Code-only rollback is incompatible with stored schema 2. Use the tested recovery plan or compatible migration; preserve data and failure evidence.",
           "width": 1200,
           "height": 622,
           "source": [
@@ -17418,7 +17418,7 @@
           "asset": "academy-story-ai-6-33-03",
           "number": 3,
           "title": "Capstone service implementation — evidence trace",
-          "alt": "Capstone service implementation — evidence trace. Room A has approval and capacity12; room B lacks approval; teacher guide T is restricted. Student requests each. | Validate request, establish session role, filter sources, lookup matching current records, return supported or review, validate output and log minimised metadata. | A supported12; B review with null claims; T denied before lookup. The implementation must expose these distinct outcomes.",
+          "alt": "Capstone service implementation — evidence trace. Room A has approval and capacity 12; room B lacks approval; teacher guide T is restricted. Student requests each. | Validate request, establish session role, filter sources, lookup matching current records, return supported or review, validate output and log minimised metadata. | A supported 12; B review with null claims; T denied before lookup. The implementation must expose these distinct outcomes.",
           "width": 1200,
           "height": 622,
           "source": [
@@ -17582,7 +17582,7 @@
           "asset": "academy-story-ai-6-35-03",
           "number": 3,
           "title": "Capstone release review — evidence trace",
-          "alt": "Capstone release review — evidence trace. Ordinary cases18/20 pass; access all pass; no effects; rollback not tested. | Toy release requires all access tests, no unauthorised effects, at least90% ordinary-case pass and a compatible rollback rehearsal. | 90% ordinary threshold met but rollback evidence missing, so release is not ready. Absence of a failure report is not a passed rehearsal.",
+          "alt": "Capstone release review — evidence trace. Ordinary cases 18/20 pass; access all pass; no effects; rollback not tested. | Toy release requires all access tests, no unauthorised effects, at least 90% ordinary-case pass and a compatible rollback rehearsal. | 90% ordinary threshold met but rollback evidence missing, so release is not ready. Absence of a failure report is not a passed rehearsal.",
           "width": 1200,
           "height": 620,
           "source": [
@@ -19387,9 +19387,9 @@
           "asset": "academy-story-ai-7-21-03",
           "number": 3,
           "title": "Predefining an analysis plan — evidence trace",
-          "alt": "Predefining an analysis plan — evidence trace. Plan includes all20 cases. After results, the team removes four failed cases because they make the graph look worse. | Declare primary metric, eligible cases, missing handling, baseline, test assumptions and reporting. Timestamp/version the plan; label later choices exploratory. | The exclusion is outcome-informed and violates the plan. Report original16/20 if16 passed, and label any revised analysis with reasons rather than hiding failures.",
+          "alt": "Predefining an analysis plan — evidence trace. Plan includes all20 cases. After results, the team removes four failed cases because they make the graph look worse. | Declare primary metric, eligible cases, missing handling, baseline, test assumptions and reporting. Timestamp/version the plan; label later choices exploratory. | The exclusion is outcome-informed and violates the plan. If the other 16 cases all passed, report the original 16/20; otherwise use the actual pass count out of 20, and label any revised analysis with reasons rather than hiding failures.",
           "width": 1200,
-          "height": 622,
+          "height": 721,
           "source": [
             "sections.diagram:Predefining an analysis plan — evidence trace"
           ],
@@ -20592,7 +20592,7 @@
           "asset": "academy-story-ai-7-36-01",
           "number": 1,
           "title": "Research defense and next questions: the case",
-          "alt": "Defend the next research question. A research defence identifies a observed weakness and a testable follow-up. Supplied facts: A frozen model is correct on 8/10 clear images and 4/10 shaded images. Source objects are grouped within each condition.",
+          "alt": "Defend the next research question. A research defence identifies an observed weakness and a testable follow-up. Supplied facts: A frozen model is correct on 8/10 clear images and 4/10 shaded images. Source objects are grouped within each condition.",
           "width": 1200,
           "height": 620,
           "source": [

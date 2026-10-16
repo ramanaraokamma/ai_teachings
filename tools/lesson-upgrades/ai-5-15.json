@@ -4,19 +4,19 @@
   "outcome": "By the end, I can explain training and validation curves using a traced example and a stated limitation.",
   "scenario": "Plot training and validation loss for checkpoints before opening final cases.",
   "given": [
-    "Supplied checkpoint losses: epoch 1 train4, val3; epoch 2 train2, val2; epoch 3 train1, val2.5. Selection: smallest validation loss.",
+    "Supplied checkpoint losses: epoch 1 train 4, val 3; epoch 2 train 2, val 2; epoch 3 train 1, val 2.5. Selection: smallest validation loss.",
     "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
   ],
   "steps": [
     {
       "label": "Read training curve",
       "icon": "chart",
-      "detail": "Training loss falls4\u21922\u21921."
+      "detail": "Training loss falls 4→2→1."
     },
     {
       "label": "Read validation curve",
       "icon": "chart",
-      "detail": "Validation loss falls3\u21922 then rises to2.5."
+      "detail": "Validation loss falls 3→2 then rises to2.5."
     },
     {
       "label": "Choose checkpoint",
@@ -26,12 +26,12 @@
   ],
   "explanation": "The training curve measures fit to examples used for learning. The validation curve measures a separate set used to choose a checkpoint. The final training loss is smallest here, but its validation loss has risen. Under the supplied selection rule, keep checkpoint two. A later final test must remain outside both learning and checkpoint selection.",
   "counterfactual": {
-    "change": "Epoch3 validation loss is instead1.5.",
+    "change": "Epoch 3 validation loss is instead 1.5.",
     "prediction": "Select epoch 3 under the unchanged criterion.",
-    "reason": "Its measured validation loss is now below epoch 2\u2019s2; the training curve alone never settled selection."
+    "reason": "Its measured validation loss is now below epoch 2’s2; the training curve alone never settled selection."
   },
   "student_task": "Can the original epoch 3 training loss 1 justify claiming best generalisation? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
-  "teacher_answer": "No. Original validation loss 2.5 exceeded epoch 2\u2019s2. Freeze the selected checkpoint before final evaluation. Changed-case check: Select epoch 3 under the unchanged criterion. Its measured validation loss is now below epoch 2\u2019s2; the training curve alone never settled selection.",
+  "teacher_answer": "No. Original validation loss 2.5 exceeded epoch 2’s2. Freeze the selected checkpoint before final evaluation. Changed-case check: Select epoch 3 under the unchanged criterion. Its measured validation loss is now below epoch 2’s2; the training curve alone never settled selection.",
   "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
   "limits": "A single curve has sampling and run variability; validation-selected checkpoints still require untouched final evidence.",
   "review_note": "Reviewed Training and validation curves against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation.",

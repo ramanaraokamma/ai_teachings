@@ -2,7 +2,7 @@
   "week": "ai-2/35",
   "title": "Improve and Challenge",
   "outcome": "By the end, I can make a focused repair and challenge it with regression and order-invariance tests.",
-  "scenario": "A fictional recommender excludes books at an intended including equality page limit.",
+  "scenario": "A fictional recommender excludes books at a page limit that is intended to include equality.",
   "given": [
     "Contract: pages<=100; highest interest; ties choose smaller ID. Old code uses pages<100.",
     "Rows A pages100 interest5; B pages90 interest3; C pages101 interest5."

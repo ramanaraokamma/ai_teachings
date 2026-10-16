@@ -29,7 +29,7 @@
       "detail": "Also plan invalid request, no eligible item and equal-score cases."
     }
   ],
-  "explanation": "Planning fixes what success means before code returns an answer. The duration boundary is including equality, and the tie policy prevents accidental list-order dependence. A complete output may include why other rows were excluded. Test expectations should come from the contract rather than copying the first program result.",
+  "explanation": "Planning fixes what success means before code returns an answer. The duration boundary includes equality, and the tie policy prevents accidental list-order dependence. A complete output may include why other rows were excluded. Test expectations should come from the contract rather than copying the first program result.",
   "counterfactual": {
     "change": "Reduce the limit from 8 to 5.",
     "prediction": "Return no eligible item.",

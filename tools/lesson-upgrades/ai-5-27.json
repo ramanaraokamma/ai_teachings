@@ -11,27 +11,27 @@
     {
       "label": "Raw distances",
       "icon": "chart",
-      "detail": "P distance36; Q distance1, so Q is closer in raw coordinates."
+      "detail": "P distance 36; Q distance 1, so Q is closer in raw coordinates."
     },
     {
       "label": "Angular similarity",
       "icon": "network",
-      "detail": "CosineP=1; cosineQ=2/sqrt5\u22480.8944, so P aligns more closely."
+      "detail": "Cosine P =1; cosine Q =2/sqrt5≈0.8944, so P aligns more closely."
     },
     {
       "label": "Normalise",
       "icon": "code",
-      "detail": "Unit query [1, 0], P [1, 0], Q [2/sqrt5, 1/sqrt5]; normalised distanceP0."
+      "detail": "Unit query [1, 0], P [1, 0], Q [2/sqrt5, 1/sqrt5]; normalised distance to P is 0."
     }
   ],
   "explanation": "Raw Euclidean distance includes differences in both direction and magnitude. Cosine compares direction using the vector lengths, so a long vector can align perfectly while being far away in raw coordinates. Declare which question your similarity measure answers. A zero vector has no direction and cannot be divided by its norm for cosine or unit normalisation.",
   "counterfactual": {
     "change": "Replace P with [0, 0].",
     "prediction": "Cosine and unit normalisation for P are undefined.",
-    "reason": "The zero vector has norm0, so dividing by its norm is invalid."
+    "reason": "The zero vector has norm 0, so dividing by its norm is invalid."
   },
   "student_task": "Why do the original two metrics select different winners? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
-  "teacher_answer": "Raw distance includes length differences; cosine compares direction after accounting for norms. P shares direction but has a much larger magnitude. Changed-case check: Cosine and unit normalisation for P are undefined. The zero vector has norm0, so dividing by its norm is invalid.",
+  "teacher_answer": "Raw distance includes length differences; cosine compares direction after accounting for norms. P shares direction but has a much larger magnitude. Changed-case check: Cosine and unit normalisation for P are undefined. The zero vector has norm 0, so dividing by its norm is invalid.",
   "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
   "limits": "Neither metric is universally right; choose it from the task and handle zero vectors explicitly.",
   "review_note": "Reviewed Similarity and normalisation against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation.",

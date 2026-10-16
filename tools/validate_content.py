@@ -4,6 +4,13 @@ import json,runpy,collections,subprocess,sys,tempfile
 ROOT=Path(__file__).resolve().parents[1]
 ns=runpy.run_path(str(ROOT/'tools/build_programme.py'))
 D=json.loads((ROOT/'content/programme.json').read_text());S=ns['S'];errors=[];rows=[]
+correction_path=ROOT/'reports/reviewed-source-corrections.json'
+corrections=collections.defaultdict(lambda:collections.defaultdict(set))
+if correction_path.exists():
+ for row in json.loads(correction_path.read_text())['corrections']:
+  corrections[row['week']][row['old']].add(row['new'])
+def retained(week,text,actual):
+ return text in actual or any(replacement in actual for replacement in corrections[week].get(text,()))
 def strings(obj):
  if isinstance(obj,str):yield obj
  elif isinstance(obj,list):
@@ -25,9 +32,9 @@ for level in S['original']['levels']:
   for source,key in [('student','sections'),('teacher','teacher')]:
    for i,page in enumerate(old[source]['pages']):
     expected=list(strings(clean(fix(page['blocks']))));actual=list(strings(w[key][i]['blocks']))
-    missing.extend(x for x in expected if x not in actual)
+    missing.extend(x for x in expected if not retained(id,x,actual))
   actual=list(strings([s['blocks'] for s in w['workbook']]))
-  missing.extend(x for x in strings(clean(fix(old['workbook']['blocks']))) if x not in actual and x not in [s['title'] for s in w['workbook']])
+  missing.extend(x for x in strings(clean(fix(old['workbook']['blocks']))) if not retained(id,x,actual) and x not in [s['title'] for s in w['workbook']])
   if missing:errors.append({'week':id,'missing_original_blocks':missing})
   rows.append({'week':id,'original_preserved':not missing,'student_sections':len(w['sections']),'teacher_sections':len(w['teacher']),'workbook_sections':len(w['workbook'])})
 assets=set()
@@ -51,11 +58,11 @@ for source,c in S['rebuilt'].items():
  for w in covered[source]:
   actual=list(strings([sec['blocks'] for sec in w['sections']]))
   expected=list(strings([ns['newblock'](b) for sec in c['lesson'] for b in sec['blocks'] if b['type']!='response']))
-  missing=[x for x in expected if x not in actual]
+  missing=[x for x in expected if not retained(w['id'],x,actual)]
   if missing:errors.append({'week':w['id'],'missing_later_explanation':source,'blocks':missing})
   teacher=list(strings([sec['blocks'] for sec in w['teacher']]))
   for q in c['workbook']:
-   if q['answer'] not in teacher:errors.append({'week':w['id'],'missing_answer':source+' '+q['id']})
+   if not retained(w['id'],q['answer'],teacher):errors.append({'week':w['id'],'missing_answer':source+' '+q['id']})
 # Every stale, specifically corrected sentence must be absent from the new canonical data.
 text=json.dumps(D)
 for old,new in ns['FIXES'].items():

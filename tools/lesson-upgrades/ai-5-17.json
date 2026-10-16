@@ -4,7 +4,7 @@
   "outcome": "By the end, I can explain initialisation and reproducibility using a traced example and a stated limitation.",
   "scenario": "Reproduce two training traces by saving their distinct initial values.",
   "given": [
-    "LossJ(a)=(a-2)\u00b2; gradient 2(a-2); rate 0.25; two updates. Restart from a = 0 and separately a = 4.",
+    "Loss J(a)=(a-2)²; gradient 2(a-2); rate 0.25; two updates. Restart from a = 0 and separately a = 4.",
     "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
   ],
   "steps": [
@@ -27,11 +27,11 @@
   "explanation": "Initialisation supplies the parameter values before learning begins. The same update rule can follow different paths from different starts. Here the two paths end on opposite sides of two and have equal squared distance, so equal loss does not imply equal parameters. Save initial values and settings to reproduce this arithmetic, as well as the final result.",
   "counterfactual": {
     "change": "Repeat the a = 0 run with identical arithmetic and settings.",
-    "prediction": "It again reaches1 then 1.5 in this deterministic toy calculation.",
+    "prediction": "It again reaches 1 then 1.5 in this deterministic toy calculation.",
     "reason": "Identical initial state and update rules determine the same arithmetic trace."
   },
   "student_task": "Does the matching final loss mean the parameter values are equal? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
-  "teacher_answer": "No. Final parameters1.5 and 2.5 are different, although both lie0.5 from the optimum and have loss 0.25. Changed-case check: It again reaches1 then 1.5 in this deterministic toy calculation. Identical initial state and update rules determine the same arithmetic trace.",
+  "teacher_answer": "No. Final parameters 1.5 and 2.5 are different, although both lie 0.5 from the optimum and have loss 0.25. Changed-case check: It again reaches 1 then 1.5 in this deterministic toy calculation. Identical initial state and update rules determine the same arithmetic trace.",
   "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
   "limits": "A saved seed alone does not reproduce every software or hardware execution; record environment and nondeterminism too.",
   "review_note": "Reviewed Initialisation and reproducibility against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation."

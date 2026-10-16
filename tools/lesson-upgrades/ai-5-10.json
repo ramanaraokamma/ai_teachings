@@ -4,19 +4,19 @@
   "outcome": "By the end, I can explain gradients with a numerical check using a traced example and a stated limitation.",
   "scenario": "Check each coordinate of a gradient while holding the other parameter fixed.",
   "given": [
-    "Model y=2w+b, target 3. At [w, b]=[1, 0], y = 2, residual y-target=-1; loss is residual\u00b2.",
+    "Model y=2w+b, target 3. At [w, b]=[1, 0], y = 2, residual y-target=-1; loss is residual².",
     "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
   ],
   "steps": [
     {
       "label": "Check w direction",
       "icon": "network",
-      "detail": "Analytic derivative2\u00d7residual\u00d72=-4."
+      "detail": "Analytic derivative 2×residual×2=-4."
     },
     {
       "label": "Check b direction",
       "icon": "network",
-      "detail": "Analytic derivative2\u00d7residual=-2."
+      "detail": "Analytic derivative 2×residual=-2."
     },
     {
       "label": "Numerical check",

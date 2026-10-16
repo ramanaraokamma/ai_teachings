@@ -4,29 +4,29 @@
   "outcome": "By the end, I can explain pooling and spatial information using a traced example and a stated limitation.",
   "scenario": "Pool a small map and show the detail it cannot retain.",
   "given": [
-    "Feature map rows [1, 4, 2, 0],[3, 2, 5, 1]. Pool non-overlapping2\u00d72 windows, stride2, no padding.",
+    "Feature map rows [1, 4, 2, 0],[3, 2, 5, 1]. Pool non-overlapping 2×2 windows, stride 2, no padding.",
     "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
   ],
   "steps": [
     {
       "label": "Left window",
       "icon": "chart",
-      "detail": "Values1, 4, 3, 2: max 4, mean 2.5."
+      "detail": "Values 1, 4, 3, 2: max 4, mean 2.5."
     },
     {
       "label": "Right window",
       "icon": "chart",
-      "detail": "Values2, 0, 5, 1: max 5, mean 2."
+      "detail": "Values 2, 0, 5, 1: max 5, mean 2."
     },
     {
       "label": "Compare summaries",
       "icon": "output",
-      "detail": "Max map [[4, 5]], mean map [[2.5, 2]], both shape1\u00d72."
+      "detail": "Max map [[4, 5]], mean map [[2.5, 2]], both shape 1×2."
     }
   ],
   "explanation": "Pooling compresses each local window into a summary. Maximum keeps its largest value; mean keeps its average. Neither summary records where each value appeared. Swapping values inside one window leaves both summaries unchanged here, so the pooled output cannot reconstruct the original arrangement. The chosen window, stride and boundary policy determine the output shape.",
   "counterfactual": {
-    "change": "Swap1 and 4 within the left window.",
+    "change": "Swap 1 and 4 within the left window.",
     "prediction": "Both pooled maps remain unchanged.",
     "reason": "Max and mean ignore the positions of values inside the same window."
   },
@@ -53,14 +53,14 @@
       ]
     ],
     "row_labels": [
-      "row0",
-      "row1"
+      "row 0",
+      "row 1"
     ],
     "column_labels": [
-      "left0",
-      "left1",
-      "right0",
-      "right1"
+      "left 0",
+      "left 1",
+      "right 0",
+      "right 1"
     ]
   }
 }

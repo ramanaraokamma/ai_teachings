@@ -26,11 +26,11 @@
   "explanation": "A cache saves repeated work but can retain obsolete facts. Version-aware keys distinguish answers grounded in different records.",
   "counterfactual": {
     "change": "The next request still uses approved version 5.",
-    "prediction": "The matching version-5 entry can supply 09:30 under the freshness policy.",
+    "prediction": "The matching version -5 entry can supply 09:30 under the freshness policy.",
     "reason": "Request and cached source version now agree."
   },
-  "student_task": "Identify the version mismatch in the cached 09:00 answer. What should the first version-5 request return, and what permits a later version-5 cache hit?",
-  "teacher_answer": "The current approved source version is 5. The 09:00 entry belongs to version 4. Retrieve and cache version 5’s 09:30 under its own key. Changed case: The matching version-5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree.",
+  "student_task": "Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
+  "teacher_answer": "The current approved source version is 5. The 09:00 entry belongs to version 4. Retrieve and cache version 5’s 09:30 under its own key. Changed case: The matching version -5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree.",
   "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
   "limits": "Version keys cannot detect silent unversioned edits; the source publication process must update versions reliably.",
   "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed."

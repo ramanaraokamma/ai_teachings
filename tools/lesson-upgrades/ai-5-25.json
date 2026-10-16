@@ -4,19 +4,19 @@
   "outcome": "By the end, I can explain sequence representations using a traced example and a stated limitation.",
   "scenario": "Distinguish padding positions from meaningful zero sensor readings.",
   "given": [
-    "Toy tokensPAD0, UNK1, LEFT2, RIGHT3; stored length4. SequenceLEFT RIGHT encodes [2, 3, 0, 0], mask [1, 1, 0, 0].",
+    "Toy tokens PAD 0, UNK 1, LEFT 2, RIGHT 3; stored length 4. Sequence LEFT RIGHT encodes [2, 3, 0, 0], mask [1, 1, 0, 0].",
     "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
   ],
   "steps": [
     {
       "label": "Encode real tokens",
       "icon": "code",
-      "detail": "LEFT and RIGHT occupy positions0 and 1."
+      "detail": "LEFT and RIGHT occupy positions 0 and 1."
     },
     {
       "label": "Mark padding",
       "icon": "data",
-      "detail": "Positions2 and 3 are storage padding; mask marks them 0."
+      "detail": "Positions 2 and 3 are storage padding; mask marks them 0."
     },
     {
       "label": "Compare sensor example",
@@ -26,7 +26,7 @@
   ],
   "explanation": "Sequence values and sequence length are separate information. Padding fills unused storage positions so arrays can share a size; a mask marks which positions are real. A real sensor reading can be zero, just like a padding value. Keep the length or mask rather than inferring presence from the number alone. Token IDs are identifiers, not measured magnitudes.",
   "counterfactual": {
-    "change": "A missing sequence length causes every numeric0 to be treated as padding in the sensor example.",
+    "change": "A missing sequence length causes every numeric 0 to be treated as padding in the sensor example.",
     "prediction": "The first real sensor reading is incorrectly discarded.",
     "reason": "Its numeric value is 0, but its position is real according to the declared length."
   },

@@ -31,7 +31,7 @@
   ],
   "explanation": "Reaching the desired ending is insufficient if the agent skipped a required check. Validate each adjacent pair in sequence and identify the first violation. A state machine governs control flow; it does not by itself grant permission to call tools or prove retrieved facts correct. Those are separate checks inside the relevant stages.",
   "counterfactual": {
-    "change": "Add a review state between checking and done, without updating Trace A.",
+    "change": "Replace the edge checking→done with checking→review and review→done, without updating Trace A.",
     "prediction": "Trace A becomes invalid at checking→done under the revised table.",
     "reason": "A required new transition changes what constitutes a complete run."
   },

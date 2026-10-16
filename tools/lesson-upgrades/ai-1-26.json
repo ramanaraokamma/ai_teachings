@@ -31,7 +31,7 @@
   ],
   "explanation": "A useful prompt describes both the wanted answer and what to do when evidence is insufficient. Asking for a duration does not create one. Examples can demonstrate the format, but they must not become sources of event facts. Check content support separately from whether the answer looks tidy.",
   "counterfactual": {
-    "change": "Add source B naming the same exhibit duration 20 minutes, with B declared current and authoritative.",
+    "change": "Update the prompt to authorise sources A and B. Add B naming the same exhibit duration 20 minutes, with B declared current and authoritative.",
     "prediction": "Duration becomes 20 minutes.",
     "reason": "There is now an authorised source for the previously missing field."
   },

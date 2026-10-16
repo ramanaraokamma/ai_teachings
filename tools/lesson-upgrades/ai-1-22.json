@@ -31,7 +31,7 @@
   ],
   "explanation": "Adding more bright cards can increase sample size without addressing the missing condition. A coverage check asks which relevant situations are absent, not merely how many rows exist. Deliberately selecting dim cases helps investigate those conditions, but the resulting test should not be advertised as a random survey unless its selection really was random.",
   "counterfactual": {
-    "change": "Add eight more bright plain cards and no dim cards.",
+    "change": "Add the two remaining bright plain cards and no dim cards.",
     "prediction": "The sample becomes larger but still has no dim coverage.",
     "reason": "The missing lighting condition remains untested."
   },

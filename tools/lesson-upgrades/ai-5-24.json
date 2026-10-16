@@ -16,7 +16,7 @@
     {
       "label": "Assign by source",
       "icon": "shield",
-      "detail": "A/B originals and flips give4 training records; C gives 2 validation; D gives 2 final."
+      "detail": "A/B originals and flips give 4 training records; C gives 2 validation; D gives 2 final."
     },
     {
       "label": "Check label meaning",
@@ -26,7 +26,7 @@
   ],
   "explanation": "An augmented image remains related to its source. A horizontal flip changes the view, not the identity of the original example. Assign source groups to training, validation and final evaluation before producing copies. Also check that the transformation preserves the target: flipping an arrow can change its correct direction label.",
   "counterfactual": {
-    "change": "Move D\u2019s flipped copy into training.",
+    "change": "Move D’s flipped copy into training.",
     "prediction": "Final-test group separation fails.",
     "reason": "The transformed D image is still derived from the held-out source, despite a new filename."
   },

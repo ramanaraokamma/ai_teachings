@@ -32,7 +32,7 @@
   "explanation": "The table predicts a continuation in a text exercise, not the contents of the current box. Generating the most frequent token is a model-defined decision. A factual inventory statement needs current evidence. The numerical table is intentionally small; real generative systems condition on richer context and do not simply consult these three counts.",
   "counterfactual": {
     "change": "Change the training table to full 2, empty 7, unknown 1.",
-    "prediction": "Greedy output becomes empty with probability 0.7.",
+    "prediction": "Greedy output becomes empty; the model assigns that token probability 0.7.",
     "reason": "The continuation distribution changed; the independently observed box has not changed."
   },
   "student_task": "Does matching the physical box in the changed table prove the generator measures boxes?",

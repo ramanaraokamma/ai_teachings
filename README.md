@@ -62,7 +62,7 @@ This is a reviewed teaching package, not a classroom trial. Teacher observation 
 
 All 264 lessons now include retrieval, modelling, fading help, individual reasoning checks, independent transfer, feedback and delayed return. All 264 selected assessment prompts are distinct; 33 repeated source lessons have new parallel cases and the 12 Python readiness lessons have new executable cases. These checks establish curriculum structure and answer alignment, not effectiveness with real learners. Use reports/classroom-pilot.csv to record actual evidence.
 
-Current PDFs use tools/export_pdf_local.py (PyMuPDF Story), with long comparison tables printed as labelled rows to preserve pagination for readable pagination. Current desktop and phone browser navigation and interactive checks pass; see reports/classroom-browser-validation.json. Word pagination has not been rendered.
+Weekly PDFs use Chromium through tools/export_formatted_week.mjs, with long comparison tables printed as labelled records for readable pagination. Desktop and phone browser navigation and interactive checks pass; see reports/programme-format-browser.json. Word text and embedded images are validated; Word pagination has not been rendered.
 
 After rebuilding content, run tools/build_method_guides.py, tools/validate_teaching_method.py and tools/validate_links.py in addition to the existing checks.
 
@@ -72,9 +72,9 @@ Three lesson agents each owned 88 weekly reviews, covering all 252 main weeks an
 
 Open PICTORIAL_LESSONS.html to find a worked picture and its complete lesson. The original sections remain intact. Supported picture practice is distinct from the separately selected independent assessment. Python readiness checks follow the actual twelve topic titles; base and changed/error programs are executed.
 
-Editorial review covers every case:176 received author-to-author review and 88 root peer review. Reports record limitations and resolved findings. Current Word/PDF checks verify the new pictures as well as text. Classroom impact and browser layout remain unverified under the current restrictions.
+The original pictorial review covered every case:176 received author-to-author review and 88 root peer review. A subsequent complete weekly review checks the explanations, questions, keys, workbook inputs and diagram sources; see reports/WEEKLY_REVIEW.md. Word/PDF checks verify pictures and text, and desktop/phone browser checks cover the rendered reading format. Classroom learning impact remains unmeasured.
 
-Rebuild after authoring with tools/draw_lesson_visuals.py and tools/draw_topic_visuals.py (PyMuPDF), tools/build_programme.py, tools/render_programme.py, tools/build_pictorial_hub.py, tools/build_method_guides.py and tools/build_guide.py. The READY.json manifest gates the full 264-case integration; validate with tools/validate_lesson_upgrades.py and tools/validate_bridge_alignment.py as well as the existing checks.
+The current source of truth is content/programme.json. Regenerate supported practice with tools/build_learning_tools.py, render edited lessons with tools/render_programme.py and tools/build_pictorial_hub.py, then export Word/PDF editions and run scripts/import-complete-programme.mjs --root. For corrected drawings, tools/refresh_review_assets.py accepts a pre-edit programme snapshot and preserves formatted sections; follow it with scripts/render-graphic-journeys.mjs for affected PNGs. tools/build_programme.py is the historical source importer: running it would replace later reviewed content. Validate with tools/validate_content.py, tools/validate_lesson_upgrades.py, tools/validate_teaching_method.py and the existing website/download checks.
 
 The completed classroom improvements and validation evidence are in [reports/CLASSROOM_IMPROVEMENTS.md](reports/CLASSROOM_IMPROVEMENTS.md). Hosted drafts and practice progress stay in the current browser; keep printed or downloaded evidence for the portfolio.
 
@@ -95,3 +95,7 @@ Every lesson now includes a **Visual concept journey** in its student lesson, te
 Level 1 Week 1 now has a revised reading hierarchy across all 48 student, teacher and workbook sections, with descriptive headings, clear examples/questions/keys, shorter paragraphs and section-purpose notes. That review was approved, and the same reading hierarchy now covers all 264 lessons and 12,086 sections. See [the Week 1 format report](reports/WEEK1_FORMAT_REVIEW.md).
 
 See [the complete programme formatting report](reports/PROGRAMME_FORMATTING.md) for the rollout, source-preservation checks and printable editions.
+
+## Complete weekly verification
+
+Three review agents and the parent reviewed all 264 lessons across 12,086 sections, corrected substantive rules and five stale engineering assessment keys, and refreshed affected illustrations and teaching editions. See [the complete review and validation record](reports/WEEKLY_REVIEW.md) and [every week’s record](reports/weekly-review.json).

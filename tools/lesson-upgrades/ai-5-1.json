@@ -4,14 +4,14 @@
   "outcome": "By the end, I can explain representing inputs as vectors using a traced example and a stated limitation.",
   "scenario": "Encode the same pixel measurements in a fixed vector order.",
   "given": [
-    "Toy image features are [left_brightness, right_brightness], each = 0..10. ImageA has left2, right7; imageB has left7, right2.",
+    "Toy image features are [left_brightness, right_brightness], each = 0..10. ImageA has left 2, right 7; imageB has left 7, right 2.",
     "All inputs and outcomes in this worked example are invented classroom data; no real model run is claimed."
   ],
   "steps": [
     {
       "label": "Declare coordinate order",
       "icon": "data",
-      "detail": "Coordinate0 is left brightness; coordinate1 is right brightness."
+      "detail": "Coordinate 0 is left brightness; coordinate 1 is right brightness."
     },
     {
       "label": "Encode both images",
@@ -26,12 +26,12 @@
   ],
   "explanation": "A vector is an ordered list, so the position of a number carries meaning. Here the first number always means left brightness. Adding the two measurements keeps total brightness but discards which side is brighter. A network receives the representation we give it; it cannot recover a lost distinction just because it has more layers.",
   "counterfactual": {
-    "change": "Swap only A\u2019s vector order before prediction.",
-    "prediction": "The encoded input becomes [7, 2], numerically identical to B\u2019s original input.",
+    "change": "Swap only A’s vector order before prediction.",
+    "prediction": "The encoded input becomes [7, 2], numerically identical to B’s original input.",
     "reason": "Changing coordinate order changes feature meaning even if the numbers are unchanged."
   },
   "student_task": "Why does equal total brightness not make A and B identical inputs? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
-  "teacher_answer": "A and B place brightness in different positions. The ordered vectors distinguish left/right structure; their common sum 9 loses that distinction. Changed-case check: The encoded input becomes [7, 2], numerically identical to B\u2019s original input. Changing coordinate order changes feature meaning even if the numbers are unchanged.",
+  "teacher_answer": "A and B place brightness in different positions. The ordered vectors distinguish left/right structure; their common sum 9 loses that distinction. Changed-case check: The encoded input becomes [7, 2], numerically identical to B’s original input. Changing coordinate order changes feature meaning even if the numbers are unchanged.",
   "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
   "limits": "These two features are simplified measurements, not a complete image representation or evidence of learned vision.",
   "review_note": "Reviewed Representing inputs as vectors against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation."

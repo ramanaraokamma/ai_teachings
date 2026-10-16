@@ -41,4 +41,10 @@ const levels=programme.levels.map(l=>({slug:`ai-${l.number}`,code:`AI-${l.number
 levels.splice(3,0,{slug:'python-bridge',code:'Python',name:'Python Readiness Bridge',ages:'12 preparation lessons',accent:'sky',summary:'After Level 3, prepare for Level 4 Machine Learning. Skip only when you can independently demonstrate the Python readiness skills.',capstone:'Explain, trace and test Python code',focus:['Trace','Debug','Test'],phases:phases.slice(0,2).map((name,i)=>({number:i+1,name,weeks:`${i*6+1}–${i*6+6}`})),weeks:programme.python_bridge.map(week)});
 for(const file of fs.readdirSync(blobs))if(file.endsWith('.bin')&&!manifest[file.slice(0,-4)])fs.unlinkSync(path.join(blobs,file));
 fs.writeFileSync('lib/academy-data.json',JSON.stringify({version:'complete-programme-2026-10-07',levels}));fs.writeFileSync('lib/resource-manifest.json',JSON.stringify(manifest));
+// Keep public lesson routes and project prompts aligned with reviewed source edits.
+if(programme.learning_sequence&&programme.weeks.every(w=>w.classroom)){
+ const classroom={sequence:programme.learning_sequence,levels:Object.fromEntries(programme.levels.map(l=>[`ai-${l.number}`,{prerequisites:l.prerequisites,outcome:l.exit_outcome,project:l.project}])),weeks:Object.fromEntries([...programme.weeks,...programme.python_bridge].map(w=>[w.id,w.classroom]))};
+ classroom.levels['python-bridge']={prerequisites:'After Level 3; no previous Python required. Take the readiness check before deciding to skip.',outcome:'Independently trace, write, debug and test Python using conditions, loops, lists, dictionaries and functions.',project:'Python readiness portfolio'};
+ fs.writeFileSync('lib/classroom-data.json',JSON.stringify(classroom));
+}
 console.log(`Imported ${levels.reduce((n,l)=>n+l.weeks.length,0)} lessons; ${Object.keys(manifest).length} encrypted resources.`);
