@@ -1,0 +1,577 @@
+{
+  "lesson": "ai-2/16",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-2/16",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Compare simple and exception-heavy rules on training cards, then on sealed new cards. Count where performance changes and explain why.",
+      "new": "Audit the supplied four-book validation predictions: retain each absolute error, sum and denominator, compare with the supplied training summaries and explain a controlled next step. No sealed-card dataset or real model fitting is supplied for this investigation."
+    },
+    {
+      "week": "ai-2/16",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Compare simple and exception-heavy rules on training cards, then on sealed new cards. Count where performance changes and explain why.",
+      "new": "Audit the supplied four-book validation predictions: retain each absolute error, sum and denominator, compare with the supplied training summaries and explain a controlled next step. No sealed-card dataset or real model fitting is supplied for this investigation."
+    },
+    {
+      "week": "ai-2/16",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied investigation for shared practice. Keep predictions and observed paper-trace results separate. Reserve Apply independently for the individual first attempt before feedback; do not use the reserved case as a paired lab task."
+    },
+    {
+      "week": "ai-2/16",
+      "path": "/teacher/2/blocks/5/text",
+      "old": "Keep for an independent attempt: Rule A memorises six training book IDs. Rule B uses a relevant topic feature. Why might A fail on a new ID? What test is needed?",
+      "new": "Use the earlier changed question as optional later practice. Reserve Apply independently for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-2/16",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-2/16",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-2/16",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice answer and reason"
+    },
+    {
+      "week": "ai-2/16",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-2/16",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for explaining this week’s idea"
+    },
+    {
+      "week": "ai-2/16",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Apply independently is the selected independent case."
+    },
+    {
+      "week": "ai-2/16",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Contrast a simple rule with a seven-exception rule.",
+      "new": "EXPLANATION CHECK  Keep the metric, units, split and declared selection rule visible; development evidence does not prove a causal diagnosis or future performance."
+    },
+    {
+      "week": "ai-2/16",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Next week: Learning curves and variability. Carry forward the saved evidence and the distinction between development choices and justified claims.",
+      "new": "Next is Week 17: Noise and Outliers. Carry forward the saved split, metric and comparison record; investigate unusual observations without assuming every large error is invalid data."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Does perfect training fit make a model the best choice?",
+          "groups": [
+            "Your learning goals",
+            "Recall the limit of zero training error",
+            "Your end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare model flexibility using the same task and metric",
+          "groups": [
+            "Introduce capacity and separate evidence",
+            "Name the numeric target, units and error direction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Read the declared lowest-validation-error comparison",
+          "groups": [
+            "Define MAE and state the comparison rule",
+            "Keep training and validation in separate columns",
+            "Explain exactly which evidence supports the choice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Test the claim against a changed comparison",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Your quick word guide",
+          "groups": [
+            "Core vocabulary",
+            "Terms for the connected explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Interpret the training trap, then a separate pictured comparison",
+          "groups": [
+            "Read the opening comparison",
+            "Question a gap-only diagnosis",
+            "Keep the two supplied records separate",
+            "Introduce the separate pictured candidates",
+            "Trace development selection and final-test protection",
+            "Predict a newly documented development result",
+            "Check after predicting",
+            "Explain the original choice and remaining uncertainty",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "A gap suggests questions to investigate, not a complete diagnosis",
+          "groups": [
+            "Complexity is one experimental factor",
+            "Name further evidence to inspect",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Plan one controlled development comparison",
+          "groups": [
+            "Change one declared factor and preserve valid cases",
+            "Interpret a gap in W2",
+            "Repair an unsupported final-answer claim",
+            "Explain the pictured development choice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Audit validation MAE from complete prediction records",
+          "groups": [
+            "The full four-book validation record",
+            "Predict and calculate under a fixed comparison",
+            "Choose and propose a controlled next step",
+            "Keep the record and explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Choose a stronger thinking challenge",
+          "groups": [
+            "Pick your next step",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare recommender revisions on a declared task",
+          "groups": [
+            "This week’s concrete portfolio contribution",
+            "Keep the checkpoint and human choice visible",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: check your explanation",
+          "groups": [
+            "Check the evidence and its limit",
+            "Self-check and record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice: Perfect recall can hide weak transfer",
+          "groups": [
+            "Read the supplied case and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: apply the validation rule and simplicity tie-break",
+          "groups": [
+            "The new A/B/C comparison",
+            "Units, rule and evidence scope",
+            "Your first attempt and help record",
+            "Use feedback after the attempt",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: original lesson checklist",
+          "groups": [
+            "Targets and evidence",
+            "Keep your route and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: justify the comparison without overstating the cause",
+          "groups": [
+            "Your explanation without notes",
+            "Choose a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: the six-picture journey",
+          "groups": [
+            "01. Overfitting Intuition: the case",
+            "02. Follow the deciding steps",
+            "03. Training and validation errors",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare this connected week",
+          "groups": [
+            "Learning goal and precision",
+            "What to prepare",
+            "Main teaching plan",
+            "Opening retrieval and readiness",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach the validation choice with explicit units and records",
+          "groups": [
+            "State model capacity and the fictional-data scope",
+            "Define MAE and the lowest-validation rule",
+            "Read the opening comparison",
+            "Provide the raw validation audit records",
+            "Collect the gap-only explanation",
+            "Introduce the separate pictured comparison",
+            "Trace selection and its limits",
+            "Interpret a better flexible-model development score",
+            "Ask for evidence rather than a stronger claim",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the reasoning, then remove help",
+          "groups": [
+            "Prompt before revealing",
+            "Expected reasoning and fading help",
+            "Check the misconception before discussion",
+            "Use the pictorial check",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied investigation",
+          "groups": [
+            "Supplied materials and answer guidance",
+            "Run and record",
+            "Keep an inspectable record",
+            "Diagnose the first misunderstanding",
+            "Choose support from the response",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected new case",
+          "groups": [
+            "Selected independent question and key",
+            "Judge explanation, trace and limits",
+            "Give one usable repair action",
+            "W1 Select from evidence",
+            "W2 Interpret a gap",
+            "W3 Propose a controlled change",
+            "W5 Limit a diagnosis",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, adapt and return",
+          "groups": [
+            "Project evidence to keep",
+            "Support while preserving the reasoning goal",
+            "Plan the delayed check",
+            "Bridge to next week",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: alternative planning checklist",
+          "groups": [
+            "Preparation and schedule",
+            "Practice and assessment reminders"
+          ]
+        },
+        {
+          "title": "Reference: feedback and records",
+          "groups": [
+            "Keep practice and independent evidence separate",
+            "Repair and portfolio records",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: teach with the six pictures",
+          "groups": [
+            "01. Overfitting Intuition: the case",
+            "02. Follow the deciding steps",
+            "03. Training and validation errors",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall: reconnect earlier ideas",
+          "groups": [
+            "Retrieve and explain",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair the explanation",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W4 · Apply independently",
+          "groups": [
+            "Read and explain independently",
+            "Keep a fair record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Original learning target",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A complete case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A changed case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and its evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge the evidence in your work",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Original target response space",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W1 · Select using validation evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Interpret a training-validation gap",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Propose one controlled comparison",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Independent-case response copy",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W5 · Limit a memorised-noise diagnosis",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Use the worked picture",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Overfitting Intuition: the case",
+            "02. Follow the deciding steps",
+            "03. Training and validation errors",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-2-week-16-connected-review/START_REVIEW.html",
+  "week_sha256": "3e4965bfd94167b6fabe465c9dd03113de221a019d2eb342d64c300eb2713896",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

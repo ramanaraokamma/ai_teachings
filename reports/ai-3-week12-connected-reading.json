@@ -1,0 +1,657 @@
+{
+  "lesson": "ai-3/12",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-3/12",
+      "path": "/method/retrieval/0/goal",
+      "old": "Explain the mechanism and terminology of image generation and provenance",
+      "new": "Check object counts, spatial relations and arrow meaning separately"
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/method/retrieval/0/expected",
+      "old": "Teacher explanation: An image generator constructs an output from learned patterns and a specification. A generated picture is not a record that the depicted event occurred. Keep a provenance record containing specification, tool/version when known, generation date, edits, permissions and intended use. Label fictional imagery. Inspect visual requirements and avoid inferring identity or event authenticity from appearance.",
+      "new": "A layout can contain every requested object but fail position or arrow meaning. Moving bottles left fixes position without changing beaker→bottles flow; inspect named endpoints. A reconstructed diagram is not the original generated output."
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/teacher/0/blocks/8/text",
+      "old": "Look for: Explain the mechanism and terminology of image generation and provenance",
+      "new": "Look for: Check object counts, spatial relations and arrow meaning separately"
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/teacher/0/blocks/9/text",
+      "old": "Reference example, not the only acceptable wording: Teacher explanation: An image generator constructs an output from learned patterns and a specification. A generated picture is not a record that the depicted event occurred. Keep a provenance record containing specification, tool/version when known, generation date, edits, permissions and intended use. Label fictional imagery. Inspect visual requirements and avoid inferring identity or event authenticity from appearance.",
+      "new": "Reference example, not the only acceptable wording: A layout can contain every requested object but fail position or arrow meaning. Moving bottles left fixes position without changing beaker→bottles flow; inspect named endpoints. A reconstructed diagram is not the original generated output."
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/sections/16/blocks/20/text",
+      "old": "Review Visual Composition (ai-3/11). Goal: Explain the mechanism and terminology of image generation and provenance. Short practice: Which checks pass after that single change, and what still needs repair?. Return to this week and explain what you changed.",
+      "new": "Review Visual Composition (ai-3/11). Goal: Check object counts, spatial relations and arrow meaning separately. Short practice: Which checks pass after that single change, and what still needs repair?. Return to this week and explain what you changed."
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/workbook/19/blocks/20/text",
+      "old": "Review Visual Composition (ai-3/11). Goal: Explain the mechanism and terminology of image generation and provenance. Short practice: Which checks pass after that single change, and what still needs repair?. Return to this week and explain what you changed.",
+      "new": "Review Visual Composition (ai-3/11). Goal: Check object counts, spatial relations and arrow meaning separately. Short practice: Which checks pass after that single change, and what still needs repair?. Return to this week and explain what you changed."
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/method/retrieval/2/goal",
+      "old": "Write a prompt specification with observable response criteria",
+      "new": "Distinguish a format example from approved factual evidence"
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/method/retrieval/2/expected",
+      "old": "Teacher explanation: Fields status,room,capacity,source_ids. Status supported or needs_review. supported requires matching current approval and current capacity for the same room; no unresolved conflict.",
+      "new": "Format examples demonstrate structure; approved sources support the current facts. A card can pass layout while failing mandatory support; correcting its fact without a required field is still not a full pass."
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/teacher/0/blocks/16/text",
+      "old": "Look for: Write a prompt specification with observable response criteria",
+      "new": "Look for: Distinguish a format example from approved factual evidence"
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/teacher/0/blocks/17/text",
+      "old": "Reference example, not the only acceptable wording: Teacher explanation: Fields status,room,capacity,source_ids. Status supported or needs_review. supported requires matching current approval and current capacity for the same room; no unresolved conflict.",
+      "new": "Reference example, not the only acceptable wording: Format examples demonstrate structure; approved sources support the current facts. A card can pass layout while failing mandatory support; correcting its fact without a required field is still not a full pass."
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/sections/16/blocks/22/text",
+      "old": "Review Examples and Rubrics (ai-3/6). Goal: Write a prompt specification with observable response criteria. Short practice: Explain why neither original nor changed draft is a full pass, and provide a complete repaired card.. Return to this week and explain what you changed.",
+      "new": "Review Examples and Rubrics (ai-3/6). Goal: Distinguish a format example from approved factual evidence. Short practice: Explain why neither original nor changed draft is a full pass, and provide a complete repaired card.. Return to this week and explain what you changed."
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/workbook/19/blocks/22/text",
+      "old": "Review Examples and Rubrics (ai-3/6). Goal: Write a prompt specification with observable response criteria. Short practice: Explain why neither original nor changed draft is a full pass, and provide a complete repaired card.. Return to this week and explain what you changed.",
+      "new": "Review Examples and Rubrics (ai-3/6). Goal: Distinguish a format example from approved factual evidence. Short practice: Explain why neither original nor changed draft is a full pass, and provide a complete repaired card.. Return to this week and explain what you changed."
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/sections/0/blocks/18/text",
+      "old": "Recall Image generation and provenance. Explain why a recorded result needs its input conditions and evidence source before it can support a claim.",
+      "new": "Recall Visual Composition: object presence, spatial relation and arrow meaning need separate checks. In a speech pipeline, recognition, interpretation, calculation and spoken output likewise need their own evidence."
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Trace four audio failures stage by stage, locate the first mismatch, and propose a stage-specific test or fallback.",
+      "new": "Use the four complete paper stage records, including parsed operands. Identify the first supported recognition, calculation or spoken-output mismatch; keep the unavailable-audio inventory conflict unresolved. No recording, live recogniser or actual synthesis is tested."
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Trace four audio failures stage by stage, locate the first mismatch, and propose a stage-specific test or fallback.",
+      "new": "Use the four complete paper stage records, including parsed operands. Identify the first supported recognition, calculation or spoken-output mismatch; keep the unavailable-audio inventory conflict unresolved. No recording, live recogniser or actual synthesis is tested."
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied investigation for shared practice. Keep predictions and observed paper-trace results separate. Reserve Diagnose a new calculation trace independently for the individual first attempt before feedback; do not use the reserved case as a paired lab task."
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/teacher/2/blocks/5/text",
+      "old": "Keep for an independent attempt: A recording says fifteen, but the transcript says fifty. The summary repeats fifty. Where did the error enter, and what should be checked first?",
+      "new": "Use the earlier changed question as optional later practice. Reserve Diagnose a new calculation trace independently for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice answer and reason"
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for explaining this week’s idea"
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Diagnose a new calculation trace independently is the selected independent case."
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Trace errors from noisy audio to wrong action.",
+      "new": "EXPLANATION CHECK  Require the first supported mismatch, correct downstream arithmetic, intended result and a revealing confirmation check."
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/teacher/5/blocks/12/text",
+      "old": "W4: Report F from the authoritative approval, noting the transcript conflict if relevant. This resolves the task authority, not what the original speaker actually said. Require intermediate reasoning and the stated scope. Fresh retry: Transcript says eight; a validated order record says eighteen and is declared authoritative for ordering. Expected reasoning: Use eighteen for the bounded order-record task; retain the transcript discrepancy and do not claim perfect transcription. If students need support, record it and reassess with another new case rather than awarding independence to a copied answer.",
+      "new": "Selected independent case: known 19 becomes 90 in the transcript; recognition is the first supplied mismatch. Parsed 90−6=84 is arithmetically correct; intended 19−6=13. Show or read back the recognised expression before relying on it. Fresh retry: known fourteen plus eight, transcript forty plus eight, parsed40+8, calculator48, spoken48. Recognition is first wrong; the intended result is22 rather than48. Require stage evidence without claiming an actual audio test. The earlier roomE/F authority exercise remains additional practice."
+    },
+    {
+      "week": "ai-3/12",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Next connection: Retrieval and indexing. Preserve the current case record and retrieve its evidence boundary before moving on.",
+      "new": "Next is Week13: Multimodal Evidence. Carry forward source availability, stage-specific checks and the distinction between task authority and what an original speaker actually said."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "At which speech stage did the first supported mismatch occur?",
+          "groups": [
+            "Your learning goals",
+            "Recall separate criteria for separate stages",
+            "Your end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "A later stage can correctly process an earlier mistake",
+          "groups": [
+            "The pipeline and error-propagation idea",
+            "Use supplied ground truth without claiming a real recogniser run",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep a stage record before assigning blame",
+          "groups": [
+            "Preserve modality, source reference and intermediate outputs",
+            "Read the explicit stage contracts",
+            "Separate given, derived and unknown facts",
+            "Explain the deciding stage",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare confirmed recognition errors with unresolved source conflicts",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Your quick word guide",
+          "groups": [
+            "Core vocabulary",
+            "Terms for the connected explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace a known thirteen/thirty mismatch",
+          "groups": [
+            "Read the known phrase, transcript and spoken result",
+            "Trace the earliest mismatch and later correct processing",
+            "Clarify the counterfactual change",
+            "Predict correcting the transcript",
+            "Check after predicting",
+            "State limits on recogniser-performance claims",
+            "Separate review · Unavailable audio versus inventory",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Find the wrong inference from a correct downstream output",
+          "groups": [
+            "Repair the fluent-voice argument",
+            "Propose a stage-specific check",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise the unresolved conflict with less help",
+          "groups": [
+            "The stage/authority evidence boundary",
+            "Complete the separate fifteen/fifty W2 record",
+            "Repair an all-future-cases claim",
+            "Explain the known thirteen/thirty picture",
+            "Reserve the independent nineteen/ninety case",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Diagnose four complete stage records",
+          "groups": [
+            "The four supplied cards",
+            "Trace the first mismatch and preserve limits",
+            "Keep the evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Choose a stronger thinking challenge",
+          "groups": [
+            "Pick your next step",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Make the project’s recognised question inspectable",
+          "groups": [
+            "This week’s concrete contribution",
+            "Keep the checkpoint and human choice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: check your explanation",
+          "groups": [
+            "Check the evidence and its limit",
+            "Self-check and record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice: Trace a speech error through the system",
+          "groups": [
+            "Read the supplied case and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: locate the fresh nineteen/ninety mismatch",
+          "groups": [
+            "Independent record and scope",
+            "Your first attempt and help record",
+            "Use feedback afterwards",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: original lesson checklist",
+          "groups": [
+            "Targets and evidence",
+            "Keep your route and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: name the first supported error and the missing evidence",
+          "groups": [
+            "Explain without notes",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: the six-picture journey",
+          "groups": [
+            "01. Speech and Audio Systems: the case",
+            "02. Follow the deciding steps",
+            "03. Speech pipelines and multimodal evidence — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare this connected week",
+          "groups": [
+            "Learning goal and precision",
+            "What to prepare",
+            "Main teaching plan",
+            "Opening retrieval and readiness",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Model stage diagnosis with explicit source availability",
+          "groups": [
+            "State the pipeline and source record",
+            "Trace the separate unavailable-audio case",
+            "Read the known calculation phrase",
+            "Trace recognition and later arithmetic",
+            "Predict reusing later rules with a corrected transcript",
+            "State the performance and observation limits",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the explanation, then remove help",
+          "groups": [
+            "Main completion prompt",
+            "Expected reasoning and fading help",
+            "Individual misconception check",
+            "Pictorial question and changed-case reasoning",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied investigation",
+          "groups": [
+            "Supplied materials and answer guidance",
+            "Run and record",
+            "Keep an inspectable record",
+            "Diagnose the first misunderstanding",
+            "Choose support from the response",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected new case",
+          "groups": [
+            "Selected independent question and key",
+            "Judge explanation, trace and limits",
+            "Give one usable repair action",
+            "W1 Explain the mechanism",
+            "W2 Trace the worked case",
+            "W3 Audit the limit",
+            "W5 Design a revealing follow-up",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, adapt and return",
+          "groups": [
+            "Project evidence to keep",
+            "Support while preserving the reasoning goal",
+            "Plan the delayed check",
+            "Bridge to next week",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: alternative planning checklist",
+          "groups": [
+            "Preparation and schedule",
+            "Practice and assessment reminders"
+          ]
+        },
+        {
+          "title": "Reference: feedback and records",
+          "groups": [
+            "Keep practice and independent evidence separate",
+            "Repair and portfolio records",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: teach with the six pictures",
+          "groups": [
+            "01. Speech and Audio Systems: the case",
+            "02. Follow the deciding steps",
+            "03. Speech pipelines and multimodal evidence — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall: reconnect earlier ideas",
+          "groups": [
+            "Retrieve and explain",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair the explanation",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W4 · Diagnose a new calculation trace independently",
+          "groups": [
+            "Read and explain independently",
+            "Keep a fair record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Original learning target",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A complete case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A changed case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and its evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge the evidence in your work",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Original target response space",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W1 · Explain the stage mechanism",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Trace an unresolved source conflict",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Audit a stage-level conclusion",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Additional practice · Resolve a bounded authority task",
+          "groups": [
+            "Earlier task and saved response"
+          ]
+        },
+        {
+          "title": "W5 · Design a revealing stage-specific check",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Use the worked picture",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Speech and Audio Systems: the case",
+            "02. Follow the deciding steps",
+            "03. Speech pipelines and multimodal evidence — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-3-week-12-connected-review/START_REVIEW.html",
+  "week_sha256": "f10e585ee01dc8e06056d64fd5dfb2d593b55a8d47bdaeee6f42748b87f5a4ba",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

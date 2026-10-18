@@ -34,6 +34,7 @@ export default async function WeekPage({ params, searchParams }: { params: Promi
   const allowedResources: Resource[] = role === "teacher" ? ["guide", "lesson", "workbook"] : ["lesson", "workbook"];
   const requested = query.resource as Resource | undefined;
   const resource = requested && allowedResources.includes(requested) ? requested : allowedResources[0];
+  const connected=Boolean(week.student.pages[0]?.flow);
   const title = resource === "guide" ? week.teacher.title : resource === "workbook" ? week.workbook.title : week.student.title;
   const tools=(learningData as Record<string,LearningTools>)[`${level.slug}/${week.number}`];
   const preparation=week.teacher.pages.find(page=>page.label==="Prepare, teach and assess")?.number || 1;
@@ -45,14 +46,14 @@ export default async function WeekPage({ params, searchParams }: { params: Promi
       <PortalHeader mode={role} sessionRole={sessionRole} />
       <section className="lesson-hero" id="main-content" tabIndex={-1}>
         <div className="lesson-breadcrumbs"><Link href={`/learn/${role}/${level.slug}`}><ArrowLeft aria-hidden="true" /> {level.code} {level.name}</Link><span>/</span><span>Week {week.number}</span></div>
-        <div className={`lesson-hero-grid ${resource === "lesson" ? "book-title-grid" : ""}`}>
-          <div className="lesson-title"><div><Badge>{level.code}</Badge><Badge variant="outline">Week {String(week.number).padStart(2, "0")} of {level.weeks.length}</Badge></div><h1>{titleWithoutWeek(title)}</h1><p>{resource === "guide" ? "Teacher-ready background, explanations, lesson flow, interventions, and assessment evidence." : resource === "workbook" ? "A focused practice mission for recording reasoning and demonstrating mastery." : "A complete illustrated lesson with explanations, worked examples, activities, responsibility checks, and mastery proof."}</p></div>
-          {resource !== "lesson" && week.hero && <figure className="lesson-art"><img src={week.hero} alt={`Concept illustration for ${titleWithoutWeek(week.student.title)}`} /><figcaption><ImageIcon aria-hidden="true" /> Week {week.number} concept visual</figcaption></figure>}
+        <div className={`lesson-hero-grid ${resource === "lesson" || connected ? "book-title-grid" : ""}`}>
+          <div className="lesson-title"><div><Badge>{level.code}</Badge><Badge variant="outline">Week {String(week.number).padStart(2, "0")} of {level.weeks.length}</Badge></div><h1>{titleWithoutWeek(title)}</h1><p>{connected ? (resource === "guide" ? "Prepare one connected lesson: model the idea, guide the explanation, and assess a new case." : resource === "workbook" ? "Follow the main worksheets in order. Choose reference pages only when they help." : week.student.pages[0]?.flow?.overview?.lead) : resource === "guide" ? "Teacher-ready background, explanations, lesson flow, interventions, and assessment evidence." : resource === "workbook" ? "A focused practice mission for recording reasoning and demonstrating mastery." : "A complete illustrated lesson with explanations, worked examples, activities, responsibility checks, and mastery proof."}</p></div>
+          {resource !== "lesson" && !connected && week.hero && <figure className="lesson-art"><img src={week.hero} alt={`Concept illustration for ${titleWithoutWeek(week.student.title)}`} /><figcaption><ImageIcon aria-hidden="true" /> Week {week.number} concept visual</figcaption></figure>}
         </div>
-        {resource === "lesson" && <p className="lesson-core-idea"><Lightbulb aria-hidden="true"/>A complete lesson with worked examples, pictorial explanations and independent practice.</p>}
+        {!connected && resource === "lesson" && <p className="lesson-core-idea"><Lightbulb aria-hidden="true"/>A complete lesson with worked examples, pictorial explanations and independent practice.</p>}
         <nav className="resource-nav" aria-label="Week resources">
-          {role === "teacher" && <Link className={resource === "guide" ? "active" : ""} href="?resource=guide"><ClipboardCheck aria-hidden="true" /><span>Teacher guide<small>{week.teacher.pages.length} sections</small></span></Link>}
-          <Link className={resource === "lesson" ? "active" : ""} href="?resource=lesson"><BookOpen aria-hidden="true" /><span>Student lesson<small>{week.student.pages.length} sections</small></span></Link>
+          {role === "teacher" && <Link className={resource === "guide" ? "active" : ""} href="?resource=guide"><ClipboardCheck aria-hidden="true" /><span>Teacher guide<small>{connected?`${week.teacher.pages.filter(p=>!p.flow?.optional).length} main sections + references`:`${week.teacher.pages.length} sections`}</small></span></Link>}
+          <Link className={resource === "lesson" ? "active" : ""} href="?resource=lesson"><BookOpen aria-hidden="true" /><span>Student lesson<small>{connected?`${week.student.pages.filter(p=>!p.flow?.optional).length} main sections + references`:`${week.student.pages.length} sections`}</small></span></Link>
           <Link className={resource === "workbook" ? "active" : ""} href="?resource=workbook"><GraduationCap aria-hidden="true" /><span>Workbook practice<small>Weekly mission</small></span></Link>
         </nav>
         <div className="resource-actions">
@@ -60,17 +61,18 @@ export default async function WeekPage({ params, searchParams }: { params: Promi
           <a className="resource-action" href={resource === "guide" ? week.teacher.pdf : resource === "workbook" ? week.workbook.pdf : week.student.pdf}>Download PDF</a><PrintResource />
         </div>
       </section>
-      {resource !== "workbook" && visualSection && <section className="classroom-panel visual-journey-link"><h2>Explore the concept in six pictures</h2><p>Follow the case, trace the mechanism, inspect the details, test a change and connect the evidence to your project.</p><a href={`#section-${visualSection}`}>Open this week’s visual concept journey</a></section>}
-      {resource === "guide" && <section className="classroom-panel"><h2>Prepare this week</h2><p>Start with the timing, practice answers, misconception checks and assessment criteria.</p><a href={`#section-${preparation}`}>Open the preparation and assessment summary</a></section>}
-      {resource === "lesson" && <LessonRoute route={classroom.weeks[`${level.slug}/${week.number}`]} />}
-      {resource === "lesson" && <FormativePractice week={`${level.slug}/${week.number}`} role={role} scenario={tools.scenario} questions={tools.questions} repairs={tools.repairs} />}
+      {!connected && resource !== "workbook" && visualSection && <section className="classroom-panel visual-journey-link"><h2>Explore the concept in six pictures</h2><p>Follow the case, trace the mechanism, inspect the details, test a change and connect the evidence to your project.</p><a href={`#section-${visualSection}`}>Open this week’s visual concept journey</a></section>}
+      {!connected && resource === "guide" && <section className="classroom-panel"><h2>Prepare this week</h2><p>Start with the timing, practice answers, misconception checks and assessment criteria.</p><a href={`#section-${preparation}`}>Open the preparation and assessment summary</a></section>}
+      {!connected && resource === "lesson" && <LessonRoute route={classroom.weeks[`${level.slug}/${week.number}`]} />}
+      {!connected && resource === "lesson" && <FormativePractice week={`${level.slug}/${week.number}`} role={role} scenario={tools.scenario} questions={tools.questions} repairs={tools.repairs} />}
       {resource === "lesson" && tools.labs.length > 0 && <PythonLab week={`${level.slug}/${week.number}`} role={role} labs={tools.labs} />}
-      {resource === "lesson" && <PrerequisiteRepair repairs={tools.repairs} role={role} week={`${level.slug}/${week.number}`} />}
+      {!connected && resource === "lesson" && <PrerequisiteRepair repairs={tools.repairs} role={role} week={`${level.slug}/${week.number}`} />}
       <section className="lesson-reader-shell">
         {resource === "guide" && <ContentReader pages={week.teacher.pages} responsePrefix={`${level.slug}/${week.number}/guide`} />}
         {resource === "lesson" && <ContentReader pages={week.student.pages} responsePrefix={`${level.slug}/${week.number}/lesson`} />}
-        {resource === "workbook" && <ContentReader workbookBlocks={week.workbook.blocks} responsePrefix={`${level.slug}/${week.number}/workbook`} />}
+        {resource === "workbook" && <ContentReader pages={week.workbook.pages} workbookBlocks={week.workbook.blocks} responsePrefix={`${level.slug}/${week.number}/workbook`} />}
       </section>
+      {connected && resource === "lesson" && <section data-connected-reading><details className="flow-reference"><summary>Optional interactive practice and repair</summary><div className="flow-reference-body"><FormativePractice week={`${level.slug}/${week.number}`} role={role} scenario={tools.scenario} questions={tools.questions} repairs={tools.repairs} /><PrerequisiteRepair repairs={tools.repairs} role={role} week={`${level.slug}/${week.number}`} /></div></details></section>}
       <PortfolioTools role={role} week={`${level.slug}/${week.number}`} titles={{[`${level.slug}/${week.number}`]:{title:titleWithoutWeek(week.student.title),project:classroom.weeks[`${level.slug}/${week.number}`].project}}} />
       <LearningProgress id={`${level.slug}/${week.number}`} role={role} />
       <nav className="week-pagination" aria-label="Adjacent weeks">

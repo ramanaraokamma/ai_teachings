@@ -1,3 +1,4 @@
+from reading_flow import ordered_sections,plain_block
 """Export matching editable Word editions; requires python-docx and Pillow."""
 from reading_style import segments
 from pathlib import Path
@@ -75,11 +76,30 @@ for w in D['weeks']+D['python_bridge']:
   for n in ['Heading 1','Heading 2','Heading 3']:doc.styles[n].font.color.rgb=RGBColor.from_string('174C69')
   doc.add_paragraph(f"AI ACADEMY · {role.upper()} · {w['id']}")
   doc.add_heading(w['title'],0);doc.add_paragraph('Project: '+w['project'])
-  if role=='student':doc.add_heading('Before you start',1);doc.add_paragraph(w['recall'])
-  for i,s in enumerate(w[key],1):
-   doc.add_heading(f"{i:02}. {s['title']}",1)
-   if s.get('reading_intro'):doc.add_paragraph(s['reading_intro'])
-   for b in s['blocks']:block(doc,b)
+  overview=w[key][0].get('reading_flow',{}).get('overview')
+  if overview:
+   doc.add_heading(overview['title'],1);doc.add_paragraph(overview['lead']);doc.add_paragraph(overview['outcome'])
+  elif role=='student':doc.add_heading('Before you start',1);doc.add_paragraph(w['recall'])
+  refs=False
+  for i,s in ordered_sections(w[key]):
+   flow=s.get('reading_flow')
+   if flow:
+    if flow.get('optional') and not refs:doc.add_heading('Reference bank and extra practice',1);refs=True
+    doc.add_heading(f"{i:02}. {flow['title']}",1);doc.add_paragraph(flow['purpose'])
+    for group in flow['groups']:
+     doc.add_heading(group['title']+(' · reference / check after trying' if group.get('collapsed') else ''),2)
+     if group.get('note'):doc.add_paragraph(group['note'])
+     for index in group['indices']:
+      source=s['blocks'][index];b=plain_block(source)
+      if source.get('presentation',{}).get('context'):doc.add_paragraph(source['presentation']['context'])
+      if group['kind'] in ('steps','prompts') and b['type'] in ('paragraph','step','list'):doc.add_paragraph(b['text'],style='List Number' if group['kind']=='steps' else 'List Bullet')
+      else:
+       if group['kind']=='cards' and source.get('presentation',{}).get('label'):doc.add_heading(source['presentation']['label'],3)
+       block(doc,b)
+   else:
+    doc.add_heading(f"{i:02}. {s['title']}",1)
+    if s.get('reading_intro'):doc.add_paragraph(s['reading_intro'])
+    for b in s['blocks']:block(doc,b)
   path=ROOT/'downloads'/role/(stem(w)+'.docx');path.parent.mkdir(parents=True,exist_ok=True);doc.save(path)
   manifest.append({'week':w['id'],'role':role,'file':str(path.relative_to(ROOT))})
  print('Word exports:',len(manifest),flush=True) if len(manifest)% 90==0 else None

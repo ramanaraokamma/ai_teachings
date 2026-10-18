@@ -1,10 +1,10 @@
 "use client";
 import {useEffect,useId,useRef,useState} from "react";
 import {ResponseSpace} from "@/components/response-space";
-export function PythonLab({week,role,labs}:{week:string;role:string;labs:{title:string;code:string}[]}){
- const id=useId();const[index,setIndex]=useState(0);const[code,setCode]=useState(labs[0]?.code||'');const[busy,setBusy]=useState(false);const[status,setStatus]=useState('Predict the output before running.');const[result,setResult]=useState('');const worker=useRef<Worker|null>(null);const timer=useRef<ReturnType<typeof setTimeout>|null>(null);const box=useRef<HTMLDivElement>(null);
+export function PythonLab({week,role,labs}:{week:string;role:string;labs:{title:string;code:string;primary?:boolean}[]}){
+ const id=useId();const initialIndex=Math.max(0,labs.findIndex(lab=>lab.primary));const[index,setIndex]=useState(initialIndex);const[code,setCode]=useState(labs[initialIndex]?.code||'');const[busy,setBusy]=useState(false);const[status,setStatus]=useState('Predict the output before running.');const[result,setResult]=useState('');const worker=useRef<Worker|null>(null);const timer=useRef<ReturnType<typeof setTimeout>|null>(null);const box=useRef<HTMLDivElement>(null);
  function end(){if(timer.current)clearTimeout(timer.current);worker.current?.terminate();worker.current=null;setBusy(false);}
- useEffect(()=>{end();setIndex(0);setResult('');},[week,role]);
+ useEffect(()=>{end();setIndex(initialIndex);setResult('');},[week,role,initialIndex]);
  useEffect(()=>{try{setCode(localStorage.getItem(`academy-code-v1:${role}:${week}:${index}`)||labs[index]?.code||'');}catch{setCode(labs[index]?.code||'');}setResult('');setStatus('Predict the output before running.');},[week,role,index,labs]);
  useEffect(()=>()=>{if(timer.current)clearTimeout(timer.current);worker.current?.terminate();},[]);
  function record(text:string){const key=`academy-answer-v1:/learn/${role}/${week}:code:lab-${index}-${Date.now()}`;try{localStorage.setItem(key,text);localStorage.setItem(`academy-answer-meta-v1:${key}`,JSON.stringify({prompt:`Python lab ${index+1}: prediction, code and actual result`,updatedAt:new Date().toISOString()}));}catch{setStatus('Result is shown here. Browser storage is unavailable; print this page to keep it.');}}

@@ -1,0 +1,48 @@
+/* Opt-in connected-week edition. No changes to other weeks' reading layouts. */
+[data-connected-reading] .flow-overview{padding:clamp(22px,4vw,38px);border:1px solid #bad8d3;border-radius:18px;background:#eef8f4;margin:0 0 28px;color:#173c40}
+[data-connected-reading] .flow-overview h2{font-size:clamp(25px,3vw,35px);line-height:1.22;font-weight:780;margin:8px 0 16px;letter-spacing:-.025em;max-width:25ch}
+[data-connected-reading] .flow-overview p{max-width:68ch;line-height:1.75}
+[data-connected-reading] .flow-kicker{font-size:12px;letter-spacing:.12em;font-weight:750;color:#275f58}
+[data-connected-reading] .flow-route{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:22px 0}
+[data-connected-reading] .flow-route a{display:flex;align-items:center;gap:9px;min-height:48px;padding:10px 12px;border:1px solid #afcdc5;border-radius:9px;background:#fff;color:#204e46;text-decoration:none;font-size:14px;font-weight:700}
+[data-connected-reading] .flow-route a span{display:grid;place-items:center;flex-shrink:0;width:25px;height:25px;border-radius:50%;background:#1d6157;color:white;font-size:12px}
+[data-connected-reading] .flow-outcome{border-top:1px solid #bbd5cc;padding-top:16px;margin-top:20px}
+[data-connected-reading] .flow-section{padding:clamp(20px,3vw,34px);border:1px solid #d1dfe5;border-radius:14px;background:white;margin-bottom:24px;min-width:0}
+[data-connected-reading] .flow-section .reading-section-title{margin:12px 0;font-size:clamp(23px,2.5vw,29px);letter-spacing:-.02em;border:0;padding:0}
+[data-connected-reading] .flow-section .reading-section-intro{padding:0 0 20px;border:0;border-bottom:1px solid #dbe5e9;background:none;max-width:68ch;color:#48616e;font-size:16px;line-height:1.7;margin-bottom:26px}
+[data-connected-reading] .section-blocks{display:block}
+[data-connected-reading] .flow-chunk{margin:0 0 30px;min-width:0}
+[data-connected-reading] .flow-chunk-title{font-size:19px;line-height:1.4;font-weight:750;color:#153f50;margin:0 0 13px}
+[data-connected-reading] .flow-item{min-width:0;max-width:100%}
+[data-connected-reading] .flow-item>.reading-block{margin:0 0 14px;padding:0;border:0;background:none;max-width:68ch;line-height:1.85;box-shadow:none}
+[data-connected-reading] .flow-item>.reading-block p{margin:0 0 12px}
+[data-connected-reading] .flow-example{padding:20px 22px;border:1px solid #c8dceb;border-radius:12px;background:#f3f8fc}
+[data-connected-reading] .flow-note{font-size:14px;color:#49616e;line-height:1.75;max-width:68ch;margin:0 0 15px}
+[data-connected-reading] .flow-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+[data-connected-reading] .flow-card-grid>.flow-item{padding:18px;border:1px solid #c5d9dd;border-top:3px solid #2c786e;border-radius:10px;background:#f7fbfa}
+[data-connected-reading] .flow-card-grid>.flow-item:has(.instruction-gallery),[data-connected-reading] .flow-card-grid>.flow-item:has(.gallery){grid-column:1/-1;padding:0;border:0;background:none}
+[data-connected-reading] .flow-card-title{font-size:16px;line-height:1.45;font-weight:750;color:#18594f;margin:0 0 10px}
+[data-connected-reading] .flow-card-grid .reading-block{font-size:15px;line-height:1.75}
+[data-connected-reading] #section-4 .instruction-gallery,[data-connected-reading] #section-4 .gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+[data-connected-reading] .flow-list{padding-left:25px;list-style:disc;margin:0;max-width:70ch}
+[data-connected-reading] .flow-list li{padding:4px 0 8px 6px}
+[data-connected-reading] .flow-steps{list-style:decimal}
+[data-connected-reading] .flow-steps li::marker{font-weight:750;color:#22665e}
+[data-connected-reading] .flow-reference{margin:16px 0;border:1px solid #c9d8e0;border-radius:10px;background:#f8fafb;overflow:hidden}
+[data-connected-reading] .flow-reference>summary{cursor:pointer;padding:16px 18px;color:#365365;font-weight:700;line-height:1.5;min-height:48px;list-style:revert}
+[data-connected-reading] .flow-reference[open]>summary{border-bottom:1px solid #d3e0e5}
+[data-connected-reading] .flow-reference-body{padding:20px}
+[data-connected-reading] .flow-reference-bank{padding-top:20px;border-top:2px solid #bdcdd5;margin-top:36px}
+[data-connected-reading] .flow-reference-bank>h2{font-size:25px;font-weight:750;color:#294c5d;margin:12px 0}
+[data-connected-reading] .flow-reference-bank>p{color:#4b6674;max-width:68ch;line-height:1.75}
+[data-connected-reading] .flow-reference-section>article{margin:0;border:0;border-radius:0}
+[data-connected-reading] .flow-prose figure{margin:18px 0}
+[data-connected-reading] .flow-prose .lesson-visual{margin:18px 0}
+@media(max-width:800px){[data-connected-reading] .flow-card-grid{grid-template-columns:1fr}[data-connected-reading] .flow-route{grid-template-columns:repeat(2,minmax(0,1fr))}[data-connected-reading] #section-4 .instruction-gallery,[data-connected-reading] #section-4 .gallery{grid-template-columns:1fr}[data-connected-reading] .flow-example{padding:16px}[data-connected-reading] .flow-section{padding:20px 17px}[data-connected-reading] .flow-reference-body{padding:16px}}
+@media print{[data-connected-reading] .flow-overview{padding:14pt;background:#f2f7f5}[data-connected-reading] .flow-route{display:none}[data-connected-reading] .flow-section{padding:12pt 0;border:0;border-top:1pt solid #bdcdd5;border-radius:0}[data-connected-reading] .flow-chunk-title{break-after:avoid}[data-connected-reading] .flow-item>.reading-block{font-size:11pt;line-height:1.6}[data-connected-reading] .flow-reference{border:0;overflow:visible}[data-connected-reading] .flow-reference>summary{padding:10pt 0;font-size:12pt;break-after:avoid}[data-connected-reading] .flow-reference-body{padding:0}[data-connected-reading] .flow-card-grid{grid-template-columns:1fr}[data-connected-reading] .flow-reference-bank{break-before:page}[data-connected-reading] .flow-card-grid>.flow-item{break-inside:avoid}}
+[data-connected-reading] .instruction-visual figcaption{color:#455d70}
+/* Information-path diagrams need the same readable cell spacing as data tables. */
+[data-connected-reading] .content-table-wrap table{width:100%;border-collapse:collapse;table-layout:auto}
+[data-connected-reading] .content-table-wrap th,[data-connected-reading] .content-table-wrap td{padding:.8rem 1rem;text-align:left;font-size:.95rem;line-height:1.6;border-bottom:1px solid #dce5ed}
+[data-connected-reading] .content-table-wrap h3{padding:1rem 1rem .2rem;font-size:1.05rem;font-weight:750}
+[data-connected-reading] .content-table-wrap figcaption{padding:.75rem 1rem;color:#455d70;font-size:.9rem}

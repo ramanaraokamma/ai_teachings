@@ -1,0 +1,574 @@
+{
+  "lesson": "ai-2/21",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-2/21",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Plot six books on a 2-feature grid, compute simple grid distance, find nearest, then change one selected feature and compare.",
+      "new": "Use the six supplied toy book vectors and target[2,5]. Label both grid axes, calculate equal-weight distances, then change only the pace-gap weight to2. Keep all ties visible and distinguish changed rules from changed data."
+    },
+    {
+      "week": "ai-2/21",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Plot six books on a 2-feature grid, compute simple grid distance, find nearest, then change one selected feature and compare.",
+      "new": "Use the six supplied toy book vectors and target[2,5]. Label both grid axes, calculate equal-weight distances, then change only the pace-gap weight to2. Keep all ties visible and distinguish changed rules from changed data."
+    },
+    {
+      "week": "ai-2/21",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied investigation for shared practice. Keep predictions and observed paper-trace results separate. Reserve Rank independently for the individual first attempt before feedback; do not use the reserved case as a paired lab task."
+    },
+    {
+      "week": "ai-2/21",
+      "path": "/teacher/2/blocks/5/text",
+      "old": "Keep for an independent attempt: Score similarity using one point for same topic and one for same difficulty. Target is space, easy. A is space, hard; B is animals, easy. What happens?",
+      "new": "Use the earlier changed question as optional later practice. Reserve Rank independently for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-2/21",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-2/21",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-2/21",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice answer and reason"
+    },
+    {
+      "week": "ai-2/21",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-2/21",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for explaining this week’s idea"
+    },
+    {
+      "week": "ai-2/21",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Rank independently is the selected independent case."
+    },
+    {
+      "week": "ai-2/21",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Compute simple distance on genre, length, and difficulty.",
+      "new": "EXPLANATION CHECK  Keep feature meanings, scales and distance rules explicit, report all ties and limit similarity claims."
+    },
+    {
+      "week": "ai-2/21",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Next week: Weighted scores and constraints. Reuse this week's explicit contracts and evidence.",
+      "new": "Next is Week22: Nearest Neighbor Reasoning. Carry forward the declared representation, distance, candidate coverage and tie policy before using a neighbour’s label to predict a new case."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Closer under which traits and distance rule?",
+          "groups": [
+            "Your learning goals",
+            "Recall the size of an absolute gap",
+            "Your end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Define the two-feature activity representation",
+          "groups": [
+            "Task, feature order, scale and target",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Add the two absolute coordinate gaps",
+          "groups": [
+            "Predict and run the complete activity script",
+            "Trace Sketch and Relay coordinate by coordinate",
+            "Explain what a pictured step means",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare ties and a changed feature weight",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Your quick word guide",
+          "groups": [
+            "Core vocabulary",
+            "Terms for the connected explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace a separate book tie, then change its rule",
+          "groups": [
+            "Practise two distances from the activity target",
+            "Separate activity and book representations",
+            "Read the book candidates and all-ties policy",
+            "Trace the original tie",
+            "Predict first-coordinate weight2",
+            "Check after predicting",
+            "Explain B’s changed status and the evidence limit",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "An exact feature match can still be unsuitable",
+          "groups": [
+            "State unrecorded-needs and representation limits",
+            "Challenge distance-zero implies equal suitability",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Declare units, scaling and weights before ranking",
+          "groups": [
+            "Expose the unequal-scale problem",
+            "Compute the standalone W2 distances",
+            "Challenge a successful-run guarantee",
+            "Return to the changed book-weight question",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Audit six supplied vectors under two declared weight rules",
+          "groups": [
+            "The full six-book grid data",
+            "Predict, plot, compare and explain",
+            "Run the complete unchanged-data comparison",
+            "Keep the evidence and limit",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Choose a stronger thinking challenge",
+          "groups": [
+            "Pick your next step",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Explain exactly what the recommender calls similar",
+          "groups": [
+            "This week’s concrete contribution",
+            "Keep the checkpoint and human decision",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: check your explanation",
+          "groups": [
+            "Check the evidence and its limit",
+            "Self-check and record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice: Count differing traits from query [1,0]",
+          "groups": [
+            "Read the supplied case and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: rank the fresh vectors and preserve the tie",
+          "groups": [
+            "The independent target and options",
+            "The declared rule and scope",
+            "Your first attempt and help record",
+            "Use feedback after the attempt",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: original lesson checklist",
+          "groups": [
+            "Targets and evidence",
+            "Keep your route and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: connect a distance to its representation",
+          "groups": [
+            "Explain without notes",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: the six-picture journey",
+          "groups": [
+            "01. Similarity by Selected Traits: the case",
+            "02. Follow the deciding steps",
+            "03. Toy feature positions",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare this connected week",
+          "groups": [
+            "Learning goal and precision",
+            "What to prepare",
+            "Main teaching plan",
+            "Opening retrieval and readiness",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach distance through coordinate gaps and explicit ties",
+          "groups": [
+            "Define the activity representation",
+            "Predict and execute its complete script",
+            "Explain feature order and scale meaning",
+            "Collect the two-distance exercise",
+            "Introduce the separate book target and all-ties rule",
+            "Trace the tie and representation limits",
+            "Change the weight, not the vectors",
+            "Elicit the picture explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the reasoning, then remove help",
+          "groups": [
+            "Prompt before revealing",
+            "Expected reasoning and fading help",
+            "Check the misconception before discussion",
+            "Use the pictorial check",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied investigation",
+          "groups": [
+            "Supplied materials and answer guidance",
+            "Run and record",
+            "Keep an inspectable record",
+            "Diagnose the first misunderstanding",
+            "Choose support from the response",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the fresh distance comparison",
+          "groups": [
+            "Selected question and checked key",
+            "Judge gaps, totals and limits",
+            "Give a repair action",
+            "W1 feature-order key",
+            "W2 distance key",
+            "W3 schema-repair key",
+            "W5 similarity limit",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, adapt and return",
+          "groups": [
+            "Project evidence to keep",
+            "Support while preserving the reasoning goal",
+            "Plan the delayed check",
+            "Bridge to next week",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: alternative planning checklist",
+          "groups": [
+            "Preparation and schedule",
+            "Practice and assessment reminders"
+          ]
+        },
+        {
+          "title": "Reference: feedback and records",
+          "groups": [
+            "Keep practice and independent evidence separate",
+            "Repair and portfolio records",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: teach with the six pictures",
+          "groups": [
+            "01. Similarity by Selected Traits: the case",
+            "02. Follow the deciding steps",
+            "03. Toy feature positions",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall: reconnect earlier ideas",
+          "groups": [
+            "Retrieve and explain",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair the explanation",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W4 · Rank independently",
+          "groups": [
+            "Read and explain independently",
+            "Keep a fair record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Original learning target",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A complete case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A changed case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and its evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge the evidence in your work",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Original target response space",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W1 · Read the declared vector order",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Compute both coordinate gaps",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Repair inconsistent feature order",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Independent-case response copy",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W5 · Limit distance-zero claims",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Use the worked picture",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Similarity by Selected Traits: the case",
+            "02. Follow the deciding steps",
+            "03. Toy feature positions",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-2-week-21-connected-review/START_REVIEW.html",
+  "week_sha256": "c67eccb6ef6b49b20a5c2b713df9b78fb6b6c44fc3ec7eb5af166f4181221d92",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

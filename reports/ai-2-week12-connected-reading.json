@@ -1,0 +1,641 @@
+{
+  "lesson": "ai-2/12",
+  "sections_reviewed": 53,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-2/12",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Score two prediction sheets, simplify or convert each fraction, compare percentages, then inspect which cases were wrong.",
+      "new": "Use the supplied twenty-case prediction record to tally both matrices, calculate ordinary and balanced accuracy, and inspect false alarms and missed cases. Keep the independently assessed 18-clear/2-blocked case unused during shared practice."
+    },
+    {
+      "week": "ai-2/12",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Score two prediction sheets, simplify or convert each fraction, compare percentages, then inspect which cases were wrong.",
+      "new": "Use the supplied twenty-case prediction record to tally both matrices, calculate ordinary and balanced accuracy, and inspect false alarms and missed cases. Keep the independently assessed 18-clear/2-blocked case unused during shared practice."
+    },
+    {
+      "week": "ai-2/12",
+      "path": "/teacher/2/blocks/5/text",
+      "old": "Keep for an independent attempt: A classifier gets 9 of 12 cases right. Another gets 8 of 10 right. Calculate both accuracies and identify the larger fraction.",
+      "new": "Use the earlier two-fraction question as optional practice. Reserve the selected 18-clear/2-blocked comparison for the first independent attempt before feedback."
+    },
+    {
+      "week": "ai-2/12",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied20-case prediction audit for shared practice. Reserve the selected18-clear/2-blocked case for the independent attempt; the poll extension uses separate named tasks and feedback."
+    },
+    {
+      "week": "ai-2/12",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional fraction-comparison practice"
+    },
+    {
+      "week": "ai-2/12",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-2/12",
+      "path": "/teacher/0/blocks/36/text",
+      "old": "Teach Week 16 as a two-session investigation using fictional data. A fictional poll asks whether a short activity was useful. Responses are Yes, No or Unknown. We will report Yes among known responses and also disclose unknown responses. Choosing a denominator changes the question being answered. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+      "new": "Schedule the connected poll extension separately when useful. Use fictional Yes/No/Unknown responses, label known and all-response denominators, and retain its five workbook tasks and separate assessment. It is part of this week’s retained content, not a prerequisite from Week16."
+    },
+    {
+      "week": "ai-2/12",
+      "path": "/teacher/2/blocks/14/rows/1/1",
+      "old": "Retrieve false negatives and reference-row totals from Week 13.",
+      "new": "Start with a simple correct/all fraction, then introduce matrix orientation and missed-case terminology in this lesson; Week13 has not yet been taught."
+    },
+    {
+      "week": "ai-2/12",
+      "path": "/sections/6/blocks/9/text",
+      "old": "A result of 4/4 correct blocked cases is 100 percent on those four examples, not proof of perfect future detection. If the evaluated set contains no blocked cases, it cannot measure blocked-case performance at all. Next week separates precision and recall by asking which denominator answers each question.",
+      "new": "A result of 4/4 correct blocked cases is 100 percent on those four examples, not proof of perfect future detection. If the evaluated set contains no blocked cases, it cannot measure blocked-case performance at all. Next is Week13, Types of Classification Error. Carry forward the positive class, matrix orientation and distinct false-alarm and missed-case counts; later rate summaries must name their denominators."
+    },
+    {
+      "week": "ai-2/12",
+      "path": "/sections/6/blocks/9/presentation/paragraphs/1",
+      "old": "Next week separates precision and recall by asking which denominator answers each question.",
+      "new": "Next is Week13, Types of Classification Error. Carry forward the positive class, matrix orientation and distinct false-alarm and missed-case counts; later rate summaries must name their denominators."
+    },
+    {
+      "week": "ai-2/12",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Week 15 covers precision recall and denominators. Carry forward the matrix and the question answered by each fraction. Teacher reference: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html (equal average of class recalls; reviewed 2026-09-28).",
+      "new": "Next is Week13: Types of Classification Error. Carry forward the matrix orientation, positive class and error counts. Teacher reference: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html (equal average of class recalls; checked2026-10-17)."
+    },
+    {
+      "week": "ai-2/12",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for explaining scores and denominators"
+    },
+    {
+      "week": "ai-2/12",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. The selected18-clear/2-blocked case is the independent first attempt."
+    },
+    {
+      "week": "ai-2/12",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Calculate and compare 7/10 and 18/20 models.",
+      "new": "Explain ordinary and balanced accuracy with class denominators, error counts and a limit on the conclusion."
+    },
+    {
+      "week": "ai-2/12",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice answer and reason"
+    },
+    {
+      "week": "ai-2/12",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "What does an accuracy percentage leave out?",
+          "groups": [
+            "Your learning goals",
+            "Warm up with a simple denominator",
+            "Your end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Count correct cases, then read a labelled matrix",
+          "groups": [
+            "First calculate one accuracy fraction",
+            "Learn the four matrix cells",
+            "Why class imbalance matters",
+            "The training-derived baseline and evaluation table",
+            "Explain the equal-score tradeoff",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compute ordinary and equal-class summaries separately",
+          "groups": [
+            "Understand the nested lists and returned pair",
+            "Predict and run the complete score script",
+            "Explain the candidate’s two denominators",
+            "Check assumptions and an absent reference class",
+            "Connect a picture to a denominator",
+            "Optional denominator extension: the complete poll script",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Challenge the headline score",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Words for scores and denominators",
+          "groups": [
+            "Core words",
+            "Class-imbalance vocabulary",
+            "Poll-extension vocabulary",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Explain the equal-score case before a separate shelf example",
+          "groups": [
+            "Compare the main methods class by class",
+            "Explain their equal ordinary accuracy",
+            "Limit what balanced accuracy establishes",
+            "Introduce the separate shelf-repair evaluation",
+            "Trace missed repairs and false alarms",
+            "Predict the always-repair-needed change",
+            "Check after predicting",
+            "Explain the changed tradeoff and evidence limit",
+            "Optional poll denominator question",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Ask for counts and coverage beside a percentage",
+          "groups": [
+            "State the fair comparison and its limits",
+            "Challenge an always-clear headline",
+            "Optional poll: volunteers and representativeness",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Change the class mix without changing the assumed class fractions",
+          "groups": [
+            "The separate eight-and-eight calculation",
+            "State what changed and what remains unproven",
+            "Practise the main candidate in W2",
+            "Repair high accuracy means both classes work",
+            "Explain the shelf false-alarm tradeoff",
+            "Optional poll: zero denominator and further practice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Rebuild two matrices from supplied prediction sheets",
+          "groups": [
+            "The frozen rules and evaluation scope",
+            "The complete twenty-case prediction record",
+            "Predict, tally, calculate and check",
+            "Keep the evidence and explain the revealing case",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Choose a stronger explanation",
+          "groups": [
+            "Thinking ladder",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Define a scoreable recommender task before reporting accuracy",
+          "groups": [
+            "This week’s portfolio contribution",
+            "Keep the system evidence and human decision visible",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Check your explanation after practice",
+          "groups": [
+            "Evidence and limits",
+            "Record the check",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice · A simple accuracy denominator",
+          "groups": [
+            "The question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: compare methods on the new 18-and-2 evaluation",
+          "groups": [
+            "The reserved matrices and question",
+            "Your first attempt and support record",
+            "Use feedback after the attempt",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier target checklist",
+          "groups": [
+            "Targets and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: explain what the accuracy denominator hides",
+          "groups": [
+            "Your explanation without notes",
+            "Return on a changed case"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured evidence and repair",
+          "groups": [
+            "First question",
+            "Check after trying",
+            "Changed-case question",
+            "Check the change",
+            "Repair and keep your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The six-picture journey",
+          "groups": [
+            "01. Accuracy as a Fraction: the case",
+            "02. Follow the deciding steps",
+            "03. Accuracy can hide missed repair cases",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the accuracy lesson and its denominator extension",
+          "groups": [
+            "Primary target and preparation",
+            "Materials and retrieval",
+            "Flexible session plan",
+            "Optional poll preparation and readiness",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Model a fraction, then distinguish the two class denominators",
+          "groups": [
+            "Accuracy and matrix orientation",
+            "Read the main baseline and candidate counts",
+            "Predict and execute the complete scoring script",
+            "Explain the two returned scores and their limits",
+            "Collect the equal-score explanation",
+            "Introduce the separate shelf counts",
+            "Trace detection and false alarms",
+            "Interpret the always-repair-needed change",
+            "Use the picture actively",
+            "Optional poll model and key",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide denominator choices, then withdraw help",
+          "groups": [
+            "Main W2 question and key",
+            "Challenge the accuracy misconception",
+            "Use the shelf question after the changed scenario",
+            "Keep learners explaining",
+            "Optional poll teaching cycle",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied prediction-record audit",
+          "groups": [
+            "Supplied lab and answer guidance",
+            "Predict, tally and inspect errors",
+            "Keep the record",
+            "Diagnose the main misconceptions",
+            "Choose support",
+            "Optional poll misconceptions",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected 18-and-2 comparison",
+          "groups": [
+            "Selected W4 and checked answer",
+            "Judge explanation and limits",
+            "Give a repair action",
+            "W1 baseline key",
+            "W2 candidate key",
+            "W3 changed-mix key",
+            "W5 absent-class key",
+            "Poll-extension questions and keys",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect the score, support and delayed return",
+          "groups": [
+            "Portfolio evidence",
+            "Support and fresh main assessment",
+            "Schedule a changed-case return",
+            "Bridge to next week",
+            "Optional poll support and reassessment",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative teaching checklist",
+          "groups": [
+            "Planning reference"
+          ]
+        },
+        {
+          "title": "Reference · Feedback and saved evidence",
+          "groups": [
+            "Planning reference",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Accuracy as a Fraction: the case",
+            "02. Follow the deciding steps",
+            "03. Accuracy can hide missed repair cases",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 17,
+      "sections": [
+        {
+          "title": "Recall · Retrieve earlier evidence",
+          "groups": [
+            "Your evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 response",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair a score claim",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W4 · Assess the new comparison independently",
+          "groups": [
+            "Your evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Original target",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Simple accuracy case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Changed score case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · A revealing comparison",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Project · Define the scored unit",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge the evidence in your work",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier transfer",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W1 · Score the training-majority baseline",
+          "groups": [
+            "Reference and your reasoning"
+          ]
+        },
+        {
+          "title": "W2 · Compare both class fractions",
+          "groups": [
+            "Reference and your reasoning"
+          ]
+        },
+        {
+          "title": "W3 · Change the class mix explicitly",
+          "groups": [
+            "Reference and your reasoning"
+          ]
+        },
+        {
+          "title": "Reference · Same selected W4 response copy",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W5 · Report missing-class coverage",
+          "groups": [
+            "Reference and your reasoning"
+          ]
+        },
+        {
+          "title": "Extension W1 · State the known denominator",
+          "groups": [
+            "Reference and your extension record"
+          ]
+        },
+        {
+          "title": "Extension W2 · Compare proportions and counts",
+          "groups": [
+            "Reference and your extension record"
+          ]
+        },
+        {
+          "title": "Extension W3 · Handle no known responses",
+          "groups": [
+            "Reference and your extension record"
+          ]
+        },
+        {
+          "title": "Extension W4 · Summarize the new poll independently",
+          "groups": [
+            "Reference and your extension record"
+          ]
+        },
+        {
+          "title": "Extension W5 · Limit a volunteer-poll claim",
+          "groups": [
+            "Reference and your extension record"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Shelf-repair picture",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Reference · Portfolio milestone",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured evidence and repair",
+          "groups": [
+            "First question",
+            "Check after trying",
+            "Changed-case question",
+            "Check the change",
+            "Repair and keep your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Accuracy as a Fraction: the case",
+            "02. Follow the deciding steps",
+            "03. Accuracy can hide missed repair cases",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 26,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 26,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-2-week-12-connected-review/START_REVIEW.html",
+  "week_sha256": "ad65c07ecc5ad03a6cc980b66ed19d5ace5463f871fa6c8184fa751685fe78e5",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

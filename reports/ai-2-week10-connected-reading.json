@@ -1,0 +1,657 @@
+{
+  "lesson": "ai-2/10",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-2/10",
+      "path": "/sections/1/blocks/11/text",
+      "old": "Your task is to build a paper classifier that another learner can operate without guessing your instructions. It will predict short or tall for imaginary towers. Use the threshold of 6 centimetres selected after adding the height 5 short example in Week 13. Name this selected model Tower1.",
+      "new": "Your task is to build a paper classifier that another learner can operate without guessing your instructions. It will predict short or tall for imaginary towers. For this week, use the supplied rule: predict tall at a height of at least 6 centimetres and short otherwise. Name this rule Tower1. We will investigate selecting rules from examples later; no fitting experiment has been performed here."
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/sections/1/blocks/11/presentation/paragraphs/1",
+      "old": "Use the threshold of 6 centimetres selected after adding the height 5 short example in Week 13. Name this selected model Tower1.",
+      "new": "For this week, use the supplied rule: predict tall at a height of at least 6 centimetres and short otherwise. Name this rule Tower1. We will investigate selecting rules from examples later; no fitting experiment has been performed here."
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/teacher/1/blocks/17/text",
+      "old": "Your task is to build a paper classifier that another learner can operate without guessing your instructions. It will predict short or tall for imaginary towers. Use the threshold of 6 centimetres selected after adding the height 5 short example in Week 13. Name this selected model Tower1.",
+      "new": "Your task is to build a paper classifier that another learner can operate without guessing your instructions. It will predict short or tall for imaginary towers. For this week, use the supplied rule: predict tall at a height of at least 6 centimetres and short otherwise. Name this rule Tower1. We will investigate selecting rules from examples later; no fitting experiment has been performed here."
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/teacher/1/blocks/17/presentation/paragraphs/1",
+      "old": "Use the threshold of 6 centimetres selected after adding the height 5 short example in Week 13. Name this selected model Tower1.",
+      "new": "For this week, use the supplied rule: predict tall at a height of at least 6 centimetres and short otherwise. Name this rule Tower1. We will investigate selecting rules from examples later; no fitting experiment has been performed here."
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Reveal six labeled creature cards, hide labels on four new cards, record each learner’s rule and predictions, then compare disagreements.",
+      "new": "The main investigation uses the eight supplied Tower1 records and a partner-operated written procedure. The earlier creature-card idea is an optional alternative only if a teacher supplies a complete labelled set and declared comparison policy; no creature-model observations are supplied here."
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Reveal six labeled creature cards, hide labels on four new cards, record each learner’s rule and predictions, then compare disagreements.",
+      "new": "The main investigation uses the eight supplied Tower1 records and a partner-operated written procedure. The earlier creature-card idea is an optional alternative only if a teacher supplies a complete labelled set and declared comparison policy; no creature-model observations are supplied here."
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied investigation for shared practice. Keep predictions and observed paper-trace results separate. Reserve Changed independent case for the individual first attempt before feedback; do not use the reserved case as a paired lab task."
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/teacher/2/blocks/5/text",
+      "old": "Keep for an independent attempt: A human classifier uses sports topic means sports shelf. Classify a sports book and an unreadable cover. State what evidence is missing in the second case.",
+      "new": "Use the earlier changed question as optional later practice. Reserve Changed independent case for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice answer and reason"
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for explaining this week’s idea"
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Changed independent case is the selected independent case."
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Train classmates on labeled creatures and compare their rules.",
+      "new": "EXPLANATION CHECK  Make input checks and stops explicit, and distinguish a computed prediction from evidence that it is correct."
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/teacher/5/blocks/12/text",
+      "old": "W4 is secure with both paths, range 1 through 12, threshold 8 including equality, explicit stops and Ribbon1 records. After support retry Flag1: whole cm from 1 through 9, unit cm, large at least 5 otherwise small. At 4, 5, blank and 10 cm expect small, large, no prediction for missing and no prediction for range.",
+      "new": "For the selected W4, require select science/139, reject science/140 at the strict boundary, reject history/90 on genre, and request missing genre for the fourth record. Require both conditions and a reason for each outcome. Do not substitute the optional Ribbon1 key for this assessment. After feedback use a new genre and strict page boundary with a fresh missing-field record for an uncoached attempt."
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Week 15 keeps final evaluation examples unseen during fitting and explains why repeated changes based on their labels weaken the independence of that test.",
+      "new": "Week 11: Training and Testing. Carry forward versioned rules and explicit outcome records; distinguish examples used to choose a rule from examples reserved to check its predictions."
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/teacher/2/blocks/14/rows/7/1",
+      "old": "Collect W4 independently before support. Look for transfer to the new range, threshold, labels and version instead of copied Tower1 constants.",
+      "new": "Collect the selected science/<140 W4 independently before support. Require both conditions, strict equality handling and a request for missing genre; retain the optional Ribbon1 construction as additional practice."
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/teacher/2/blocks/14/rows/8/1",
+      "old": "Use W5 and the exit to separate contract checks from correctness evidence. Preview final tests kept apart from model selection.",
+      "new": "Supply the standalone Ribbon1 reference for W5 and use the exit to separate contract checks from correctness evidence. Preview training and testing as distinct uses of examples."
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/sections/0/blocks/18/text",
+      "old": "A fitted rule predicts tall at a height of at least 6 cm and short otherwise. Predict at 5 and 6 cm. What should you check before applying it to a blank height?",
+      "new": "A supplied rule predicts tall at a height of at least 6 cm and short otherwise. Predict at 5 and 6 cm. What should you check before applying it to a blank height?"
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/sections/0/blocks/18/presentation/paragraphs/0",
+      "old": "A fitted rule predicts tall at a height of at least 6 cm and short otherwise. Predict at 5 and 6 cm. What should you check before applying it to a blank height?",
+      "new": "A supplied rule predicts tall at a height of at least 6 cm and short otherwise. Predict at 5 and 6 cm. What should you check before applying it to a blank height?"
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/teacher/0/blocks/28/text",
+      "old": "Students construct a paper procedure around a fitted threshold, joining input checks, conditions, stopping and recorded output. Separate input validation, predictive correctness and subsequent human action. Tower1’s range and whole-number requirement are classroom restrictions, not general requirements for classifiers.",
+      "new": "Students construct a paper procedure around a supplied threshold, joining input checks, conditions, stopping and recorded output. Separate input validation, predictive correctness and subsequent human action. Tower1’s range and whole-number requirement are classroom restrictions, not general requirements for classifiers."
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/teacher/0/blocks/28/presentation/paragraphs/0",
+      "old": "Students construct a paper procedure around a fitted threshold, joining input checks, conditions, stopping and recorded output. Separate input validation, predictive correctness and subsequent human action.",
+      "new": "Students construct a paper procedure around a supplied threshold, joining input checks, conditions, stopping and recorded output. Separate input validation, predictive correctness and subsequent human action."
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/sections/7/blocks/10/text",
+      "old": "A partner finding an unclear branch gives useful design feedback. Revise the instruction and retrace the affected examples. Keep the model name and threshold visible so a change to the fitted rule is not confused with a correction to an instruction.",
+      "new": "A partner finding an unclear branch gives useful design feedback. Revise the instruction and retrace the affected examples. Keep the model name and threshold visible so a change to the supplied rule is not confused with a correction to an instruction."
+    },
+    {
+      "week": "ai-2/10",
+      "path": "/sections/7/blocks/10/presentation/paragraphs/1",
+      "old": "Keep the model name and threshold visible so a change to the fitted rule is not confused with a correction to an instruction.",
+      "new": "Keep the model name and threshold visible so a change to the supplied rule is not confused with a correction to an instruction."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Can a partner follow your classifier without guessing?",
+          "groups": [
+            "Your learning goals",
+            "Check equality and missing input",
+            "The finished procedure you will produce",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Start with a supplied tower rule and an input contract",
+          "groups": [
+            "The supplied Tower1 rule",
+            "What inputs this version accepts",
+            "Why both acceptance and rejection paths matter",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Check first; compare only accepted heights",
+          "groups": [
+            "The check-and-stop instruction",
+            "Trace 5 cm, 6 cm and a blank",
+            "Record original input, version and outcome",
+            "Explain the branch in the diagram",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Challenge endpoints, equality and missing evidence",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Your quick word guide",
+          "groups": [
+            "Core vocabulary",
+            "Terms for the connected explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace Tower1, then a separate book-eligibility rule",
+          "groups": [
+            "Predict the accepted and rejected Tower1 cases",
+            "Separate contract validation from correctness",
+            "Explain why 60 mm is rejected in this version",
+            "Introduce the illustrated-mystery contract",
+            "Trace J, K, L and missing-pages M",
+            "Predict M after the missing value is supplied",
+            "Check after predicting",
+            "Explain the missing field and the eligibility limit",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "No prediction records a limit of the procedure",
+          "groups": [
+            "Separate predicted category from human action",
+            "Keep rejected inputs in the system record",
+            "Challenge input-passed therefore label-correct",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Give your procedure to a partner who follows only the text",
+          "groups": [
+            "Write steps with explicit branch labels",
+            "Trace five supplied partner cases",
+            "Preserve the rule and version during instruction repair",
+            "Build both outcome paths in W2",
+            "Repair the numeric-input misconception",
+            "Explain the separate book-case evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Test your written classifier on eight supplied records",
+          "groups": [
+            "The rule, contract and check priority",
+            "Eight records for the same procedure",
+            "Predict, exchange, trace and repair",
+            "Keep the evidence table and learning note",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Choose a stronger thinking challenge",
+          "groups": [
+            "Pick your next step",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Add a transparent eligibility stage to the recommender",
+          "groups": [
+            "This week’s filtering contribution",
+            "Keep system evidence and human choice visible",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: check your explanation",
+          "groups": [
+            "Check the evidence and its limit",
+            "Self-check and record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice: Both conditions must pass",
+          "groups": [
+            "Read the supplied case and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: the science-book rule has a strict boundary",
+          "groups": [
+            "The independent rule and supplied records",
+            "Your first attempt and help record",
+            "Use feedback after the attempt",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: original lesson checklist",
+          "groups": [
+            "Targets and evidence",
+            "Keep your route and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: explain acceptance, prediction and correctness separately",
+          "groups": [
+            "Your explanation without notes",
+            "Choose a changed case for return"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: the six-picture journey",
+          "groups": [
+            "01. Human Classifier Simulation: the case",
+            "02. Follow the deciding steps",
+            "03. Three records through the Tower1 classifier",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare this connected week",
+          "groups": [
+            "Learning goal and precision",
+            "What to prepare",
+            "Main teaching plan",
+            "Opening retrieval and readiness",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach a classifier as a complete, inspectable procedure",
+          "groups": [
+            "Introduce the supplied rule and contract",
+            "Model rejection before the threshold",
+            "Trace contract boundaries and unit failures",
+            "Introduce the separate three-condition book filter",
+            "Trace eligibility and missing pages",
+            "Supply M’s pages and compare the outcome",
+            "Limit the conclusion and elicit picture reasoning",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the reasoning, then remove help",
+          "groups": [
+            "Prompt before revealing",
+            "Expected reasoning and fading help",
+            "Check the misconception before discussion",
+            "Use the pictorial check",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied investigation",
+          "groups": [
+            "Supplied materials and answer guidance",
+            "Run and record",
+            "Keep an inspectable record",
+            "Diagnose the first misunderstanding",
+            "Choose support from the response",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected new case",
+          "groups": [
+            "Selected independent question and key",
+            "Judge explanation, trace and limits",
+            "Give one usable repair action",
+            "W1 Write an input contract",
+            "W2 Construct both outcome paths",
+            "W3 Trace boundaries and a broken path",
+            "W5 Explain what your procedure establishes",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, adapt and return",
+          "groups": [
+            "Project evidence to keep",
+            "Support while preserving the reasoning goal",
+            "Plan the delayed check",
+            "Bridge to next week",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: alternative planning checklist",
+          "groups": [
+            "Preparation and schedule",
+            "Practice and assessment reminders"
+          ]
+        },
+        {
+          "title": "Reference: feedback and records",
+          "groups": [
+            "Keep practice and independent evidence separate",
+            "Repair and portfolio records",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: teach with the six pictures",
+          "groups": [
+            "01. Human Classifier Simulation: the case",
+            "02. Follow the deciding steps",
+            "03. Three records through the Tower1 classifier",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall: reconnect earlier ideas",
+          "groups": [
+            "Retrieve and explain",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair the explanation",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W4 · Changed independent case",
+          "groups": [
+            "Read and explain independently",
+            "Keep a fair record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Original learning target",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A complete case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A changed case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and its evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge the evidence in your work",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Original target response space",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W1 · State the complete Tower1 input contract",
+          "groups": [
+            "Reference, question and your record"
+          ]
+        },
+        {
+          "title": "W2 · Write both paths and the output record",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Trace the boundary and repair a missing stop",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Construct Ribbon1",
+          "groups": [
+            "The ribbon contract, rule and trace request"
+          ]
+        },
+        {
+          "title": "W5 · Distinguish a valid Ribbon1 run from correctness",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Use the worked picture",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Human Classifier Simulation: the case",
+            "02. Follow the deciding steps",
+            "03. Three records through the Tower1 classifier",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-2-week-10-connected-review/START_REVIEW.html",
+  "week_sha256": "8572663112afe8140deae8190e562fa8733c2bc676c943adb8ca40f0f8b82b76",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

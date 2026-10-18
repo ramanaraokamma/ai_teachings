@@ -1,0 +1,635 @@
+{
+  "lesson": "ai-3/3",
+  "sections_reviewed": 53,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-3/3",
+      "path": "/sections/1/blocks/14/text",
+      "old": "Attention computes a weighted combination of value vectors, with weights derived from query-key compatibility. Queries, keys and values are distinct roles even when they come from the same sequence. A weight is a numerical contribution in this computation, not proof of the source’s truth or permission. This week supplies weights directly; Week 7 calculates them from scores.",
+      "new": "Attention computes a weighted combination of value vectors, with weights derived from query-key compatibility. Queries, keys and values are distinct roles even when they come from the same sequence. A weight is a numerical contribution in this computation, not proof of the source’s truth or permission. This week supplies weights directly; Week4’s retained attention extension calculates them from scores."
+    },
+    {
+      "week": "ai-3/3",
+      "path": "/sections/1/blocks/14/presentation/paragraphs/1",
+      "old": "A weight is a numerical contribution in this computation, not proof of the source’s truth or permission. This week supplies weights directly; Week 7 calculates them from scores.",
+      "new": "A weight is a numerical contribution in this computation, not proof of the source’s truth or permission. This week supplies weights directly; Week4’s retained attention extension calculates them from scores."
+    },
+    {
+      "week": "ai-3/3",
+      "path": "/teacher/1/blocks/23/text",
+      "old": "Attention computes a weighted combination of value vectors, with weights derived from query-key compatibility. Queries, keys and values are distinct roles even when they come from the same sequence. A weight is a numerical contribution in this computation, not proof of the source’s truth or permission. This week supplies weights directly; Week 7 calculates them from scores.",
+      "new": "Attention computes a weighted combination of value vectors, with weights derived from query-key compatibility. Queries, keys and values are distinct roles even when they come from the same sequence. A weight is a numerical contribution in this computation, not proof of the source’s truth or permission. This week supplies weights directly; Week4’s retained attention extension calculates them from scores."
+    },
+    {
+      "week": "ai-3/3",
+      "path": "/teacher/1/blocks/23/presentation/paragraphs/1",
+      "old": "A weight is a numerical contribution in this computation, not proof of the source’s truth or permission. This week supplies weights directly; Week 7 calculates them from scores.",
+      "new": "A weight is a numerical contribution in this computation, not proof of the source’s truth or permission. This week supplies weights directly; Week4’s retained attention extension calculates them from scores."
+    },
+    {
+      "week": "ai-3/3",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Tokenize names, punctuation, emojis, and compound words; then hide different context cards and compare predicted continuations.",
+      "new": "Use the supplied toy vocabulary/encoder and complete room-evidence cards. Predict exact token IDs, preserve unsupported-character failures, then compare size and claim support when a card is hidden. These are local calculations and paper traces, not measured model continuations."
+    },
+    {
+      "week": "ai-3/3",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Tokenize names, punctuation, emojis, and compound words; then hide different context cards and compare predicted continuations.",
+      "new": "Use the supplied toy vocabulary/encoder and complete room-evidence cards. Predict exact token IDs, preserve unsupported-character failures, then compare size and claim support when a card is hidden. These are local calculations and paper traces, not measured model continuations."
+    },
+    {
+      "week": "ai-3/3",
+      "path": "/teacher/2/blocks/6/text",
+      "old": "Keep for an independent attempt: A system can use only the last two messages. Message 1 says use centimetres; messages 2 and 3 discuss plants. What instruction may be lost, and how can the next request repair this?",
+      "new": "Use the earlier transfer question as optional practice. Reserve Budget a new evidence set independently for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-3/3",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied main investigation for shared practice. Reserve Budget a new evidence set independently for the individual first attempt. The named extension has separate tasks and feedback."
+    },
+    {
+      "week": "ai-3/3",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice"
+    },
+    {
+      "week": "ai-3/3",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-3/3",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice reasoning"
+    },
+    {
+      "week": "ai-3/3",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-3/3",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for this week’s explanation"
+    },
+    {
+      "week": "ai-3/3",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Budget a new evidence set independently is the selected independent task."
+    },
+    {
+      "week": "ai-3/3",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Tokenize text, remove context, and predict failure changes.",
+      "new": "Require budget arithmetic, current and complete support, and an explicit missing-evidence fallback."
+    },
+    {
+      "week": "ai-3/3",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Week 11 writes response specifications with explicit evidence requirements, output fields and fallback behaviour.",
+      "new": "Next is Week4: Sampling and Variability. Carry forward the explicit vocabulary, conditional choices and evidence boundary when comparing repeated generated outputs."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Which evidence must fit for this answer to be supported?",
+          "groups": [
+            "Your learning goals",
+            "Recall probability versus factual support",
+            "Your end goal",
+            "Attention extension · Equal sums can hide order",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reserve space before selecting evidence",
+          "groups": [
+            "The main100-unit budget",
+            "The room-approval question and complete evidence facts",
+            "Attention extension · Supplied weights and values",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Check both size and support",
+          "groups": [
+            "Read the complete room evidence table",
+            "Compare all three evidence pairs",
+            "Trace the50-unit evidence allocation",
+            "Explain the deciding evidence",
+            "Attention extension · Coordinate-wise weighted combination",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare complete evidence with a cheap incomplete shortcut",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Words for the main lesson and extension",
+          "groups": [
+            "Core words",
+            "Main explanation terms",
+            "Extension terms",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Preserve an exception in a separate event-capacity case",
+          "groups": [
+            "Keep qualifiers, versions and source authority",
+            "Read the separate event budget and records",
+            "Trace the relevant pair and scoped answer",
+            "Predict the larger exception passage",
+            "Check after predicting",
+            "Explain fit versus faithful use",
+            "Attention extension · Mask, renormalise and handle no available value",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Find the meaning lost by a shorter selection",
+          "groups": [
+            "Repair the shortest-pair argument",
+            "Design a test that changes the evidence need",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise a separate80-unit budget with less help",
+          "groups": [
+            "Read the complete80-unit record",
+            "Compute fit and explain its limit",
+            "Complete main room-approval W2",
+            "Repair token-count equals word-count",
+            "Explain the separate event exception",
+            "Keep independent work separate",
+            "Attention extension · Compare a masked information set",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Tokenise with an explicit rule, then audit complete context cards",
+          "groups": [
+            "Predict and run the complete toy encoder",
+            "State its vocabulary and failure contract",
+            "Trace evidence selection with full supplied cards",
+            "Keep the evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Choose a stronger explanation",
+          "groups": [
+            "Thinking ladder",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Preserve the source relationship inside the budget",
+          "groups": [
+            "This week’s concrete contribution",
+            "Keep the checkpoint and human choice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Check your explanation",
+          "groups": [
+            "Evidence and limits",
+            "Self-check",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice · The earlier complete case",
+          "groups": [
+            "Question and given facts",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: budget the fresh D/E/F evidence",
+          "groups": [
+            "Independent record and scope",
+            "Your first attempt and help record",
+            "Use feedback afterwards",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier checklist",
+          "groups": [
+            "Checklist and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: show the budget and the claim-support path",
+          "groups": [
+            "Explain without notes",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictures, feedback and repair",
+          "groups": [
+            "First supported question",
+            "Check after trying",
+            "Changed-case question",
+            "Check changed case",
+            "Repair and keep evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The six-picture journey",
+          "groups": [
+            "01. Tokens and Context: the case",
+            "02. Follow the deciding steps",
+            "03. Context budget allocations",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the main lesson and its retained extension",
+          "groups": [
+            "Goal and preparation",
+            "Main plan",
+            "Retrieval and readiness",
+            "Materials and extension planning",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach budget, evidence completeness and faithful use separately",
+          "groups": [
+            "State the main accounting and room evidence",
+            "Compare main evidence pairs",
+            "Preserve qualifiers and scope",
+            "Read the separate event budget and exception",
+            "Trace relevant support and exact costs",
+            "Predict the larger exception passage",
+            "Keep the evidence limit",
+            "Attention extension · Mixture, masking and source-trust limit",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the main explanation, then fade support",
+          "groups": [
+            "Main completion question and key",
+            "Main individual check",
+            "Pictorial question and changed case",
+            "Keep learners explaining",
+            "Extension teaching cycle",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied main investigation",
+          "groups": [
+            "Supplied records and answer guidance",
+            "Predict, investigate and record",
+            "Keep the evidence",
+            "Main misconceptions",
+            "Choose support",
+            "Extension misconceptions",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected main independent task",
+          "groups": [
+            "Selected independent question and key",
+            "Judge reasoning and limits",
+            "Give one repair action",
+            "W1 Compute available evidence",
+            "W2 Choose complete support",
+            "W3 Preserve a qualifier",
+            "W5 Audit inclusion",
+            "Extension questions and keys",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, support and return",
+          "groups": [
+            "Project record",
+            "Main support and fresh assessment",
+            "Delayed return",
+            "Bridge to next week",
+            "Extension support and reassessment",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative teaching checklist",
+          "groups": [
+            "Planning reference"
+          ]
+        },
+        {
+          "title": "Reference · Feedback and retained evidence",
+          "groups": [
+            "Record and repair",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Tokens and Context: the case",
+            "02. Follow the deciding steps",
+            "03. Context budget allocations",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 17,
+      "sections": [
+        {
+          "title": "Recall · Retrieve earlier ideas",
+          "groups": [
+            "Your evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair a claim",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W4 · Budget a new evidence set independently",
+          "groups": [
+            "Your evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier target",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier worked case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Changed case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · A revealing test",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge your evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier transfer",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W1 · Compute available evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Choose complete current support",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Preserve a qualifier",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Selected W4 response copy",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W5 · Audit inclusion versus verification",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extension · Attention as weighted information selection — W1 Identify the roles",
+          "groups": [
+            "Contract, question and response"
+          ]
+        },
+        {
+          "title": "Extension · Attention as weighted information selection — W2 Compute the mixture",
+          "groups": [
+            "Contract, question and response"
+          ]
+        },
+        {
+          "title": "Extension · Attention as weighted information selection — W3 Mask and renormalise",
+          "groups": [
+            "Contract, question and response"
+          ]
+        },
+        {
+          "title": "Extension · Attention as weighted information selection — W4 Combine a new case independently",
+          "groups": [
+            "Extension question and record"
+          ]
+        },
+        {
+          "title": "Extension · Attention as weighted information selection — W5 Audit an explanation",
+          "groups": [
+            "Contract, question and response"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Reference · Project milestone",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictures, feedback and repair",
+          "groups": [
+            "First supported question",
+            "Check after trying",
+            "Changed-case question",
+            "Check changed case",
+            "Repair and keep evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Tokens and Context: the case",
+            "02. Follow the deciding steps",
+            "03. Context budget allocations",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 26,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 26,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-3-week-03-connected-review/START_REVIEW.html",
+  "week_sha256": "2397bf6f6bde676e8d5c5a7e3f0ad9c247f0fc14e7408d218e98628024fcc095",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

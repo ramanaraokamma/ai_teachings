@@ -1,0 +1,587 @@
+{
+  "lesson": "ai-2/25",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-2/25",
+      "path": "/sections/0/blocks/18/text",
+      "old": "What information conditions a next-token distribution?",
+      "new": "Why must an exact representation preserve the original spelling, spaces and punctuation rather than silently changing them?"
+    },
+    {
+      "week": "ai-2/25",
+      "path": "/teacher/0/blocks/29/text",
+      "old": "The preceding token sequence, together with the model and any stated context. Changing segmentation changes that token sequence.",
+      "new": "An exact representation must reconstruct the original source. Lowercasing, removing punctuation or changing spaces is a transformation and must be declared separately rather than called an exact round trip."
+    },
+    {
+      "week": "ai-2/25",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Cut sentence cards into two plausible tokenizations, compare piece counts, remove context, and predict which continuation becomes less certain.",
+      "new": "Use the complete supplied toy encoder and four exact source strings. Record ordinary IDs, counting convention, decoded text or partial failure, then compare character-only vocabulary. No continuation model is supplied, so do not invent a probability change after removing context."
+    },
+    {
+      "week": "ai-2/25",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Cut sentence cards into two plausible tokenizations, compare piece counts, remove context, and predict which continuation becomes less certain.",
+      "new": "Use the complete supplied toy encoder and four exact source strings. Record ordinary IDs, counting convention, decoded text or partial failure, then compare character-only vocabulary. No continuation model is supplied, so do not invent a probability change after removing context."
+    },
+    {
+      "week": "ai-2/25",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied investigation for shared practice. Keep predictions and observed paper-trace results separate. Reserve Trace a new input independently for the individual first attempt before feedback; do not use the reserved case as a paired lab task."
+    },
+    {
+      "week": "ai-2/25",
+      "path": "/teacher/2/blocks/5/text",
+      "old": "Keep for an independent attempt: A classroom tokenizer splits sunflower into sun and flower. How many pieces result? Must every real tokenizer split it the same way?",
+      "new": "Use the earlier changed question as optional later practice. Reserve Trace a new input independently for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-2/25",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-2/25",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-2/25",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice answer and reason"
+    },
+    {
+      "week": "ai-2/25",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-2/25",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for explaining this week’s idea"
+    },
+    {
+      "week": "ai-2/25",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Trace a new input independently is the selected independent case."
+    },
+    {
+      "week": "ai-2/25",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Tokenize tricky phrases and compare alternate splits.",
+      "new": "EXPLANATION CHECK  Specify vocabulary, exact matching, ordinary versus special tokens and explicit failure instead of silent repair."
+    },
+    {
+      "week": "ai-2/25",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Week 3 uses vocabulary alternatives to inspect next-token probability distributions and sequence probabilities.",
+      "new": "Next is Week26: Image and Voice Pipelines. Carry forward explicit representation, preprocessing and failure records when tracing another modality; do not describe this week as a real model’s tokenizer."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "What counts as a token under this exact vocabulary?",
+          "groups": [
+            "Your learning goals",
+            "Recall exact source preservation",
+            "Your end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Read the case-sensitive vocabulary and longest-match contract",
+          "groups": [
+            "The complete toy tokenizer rule",
+            "The ID and special-token reference",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace encoding and exact decoding before counting",
+          "groups": [
+            "Follow the four longest matches",
+            "Decode and state the counting convention",
+            "Compare a supported round trip with uppercase failure",
+            "Explain a pictured step",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Check spaces, case and unknown characters",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Your quick word guide",
+          "groups": [
+            "Core vocabulary",
+            "Terms for the connected explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare vocabularies, then a separate book phrase",
+          "groups": [
+            "Count character-only versus original cat tokens",
+            "Read the separate phrase and its vocabulary",
+            "Trace overlap, space and unsupported punctuation",
+            "Predict the character-only book representation",
+            "Check after predicting",
+            "Explain the zero-based failure position and limits",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "A correct round trip verifies representation, not factual truth",
+          "groups": [
+            "Keep vocabulary, preprocessing and counting conventions",
+            "Challenge dropping unsupported punctuation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace spaces and failure positions explicitly",
+          "groups": [
+            "Read the supported and failing examples",
+            "Try the guided c at trace",
+            "Encode and decode the W2 phrase",
+            "Repair token always equals word",
+            "Explain the separate book failure index",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Audit exact encodings, failures and a changed vocabulary",
+          "groups": [
+            "The complete toy encoder and all investigation inputs",
+            "Predict, trace, execute and compare",
+            "Keep partial failures and evidence limits",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Choose a stronger thinking challenge",
+          "groups": [
+            "Pick your next step",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Document the recommender’s text representation",
+          "groups": [
+            "This week’s concrete contribution",
+            "Keep the checkpoint, system and human choice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: check your explanation",
+          "groups": [
+            "Check the evidence and its limit",
+            "Self-check and record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice: One word can have different token counts",
+          "groups": [
+            "Read the supplied case and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: trace the new phrase and its failing variant",
+          "groups": [
+            "The independent phrase pair",
+            "The complete original contract",
+            "Your first attempt and support record",
+            "Use feedback after the attempt",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: original lesson checklist",
+          "groups": [
+            "Targets and evidence",
+            "Keep your route and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: connect the count to its vocabulary and rule",
+          "groups": [
+            "Explain without notes",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: the six-picture journey",
+          "groups": [
+            "01. Text as Pieces: the case",
+            "02. Follow the deciding steps",
+            "03. Keep the evidence roles separate",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare this connected week",
+          "groups": [
+            "Learning goal and precision",
+            "What to prepare",
+            "Main teaching plan",
+            "Opening retrieval and readiness",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach a tokenizer through an explicit vocabulary and trace",
+          "groups": [
+            "State vocabulary, matching and unsupported-input policy",
+            "Explain exact decoding and token-count conventions",
+            "Compare original and character-only cat representation",
+            "Run the complete supported/failing input audit",
+            "Introduce the separate book vocabulary and phrase",
+            "Trace its exact text and unknown character",
+            "Change only the vocabulary",
+            "Elicit picture-based explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the reasoning, then remove help",
+          "groups": [
+            "Prompt before revealing",
+            "Expected reasoning and fading help",
+            "Check the misconception before discussion",
+            "Use the pictorial check",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied investigation",
+          "groups": [
+            "Supplied materials and answer guidance",
+            "Run and record",
+            "Keep an inspectable record",
+            "Diagnose the first misunderstanding",
+            "Choose support from the response",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected new case",
+          "groups": [
+            "Selected independent question and key",
+            "Judge explanation, trace and limits",
+            "Give one usable repair action",
+            "W1 Read the contract",
+            "W2 Encode and decode",
+            "W3 Compare sequence lengths",
+            "W5 Audit silent repair",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, adapt and return",
+          "groups": [
+            "Project evidence to keep",
+            "Support while preserving the reasoning goal",
+            "Plan the delayed check",
+            "Bridge to next week",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: alternative planning checklist",
+          "groups": [
+            "Preparation and schedule",
+            "Practice and assessment reminders"
+          ]
+        },
+        {
+          "title": "Reference: feedback and records",
+          "groups": [
+            "Keep practice and independent evidence separate",
+            "Repair and portfolio records",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: teach with the six pictures",
+          "groups": [
+            "01. Text as Pieces: the case",
+            "02. Follow the deciding steps",
+            "03. Keep the evidence roles separate",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall: reconnect earlier ideas",
+          "groups": [
+            "Retrieve and explain",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair the explanation",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W4 · Trace a new input independently",
+          "groups": [
+            "Read and explain independently",
+            "Keep a fair record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Original learning target",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A complete case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A changed case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and its evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge the evidence in your work",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Original target response space",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W1 · Apply longest matching and case sensitivity",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Encode, decode and declare the count",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Compare character and chunk vocabularies",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Independent-case response copy",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W5 · Audit undeclared preprocessing",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Use the worked picture",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Text as Pieces: the case",
+            "02. Follow the deciding steps",
+            "03. Keep the evidence roles separate",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-2-week-25-connected-review/START_REVIEW.html",
+  "week_sha256": "3ab85b87acb4701cc5610c0ffc120562879dcaa1c3719ac5ef5098d916815694",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

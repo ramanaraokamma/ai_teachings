@@ -1,5 +1,5 @@
 import "server-only";
-import type {ReadingPresentation} from "./reading-format";
+import type {ReadingPresentation,ReadingFlow} from "./reading-format";
 
 import academyData from "./academy-data.json";
 
@@ -13,9 +13,9 @@ export type ContentBlock = (
   | { type: "title" | "heading" | "subheading" | "paragraph" | "step" | "code" | "response"; text: string }
   | { type: "list"; marker: "bullet" | "number"; text: string }
   | { type: "callout"; tone: "idea" | "think" | "caution" | "teacher" | "answer"; text: string }
-  | { type: "table"; rows: string[][] }) & {presentation?:ReadingPresentation};
+  | { type: "table"; rows: string[][] }) & {presentation?:ReadingPresentation;responseStorageSuffix?:string};
 
-export type LessonPage = { number: number; label: string; intro?:string; blocks: ContentBlock[] };
+export type LessonPage = { number: number; label: string; intro?:string; flow?:ReadingFlow; blocks: ContentBlock[] };
 
 export type Week = {
   number: number;
@@ -23,7 +23,7 @@ export type Week = {
   hero: string | null;
   student: { title: string; pages: LessonPage[]; download: string; pdf: string };
   teacher: { title: string; pages: LessonPage[]; download: string; pdf: string };
-  workbook: { title: string; blocks: ContentBlock[]; download: string; pdf: string };
+  workbook: { title: string; pages?:LessonPage[]; blocks: ContentBlock[]; download: string; pdf: string };
 };
 
 export type Level = {

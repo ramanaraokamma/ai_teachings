@@ -1,0 +1,574 @@
+{
+  "lesson": "ai-1/5",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-1/5",
+      "path": "/teacher/3/blocks/9/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied two-by-two decoder and declared averaging rule for shared practice. Keep original and blurred grids with the calculations. Reserve the new two-by-four equal-count pair for the individual first attempt; do not use it as a paired investigation."
+    },
+    {
+      "week": "ai-1/5",
+      "path": "/teacher/2/blocks/5/text",
+      "old": "Keep for an independent attempt: Use 0 for dark and 1 for light. Draw a two-by-two image with rows [1,0] and [0,1]. Then change only the bottom-left pixel to light. Which number changes?",
+      "new": "Keep the reversed-colour two-by-two question for optional later practice. Reserve the new two-by-four equal-count pair for the first independent attempt before feedback."
+    },
+    {
+      "week": "ai-1/5",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice: a different colour convention"
+    },
+    {
+      "week": "ai-1/5",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned colour-convention practice answer"
+    },
+    {
+      "week": "ai-1/5",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice answer and reason"
+    },
+    {
+      "week": "ai-1/5",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-1/5",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Fresh-Case Independent Proof",
+      "new": "Checklist for an image-representation explanation"
+    },
+    {
+      "week": "ai-1/5",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this after teaching and guided practice have ended.",
+      "new": "Use this checklist after practice. The new two-by-four equal-count pair is this week’s selected independent attempt."
+    },
+    {
+      "week": "ai-1/5",
+      "path": "/sections/11/blocks/4/text",
+      "old": "REQUIRED PROOF  Decode a 4 by 4 number grid, identify the pictured shape, then predict which details disappear when neighboring cells are averaged.",
+      "new": "EXPLANATION CHECK  State dimensions, reading order and the colour convention; reconstruct the values and explain which spatial information a count discards."
+    },
+    {
+      "week": "ai-1/5",
+      "path": "/teacher/1/blocks/11/text",
+      "old": "MODEL REASONING Each grid position becomes one displayed square. A blur combines nearby values, so isolated corners and thin lines disappear before large regions. The computer transforms numbers; the human viewer recognizes the shape.",
+      "new": "Each grid position becomes one displayed square. A blur combines values according to a chosen procedure; details may become less distinct depending on that procedure and the picture. Our investigation declares a specific averaging rule so its result can be traced exactly. Reconstructing or transforming numbers does not by itself recognise what the picture depicts."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "How can numbers preserve a picture?",
+          "groups": [
+            "Start with an incomplete message",
+            "Retrieve the fitting limit",
+            "By the end, you can…",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Agree on the code before drawing",
+          "groups": [
+            "Send a picture using numbers",
+            "A convention belongs to a particular format",
+            "Storage is different from recognition",
+            "Check the message instructions",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Decode the grid, then read it back",
+          "groups": [
+            "Read the three-by-three code",
+            "Explain each row",
+            "Keep the shape with the flattened list",
+            "Connect a sentence to a pixel",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare the image clues",
+          "groups": [
+            "Four cases, paired with their explanations",
+            "Discuss the confusing pair",
+            "Keep the pixel boundary clear",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Your image-representation word guide",
+          "groups": [
+            "Pixels, grids, channels and resolution",
+            "Encoding, arrangement and interpretation",
+            "Repair the claim",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Two badges. Three dark pixels. Different pictures.",
+          "groups": [
+            "The supplied badge convention and rows",
+            "Compare the original arrangements",
+            "Trace what a count keeps",
+            "Explain why equal counts are insufficient",
+            "Predict one changed pixel",
+            "Check the changed badge",
+            "Keep the toy format’s limits",
+            "Read the position back",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Do not confuse more pixels with better evidence",
+          "groups": [
+            "More positions do not guarantee a useful image",
+            "Separate three levels of claim",
+            "Repair the tempting claims",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise: reconstruct, read back and diagnose",
+          "groups": [
+            "Draw the two-by-three practice grid",
+            "Now restore a missing dimension",
+            "Inspect the input before changing a classifier",
+            "Explain and exchange roles",
+            "Does 1 always mean black?",
+            "Check the badge position",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Investigate: decode, then apply a toy blur",
+          "groups": [
+            "Your complete decoding instructions",
+            "Predict and apply the averaging rule",
+            "Keep the original, result and limit",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Choose a stronger image challenge",
+          "groups": [
+            "Pick a useful challenge",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep the spatial clues your sorter needs",
+          "groups": [
+            "This week’s design decision",
+            "Plan the representation and checks",
+            "Keep the sensing boundary",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: check an image explanation",
+          "groups": [
+            "Check the representation and limit",
+            "Record support",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice: change one square",
+          "groups": [
+            "Read the case and requested change",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: create two new equal-count images",
+          "groups": [
+            "The new case and its code",
+            "Keep one first attempt",
+            "Use feedback afterwards",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: original image lesson checklist",
+          "groups": [
+            "Targets and evidence",
+            "Keep your route and prediction",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: explain what the numbers preserve",
+          "groups": [
+            "Your exit explanation",
+            "Choose support and a later return"
+          ]
+        },
+        {
+          "title": "Extra practice: image pictures and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-pixel question",
+            "Check the changed pixel",
+            "Repair and save",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: six-picture image journey",
+          "groups": [
+            "01. Pictures Become Numbers: the case",
+            "02. Follow the deciding steps",
+            "03. Pixel positions: two badges, same dark count",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the image-code lesson",
+          "groups": [
+            "Learning goals and precision",
+            "What to prepare",
+            "Main teaching plan",
+            "Retrieve fitting and information paths",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach the representation before its interpretation",
+          "groups": [
+            "Begin with the shared code",
+            "Reconstruct the cross and preserve its shape",
+            "Compare the two badge arrangements",
+            "Change exactly one pixel",
+            "State the toy-format limit",
+            "Show what a count feature loses",
+            "Use the picture deliberately",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide reconstruction, then remove the help",
+          "groups": [
+            "Prompt before revealing the key",
+            "Expected reasoning and fading help",
+            "Check the universal-code misconception",
+            "Check badge positions and the changed pixel",
+            "Keep every learner explaining",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the decoder and toy-blur investigation",
+          "groups": [
+            "Supplied grids, transformation and answer guidance",
+            "Run and record the paper investigation",
+            "Keep an inspectable record",
+            "Diagnose the first misunderstanding",
+            "Choose support from the response",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the new equal-count counterexample",
+          "groups": [
+            "Selected independent question and example answer",
+            "Judge explanation, reconstruction and limits",
+            "Give one usable repair action",
+            "W1: decode and read back",
+            "W2: restore missing shape information",
+            "W3: test the count feature",
+            "W5: locate the convention mismatch",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, adapt and return",
+          "groups": [
+            "Project evidence to retain",
+            "Remove access barriers; retain the reasoning",
+            "Plan the delayed check",
+            "Bridge from pixel positions to sound times",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: alternative planning checklist",
+          "groups": [
+            "Preparation and schedule",
+            "Practice and assessment reminders"
+          ]
+        },
+        {
+          "title": "Reference: feedback and records",
+          "groups": [
+            "Separate practice and independent evidence",
+            "Repair and portfolio records",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: teach with the six pictures",
+          "groups": [
+            "01. Pictures Become Numbers: the case",
+            "02. Follow the deciding steps",
+            "03. Pixel positions: two badges, same dark count",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall · Rules and information paths",
+          "groups": [
+            "Retrieve and explain",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Missing-field practice copy",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Is 1 always black?",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W4 · Design a new equal-count pair",
+          "groups": [
+            "Read and explain independently",
+            "Keep a fair record",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The reading-order target",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Change one square",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Reverse the colour convention",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Project · Preserve the needed spatial clues",
+          "groups": [
+            "Your project decision"
+          ]
+        },
+        {
+          "title": "Finish · Judge your evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Reading-order response space",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W1 · Decode and read back",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Preserve the missing field",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Test a count feature",
+          "groups": [
+            "The reference grid",
+            "Create and explain your counterexample"
+          ]
+        },
+        {
+          "title": "Reference · New counterexample response copy",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W5 · Find the earlier input problem",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Read the badge picture",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Reference · Sorter portfolio record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice: image pictures and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-pixel question",
+            "Check the changed pixel",
+            "Repair and save",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Pictures Become Numbers: the case",
+            "02. Follow the deciding steps",
+            "03. Pixel positions: two badges, same dark count",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternative practice and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "new_graphic": {
+    "asset": "assets/academy-pixels-ai-1-5-badges.svg",
+    "purpose": "Literal black-and-white binary badges, shared convention, positions and equal counts. Original numeric illustration retained as reference."
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original source block positions retained; exact wording corrections are listed separately.",
+  "review_entry": "outputs/week-05-connected-review/START_REVIEW.html",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276,
+    "protected_resources_decrypted": 5417,
+    "numeric_checks": "reports/connected-weeks-4-5-numeric-checks.json"
+  }
+}

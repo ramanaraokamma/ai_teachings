@@ -1,0 +1,730 @@
+{
+  "lesson": "ai-2/33",
+  "sections_reviewed": 53,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-2/33",
+      "path": "/sections/1/blocks/13/text",
+      "old": "Build the validation stage of the planned chooser first. A valid record has nonempty text name, integer minutes 0 through 60 and integer fun and learning ratings 0 through 5. The batch stage must separately check name uniqueness. Only accepted records may reach the Week 24 selection function.",
+      "new": "Build the validation stage of the planned chooser first. A valid record has nonempty text name, integer minutes 0 through 60 and integer fun and learning ratings 0 through 5. The batch stage must separately check name uniqueness. Only accepted records may reach the selection function in this week’s lesson."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/sections/1/blocks/13/presentation/paragraphs/1",
+      "old": "The batch stage must separately check name uniqueness. Only accepted records may reach the Week 24 selection function.",
+      "new": "The batch stage must separately check name uniqueness. Only accepted records may reach the selection function in this week’s lesson."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/teacher/0/blocks/35/text",
+      "old": "Teach Week 32 as a two-session investigation using fictional data. Build the validation stage of the planned chooser first. A valid record has nonempty text name, integer minutes 0 through 60 and integer fun and learning ratings 0 through 5. The batch stage must separately check name uniqueness. Only accepted records may reach the Week 24 selection function. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+      "new": "Teach Week 32 as a two-session investigation using fictional data. Build the validation stage of the planned chooser first. A valid record has nonempty text name, integer minutes 0 through 60 and integer fun and learning ratings 0 through 5. The batch stage must separately check name uniqueness. Only accepted records may reach the selection function in this week’s lesson. Assess the three stated outcomes through the independent task, not by copying the worked result."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/teacher/0/blocks/35/presentation/paragraphs/2",
+      "old": "Only accepted records may reach the Week 24 selection function. Assess the three stated outcomes through the independent task, not by copying the worked result.",
+      "new": "Only accepted records may reach the selection function in this week’s lesson. Assess the three stated outcomes through the independent task, not by copying the worked result."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/teacher/1/blocks/22/text",
+      "old": "Build the validation stage of the planned chooser first. A valid record has nonempty text name, integer minutes 0 through 60 and integer fun and learning ratings 0 through 5. The batch stage must separately check name uniqueness. Only accepted records may reach the Week 24 selection function.",
+      "new": "Build the validation stage of the planned chooser first. A valid record has nonempty text name, integer minutes 0 through 60 and integer fun and learning ratings 0 through 5. The batch stage must separately check name uniqueness. Only accepted records may reach the selection function in this week’s lesson."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/teacher/1/blocks/22/presentation/paragraphs/1",
+      "old": "The batch stage must separately check name uniqueness. Only accepted records may reach the Week 24 selection function.",
+      "new": "The batch stage must separately check name uniqueness. Only accepted records may reach the selection function in this week’s lesson."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/sections/2/blocks/18/rows/2/1",
+      "old": "Apply Week 24 selector",
+      "new": "Apply this week’s selector"
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/teacher/4/blocks/42/text",
+      "old": "Combine validation and the Week 24 selector for A (minutes 10, fun 3, learning 2), B (12,4,1), and C (8,\"5\",5), limit 10. State accepted rows, rejected row, selection and explanation.",
+      "new": "Combine validation and the selector in this week’s lesson for A (minutes 10, fun 3, learning 2), B (12,4,1), and C (8,\"5\",5), limit 10. State accepted rows, rejected row, selection and explanation."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/teacher/4/blocks/42/presentation/paragraphs/0",
+      "old": "Combine validation and the Week 24 selector for A (minutes 10, fun 3, learning 2), B (12,4,1), and C (8,\"5\",5), limit 10. State accepted rows, rejected row, selection and explanation.",
+      "new": "Combine validation and the selector in this week’s lesson for A (minutes 10, fun 3, learning 2), B (12,4,1), and C (8,\"5\",5), limit 10. State accepted rows, rejected row, selection and explanation."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/workbook/19/blocks/0/text",
+      "old": "Combine validation and the Week 24 selector for A (minutes 10, fun 3, learning 2), B (12,4,1), and C (8,\"5\",5), limit 10. State accepted rows, rejected row, selection and explanation.",
+      "new": "Combine validation and the selector in this week’s lesson for A (minutes 10, fun 3, learning 2), B (12,4,1), and C (8,\"5\",5), limit 10. State accepted rows, rejected row, selection and explanation."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/workbook/19/blocks/0/presentation/paragraphs/0",
+      "old": "Combine validation and the Week 24 selector for A (minutes 10, fun 3, learning 2), B (12,4,1), and C (8,\"5\",5), limit 10. State accepted rows, rejected row, selection and explanation.",
+      "new": "Combine validation and the selector in this week’s lesson for A (minutes 10, fun 3, learning 2), B (12,4,1), and C (8,\"5\",5), limit 10. State accepted rows, rejected row, selection and explanation."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/sections/7/blocks/10/text",
+      "old": "Calling the selector on raw data can crash or produce a result from invalid ratings. Route data through validation first. Duplicate names require a batch check even when each row individually passes; block the ambiguous batch for review instead of arbitrarily keeping one.",
+      "new": "Calling the selector on raw data can crash or produce a result from invalid ratings. Route data through validation first. Duplicate names require a batch check even when each row individually passes; exclude every occurrence of each duplicated name, retain reasons and review the source instead of arbitrarily keeping one."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/sections/7/blocks/10/presentation/paragraphs/1",
+      "old": "Duplicate names require a batch check even when each row individually passes; block the ambiguous batch for review instead of arbitrarily keeping one.",
+      "new": "Duplicate names require a batch check even when each row individually passes; exclude every occurrence of each duplicated name, retain reasons and review the source instead of arbitrarily keeping one."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/teacher/3/blocks/19/text",
+      "old": "A convenient shortcut preserves meaning: Calling the selector on raw data can crash or produce a result from invalid ratings. Route data through validation first. Duplicate names require a batch check even when each row individually passes; block the ambiguous batch for review instead of arbitrarily keeping one.",
+      "new": "A convenient shortcut preserves meaning: Calling the selector on raw data can crash or produce a result from invalid ratings. Route data through validation first. Duplicate names require a batch check even when each row individually passes; exclude every occurrence of each duplicated name, retain reasons and review the source instead of arbitrarily keeping one."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/teacher/3/blocks/19/presentation/paragraphs/1",
+      "old": "Duplicate names require a batch check even when each row individually passes; block the ambiguous batch for review instead of arbitrarily keeping one.",
+      "new": "Duplicate names require a batch check even when each row individually passes; exclude every occurrence of each duplicated name, retain reasons and review the source instead of arbitrarily keeping one."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/teacher/1/blocks/24/text",
+      "old": "The first passes. Replacing minutes with 61 fails the range. Exit: No. The batch uniqueness contract fails. Block the ambiguous batch and report duplicate names for correction.",
+      "new": "The first passes. Replacing minutes with 61 fails the range. Exit: No. The batch uniqueness contract fails. Exclude every occurrence of each duplicated name and report the reasons for correction, following the frozen Week32 policy."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/teacher/1/blocks/24/presentation/paragraphs/0",
+      "old": "The first passes. Replacing minutes with 61 fails the range. Exit: No. The batch uniqueness contract fails. Block the ambiguous batch and report duplicate names for correction.",
+      "new": "The first passes. Replacing minutes with 61 fails the range. Exit: No. The batch uniqueness contract fails. Exclude every occurrence of each duplicated name and report the reasons for correction, following the frozen Week32 policy."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/teacher/4/blocks/46/text",
+      "old": "No. The batch uniqueness contract fails. Block the ambiguous batch and report duplicate names for correction.",
+      "new": "No. The batch uniqueness contract fails. Exclude every occurrence of each duplicated name and report the reasons for correction, following the frozen Week32 policy."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/teacher/4/blocks/46/presentation/paragraphs/0",
+      "old": "No. The batch uniqueness contract fails. Block the ambiguous batch and report duplicate names for correction.",
+      "new": "No. The batch uniqueness contract fails. Exclude every occurrence of each duplicated name and report the reasons for correction, following the frozen Week32 policy."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Build the editable score table, hand-check one row, run two profiles, and compare system ranking with independent recalculation.",
+      "new": "Run the supplied complete activity pipeline and pictured book ranking on fictional local records. Hand-check scores, reverse order, test duplicates and invalid fields, and compare a valid no-match result with an invalid request. No live learner profile is required."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Build the editable score table, hand-check one row, run two profiles, and compare system ranking with independent recalculation.",
+      "new": "Run the supplied complete activity pipeline and pictured book ranking on fictional local records. Hand-check scores, reverse order, test duplicates and invalid fields, and compare a valid no-match result with an invalid request. No live learner profile is required."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/teacher/2/blocks/5/text",
+      "old": "Keep for an independent attempt: A reader requests space and at most 60 pages. Book A is space, 90 pages; B is animals, 40 pages. What should the prototype return if both conditions are required?",
+      "new": "Use the earlier transfer question as optional practice. Reserve Rank the new mystery catalogue independently for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied main investigation for shared practice. Reserve Rank the new mystery catalogue independently for the individual first attempt. The named extension has separate tasks and feedback."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice"
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice reasoning"
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for this week’s explanation"
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Rank the new mystery catalogue independently is the selected independent task."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Implement a scoring table and produce ranked outputs.",
+      "new": "Use the selected independent book task’s exact constraints, score and shorter-page tie."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/teacher/5/blocks/12/text",
+      "old": "Independent W4 evidence: X and Y score 9; Z is excluded. X wins alphabetically in either order. Limit 9 returns None. Record whether the learner needed no help, a hint or explanation. Fresh retry: B (2,4,8), C (3,2,8), A (5,5,9), limit 8. B/C tie at 8; B wins. Limit 7 returns None.",
+      "new": "Selected independent mystery task: D fails length, F fails subject; E scores3 and G/H5; H wins the shorter-page tie90<95. Require the filtering and score trace. Fresh book retry: requestanimal,max80pages; score2illustrated+1comic,tieID; J animal80 plaincomic, K animal70 illustratedprose, L space60 illustratedcomic. Expected J1,K2;Lexcluded;Kselected. Collect before feedback and record support used. The older X/Y/Z activity task remains additional practice with its own key."
+    },
+    {
+      "week": "ai-2/33",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Next week: File input and output. Reuse this week's explicit contracts and evidence.",
+      "new": "Next is Week34: Test Diverse Users. Reuse the implemented baseline, contract, complete traces and expected outputs when auditing cases and failure conditions."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Can another learner reproduce this recommendation?",
+          "groups": [
+            "Your learning goals",
+            "Recall a hard constraint",
+            "Your end goal",
+            "Pipeline extension · Name the stages",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Implement a deterministic baseline",
+          "groups": [
+            "The main activity-selector contract",
+            "Pipeline extension · Validate before selection",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace the best-so-far item through complete code",
+          "groups": [
+            "Predict and run the complete activity example",
+            "Trace equal scores and the name tie",
+            "Explain the deciding step",
+            "Pipeline extension · Complete single-row validator",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare eligibility, ranking and no-match behavior",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Words for the main lesson and extension",
+          "groups": [
+            "Core words",
+            "Main explanation terms",
+            "Extension terms",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Test the activity selector, then a separate book ranking",
+          "groups": [
+            "Predict activity order reversal and limit8",
+            "Read the separate animal-book request and rows",
+            "Trace eligibility before preference scores",
+            "Predict D at91pages",
+            "Check after predicting",
+            "Run the complete pictured book ranking",
+            "Explain why fewer pages alone does not win",
+            "Pipeline extension · Predict valid boundary fields",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Repair an order-dependent tie",
+          "groups": [
+            "Find the first policy mismatch",
+            "Propose a case that would reveal it",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise a no-match trace with less help",
+          "groups": [
+            "Repair an incorrect tied update",
+            "Complete main W2 using the original activity list",
+            "Repair an overclaim before discussion",
+            "Explain the separate pictured ranking",
+            "Keep independent work separate",
+            "Pipeline extension · Send only accepted rows to selection",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run a complete validation-to-ranking pipeline",
+          "groups": [
+            "The complete standalone implementation",
+            "Predict the supplied results",
+            "Test boundaries and preserve evidence",
+            "Keep expected and actual results",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Choose a stronger explanation",
+          "groups": [
+            "Thinking ladder",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Save a baseline that can be inspected and rerun",
+          "groups": [
+            "This week’s concrete contribution",
+            "Keep the checkpoint and human choice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Check your explanation",
+          "groups": [
+            "Evidence and limits",
+            "Self-check",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice · The earlier complete case",
+          "groups": [
+            "Question and given facts",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: rank the fresh mystery-book catalogue",
+          "groups": [
+            "The independent records and policy",
+            "Your first attempt and help record",
+            "Use feedback afterwards",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier checklist",
+          "groups": [
+            "Checklist and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: explain eligibility, score and tie separately",
+          "groups": [
+            "Explain without notes",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictures, feedback and repair",
+          "groups": [
+            "First supported question",
+            "Check after trying",
+            "Changed-case question",
+            "Check changed case",
+            "Repair and keep evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The six-picture journey",
+          "groups": [
+            "01. Build the Recommender: the case",
+            "02. Follow the deciding steps",
+            "03. Filtering before scoring",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the main lesson and its retained extension",
+          "groups": [
+            "Goal and preparation",
+            "Main plan",
+            "Retrieval and readiness",
+            "Materials and extension planning",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Model the activity state trace and separate book ranking",
+          "groups": [
+            "State main assumptions",
+            "Run and trace the activity selector",
+            "Read the separate animal-book dataset",
+            "Trace the book ranking and exclusions",
+            "Predict the changed-D result",
+            "Run the complete pictured book code",
+            "Explain the picture’s limits",
+            "Pipeline extension · Validate each row before selection",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the main explanation, then fade support",
+          "groups": [
+            "Main completion question and key",
+            "Main individual check",
+            "Pictorial question and changed case",
+            "Keep learners explaining",
+            "Extension teaching cycle",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied main investigation",
+          "groups": [
+            "Supplied records and answer guidance",
+            "Predict, investigate and record",
+            "Keep the evidence",
+            "Main misconceptions",
+            "Choose support",
+            "Extension misconceptions",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected main independent task",
+          "groups": [
+            "Selected independent question and key",
+            "Judge reasoning and limits",
+            "Give one repair action",
+            "W1 Trace selection",
+            "W2 Handle no match",
+            "W3 Repair order dependence",
+            "W5 Explain the result",
+            "Extension questions and keys",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, support and return",
+          "groups": [
+            "Project record",
+            "Main support and fresh assessment",
+            "Delayed return",
+            "Bridge to next week",
+            "Extension support and reassessment",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative teaching checklist",
+          "groups": [
+            "Planning reference"
+          ]
+        },
+        {
+          "title": "Reference · Feedback and retained evidence",
+          "groups": [
+            "Record and repair",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Build the Recommender: the case",
+            "02. Follow the deciding steps",
+            "03. Filtering before scoring",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 17,
+      "sections": [
+        {
+          "title": "Recall · Retrieve earlier ideas",
+          "groups": [
+            "Your evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair a claim",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W4 · Rank the new mystery catalogue independently",
+          "groups": [
+            "Your evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier target",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier worked case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Changed case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · A revealing test",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge your evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier transfer",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W1 · Trace the main activity tie",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Handle no match",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Repair order dependence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Selected W4 response copy",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W5 · Explain the additional activity practice",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extension · Building the data pipeline — W1 Trace a validation",
+          "groups": [
+            "Extension question and record"
+          ]
+        },
+        {
+          "title": "Extension · Building the data pipeline — W2 Check missing fields",
+          "groups": [
+            "Extension question and record"
+          ]
+        },
+        {
+          "title": "Extension · Building the data pipeline — W3 Repair the connection",
+          "groups": [
+            "Extension question and record"
+          ]
+        },
+        {
+          "title": "Extension · Building the data pipeline — W4 Build independently",
+          "groups": [
+            "Extension question and record"
+          ]
+        },
+        {
+          "title": "Extension · Building the data pipeline — W5 Handle duplicates",
+          "groups": [
+            "Extension question and record"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Reference · Project milestone",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictures, feedback and repair",
+          "groups": [
+            "First supported question",
+            "Check after trying",
+            "Changed-case question",
+            "Check changed case",
+            "Repair and keep evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Build the Recommender: the case",
+            "02. Follow the deciding steps",
+            "03. Filtering before scoring",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 26,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 26,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-2-week-33-connected-review/START_REVIEW.html",
+  "week_sha256": "e13bb9830220999b5081c54b372649a807ea0eb0395677d9e6d0fb93068aaae7",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  },
+  "teacher_lab_key": "Reviewed appended key uses complete sentences and short paragraphs; original source blocks unchanged."
+}

@@ -1,0 +1,597 @@
+{
+  "lesson": "ai-2/9",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-2/9",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Rank eight candidate features by relevance, availability, privacy, and shortcut risk. Defend the top three and reject two tempting distractors.",
+      "new": "Audit the eight supplied candidate features for relevance, availability, privacy and shortcut risk. Defend the smallest sufficient set for the written card rule and reject at least two tempting alternatives; do not add a third feature merely to meet a quota."
+    },
+    {
+      "week": "ai-2/9",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Rank eight candidate features by relevance, availability, privacy, and shortcut risk. Defend the top three and reject two tempting distractors.",
+      "new": "Audit the eight supplied candidate features for relevance, availability, privacy and shortcut risk. Defend the smallest sufficient set for the written card rule and reject at least two tempting alternatives; do not add a third feature merely to meet a quota."
+    },
+    {
+      "week": "ai-2/9",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied investigation for shared practice. Keep predictions and observed paper-trace results separate. Reserve Changed independent case for the individual first attempt before feedback; do not use the reserved case as a paired lab task."
+    },
+    {
+      "week": "ai-2/9",
+      "path": "/teacher/2/blocks/5/text",
+      "old": "Keep for an independent attempt: Predict whether a book is short using page count and cover colour. Which feature directly supports the defined label? Give a counterexample to colour.",
+      "new": "Use the earlier changed question as optional later practice. Reserve Changed independent case for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-2/9",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-2/9",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-2/9",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice answer and reason"
+    },
+    {
+      "week": "ai-2/9",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-2/9",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for explaining this week’s idea"
+    },
+    {
+      "week": "ai-2/9",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Changed independent case is the selected independent case."
+    },
+    {
+      "week": "ai-2/9",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Rank book features; reject cover color as a shortcut.",
+      "new": "EXPLANATION CHECK  Preserve required distinctions, test one-factor changes and separate expected labels from actual model observations."
+    },
+    {
+      "week": "ai-2/9",
+      "path": "/teacher/2/blocks/26/text",
+      "old": "No. It shows one topic-fixed prediction changed with logo in this case; additional balanced comparisons are needed to characterise behavior.",
+      "new": "No. In the explicitly hypothetical changed case, one topic-fixed prediction changes with logo, supporting sensitivity on that pair. In the base case no new outputs have been supplied, so the designed test alone establishes no observed sensitivity. Neither case proves that the classifier always ignores subject."
+    },
+    {
+      "week": "ai-2/9",
+      "path": "/teacher/5/blocks/12/text",
+      "old": "W4 shows secure independent understanding when the learner selects height and thickness with units, supplies an equal-height pair on opposite sides of the thickness limit, labels the boundary tile correctly, and explains the sticker timing. Naming inputs without a counterexample is partial evidence. After support, retry with a new tray limit of height 7 cm and thickness 3 cm; ask for a fresh equal-height pair before confirming mastery.",
+      "new": "For the selected W4, require two controlled comparisons: hold the subject description fixed while changing only the yellow/blue background, then hold background fixed while comparing the two supplied subjects, with other presentation features controlled. Record expected subject labels separately from actual predictions, which have not been supplied. The old training pattern suggests a possible shortcut but does not establish one. After feedback use a different subject/style pairing for a fresh attempt. The display-tray case is optional transfer practice with a separate key."
+    },
+    {
+      "week": "ai-2/9",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Week 9 introduces algorithms and changing state. Students will trace ordered instructions and record how values change, keeping the initial conditions and the sequence visible.",
+      "new": "Week 10: Human Classifier Simulation. Carry forward explicit input features, the target definition and a record of predictions versus supplied evidence; keep the rule or simulation inspectable."
+    },
+    {
+      "week": "ai-2/9",
+      "path": "/teacher/2/blocks/14/rows/1/1",
+      "old": "Retrieve Week 7: agreement is not proof of a correct label. State the new target and check both inclusive boundaries.",
+      "new": "Retrieve Week 8: agreement is not proof of a correct label. State the new target and check both inclusive boundaries."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "What information does the task actually need?",
+          "groups": [
+            "Your learning goals",
+            "Retrieve last week’s label-evidence limit",
+            "This week’s controlled-test goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Define the card-fitting task before choosing features",
+          "groups": [
+            "The exact task and measurement assumptions",
+            "Separate the feature record from the target",
+            "Why this investigation needs no trained model",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "See what disappears when width is omitted",
+          "groups": [
+            "Compare cards A and B",
+            "Follow the length-only and length-width records",
+            "Explain the information limit",
+            "Keep order and units explicit",
+            "Point to the distinguishing measurement",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Choose a case that challenges a feature shortcut",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Your quick word guide",
+          "groups": [
+            "Core vocabulary",
+            "Terms for the connected explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare controlled changes, then investigate a topic-logo shortcut",
+          "groups": [
+            "Separate rule-derived answers from unobserved model outputs",
+            "Four card comparisons with one changed input",
+            "Explain useful dimensions and a misleading colour pattern",
+            "Introduce the separate topic-classifier case",
+            "Design pairs that separate subject from logo",
+            "Interpret the supplied hypothetical changed case",
+            "Check that interpretation after trying",
+            "Limit the conclusion to the evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Challenge a perfect practice score with a diagnostic card",
+          "groups": [
+            "Check distinguishability and input timing",
+            "Retain the paper task’s limits",
+            "Create a counterexample to colour-only prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Put every candidate input on the decision timeline",
+          "groups": [
+            "Spot the sticker leakage",
+            "Try an unknown width before inspection",
+            "Construct a width-only collision in W2",
+            "Challenge the missing-measurement guarantee",
+            "Explain what a controlled pair can establish",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Audit eight supplied candidate features",
+          "groups": [
+            "Fix the task and decision time",
+            "The eight candidates",
+            "Justify, challenge and record",
+            "Keep expected and actual evidence separate",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Choose a stronger thinking challenge",
+          "groups": [
+            "Pick your next step",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Justify every recommender feature against the stated task",
+          "groups": [
+            "Your portfolio checkpoint",
+            "Record inputs, rules, human choice and limits",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: check your explanation",
+          "groups": [
+            "Check the evidence and its limit",
+            "Self-check and record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice: Useful evidence versus a shortcut",
+          "groups": [
+            "Read the supplied case and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: test subject versus background colour",
+          "groups": [
+            "The reserved space-and-animal case",
+            "Your first attempt and support record",
+            "Use feedback after the attempt",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: original lesson checklist",
+          "groups": [
+            "Targets and evidence",
+            "Keep your route and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: explain a distinction the inputs must preserve",
+          "groups": [
+            "Recall the goal without notes",
+            "Choose a changed case for your return"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: the six-picture journey",
+          "groups": [
+            "01. Features and Distractors: the case",
+            "02. Follow the deciding steps",
+            "03. The same cards under two feature choices",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare this connected week",
+          "groups": [
+            "Learning goal and precision",
+            "What to prepare",
+            "Main teaching plan",
+            "Opening retrieval and readiness",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach features through pairs a system must distinguish",
+          "groups": [
+            "State the dimension rule and target",
+            "Cover width, then reveal the distinguishing input",
+            "Model one-factor card comparisons",
+            "Introduce the separate confounded classifier",
+            "Design controlled pairs before observing results",
+            "Interpret the hypothetical logo-sensitive outcome",
+            "Limit the sensitivity claim and use the picture",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the reasoning, then remove help",
+          "groups": [
+            "Prompt before revealing",
+            "Expected reasoning and fading help",
+            "Check the misconception before discussion",
+            "Use the pictorial check",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied investigation",
+          "groups": [
+            "Supplied materials and answer guidance",
+            "Run and record",
+            "Keep an inspectable record",
+            "Diagnose the first misunderstanding",
+            "Choose support from the response",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected new case",
+          "groups": [
+            "Selected independent question and key",
+            "Judge explanation, trace and limits",
+            "Give one usable repair action",
+            "W1 Separate inputs from the target",
+            "W2 Prove that one measurement is insufficient",
+            "W3 Challenge an apparent colour shortcut",
+            "W5 Notice when the task changes",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, adapt and return",
+          "groups": [
+            "Project evidence to keep",
+            "Support while preserving the reasoning goal",
+            "Plan the delayed check",
+            "Bridge to next week",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: alternative planning checklist",
+          "groups": [
+            "Preparation and schedule",
+            "Practice and assessment reminders"
+          ]
+        },
+        {
+          "title": "Reference: feedback and records",
+          "groups": [
+            "Keep practice and independent evidence separate",
+            "Repair and portfolio records",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: teach with the six pictures",
+          "groups": [
+            "01. Features and Distractors: the case",
+            "02. Follow the deciding steps",
+            "03. The same cards under two feature choices",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall: reconnect earlier ideas",
+          "groups": [
+            "Retrieve and explain",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair the explanation",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W4 · Changed independent case",
+          "groups": [
+            "Read and explain independently",
+            "Keep a fair record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Original learning target",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A complete case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A changed case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and its evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge the evidence in your work",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Original target response space",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W1 · Separate permitted inputs from the target",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Demonstrate a width-only collision",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Break the colour shortcut",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Display-tray features",
+          "groups": [
+            "The new rule, counterexample and timing question"
+          ]
+        },
+        {
+          "title": "W5 · Reconsider inputs when the target changes",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Use the worked picture",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Features and Distractors: the case",
+            "02. Follow the deciding steps",
+            "03. The same cards under two feature choices",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-2-week-09-connected-review/START_REVIEW.html",
+  "week_sha256": "e00b36b378db02fd399af6703ec136d9a19441fee4a72617b6becfc5533a25c0",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

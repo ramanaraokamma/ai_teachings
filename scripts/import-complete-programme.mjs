@@ -1,10 +1,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {createHash,createCipheriv,randomBytes} from 'node:crypto';
-const source=process.argv.includes('--root')?'.':(process.argv.slice(2).find(arg=>!arg.startsWith('--'))||'outputs/ai-academy-complete-programme');
+const source=process.argv.includes('--root')?'.':(process.argv.slice(2).find(arg=>!arg.startsWith('--'))||'.');
 if(!fs.existsSync(path.join(source,'content/programme.json')))throw Error('Complete programme source missing');
 // Keep the complete offline edition at repository root, outside public assets.
-if(!process.argv.includes('--root'))for(const item of fs.readdirSync(source)){
+if(source!=='.')for(const item of fs.readdirSync(source)){
  if(['README.md','CLOUDFLARE_DEPLOYMENT.md'].includes(item))continue;
  fs.cpSync(path.join(source,item),item,{recursive:true});
 }
@@ -28,10 +28,17 @@ function blocks(items){return items.map(b=>{
  if(b.type==='sensor')return b;
  return b;
 });}
-const pages=sections=>sections.map((s,i)=>({number:i+1,label:s.title,...(s.reading_intro?{intro:s.reading_intro}:{}),blocks:blocks(s.blocks)}));
+const pages=sections=>sections.map((s,i)=>({number:i+1,label:s.title,...(s.reading_intro?{intro:s.reading_intro}:{}),...(s.reading_flow?{flow:s.reading_flow}:{}),blocks:blocks(s.blocks)}));
 function week(w){const stem=w.id.startsWith('python-bridge')?`bridge-week-${String(w.week).padStart(2,'0')}`:`ai-${w.level}-week-${String(w.week).padStart(2,'0')}`;
  const result={number:w.week,phase:Math.ceil(w.week/6),hero:resource(`assets/${w.graphic_story?.[1]?.asset || 'academy-visual-'+w.id.replace('/','-')}.png`)};
  for(const role of ['student','teacher','workbook']){result[role]={title:`Week ${w.week}: ${w.title}`,download:resource(`downloads/${role}/${stem}.docx`,role==='teacher'?'teacher':'student',true),pdf:resource(`downloads/${role}/${stem}.pdf`,role==='teacher'?'teacher':'student',true)};
+ if(role==='workbook'&&w.workbook.some(s=>s.reading_flow)){
+  result[role].pages=pages(w.workbook);let priorOffset=0;
+  for(const [i,section] of w.workbook.entries()){
+   result[role].pages[i].blocks=result[role].pages[i].blocks.map((b,j)=>b.type==='response'?{...b,responseStorageSuffix:b.reading_addition?`section-${i+1}-added-block-${j+1}`:`section-1-block-${priorOffset+1+j}`}:b);
+   priorOffset+=1+section.blocks.filter(b=>!b.reading_addition).length;
+  }
+ }
  if(role==='workbook')result[role].blocks=w.workbook.flatMap(s=>[{type:'heading',text:s.title,...(s.reading_intro?{presentation:{kind:'section-heading',context:s.reading_intro}}:{})},...blocks(s.blocks)]);
  else result[role].pages=pages(role==='student'?w.sections:w.teacher);}
  return result;

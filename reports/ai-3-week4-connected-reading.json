@@ -1,0 +1,611 @@
+{
+  "lesson": "ai-3/4",
+  "sections_reviewed": 53,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-3/4",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Run each setting five times on one fixed prompt, score consistency, usefulness, and unsupported detail, then justify a task-specific choice.",
+      "new": "Use the supplied fixed prefix, three-colour table and five recorded draws with the complete local simulation. Compare output counts and agreement with fictional blue-flag reference R separately. These are toy paired traces, not actual prompt runs, stories or model-quality measurements."
+    },
+    {
+      "week": "ai-3/4",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Run each setting five times on one fixed prompt, score consistency, usefulness, and unsupported detail, then justify a task-specific choice.",
+      "new": "Use the supplied fixed prefix, three-colour table and five recorded draws with the complete local simulation. Compare output counts and agreement with fictional blue-flag reference R separately. These are toy paired traces, not actual prompt runs, stories or model-quality measurements."
+    },
+    {
+      "week": "ai-3/4",
+      "path": "/teacher/2/blocks/6/text",
+      "old": "Keep for an independent attempt: Prompt A is run three times and returns three different stories. Does this alone prove the prompt changed? Describe a fair comparison of two prompts.",
+      "new": "Use the earlier transfer question as optional practice. Reserve Sample a new table independently for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-3/4",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied main investigation for shared practice. Reserve Sample a new table independently for the individual first attempt. The named extension has separate tasks and feedback."
+    },
+    {
+      "week": "ai-3/4",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice"
+    },
+    {
+      "week": "ai-3/4",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-3/4",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice reasoning"
+    },
+    {
+      "week": "ai-3/4",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-3/4",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for this week’s explanation"
+    },
+    {
+      "week": "ai-3/4",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Sample a new table independently is the selected independent task."
+    },
+    {
+      "week": "ai-3/4",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Compare low- and high-variability story continuations.",
+      "new": "Require exact adjusted probabilities, interval endpoints and a separate factual-evidence limit."
+    },
+    {
+      "week": "ai-3/4",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Week 5 connects token IDs to embedding vectors and introduces position information without treating IDs as semantic measurements.",
+      "new": "Next is Week5: Prompt as a Contract. Carry forward controlled conditions, explicit output rules and separate evidence criteria before comparing prompt specifications."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "How does the same draw change under a different distribution?",
+          "groups": [
+            "Your learning goals",
+            "Recall greedy versus whole paths",
+            "Your end goal",
+            "Attention extension · Permitted normalised weights",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Define sampling intervals before selecting a token",
+          "groups": [
+            "The complete red/blue/green distribution and interval contract",
+            "Separate repeated frequencies from a single trace",
+            "Attention extension · Scores, scale and stable softmax",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Calculate the positive-temperature transformation",
+          "groups": [
+            "The stated formula and exact adjusted probabilities",
+            "Compare the original and adjusted tables",
+            "Trace the same draw under both distributions",
+            "Explain the deciding evidence",
+            "Attention extension · Query/key/value roles and exact ratio",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare changed intervals with unchanged factual evidence",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Words for the main lesson and extension",
+          "groups": [
+            "Core words",
+            "Main explanation terms",
+            "Extension terms",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Explain the temperature limit, then a separate two-token picture",
+          "groups": [
+            "Compare positive temperatures without changing rank",
+            "Reject substituting zero into this formula",
+            "Read the separate two-token distribution and draw",
+            "Trace squared weights and exact intervals",
+            "Predict the changed draw0.97",
+            "Check after predicting",
+            "Explain remaining probability and truth limits",
+            "Attention extension · Equal scores and masks",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Separate consistency from correctness",
+          "groups": [
+            "Repair the lower-temperature truth claim",
+            "Design a revealing fixed-draw comparison",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise exact boundary draws with less help",
+          "groups": [
+            "Read and trace the three supplied draws",
+            "Complete main temperature W2",
+            "Repair sampling means equal chances",
+            "Explain the separate A/B picture",
+            "Keep independent work separate",
+            "Attention extension · Stable common-shift calculation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run a complete fixed-draw comparison",
+          "groups": [
+            "Predict the controlled setup",
+            "Run the complete exact-arithmetic simulation",
+            "Compare consistency with separate supplied evidence",
+            "Keep the investigation record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Choose a stronger explanation",
+          "groups": [
+            "Thinking ladder",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Treat a generation setting as a policy to evaluate",
+          "groups": [
+            "This week’s concrete contribution",
+            "Keep the checkpoint and human choice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Check your explanation",
+          "groups": [
+            "Evidence and limits",
+            "Self-check",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice · The earlier complete case",
+          "groups": [
+            "Question and given facts",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: transform the fresh A/B/C table",
+          "groups": [
+            "Independent table and scope",
+            "Your first attempt and help record",
+            "Use feedback afterwards",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier checklist",
+          "groups": [
+            "Checklist and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: explain the interval, transformation and truth boundary",
+          "groups": [
+            "Explain without notes",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictures, feedback and repair",
+          "groups": [
+            "First supported question",
+            "Check after trying",
+            "Changed-case question",
+            "Check changed case",
+            "Repair and keep evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The six-picture journey",
+          "groups": [
+            "01. Sampling and Variability: the case",
+            "02. Follow the deciding steps",
+            "03. Temperature-scaled toy probabilities",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the main lesson and its retained extension",
+          "groups": [
+            "Goal and preparation",
+            "Main plan",
+            "Retrieval and readiness",
+            "Materials and extension planning",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Model exact sampling before discussing variability",
+          "groups": [
+            "State half-open intervals and repeated-draw scope",
+            "Calculate the half-temperature probabilities",
+            "Distinguish positive transformation and zero policy",
+            "Read the separate two-token picture",
+            "Trace its normalisation and same draw",
+            "Predict u0.97",
+            "State what remains unproven",
+            "Attention extension · Stable softmax and weighted values",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the main explanation, then fade support",
+          "groups": [
+            "Main completion question and key",
+            "Main individual check",
+            "Pictorial question and changed case",
+            "Keep learners explaining",
+            "Extension teaching cycle",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied main investigation",
+          "groups": [
+            "Supplied records and answer guidance",
+            "Predict, investigate and record",
+            "Keep the evidence",
+            "Main misconceptions",
+            "Choose support",
+            "Extension misconceptions",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected main independent task",
+          "groups": [
+            "Selected independent question and key",
+            "Judge reasoning and limits",
+            "Give one repair action",
+            "W1 Trace boundaries",
+            "W2 Compute the adjusted table",
+            "W3 Compare a fixed draw",
+            "W5 Specify a valid experiment",
+            "Extension questions and keys",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, support and return",
+          "groups": [
+            "Project record",
+            "Main support and fresh assessment",
+            "Delayed return",
+            "Bridge to next week",
+            "Extension support and reassessment",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative teaching checklist",
+          "groups": [
+            "Planning reference"
+          ]
+        },
+        {
+          "title": "Reference · Feedback and retained evidence",
+          "groups": [
+            "Record and repair",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Sampling and Variability: the case",
+            "02. Follow the deciding steps",
+            "03. Temperature-scaled toy probabilities",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 17,
+      "sections": [
+        {
+          "title": "Recall · Retrieve earlier ideas",
+          "groups": [
+            "Your evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair a claim",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W4 · Sample a new table independently",
+          "groups": [
+            "Your evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier target",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier worked case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Changed case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · A revealing test",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge your evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier transfer",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W1 · Trace interval boundaries",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Compute the adjusted table",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Compare a fixed draw",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Selected W4 response copy",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W5 · Specify a controlled experiment",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extension · A small attention calculation — W1 Compute scores and weights",
+          "groups": [
+            "Contract, question and response"
+          ]
+        },
+        {
+          "title": "Extension · A small attention calculation — W2 Combine and mask",
+          "groups": [
+            "Contract, question and response"
+          ]
+        },
+        {
+          "title": "Extension · A small attention calculation — W3 Trace equal scores",
+          "groups": [
+            "Contract, question and response"
+          ]
+        },
+        {
+          "title": "Extension · A small attention calculation — W4 Calculate new attention independently",
+          "groups": [
+            "Extension question and record"
+          ]
+        },
+        {
+          "title": "Extension · A small attention calculation — W5 Check stability and shape",
+          "groups": [
+            "Contract, question and response"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Reference · Project milestone",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictures, feedback and repair",
+          "groups": [
+            "First supported question",
+            "Check after trying",
+            "Changed-case question",
+            "Check changed case",
+            "Repair and keep evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Sampling and Variability: the case",
+            "02. Follow the deciding steps",
+            "03. Temperature-scaled toy probabilities",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 26,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 26,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-3-week-04-connected-review/START_REVIEW.html",
+  "week_sha256": "b2655bb69cb7eca1a58c59e6b9284e00d187aa892715a077853fae9c2e4ef97f",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

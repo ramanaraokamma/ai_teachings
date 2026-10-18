@@ -1,0 +1,700 @@
+{
+  "lesson": "ai-3/13",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-3/13",
+      "path": "/classroom/goals/0",
+      "old": "Explain the mechanism and terminology of speech pipelines and multimodal evidence",
+      "new": "Keep visible evidence, hidden contents and caption claims separate"
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/method/goals/0",
+      "old": "Explain the mechanism and terminology of speech pipelines and multimodal evidence",
+      "new": "Keep visible evidence, hidden contents and caption claims separate"
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/sections/0/blocks/1/text",
+      "old": "I can explain the mechanism and terminology of speech pipelines and multimodal evidence.",
+      "new": "I can keep visible evidence, hidden contents and caption claims separate."
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/classroom/goals/1",
+      "old": "Apply the stated procedure to a new case with a traceable result",
+      "new": "Check source identity, time and scope before combining modalities"
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/method/goals/1",
+      "old": "Apply the stated procedure to a new case with a traceable result",
+      "new": "Check source identity, time and scope before combining modalities"
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/sections/0/blocks/2/text",
+      "old": "I can apply the stated procedure to a new case with a traceable result.",
+      "new": "I can check source identity, time and scope before combining modalities."
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/classroom/goals/2",
+      "old": "Identify an assumption or limitation and design a revealing follow-up",
+      "new": "State supported lower bounds and unresolved conflicts without inventing missing content"
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/method/goals/2",
+      "old": "Identify an assumption or limitation and design a revealing follow-up",
+      "new": "State supported lower bounds and unresolved conflicts without inventing missing content"
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/sections/0/blocks/3/text",
+      "old": "I can identify an assumption or limitation and design a revealing follow-up.",
+      "new": "I can state supported lower bounds and unresolved conflicts without inventing missing content."
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/method/goal",
+      "old": "Explain the mechanism and terminology of speech pipelines and multimodal evidence",
+      "new": "Keep visible evidence, hidden contents and caption claims separate"
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/teacher/0/blocks/1/text",
+      "old": "Primary target: Explain the mechanism and terminology of speech pipelines and multimodal evidence",
+      "new": "Primary target: Keep visible evidence, hidden contents and caption claims separate"
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/sections/0/blocks/18/text",
+      "old": "Recall Image generation and provenance. Explain why a recorded result needs its input conditions and evidence source before it can support a claim.",
+      "new": "Recall Image Generation Models and Speech and Audio Systems: a representation or fluent output is not automatically an observation. Name the source and state what it actually makes available."
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/method/practice/title",
+      "old": "Trace the worked case",
+      "new": "Separate observations, hidden contents and claims"
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/method/practice/prompt",
+      "old": "Audio transcript reads fifteen boxes; a clear written inventory says fifty boxes. The original audio is unavailable and the assistant reports fifteen as certain. Show the intermediate steps and give the conclusion with its scope.",
+      "new": "From the supplied desk description and caption, separate direct reported observations, unknown contents and unverified claims. Explain why the supported count is a lower bound rather than an exact total. Then use the supplied changed case: opening the box reveals two pencils and there are no other desk locations."
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/method/practice/answer",
+      "old": "Teacher explanation: There is an unresolved quantity conflict and no audio replay. Preserve both sources and ask the responsible person; certainty is unsupported.",
+      "new": "Initially the description reports three visible pencils; the hidden count is unknown and the caption’s five is unverified. At least three is supported; neither exact total is established. With the supplied verified observation of two hidden pencils and a complete-location assumption,3+2=5is supported. Do not treat the changed observation as information available before opening."
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/method/hinge/prompt",
+      "old": "Use the worked case for Speech pipelines and multimodal evidence. Proposed explanation: “The worked result establishes every future case”. Decide whether this explanation is supported. Point to the step or supplied fact that decides; explain your repair if needed.",
+      "new": "A caption says five pencils, but the supplied description shows only three and leaves an opaque box unobserved. Does the caption establish the hidden count or does the view disprove five? Explain."
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/method/hinge/answer",
+      "old": "A stage-level accuracy or authority policy does not establish every modality agrees or every downstream claim is supported.",
+      "new": "Neither. Three is a supported lower bound; hidden contents and total remain unverified. Additional aligned evidence is needed."
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/classroom/flow/2/task",
+      "old": "Audio transcript reads fifteen boxes; a clear written inventory says fifty boxes. The original audio is unavailable and the assistant reports fifteen as certain. Show the intermediate steps and give the conclusion with its scope.",
+      "new": "From the supplied desk description and caption, separate direct reported observations, unknown contents and unverified claims. Explain why the supported count is a lower bound rather than an exact total. Then use the supplied changed case: opening the box reveals two pencils and there are no other desk locations."
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Match image/text pairs, flag irrelevant or conflicting evidence, and design ask-more or abstain behavior.",
+      "new": "Use the four complete written image/text evidence-pair cards. Check identity,time,scope,visible content and missing history; preserve conflicts or ask for the relevant source. These are described fictional inputs, not actual image inspection, model results or plant diagnosis."
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Match image/text pairs, flag irrelevant or conflicting evidence, and design ask-more or abstain behavior.",
+      "new": "Use the four complete written image/text evidence-pair cards. Check identity,time,scope,visible content and missing history; preserve conflicts or ask for the relevant source. These are described fictional inputs, not actual image inspection, model results or plant diagnosis."
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/sections/15/blocks/0/text",
+      "old": "Close your notes. Explain this goal in your own words: Explain the mechanism and terminology of speech pipelines and multimodal evidence",
+      "new": "Close your notes. Explain how aligned multimodal evidence can support a lower bound while leaving hidden contents and the exact total unknown."
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied investigation for shared practice. Keep predictions and observed paper-trace results separate. Reserve Evaluate a new hidden-content description independently for the individual first attempt before feedback; do not use the reserved case as a paired lab task."
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/teacher/2/blocks/5/text",
+      "old": "Keep for an independent attempt: A chart image shows 12 plants; its caption says 21. What should a multimodal assistant report before drawing a conclusion?",
+      "new": "Use the earlier changed question as optional later practice. Reserve Evaluate a new hidden-content description independently for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice answer and reason"
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for explaining this week’s idea"
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Evaluate a new hidden-content description independently is the selected independent case."
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Design a plant helper using image plus question text.",
+      "new": "EXPLANATION CHECK  Require reported visible evidence, hidden-content uncertainty, source alignment and a bounded answer."
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/workbook/1/blocks/0/text",
+      "old": "Use W2: Trace the worked case for Speech pipelines and multimodal evidence. Record the answer once; the lesson and workbook refer to the same attempt.",
+      "new": "Earlier speech/inventory completion practice: retain this task and saved response as review. Use the current W2 visible/hidden evidence task for this week’s supported practice."
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/teacher/5/blocks/12/text",
+      "old": "W4: Report F from the authoritative approval, noting the transcript conflict if relevant. This resolves the task authority, not what the original speaker actually said. Require intermediate reasoning and the stated scope. Fresh retry: Transcript says eight; a validated order record says eighteen and is declared authoritative for ordering. Expected reasoning: Use eighteen for the bounded order-record task; retain the transcript discrepancy and do not claim perfect transcription. If students need support, record it and reassess with another new case rather than awarding independence to a copied answer.",
+      "new": "Selected independent task: two visible plants are supported; total unknown. An opaque pot establishes neither another plant nor an empty pot, and no upper bound is supplied. Fresh retry: four visible counters beside a sealed bag;caption says six. Require at least four,unknown bag contents,and no verified total until aligned observation or complete source evidence is supplied. Record support before feedback. The earlier roomE/F authority exercise remains additional practice."
+    },
+    {
+      "week": "ai-3/13",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Next connection: Retrieval and indexing. Preserve the current case record and retrieve its evidence boundary before moving on.",
+      "new": "Next is Week14: Hallucination Failure Types. Carry forward source attribution, aligned evidence and the difference between an unsupported claim and a contradicted claim."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "What is seen, what is claimed, and what remains hidden?",
+          "groups": [
+            "Your current evidence-combination goals",
+            "Recall representations and source scope",
+            "Your end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Give each source a job and a limit",
+          "groups": [
+            "Modality, alignment and claim roles",
+            "The complete visible/hidden desk contract",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Check alignment before combining claims",
+          "groups": [
+            "The complete evidence-combination checklist",
+            "Explain the deciding evidence",
+            "Review · Earlier speech-stage record guidance",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare visible evidence, hidden regions and caption claims",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Your quick word guide",
+          "groups": [
+            "Core vocabulary",
+            "Terms for the connected explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace the lower bound without inventing the total",
+          "groups": [
+            "Read the complete pictured desk description and caption",
+            "Trace visible, hidden and claimed quantities",
+            "Predict opening the box under a complete-location scope",
+            "Check after predicting",
+            "Explain why both exact totals were initially unsupported",
+            "Review · Separate unavailable-audio conflict",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Find an invented zero or an invented total",
+          "groups": [
+            "Repair the hidden-means-empty argument",
+            "Propose the evidence needed to revise the answer",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise the visible/hidden distinction with less help",
+          "groups": [
+            "Current supported task and response",
+            "Explain the pictured uncertainty",
+            "Keep independent work separate",
+            "Review · Earlier speech/conflict practice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Audit four complete image/text evidence pairs",
+          "groups": [
+            "The supplied evidence-pair cards",
+            "Separate reports, missing facts and bounded answers",
+            "Keep the evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Choose a stronger thinking challenge",
+          "groups": [
+            "Pick your next step",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep the project’s evidence roles visible",
+          "groups": [
+            "This week’s concrete contribution",
+            "Keep the checkpoint and human choice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: check your explanation",
+          "groups": [
+            "Check the evidence and its limit",
+            "Self-check and record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice: Separate visible and off-frame claims",
+          "groups": [
+            "Read the supplied case and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: evaluate the fresh plant-and-opaque-pot record",
+          "groups": [
+            "Independent description and scope",
+            "Your first attempt and help record",
+            "Use feedback afterwards",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: original lesson checklist",
+          "groups": [
+            "Targets and evidence",
+            "Keep your route and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: name the source, claim and remaining uncertainty",
+          "groups": [
+            "Explain without notes",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: the six-picture journey",
+          "groups": [
+            "01. Multimodal Evidence: the case",
+            "02. Follow the deciding steps",
+            "03. Speech pipelines and multimodal evidence — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare this connected week",
+          "groups": [
+            "Learning goal and precision",
+            "What to prepare",
+            "Main teaching plan",
+            "Opening retrieval and readiness",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach aligned source use and visible-versus-hidden reasoning",
+          "groups": [
+            "State the current evidence checks",
+            "Read the complete desk case",
+            "Trace the lower bound and unverified caption",
+            "Predict the new verified observation",
+            "State description and scope limits",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide evidence separation, then remove help",
+          "groups": [
+            "Current completion task and key",
+            "Current individual evidence check",
+            "Pictorial changed-case reasoning",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied evidence-pair audit",
+          "groups": [
+            "Current cards and answer guidance",
+            "Predict, attribute and record",
+            "Keep evidence and limits",
+            "Current misconception support",
+            "Choose accessible support",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected visible-plants description",
+          "groups": [
+            "Selected independent question and checked key",
+            "Judge reasoning and scope",
+            "Give one repair action",
+            "Current workbook guidance",
+            "Review · Earlier speech questions and keys",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, adapt and return",
+          "groups": [
+            "Project evidence to keep",
+            "Support while preserving the reasoning goal",
+            "Plan the delayed check",
+            "Bridge to next week",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: alternative planning checklist",
+          "groups": [
+            "Preparation and schedule",
+            "Practice and assessment reminders"
+          ]
+        },
+        {
+          "title": "Reference: feedback and records",
+          "groups": [
+            "Keep practice and independent evidence separate",
+            "Repair and portfolio records",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: teach with the six pictures",
+          "groups": [
+            "01. Multimodal Evidence: the case",
+            "02. Follow the deciding steps",
+            "03. Speech pipelines and multimodal evidence — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall: reconnect earlier ideas",
+          "groups": [
+            "Retrieve and explain",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair the explanation",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W4 · Evaluate a new hidden-content description independently",
+          "groups": [
+            "Read and explain independently",
+            "Keep a fair record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Original learning target",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A complete case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A changed case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and its evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge the evidence in your work",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Original target response space",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W1 · Separate evidence roles",
+          "groups": [
+            "Current evidence and scope",
+            "Current task and new response",
+            "Review · Earlier speech task and saved response"
+          ]
+        },
+        {
+          "title": "W2 · Trace the supported lower bound",
+          "groups": [
+            "Current evidence and scope",
+            "Current task and new response",
+            "Review · Earlier speech task and saved response"
+          ]
+        },
+        {
+          "title": "W3 · Repair a caption-to-certainty argument",
+          "groups": [
+            "Current evidence and scope",
+            "Current task and new response",
+            "Review · Earlier speech task and saved response"
+          ]
+        },
+        {
+          "title": "Additional practice · Earlier room-authority task",
+          "groups": [
+            "Earlier task and saved response"
+          ]
+        },
+        {
+          "title": "W5 · Design an aligned evidence check",
+          "groups": [
+            "Current evidence and scope",
+            "Current task and new response",
+            "Review · Earlier speech task and saved response"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Use the worked picture",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Multimodal Evidence: the case",
+            "02. Follow the deciding steps",
+            "03. Speech pipelines and multimodal evidence — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-3-week-13-connected-review/START_REVIEW.html",
+  "week_sha256": "dd0c9b70369411148a816304d78dfaf4471ddb2c23df592ee2447f956c6b6c37",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

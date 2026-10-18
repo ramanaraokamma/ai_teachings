@@ -1,0 +1,619 @@
+{
+  "lesson": "ai-2/14",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-2/14",
+      "path": "/sections/1/blocks/11/text",
+      "old": "A decision tree asks a feature question and follows a branch to a prediction. A tree with one question has depth one and is sometimes called a stump. Unlike Week 8, where the two output labels were fixed in advance, this week we fit both the question and the label stored at each leaf.",
+      "new": "A decision tree asks a feature question and follows a branch to a prediction. A tree with one question has depth one and is sometimes called a stump. In Week10 the Tower1 rule was supplied. Here the class names are still declared in advance, but training labels determine which question is selected and which class prediction is stored at each leaf."
+    },
+    {
+      "week": "ai-2/14",
+      "path": "/sections/1/blocks/11/presentation/paragraphs/1",
+      "old": "Unlike Week 8, where the two output labels were fixed in advance, this week we fit both the question and the label stored at each leaf.",
+      "new": "In Week10 the Tower1 rule was supplied. Here the class names are still declared in advance, but training labels determine which question is selected and which class prediction is stored at each leaf."
+    },
+    {
+      "week": "ai-2/14",
+      "path": "/teacher/1/blocks/17/text",
+      "old": "A decision tree asks a feature question and follows a branch to a prediction. A tree with one question has depth one and is sometimes called a stump. Unlike Week 8, where the two output labels were fixed in advance, this week we fit both the question and the label stored at each leaf.",
+      "new": "A decision tree asks a feature question and follows a branch to a prediction. A tree with one question has depth one and is sometimes called a stump. In Week10 the Tower1 rule was supplied. Here the class names are still declared in advance, but training labels determine which question is selected and which class prediction is stored at each leaf."
+    },
+    {
+      "week": "ai-2/14",
+      "path": "/teacher/1/blocks/17/presentation/paragraphs/1",
+      "old": "Unlike Week 8, where the two output labels were fixed in advance, this week we fit both the question and the label stored at each leaf.",
+      "new": "In Week10 the Tower1 rule was supplied. Here the class names are still declared in advance, but training labels determine which question is selected and which class prediction is stored at each leaf."
+    },
+    {
+      "week": "ai-2/14",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Choose yes/no questions, build a tree for eight cards, count questions per card, and exchange trees for an unseen trace test.",
+      "new": "Use the supplied six-row training set and four-row validation set. Compare the two candidate questions with their majority leaves, save the fitted depth-one tree and trace the separate validation cases. Keep the new independent training set reserved; no eight-card dataset is required."
+    },
+    {
+      "week": "ai-2/14",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Choose yes/no questions, build a tree for eight cards, count questions per card, and exchange trees for an unseen trace test.",
+      "new": "Use the supplied six-row training set and four-row validation set. Compare the two candidate questions with their majority leaves, save the fitted depth-one tree and trace the separate validation cases. Keep the new independent training set reserved; no eight-card dataset is required."
+    },
+    {
+      "week": "ai-2/14",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied investigation for shared practice. Keep predictions and observed paper-trace results separate. Reserve Fit a new tree independently for the individual first attempt before feedback; do not use the reserved case as a paired lab task."
+    },
+    {
+      "week": "ai-2/14",
+      "path": "/teacher/2/blocks/5/text",
+      "old": "Keep for an independent attempt: A tree asks topic is space, then pages at most 60. A space book has 70 pages. Trace both answers and explain why you cannot stop at the first question.",
+      "new": "Use the earlier changed question as optional later practice. Reserve Fit a new tree independently for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-2/14",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-2/14",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-2/14",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice answer and reason"
+    },
+    {
+      "week": "ai-2/14",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-2/14",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for explaining this week’s idea"
+    },
+    {
+      "week": "ai-2/14",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Fit a new tree independently is the selected independent case."
+    },
+    {
+      "week": "ai-2/14",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Build a tree that identifies eight mystery animals.",
+      "new": "EXPLANATION CHECK  Fit candidate questions and leaf predictions from training labels, freeze the tree, then inspect separate validation evidence."
+    },
+    {
+      "week": "ai-2/14",
+      "path": "/sections/6/blocks/9/text",
+      "old": "Our tree uses a single feature because that question scored better under this procedure. This neither establishes that near causes blockage nor that tall is useless in every dataset. Next week a nearest-neighbour method will predict by comparing examples instead of following learned questions.",
+      "new": "Our tree uses a single feature because that question scored better under this procedure. This neither establishes that near causes blockage nor that tall is useless in every dataset. Next is Week15, Choose Informative Questions. Carry forward candidate questions, branch label counts and training-only selection evidence when comparing how useful a question is."
+    },
+    {
+      "week": "ai-2/14",
+      "path": "/sections/6/blocks/9/presentation/paragraphs/1",
+      "old": "Next week a nearest-neighbour method will predict by comparing examples instead of following learned questions.",
+      "new": "Next is Week15, Choose Informative Questions. Carry forward candidate questions, branch label counts and training-only selection evidence when comparing how useful a question is."
+    },
+    {
+      "week": "ai-2/14",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Week 10 introduces nearest neighbours and distances. Carry forward the training/validation split and baseline. Teacher reference: https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html (reviewed 2026-09-27); its library criteria differ from our stated classroom mistake-count procedure.",
+      "new": "Next is Week15: Choose Informative Questions. Carry forward candidate definitions, label counts, declared selection criteria and separate validation results. Teacher reference: https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html (reviewed2026-09-27); its library criteria differ from this stated classroom mistake-count procedure."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Which question and leaf predictions fit the training labels?",
+          "groups": [
+            "Your learning goals",
+            "Recall the need for separate validation",
+            "The tree you will fit",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Fit a one-question tree from six supplied training rows",
+          "groups": [
+            "A root question, branches and leaves",
+            "The feature meanings and complete training table",
+            "The candidate order, majority rule and tie conventions",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Read the complete depth-one fitting program",
+          "groups": [
+            "Understand the branch counts and strict comparison",
+            "Predict and run both candidate comparisons",
+            "Explain the selected near tree",
+            "Keep assumptions and the depth limit explicit",
+            "Point to a stored prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Challenge a fitted tree with a fresh trace",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Your quick word guide",
+          "groups": [
+            "Core vocabulary",
+            "Terms for the connected explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Freeze the fitted tree, then score its validation predictions",
+          "groups": [
+            "Read the saved near decision",
+            "Predict the four validation outcomes",
+            "Run the complete training-and-validation script",
+            "Keep fitting and validation evidence separate",
+            "Introduce the separate four-book toy training set",
+            "Trace two candidates and their leaf counts",
+            "Predict a new diagram-flag input",
+            "Check after predicting",
+            "Explain feature dependence and the toy-data limit",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep the full fitting record and limit the reliability claim",
+          "groups": [
+            "Retain candidates, counts and versions",
+            "State the selected feature’s limits",
+            "Distinguish classification quality from a balanced partition",
+            "Repair the reliability claim using validation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "The branch prediction comes from its labels, not its name",
+          "groups": [
+            "Explain why near does not mean blocked",
+            "Keep extra depth and final-test use explicit",
+            "Practise both candidate scores in W2",
+            "Repair the fixed-leaf misconception",
+            "Explain the separate diagram tree",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Audit the supplied fitting and validation comparison",
+          "groups": [
+            "Predict, fit, freeze and compare",
+            "Use a tree-specific evidence record",
+            "Explain the revealing mismatch",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Choose a stronger thinking challenge",
+          "groups": [
+            "Pick your next step",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Declare whether the recommender tree is specified or fitted",
+          "groups": [
+            "This week’s inspectable portfolio contribution",
+            "Keep the checkpoint, system and human choices visible",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: check your explanation",
+          "groups": [
+            "Check the evidence and its limit",
+            "Self-check and record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice: A decision tree can stop early",
+          "groups": [
+            "Read the supplied case and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: fit the tree to a different training set",
+          "groups": [
+            "The independent training and validation records",
+            "The required candidate and tie policies",
+            "Your first attempt and support record",
+            "Use feedback after the attempt",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: original lesson checklist",
+          "groups": [
+            "Targets and evidence",
+            "Keep your route and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: explain what was learned and what was only scored",
+          "groups": [
+            "Your explanation without notes",
+            "Return on a changed case"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: the six-picture journey",
+          "groups": [
+            "01. Decision Trees: the case",
+            "02. Follow the deciding steps",
+            "03. Two paths through the learned tree",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare this connected week",
+          "groups": [
+            "Learning goal and precision",
+            "What to prepare",
+            "Main teaching plan",
+            "Opening retrieval and readiness",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach fitting and prediction as separate stages",
+          "groups": [
+            "State feature meanings and fitting scope",
+            "Supply all six training rows",
+            "Model the complete candidate comparison",
+            "Freeze the near tree and collect validation predictions",
+            "Run the complete same-case baseline comparison",
+            "Introduce the separate illustration-label training set",
+            "Trace the book candidates and prediction path",
+            "Change a query without refitting",
+            "Elicit the picture-based explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the reasoning, then remove help",
+          "groups": [
+            "Prompt before revealing",
+            "Expected reasoning and fading help",
+            "Check the misconception before discussion",
+            "Use the pictorial check",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied investigation",
+          "groups": [
+            "Supplied materials and answer guidance",
+            "Run and record",
+            "Keep an inspectable record",
+            "Diagnose the first misunderstanding",
+            "Choose support from the response",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected new case",
+          "groups": [
+            "Selected independent question and key",
+            "Judge explanation, trace and limits",
+            "Give one usable repair action",
+            "W1 Name the parts and decisions",
+            "W2 Verify the candidate scores",
+            "W3 Separate fitting from prediction",
+            "W5 Audit a tie and a claim",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, adapt and return",
+          "groups": [
+            "Project evidence to keep",
+            "Support while preserving the reasoning goal",
+            "Plan the delayed check",
+            "Bridge to next week",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: alternative planning checklist",
+          "groups": [
+            "Preparation and schedule",
+            "Practice and assessment reminders"
+          ]
+        },
+        {
+          "title": "Reference: feedback and records",
+          "groups": [
+            "Keep practice and independent evidence separate",
+            "Repair and portfolio records",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: teach with the six pictures",
+          "groups": [
+            "01. Decision Trees: the case",
+            "02. Follow the deciding steps",
+            "03. Two paths through the learned tree",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall: reconnect earlier ideas",
+          "groups": [
+            "Retrieve and explain",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair the explanation",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W4 · Fit a new tree independently",
+          "groups": [
+            "Read and explain independently",
+            "Keep a fair record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Original learning target",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A complete case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A changed case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and its evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge the evidence in your work",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Original target response space",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W1 · Name the learned root and leaves",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Count each candidate’s branch labels",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Preserve the original fitted tree during scoring",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Independent-case response copy",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W5 · Explain the candidate tie convention",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Use the worked picture",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Decision Trees: the case",
+            "02. Follow the deciding steps",
+            "03. Two paths through the learned tree",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-2-week-14-connected-review/START_REVIEW.html",
+  "week_sha256": "15b78a892ff830bf5fd8b737d26dcf2f425c17f38ce2725f320bebe07f93ec3c",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

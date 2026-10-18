@@ -1,0 +1,611 @@
+{
+  "lesson": "ai-2/32",
+  "sections_reviewed": 53,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-2/32",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Interview a reader, write one need statement, define three measurable tests and two out-of-scope items, then peer-review for testability.",
+      "new": "Use the supplied fictional teacher/session card and records. Write measurable requirements, concrete acceptance inputs and expected outcomes before implementation. Peer-review the plan without interviewing or collecting personal reader data."
+    },
+    {
+      "week": "ai-2/32",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Interview a reader, write one need statement, define three measurable tests and two out-of-scope items, then peer-review for testability.",
+      "new": "Use the supplied fictional teacher/session card and records. Write measurable requirements, concrete acceptance inputs and expected outcomes before implementation. Peer-review the plan without interviewing or collecting personal reader data."
+    },
+    {
+      "week": "ai-2/32",
+      "path": "/teacher/2/blocks/5/text",
+      "old": "Keep for an independent attempt: Define a testable goal for a book recommender serving readers who want short space books. Include a concrete success condition.",
+      "new": "Use the earlier transfer question as optional practice. Reserve Plan a new chooser independently for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-2/32",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied main investigation for shared practice. Reserve Plan a new chooser independently for the individual first attempt. The named extension has separate tasks and feedback."
+    },
+    {
+      "week": "ai-2/32",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice"
+    },
+    {
+      "week": "ai-2/32",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-2/32",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice reasoning"
+    },
+    {
+      "week": "ai-2/32",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-2/32",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for this week’s explanation"
+    },
+    {
+      "week": "ai-2/32",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Plan a new chooser independently is the selected independent task."
+    },
+    {
+      "week": "ai-2/32",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Write a recommender brief and three acceptance tests.",
+      "new": "Require full input fields, explicit decisions and predicted acceptance outcomes, with no claim of execution."
+    },
+    {
+      "week": "ai-2/32",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Next week: Building the data pipeline. Reuse this week's explicit contracts and evidence.",
+      "new": "Next is Week33: Build the Recommender. Reuse the frozen schema, validation policy, score, tie rule and acceptance cases; compare implementation output with independently derived expectations."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "What must the chooser do before we build it?",
+          "groups": [
+            "Your learning goals",
+            "Recall filtering before ranking",
+            "Your end goal",
+            "Data extension · Preserve invalid durations",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Plan a small, bounded application",
+          "groups": [
+            "The20-minute activity-chooser brief",
+            "Data extension · A different accepted-duration question",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Specify fields, validation, score and tie policy",
+          "groups": [
+            "Predict the printed configuration",
+            "Trace the planned pipeline",
+            "Fix the schema and testable requirements",
+            "Complete the missing edge-case policies",
+            "Explain the deciding step",
+            "Data extension · Complete accepted-duration script",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare testable requirements with vague promises",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Words for the main lesson and extension",
+          "groups": [
+            "Core words",
+            "Main explanation terms",
+            "Extension terms",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Write main acceptance cases, then inspect a separate pictured chooser",
+          "groups": [
+            "Read concrete main-contract acceptance cases",
+            "Write the boundary and no-match cases yourself",
+            "Start the separate reading-break contract",
+            "Trace its limit8 and ID tie",
+            "Predict the limit5 change",
+            "Check after predicting",
+            "Explain scope and equality",
+            "Data extension · Add30 to the accepted-duration list",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Replace a vague success claim with a checkable one",
+          "groups": [
+            "Repair the best-activity claim",
+            "Design one case that could reveal a failure",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise writing an acceptance case with less help",
+          "groups": [
+            "Replace vague scope with an explicit contract",
+            "Complete main W2",
+            "Repair a one-run overclaim",
+            "Explain the separate pictured equality test",
+            "Keep independent planning separate",
+            "Data extension · Audit the accepted denominator",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Produce a complete specification and acceptance table",
+          "groups": [
+            "The fictional user card",
+            "Plan, predict and peer-check reproducibility",
+            "Keep expected and actual evidence separate",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Choose a stronger explanation",
+          "groups": [
+            "Thinking ladder",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Freeze a specification the next build can follow",
+          "groups": [
+            "This week’s concrete contribution",
+            "Keep the checkpoint and human choice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Check your explanation",
+          "groups": [
+            "Evidence and limits",
+            "Self-check",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice · The earlier complete case",
+          "groups": [
+            "Question and given facts",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: plan the fresh15-minute club chooser",
+          "groups": [
+            "Independent brief and evidence scope",
+            "Your first attempt and help record",
+            "Use feedback afterwards",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier checklist",
+          "groups": [
+            "Checklist and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: show how each requirement can be checked",
+          "groups": [
+            "Explain without notes",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictures, feedback and repair",
+          "groups": [
+            "First supported question",
+            "Check after trying",
+            "Changed-case question",
+            "Check changed case",
+            "Repair and keep evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The six-picture journey",
+          "groups": [
+            "01. Project Problem and Success Test: the case",
+            "02. Follow the deciding steps",
+            "03. Follow the evidence",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the main lesson and its retained extension",
+          "groups": [
+            "Goal and preparation",
+            "Main plan",
+            "Retrieval and readiness",
+            "Materials and extension planning",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Model specification before implementation",
+          "groups": [
+            "State the main purpose and schema",
+            "Run the configuration example and name its limit",
+            "Model complete acceptance cases",
+            "Read the separate pictured contract",
+            "Trace its equality and tie behavior",
+            "Predict a lower limit",
+            "Keep the pictured evidence boundary",
+            "Data extension · Complete summary script and denominator",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the main explanation, then fade support",
+          "groups": [
+            "Main completion question and key",
+            "Main individual check",
+            "Pictorial question and changed case",
+            "Keep learners explaining",
+            "Extension teaching cycle",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied main investigation",
+          "groups": [
+            "Supplied records and answer guidance",
+            "Predict, investigate and record",
+            "Keep the evidence",
+            "Main misconceptions",
+            "Choose support",
+            "Extension misconceptions",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected main independent task",
+          "groups": [
+            "Selected independent question and key",
+            "Judge reasoning and limits",
+            "Give one repair action",
+            "W1 Name the user need",
+            "W2 Write an acceptance case",
+            "W3 Repair vague scope",
+            "W5 State non-goals",
+            "Extension questions and keys",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, support and return",
+          "groups": [
+            "Project record",
+            "Main support and fresh assessment",
+            "Delayed return",
+            "Bridge to next week",
+            "Extension support and reassessment",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative teaching checklist",
+          "groups": [
+            "Planning reference"
+          ]
+        },
+        {
+          "title": "Reference · Feedback and retained evidence",
+          "groups": [
+            "Record and repair",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Project Problem and Success Test: the case",
+            "02. Follow the deciding steps",
+            "03. Follow the evidence",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 17,
+      "sections": [
+        {
+          "title": "Recall · Retrieve earlier ideas",
+          "groups": [
+            "Your evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair a claim",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W4 · Plan a new chooser independently",
+          "groups": [
+            "Your evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier target",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier worked case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Changed case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · A revealing test",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge your evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier transfer",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W1 · State purpose and decision owner",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Write concrete tie/order inputs",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Repair vague success",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Selected W4 response copy",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W5 · State justified non-goals",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extension · A reproducible data investigation — W1 State the question",
+          "groups": [
+            "Extension question and record"
+          ]
+        },
+        {
+          "title": "Extension · W2 Trace exclusions",
+          "groups": [
+            "Schema, question and response"
+          ]
+        },
+        {
+          "title": "Extension · A reproducible data investigation — W3 Repair a denominator",
+          "groups": [
+            "Extension question and record"
+          ]
+        },
+        {
+          "title": "Extension · A reproducible data investigation — W4 Investigate independently",
+          "groups": [
+            "Extension question and record"
+          ]
+        },
+        {
+          "title": "Extension · A reproducible data investigation — W5 Support reproduction",
+          "groups": [
+            "Extension question and record"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Reference · Project milestone",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictures, feedback and repair",
+          "groups": [
+            "First supported question",
+            "Check after trying",
+            "Changed-case question",
+            "Check changed case",
+            "Repair and keep evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Project Problem and Success Test: the case",
+            "02. Follow the deciding steps",
+            "03. Follow the evidence",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 26,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 26,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-2-week-32-connected-review/START_REVIEW.html",
+  "week_sha256": "a40dc137edbe82988fa2bb15c748851ae12a1c5d38fd90f98ad4848e219b9ed2",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  },
+  "teacher_lab_key": "Reviewed appended key uses complete sentences and short paragraphs; original source blocks unchanged."
+}

@@ -1,0 +1,743 @@
+{
+  "lesson": "ai-2/24",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-2/24",
+      "path": "/classroom/goals/0",
+      "old": "Implement a deterministic recommender",
+      "new": "Separate exposure, clicks and explicit preference feedback"
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/method/goals/0",
+      "old": "Implement a deterministic recommender",
+      "new": "Separate exposure, clicks and explicit preference feedback"
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/sections/0/blocks/1/text",
+      "old": "I can implement a deterministic recommender.",
+      "new": "I can separate exposure, clicks and explicit preference feedback."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/classroom/goals/1",
+      "old": "Handle ties and no eligible options",
+      "new": "Trace how a selection policy changes later evidence"
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/method/goals/1",
+      "old": "Handle ties and no eligible options",
+      "new": "Trace how a selection policy changes later evidence"
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/sections/0/blocks/2/text",
+      "old": "I can handle ties and no eligible options.",
+      "new": "I can trace how a selection policy changes later evidence."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/classroom/goals/2",
+      "old": "Explain recommendations with their limits",
+      "new": "Limit conclusions from unshown items and small exposure counts"
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/method/goals/2",
+      "old": "Explain recommendations with their limits",
+      "new": "Limit conclusions from unshown items and small exposure counts"
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/sections/0/blocks/3/text",
+      "old": "I can explain recommendations with their limits.",
+      "new": "I can limit conclusions from unshown items and small exposure counts."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/method/goal",
+      "old": "Implement a deterministic recommender",
+      "new": "Separate exposure, clicks and explicit preference feedback"
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Act out three recommendation rounds. Log shown items, choices, and updated profile; add an exploration rule and compare diversity.",
+      "new": "Use the supplied three-round click-count policy and A,B,A exposure plan under the same scripted events. Log displays and clicks separately and compare distinct displayed IDs. Do not claim real preference or satisfaction was measured."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Act out three recommendation rounds. Log shown items, choices, and updated profile; add an exploration rule and compare diversity.",
+      "new": "Use the supplied three-round click-count policy and A,B,A exposure plan under the same scripted events. Log displays and clicks separately and compare distinct displayed IDs. Do not claim real preference or satisfaction was measured."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/independent_answer",
+      "old": "X and Y score 9; Z is excluded. X wins alphabetically in either order. Limit 9 returns None.",
+      "new": "X has1/4=25% and Y2/4=50% observed click rates. Z has no exposure and0/0 is unavailable, not measured0%. Selecting Y repeatedly can increase Y’s opportunities while leaving Z unobserved. After the supplied Z display with no click, Z has1 display,0 clicks and observed0/1=0%; one nonclick does not establish permanent dislike or future performance."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/method/independent/title",
+      "old": "Implement independently",
+      "new": "Audit a new exposure log independently"
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/method/independent/task",
+      "old": "Use the function with X (fun 4, learning 1, minutes 12), Y (3,3,10), Z (5,5,13), limit 12. Predict the winner, reverse the list and retest. Also test limit 9.",
+      "new": "A fresh fictional log has X displayed4 times with1 click, Y displayed4 times with2 clicks, and Z displayed0 times with0 clicks. Calculate the observed click rates for X and Y; state why Z has no measured click rate. Explain how always selecting the highest raw-click item can shape future evidence. Then a planned trial shows Z once with no click: update Z’s counts and rate, and state one limit of that observation."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/method/independent/answer",
+      "old": "X and Y score 9; Z is excluded. X wins alphabetically in either order. Limit 9 returns None.",
+      "new": "X has1/4=25% and Y2/4=50% observed click rates. Z has no exposure and0/0 is unavailable, not measured0%. Selecting Y repeatedly can increase Y’s opportunities while leaving Z unobserved. After the supplied Z display with no click, Z has1 display,0 clicks and observed0/1=0%; one nonclick does not establish permanent dislike or future performance."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/method/independent/source",
+      "old": "primary source W4, first curriculum occurrence",
+      "new": "Reviewed feedback-loop transfer; retain earlier implementation task as labelled review"
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/method/practice/title",
+      "old": "Handle no match",
+      "new": "Separate no exposure from a nonclick"
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/method/practice/prompt",
+      "old": "State recommend([], 10) and the worked items with limit 8.",
+      "new": "B was never shown, then a planned trial shows B once with no click. Give the before/after exposure and click counts, identify which click rate is unavailable and limit the inference."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/method/practice/answer",
+      "old": "Both return None; the caller should display no eligible option.",
+      "new": "Before:0 displays,0 clicks, rate unavailable. After:1 display,0 clicks, observed rate0/1=0%; this is one observed nonclick, not a permanent dislike."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/method/hinge/prompt",
+      "old": "Use the worked case for Implementing a recommender. Proposed explanation: “A successful run proves the conclusion”. Decide whether this explanation is supported. Point to the step or supplied fact that decides; explain your repair if needed.",
+      "new": "Does zero clicks prove dislike when an item was never shown? Explain using exposure and the denominator."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/method/hinge/answer",
+      "old": "The recommendation follows a written scoring policy. It does not learn preferences, prove learning benefit or authorize an action. Display the chosen rule and let a person review whether an option is suitable.",
+      "new": "No. With zero exposures the click rate is unavailable; the record shows no opportunity, not a measured dislike."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/classroom/flow/2/task",
+      "old": "State recommend([], 10) and the worked items with limit 8.",
+      "new": "B was never shown, then a planned trial shows B once with no click. Give the before/after exposure and click counts, identify which click rate is unavailable and limit the inference."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied investigation for shared practice. Keep predictions and observed paper-trace results separate. Reserve Audit a new exposure log independently for the individual first attempt before feedback; do not use the reserved case as a paired lab task."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/teacher/2/blocks/5/text",
+      "old": "Keep for an independent attempt: Only space books are shown, so nearly every click is on space. Can these clicks prove readers dislike other topics? Explain the loop.",
+      "new": "Use the earlier changed question as optional later practice. Reserve Audit a new exposure log independently for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice answer and reason"
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for explaining this week’s idea"
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Audit a new exposure log independently is the selected independent case."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Map how repeated clicks can narrow future suggestions.",
+      "new": "EXPLANATION CHECK  Keep display opportunities separate from clicks, describe the feedback mechanism and limit preference claims."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/teacher/2/blocks/16/text",
+      "old": "Completion task: State recommend([], 10) and the worked items with limit 8.",
+      "new": "Completion task: B was never shown, then a planned trial shows B once with no click. Give the before/after exposure and click counts, identify which click rate is unavailable and limit the inference."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/teacher/2/blocks/17/text",
+      "old": "Teacher check: Both return None; the caller should display no eligible option.",
+      "new": "Teacher check: Before:0 displays,0 clicks, rate unavailable. After:1 display,0 clicks, observed rate0/1=0%; this is one observed nonclick, not a permanent dislike."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/teacher/2/blocks/20/text",
+      "old": "Use the worked case for Implementing a recommender. Proposed explanation: “A successful run proves the conclusion”. Decide whether this explanation is supported. Point to the step or supplied fact that decides; explain your repair if needed.",
+      "new": "Proposed explanation: Zero clicks proves dislike even when the item was never displayed. Use the exposure denominator to repair the claim."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/teacher/2/blocks/21/text",
+      "old": "Expected correction: The recommendation follows a written scoring policy. It does not learn preferences, prove learning benefit or authorize an action. Display the chosen rule and let a person review whether an option is suitable.",
+      "new": "Expected correction: No exposure means no observed click rate or opportunity; it is not measured dislike."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/teacher/5/blocks/11/text",
+      "old": "Trace best and best_score row by row. Extension: return a record with name, score and reason while retaining the same selection policy.",
+      "new": "Use separate display and click counters with one card per event. A never-shown card stays outside the rate calculation. Extension: compare two predeclared exposure plans under the same scripted event assumption and state why a real causal claim would need more evidence."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/teacher/5/blocks/12/text",
+      "old": "Independent W4 evidence: X and Y score 9; Z is excluded. X wins alphabetically in either order. Limit 9 returns None. Record whether the learner needed no help, a hint or explanation. Fresh retry: B (2,4,8), C (3,2,8), A (5,5,9), limit 8. B/C tie at 8; B wins. Limit 7 returns None.",
+      "new": "For the current independent case require X1/4=25%,Y2/4=50%,Z rate unavailable at0 displays, a policy→exposure→feedback explanation, and after the supplied trial Z0/1=0% without a permanent-dislike claim. Fresh retry: P2 displays/1click,Q0/0,R4/1; require denominators and a documented future evidence plan before feedback."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Next week: File input and output. Reuse this week's explicit contracts and evidence.",
+      "new": "Next is Week25: Text as Pieces. Carry forward the distinction between observed records and inferred meaning when choosing a text representation."
+    },
+    {
+      "week": "ai-2/24",
+      "path": "/sections/15/blocks/0/text",
+      "old": "Close your notes. Explain this goal in your own words: Implement a deterministic recommender",
+      "new": "Close your notes. Explain how selection can change exposure and the feedback available for the next recommendation."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Did the item get no clicks, or no chance to be seen?",
+          "groups": [
+            "The current feedback-loop goals",
+            "Recall a hard eligibility requirement",
+            "Your end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Define exposure and feedback before updating the policy",
+          "groups": [
+            "The loop and the unshown-item problem",
+            "The complete two-book event contract",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace selection, display, click and the next selection",
+          "groups": [
+            "Predict and run the complete simulation",
+            "Explain selection, saved records and scripted evidence",
+            "Review · Earlier deterministic scoring-function implementation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Distinguish not shown from shown without a click",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Your quick word guide",
+          "groups": [
+            "Core vocabulary",
+            "Terms for the connected explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Follow the three-round click-count loop",
+          "groups": [
+            "Read the initial tie and invented three-round events",
+            "Trace repeated selection and missing exposure",
+            "Predict a planned B display with no click",
+            "Check after predicting",
+            "Explain the needed field and evidence limits",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Raw clicks cannot reveal preferences independently of exposure",
+          "groups": [
+            "Read the denominator and meaning limits",
+            "Review · Earlier score explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare logs while keeping the event assumption fixed",
+          "groups": [
+            "Practise the two complete simulation records",
+            "Explain the pictured exposure field",
+            "Review · Earlier order-dependent scoring repair",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Audit both supplied three-round exposure policies",
+          "groups": [
+            "Predict, execute, log and compare",
+            "Keep evidence and explain the observation limit",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Choose a stronger thinking challenge",
+          "groups": [
+            "Pick your next step",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Record the evidence your recommender creates as well as uses",
+          "groups": [
+            "This week’s concrete contribution",
+            "Keep the checkpoint and human choices",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: check your explanation",
+          "groups": [
+            "Check the evidence and its limit",
+            "Self-check and record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice: Exposure affects the feedback you collect",
+          "groups": [
+            "Read the supplied case and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: audit the fresh X/Y/Z exposure log",
+          "groups": [
+            "Current independent task and new response",
+            "Fair attempt and feedback",
+            "Review · Earlier implementation task and saved response",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: original lesson checklist",
+          "groups": [
+            "Targets and evidence",
+            "Keep your route and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: explain how selection can shape the next evidence",
+          "groups": [
+            "Your explanation and return plan"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: the six-picture journey",
+          "groups": [
+            "01. Feedback Loops: the case",
+            "02. Follow the deciding steps",
+            "03. Exposure and clicks after the invented three rounds",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the feedback-loop investigation",
+          "groups": [
+            "Current targets and preparation",
+            "Retrieve prior score/constraint knowledge",
+            "Flexible teaching plan",
+            "Review · Earlier implementation setup",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach the exposure-feedback mechanism before interpreting a click total",
+          "groups": [
+            "State the concrete feedback loop",
+            "Trace the pictured initial tie and3rounds",
+            "Explain the observation and preference limits",
+            "Predict the one-display nonclick trial",
+            "Run the complete scripted comparison",
+            "Elicit the exposure-field explanation",
+            "Review · Earlier scoring-function explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the current event-log reasoning, then fade help",
+          "groups": [
+            "Main sequence",
+            "Current completion task and key",
+            "Current misconception check",
+            "Pictorial exposure question",
+            "Keep every learner explaining",
+            "Review · Earlier implementation sequence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied event-log comparison",
+          "groups": [
+            "Current investigation and answer guidance",
+            "Predict, simulate and inspect",
+            "Keep event evidence",
+            "Current misconception support",
+            "Choose accessible support",
+            "Review · Earlier implementation misconceptions",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the current X/Y/Z exposure-log transfer",
+          "groups": [
+            "Current independent question and checked key",
+            "Judge reasoning and limits",
+            "Give one repair action",
+            "Current workbook answer guidance",
+            "Review · Earlier implementation questions and keys",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, adapt and return",
+          "groups": [
+            "Project evidence to keep",
+            "Support while preserving the reasoning goal",
+            "Plan the delayed check",
+            "Bridge to next week",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: alternative planning checklist",
+          "groups": [
+            "Preparation and schedule",
+            "Practice and assessment reminders"
+          ]
+        },
+        {
+          "title": "Reference: feedback and records",
+          "groups": [
+            "Keep practice and independent evidence separate",
+            "Repair and portfolio records",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: teach with the six pictures",
+          "groups": [
+            "01. Feedback Loops: the case",
+            "02. Follow the deciding steps",
+            "03. Exposure and clicks after the invented three rounds",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall: reconnect earlier ideas",
+          "groups": [
+            "Retrieve and explain",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair the explanation",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W4 · Audit the new X/Y/Z log independently",
+          "groups": [
+            "Current independent task and new response",
+            "Fair-attempt record",
+            "Review · Earlier implementation task and saved response"
+          ]
+        },
+        {
+          "title": "Reference · Original learning target",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A complete case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A changed case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and its evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge the evidence in your work",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Original target response space",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W1 · Read display opportunities and clicks",
+          "groups": [
+            "Current event contract",
+            "Current task and new answer field",
+            "Review · Earlier implementation task and saved response"
+          ]
+        },
+        {
+          "title": "W2 · Interpret a planned nonclick",
+          "groups": [
+            "Current event contract",
+            "Current task and new answer field",
+            "Review · Earlier implementation task and saved response"
+          ]
+        },
+        {
+          "title": "W3 · Repair a raw-click preference claim",
+          "groups": [
+            "Current event contract",
+            "Current task and new answer field",
+            "Review · Earlier implementation task and saved response"
+          ]
+        },
+        {
+          "title": "Review · Earlier implementation transfer",
+          "groups": [
+            "Earlier task and saved response"
+          ]
+        },
+        {
+          "title": "W5 · Limit the simulated diversity result",
+          "groups": [
+            "Current event contract",
+            "Current task and new answer field",
+            "Review · Earlier implementation task and saved response"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Use the worked picture",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Feedback Loops: the case",
+            "02. Follow the deciding steps",
+            "03. Exposure and clicks after the invented three rounds",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-2-week-24-connected-review/START_REVIEW.html",
+  "week_sha256": "24c4d1bbe87ff2abf4d1981e960ef87f51058c923102e1d0501a765bdd87c5cc",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

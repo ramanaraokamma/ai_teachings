@@ -1,0 +1,592 @@
+{
+  "lesson": "ai-3/18",
+  "sections_reviewed": 58,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-3/18",
+      "path": "/sections/0/blocks/18/text",
+      "old": "Recall Ranking and retrieval evaluation. Explain why a recorded result needs its input conditions and evidence source before it can support a claim.",
+      "new": "Recall Source Quality: identify the question, relevant time and authority before selecting a passage."
+    },
+    {
+      "week": "ai-3/18",
+      "path": "/sections/0/blocks/20/text",
+      "old": "Recall Retrieval and indexing. Explain why a recorded result needs its input conditions and evidence source before it can support a claim.",
+      "new": "Recall Model Memory vs Retrieval: an inspected passage is different from generated wording. A missing relevant source leaves a factual gap."
+    },
+    {
+      "week": "ai-3/18",
+      "path": "/sections/0/blocks/23/text",
+      "old": "Recall Chunking and document structure. Explain why a recorded result needs its input conditions and evidence source before it can support a claim.",
+      "new": "Preview chunking: keep a rule with its conditions and exceptions. Preview ranking: a similarity score is not a source-quality guarantee. These two strands are explained in this week’s extension."
+    },
+    {
+      "week": "ai-3/18",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Run paper RAG with mixed passages, rank relevance, draft only from selected evidence, cite, and test a missing-answer case.",
+      "new": "Use the four complete S4/R2/G3/M1 passage cards for paper RAG. Rank by the exact question, draft only supported claims, cite the source version and test the missing-duration question. Record paper traces without claiming a live retrieval or model run."
+    },
+    {
+      "week": "ai-3/18",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Run paper RAG with mixed passages, rank relevance, draft only from selected evidence, cite, and test a missing-answer case.",
+      "new": "Use the four complete S4/R2/G3/M1 passage cards for paper RAG. Rank by the exact question, draft only supported claims, cite the source version and test the missing-duration question. Record paper traces without claiming a live retrieval or model run."
+    },
+    {
+      "week": "ai-3/18",
+      "path": "/teacher/2/blocks/5/text",
+      "old": "Keep for an independent attempt: A retrieved passage says the club meets Tuesday; it says nothing about cost. The assistant answers Tuesday, free entry. Which part is grounded and what should replace the unsupported part?",
+      "new": "Use the earlier transfer question as optional practice. Reserve Ground the new room H response independently for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-3/18",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied main investigation for shared practice. Reserve Ground the new room H response independently for the individual first attempt. The named extension has separate tasks and feedback."
+    },
+    {
+      "week": "ai-3/18",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice"
+    },
+    {
+      "week": "ai-3/18",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-3/18",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice reasoning"
+    },
+    {
+      "week": "ai-3/18",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-3/18",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for this week’s explanation"
+    },
+    {
+      "week": "ai-3/18",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Ground the new room H response independently is the selected independent task."
+    },
+    {
+      "week": "ai-3/18",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Trace query → retrieve → select → answer → cite.",
+      "new": "Require claim-level support, preserved conditions and an explicit unknown maintenance status."
+    },
+    {
+      "week": "ai-3/18",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Next connection: Claim support and citation evaluation. Preserve the current case record and retrieve its evidence boundary before moving on.",
+      "new": "Next is Week 19: Embeddings and Semantic Search. Carry forward source scope and the distinction between a ranking score and evidence supporting an answer."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Can every answer claim point to its evidence?",
+          "groups": [
+            "Your main learning goals",
+            "Recall and preview the evidence route",
+            "Your end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Retrieve evidence, then check what the answer adds",
+          "groups": [
+            "Understand RAG and grounding",
+            "Extension · Chunking and ranking preview",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Build the claim-evidence map before final wording",
+          "groups": [
+            "Trace the main evidence route",
+            "Explain the deciding check",
+            "Extension · Chunk identity and linked exceptions",
+            "Extension · Exact toy lexical and vector rules",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare grounded answers with unsupported additions",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Words for the main lesson and extension",
+          "groups": [
+            "Core words",
+            "Main explanation terms",
+            "Extension terms",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace the ice explanation back to S4",
+          "groups": [
+            "Read the complete source note",
+            "Map the two supported claims",
+            "Predict the exact-duration question",
+            "Check after predicting",
+            "State source scope and the missing detail",
+            "Separate practice · Room C approval and capacity",
+            "Extension · Preserve a maintenance exception",
+            "Extension · Compare exact toy ranking scores",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Find the unsupported detail after retrieval",
+          "groups": [
+            "Repair the duration shortcut",
+            "Design a revealing follow-up",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise a grounded answer with less help",
+          "groups": [
+            "The grounding boundary",
+            "Complete the room C claim map",
+            "Repair an all-future-cases claim",
+            "Explain the pictured missing duration",
+            "Keep the independent case separate",
+            "Extension · Chunking tasks",
+            "Extension · Ranking tasks",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run paper RAG with four complete passages",
+          "groups": [
+            "All supplied passage cards",
+            "Predict, select, draft, cite and audit",
+            "Keep the evidence trail",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Choose a stronger explanation",
+          "groups": [
+            "Thinking ladder",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep the project’s claim-to-source trail",
+          "groups": [
+            "This week’s contribution",
+            "Retain the checkpoint and human choice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Check your explanation",
+          "groups": [
+            "Evidence and limits",
+            "Self-check",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice · The earlier complete case",
+          "groups": [
+            "Question and given facts",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: ground the fresh room H response",
+          "groups": [
+            "Independent sources and scope",
+            "Your first attempt and help record",
+            "Use feedback afterwards",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier checklist",
+          "groups": [
+            "Checklist and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: show the passage behind each factual claim",
+          "groups": [
+            "Explain without notes",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictures, feedback and repair",
+          "groups": [
+            "First supported question",
+            "Check after trying",
+            "Changed-case question",
+            "Check changed case",
+            "Repair and keep evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The six-picture journey",
+          "groups": [
+            "01. Retrieval Augmented Generation: the case",
+            "02. Follow the deciding steps",
+            "03. Building a grounded answer — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the main lesson and its retained extension",
+          "groups": [
+            "Goal and preparation",
+            "Main plan",
+            "Retrieval and readiness",
+            "Materials and extension planning",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach retrieval and faithful claim use as separate stages",
+          "groups": [
+            "Model the simple evidence route",
+            "Explain grounding and claim mapping",
+            "Trace separate room C practice",
+            "Read the complete S4 case",
+            "Map supported science claims",
+            "Predict missing duration",
+            "State source scope and picture limits",
+            "Extension · Chunk boundaries and exceptions",
+            "Extension · Toy lexical and dot-product ranks",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the main explanation, then fade support",
+          "groups": [
+            "Main completion question and key",
+            "Main individual check",
+            "Pictorial question and changed case",
+            "Keep learners explaining",
+            "Extension teaching cycle",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied main investigation",
+          "groups": [
+            "Supplied records and answer guidance",
+            "Predict, investigate and record",
+            "Keep the evidence",
+            "Main misconceptions",
+            "Choose support",
+            "Extension misconceptions",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected main independent task",
+          "groups": [
+            "Selected independent question and key",
+            "Judge reasoning and limits",
+            "Give one repair action",
+            "W1 Explain the mechanism",
+            "W2 Trace the worked case",
+            "W3 Audit the limit",
+            "W5 Design a revealing follow-up",
+            "Extension questions and keys",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, support and return",
+          "groups": [
+            "Project record",
+            "Main support and fresh assessment",
+            "Delayed return",
+            "Bridge to next week",
+            "Extension support and reassessment",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative teaching checklist",
+          "groups": [
+            "Planning reference"
+          ]
+        },
+        {
+          "title": "Reference · Feedback and retained evidence",
+          "groups": [
+            "Record and repair",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Retrieval Augmented Generation: the case",
+            "02. Follow the deciding steps",
+            "03. Building a grounded answer — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 22,
+      "sections": [
+        {
+          "title": "Recall · Retrieve earlier ideas",
+          "groups": [
+            "Your evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair a claim",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W4 · Ground the new room H response independently",
+          "groups": [
+            "Your evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier target",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier worked case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Changed case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · A revealing test",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge your evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier transfer",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W1 · Explain grounding",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Trace room C support",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Audit a source-name shortcut",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Selected W4 response copy",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W5 · Design a missing-answer check",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extension · Chunking and document structure — W1 Explain the mechanism",
+          "groups": [
+            "Reference procedure",
+            "Extension task and response"
+          ]
+        },
+        {
+          "title": "Extension · Chunking and document structure — W2 Trace the worked case",
+          "groups": [
+            "Reference procedure",
+            "Extension task and response"
+          ]
+        },
+        {
+          "title": "Extension · Chunking and document structure — W3 Audit the limit",
+          "groups": [
+            "Reference procedure",
+            "Extension task and response"
+          ]
+        },
+        {
+          "title": "Extension · Chunking and document structure — W4 Apply a new case independently",
+          "groups": [
+            "Reference procedure",
+            "Extension task and response"
+          ]
+        },
+        {
+          "title": "Extension · Chunking and document structure — W5 Design a revealing follow-up",
+          "groups": [
+            "Reference procedure",
+            "Extension task and response"
+          ]
+        },
+        {
+          "title": "Extension · Lexical and vector retrieval — W1 Explain the mechanism",
+          "groups": [
+            "Reference procedure",
+            "Extension task and response"
+          ]
+        },
+        {
+          "title": "Extension · Lexical and vector retrieval — W2 Trace the worked case",
+          "groups": [
+            "Reference procedure",
+            "Extension task and response"
+          ]
+        },
+        {
+          "title": "Extension · Lexical and vector retrieval — W3 Audit the limit",
+          "groups": [
+            "Reference procedure",
+            "Extension task and response"
+          ]
+        },
+        {
+          "title": "Extension · Lexical and vector retrieval — W4 Apply a new case independently",
+          "groups": [
+            "Reference procedure",
+            "Extension task and response"
+          ]
+        },
+        {
+          "title": "Extension · Lexical and vector retrieval — W5 Design a revealing follow-up",
+          "groups": [
+            "Reference procedure",
+            "Extension task and response"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Reference · Project milestone",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictures, feedback and repair",
+          "groups": [
+            "First supported question",
+            "Check after trying",
+            "Changed-case question",
+            "Check changed case",
+            "Repair and keep evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Retrieval Augmented Generation: the case",
+            "02. Follow the deciding steps",
+            "03. Building a grounded answer — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  }
+}

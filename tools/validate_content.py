@@ -9,8 +9,9 @@ corrections=collections.defaultdict(lambda:collections.defaultdict(set))
 if correction_path.exists():
  for row in json.loads(correction_path.read_text())['corrections']:
   corrections[row['week']][row['old']].add(row['new'])
+from source_preservation import retained as reviewed_text_retained
 def retained(week,text,actual):
- return text in actual or any(replacement in actual for replacement in corrections[week].get(text,()))
+ return reviewed_text_retained(week,text,actual,corrections)
 def strings(obj):
  if isinstance(obj,str):yield obj
  elif isinstance(obj,list):

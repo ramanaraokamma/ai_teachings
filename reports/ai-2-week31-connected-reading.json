@@ -1,0 +1,628 @@
+{
+  "lesson": "ai-2/31",
+  "sections_reviewed": 53,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-2/31",
+      "path": "/sections/0/blocks/18/text",
+      "old": "Recall Authentication and authorisation. Explain why a recorded result needs its input conditions and evidence source before it can support a claim.",
+      "new": "Recall Agents and Tools: a valid state transition does not itself authorise an operation. This week, check who may do what to which resource before execution."
+    },
+    {
+      "week": "ai-2/31",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Map actions by consequence, grant minimum permissions, add adult gates, test a denied request, and verify the workflow stops safely.",
+      "new": "Audit the five supplied catalogue proposals under read R2/R5 only, then draw a fictional draft→adult review→permitted-action gate. Check exact content and destination. All decisions are paper simulations; do not execute messages, edits or purchases."
+    },
+    {
+      "week": "ai-2/31",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Map actions by consequence, grant minimum permissions, add adult gates, test a denied request, and verify the workflow stops safely.",
+      "new": "Audit the five supplied catalogue proposals under read R2/R5 only, then draw a fictional draft→adult review→permitted-action gate. Check exact content and destination. All decisions are paper simulations; do not execute messages, edits or purchases."
+    },
+    {
+      "week": "ai-2/31",
+      "path": "/teacher/2/blocks/5/text",
+      "old": "Keep for an independent attempt: A teacher allows a tool to draft a message but forbids sending. The draft is correct. May the agent send it? Explain the boundary.",
+      "new": "Use the earlier transfer question as optional practice. Reserve Decide inventory calls independently for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-2/31",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied main investigation for shared practice. Reserve Decide inventory calls independently for the individual first attempt. The named extension has separate tasks and feedback."
+    },
+    {
+      "week": "ai-2/31",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice"
+    },
+    {
+      "week": "ai-2/31",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-2/31",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice reasoning"
+    },
+    {
+      "week": "ai-2/31",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-2/31",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for this week’s explanation"
+    },
+    {
+      "week": "ai-2/31",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Decide inventory calls independently is the selected independent task."
+    },
+    {
+      "week": "ai-2/31",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Place approval gates in a field-trip planning workflow.",
+      "new": "Require the permitted operation and object for each call; a generated plan cannot expand authority."
+    },
+    {
+      "week": "ai-2/31",
+      "path": "/teacher/2/blocks/30/text",
+      "old": "Individual check: For Privacy and least privilege, use its worked case to evaluate this proposed explanation: “A successful run proves the conclusion”. Explain the deciding step.",
+      "new": "Individual check: The toy role-policy function returns True for a permitted read. Does that establish that every collected field is necessary and can be retained indefinitely? Explain what else must be decided."
+    },
+    {
+      "week": "ai-2/31",
+      "path": "/teacher/2/blocks/31/text",
+      "old": "Expected correction: Retention must be tied to a purpose and school policy rather than a guessed universal number of days. Identify who can correct or delete records and avoid keeping raw responses indefinitely just because storage is available.",
+      "new": "Expected correction: No. A permission-table result does not justify unnecessary fields, authenticate the caller or specify retention. Choose fields for the stated purpose, use an approved retention/deletion process and name the responsible owner."
+    },
+    {
+      "week": "ai-2/31",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Next connection: Testing pure components. Preserve the current case record and retrieve its evidence boundary before moving on.",
+      "new": "Next is Week32: Project Problem and Success Test. Carry forward exact task scope, source checks and human decision boundaries when defining project success."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Who may do what to which record?",
+          "groups": [
+            "Your learning goals",
+            "Recall control flow and authority",
+            "Your end goal",
+            "Privacy extension · Is a name needed?",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Grant only the capabilities the task requires",
+          "groups": [
+            "The least-privilege idea",
+            "Use invented records and policies",
+            "Privacy extension · A fictional dashboard",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace a scoped request before execution",
+          "groups": [
+            "The reporting-assistant contract",
+            "Read the policy as separate dimensions",
+            "Privacy extension · Trace role permissions in complete code",
+            "Explain the deciding evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare permitted reads and denied operations",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Words for the main lesson and extension",
+          "groups": [
+            "Core words",
+            "Main explanation terms",
+            "Extension terms",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare a public-room policy and a separate catalogue token",
+          "groups": [
+            "Try the reporting-assistant proposal",
+            "Check both scope violations",
+            "Read the separate catalogue token",
+            "Trace its three proposals",
+            "Predict the proposed typo correction",
+            "Check after predicting",
+            "Keep permission and correctness separate",
+            "Privacy extension · A hidden menu is not enforcement",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Find the missing scope check",
+          "groups": [
+            "Repair the authorised-object argument",
+            "Propose a revealing permission test",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise the permission trace with less help",
+          "groups": [
+            "State the authority boundary",
+            "Complete main W2",
+            "Repair a claim before discussion",
+            "Explain the catalogue picture",
+            "Keep the independent task separate",
+            "Privacy extension · Minimise fields and trace the role policy",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Audit complete proposals and place a review gate",
+          "groups": [
+            "The supplied catalogue proposals",
+            "Predict, check both dimensions and design the gate",
+            "Keep the evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Choose a stronger explanation",
+          "groups": [
+            "Thinking ladder",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep recommendation, review and execution distinct",
+          "groups": [
+            "This week’s concrete project contribution",
+            "Keep the checkpoint and human choice",
+            "Record the permission milestone",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Check your explanation",
+          "groups": [
+            "Evidence and limits",
+            "Self-check",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice · The earlier complete case",
+          "groups": [
+            "Question and given facts",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: decide the fresh inventory calls",
+          "groups": [
+            "The independent policy and scope",
+            "Your first attempt and help record",
+            "Use feedback after attempting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier checklist",
+          "groups": [
+            "Checklist and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: identify the authorised action and the missing authority",
+          "groups": [
+            "Explain without notes",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictures, feedback and repair",
+          "groups": [
+            "First supported question",
+            "Check after trying",
+            "Changed-case question",
+            "Check changed case",
+            "Repair and keep evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The six-picture journey",
+          "groups": [
+            "01. Permissions and Human Review: the case",
+            "02. Follow the deciding steps",
+            "03. Least privilege and tool scopes — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the main lesson and its retained extension",
+          "groups": [
+            "Goal and preparation",
+            "Main plan",
+            "Retrieval and readiness",
+            "Materials and extension planning",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Model operation and resource checks before execution",
+          "groups": [
+            "Define least privilege and the reporting-assistant policy",
+            "Trace the first scope violation",
+            "Read the separate catalogue token",
+            "Trace its proposals",
+            "Predict the requested scope change",
+            "Explain the permission-versus-correctness limit",
+            "Privacy extension · Complete role code and server boundary",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the main explanation, then fade support",
+          "groups": [
+            "Main completion question and key",
+            "Main individual check",
+            "Pictorial question and changed case",
+            "Keep learners explaining",
+            "Extension teaching cycle",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied main investigation",
+          "groups": [
+            "Supplied records and answer guidance",
+            "Predict, investigate and record",
+            "Keep the evidence",
+            "Main misconceptions",
+            "Choose support",
+            "Extension misconceptions",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected main independent task",
+          "groups": [
+            "Selected independent question and key",
+            "Judge reasoning and limits",
+            "Give one repair action",
+            "W1 Explain the mechanism",
+            "W2 Trace the worked case",
+            "W3 Audit the limit",
+            "W5 Design a revealing follow-up",
+            "Extension questions and keys",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, support and return",
+          "groups": [
+            "Project record",
+            "Main support and fresh assessment",
+            "Delayed return",
+            "Bridge to next week",
+            "Extension support and reassessment",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative teaching checklist",
+          "groups": [
+            "Planning reference"
+          ]
+        },
+        {
+          "title": "Reference · Feedback and retained evidence",
+          "groups": [
+            "Record and repair",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Permissions and Human Review: the case",
+            "02. Follow the deciding steps",
+            "03. Least privilege and tool scopes — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 17,
+      "sections": [
+        {
+          "title": "Recall · Retrieve earlier ideas",
+          "groups": [
+            "Your evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair a claim",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W4 · Decide inventory calls independently",
+          "groups": [
+            "Your evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier target",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier worked case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Changed case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · A revealing test",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge your evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier transfer",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W1 · Explain least privilege",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Trace both scope checks",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Repair a generated authority claim",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Selected W4 response copy",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W5 · Design a revealing permission test",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extension · Privacy and least privilege — W1 Minimize fields",
+          "groups": [
+            "Extension question and record"
+          ]
+        },
+        {
+          "title": "Extension · W2 Trace permissions",
+          "groups": [
+            "Policy, question and response"
+          ]
+        },
+        {
+          "title": "Extension · Privacy and least privilege — W3 Repair access control",
+          "groups": [
+            "Extension question and record"
+          ]
+        },
+        {
+          "title": "Extension · Privacy and least privilege — W4 Design independently",
+          "groups": [
+            "Extension question and record"
+          ]
+        },
+        {
+          "title": "Extension · Privacy and least privilege — W5 Limit the toy model",
+          "groups": [
+            "Extension question and record"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Reference · Project milestone",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictures, feedback and repair",
+          "groups": [
+            "First supported question",
+            "Check after trying",
+            "Changed-case question",
+            "Check changed case",
+            "Repair and keep evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Permissions and Human Review: the case",
+            "02. Follow the deciding steps",
+            "03. Least privilege and tool scopes — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 26,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 26,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-2-week-31-connected-review/START_REVIEW.html",
+  "week_sha256": "1025a66301ac93e2340945585bc2d3be81ea374d6495c349a8279f227516d68b",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  },
+  "teacher_lab_key": "Reviewed appended key uses complete sentences and short paragraphs; original source blocks unchanged."
+}

@@ -1,0 +1,616 @@
+{
+  "lesson": "ai-3/9",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-3/9",
+      "path": "/method/retrieval/1/goal",
+      "old": "Write a prompt specification with observable response criteria",
+      "new": "Distinguish a format example from approved factual evidence"
+    },
+    {
+      "week": "ai-3/9",
+      "path": "/method/retrieval/1/expected",
+      "old": "Teacher explanation: Fields status,room,capacity,source_ids. Status supported or needs_review. supported requires matching current approval and current capacity for the same room; no unresolved conflict.",
+      "new": "A format example demonstrates structure; approved N supplies the frog fact. The original mammal answer fails mandatory support even with3/4points, while the answer-only repair still lacks the Question field. Check each required criterion separately."
+    },
+    {
+      "week": "ai-3/9",
+      "path": "/teacher/0/blocks/12/text",
+      "old": "Look for: Write a prompt specification with observable response criteria",
+      "new": "Look for: Distinguish a format example from approved factual evidence"
+    },
+    {
+      "week": "ai-3/9",
+      "path": "/teacher/0/blocks/13/text",
+      "old": "Reference example, not the only acceptable wording: Teacher explanation: Fields status,room,capacity,source_ids. Status supported or needs_review. supported requires matching current approval and current capacity for the same room; no unresolved conflict.",
+      "new": "Reference example, not the only acceptable wording: A format example demonstrates structure; approved N supplies the frog fact. The original mammal answer fails mandatory support even with3/4points, while the answer-only repair still lacks the Question field. Check each required criterion separately."
+    },
+    {
+      "week": "ai-3/9",
+      "path": "/sections/16/blocks/21/text",
+      "old": "Review Examples and Rubrics (ai-3/6). Goal: Write a prompt specification with observable response criteria. Short practice: Explain why neither original nor changed draft is a full pass, and provide a complete repaired card.. Return to this week and explain what you changed.",
+      "new": "Review Examples and Rubrics (ai-3/6). Goal: Distinguish a format example from approved factual evidence. Short practice: Explain why neither original nor changed draft is a full pass, and provide a complete repaired card.. Return to this week and explain what you changed."
+    },
+    {
+      "week": "ai-3/9",
+      "path": "/workbook/19/blocks/21/text",
+      "old": "Review Examples and Rubrics (ai-3/6). Goal: Write a prompt specification with observable response criteria. Short practice: Explain why neither original nor changed draft is a full pass, and provide a complete repaired card.. Return to this week and explain what you changed.",
+      "new": "Review Examples and Rubrics (ai-3/6). Goal: Distinguish a format example from approved factual evidence. Short practice: Explain why neither original nor changed draft is a full pass, and provide a complete repaired card.. Return to this week and explain what you changed."
+    },
+    {
+      "week": "ai-3/9",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Freeze six cases, run A and B with one changed variable, score blind with the same rubric, and explain wins and regressions.",
+      "new": "Audit the six complete fictional A/B output cards using approved N and the predeclared refusal gate. Score each criterion, compare paired outcomes and preserve remaining failures. Do not label the supplied records actual model runs, blind ratings after disclosure or measured causal gains."
+    },
+    {
+      "week": "ai-3/9",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Freeze six cases, run A and B with one changed variable, score blind with the same rubric, and explain wins and regressions.",
+      "new": "Audit the six complete fictional A/B output cards using approved N and the predeclared refusal gate. Score each criterion, compare paired outcomes and preserve remaining failures. Do not label the supplied records actual model runs, blind ratings after disclosure or measured causal gains."
+    },
+    {
+      "week": "ai-3/9",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied investigation for shared practice. Keep predictions and observed paper-trace results separate. Reserve Compare new paired flags independently for the individual first attempt before feedback; do not use the reserved case as a paired lab task."
+    },
+    {
+      "week": "ai-3/9",
+      "path": "/teacher/2/blocks/5/text",
+      "old": "Keep for an independent attempt: Prompt A passes 8 of 10 tasks; B passes 9 of 10 but fails the only source-checking task. A source check is mandatory. Which can be accepted as-is?",
+      "new": "Use the earlier changed question as optional later practice. Reserve Compare new paired flags independently for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-3/9",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-3/9",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-3/9",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice answer and reason"
+    },
+    {
+      "week": "ai-3/9",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-3/9",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for explaining this week’s idea"
+    },
+    {
+      "week": "ai-3/9",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Compare new paired flags independently is the selected independent case."
+    },
+    {
+      "week": "ai-3/9",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  A/B test two prompts across six cases.",
+      "new": "EXPLANATION CHECK  Require totals, case-level differences and explicit missing selection priorities before a fresh final check."
+    },
+    {
+      "week": "ai-3/9",
+      "path": "/teacher/5/blocks/12/text",
+      "old": "W4: A=5/8, B=6/8, so select B on development. Special-case passes A=1/2, B=0/2; the aggregate selection hides a regression requiring review. Require intermediate reasoning and the stated scope. Fresh retry: A passes 1–4 of six; B passes 1, 2, 5. Special cases 4 and 6. Compare. Expected reasoning: A=4/6, B=3/6; special A=1/2, B=0/2. Preserve both outcomes; no final result supplied. If students need support, record it and reassess with another new case rather than awarding independence to a copied answer.",
+      "new": "Selected independent record: A and B each pass3/5=60%; shared pass2,A-only1and3,B-only4and5. No task meanings, failure consequences or mandatory priorities are supplied, so neither is automatically better. State needed criteria and freeze a selected prompt before fresh final cases. Fresh retry: A=[1,0,1,0],B=[0,1,1,0]. Both2/4;shared3,A-only1,B-only2,bothfail4. Require a declared priority or further development evidence rather than an invented winner. The older eight-case exercise remains additional practice."
+    },
+    {
+      "week": "ai-3/9",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Next connection: Generation failures and verification. Preserve the current case record and retrieve its evidence boundary before moving on.",
+      "new": "Next is Week10: Image Generation Models. Carry forward fixed evaluation criteria, source checks and limits on what an attractive output establishes."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Can equal totals hide different unacceptable failures?",
+          "groups": [
+            "Your learning goals",
+            "Recall schema and source-support evidence",
+            "Your end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Freeze the rubric and priorities before looking at outcomes",
+          "groups": [
+            "The controlled evaluation contract",
+            "Label supplied classroom outcomes honestly",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Retain paired changes beside the aggregate",
+          "groups": [
+            "State fixed cases, sources and scoring",
+            "Read the separate P/Q review table",
+            "Preserve denominators and raw outcomes",
+            "Explain the deciding evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare total passes with required behavior",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Your quick word guide",
+          "groups": [
+            "Core vocabulary",
+            "Terms for the connected explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Select under a predeclared refusal gate",
+          "groups": [
+            "Read the A/B passing IDs and mandatory gate",
+            "Trace shared passes, differences and the refusal slice",
+            "Predict removing the gate",
+            "Check after predicting",
+            "State the limits of the selection",
+            "Review · Separate P/Q counts and missing-approval slice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Find the decision hidden by an overall tie",
+          "groups": [
+            "Repair the equal-total argument",
+            "Propose a revealing final check",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise a paired trace without changing the rule to fit results",
+          "groups": [
+            "The development/final boundary",
+            "Complete the separate P/Q W2 review",
+            "Repair an all-future-cases claim",
+            "Explain the A/B gate choice",
+            "Reserve the independent five-case comparison",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Evaluate six complete source-and-output cards",
+          "groups": [
+            "The approved source, task and rubric",
+            "The two prompt variants",
+            "The six complete paired outputs",
+            "Score, apply the gate and retain failures",
+            "Keep the evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Choose a stronger thinking challenge",
+          "groups": [
+            "Pick your next step",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep a project evaluation another reviewer can reproduce",
+          "groups": [
+            "This week’s concrete contribution",
+            "Keep the checkpoint and human choice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: check your explanation",
+          "groups": [
+            "Check the evidence and its limit",
+            "Self-check and record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice: Evaluate prompts on the same questions",
+          "groups": [
+            "Read the supplied case and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: compare the fresh five-case records",
+          "groups": [
+            "Independent flags and scope",
+            "Your first attempt and help record",
+            "Use feedback afterwards",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: original lesson checklist",
+          "groups": [
+            "Targets and evidence",
+            "Keep your route and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: state the total, priority and unresolved failures",
+          "groups": [
+            "Explain without notes",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: the six-picture journey",
+          "groups": [
+            "01. Prompt Evaluation: the case",
+            "02. Follow the deciding steps",
+            "03. Same total, different mandatory-case results",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare this connected week",
+          "groups": [
+            "Learning goal and precision",
+            "What to prepare",
+            "Main teaching plan",
+            "Opening retrieval and readiness",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Model paired comparison and predeclared selection",
+          "groups": [
+            "State fixed criteria and evidence limits",
+            "Trace the separate P/Q review",
+            "Read the pictured A/B cases and gate",
+            "Trace totals, differences and mandatory slice",
+            "Predict removing the gate",
+            "State small-invented-suite limits",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the explanation, then remove help",
+          "groups": [
+            "Main completion prompt",
+            "Expected reasoning and fading help",
+            "Individual misconception check",
+            "Pictorial question and changed-case reasoning",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied investigation",
+          "groups": [
+            "Supplied materials and answer guidance",
+            "Run and record",
+            "Keep an inspectable record",
+            "Diagnose the first misunderstanding",
+            "Choose support from the response",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected new case",
+          "groups": [
+            "Selected independent question and key",
+            "Judge explanation, trace and limits",
+            "Give one usable repair action",
+            "W1 Explain the mechanism",
+            "W2 Trace the worked case",
+            "W3 Audit the limit",
+            "W5 Design a revealing follow-up",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, adapt and return",
+          "groups": [
+            "Project evidence to keep",
+            "Support while preserving the reasoning goal",
+            "Plan the delayed check",
+            "Bridge to next week",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: alternative planning checklist",
+          "groups": [
+            "Preparation and schedule",
+            "Practice and assessment reminders"
+          ]
+        },
+        {
+          "title": "Reference: feedback and records",
+          "groups": [
+            "Keep practice and independent evidence separate",
+            "Repair and portfolio records",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: teach with the six pictures",
+          "groups": [
+            "01. Prompt Evaluation: the case",
+            "02. Follow the deciding steps",
+            "03. Same total, different mandatory-case results",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall: reconnect earlier ideas",
+          "groups": [
+            "Retrieve and explain",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair the explanation",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W4 · Compare new paired flags independently",
+          "groups": [
+            "Read and explain independently",
+            "Keep a fair record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Original learning target",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A complete case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A changed case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and its evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge the evidence in your work",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Original target response space",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W1 · Explain the evaluation contract",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Trace the separate P/Q record",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Audit development evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Additional practice · Compare the older eight-case record",
+          "groups": [
+            "Earlier task and saved response"
+          ]
+        },
+        {
+          "title": "W5 · Design a revealing follow-up",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Use the worked picture",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Prompt Evaluation: the case",
+            "02. Follow the deciding steps",
+            "03. Same total, different mandatory-case results",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-3-week-09-connected-review/START_REVIEW.html",
+  "week_sha256": "b0f00fce1669c8a714b0083a4b7ba9371deffc4dd4e3e3a0fe425e2483e3461e",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

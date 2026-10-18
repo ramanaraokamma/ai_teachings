@@ -40,11 +40,15 @@ try {
  for(const level of data.levels) for(const week of level.weeks) {
   await check(`${level.slug}/${week.number} complete student lesson`,async()=>{
    const r=await request(`/learn/student/${level.slug}/${week.number}`,session('student'));assert.equal(r.status,200);const html=await r.text();
-   assert.ok(html.includes("Open this week’s visual concept journey"));const journey=week.student.pages.find(p=>p.label==="Visual concept journey");assert.ok(journey);assert.equal(journey.blocks.filter(b=>b.type==="image").length,6);
+   assert.ok(html.includes("Open this week’s visual concept journey") || html.includes("THE CONNECTED WEEK"));const journey=week.student.pages.find(p=>p.label==="Visual concept journey");assert.ok(journey);assert.equal(journey.blocks.filter(b=>b.type==="image").length,6);
    for(const page of week.student.pages)assert.ok(html.includes(`id="section-${page.number}"`));
    assert.ok(html.includes('Download PDF'));assert.ok(html.includes('instruction-visual'));
-   assert.ok(html.includes('Your lesson route'));assert.ok(html.includes('Project milestone:'));
-   assert.ok(html.includes('Finish and return'));assert.ok(html.includes('Draft saved in this browser'));
+   if(week.student.pages[0].flow){
+    for(const marker of ['flow-overview','reading-reference-bank',...week.student.pages.filter(p=>!p.flow?.optional).map(p=>p.flow.title)])assert.ok(html.includes(marker),marker);
+   }else{
+    assert.ok(html.includes('Your lesson route'));assert.ok(html.includes('Project milestone:'));assert.ok(html.includes('Finish and return'));
+   }
+   assert.ok(html.includes('Draft saved in this browser'));
   });
  }
  await check('Python placement check and bridge continuation',async()=>{

@@ -1,0 +1,610 @@
+{
+  "lesson": "ai-3/5",
+  "sections_reviewed": 53,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-3/5",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Turn four vague requests into contracts, swap with a partner, highlight each required part, and test whether outputs can be checked.",
+      "new": "Use the four supplied room-assistant request/evidence cards. Write each task, source context, constraints, schema and expected semantic outcome, then peer-check four observable criteria. This is specification and paper tracing; no actual model response or external action is performed."
+    },
+    {
+      "week": "ai-3/5",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Turn four vague requests into contracts, swap with a partner, highlight each required part, and test whether outputs can be checked.",
+      "new": "Use the four supplied room-assistant request/evidence cards. Write each task, source context, constraints, schema and expected semantic outcome, then peer-check four observable criteria. This is specification and paper tracing; no actual model response or external action is performed."
+    },
+    {
+      "week": "ai-3/5",
+      "path": "/teacher/2/blocks/6/text",
+      "old": "Keep for an independent attempt: Improve this request: Tell me about plants. The learner is nine, needs three bullet points and may use only the supplied passage.",
+      "new": "Use the earlier transfer question as optional practice. Reserve Trace new room cases independently for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-3/5",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied main investigation for shared practice. Reserve Trace new room cases independently for the individual first attempt. The named extension has separate tasks and feedback."
+    },
+    {
+      "week": "ai-3/5",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice"
+    },
+    {
+      "week": "ai-3/5",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-3/5",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice reasoning"
+    },
+    {
+      "week": "ai-3/5",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-3/5",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for this week’s explanation"
+    },
+    {
+      "week": "ai-3/5",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Trace new room cases independently is the selected independent task."
+    },
+    {
+      "week": "ai-3/5",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Rewrite a vague request into a four-part prompt.",
+      "new": "Require exact schema, matched source identity, fallback behavior and a separate authority boundary."
+    },
+    {
+      "week": "ai-3/5",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Week 12 validates structured outputs for syntax, schema and evidence consistency as separate layers.",
+      "new": "Next is Week6: Examples and Rubrics. Carry forward the exact response contract and source boundary when selecting examples and observable scoring criteria. Structured-output validation is developed further in Week8."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "What must a useful answer include, and when must it stop?",
+          "groups": [
+            "Your learning goals",
+            "Recall capacity versus approval",
+            "Your end goal",
+            "Block extension · Representations are not probabilities",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Replace answer helpfully with a checkable contract",
+          "groups": [
+            "Purpose, permitted evidence, four fields and fallback",
+            "A prompt is a proposal whose output still needs checking",
+            "Block extension · A deliberately reduced two-residual model",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace complete, missing and conflicting room evidence",
+          "groups": [
+            "State source use and control boundaries",
+            "Read the complete three-case table",
+            "Trace supported and needs-review outcomes",
+            "Explain the deciding condition",
+            "Block extension · Two additions and the positionwise branch",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare a contract with observable success and fallback",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Words for the main lesson and extension",
+          "groups": [
+            "Core words",
+            "Main explanation terms",
+            "Extension terms",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep source text separate from authority, then a flashcard contract",
+          "groups": [
+            "Handle embedded commands and unresolved conflicts",
+            "Read the separate condensation note and two-field contract",
+            "Trace supported meaning and a missing definition",
+            "Predict requesting melting",
+            "Check after predicting",
+            "Explain the source-only boundary",
+            "Block extension · Representation-to-score-to-probability stages",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Find a semantic failure hidden by correct formatting",
+          "groups": [
+            "Repair the exact-keys argument",
+            "Propose a revealing contract check",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise a matched-room trace with less help",
+          "groups": [
+            "Read and trace the complete P/Q practice",
+            "Complete main missing-evidence W2",
+            "Repair prompt instructions guarantee compliance",
+            "Explain the separate flashcard boundary",
+            "Keep independent work separate",
+            "Block extension · Use the final residual as the head input",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Write and peer-check four fully supplied prompt contracts",
+          "groups": [
+            "The four request-and-evidence cards",
+            "Specify required fields and semantic conditions",
+            "Predict outputs and compare acceptance criteria",
+            "Keep the evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Choose a stronger explanation",
+          "groups": [
+            "Thinking ladder",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Make the study buddy’s response contract inspectable",
+          "groups": [
+            "This week’s concrete contribution",
+            "Keep the checkpoint and human choice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Check your explanation",
+          "groups": [
+            "Evidence and limits",
+            "Self-check",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice · The earlier complete case",
+          "groups": [
+            "Question and given facts",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: trace the fresh F/G room mismatch",
+          "groups": [
+            "Independent records and standalone contract",
+            "Your first attempt and help record",
+            "Use feedback afterwards",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier checklist",
+          "groups": [
+            "Checklist and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: state the output, support and fallback conditions",
+          "groups": [
+            "Explain without notes",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictures, feedback and repair",
+          "groups": [
+            "First supported question",
+            "Check after trying",
+            "Changed-case question",
+            "Check changed case",
+            "Repair and keep evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The six-picture journey",
+          "groups": [
+            "01. Prompt as a Contract: the case",
+            "02. Follow the deciding steps",
+            "03. Keep the evidence roles separate",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the main lesson and its retained extension",
+          "groups": [
+            "Goal and preparation",
+            "Main plan",
+            "Retrieval and readiness",
+            "Materials and extension planning",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Model a response contract before judging an answer",
+          "groups": [
+            "State purpose, fallback and limits",
+            "Trace complete, missing and conflicting room cases",
+            "Separate embedded source commands from authority",
+            "Read the separate flashcard contract",
+            "Trace supported and missing meanings",
+            "Predict the melting request",
+            "State enforcement and validation limits",
+            "Block extension · Residual arithmetic and reduced scope",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the main explanation, then fade support",
+          "groups": [
+            "Main completion question and key",
+            "Main individual check",
+            "Pictorial question and changed case",
+            "Keep learners explaining",
+            "Extension teaching cycle",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied main investigation",
+          "groups": [
+            "Supplied records and answer guidance",
+            "Predict, investigate and record",
+            "Keep the evidence",
+            "Main misconceptions",
+            "Choose support",
+            "Extension misconceptions",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected main independent task",
+          "groups": [
+            "Selected independent question and key",
+            "Judge reasoning and limits",
+            "Give one repair action",
+            "W1 Name the contract",
+            "W2 Trace missing evidence",
+            "W3 Reject an embedded command",
+            "W5 Write observable criteria",
+            "Extension questions and keys",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, support and return",
+          "groups": [
+            "Project record",
+            "Main support and fresh assessment",
+            "Delayed return",
+            "Bridge to next week",
+            "Extension support and reassessment",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative teaching checklist",
+          "groups": [
+            "Planning reference"
+          ]
+        },
+        {
+          "title": "Reference · Feedback and retained evidence",
+          "groups": [
+            "Record and repair",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Prompt as a Contract: the case",
+            "02. Follow the deciding steps",
+            "03. Keep the evidence roles separate",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 17,
+      "sections": [
+        {
+          "title": "Recall · Retrieve earlier ideas",
+          "groups": [
+            "Your evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair a claim",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W4 · Trace new room cases independently",
+          "groups": [
+            "Your evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier target",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier worked case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Changed case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · A revealing test",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge your evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier transfer",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W1 · Name the contract",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Trace missing approval",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Reject an embedded command",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Selected W4 response copy",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W5 · Write observable criteria",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extension · Transformer blocks and residual paths — W1 Trace the first row",
+          "groups": [
+            "Procedure, question and response"
+          ]
+        },
+        {
+          "title": "Extension · Transformer blocks and residual paths — W2 Check a negative residual",
+          "groups": [
+            "Procedure, question and response"
+          ]
+        },
+        {
+          "title": "Extension · Transformer blocks and residual paths — W3 Apply the output head",
+          "groups": [
+            "Procedure, question and response"
+          ]
+        },
+        {
+          "title": "Extension · Transformer blocks and residual paths — W4 Trace a new block independently",
+          "groups": [
+            "Extension question and record"
+          ]
+        },
+        {
+          "title": "Extension · Transformer blocks and residual paths — W5 Audit an architecture description",
+          "groups": [
+            "Procedure, question and response"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Reference · Project milestone",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictures, feedback and repair",
+          "groups": [
+            "First supported question",
+            "Check after trying",
+            "Changed-case question",
+            "Check changed case",
+            "Repair and keep evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Prompt as a Contract: the case",
+            "02. Follow the deciding steps",
+            "03. Keep the evidence roles separate",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 26,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 26,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-3-week-05-connected-review/START_REVIEW.html",
+  "week_sha256": "b4c1472b93a6049f6a62ef9e01b55066977ef110b1868624db2ba5be77def870",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

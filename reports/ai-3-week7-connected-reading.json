@@ -1,0 +1,622 @@
+{
+  "lesson": "ai-3/7",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-3/7",
+      "path": "/method/retrieval/0/goal",
+      "old": "Write a prompt specification with observable response criteria",
+      "new": "Distinguish a format example from approved factual evidence"
+    },
+    {
+      "week": "ai-3/7",
+      "path": "/method/retrieval/0/expected",
+      "old": "Teacher explanation: Fields status,room,capacity,source_ids. Status supported or needs_review. supported requires matching current approval and current capacity for the same room; no unresolved conflict.",
+      "new": "A format example demonstrates structure; approved N supplies the frog fact. The original mammal answer fails mandatory support even with3/4points, while the answer-only repair still lacks the Question field. Check each required criterion separately."
+    },
+    {
+      "week": "ai-3/7",
+      "path": "/teacher/0/blocks/8/text",
+      "old": "Look for: Write a prompt specification with observable response criteria",
+      "new": "Look for: Distinguish a format example from approved factual evidence"
+    },
+    {
+      "week": "ai-3/7",
+      "path": "/teacher/0/blocks/9/text",
+      "old": "Reference example, not the only acceptable wording: Teacher explanation: Fields status,room,capacity,source_ids. Status supported or needs_review. supported requires matching current approval and current capacity for the same room; no unresolved conflict.",
+      "new": "Reference example, not the only acceptable wording: A format example demonstrates structure; approved N supplies the frog fact. The original mammal answer fails mandatory support even with3/4points, while the answer-only repair still lacks the Question field. Check each required criterion separately."
+    },
+    {
+      "week": "ai-3/7",
+      "path": "/sections/16/blocks/20/text",
+      "old": "Review Examples and Rubrics (ai-3/6). Goal: Write a prompt specification with observable response criteria. Short practice: Explain why neither original nor changed draft is a full pass, and provide a complete repaired card.. Return to this week and explain what you changed.",
+      "new": "Review Examples and Rubrics (ai-3/6). Goal: Distinguish a format example from approved factual evidence. Short practice: Explain why neither original nor changed draft is a full pass, and provide a complete repaired card.. Return to this week and explain what you changed."
+    },
+    {
+      "week": "ai-3/7",
+      "path": "/workbook/19/blocks/20/text",
+      "old": "Review Examples and Rubrics (ai-3/6). Goal: Write a prompt specification with observable response criteria. Short practice: Explain why neither original nor changed draft is a full pass, and provide a complete repaired card.. Return to this week and explain what you changed.",
+      "new": "Review Examples and Rubrics (ai-3/6). Goal: Distinguish a format example from approved factual evidence. Short practice: Explain why neither original nor changed draft is a full pass, and provide a complete repaired card.. Return to this week and explain what you changed."
+    },
+    {
+      "week": "ai-3/7",
+      "path": "/sections/0/blocks/18/text",
+      "old": "Recall Structured outputs and validation. Explain why a recorded result needs its input conditions and evidence source before it can support a claim.",
+      "new": "Recall Examples and Rubrics: keep the approved factual source, observable criteria and mandatory gates separate from a format example. Use the same rubric when comparing a prompt revision."
+    },
+    {
+      "week": "ai-3/7",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Use a fixed prompt and test set. Diagnose one failure, change one element, score again, and preserve all three versions.",
+      "new": "Use the complete source N, fixed task/rubric, P/Q output cards and three-version prompt log. Score every supplied result, preserve case4, and label R as a proposed unrun revision. No actual model calls or measured third-version improvement are supplied."
+    },
+    {
+      "week": "ai-3/7",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Use a fixed prompt and test set. Diagnose one failure, change one element, score again, and preserve all three versions.",
+      "new": "Use the complete source N, fixed task/rubric, P/Q output cards and three-version prompt log. Score every supplied result, preserve case4, and label R as a proposed unrun revision. No actual model calls or measured third-version improvement are supplied."
+    },
+    {
+      "week": "ai-3/7",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied investigation for shared practice. Keep predictions and observed paper-trace results separate. Reserve Design a new format-revision evaluation independently for the individual first attempt before feedback; do not use the reserved case as a paired lab task."
+    },
+    {
+      "week": "ai-3/7",
+      "path": "/teacher/2/blocks/5/text",
+      "old": "Keep for an independent attempt: You change a prompt's audience, length and source rules together; the result improves. What can you conclude, and how would you investigate the cause?",
+      "new": "Use the earlier changed question as optional later practice. Reserve Design a new format-revision evaluation independently for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-3/7",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-3/7",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-3/7",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice answer and reason"
+    },
+    {
+      "week": "ai-3/7",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-3/7",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for explaining this week’s idea"
+    },
+    {
+      "week": "ai-3/7",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Design a new format-revision evaluation independently is the selected independent case."
+    },
+    {
+      "week": "ai-3/7",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Keep a three-version prompt log with reasons for each change.",
+      "new": "EXPLANATION CHECK  Require one format change, fixed evidence and settings, separate factual checks and fresh final cases."
+    },
+    {
+      "week": "ai-3/7",
+      "path": "/teacher/5/blocks/12/text",
+      "old": "W4: A=5/8, B=6/8, so select B on development. Special-case passes A=1/2, B=0/2; the aggregate selection hides a regression requiring review. Require intermediate reasoning and the stated scope. Fresh retry: A passes 1–4 of six; B passes 1, 2, 5. Special cases 4 and 6. Compare. Expected reasoning: A=4/6, B=3/6; special A=1/2, B=0/2. Preserve both outcomes; no final result supplied. If students need support, record it and reassess with another new case rather than awarding independence to a copied answer.",
+      "new": "Selected independent task: change only the format instruction to require three bullets; hold sources,tasks,settings and factual criteria fixed. Evaluate format and claim support separately, retain failures and reserve fresh final cases. No revised outputs are given. Fresh retry: a source-only answer exceeds a40-word limit. Propose one length-instruction revision and a controlled comparison that checks both length and factual support without inventing results. The older eight-case rate task remains additional practice."
+    },
+    {
+      "week": "ai-3/7",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Next connection: Generation failures and verification. Preserve the current case record and retrieve its evidence boundary before moving on.",
+      "new": "Next is Week8: Structured Output and Schemas. Carry forward exact response criteria and failure records when checking syntax, schema and factual support separately."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Which recorded failure should the next revision address?",
+          "groups": [
+            "Your learning goals",
+            "Recall the rubric and evidence boundary",
+            "Your end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Diagnose before editing the prompt",
+          "groups": [
+            "The controlled-revision idea",
+            "Label constructed results and missing evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare paired cases without hiding a regression",
+          "groups": [
+            "Freeze cases, sources and evaluation conditions",
+            "Read the complete six-case record",
+            "Keep denominators and the raw record",
+            "Explain what the visual evidence represents",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare a focused revision with simultaneous unrelated changes",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Your quick word guide",
+          "groups": [
+            "Core vocabulary",
+            "Terms for the connected explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace a separate four-question prompt revision",
+          "groups": [
+            "Read the pictured P-to-Q change and recorded outcomes",
+            "Trace the gain and remaining failure",
+            "Predict changing settings and sources too",
+            "Check after predicting",
+            "State what the small comparison cannot establish",
+            "Review · The separate six-case W2 result",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep the remaining failure beside the gain",
+          "groups": [
+            "Repair the always-works argument",
+            "Propose a revealing next check",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise a paired-result trace with less help",
+          "groups": [
+            "Protect final evidence after development selection",
+            "Complete the six-case W2 trace",
+            "Repair an all-future-cases claim",
+            "Explain the pictured improvement and limit",
+            "Keep independent work separate",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Inspect complete outputs and keep a truthful three-version log",
+          "groups": [
+            "The approved source and fixed rubric",
+            "Three complete prompt versions and evidence status",
+            "Four paired complete output cards",
+            "Score, diagnose and plan the next controlled revision",
+            "Keep the evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Choose a stronger thinking challenge",
+          "groups": [
+            "Pick your next step",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Link each project revision to a diagnosed failure",
+          "groups": [
+            "This week’s concrete contribution",
+            "Keep the checkpoint and human choice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: check your explanation",
+          "groups": [
+            "Check the evidence and its limit",
+            "Self-check and record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice: Revise one cause and retest",
+          "groups": [
+            "Read the supplied case and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: plan the fresh three-bullet format repair",
+          "groups": [
+            "Independent brief and scope",
+            "Your first attempt and help record",
+            "Use feedback afterwards",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: original lesson checklist",
+          "groups": [
+            "Targets and evidence",
+            "Keep your route and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: name the failure, one revision and comparison evidence",
+          "groups": [
+            "Explain without notes",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: the six-picture journey",
+          "groups": [
+            "01. Iterative Prompting: the case",
+            "02. Follow the deciding steps",
+            "03. Controlled prompt experiments — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare this connected week",
+          "groups": [
+            "Learning goal and precision",
+            "What to prepare",
+            "Main teaching plan",
+            "Opening retrieval and readiness",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Model a focused revision and its evidence limits",
+          "groups": [
+            "State the controlled-comparison contract",
+            "Trace the separate six-case record",
+            "Read the pictured missing-definition change",
+            "Trace the case3 gain and case4 failure",
+            "Reject simultaneous source/settings changes",
+            "Explain small-run and final-evaluation limits",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the explanation, then remove help",
+          "groups": [
+            "Main completion prompt",
+            "Expected reasoning and fading help",
+            "Individual misconception check",
+            "Pictorial question and changed-case reasoning",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied investigation",
+          "groups": [
+            "Supplied materials and answer guidance",
+            "Run and record",
+            "Keep an inspectable record",
+            "Diagnose the first misunderstanding",
+            "Choose support from the response",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected new case",
+          "groups": [
+            "Selected independent question and key",
+            "Judge explanation, trace and limits",
+            "Give one usable repair action",
+            "W1 Explain the mechanism",
+            "W2 Trace the worked case",
+            "W3 Audit the limit",
+            "W5 Design a revealing follow-up",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, adapt and return",
+          "groups": [
+            "Project evidence to keep",
+            "Support while preserving the reasoning goal",
+            "Plan the delayed check",
+            "Bridge to next week",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: alternative planning checklist",
+          "groups": [
+            "Preparation and schedule",
+            "Practice and assessment reminders"
+          ]
+        },
+        {
+          "title": "Reference: feedback and records",
+          "groups": [
+            "Keep practice and independent evidence separate",
+            "Repair and portfolio records",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: teach with the six pictures",
+          "groups": [
+            "01. Iterative Prompting: the case",
+            "02. Follow the deciding steps",
+            "03. Controlled prompt experiments — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall: reconnect earlier ideas",
+          "groups": [
+            "Retrieve and explain",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair the explanation",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W4 · Design a new format-revision evaluation independently",
+          "groups": [
+            "Read and explain independently",
+            "Keep a fair record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Original learning target",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A complete case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A changed case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and its evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge the evidence in your work",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Original target response space",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W1 · Explain a controlled iteration",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Trace the separate six-case record",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Audit the evidence boundary",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Additional practice · Compare the older eight-case record",
+          "groups": [
+            "Earlier task and saved response"
+          ]
+        },
+        {
+          "title": "W5 · Design a revealing follow-up",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Use the worked picture",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Iterative Prompting: the case",
+            "02. Follow the deciding steps",
+            "03. Controlled prompt experiments — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-3-week-07-connected-review/START_REVIEW.html",
+  "week_sha256": "bd2385d9ffee3307e230a1f2c562774facf4d1703a07627719bed75b09de6550",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

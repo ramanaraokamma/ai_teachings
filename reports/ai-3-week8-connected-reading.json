@@ -1,0 +1,601 @@
+{
+  "lesson": "ai-3/8",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-3/8",
+      "path": "/sections/1/blocks/12/text",
+      "old": "Use the Week 11 closed object: exactly status,room,capacity,source_ids. status is supported or needs_review. source_ids is a list of distinct known source-ID strings. For supported, room is a nonempty string and capacity a nonnegative integer. For needs_review, room and capacity are null. Boolean values are not capacities under this contract.",
+      "new": "Use the Week5 room-report contract: exactly status,room,capacity,source_ids. status is supported or needs_review. source_ids is a list of distinct known source-ID strings. For supported, room is a nonempty string and capacity a nonnegative integer. For needs_review, room and capacity are null. Boolean values are not capacities under this contract."
+    },
+    {
+      "week": "ai-3/8",
+      "path": "/sections/1/blocks/12/presentation/paragraphs/0",
+      "old": "Use the Week 11 closed object: exactly status,room,capacity,source_ids. status is supported or needs_review. source_ids is a list of distinct known source-ID strings.",
+      "new": "Use the Week5 room-report contract: exactly status,room,capacity,source_ids. status is supported or needs_review. source_ids is a list of distinct known source-ID strings."
+    },
+    {
+      "week": "ai-3/8",
+      "path": "/teacher/1/blocks/18/text",
+      "old": "Use the Week 11 closed object: exactly status,room,capacity,source_ids. status is supported or needs_review. source_ids is a list of distinct known source-ID strings. For supported, room is a nonempty string and capacity a nonnegative integer. For needs_review, room and capacity are null. Boolean values are not capacities under this contract.",
+      "new": "Use the Week5 room-report contract: exactly status,room,capacity,source_ids. status is supported or needs_review. source_ids is a list of distinct known source-ID strings. For supported, room is a nonempty string and capacity a nonnegative integer. For needs_review, room and capacity are null. Boolean values are not capacities under this contract."
+    },
+    {
+      "week": "ai-3/8",
+      "path": "/teacher/1/blocks/18/presentation/paragraphs/0",
+      "old": "Use the Week 11 closed object: exactly status,room,capacity,source_ids. status is supported or needs_review. source_ids is a list of distinct known source-ID strings.",
+      "new": "Use the Week5 room-report contract: exactly status,room,capacity,source_ids. status is supported or needs_review. source_ids is a list of distinct known source-ID strings."
+    },
+    {
+      "week": "ai-3/8",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Validate six output cards for required fields, types, allowed values, and evidence support; explain each rejection.",
+      "new": "Use the six complete candidate strings and trusted P/Q source bundle. Predict syntax, schema and semantic outcomes independently; retain each first failure. The complete local validator is optional and enforces only the declared classroom contract; no external action is performed."
+    },
+    {
+      "week": "ai-3/8",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Validate six output cards for required fields, types, allowed values, and evidence support; explain each rejection.",
+      "new": "Use the six complete candidate strings and trusted P/Q source bundle. Predict syntax, schema and semantic outcomes independently; retain each first failure. The complete local validator is optional and enforces only the declared classroom contract; no external action is performed."
+    },
+    {
+      "week": "ai-3/8",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied investigation for shared practice. Keep predictions and observed paper-trace results separate. Reserve Validate new objects independently for the individual first attempt before feedback; do not use the reserved case as a paired lab task."
+    },
+    {
+      "week": "ai-3/8",
+      "path": "/teacher/2/blocks/6/text",
+      "old": "Keep for an independent attempt: A required schema has title as text and count as an integer. The output is {\"title\":\"Seeds\",\"count\":\"three\"}. Identify the error and give a valid replacement.",
+      "new": "Use the earlier changed question as optional later practice. Reserve Validate new objects independently for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-3/8",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-3/8",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-3/8",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice answer and reason"
+    },
+    {
+      "week": "ai-3/8",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-3/8",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for explaining this week’s idea"
+    },
+    {
+      "week": "ai-3/8",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Validate new objects independently is the selected independent case."
+    },
+    {
+      "week": "ai-3/8",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Request fields, then check missing and invalid values.",
+      "new": "EXPLANATION CHECK  Require separate syntax, closed-schema and current source-support checks; preserve the first failing layer."
+    },
+    {
+      "week": "ai-3/8",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Week 13 compares prompt specifications using fixed development cases, observable criteria and reserved evaluation.",
+      "new": "Next is Week9: Prompt Evaluation. Carry forward explicit syntax, schema and source-support criteria when comparing fixed development cases and protecting reserved final evidence."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "At which layer does this answer first fail?",
+          "groups": [
+            "Your learning goals",
+            "Recall requested format versus checked output",
+            "Your end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Parse the structure, then validate its contract and meaning",
+          "groups": [
+            "The three validation layers",
+            "The complete room-report field and type contract",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Diagnose fragments without mistaking them for complete objects",
+          "groups": [
+            "Read the illustrative layer failures",
+            "Distinguish missing fields, nulls and unauthorised conversions",
+            "Trace the three-layer pipeline",
+            "Explain the deciding step",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare grammatical structure with supported meaning",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Your quick word guide",
+          "groups": [
+            "Core vocabulary",
+            "Terms for the connected explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Audit a room claim, then a separate book-fact schema",
+          "groups": [
+            "Read the complete unsupported room-capacity example",
+            "Check conditional nulls and source-ID scope",
+            "Start the separate River Notes schema and candidates",
+            "Trace syntax, type and source comparison",
+            "Predict adding an unexpected rating field",
+            "Check after predicting",
+            "Keep source agreement separate from world truth",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Find a false fact hidden by a valid type",
+          "groups": [
+            "Repair the parse-and-type argument",
+            "Design a revealing candidate change",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise a supported zero without treating it as missing",
+          "groups": [
+            "Read the complete D/8 practice and proposed zero",
+            "Explain all layers before discussion",
+            "Complete main W2",
+            "Repair valid JSON means correct answer",
+            "Explain the separate book picture",
+            "Keep independent work separate",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Validate six complete output strings",
+          "groups": [
+            "The complete source bundle and response contract",
+            "Six supplied candidates",
+            "Predict, diagnose and retain the first failure",
+            "Optional Python · Complete layered validator",
+            "Keep the evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Choose a stronger thinking challenge",
+          "groups": [
+            "Pick your next step",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Validate the project’s actual contract before reuse",
+          "groups": [
+            "This week’s concrete contribution",
+            "Keep the checkpoint and human choice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: check your explanation",
+          "groups": [
+            "Check the evidence and its limit",
+            "Self-check and record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice: Type correctness is not factual correctness",
+          "groups": [
+            "Read the supplied case and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: validate the fresh F/G objects",
+          "groups": [
+            "Independent objects and encoding assumptions",
+            "Your first attempt and help record",
+            "Use feedback afterwards",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: original lesson checklist",
+          "groups": [
+            "Targets and evidence",
+            "Keep your route and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: identify the layer and evidence for the decision",
+          "groups": [
+            "Explain without notes",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: the six-picture journey",
+          "groups": [
+            "01. Structured Output and Schemas: the case",
+            "02. Follow the deciding steps",
+            "03. Keep the evidence roles separate",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare this connected week",
+          "groups": [
+            "Learning goal and precision",
+            "What to prepare",
+            "Main teaching plan",
+            "Opening retrieval and readiness",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach the first failing layer without merging the schemas",
+          "groups": [
+            "Define three layers and the room schema",
+            "Audit the full shared room cards",
+            "Trace a typed but unsupported capacity",
+            "Read the separate book schema and X/Y/Z facts",
+            "Trace syntax, type and source checks",
+            "Predict the extra rating field",
+            "State source-truth and parser-policy limits",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the explanation, then remove help",
+          "groups": [
+            "Main completion prompt",
+            "Expected reasoning and fading help",
+            "Individual misconception check",
+            "Pictorial question and changed-case reasoning",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied investigation",
+          "groups": [
+            "Supplied materials and answer guidance",
+            "Run and record",
+            "Keep an inspectable record",
+            "Diagnose the first misunderstanding",
+            "Choose support from the response",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected new case",
+          "groups": [
+            "Selected independent question and key",
+            "Judge explanation, trace and limits",
+            "Give one usable repair action",
+            "W1 Distinguish the layers",
+            "W2 Audit types and fields",
+            "W3 Check a citation-like ID",
+            "W5 Keep permissions separate",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, adapt and return",
+          "groups": [
+            "Project evidence to keep",
+            "Support while preserving the reasoning goal",
+            "Plan the delayed check",
+            "Bridge to next week",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: alternative planning checklist",
+          "groups": [
+            "Preparation and schedule",
+            "Practice and assessment reminders"
+          ]
+        },
+        {
+          "title": "Reference: feedback and records",
+          "groups": [
+            "Keep practice and independent evidence separate",
+            "Repair and portfolio records",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: teach with the six pictures",
+          "groups": [
+            "01. Structured Output and Schemas: the case",
+            "02. Follow the deciding steps",
+            "03. Keep the evidence roles separate",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall: reconnect earlier ideas",
+          "groups": [
+            "Retrieve and explain",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair the explanation",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W4 · Validate new objects independently",
+          "groups": [
+            "Read and explain independently",
+            "Keep a fair record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Original learning target",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A complete case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A changed case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and its evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge the evidence in your work",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Original target response space",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W1 · Distinguish the layers",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Audit types and fields",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Check what a cited source supports",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Independent-case response copy",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W5 · Keep report validity separate from permissions",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Use the worked picture",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Structured Output and Schemas: the case",
+            "02. Follow the deciding steps",
+            "03. Keep the evidence roles separate",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-3-week-08-connected-review/START_REVIEW.html",
+  "week_sha256": "f3d24e1bf3b9eae3c83fba8180cdd0c9c41f701f7aec66ab2412d80694d96e07",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

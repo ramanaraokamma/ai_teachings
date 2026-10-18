@@ -1,6 +1,7 @@
 """Build student-safe formative practice and repair links from reviewed public examples."""
 from pathlib import Path
 import json,hashlib
+from sync_connected_labs import sync_labs
 R=Path(__file__).resolve().parents[1];p=json.loads((R/'content/programme.json').read_text());weeks=p['weeks']+p['python_bridge'];lookup={w['id']:w for w in weeks};result={}
 for w in weeks:
  c=w['pictorial_case'];steps=c['steps'];labels=list(dict.fromkeys(s['label'] for s in steps));target=next(s for s in reversed(steps) if labels.count(s['label'])==1)
@@ -29,6 +30,12 @@ for w in weeks:
 for w in weeks:
  assert w['method']['independent']['task'] not in [q['prompt'] for q in result[w['id']]['questions']]
  assert all(sum(choice['correct'] for choice in q['choices'])==1 and len(set(choice['text'] for choice in q['choices']))==len(q['choices']) for q in result[w['id']]['questions'])
+existing=json.loads((R/'content/learning-tools.json').read_text()) if (R/'content/learning-tools.json').exists() else {}
+for w in weeks:
+ if w['sections'][0].get('reading_flow'):
+  previous=existing.get(w['id'],{})
+  result[w['id']]['labs']=previous.get('labs',result[w['id']]['labs'])
+  result[w['id']]=sync_labs(w,result[w['id']])
 (R/'content/learning-tools.json').write_text(json.dumps(result,ensure_ascii=False))
 if (R/'lib').is_dir():(R/'lib/learning-tools.json').write_text(json.dumps(result,ensure_ascii=False))
 report={'lessons':len(result),'formative_questions':sum(len(v['questions']) for v in result.values()),'lessons_with_code':sum(bool(v['labs']) for v in result.values()),'supported_code_examples':sum(len(v['labs']) for v in result.values()),'repair_links':sum(len(v['repairs']) for v in result.values()),'reserved_assessments_replaced':0}

@@ -1,0 +1,612 @@
+{
+  "lesson": "ai-3/2",
+  "sections_reviewed": 53,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-3/2",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Build a weighted token spinner, sample twenty times, tally outcomes, and compare observed counts with expected relative weights.",
+      "new": "Use the nine equal numbered slips with replacement for20draws, recording the actual sequence and tally. Separately run the complete exact conditional-path program. Do not claim that twenty draws must equal expected counts or that generated status labels are measurements."
+    },
+    {
+      "week": "ai-3/2",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Build a weighted token spinner, sample twenty times, tally outcomes, and compare observed counts with expected relative weights.",
+      "new": "Use the nine equal numbered slips with replacement for20draws, recording the actual sequence and tally. Separately run the complete exact conditional-path program. Do not claim that twenty draws must equal expected counts or that generated status labels are measurements."
+    },
+    {
+      "week": "ai-3/2",
+      "path": "/teacher/2/blocks/6/text",
+      "old": "Keep for an independent attempt: A toy next-token distribution assigns cat 0.5, dog 0.3 and bird 0.2. Check the total and name the most likely token. Must it be selected every time when sampling?",
+      "new": "Use the earlier transfer question as optional practice. Reserve Audit new conditional paths independently for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-3/2",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied main investigation for shared practice. Reserve Audit new conditional paths independently for the individual first attempt. The named extension has separate tasks and feedback."
+    },
+    {
+      "week": "ai-3/2",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice"
+    },
+    {
+      "week": "ai-3/2",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-3/2",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice reasoning"
+    },
+    {
+      "week": "ai-3/2",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-3/2",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for this week’s explanation"
+    },
+    {
+      "week": "ai-3/2",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Audit new conditional paths independently is the selected independent task."
+    },
+    {
+      "week": "ai-3/2",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Run a weighted-word simulation and compare repeated outputs.",
+      "new": "Require the correct prefix, joint products, event sum and limit on factual interpretation."
+    },
+    {
+      "week": "ai-3/2",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Week 4 distinguishes greedy choice from sampling and computes the effect of temperature on a fixed toy distribution.",
+      "new": "Next is Week3: Tokens and Context. Carry forward conditional prefixes, explicitly stated vocabularies and the difference between ordered representations and an information-losing summary."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Which path is more likely, and what does that mean?",
+          "groups": [
+            "Your learning goals",
+            "Recall stated alternatives and conventions",
+            "Your end goal",
+            "Representation extension · IDs and meaning",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep the prefix and alternatives beside each probability",
+          "groups": [
+            "The complete Status distribution",
+            "Detect an invalid distribution and normalise only permitted weights",
+            "Representation extension · Token lookup and position scheme",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Multiply down each branch, then add the stated paths",
+          "groups": [
+            "Read the complete second-step Status table",
+            "Compute all six paths and their total",
+            "Trace the three end paths",
+            "Explain the deciding step",
+            "Representation extension · Ordered rows and shape contract",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare valid tables, incomplete paths and unsupported claims",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Words for the main lesson and extension",
+          "groups": [
+            "Core words",
+            "Main explanation terms",
+            "Extension terms",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Challenge greedy decoding, then trace a separate sun/rain tree",
+          "groups": [
+            "Read the complete A/B counterexample",
+            "Separate path likelihood from factual support",
+            "Read the separate pictured sun/rain branches",
+            "Trace all four branch products",
+            "Predict changing only sun’s conditional distribution",
+            "Check after predicting",
+            "Explain the partial end-path sum",
+            "Representation extension · Row sum loses order",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Find which alternatives a probability sum includes",
+          "groups": [
+            "Repair the incomplete-sum argument",
+            "Propose a revealing changed table",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise a separate red/blue path comparison",
+          "groups": [
+            "Read the supplied red/blue probabilities",
+            "Compute both specified end paths",
+            "Complete main Status W2",
+            "Repair the independence claim",
+            "Explain the pictured partial sum",
+            "Keep independent work separate",
+            "Representation extension · Compute ordered rows and sums",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run a specified sampling activity and an exact-path audit",
+          "groups": [
+            "Nine-slip materials and repeatable procedure",
+            "Predict the conditional-path outputs",
+            "Run the complete exact-arithmetic program",
+            "Keep the evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Choose a stronger explanation",
+          "groups": [
+            "Thinking ladder",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Explain uncertainty without replacing source checks",
+          "groups": [
+            "This week’s concrete contribution",
+            "Keep the checkpoint and human choice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Check your explanation",
+          "groups": [
+            "Evidence and limits",
+            "Self-check",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice · The earlier complete case",
+          "groups": [
+            "Question and given facts",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: audit the fresh go/wait/ask paths",
+          "groups": [
+            "Independent table and scope",
+            "Your first attempt and help record",
+            "Use feedback afterwards",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier checklist",
+          "groups": [
+            "Checklist and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: name the prefix, path and evidence boundary",
+          "groups": [
+            "Explain without notes",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictures, feedback and repair",
+          "groups": [
+            "First supported question",
+            "Check after trying",
+            "Changed-case question",
+            "Check changed case",
+            "Repair and keep evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The six-picture journey",
+          "groups": [
+            "01. A Distribution of Possibilities: the case",
+            "02. Follow the deciding steps",
+            "03. Joint probabilities of the four toy branches",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the main lesson and its retained extension",
+          "groups": [
+            "Goal and preparation",
+            "Main plan",
+            "Retrieval and readiness",
+            "Materials and extension planning",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach conditional products with explicit event coverage",
+          "groups": [
+            "Validate the Status distribution and weight contract",
+            "Trace all Status paths",
+            "Model the separate greedy counterexample",
+            "Read the pictured sun/rain tree",
+            "Trace products and unfinished mass",
+            "Predict the changed sun conditionals",
+            "State the evidence limit",
+            "Representation extension · Lookup, position addition and lossy sum",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the main explanation, then fade support",
+          "groups": [
+            "Main completion question and key",
+            "Main individual check",
+            "Pictorial question and changed case",
+            "Keep learners explaining",
+            "Extension teaching cycle",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied main investigation",
+          "groups": [
+            "Supplied records and answer guidance",
+            "Predict, investigate and record",
+            "Keep the evidence",
+            "Main misconceptions",
+            "Choose support",
+            "Extension misconceptions",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected main independent task",
+          "groups": [
+            "Selected independent question and key",
+            "Judge reasoning and limits",
+            "Give one repair action",
+            "W1 Validate the table",
+            "W2 Calculate the paths",
+            "W3 Test a greedy claim",
+            "W5 Normalise with a stated rule",
+            "Extension questions and keys",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, support and return",
+          "groups": [
+            "Project record",
+            "Main support and fresh assessment",
+            "Delayed return",
+            "Bridge to next week",
+            "Extension support and reassessment",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative teaching checklist",
+          "groups": [
+            "Planning reference"
+          ]
+        },
+        {
+          "title": "Reference · Feedback and retained evidence",
+          "groups": [
+            "Record and repair",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. A Distribution of Possibilities: the case",
+            "02. Follow the deciding steps",
+            "03. Joint probabilities of the four toy branches",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 17,
+      "sections": [
+        {
+          "title": "Recall · Retrieve earlier ideas",
+          "groups": [
+            "Your evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair a claim",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W4 · Audit new conditional paths independently",
+          "groups": [
+            "Your evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier target",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier worked case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Changed case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · A revealing test",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge your evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier transfer",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W1 · Validate a probability table",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Calculate Status end paths",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Challenge a greedy claim",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Selected W4 response copy",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "W5 · Normalise declared nonnegative weights",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extension · Embeddings and position — W1 Look up vectors",
+          "groups": [
+            "Tables, question and response"
+          ]
+        },
+        {
+          "title": "Extension · Embeddings and position — W2 Add positions",
+          "groups": [
+            "Tables, question and response"
+          ]
+        },
+        {
+          "title": "Extension · Embeddings and position — W3 Audit the sum",
+          "groups": [
+            "Tables, question and response"
+          ]
+        },
+        {
+          "title": "Extension · Embeddings and position — W4 Trace new vectors independently",
+          "groups": [
+            "Extension question and record"
+          ]
+        },
+        {
+          "title": "Extension · Embeddings and position — W5 Handle a shape failure",
+          "groups": [
+            "Tables, question and response"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Reference · Project milestone",
+          "groups": [
+            "Additional evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictures, feedback and repair",
+          "groups": [
+            "First supported question",
+            "Check after trying",
+            "Changed-case question",
+            "Check changed case",
+            "Repair and keep evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. A Distribution of Possibilities: the case",
+            "02. Follow the deciding steps",
+            "03. Joint probabilities of the four toy branches",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 26,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 26,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-3-week-02-connected-review/START_REVIEW.html",
+  "week_sha256": "a85d4062d65e0047b47c605968e2bc5b376712d92f293d09fd8f3cc7637780b7",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

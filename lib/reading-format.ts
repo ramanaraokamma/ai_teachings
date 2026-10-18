@@ -14,3 +14,11 @@ export function readingSegments(text:string,terms:string[] = []) {
  const pattern=new RegExp(`(${escaped.join("|")})`,"gi");
  return text.split(pattern).filter(Boolean).map(part=>({text:part,strong:terms.some(term=>term.toLowerCase()===part.toLowerCase())}));
 }
+
+export type ReadingFlow = {
+  title: string;
+  purpose: string;
+  optional?: boolean;
+  groups: {title: string; kind?: "text" | "cards" | "steps" | "prompts" | "example" | "reference"; indices: number[]; note?: string; collapsed?: boolean}[];
+  overview?: {title: string; lead: string; outcome: string; order: number[]; route: {label: string; section: number}[]};
+};

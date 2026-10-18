@@ -1,0 +1,740 @@
+{
+  "lesson": "ai-3/16",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-3/16",
+      "path": "/method/retrieval/1/goal",
+      "old": "Explain the mechanism and terminology of speech pipelines and multimodal evidence",
+      "new": "Keep visible evidence, hidden contents and caption claims separate"
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/method/retrieval/1/expected",
+      "old": "Teacher explanation: A multimodal pipeline may transcribe speech, inspect an image and generate a response. Errors at one stage can propagate even when later stages run correctly. Track source modality, segment/time references, transcription, interpretation and final claims separately. Compare conflicting evidence without assuming one modality always wins. Ask for clarification when the task needs unresolved information.",
+      "new": "Three reported visible pencils support a lower bound, not a verified total. Hidden contents remain unknown; a caption does not reveal them. Only the supplied new observation and complete-location scope support the changed total."
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/teacher/0/blocks/12/text",
+      "old": "Look for: Explain the mechanism and terminology of speech pipelines and multimodal evidence",
+      "new": "Look for: Keep visible evidence, hidden contents and caption claims separate"
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/teacher/0/blocks/13/text",
+      "old": "Reference example, not the only acceptable wording: Teacher explanation: A multimodal pipeline may transcribe speech, inspect an image and generate a response. Errors at one stage can propagate even when later stages run correctly. Track source modality, segment/time references, transcription, interpretation and final claims separately. Compare conflicting evidence without assuming one modality always wins. Ask for clarification when the task needs unresolved information.",
+      "new": "Reference example, not the only acceptable wording: Three reported visible pencils support a lower bound, not a verified total. Hidden contents remain unknown; a caption does not reveal them. Only the supplied new observation and complete-location scope support the changed total."
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/sections/16/blocks/21/text",
+      "old": "Review Multimodal Evidence (ai-3/13). Goal: Explain the mechanism and terminology of speech pipelines and multimodal evidence. Short practice: Why were both “exactly three” and “exactly five” unsupported before opening the box?. Return to this week and explain what you changed.",
+      "new": "Review Multimodal Evidence (ai-3/13). Goal: Keep visible evidence, hidden contents and caption claims separate. Short practice: Why were both “exactly three” and “exactly five” unsupported before opening the box?. Return to this week and explain what you changed."
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/workbook/19/blocks/21/text",
+      "old": "Review Multimodal Evidence (ai-3/13). Goal: Explain the mechanism and terminology of speech pipelines and multimodal evidence. Short practice: Why were both “exactly three” and “exactly five” unsupported before opening the box?. Return to this week and explain what you changed.",
+      "new": "Review Multimodal Evidence (ai-3/13). Goal: Keep visible evidence, hidden contents and caption claims separate. Short practice: Why were both “exactly three” and “exactly five” unsupported before opening the box?. Return to this week and explain what you changed."
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/classroom/goals/0",
+      "old": "Explain the mechanism and terminology of claim support and citation evaluation",
+      "new": "Verify a numeric claim using its source, denominator and units"
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/method/goals/0",
+      "old": "Explain the mechanism and terminology of claim support and citation evaluation",
+      "new": "Verify a numeric claim using its source, denominator and units"
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/sections/0/blocks/1/text",
+      "old": "I can explain the mechanism and terminology of claim support and citation evaluation.",
+      "new": "I can verify a numeric claim using its source, denominator and units."
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/classroom/goals/1",
+      "old": "Apply the stated procedure to a new case with a traceable result",
+      "new": "Separate calendar validity from the intended event date"
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/method/goals/1",
+      "old": "Apply the stated procedure to a new case with a traceable result",
+      "new": "Separate calendar validity from the intended event date"
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/sections/0/blocks/2/text",
+      "old": "I can apply the stated procedure to a new case with a traceable result.",
+      "new": "I can separate calendar validity from the intended event date."
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/classroom/goals/2",
+      "old": "Identify an assumption or limitation and design a revealing follow-up",
+      "new": "Record corrections and unresolved values without guessing"
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/method/goals/2",
+      "old": "Identify an assumption or limitation and design a revealing follow-up",
+      "new": "Record corrections and unresolved values without guessing"
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/sections/0/blocks/3/text",
+      "old": "I can identify an assumption or limitation and design a revealing follow-up.",
+      "new": "I can record corrections and unresolved values without guessing."
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/method/goal",
+      "old": "Explain the mechanism and terminology of claim support and citation evaluation",
+      "new": "Verify a numeric claim using its source, denominator and units"
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/teacher/0/blocks/1/text",
+      "old": "Primary target: Explain the mechanism and terminology of claim support and citation evaluation",
+      "new": "Primary target: Verify a numeric claim using its source, denominator and units"
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/sections/0/blocks/18/text",
+      "old": "Recall Building a grounded answer. Explain why a recorded result needs its input conditions and evidence source before it can support a claim.",
+      "new": "Recall Source Quality: identify the exact source, relevant time and version before using a value. A newer-looking record may concern a different question."
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/method/practice/title",
+      "old": "Trace the worked case",
+      "new": "Check counts and an unresolved date"
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/method/practice/prompt",
+      "old": "An answer has four factual claims. Three have citations, but only two are supported by their cited passages. All links exist. Show the intermediate steps and give the conclusion with its scope.",
+      "new": "Use the fictional record of 15 passes out of 20 trials and the draft 70%, meeting June 31. Show the fraction and percentage, state the supplied calendar fact, and separate the computable correction from the missing intended date. Then change only the count to 14 passes out of 20 and explain what changes and what remains unresolved."
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/method/practice/answer",
+      "old": "Teacher explanation: Claim support is 2/4=50%; citation presence is 3/4=75%; link existence among three citations is 3/3. These measure different failures.",
+      "new": "15/20 × 100 = 75%. June has 30 days, so June 31 is invalid; no intended date is supplied. The revised count gives 14/20 × 100 = 70%. It provides no new date evidence. Check source identity and measurement reliability separately from arithmetic."
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/method/hinge/prompt",
+      "old": "Use the worked case for Claim support and citation evaluation. Proposed explanation: “The worked result establishes every future case”. Decide whether this explanation is supported. Point to the step or supplied fact that decides; explain your repair if needed.",
+      "new": "A calculator confirms 15/20 = 75%, and a calendar rejects June 31. Does this establish the real trial reliability and the intended meeting date? Explain the two remaining evidence gaps."
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/method/hinge/answer",
+      "old": "Citation counts do not establish truth beyond the supplied sources or the correctness of uncited claims.",
+      "new": "No. The calculations use supplied counts without verifying their measurement reliability. Calendar invalidity does not reveal the intended meeting date."
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/classroom/flow/2/task",
+      "old": "An answer has four factual claims. Three have citations, but only two are supported by their cited passages. All links exist. Show the intermediate steps and give the conclusion with its scope.",
+      "new": "Use the fictional record of 15 passes out of 20 trials and the draft 70%, meeting June 31. Show the fraction and percentage, state the supplied calendar fact, and separate the computable correction from the missing intended date. Then change only the count to 14 passes out of 20 and explain what changes and what remains unresolved."
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Audit six claims for source, date, unit, denominator, and arithmetic; mark verified, corrected, or unresolved.",
+      "new": "Audit the six supplied numeric and date cards. Check source identity, denominators, unit conversion, calendar validity and ambiguous formats. Record supported corrections and unresolved intent separately; these are fictional records, not live model results."
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Audit six claims for source, date, unit, denominator, and arithmetic; mark verified, corrected, or unresolved.",
+      "new": "Audit the six supplied numeric and date cards. Check source identity, denominators, unit conversion, calendar validity and ambiguous formats. Record supported corrections and unresolved intent separately; these are fictional records, not live model results."
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/sections/15/blocks/0/text",
+      "old": "Close your notes. Explain this goal in your own words: Explain the mechanism and terminology of claim support and citation evaluation",
+      "new": "Close your notes. Explain why a correct calculation, a valid calendar date and an authorised event date are three different checks."
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied investigation for shared practice. Keep predictions and observed paper-trace results separate. Reserve Audit a fresh learner percentage and deadline independently for the individual first attempt before feedback; do not use the reserved case as a paired lab task."
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/teacher/2/blocks/5/text",
+      "old": "Keep for an independent attempt: A report says 12 of 40 responses is 40%. Recalculate and state the correction with the denominator.",
+      "new": "Use the earlier changed question as optional later practice. Reserve Audit a fresh learner percentage and deadline independently for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice answer and reason"
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for explaining this week’s idea"
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Audit a fresh learner percentage and deadline independently is the selected independent case."
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Cross-check dates and recompute a percentage claim.",
+      "new": "EXPLANATION CHECK  Require the correct denominator, visible arithmetic, calendar check and an explicit unresolved intended date."
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/workbook/1/blocks/0/text",
+      "old": "Use W2: Trace the worked case for Claim support and citation evaluation. Record the answer once; the lesson and workbook refer to the same attempt.",
+      "new": "Earlier citation completion practice: retain this task and saved response as review. Use current W2 for the supported numeric and calendar practice."
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/teacher/5/blocks/12/text",
+      "old": "W4: Support=3/5=60%; citation presence=4/5=80%. Link checks reject the nonexistent ID; remaining real links still need entailment checks. Require intermediate reasoning and the stated scope. Fresh retry: Six claims, five cited, four supported; all five links real. Expected reasoning: Support 4/6=2/3; citation presence 5/6; link existence 5/5 does not verify every claim. If students need support, record it and reassess with another new case rather than awarding independence to a copied answer.",
+      "new": "Selected independent task: 18/24 = 75%; April 31 is invalid because April has 30 days. The intended deadline needs the responsible source. Fresh retry: 24 of 32 passed, draft claims 80% and deadline November 31. Expected: 75%; November has 30 days, so the date is invalid; do not invent the intended deadline. Keep first attempts, hints and retries distinct. The retained citation task is additional practice."
+    },
+    {
+      "week": "ai-3/16",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Next connection: Abstention and clarification. Preserve the current case record and retrieve its evidence boundary before moving on.",
+      "new": "Next is Week 17: Model Memory vs Retrieval. Carry forward source identity, reproducible calculations and unresolved facts when deciding which evidence must be retrieved."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Which values can we correct, and which need a source?",
+          "groups": [
+            "Your verification goals",
+            "Recall source identity and scope",
+            "Your end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Give calculation and source verification different jobs",
+          "groups": [
+            "Understand numerator, denominator and validity",
+            "Read the complete main record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Check the meaning before pressing calculate",
+          "groups": [
+            "The verification checklist",
+            "Explain the deciding check",
+            "Review · Earlier citation denominators",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare correct arithmetic with supported claims",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Your quick word guide",
+          "groups": [
+            "Core vocabulary",
+            "Terms for the connected explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace the fraction and the separate date boundary",
+          "groups": [
+            "Read the complete fictional record",
+            "Trace the arithmetic and invalid date",
+            "Count the percentage grids",
+            "Predict the revised count",
+            "Check after predicting",
+            "Name the source reliability limit",
+            "Review · Separate numeric claim",
+            "Review · Earlier citation case",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Find the unsupported replacement",
+          "groups": [
+            "Repair the calendar shortcut",
+            "Design a revealing follow-up",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise the checks with less help",
+          "groups": [
+            "Current practice and response",
+            "Explain the pictured boundary",
+            "Keep the independent task separate",
+            "Review · Earlier citation practice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Audit six complete number and date cards",
+          "groups": [
+            "All supplied records and claims",
+            "Build a correction and uncertainty record",
+            "Keep the evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Choose a stronger thinking challenge",
+          "groups": [
+            "Pick your next step",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep the project’s correction trail",
+          "groups": [
+            "This week’s contribution",
+            "Retain the checkpoint and human choice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: check your explanation",
+          "groups": [
+            "Check the evidence and its limit",
+            "Self-check and record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice: Verify a percentage independently",
+          "groups": [
+            "Read the supplied case and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: audit a fresh percentage and deadline",
+          "groups": [
+            "Independent record and scope",
+            "Your first attempt and help record",
+            "Use feedback afterwards",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: original lesson checklist",
+          "groups": [
+            "Targets and evidence",
+            "Keep your route and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: calculate, validate, then request missing evidence",
+          "groups": [
+            "Explain without notes",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: the six-picture journey",
+          "groups": [
+            "01. Verify Numbers and Dates: the case",
+            "02. Follow the deciding steps",
+            "03. Claim support and citation evaluation — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare this connected week",
+          "groups": [
+            "Learning goal and precision",
+            "What to prepare",
+            "Main teaching plan",
+            "Opening retrieval and readiness",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach source identity, arithmetic and calendar intent separately",
+          "groups": [
+            "Model the calculation and calendar limit",
+            "Use the complete verification checklist",
+            "Read the 15/20 main record",
+            "Trace each separate check",
+            "Inspect the count grids",
+            "Predict the revised count",
+            "Name the measurement and intent limits",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the checks, then remove help",
+          "groups": [
+            "Current completion task and key",
+            "Individual evidence-boundary check",
+            "Pictorial changed-case reasoning",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the six supplied verification cards",
+          "groups": [
+            "Current cards and checked guidance",
+            "Predict, check and record",
+            "Keep evidence and limitations",
+            "Respond to the first error",
+            "Choose accessible support",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected learner percentage and deadline",
+          "groups": [
+            "Selected independent question and checked key",
+            "Judge trace and scope",
+            "Give one repair action",
+            "Current workbook guidance",
+            "Review · Earlier citation tasks and keys",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, adapt and return",
+          "groups": [
+            "Project evidence to keep",
+            "Support while preserving the reasoning goal",
+            "Plan the delayed check",
+            "Bridge to next week",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: alternative planning checklist",
+          "groups": [
+            "Preparation and schedule",
+            "Practice and assessment reminders"
+          ]
+        },
+        {
+          "title": "Reference: feedback and records",
+          "groups": [
+            "Keep practice and independent evidence separate",
+            "Repair and portfolio records",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: teach with the six pictures",
+          "groups": [
+            "01. Verify Numbers and Dates: the case",
+            "02. Follow the deciding steps",
+            "03. Claim support and citation evaluation — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall: reconnect earlier ideas",
+          "groups": [
+            "Retrieve and explain",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair the explanation",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W4 · Audit a fresh learner percentage and deadline independently",
+          "groups": [
+            "Read and explain independently",
+            "Keep a fair record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Original learning target",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A complete case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A changed case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and its evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge the evidence in your work",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Original target response space",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W1 · Explain the separate checks",
+          "groups": [
+            "Complete main record",
+            "Current task and response",
+            "Review · Earlier citation task and saved response"
+          ]
+        },
+        {
+          "title": "W2 · Recalculate and preserve uncertainty",
+          "groups": [
+            "Complete main record",
+            "Current task and response",
+            "Review · Earlier citation task and saved response"
+          ]
+        },
+        {
+          "title": "W3 · Reject an unsupported replacement",
+          "groups": [
+            "Complete main record",
+            "Current task and response",
+            "Review · Earlier citation task and saved response"
+          ]
+        },
+        {
+          "title": "Additional practice · Earlier citation-count task",
+          "groups": [
+            "Earlier task and saved response"
+          ]
+        },
+        {
+          "title": "W5 · Design a revealing verification case",
+          "groups": [
+            "Complete main record",
+            "Current task and response",
+            "Review · Earlier citation task and saved response"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Use the worked picture",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Verify Numbers and Dates: the case",
+            "02. Follow the deciding steps",
+            "03. Claim support and citation evaluation — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-3-week-16-connected-review/START_REVIEW.html",
+  "week_sha256": "c747033576e8a63e8950a905d32f8c211de4bb630bcc36f47e0db4cebb2a621b",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}
