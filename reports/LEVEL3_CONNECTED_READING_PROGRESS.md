@@ -1,6 +1,6 @@
 # Level 3 connected-reading progress
 
-Weeks 1–15 are reviewed and verified across all student, teacher and workbook sections (745 sections; 90 weekly Word/PDF downloads).
+Weeks 1–36 are reviewed and verified across all student, teacher and workbook sections (1783 sections; 216 weekly Word/PDF downloads).
 
 [Open all reviewed editions and previews](../outputs/connected-reading-review/START_HERE.html).
 
@@ -19,6 +19,27 @@ Weeks 1–15 are reviewed and verified across all student, teacher and workbook 
 - Week 13: Multimodal Evidence — [review](../outputs/ai-3-week-13-connected-review/START_REVIEW.html)
 - Week 14: Hallucination Failure Types — [review](../outputs/ai-3-week-14-connected-review/START_REVIEW.html)
 - Week 15: Source Quality — [review](../outputs/ai-3-week-15-connected-review/START_REVIEW.html)
+- Week 16: Verify Numbers and Dates — [review](../outputs/ai-3-week-16-connected-review/START_REVIEW.html)
+- Week 17: Model Memory vs Retrieval — [review](../outputs/ai-3-week-17-connected-review/START_REVIEW.html)
+- Week 18: Retrieval Augmented Generation — [review](../outputs/ai-3-week-18-connected-review/START_REVIEW.html)
+- Week 19: User Need and AI Contribution — [review](../outputs/ai-3-week-19-connected-review/START_REVIEW.html)
+- Week 20: Conversation State and Memory — [review](../outputs/ai-3-week-20-connected-review/START_REVIEW.html)
+- Week 21: Tools and APIs — [review](../outputs/ai-3-week-21-connected-review/START_REVIEW.html)
+- Week 22: Requests Responses and JSON — [review](../outputs/ai-3-week-22-connected-review/START_REVIEW.html)
+- Week 23: Block to Python Bridge — [review](../outputs/ai-3-week-23-connected-review/START_REVIEW.html)
+- Week 24: Prototype a Grounded Assistant — [review](../outputs/ai-3-week-24-connected-review/START_REVIEW.html)
+- Week 25: Quality Rubrics — [review](../outputs/ai-3-week-25-connected-review/START_REVIEW.html)
+- Week 26: Evaluation Sets — [review](../outputs/ai-3-week-26-connected-review/START_REVIEW.html)
+- Week 27: Red Team the Product — [review](../outputs/ai-3-week-27-connected-review/START_REVIEW.html)
+- Week 28: Privacy by Design — [review](../outputs/ai-3-week-28-connected-review/START_REVIEW.html)
+- Week 29: Copyright and Provenance — [review](../outputs/ai-3-week-29-connected-review/START_REVIEW.html)
+- Week 30: Bias and Representation — [review](../outputs/ai-3-week-30-connected-review/START_REVIEW.html)
+- Week 31: Safety Boundaries — [review](../outputs/ai-3-week-31-connected-review/START_REVIEW.html)
+- Week 32: Human AI Workflow — [review](../outputs/ai-3-week-32-connected-review/START_REVIEW.html)
+- Week 33: Capstone Design — [review](../outputs/ai-3-week-33-connected-review/START_REVIEW.html)
+- Week 34: Capstone Build — [review](../outputs/ai-3-week-34-connected-review/START_REVIEW.html)
+- Week 35: Capstone Evaluate and Improve — [review](../outputs/ai-3-week-35-connected-review/START_REVIEW.html)
+- Week 36: Creator Defense — [review](../outputs/ai-3-week-36-connected-review/START_REVIEW.html)
 
 The reviewed lessons include matched diagrams, complete supplied investigations, separate practice and independent tasks, readable teacher guidance and standalone workbook references.
 
@@ -32,4 +53,66 @@ Verification covers production builds, hosted and offline desktop/phone checks, 
 
 
 
-Overall: 87 of 264 lessons reviewed; 177 remain in their previous presentation. Next: ai-3/16.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Overall: 240 of 264 lessons reviewed; 24 remain in their previous presentation. Next: ai-7/13.

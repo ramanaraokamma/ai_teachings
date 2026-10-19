@@ -1,0 +1,735 @@
+{
+  "lesson": "ai-3/25",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-3/25",
+      "path": "/method/retrieval/1/expected",
+      "old": "None and true, respectively.",
+      "new": "JSON null becomes Python None and Python True serialises as JSON true. Guard top-level structure before fields, then validate types and ranges. Parsing does not verify an observation."
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/teacher/0/blocks/13/text",
+      "old": "Reference example, not the only acceptable wording: None and true, respectively.",
+      "new": "Reference example, not the only acceptable wording: JSON null becomes Python None and Python True serialises as JSON true. Guard top-level structure before fields, then validate types and ranges. Parsing does not verify an observation."
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/classroom/goals/0",
+      "old": "Explain the mechanism and terminology of system evaluation sets",
+      "new": "Judge an output using separate observable rubric criteria"
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/method/goals/0",
+      "old": "Explain the mechanism and terminology of system evaluation sets",
+      "new": "Judge an output using separate observable rubric criteria"
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/sections/0/blocks/1/text",
+      "old": "I can explain the mechanism and terminology of system evaluation sets.",
+      "new": "I can judge an output using separate observable rubric criteria."
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/classroom/goals/1",
+      "old": "Apply the stated procedure to a new case with a traceable result",
+      "new": "Apply mandatory evidence checks before using a total score"
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/method/goals/1",
+      "old": "Apply the stated procedure to a new case with a traceable result",
+      "new": "Apply mandatory evidence checks before using a total score"
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/sections/0/blocks/2/text",
+      "old": "I can apply the stated procedure to a new case with a traceable result.",
+      "new": "I can apply mandatory evidence checks before using a total score."
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/classroom/goals/2",
+      "old": "Identify an assumption or limitation and design a revealing follow-up",
+      "new": "Explain rating disagreements with source passages and stated anchors"
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/method/goals/2",
+      "old": "Identify an assumption or limitation and design a revealing follow-up",
+      "new": "Explain rating disagreements with source passages and stated anchors"
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/sections/0/blocks/3/text",
+      "old": "I can identify an assumption or limitation and design a revealing follow-up.",
+      "new": "I can explain rating disagreements with source passages and stated anchors."
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/method/goal",
+      "old": "Explain the mechanism and terminology of system evaluation sets",
+      "new": "Judge an output using separate observable rubric criteria"
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/teacher/0/blocks/1/text",
+      "old": "Primary target: Explain the mechanism and terminology of system evaluation sets",
+      "new": "Primary target: Judge an output using separate observable rubric criteria"
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/sections/0/blocks/18/text",
+      "old": "Recall Latency cost and resource use. Explain why a recorded result needs its input conditions and evidence source before it can support a claim.",
+      "new": "Recall Examples and Rubrics and Prototype a Grounded Assistant: a polished format cannot compensate for unsupported claims. Name the exact source and stage behind a quality judgement."
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/method/practice/title",
+      "old": "Trace the worked case",
+      "new": "Apply separate rubric anchors"
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/method/practice/prompt",
+      "old": "Ten cases include six answerable and four missing-evidence cases. System answers five answerable correctly and abstains appropriately on three missing cases. Show the intermediate steps and give the conclusion with its scope.",
+      "new": "Use S1: A root anchors a plant in soil. Question: what role does a root have? Draft: A root anchors a plant in soil. Roots grow exactly 2 cm each day. Apply source support, task fit and at-most-two-sentence format separately, giving evidence for each. Apply the declared all-three release rule, then predict removing only the unsupported sentence."
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/method/practice/answer",
+      "old": "Teacher explanation: Answer correctness 5/6; appropriate fallback 3/4; combined contract passes 8/10 if each case has one required outcome. Different denominators answer different questions.",
+      "new": "Support fails: daily growth has no S1 evidence. Task fit passes: the anchoring clause answers the role question. Format passes: two sentences. Do not release because support is mandatory and all three are required. Removing the growth sentence leaves a supported one-sentence role answer; all three then pass. No general readability or learning benefit is established."
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/method/hinge/prompt",
+      "old": "Use the worked case for System evaluation sets. Proposed explanation: “The worked result establishes every future case”. Decide whether this explanation is supported. Point to the step or supplied fact that decides; explain your repair if needed.",
+      "new": "A draft passes task fit and length but contains an unsupported measurement. Can a two-of-three score justify release under the stated all-three rule? Explain what must change."
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/method/hinge/answer",
+      "old": "Evaluation coverage limits the claim; prompts tuned on these cases need new reserved final cases.",
+      "new": "No. The mandatory support gate fails. Remove the unsupported claim or obtain permitted supporting evidence, then reassess every criterion."
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/classroom/flow/2/task",
+      "old": "Ten cases include six answerable and four missing-evidence cases. System answers five answerable correctly and abstains appropriately on three missing cases. Show the intermediate steps and give the conclusion with its scope.",
+      "new": "Use S1: A root anchors a plant in soil. Question: what role does a root have? Draft: A root anchors a plant in soil. Roots grow exactly 2 cm each day. Apply source support, task fit and at-most-two-sentence format separately, giving evidence for each. Apply the declared all-three release rule, then predict removing only the unsupported sentence."
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Score three outputs independently, compare by dimension, cite evidence for each score, and improve one weak anchor.",
+      "new": "Use the three supplied root-role drafts and S1 with the declared source-support, task-fit and sentence-limit anchors. Rate independently, justify each dimension and preserve the mandatory evidence gate. Revise ambiguous anchors explicitly and rescore all outputs; do not claim a live model or usability study."
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Score three outputs independently, compare by dimension, cite evidence for each score, and improve one weak anchor.",
+      "new": "Use the three supplied root-role drafts and S1 with the declared source-support, task-fit and sentence-limit anchors. Rate independently, justify each dimension and preserve the mandatory evidence gate. Revise ambiguous anchors explicitly and rescore all outputs; do not claim a live model or usability study."
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/method/independent/title",
+      "old": "Apply a new case independently",
+      "new": "Judge a fresh seed-coat draft"
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/method/independent/task",
+      "old": "Twelve cases: eight answerable, four unanswerable. Correct answers six; appropriate abstentions two. Compute separate and combined pass rates.",
+      "new": "Approved C2 says: A seed coat protects the seed. Question: what role does the seed coat have? Draft: A seed coat protects the seed. Every seed opens exactly 48 hours later. Use the same three criteria: every factual claim supported by C2, answer the asked role question, at most two sentences. All three are required for release. Give a separate judgement with evidence for each, the release decision and one justified repair."
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/method/independent/answer",
+      "old": "Teacher explanation: 6/8=75%; 2/4=50%; combined 8/12=2/3. Do not call all twelve answer-accuracy cases.",
+      "new": "Support fails: the 48-hour claim is absent from C2. Task fit passes through the protection clause; format passes with two sentences. Do not release under the all-three rule. Removing the unsupported timing sentence leaves the supported one-sentence role answer; do not invent a source or assert the timing claim is always false."
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/method/independent/source",
+      "old": "primary source W4, first curriculum occurrence",
+      "new": "new parallel rubric transfer case"
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/sections/15/blocks/0/text",
+      "old": "Close your notes. Explain this goal in your own words: Explain the mechanism and terminology of system evaluation sets",
+      "new": "Close your notes. Explain why separate observable criteria and a mandatory evidence gate can produce a different decision from a total score."
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied investigation for shared practice. Keep predictions and observed paper-trace results separate. Reserve Judge the new seed-coat draft independently for the individual first attempt before feedback; do not use the reserved case as a paired lab task."
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/teacher/2/blocks/5/text",
+      "old": "Keep for an independent attempt: Two answers have equally polished language. One has three supported claims; the other has two supported claims and one invented claim. How should a quality rubric distinguish them?",
+      "new": "Use the earlier changed question as optional later practice. Reserve Judge the new seed-coat draft independently for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice answer and reason"
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for explaining this week’s idea"
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Judge the new seed-coat draft independently is the selected independent case."
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Score outputs and justify disagreements with evidence.",
+      "new": "EXPLANATION CHECK  Require separate criterion judgements with direct evidence and the declared release rule."
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/workbook/1/blocks/0/text",
+      "old": "Use W2: Trace the worked case for System evaluation sets. Record the answer once; the lesson and workbook refer to the same attempt.",
+      "new": "Earlier evaluation-rate completion practice: preserve the task and saved response as review. Use current W2 for this week’s supported quality-rubric practice."
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/teacher/5/blocks/12/text",
+      "old": "W4: 6/8=75%; 2/4=50%; combined 8/12=2/3. Do not call all twelve answer-accuracy cases. Require intermediate reasoning and the stated scope. Fresh retry: Five answerable and five unanswerable; four correct answers and four appropriate fallbacks. Expected reasoning: 4/5=80% in each category; combined 8/10. Preserve individual failures and permission checks. If students need support, record it and reassess with another new case rather than awarding independence to a copied answer.",
+      "new": "Current independent task: seed-coat protection is supported by C2; 48-hour opening is not. Support fails, role and two-sentence format pass; reject under the all-three rule. Remove unsupported timing. Fresh retry: approved note says A shell protects an egg; draft adds exact three-day hatching. Require the same source-support separation without assuming a universal hatching time. Earlier rate calculations remain review; do not use their answers to score the rubric task."
+    },
+    {
+      "week": "ai-3/25",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Next connection: Capstone requirements and corpus. Preserve the current case record and retrieve its evidence boundary before moving on.",
+      "new": "Next is Week 26: Evaluation Sets. Carry forward versioned criteria, mandatory conditions and justified case-level decisions when selecting cases and aggregating outcomes."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Which quality criterion passed, and which did not?",
+          "groups": [
+            "Your rubric goals",
+            "Recall evidence and mandatory checks",
+            "Your end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Describe what a rater must point to",
+          "groups": [
+            "Understand criteria, anchors and gates",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Set the scoring contract before reading drafts",
+          "groups": [
+            "Three observable criteria and the release rule",
+            "Explain the deciding check",
+            "Review · Earlier evaluation-set rules",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare criterion evidence with an attractive total",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Your quick word guide",
+          "groups": [
+            "Core vocabulary",
+            "Terms for the connected explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace each criterion against S1 and the draft",
+          "groups": [
+            "Read the complete note, question and draft",
+            "Trace source support and format",
+            "Predict removing the unsupported sentence",
+            "Check after predicting",
+            "State the small-rubric limit",
+            "Review · Separate evaluation-set fractions",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Find a point total used to bypass a gate",
+          "groups": [
+            "Repair the majority-of-checks shortcut",
+            "Design a revealing follow-up",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise criterion-by-criterion decisions with less help",
+          "groups": [
+            "Current task and response",
+            "Explain the pictured gate",
+            "Keep independent work separate",
+            "Review · Earlier evaluation-set practice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Rate three complete outputs with the same rubric",
+          "groups": [
+            "All supplied output cards",
+            "Rate, compare, justify and revise an anchor",
+            "Keep rating evidence and disagreements",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Choose a stronger thinking challenge",
+          "groups": [
+            "Pick your next step",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep the project’s quality criteria reviewable",
+          "groups": [
+            "This week’s contribution",
+            "Retain the checkpoint and human choice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: check your explanation",
+          "groups": [
+            "Check the evidence and its limit",
+            "Self-check and record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice: A total can hide a required failure",
+          "groups": [
+            "Read the supplied case and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: judge the fresh seed-coat draft",
+          "groups": [
+            "Current independent source, draft and response",
+            "Feedback after the first attempt",
+            "Review · Earlier evaluation-rate tasks and responses"
+          ]
+        },
+        {
+          "title": "Reference: original lesson checklist",
+          "groups": [
+            "Targets and evidence",
+            "Keep your route and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: name the failed criterion and its evidence",
+          "groups": [
+            "Explain without notes",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: the six-picture journey",
+          "groups": [
+            "01. Quality Rubrics: the case",
+            "02. Follow the deciding steps",
+            "03. System evaluation sets — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare this connected week",
+          "groups": [
+            "Learning goal and precision",
+            "What to prepare",
+            "Main teaching plan",
+            "Opening retrieval and readiness",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach observable criteria before combining ratings",
+          "groups": [
+            "Read the three-criterion contract",
+            "Read S1 and the complete root draft",
+            "Trace the failed evidence gate",
+            "Predict the justified repair",
+            "State the unmeasured-quality limit",
+            "Review · Earlier point-total illustration",
+            "Review · Earlier evaluation-set calculations",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide evidence-based rating, then remove help",
+          "groups": [
+            "Current completion task and key",
+            "Current individual gate check",
+            "Pictorial changed-case reasoning",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the three-output rubric comparison",
+          "groups": [
+            "Current cards and answer guidance",
+            "Predict, rate and record",
+            "Keep evidence and limits",
+            "Respond to rubric misunderstandings",
+            "Choose accessible support",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the new seed-coat rubric judgement",
+          "groups": [
+            "Current independent question and key",
+            "Judge reasoning and scope",
+            "Give one repair action",
+            "Current workbook guidance",
+            "Review · Earlier evaluation questions and keys",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, adapt and return",
+          "groups": [
+            "Project evidence to keep",
+            "Support while preserving the reasoning goal",
+            "Plan the delayed check",
+            "Bridge to next week",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: alternative planning checklist",
+          "groups": [
+            "Preparation and schedule",
+            "Practice and assessment reminders"
+          ]
+        },
+        {
+          "title": "Reference: feedback and records",
+          "groups": [
+            "Keep practice and independent evidence separate",
+            "Repair and portfolio records",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: teach with the six pictures",
+          "groups": [
+            "01. Quality Rubrics: the case",
+            "02. Follow the deciding steps",
+            "03. System evaluation sets — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall: reconnect earlier ideas",
+          "groups": [
+            "Retrieve and explain",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair the explanation",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W4 · Judge the seed-coat draft independently",
+          "groups": [
+            "Current independent task and response",
+            "Review · Earlier rate assessment and saved response"
+          ]
+        },
+        {
+          "title": "Reference · Original learning target",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A complete case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A changed case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and its evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge the evidence in your work",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Original target response space",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W1 · Explain observable criteria",
+          "groups": [
+            "Current source and rubric",
+            "Current question and response",
+            "Review · Earlier evaluation-rate task and saved response"
+          ]
+        },
+        {
+          "title": "W2 · Apply the three anchors",
+          "groups": [
+            "Current source and rubric",
+            "Current question and response",
+            "Review · Earlier evaluation-rate task and saved response"
+          ]
+        },
+        {
+          "title": "W3 · Reject a score-over-gate argument",
+          "groups": [
+            "Current source and rubric",
+            "Current question and response",
+            "Review · Earlier evaluation-rate task and saved response"
+          ]
+        },
+        {
+          "title": "Additional practice · Earlier evaluation-rate task",
+          "groups": [
+            "Earlier task and response"
+          ]
+        },
+        {
+          "title": "W5 · Design a revealing rubric check",
+          "groups": [
+            "Current source and rubric",
+            "Current question and response",
+            "Review · Earlier evaluation-rate task and saved response"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Use the worked picture",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Quality Rubrics: the case",
+            "02. Follow the deciding steps",
+            "03. System evaluation sets — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-3-week-25-connected-review/START_REVIEW.html",
+  "week_sha256": "506460fd46a4007868ebc3e1f2e5ec392fc3d750bf67b49f9055c38bf96f0293",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

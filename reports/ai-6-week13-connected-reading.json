@@ -1,0 +1,463 @@
+{
+  "lesson": "ai-6/13",
+  "sections_reviewed": 42,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-6/13",
+      "path": "/teacher/0/blocks/18/text",
+      "old": "Two 45-minute sessions. A bounded agent uses explicit states and finite action limits. A state machine makes invalid transitions visible. Use the supplied constructed scenarios to make the mechanism inspectable. Collect W4 before sharing solutions. Students should name intermediate evidence and limitations; classroom pacing and learning effectiveness remain unvalidated.",
+      "new": "Use the three-session teaching cycle above, with extra time as needed. A bounded agent uses explicit states and finite action limits. A state machine makes invalid transitions visible. Use the supplied constructed scenarios to make the mechanism inspectable. Collect W4 before sharing solutions. Students should name intermediate evidence and limitations; classroom pacing and learning effectiveness remain unvalidated."
+    },
+    {
+      "week": "ai-6/13",
+      "path": "/teacher/0/blocks/18/presentation/paragraphs/0",
+      "old": "Two 45-minute sessions. A bounded agent uses explicit states and finite action limits. A state machine makes invalid transitions visible. Use the supplied constructed scenarios to make the mechanism inspectable.",
+      "new": "Use the three-session teaching cycle above, with extra time as needed. A bounded agent uses explicit states and finite action limits. A state machine makes invalid transitions visible. Use the supplied constructed scenarios to make the mechanism inspectable."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Follow permitted arrows and keep the action count bounded",
+          "groups": [
+            "Learning goals",
+            "Retrieve trace evidence and failure boundaries",
+            "Prerequisite and starting response",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Write the transition policy and budget as separate rules",
+          "groups": [
+            "Begin with the map-and-doors explanation",
+            "Define bounded state machines",
+            "Complete original graph and guard contract",
+            "Name supplied and missing evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace the original graph to its first forbidden edge",
+          "groups": [
+            "Original state policy and maximum attempts",
+            "Labelled directed state graph",
+            "Complete invalid-proposal trace",
+            "State the guard assumptions",
+            "Explain the visual",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Revise one arrow explicitly and retest the remaining limits",
+          "groups": [
+            "Current task and response",
+            "Predict the pictured retry-arrow change",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Use service vocabulary precisely",
+          "groups": [
+            "Vocabulary and your explanation"
+          ]
+        },
+        {
+          "title": "Compare two paths against the graph that actually applies",
+          "groups": [
+            "Main proposed path and original graph conclusion",
+            "Keep the trace’s scope",
+            "Separate parcel graph and complete A/B paths",
+            "Trace allowed edges and skipped checking",
+            "Predict adding only checking→querying",
+            "Check after predicting",
+            "Explain the forbidden shortcut and data-correctness limit",
+            "Reference: original arrow-only helper",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Check graph, guard and budget independently",
+          "groups": [
+            "Core action-budget-versus-transition qualification",
+            "Complete prefix, evidence, retry and terminal probes",
+            "Guided explanation and repair",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise locating the first forbidden transition",
+          "groups": [
+            "Current explanation and guided scope check",
+            "Supported W2 record",
+            "Individual control-independence check",
+            "Parcel picture response",
+            "Reserve the selected narrower independent graph",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the complete state-path and bounded-retry audit",
+          "groups": [
+            "Current original-graph trace investigation",
+            "Complete runnable guards, revision and budget checks",
+            "Expected path outcomes and simulation limits",
+            "Evidence ledger and reflection",
+            "Reference: original adjacency-only helper",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Explain a stronger case",
+          "groups": [
+            "Explain,repair and extend"
+          ]
+        },
+        {
+          "title": "Save the transition table, guards and action counter policy",
+          "groups": [
+            "Project task and artifact",
+            "Actual run or trace and limitations",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Check the service reasoning and its limits",
+          "groups": [
+            "Current explanation and response"
+          ]
+        },
+        {
+          "title": "Extra practice · Revisit the complete trace",
+          "groups": [
+            "Complete trace and evidence"
+          ]
+        },
+        {
+          "title": "Try alone: follow a new narrower transition table",
+          "groups": [
+            "Complete selected independent graph and two paths",
+            "First attempt and support record",
+            "Feedback after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The earlier route checklist",
+          "groups": [
+            "Targets,route and first prediction"
+          ]
+        },
+        {
+          "title": "Finish with a valid path and an honest completion claim",
+          "groups": [
+            "Retrieve and explain",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict,check and repair",
+          "groups": [
+            "First supported question and optional hint",
+            "Check after the first attempt",
+            "Changed-case question and optional hint",
+            "Check after the changed attempt",
+            "Repair and retain the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture concept journey",
+          "groups": [
+            "01. State machines for bounded agents: the case",
+            "02. Follow the deciding steps",
+            "03. State machines for bounded agents — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the connected service investigation",
+          "groups": [
+            "Target and main teaching plan",
+            "Preparation and prerequisite",
+            "Opening retrieval",
+            "Pictured end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach transition order, evidence guards and action budgets as separate controls",
+          "groups": [
+            "Definitions and complete original policy",
+            "Directed graph, invalid-prefix trace and checked reasoning",
+            "Guard, budget and terminal-case probes",
+            "Separate parcel graph and scope",
+            "Parcel trace and one-arrow revision key",
+            "Reference: original adjacency-only code",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Model a step,then remove help",
+          "groups": [
+            "Current completion task and checked reasoning",
+            "Individual misconception check",
+            "Pictured reasoning and changed case",
+            "Accessible support and extension",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the complete supplied investigation",
+          "groups": [
+            "Complete inputs,expected results and limits",
+            "Diagnose the current misconceptions",
+            "Choose accessible support",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the new service scenario",
+          "groups": [
+            "Selected independent task and checked answer",
+            "Judge explanation,trace and limits",
+            "Give one usable repair",
+            "W1 Explain the mechanism",
+            "W2 Trace the worked case",
+            "W3 Audit the limit",
+            "W5 Design a revealing follow-up",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, support and revisit service design",
+          "groups": [
+            "Project and next-week bridge",
+            "Delayed return and support record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative planning checklist",
+          "groups": [
+            "Planning,assessment and project reminders"
+          ]
+        },
+        {
+          "title": "Reference · Feedback,labs and repair paths",
+          "groups": [
+            "Feedback and record guidance"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. State machines for bounded agents: the case",
+            "02. Follow the deciding steps",
+            "03. State machines for bounded agents — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 8,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Recall · Retrieve before notes",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Individual reasoning check",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Try alone · Selected transfer",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W1 · Explain the current example",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W2 · Trace the calculation",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W3 · Repair a misconception",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Earlier W4 response copy",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W5 · Explain the limitation",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Project · Keep the service evidence",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Project milestone",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict,check and repair",
+          "groups": [
+            "First supported question and optional hint",
+            "Check after the first attempt",
+            "Changed-case question and optional hint",
+            "Check after the changed attempt",
+            "Repair and retain the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. State machines for bounded agents: the case",
+            "02. Follow the deciding steps",
+            "03. State machines for bounded agents — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 15,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 15,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-6-week-13-connected-review/START_REVIEW.html",
+  "week_sha256": "81111abdeb0916682d683d191b92889a6d6d5dc2f32ddbf4bb8e17e2adf6bb0a",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

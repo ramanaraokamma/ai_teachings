@@ -68,4 +68,66 @@ Week 16 supplies raw validation predictions whose audited MAEs are 6, 3 and 8 pa
 
 
 
-Overall: 87 of 264 lessons reviewed; 177 remain in their previous presentation. Next: ai-3/16.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Overall: 240 of 264 lessons reviewed; 24 remain in their previous presentation. Next: ai-7/13.

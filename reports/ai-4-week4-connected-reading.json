@@ -1,0 +1,595 @@
+{
+  "lesson": "ai-4/4",
+  "sections_reviewed": 58,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-4/4",
+      "path": "/teacher/5/blocks/12/text",
+      "old": "Independent W4 evidence: Examples: A/0 and B/40 valid; empty label/5 invalid label; C/41 invalid range. Text \"5\" also fails the count type. Accept alternatives meeting the written rules. Record whether the learner needed no help, a hint or explanation. Fresh retry: define a tray label and integer count 0 through 20. Require tests at 0, 20, -1 and 21 and a text count.",
+      "new": "Selected independent evidence: observed sum 24, count 3, mean 8. Empty collection means mean unavailable. A missing fourth record stays unknown; under an explicit available-case policy report mean 8 for the three observed records and coverage 3/4, without claiming the four-record mean. Fresh retry: observed values 2,4,9 and two missing records give sum 15, observed mean 5, coverage 3/5. Record help and prior exposure."
+    },
+    {
+      "week": "ai-4/4",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied complete investigation for shared practice. Reserve the supplied independent observed-values and missing-record task for the individual first attempt before hints or feedback; earlier transfer questions remain additional practice."
+    },
+    {
+      "week": "ai-4/4",
+      "path": "/teacher/2/blocks/6/text",
+      "old": "Keep for an independent attempt: Trace Python: lengths = [4, 7, 9]; selected = lengths[1]; total = selected + 3. Give selected and total.",
+      "new": "Use the earlier transfer question as additional practice. Reserve the supplied independent observed-values and missing-record task for the first individual attempt and record support used."
+    },
+    {
+      "week": "ai-4/4",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-4/4",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Make every table value interpretable",
+          "groups": [
+            "Learning goals",
+            "Retrieve the earlier distinction",
+            "Check readiness for rows, files and recovery",
+            "Your end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Start with one row and its written contract",
+          "groups": [
+            "Main activity-session schema",
+            "Optional extension · Read supplied local text",
+            "Optional extension · Parse with explicit failure status",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Check field, type and range before using a row",
+          "groups": [
+            "Read the complete schema",
+            "Run the supplied two-row validator",
+            "Explain exact types and inclusive limits",
+            "Optional extension · Read text, convert, total",
+            "Optional extension · Parse and report known failures",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare normal, boundary, missing and changed-unit records",
+          "groups": [
+            "Four evaluation conditions",
+            "Keep the claim bounded",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Words for the current experiment",
+          "groups": [
+            "Core vocabulary",
+            "Closer-explanation terms",
+            "Extension vocabulary",
+            "Extension vocabulary",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep missingness separate from a measured zero",
+          "groups": [
+            "Complete supplied plant records and contract",
+            "Trace available sum, mean and coverage",
+            "Predict zero becoming missing",
+            "Check after predicting",
+            "Explain the limit and pictured decision",
+            "Additional schema and extension predictions",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Find the first unsupported assumption",
+          "groups": [
+            "Core validity-versus-truth question",
+            "Challenge notebook order assumptions",
+            "Optional file and recovery diagnosis",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise inclusive limits and explicit unit conversion",
+          "groups": [
+            "Attempt W2 with the schema beside you",
+            "Check whether a successful run proves truth",
+            "Repair a seconds/minutes mismatch",
+            "Explain the missing-value picture",
+            "Reserve the individual task",
+            "Optional file and parser practice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Investigate a complete notebook state and two filters",
+          "groups": [
+            "Complete five-variable, filter and error fixtures",
+            "Predict, run cleanly and explain repairs",
+            "Keep evidence and actual execution status",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Build a stronger explanation",
+          "groups": [
+            "Thinking ladder",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep a reproducible table contract with the project",
+          "groups": [
+            "Create the five-row artifact",
+            "Record evidence and human limits",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Inspect your evidence",
+          "groups": [
+            "Experiment evidence checklist",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier complete case",
+          "groups": [
+            "Situation and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: specify a summary with missing information",
+          "groups": [
+            "Fresh supplied task and scope",
+            "First attempt and help record",
+            "Use feedback after attempting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier route checklist",
+          "groups": [
+            "Checklist and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish with a contract and an honest denominator",
+          "groups": [
+            "Retrieve and explain",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict, check and repair",
+          "groups": [
+            "First supported question and hint",
+            "Check the first explanation",
+            "Changed-case question and hint",
+            "Check the changed explanation",
+            "Repair and keep the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The six-picture journey",
+          "groups": [
+            "01. Python and Table Readiness: the case",
+            "02. Follow the deciding steps",
+            "03. Follow the evidence",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the connected experiment",
+          "groups": [
+            "Goal and main teaching plan",
+            "Materials and prerequisite",
+            "Opening retrieval",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach contracts, then summaries, then optional extensions",
+          "groups": [
+            "Core schema and exact-type reasoning",
+            "Complete plant records and measured coverage",
+            "Trace the mean and limits",
+            "Predict zero becoming unmeasured",
+            "Optional file-reading contract and checked outputs",
+            "Optional parser contract and checked statuses",
+            "Additional list-mean modelling",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the calculation, then remove help",
+          "groups": [
+            "Current completion task and checked key",
+            "Individual misconception check",
+            "Pictorial question and changed-case reasoning",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts",
+            "Extension teaching cycles"
+          ]
+        },
+        {
+          "title": "Run the complete supplied investigation",
+          "groups": [
+            "Supplied inputs and checked guidance",
+            "Predict, investigate and record",
+            "Keep the experiment ledger",
+            "Diagnose the current misconceptions",
+            "Choose accessible support",
+            "Extension misconceptions",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected experiment transfer",
+          "groups": [
+            "Selected independent task and checked key",
+            "Judge trace, scope and support",
+            "Give one repair action",
+            "W1 State a schema",
+            "W2 Classify records",
+            "W3 Repair a unit problem",
+            "W5 Separate validity and truth",
+            "Earlier wording, alternatives and picture transcripts",
+            "Extension questions and checked keys"
+          ]
+        },
+        {
+          "title": "Connect, support and revisit the experiment",
+          "groups": [
+            "Project evidence",
+            "Support and selected reassessment",
+            "Delayed return",
+            "Bridge and reflection",
+            "Earlier wording, alternatives and picture transcripts",
+            "Extension support and reassessment"
+          ]
+        },
+        {
+          "title": "Reference · Alternative planning checklist",
+          "groups": [
+            "Planning and assessment reference"
+          ]
+        },
+        {
+          "title": "Reference · Feedback and evidence records",
+          "groups": [
+            "Record and repair",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Python and Table Readiness: the case",
+            "02. Follow the deciding steps",
+            "03. Follow the evidence",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 22,
+      "sections": [
+        {
+          "title": "Recall · Retrieve before notes",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Individual reasoning check",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Try alone · Selected experiment task",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Earlier learning target",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier complete case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Changed case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Project · Keep the experiment evidence",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge your evidence",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier transfer",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W1 · Explain the mechanism",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Trace the current experiment",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Repair the reasoning",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Earlier W4 record",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W5 · Plan the next check",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extension · File input and output — W1 Trace types",
+          "groups": [
+            "Extension question and evidence"
+          ]
+        },
+        {
+          "title": "Extension · File input and output — W2 Predict the total",
+          "groups": [
+            "Extension question and evidence"
+          ]
+        },
+        {
+          "title": "Extension · File input and output — W3 Repair a path issue",
+          "groups": [
+            "Extension question and evidence"
+          ]
+        },
+        {
+          "title": "Extension · File input and output — W4 Read independently",
+          "groups": [
+            "Extension question and evidence"
+          ]
+        },
+        {
+          "title": "Extension · File input and output — W5 Handle malformed data",
+          "groups": [
+            "Extension question and evidence"
+          ]
+        },
+        {
+          "title": "Extension · Exceptions and recovery — W1 Trace success",
+          "groups": [
+            "Extension question and evidence"
+          ]
+        },
+        {
+          "title": "Extension · Exceptions and recovery — W2 Trace two failures",
+          "groups": [
+            "Extension question and evidence"
+          ]
+        },
+        {
+          "title": "Extension · Exceptions and recovery — W3 Repair a handler",
+          "groups": [
+            "Extension question and evidence"
+          ]
+        },
+        {
+          "title": "Extension · Exceptions and recovery — W4 Build independently",
+          "groups": [
+            "Extension question and evidence"
+          ]
+        },
+        {
+          "title": "Extension · Exceptions and recovery — W5 Choose recovery",
+          "groups": [
+            "Extension question and evidence"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio milestone",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict, check and repair",
+          "groups": [
+            "First supported question and hint",
+            "Check the first explanation",
+            "Changed-case question and hint",
+            "Check the changed explanation",
+            "Repair and keep the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Python and Table Readiness: the case",
+            "02. Follow the deciding steps",
+            "03. Follow the evidence",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 31,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 31,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-4-week-04-connected-review/START_REVIEW.html",
+  "week_sha256": "23e81f90374bca41be3848899e2f5b146e40820e1abf8f2bfb50a9e6b94bd837",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

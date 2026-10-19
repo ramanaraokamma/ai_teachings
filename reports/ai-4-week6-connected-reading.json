@@ -1,0 +1,578 @@
+{
+  "lesson": "ai-4/6",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-4/6",
+      "path": "/sections/0/blocks/9/text",
+      "old": "Ambiguous definitions and inconsistent annotation place an upper bound on learnable performance.",
+      "new": "Ambiguous definitions and inconsistent annotation can make the learning target unreliable; annotator agreement alone is not a universal numerical ceiling on model performance."
+    },
+    {
+      "week": "ai-4/6",
+      "path": "/sections/0/blocks/9/presentation/paragraphs/0",
+      "old": "Ambiguous definitions and inconsistent annotation place an upper bound on learnable performance.",
+      "new": "Ambiguous definitions and inconsistent annotation can make the learning target unreliable; annotator agreement alone is not a universal numerical ceiling on model performance."
+    },
+    {
+      "week": "ai-4/6",
+      "path": "/sections/2/blocks/7/text",
+      "old": "MODEL IDEA  Ambiguous definitions and inconsistent annotation place an upper bound on learnable performance.",
+      "new": "MODEL IDEA  Ambiguous definitions and inconsistent annotation can make the learning target unreliable; annotator agreement alone is not a universal numerical ceiling on model performance."
+    },
+    {
+      "week": "ai-4/6",
+      "path": "/sections/2/blocks/7/presentation/paragraphs/0",
+      "old": "MODEL IDEA  Ambiguous definitions and inconsistent annotation place an upper bound on learnable performance.",
+      "new": "MODEL IDEA  Ambiguous definitions and inconsistent annotation can make the learning target unreliable; annotator agreement alone is not a universal numerical ceiling on model performance."
+    },
+    {
+      "week": "ai-4/6",
+      "path": "/teacher/0/blocks/17/text",
+      "old": "Ambiguous definitions and inconsistent annotation place an upper bound on learnable performance.",
+      "new": "Ambiguous definitions and inconsistent annotation can make the learning target unreliable; annotator agreement alone is not a universal numerical ceiling on model performance."
+    },
+    {
+      "week": "ai-4/6",
+      "path": "/teacher/0/blocks/17/presentation/paragraphs/0",
+      "old": "Ambiguous definitions and inconsistent annotation place an upper bound on learnable performance.",
+      "new": "Ambiguous definitions and inconsistent annotation can make the learning target unreliable; annotator agreement alone is not a universal numerical ceiling on model performance."
+    },
+    {
+      "week": "ai-4/6",
+      "path": "/teacher/1/blocks/3/text",
+      "old": "MODEL IDEA Ambiguous definitions and inconsistent annotation place an upper bound on learnable performance.",
+      "new": "MODEL IDEA Ambiguous definitions and inconsistent annotation can make the learning target unreliable; annotator agreement alone is not a universal numerical ceiling on model performance."
+    },
+    {
+      "week": "ai-4/6",
+      "path": "/teacher/1/blocks/3/presentation/paragraphs/0",
+      "old": "MODEL IDEA Ambiguous definitions and inconsistent annotation place an upper bound on learnable performance.",
+      "new": "MODEL IDEA Ambiguous definitions and inconsistent annotation can make the learning target unreliable; annotator agreement alone is not a universal numerical ceiling on model performance."
+    },
+    {
+      "week": "ai-4/6",
+      "path": "/sections/6/blocks/9/text",
+      "old": "Keep practice for writing label rules separate from final model testing. Resolving labels needs a documented process; reviewing model predictions to choose convenient labels would undermine a fair evaluation. Next week you will separate related examples when designing data splits.",
+      "new": "Keep practice for writing label rules separate from final model testing. Resolving labels needs a documented process; reviewing model predictions to choose convenient labels would undermine a fair evaluation. Next week examines sampling and intended use; later split-design lessons separate related examples."
+    },
+    {
+      "week": "ai-4/6",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Week 6 covers splits and related examples. Carry forward item IDs, rule versions, original labels and review status so that related cases and labeling decisions remain traceable.",
+      "new": "Next is Week 7: Sampling and Intended Use. Carry forward item IDs, rule versions, original labels and review status so the source and covered conditions remain traceable; related-example split design is covered later."
+    },
+    {
+      "week": "ai-4/6",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied complete investigation for shared practice. Reserve the five new P–T annotation pairs for the individual first attempt before hints or feedback; earlier transfer questions remain additional practice."
+    },
+    {
+      "week": "ai-4/6",
+      "path": "/teacher/2/blocks/6/text",
+      "old": "Keep for an independent attempt: Two labelers assign different species to the same image. Should you silently pick the label that helps the model score? Describe a better process.",
+      "new": "Use the earlier transfer question as additional practice. Reserve the five new P–T annotation pairs for the first individual attempt and record support used."
+    },
+    {
+      "week": "ai-4/6",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-4/6",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Define the target before asking people to label it",
+          "groups": [
+            "Learning goals",
+            "Recall inspection and missingness",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Use an observable boundary rule and a review route",
+          "groups": [
+            "Purpose and exact rule v1",
+            "Typical, touching and hidden examples",
+            "Keep the use bounded",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Count matched labels on matched item IDs",
+          "groups": [
+            "Earlier vague instruction and supplied pairs",
+            "Trace agreement and denominator",
+            "State pair-validation assumptions",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare a clear decision with insufficient visible evidence",
+          "groups": [
+            "Four evaluation conditions",
+            "Keep the claim bounded",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Words for the current experiment",
+          "groups": [
+            "Core vocabulary",
+            "Closer-explanation terms",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Resolve the boundary and preserve the uncertain case",
+          "groups": [
+            "Read separate leaf facts and scope",
+            "Trace labels, review and limits",
+            "Predict a newly visible observation",
+            "Check after predicting",
+            "Explain why votes cannot reveal hidden evidence",
+            "Review the corridor B and C decisions",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Separate agreement, correctness and rule changes",
+          "groups": [
+            "State count, subset and rule version",
+            "Explain a shared error",
+            "Challenge the claim with evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise the original comparison before the fresh task",
+          "groups": [
+            "Try W2 and explain the denominator",
+            "Write and pilot an observable rule",
+            "Check agreement-is-accuracy reasoning",
+            "Explain missing evidence",
+            "Reserve the independent task",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run Label Lab with all twenty cards supplied",
+          "groups": [
+            "Twenty complete label cards",
+            "Normal, boundary, missing and changed-description probes",
+            "Independent labeling, review and documented repeat",
+            "Record actual results or not run",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Build a stronger explanation",
+          "groups": [
+            "Thinking ladder",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep a label guide and decision history with the project",
+          "groups": [
+            "Project guide and evidence",
+            "Limits, review and human decision",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Inspect your evidence",
+          "groups": [
+            "Experiment evidence checklist",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier complete case",
+          "groups": [
+            "Situation and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: compare and review five new annotation pairs",
+          "groups": [
+            "Complete selected pairs and contract",
+            "First attempt and support record",
+            "Use feedback after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier route checklist",
+          "groups": [
+            "Checklist and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish by explaining agreement and its limit",
+          "groups": [
+            "Retrieve and explain",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict, check and repair",
+          "groups": [
+            "First supported question and hint",
+            "Check the first explanation",
+            "Changed-case question and hint",
+            "Check the changed explanation",
+            "Repair and keep the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The six-picture journey",
+          "groups": [
+            "01. Label Quality: the case",
+            "02. Follow the deciding steps",
+            "03. Follow a disagreement back to evidence",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the connected experiment",
+          "groups": [
+            "Goal and main teaching plan",
+            "Materials and prerequisite",
+            "Opening retrieval",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Model rule use before showing an agreement score",
+          "groups": [
+            "Complete corridor rule and examples",
+            "Original paired-count reasoning",
+            "Review B and C without overwriting labels",
+            "Read separate leaf facts and limitations",
+            "Trace rule, uncertainty and new observation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the calculation, then remove help",
+          "groups": [
+            "Current completion task and checked key",
+            "Individual misconception check",
+            "Pictorial question and changed-case reasoning",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the complete supplied investigation",
+          "groups": [
+            "Supplied inputs and checked guidance",
+            "Predict, investigate and record",
+            "Keep the experiment ledger",
+            "Diagnose the current misconceptions",
+            "Choose accessible support",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected experiment transfer",
+          "groups": [
+            "Selected independent task and checked key",
+            "Judge trace, scope and support",
+            "Give one repair action",
+            "W1 Use the boundary and review rules",
+            "W2 Interpret agreement",
+            "W3 Write a decision log",
+            "W5 Draft and test a label rule",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, support and revisit the experiment",
+          "groups": [
+            "Project evidence",
+            "Support and selected reassessment",
+            "Delayed return",
+            "Bridge and reflection",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative planning checklist",
+          "groups": [
+            "Planning and assessment reference"
+          ]
+        },
+        {
+          "title": "Reference · Feedback and evidence records",
+          "groups": [
+            "Record and repair",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Label Quality: the case",
+            "02. Follow the deciding steps",
+            "03. Follow a disagreement back to evidence",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall · Retrieve before notes",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Individual reasoning check",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Try alone · Selected experiment task",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Earlier learning target",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier complete case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Changed case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Project · Keep the experiment evidence",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge your evidence",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier transfer",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W1 · Explain the mechanism",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Trace the current experiment",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Repair the reasoning",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Earlier W4 record",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W5 · Plan the next check",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio milestone",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict, check and repair",
+          "groups": [
+            "First supported question and hint",
+            "Check the first explanation",
+            "Changed-case question and hint",
+            "Check the changed explanation",
+            "Repair and keep the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Label Quality: the case",
+            "02. Follow the deciding steps",
+            "03. Follow a disagreement back to evidence",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-4-week-06-connected-review/START_REVIEW.html",
+  "week_sha256": "e9d781a3e3b5b43efc6735018dd6c9b9a6ff084b78932a1d42bd91384e4c80cb",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

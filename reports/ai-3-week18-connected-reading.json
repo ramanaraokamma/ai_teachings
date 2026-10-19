@@ -588,5 +588,80 @@
         }
       ]
     }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 31,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 31,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-3-week-18-connected-review/START_REVIEW.html",
+  "week_sha256": "0f1be251a66c43826a62ac4c97db02836b27fb46123f778a52fe0e919b2b6e73",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
   }
 }

@@ -1,0 +1,444 @@
+{
+  "lesson": "ai-5/13",
+  "sections_reviewed": 42,
+  "original_blocks_preserved": true,
+  "wording_corrections": [],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "When does the model change during a pass through the data?",
+          "groups": [
+            "Learning goals",
+            "Retrieve the complete training loop",
+            "Prerequisite and starting response",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Declare one update per nonempty batch and keep the last batch",
+          "groups": [
+            "Complete batch/update/epoch convention",
+            "Five-record schedule counts",
+            "Retained versus dropped incomplete batch",
+            "Name supplied and missing facts"
+          ]
+        },
+        {
+          "title": "Trace a parameter state before and after every batch",
+          "groups": [
+            "Complete data and batch-gradient definition",
+            "Complete current-state batch traces",
+            "Two-record versus five-ID fixture and helper contract",
+            "Runnable retained-last-batch epoch",
+            "Connect the diagram to update timing",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Change the batching schedule while retaining its full record",
+          "groups": [
+            "Current stale-gradient task",
+            "Predict the pictured reversed full batch",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Use the mathematical words precisely",
+          "groups": [
+            "Vocabulary and your explanation"
+          ]
+        },
+        {
+          "title": "See why order can matter after single-example updates",
+          "groups": [
+            "Complete pictured data and distinct scope",
+            "Trace both orders and the full-batch mean",
+            "Predict one reversed full-batch update",
+            "Check after predicting",
+            "Explain update timing and fair-comparison limits",
+            "Return to the main reversed-order trace",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Freeze one model before aggregating its loss",
+          "groups": [
+            "Training-time state changes and weighted aggregation",
+            "Complete five-error weighted example",
+            "Try sizes3and1with different means",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise schedule counts and state timing with less help",
+          "groups": [
+            "Current task and response",
+            "Supported W2record",
+            "Individual misconception check",
+            "Pictured order reasoning",
+            "Reserve the independent new data",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run a complete schedule,state and aggregation audit",
+          "groups": [
+            "Current stale-gradient task and runnable epoch",
+            "Complete schedule,invalid,missing and weighted-loss probes",
+            "Predict,restart,trace or run,and aggregate correctly",
+            "Keep the evidence ledger",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Explain a stronger case",
+          "groups": [
+            "Explain,repair and extend"
+          ]
+        },
+        {
+          "title": "Save the schedule as part of the experiment",
+          "groups": [
+            "Project artifact and evidence table",
+            "Actual run/trace and remaining limits",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Check the representation and its limits",
+          "groups": [
+            "Current explanation and response"
+          ]
+        },
+        {
+          "title": "Extra practice · Revisit the complete trace",
+          "groups": [
+            "Complete trace and evidence"
+          ]
+        },
+        {
+          "title": "Try alone: reverse a new pair’s single-example schedule",
+          "groups": [
+            "Complete new independent schedule",
+            "First attempt and support record",
+            "Use feedback after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The earlier route checklist",
+          "groups": [
+            "Targets,route and first prediction"
+          ]
+        },
+        {
+          "title": "Finish with one update count and one state-dependent gradient",
+          "groups": [
+            "Retrieve and explain",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict,check and repair",
+          "groups": [
+            "First supported question and optional hint",
+            "Check after the first attempt",
+            "Changed-case question and optional hint",
+            "Check after the changed attempt",
+            "Repair and retain the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture concept journey",
+          "groups": [
+            "01. Batching and epochs: the case",
+            "02. Follow the deciding steps",
+            "03. One pass can contain different numbers of updates",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the connected mathematical investigation",
+          "groups": [
+            "Target and main teaching plan",
+            "Preparation and prerequisite",
+            "Opening retrieval",
+            "Pictured end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach update timing and exact aggregation with complete fixtures",
+          "groups": [
+            "Main convention,complete traces and guided key",
+            "Complete frozen-error aggregation",
+            "Separate pictured order experiment and scope",
+            "Trace order dependence and full-batch invariance",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Model a step,then remove help",
+          "groups": [
+            "Current completion task and checked reasoning",
+            "Individual misconception check",
+            "Pictured reasoning and changed case",
+            "Accessible support and extension",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the complete supplied investigation",
+          "groups": [
+            "Complete inputs,expected results and limits",
+            "Diagnose the current misconceptions",
+            "Choose accessible support",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the new schema or calculation transfer",
+          "groups": [
+            "Selected independent task and checked answer",
+            "Judge explanation,trace and limits",
+            "Give one usable repair",
+            "W1 Count a partial batch",
+            "W2 Repair a stale gradient",
+            "W3 Combine unequal batches",
+            "W5 Audit an epoch claim",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect,support and revisit the mathematics",
+          "groups": [
+            "Project and next-week bridge",
+            "Delayed return and support record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative planning checklist",
+          "groups": [
+            "Planning,assessment and project reminders"
+          ]
+        },
+        {
+          "title": "Reference · Feedback,labs and repair paths",
+          "groups": [
+            "Feedback and record guidance"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Batching and epochs: the case",
+            "02. Follow the deciding steps",
+            "03. One pass can contain different numbers of updates",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 8,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Recall · Retrieve before notes",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Individual reasoning check",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Try alone · Selected transfer",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W1 · Explain the current example",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W2 · Trace the calculation",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W3 · Repair a misconception",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Earlier W4 response copy",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W5 · Explain the limitation",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Project · Keep the mathematical evidence",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Project milestone",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict,check and repair",
+          "groups": [
+            "First supported question and optional hint",
+            "Check after the first attempt",
+            "Changed-case question and optional hint",
+            "Check after the changed attempt",
+            "Repair and retain the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Batching and epochs: the case",
+            "02. Follow the deciding steps",
+            "03. One pass can contain different numbers of updates",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 15,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 15,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-5-week-13-connected-review/START_REVIEW.html",
+  "week_sha256": "cc4ebe90971b1e105b297f9f93397c54c65a4327aa2aee22038302249e83565a",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

@@ -1,0 +1,638 @@
+{
+  "lesson": "ai-4/8",
+  "sections_reviewed": 53,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-4/8",
+      "path": "/sections/1/blocks/16/text",
+      "old": "Last week we compared one numeric feature. With two features, their numerical ranges can give one feature much more influence. Scaling changes those contributions. We will learn a minimum and range for each feature from training only, then reuse them for every example.",
+      "new": "This optional extension introduces a fixed one-nearest-neighbour example; the main nearest-neighbour lesson comes later in Week 12. With two features, their numerical ranges can give one feature much more influence. Scaling changes those contributions. We will learn a minimum and range for each feature from training only, then reuse them for every example."
+    },
+    {
+      "week": "ai-4/8",
+      "path": "/sections/1/blocks/16/presentation/paragraphs/0",
+      "old": "Last week we compared one numeric feature. With two features, their numerical ranges can give one feature much more influence. Scaling changes those contributions.",
+      "new": "This optional extension introduces a fixed one-nearest-neighbour example; the main nearest-neighbour lesson comes later in Week 12. With two features, their numerical ranges can give one feature much more influence. Scaling changes those contributions."
+    },
+    {
+      "week": "ai-4/8",
+      "path": "/teacher/1/blocks/29/text",
+      "old": "Last week we compared one numeric feature. With two features, their numerical ranges can give one feature much more influence. Scaling changes those contributions. We will learn a minimum and range for each feature from training only, then reuse them for every example.",
+      "new": "This optional extension introduces a fixed one-nearest-neighbour example; the main nearest-neighbour lesson comes later in Week 12. With two features, their numerical ranges can give one feature much more influence. Scaling changes those contributions. We will learn a minimum and range for each feature from training only, then reuse them for every example."
+    },
+    {
+      "week": "ai-4/8",
+      "path": "/teacher/1/blocks/29/presentation/paragraphs/0",
+      "old": "Last week we compared one numeric feature. With two features, their numerical ranges can give one feature much more influence. Scaling changes those contributions.",
+      "new": "This optional extension introduces a fixed one-nearest-neighbour example; the main nearest-neighbour lesson comes later in Week 12. With two features, their numerical ranges can give one feature much more influence. Scaling changes those contributions."
+    },
+    {
+      "week": "ai-4/8",
+      "path": "/sections/5/blocks/14/text",
+      "old": "A split record names the prediction goal, source version, group definition, exact assignments, row and group counts, date and any random method or seed used. For this hand-assigned example, record that there was no random sampling. Keep label-rule versions and unresolved review statuses traceable as in Week 5.",
+      "new": "A split record names the prediction goal, source version, group definition, exact assignments, row and group counts, date and any random method or seed used. For this hand-assigned example, record that there was no random sampling. Keep label-rule versions and unresolved review statuses traceable as in Week 6."
+    },
+    {
+      "week": "ai-4/8",
+      "path": "/sections/5/blocks/14/presentation/paragraphs/1",
+      "old": "For this hand-assigned example, record that there was no random sampling. Keep label-rule versions and unresolved review statuses traceable as in Week 5.",
+      "new": "For this hand-assigned example, record that there was no random sampling. Keep label-rule versions and unresolved review statuses traceable as in Week 6."
+    },
+    {
+      "week": "ai-4/8",
+      "path": "/teacher/1/blocks/40/text",
+      "old": "A split record names the prediction goal, source version, group definition, exact assignments, row and group counts, date and any random method or seed used. For this hand-assigned example, record that there was no random sampling. Keep label-rule versions and unresolved review statuses traceable as in Week 5.",
+      "new": "A split record names the prediction goal, source version, group definition, exact assignments, row and group counts, date and any random method or seed used. For this hand-assigned example, record that there was no random sampling. Keep label-rule versions and unresolved review statuses traceable as in Week 6."
+    },
+    {
+      "week": "ai-4/8",
+      "path": "/teacher/1/blocks/40/presentation/paragraphs/1",
+      "old": "For this hand-assigned example, record that there was no random sampling. Keep label-rule versions and unresolved review statuses traceable as in Week 5.",
+      "new": "For this hand-assigned example, record that there was no random sampling. Keep label-rule versions and unresolved review statuses traceable as in Week 6."
+    },
+    {
+      "week": "ai-4/8",
+      "path": "/sections/6/blocks/12/text",
+      "old": "Record the split, feature names and units, feature order, minima, ranges, constant-feature policy, distance, k and tie rule. Keep the scale with the stored training examples. New data uses the same calculation. If development choices change, document them and reserve a separate final test. Next week combines these steps into one reproducible classifier pipeline.",
+      "new": "Record the split, feature names and units, feature order, minima, ranges, constant-feature policy, distance, k and tie rule. Keep the scale with the stored training examples. New data uses the same calculation. If development choices change, document them and reserve a separate final test. Later classifier-pipeline lessons combine these steps; next week records dataset contents and limitations."
+    },
+    {
+      "week": "ai-4/8",
+      "path": "/sections/6/blocks/12/presentation/paragraphs/1",
+      "old": "If development choices change, document them and reserve a separate final test. Next week combines these steps into one reproducible classifier pipeline.",
+      "new": "If development choices change, document them and reserve a separate final test. Later classifier-pipeline lessons combine these steps; next week records dataset contents and limitations."
+    },
+    {
+      "week": "ai-4/8",
+      "path": "/sections/0/blocks/17/text",
+      "old": "What determines the nearest training neighbour, and which examples belong in the stored neighbour pool?",
+      "new": "In the optional extension, nearest means the smallest stated distance to a stored training example. Why must validation examples stay outside that stored training pool?"
+    },
+    {
+      "week": "ai-4/8",
+      "path": "/teacher/5/blocks/12/text",
+      "old": "Require W4 overlaps P; P and Q; P and S, in pair order, then exact repaired lists with rows 5,1,2 and groups 2,1,1. Fresh retry: U1 U2 belong to U, V1 to V, W1 W2 to W. Proposed training U1 V1, validation W1, test U2 W2 has shared U between training/test and W between validation/test; training/validation share none. Repair to all U in training, V in validation and all W in test: rows 2,1,2 and groups 1,1,1. Require an explicit small-sample limitation.",
+      "new": "Selected independent task: all20 photos come from5 plants, with each plant crossing train/test in the proposed photo split. For an unseen-plant claim, assign whole plants before fitting/tuning and keep each plant’s4views together. Exact allocation counts are unspecified; accept a justified example without requiring the old P/Q/S exercise counts. Report few-source uncertainty. Fresh retry: four objects have3views each and one object crosses roles; require complete object grouping and a bounded evaluation claim."
+    },
+    {
+      "week": "ai-4/8",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Week 7 introduces a baseline before a model. Carry forward the split record and keep the final test protected while comparing choices. Teacher reference: scikit-learn cross-validation documentation, grouped data section, https://scikit-learn.org/stable/modules/cross_validation.html (reviewed 2026-09-27).",
+      "new": "Next is Week 9: Dataset Cards. Carry forward the split record, source IDs, prediction-time feature contract and preprocessing-fit boundary. Keep the final test protected during development. Primary reference: https://scikit-learn.org/stable/common_pitfalls.html#data-leakage ."
+    },
+    {
+      "week": "ai-4/8",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied complete investigation for shared practice. Reserve the selected five-plant unseen-identity split task for the individual first attempt before hints or feedback; earlier transfer questions remain additional practice."
+    },
+    {
+      "week": "ai-4/8",
+      "path": "/teacher/2/blocks/6/text",
+      "old": "Keep for an independent attempt: A feature records the expert's final species decision, made after the prediction time. Why is this leakage, and what should happen to it?",
+      "new": "Use the earlier transfer question as additional practice. Reserve the selected five-plant unseen-identity split task for the first individual attempt and record support used."
+    },
+    {
+      "week": "ai-4/8",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-4/8",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Keep evaluation evidence outside the learning decisions",
+          "groups": [
+            "Learning goals",
+            "Recall label quality and evaluation roles",
+            "Optional readiness · Stored training neighbours",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Choose groups that match the evaluation question",
+          "groups": [
+            "Scenario and intended claim",
+            "All twelve frame assignments",
+            "Source and metadata limitations",
+            "Optional extension · Training-only scaling and fixed nearest neighbour",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Audit the group sets before fitting anything",
+          "groups": [
+            "Training, validation and final test roles",
+            "Complete group-overlap script",
+            "Trace group counts and assumptions",
+            "Optional extension · Fit and reuse one training scale",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare related-source overlap with a valid new-source holdout",
+          "groups": [
+            "Four evaluation conditions",
+            "Keep the claim bounded",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Words for the current experiment",
+          "groups": [
+            "Core vocabulary",
+            "Closer-explanation terms",
+            "Extension vocabulary",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Read source groups through both the picture and assignment grid",
+          "groups": [
+            "Complete plant facts and scope",
+            "Trace source identities and view counts",
+            "Inspect the original plant-by-view matrix",
+            "Predict Fir crossing roles",
+            "Check after predicting",
+            "State the tiny-test limit",
+            "Return to the full trip plan and D2 change",
+            "Optional extension · Reuse a fixed scale",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Find information that crosses the intended boundary",
+          "groups": [
+            "Main diagnosis and limitation",
+            "Challenge the leakage shortcut",
+            "Optional scaling contract and zero-range policy",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise counts, grouping and the evaluation claim",
+          "groups": [
+            "Supported group-versus-frame W2",
+            "Match the grouping level to the question",
+            "Challenge unique-row-means-independent reasoning",
+            "Explain the one-plant final test",
+            "Reserve the independent plant-split task",
+            "Optional scaling validation example",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Investigate four supplied leakage paths and one allowed candidate",
+          "groups": [
+            "Complete school-event timeline fields",
+            "Normal, sparse-source, missing-ID and changed-goal probes",
+            "Audit, repair and record the learning boundary",
+            "Keep evidence and observed status",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Build a stronger explanation",
+          "groups": [
+            "Thinking ladder",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep the project’s information boundary reviewable",
+          "groups": [
+            "Project artifact and checks",
+            "Evidence, limits and human decision",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Inspect your evidence",
+          "groups": [
+            "Experiment evidence checklist",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier complete case",
+          "groups": [
+            "Situation and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: repair evaluation across five plant identities",
+          "groups": [
+            "Selected task and interpretation",
+            "First attempt and support record",
+            "Use feedback after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier route checklist",
+          "groups": [
+            "Checklist and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish by naming the source or information boundary",
+          "groups": [
+            "Retrieve and explain",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict, check and repair",
+          "groups": [
+            "First supported question and hint",
+            "Check the first explanation",
+            "Changed-case question and hint",
+            "Check the changed explanation",
+            "Repair and keep the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The six-picture journey",
+          "groups": [
+            "01. Leakage: the case",
+            "02. Follow the deciding steps",
+            "03. Split by plant, not by view",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the connected experiment",
+          "groups": [
+            "Goal and main teaching plan",
+            "Materials and prerequisite",
+            "Opening retrieval",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach the evaluation claim before the split audit",
+          "groups": [
+            "Prediction goal and complete trip assignments",
+            "Trace the group audit and its assumptions",
+            "Check the D2 move and saved split record",
+            "Read the separate plant facts and matrix",
+            "Trace Fir identity before and after the move",
+            "Optional training-only scaling extension",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the calculation, then remove help",
+          "groups": [
+            "Current completion task and checked key",
+            "Individual misconception check",
+            "Pictorial question and changed-case reasoning",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts",
+            "Extension teaching cycles"
+          ]
+        },
+        {
+          "title": "Run the complete supplied investigation",
+          "groups": [
+            "Supplied inputs and checked guidance",
+            "Predict, investigate and record",
+            "Keep the experiment ledger",
+            "Diagnose the current misconceptions",
+            "Choose accessible support",
+            "Extension misconceptions",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected experiment transfer",
+          "groups": [
+            "Selected independent task and checked key",
+            "Judge trace, scope and support",
+            "Give one repair action",
+            "W1 Explain the three roles",
+            "W2 Distinguish frames from groups",
+            "W3 Repair a related example leak",
+            "W5 Match separation to the claim",
+            "Earlier wording, alternatives and picture transcripts",
+            "Extension questions and checked keys"
+          ]
+        },
+        {
+          "title": "Connect, support and revisit the experiment",
+          "groups": [
+            "Project evidence",
+            "Support and selected reassessment",
+            "Delayed return",
+            "Bridge and reflection",
+            "Earlier wording, alternatives and picture transcripts",
+            "Extension support and reassessment"
+          ]
+        },
+        {
+          "title": "Reference · Alternative planning checklist",
+          "groups": [
+            "Planning and assessment reference"
+          ]
+        },
+        {
+          "title": "Reference · Feedback and evidence records",
+          "groups": [
+            "Record and repair",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Leakage: the case",
+            "02. Follow the deciding steps",
+            "03. Split by plant, not by view",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 17,
+      "sections": [
+        {
+          "title": "Recall · Retrieve before notes",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Individual reasoning check",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Try alone · Selected experiment task",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Earlier learning target",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier complete case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Changed case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Project · Keep the experiment evidence",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge your evidence",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier transfer",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W1 · Explain the mechanism",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Trace the current experiment",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Repair the reasoning",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Earlier W4 record",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W5 · Plan the next check",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extension · Scaling without leakage — W1 Learn the scale from training",
+          "groups": [
+            "Extension question and evidence"
+          ]
+        },
+        {
+          "title": "Extension · Scaling without leakage — W2 Trace the changed prediction",
+          "groups": [
+            "Extension question and evidence"
+          ]
+        },
+        {
+          "title": "Extension · Scaling without leakage — W3 Keep one coordinate system",
+          "groups": [
+            "Extension question and evidence"
+          ]
+        },
+        {
+          "title": "Extension · Scaling without leakage — W4 Scale a fresh dataset independently",
+          "groups": [
+            "Extension question and evidence"
+          ]
+        },
+        {
+          "title": "Extension · Scaling without leakage — W5 Repair two preprocessing mistakes",
+          "groups": [
+            "Extension question and evidence"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio milestone",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict, check and repair",
+          "groups": [
+            "First supported question and hint",
+            "Check the first explanation",
+            "Changed-case question and hint",
+            "Check the changed explanation",
+            "Repair and keep the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Leakage: the case",
+            "02. Follow the deciding steps",
+            "03. Split by plant, not by view",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 26,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 26,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-4-week-08-connected-review/START_REVIEW.html",
+  "week_sha256": "be4133bd80514efc69e9e53a6ee979a19b1f0f1d805ed59e8e3e22d06eb5bf3e",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

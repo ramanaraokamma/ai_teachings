@@ -1,0 +1,531 @@
+{
+  "lesson": "ai-4/16",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-4/16",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Week 15 covers precision recall and denominators. Carry forward the matrix and the question answered by each fraction. Teacher reference: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html (equal average of class recalls; reviewed 2026-09-28).",
+      "new": "Next is Week 17: Precision and Recall. Carry forward the full matrix and the question answered by each denominator. Primary reference: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html (equal average of class recalls)."
+    },
+    {
+      "week": "ai-4/16",
+      "path": "/teacher/5/blocks/12/text",
+      "old": "Require W4 baseline ordinary 90 percent and balanced 50 percent; candidate ordinary 80 percent and balanced 2/3 about 66.7 percent, with FP=3,FN=1. Fresh retry: evaluation 12 clear and 4 blocked, baseline [[12,0],[4,0]], candidate [[9,3],[1,3]], training majority clear. Baseline ordinary 75 percent, class fractions 100 and 0 percent, balanced 50 percent. Candidate ordinary 12/16=75 percent, both class fractions 75 percent, balanced 75 percent, FP=3,FN=1. Require both denominators and no automatic-winner claim.",
+      "new": "Selected independent90healthy/10spotted: always-healthy90/100=90%accuracy and0/10spotted recall. Candidate TP7+TN82=89correct/100=89%,spotted recall7/10=70%,FP8,FN3. Do not use the older20-case W4 key to score this task. Decision depends on declared consequences; none are supplied. Fresh retry80negative/20positive,baselinealwaysnegative80%with0%positive recall;candidateTP15,FN5,FP10,TN70 gives85%accuracy,75%positive recall,FP10. Require denominators and a bounded claim."
+    },
+    {
+      "week": "ai-4/16",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied complete investigation for shared practice. Reserve the selected fresh90healthy/10spotted comparison for the individual first attempt before hints or feedback; earlier transfer questions remain additional practice."
+    },
+    {
+      "week": "ai-4/16",
+      "path": "/teacher/2/blocks/6/text",
+      "old": "Keep for an independent attempt: A classifier predicts healthy for all 100 plants; 95 are healthy and 5 diseased. Compute accuracy and diseased recall.",
+      "new": "Use the earlier transfer question as additional practice. Reserve the selected fresh90healthy/10spotted comparison for the first individual attempt and record support used."
+    },
+    {
+      "week": "ai-4/16",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-4/16",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Which class does the headline accuracy hide?",
+          "groups": [
+            "Learning goals",
+            "Retrieve labelled confusion-matrix reasoning",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare two methods on the same imbalanced evaluation set",
+          "groups": [
+            "Accuracy and fictional source contract",
+            "Complete baseline/candidate matrices",
+            "Read both80%totals and different errors",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Give each class a visible denominator",
+          "groups": [
+            "Complete ordinary/balanced score script",
+            "Trace candidate fractions and equal average",
+            "Trace baseline fractions and absent-class policy",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare a large majority score with rare-class detection",
+          "groups": [
+            "Four evaluation conditions",
+            "Keep the claim bounded",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Words for the current experiment",
+          "groups": [
+            "Core vocabulary",
+            "Closer-explanation terms",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Read the rare-class failures beside the full matrix",
+          "groups": [
+            "Complete pictured facts and scope",
+            "Trace accuracy, missed cases and false alarms",
+            "Inspect the pictured candidate’s labelled matrix",
+            "Predict correcting only the three false alarms",
+            "Check after predicting",
+            "State evidence and task limits",
+            "Return to the main equal-accuracy comparison",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Find an overall score used as proof for every class",
+          "groups": [
+            "Diagnose the main claim",
+            "Explain the interpretation and limits",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise both class fractions and a changed class mix",
+          "groups": [
+            "Try W2 from the complete matrices",
+            "Trace the separate8clear/8blocked illustration",
+            "Challenge high-score-means-both-classes reasoning",
+            "Explain the pictured detection failure",
+            "Reserve the new100-case task",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run a complete imbalance and consequence comparison",
+          "groups": [
+            "Complete main and changed-mix matrices",
+            "Two explicit fictional cost policies",
+            "Normal, sparse, absent-class and changed-mix probes",
+            "Calculate, compare and state the policy",
+            "Retain evidence and execution status",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Build a stronger explanation",
+          "groups": [
+            "Thinking ladder",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep the rare class visible in the project record",
+          "groups": [
+            "Project artifact and evidence",
+            "Limits, uncertainty and human decision",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Inspect your evidence",
+          "groups": [
+            "Experiment evidence checklist",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier complete case",
+          "groups": [
+            "Situation and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: compare accuracy with spotted detection on fresh counts",
+          "groups": [
+            "Complete selected counts and scope",
+            "First attempt and support record",
+            "Use feedback after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier route checklist",
+          "groups": [
+            "Checklist and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish with a headline score and the failures behind it",
+          "groups": [
+            "Retrieve and explain",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict, check and repair",
+          "groups": [
+            "First supported question and hint",
+            "Check the first explanation",
+            "Changed-case question and hint",
+            "Check the changed explanation",
+            "Repair and keep the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The six-picture journey",
+          "groups": [
+            "01. Accuracy and Imbalance: the case",
+            "02. Follow the deciding steps",
+            "03. Candidate decisions",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the connected experiment",
+          "groups": [
+            "Goal and main teaching plan",
+            "Materials and prerequisite",
+            "Opening retrieval",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach both classes before choosing a summary",
+          "groups": [
+            "Complete main source and matrices",
+            "Trace ordinary and balanced fractions",
+            "Read separate18/2pictured facts",
+            "Trace matrix, detection and reviewed change",
+            "Additional95/5majority example",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the calculation, then remove help",
+          "groups": [
+            "Current completion task and checked key",
+            "Individual misconception check",
+            "Pictorial question and changed-case reasoning",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the complete supplied investigation",
+          "groups": [
+            "Supplied inputs and checked guidance",
+            "Predict, investigate and record",
+            "Keep the experiment ledger",
+            "Diagnose the current misconceptions",
+            "Choose accessible support",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected experiment transfer",
+          "groups": [
+            "Selected independent task and checked key",
+            "Judge trace, scope and support",
+            "Give one repair action",
+            "W1 Score the majority baseline",
+            "W2 Compare both class fractions",
+            "W3 Explain a changed class mix",
+            "W5 Limit claims from missing classes",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, support and revisit the experiment",
+          "groups": [
+            "Project evidence",
+            "Support and selected reassessment",
+            "Delayed return",
+            "Bridge and reflection",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative planning checklist",
+          "groups": [
+            "Planning and assessment reference"
+          ]
+        },
+        {
+          "title": "Reference · Feedback and evidence records",
+          "groups": [
+            "Record and repair",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Accuracy and Imbalance: the case",
+            "02. Follow the deciding steps",
+            "03. Candidate decisions",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall · Retrieve before notes",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Individual reasoning check",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Try alone · Selected experiment task",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Earlier learning target",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier complete case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Changed case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Project · Keep the experiment evidence",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge your evidence",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier transfer",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W1 · Explain the mechanism",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Trace the current experiment",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Repair the reasoning",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Earlier W4 record",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W5 · Plan the next check",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio milestone",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict, check and repair",
+          "groups": [
+            "First supported question and hint",
+            "Check the first explanation",
+            "Changed-case question and hint",
+            "Check the changed explanation",
+            "Repair and keep the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Accuracy and Imbalance: the case",
+            "02. Follow the deciding steps",
+            "03. Candidate decisions",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-4-week-16-connected-review/START_REVIEW.html",
+  "week_sha256": "15b4ac1781069b7eec645049d862d464e619111ba3d5d2dd95ba4feb4885e228",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

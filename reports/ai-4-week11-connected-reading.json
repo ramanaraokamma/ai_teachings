@@ -1,0 +1,561 @@
+{
+  "lesson": "ai-4/11",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-4/11",
+      "path": "/sections/1/blocks/11/text",
+      "old": "A decision tree asks a feature question and follows a branch to a prediction. A tree with one question has depth one and is sometimes called a stump. Unlike Week 8, where the two output labels were fixed in advance, this week we fit both the question and the label stored at each leaf.",
+      "new": "A decision tree asks a feature question and follows a branch to a prediction. A tree with one question has depth one and is sometimes called a stump. Unlike the earlier fixed-threshold examples, where the two output labels were fixed in advance, this week we fit both the question and the label stored at each leaf."
+    },
+    {
+      "week": "ai-4/11",
+      "path": "/sections/1/blocks/11/presentation/paragraphs/1",
+      "old": "Unlike Week 8, where the two output labels were fixed in advance, this week we fit both the question and the label stored at each leaf.",
+      "new": "Unlike the earlier fixed-threshold examples, where the two output labels were fixed in advance, this week we fit both the question and the label stored at each leaf."
+    },
+    {
+      "week": "ai-4/11",
+      "path": "/teacher/1/blocks/20/text",
+      "old": "A decision tree asks a feature question and follows a branch to a prediction. A tree with one question has depth one and is sometimes called a stump. Unlike Week 8, where the two output labels were fixed in advance, this week we fit both the question and the label stored at each leaf.",
+      "new": "A decision tree asks a feature question and follows a branch to a prediction. A tree with one question has depth one and is sometimes called a stump. Unlike the earlier fixed-threshold examples, where the two output labels were fixed in advance, this week we fit both the question and the label stored at each leaf."
+    },
+    {
+      "week": "ai-4/11",
+      "path": "/teacher/1/blocks/20/presentation/paragraphs/1",
+      "old": "Unlike Week 8, where the two output labels were fixed in advance, this week we fit both the question and the label stored at each leaf.",
+      "new": "Unlike the earlier fixed-threshold examples, where the two output labels were fixed in advance, this week we fit both the question and the label stored at each leaf."
+    },
+    {
+      "week": "ai-4/11",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Week 10 introduces nearest neighbours and distances. Carry forward the training/validation split and baseline. Teacher reference: https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html (reviewed 2026-09-27); its library criteria differ from our stated classroom mistake-count procedure.",
+      "new": "Next is Week12: Nearest Neighbors. Carry forward the training/validation split and baseline. Primary reference: https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html ; its library criteria differ from this classroom total-mistake fitting procedure."
+    },
+    {
+      "week": "ai-4/11",
+      "path": "/teacher/1/blocks/11/text",
+      "old": "STEP 4 A branch fitting one training oddity hurts test results, so prune and retest.",
+      "new": "Use development validation evidence when comparing pruning choices; once the final test guides changes, it is development evidence and cannot remain an untouched final check."
+    },
+    {
+      "week": "ai-4/11",
+      "path": "/teacher/5/blocks/12/text",
+      "old": "Require W4 near error 1, tall error 2, near=0 blocked and near=1 clear, with both validation scores 2/4. Fresh retry: training (0,0,clear),(0,1,blocked),(1,0,clear),(1,1,blocked). Near branches each tie and predict clear, giving 2 errors. Tall=0 predicts clear and tall=1 blocked with 0 errors; choose tall. Validation (0,1,blocked),(1,0,clear),(1,1,clear) gives blocked,clear,blocked: 2/3. The tied training baseline predicts clear and also gets 2/3, with different missed rows. Require the learned feature and both tie policies.",
+      "new": "Selected independent task is stored spots>=5, not refitting the older near/tall W4:4→healthy,5/6→spotted,missing→review. Applying it is inference; choosing cutoff from final-test labels contaminates evaluation. This alone does not establish fitting mastery. For a separate uncoached fitting retry, training(0,0,clear),(0,1,blocked),(1,0,clear),(1,1,blocked) givesnear2errors(clearleaf ties),tall0errors(tall0clear,tall1blocked). Require both tie policies and a fresh validation trace before claiming fitting transfer."
+    },
+    {
+      "week": "ai-4/11",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied complete investigation for shared practice. Reserve the fresh stored-cutoff 5 boundary and missingness task for the individual first attempt before hints or feedback; earlier transfer questions remain additional practice."
+    },
+    {
+      "week": "ai-4/11",
+      "path": "/teacher/2/blocks/6/text",
+      "old": "Keep for an independent attempt: A tree predicts fern when leaf_width_cm <= 3 and grass otherwise. Trace widths 2, 3 and 4. Which case checks the boundary?",
+      "new": "Use the earlier transfer question as additional practice. Reserve the fresh stored-cutoff 5 boundary and missingness task for the first individual attempt and record support used."
+    },
+    {
+      "week": "ai-4/11",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-4/11",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Separate fitting a small tree from following its branches",
+          "groups": [
+            "Learning goals",
+            "Retrieve baseline and held-out reasoning",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Read six rows before selecting a question",
+          "groups": [
+            "Depth-one scope and fictional source",
+            "Complete near/tall training table",
+            "Candidate order, leaf tie and score tie policies",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Fit the feature and both leaf predictions",
+          "groups": [
+            "Complete depth-one fitting program",
+            "Trace near1error versus tall2errors",
+            "State empty-branch assumptions and limited algorithm scope",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare a fitted decision with a supplied branch rule",
+          "groups": [
+            "Four evaluation conditions",
+            "Keep the claim bounded",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Words for the current experiment",
+          "groups": [
+            "Core vocabulary",
+            "Closer-explanation terms",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace each branch and compare the actual missed rows",
+          "groups": [
+            "Pictured spot inputs and scope",
+            "Trace ordinary, boundary and missing paths",
+            "Predict>=2changingto>2",
+            "Check after predicting",
+            "Explain inference versus fitting",
+            "Return to learned near tree and validation comparison",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Find a feature name mistaken for its learned answer",
+          "groups": [
+            "Diagnose the main claim",
+            "Keep error evidence and limits visible",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise candidate scores with less help",
+          "groups": [
+            "Try W2 from the complete training table",
+            "Check learned labels and deeper-tree limits",
+            "Challenge a fixed feature-to-answer assumption",
+            "Explain the exact pictured boundary",
+            "Reserve the cutoff5independent task",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Build one complete depth-one tree and compare fixed predictions",
+          "groups": [
+            "Complete branch-count trace",
+            "Normal, binary-boundary, missing and refit probes",
+            "Sort, fit, freeze and compare",
+            "Optional supplied-tree pruning comparison",
+            "Keep evidence and execution status",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Build a stronger explanation",
+          "groups": [
+            "Thinking ladder",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep a tree that another learner can trace and audit",
+          "groups": [
+            "Project artifact and learning record",
+            "Evidence, uncertainty and human decision",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Inspect your evidence",
+          "groups": [
+            "Experiment evidence checklist",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier complete case",
+          "groups": [
+            "Situation and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: trace the supplied cutoff5rule",
+          "groups": [
+            "Selected fresh task and scope",
+            "First attempt and help record",
+            "Use feedback after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier route checklist",
+          "groups": [
+            "Checklist and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish by naming what was fitted and what was supplied",
+          "groups": [
+            "Retrieve and explain",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict, check and repair",
+          "groups": [
+            "First supported question and hint",
+            "Check the first explanation",
+            "Changed-case question and hint",
+            "Check the changed explanation",
+            "Repair and keep the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The six-picture journey",
+          "groups": [
+            "01. Decision Trees: the case",
+            "02. Follow the deciding steps",
+            "03. Two paths through the learned tree",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the connected experiment",
+          "groups": [
+            "Goal and main teaching plan",
+            "Materials and prerequisite",
+            "Opening retrieval",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach root choice, leaf labels and held-out tracing separately",
+          "groups": [
+            "Complete training data and classroom fitting rule",
+            "Trace scores and algorithm limits",
+            "Trace fixed validation predictions and baseline",
+            "Read the separate spot-rule picture",
+            "Trace exact boundary and changed operator",
+            "Additional supplied cutoff3example",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the calculation, then remove help",
+          "groups": [
+            "Current completion task and checked key",
+            "Individual misconception check",
+            "Pictorial question and changed-case reasoning",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the complete supplied investigation",
+          "groups": [
+            "Supplied inputs and checked guidance",
+            "Predict, investigate and record",
+            "Keep the experiment ledger",
+            "Diagnose the current misconceptions",
+            "Choose accessible support",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected experiment transfer",
+          "groups": [
+            "Selected independent task and checked key",
+            "Judge trace, scope and support",
+            "Give one repair action",
+            "W1 Name the parts and decisions",
+            "W2 Verify the candidate scores",
+            "W3 Separate fitting from prediction",
+            "W5 Audit a tie and a claim",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, support and revisit the experiment",
+          "groups": [
+            "Project evidence",
+            "Support and selected reassessment",
+            "Delayed return",
+            "Bridge and reflection",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative planning checklist",
+          "groups": [
+            "Planning and assessment reference"
+          ]
+        },
+        {
+          "title": "Reference · Feedback and evidence records",
+          "groups": [
+            "Record and repair",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Decision Trees: the case",
+            "02. Follow the deciding steps",
+            "03. Two paths through the learned tree",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall · Retrieve before notes",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Individual reasoning check",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Try alone · Selected experiment task",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Earlier learning target",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier complete case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Changed case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Project · Keep the experiment evidence",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge your evidence",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier transfer",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W1 · Explain the mechanism",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Trace the current experiment",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Repair the reasoning",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Earlier W4 record",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W5 · Plan the next check",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio milestone",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict, check and repair",
+          "groups": [
+            "First supported question and hint",
+            "Check the first explanation",
+            "Changed-case question and hint",
+            "Check the changed explanation",
+            "Repair and keep the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Decision Trees: the case",
+            "02. Follow the deciding steps",
+            "03. Two paths through the learned tree",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-4-week-11-connected-review/START_REVIEW.html",
+  "week_sha256": "24a9e32ea1603d5e96ec9d40006df4a918270247e5d0273cdf4f8866e73722f4",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

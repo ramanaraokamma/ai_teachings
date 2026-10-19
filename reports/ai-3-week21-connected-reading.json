@@ -1,0 +1,579 @@
+{
+  "lesson": "ai-3/21",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-3/21",
+      "path": "/sections/0/blocks/18/text",
+      "old": "Recall Prompt injection boundaries. Explain why a recorded result needs its input conditions and evidence source before it can support a claim.",
+      "new": "Recall Conversation State and Memory: a request needs current task state and source provenance. A previous selection is not permission for a new action; define the tool’s operation and allowed arguments first."
+    },
+    {
+      "week": "ai-3/21",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Match requests to schemas, validate arguments, simulate successful and failed calls, and design a maximum retry rule.",
+      "new": "Use the six supplied toy room-lookup cards and complete closed contract. Validate arguments, action scope and response identity; distinguish measured zero from missing and stop after at most two total read-only timeout attempts. Record paper traces, not live calls."
+    },
+    {
+      "week": "ai-3/21",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Match requests to schemas, validate arguments, simulate successful and failed calls, and design a maximum retry rule.",
+      "new": "Use the six supplied toy room-lookup cards and complete closed contract. Validate arguments, action scope and response identity; distinguish measured zero from missing and stop after at most two total read-only timeout attempts. Record paper traces, not live calls."
+    },
+    {
+      "week": "ai-3/21",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied investigation for shared practice. Keep predictions and observed paper-trace results separate. Reserve Validate the fresh K room calls independently for the individual first attempt before feedback; do not use the reserved case as a paired lab task."
+    },
+    {
+      "week": "ai-3/21",
+      "path": "/teacher/2/blocks/5/text",
+      "old": "Keep for an independent attempt: A tool can look up book availability and also place an order. The user asks only whether a book is available. Which action is authorized?",
+      "new": "Use the earlier changed question as optional later practice. Reserve Validate the fresh K room calls independently for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-3/21",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-3/21",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-3/21",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice answer and reason"
+    },
+    {
+      "week": "ai-3/21",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-3/21",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for explaining this week’s idea"
+    },
+    {
+      "week": "ai-3/21",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Validate the fresh K room calls independently is the selected independent case."
+    },
+    {
+      "week": "ai-3/21",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Match tool schemas to requests and handle one failure.",
+      "new": "EXPLANATION CHECK  Require input type/field checks, not-found semantics and a separate action boundary."
+    },
+    {
+      "week": "ai-3/21",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Next connection: Conversation state and retention. Preserve the current case record and retrieve its evidence boundary before moving on.",
+      "new": "Next is Week 22: Requests Responses and JSON. Carry forward exact input/output contracts and response checks when learning the precise wire-format notation."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "What exactly may this tool do?",
+          "groups": [
+            "Your learning goals",
+            "Recall state and action scope",
+            "Your end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Separate proposal, validation, execution and response",
+          "groups": [
+            "Understand tools and APIs",
+            "Keep the exercise on supplied records",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Read the closed input and output contracts",
+          "groups": [
+            "The complete room-lookup contract",
+            "Connect shape and action scope",
+            "Keep missing information explicit",
+            "Explain the deciding check",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare valid input with supported operation",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Your quick word guide",
+          "groups": [
+            "Core vocabulary",
+            "Terms for the connected explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace the book request up to the operation boundary",
+          "groups": [
+            "Read the book schema, IDs and scope",
+            "Trace shape, eligibility and read-only operation",
+            "Predict the extra lend field",
+            "Check after predicting",
+            "Name response and access limits",
+            "Separate practice · Extra book argument to room lookup",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Find an operation hidden in an argument",
+          "groups": [
+            "Repair the extra-action and missing-value shortcuts",
+            "Design a revealing follow-up",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise request validation with less help",
+          "groups": [
+            "The result-versus-authority limit",
+            "Complete the extra-field W2",
+            "Audit a guarantee shortcut",
+            "Explain the pictured action boundary",
+            "Keep independent cases separate",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Simulate six complete tool traces",
+          "groups": [
+            "All supplied request and response cards",
+            "Predict, validate and trace",
+            "Keep the paper evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Choose a stronger thinking challenge",
+          "groups": [
+            "Pick your next step",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep the project’s tool boundary inspectable",
+          "groups": [
+            "This week’s contribution",
+            "Retain the checkpoint and human choice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: check your explanation",
+          "groups": [
+            "Check the evidence and its limit",
+            "Self-check and record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice: Choose a tool for each subtask",
+          "groups": [
+            "Read the supplied case and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: distinguish type, missing record and extra action",
+          "groups": [
+            "Independent cases and syntax scope",
+            "Your first attempt and help record",
+            "Use feedback afterwards",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: original lesson checklist",
+          "groups": [
+            "Targets and evidence",
+            "Keep your route and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: say what was proposed, allowed and established",
+          "groups": [
+            "Explain without notes",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: the six-picture journey",
+          "groups": [
+            "01. Tools and APIs: the case",
+            "02. Follow the deciding steps",
+            "03. Tools and API contracts — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare this connected week",
+          "groups": [
+            "Learning goal and precision",
+            "What to prepare",
+            "Main teaching plan",
+            "Opening retrieval and readiness",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach proposal → validation → operation → checked response",
+          "groups": [
+            "State the room contract",
+            "Trace the room extra-field rejection",
+            "Read the separate book case",
+            "Trace the operation boundary",
+            "Predict adding lend",
+            "Name response and access limits",
+            "Additional practice · Choosing calculator and search",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the explanation, then remove help",
+          "groups": [
+            "Main completion prompt",
+            "Expected reasoning and fading help",
+            "Individual misconception check",
+            "Pictorial question and changed-case reasoning",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied investigation",
+          "groups": [
+            "Supplied materials and answer guidance",
+            "Run and record",
+            "Keep an inspectable record",
+            "Diagnose the first misunderstanding",
+            "Choose support from the response",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected new case",
+          "groups": [
+            "Selected independent question and key",
+            "Judge explanation, trace and limits",
+            "Give one usable repair action",
+            "W1 Explain the mechanism",
+            "W2 Trace the worked case",
+            "W3 Audit the limit",
+            "W5 Design a revealing follow-up",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, adapt and return",
+          "groups": [
+            "Project evidence to keep",
+            "Support while preserving the reasoning goal",
+            "Plan the delayed check",
+            "Bridge to next week",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: alternative planning checklist",
+          "groups": [
+            "Preparation and schedule",
+            "Practice and assessment reminders"
+          ]
+        },
+        {
+          "title": "Reference: feedback and records",
+          "groups": [
+            "Keep practice and independent evidence separate",
+            "Repair and portfolio records",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: teach with the six pictures",
+          "groups": [
+            "01. Tools and APIs: the case",
+            "02. Follow the deciding steps",
+            "03. Tools and API contracts — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall: reconnect earlier ideas",
+          "groups": [
+            "Retrieve and explain",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair the explanation",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W4 · Validate the fresh K room calls independently",
+          "groups": [
+            "Read and explain independently",
+            "Keep a fair record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Original learning target",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A complete case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A changed case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and its evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge the evidence in your work",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Original target response space",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W1 · Explain the tool contract",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Trace the extra-field request",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Audit a tool-success guarantee",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Independent-case response copy",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W5 · Design a revealing tool case",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Use the worked picture",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Tools and APIs: the case",
+            "02. Follow the deciding steps",
+            "03. Tools and API contracts — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-3-week-21-connected-review/START_REVIEW.html",
+  "week_sha256": "c3ed4545599b076cfe6617699669b5c0347d6efc709605b15c9796b9e7d5d7c2",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

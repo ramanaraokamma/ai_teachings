@@ -1,0 +1,441 @@
+{
+  "lesson": "ai-5/5",
+  "sections_reviewed": 42,
+  "original_blocks_preserved": true,
+  "wording_corrections": [],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "What does the next layer actually receive?",
+          "groups": [
+            "Learning goals",
+            "Retrieve the prior computation",
+            "Prerequisite and starting response",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect two named transformations in the right order",
+          "groups": [
+            "Complete hidden and output formulas",
+            "Input/output sizes at each layer",
+            "Distinguish parallel hidden units from the next layer",
+            "Name given and missing facts"
+          ]
+        },
+        {
+          "title": "Trace each intermediate value before the final output",
+          "groups": [
+            "Complete main model and worked input",
+            "All supplied trace rows",
+            "Runnable forward pass and its contract",
+            "Connect the picture and named values",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare a changed input while keeping the network fixed",
+          "groups": [
+            "Current dimension-mismatch task",
+            "Predict the pictured second-input change",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Use the mathematical words precisely",
+          "groups": [
+            "Vocabulary and your explanation"
+          ]
+        },
+        {
+          "title": "See a changed hidden value flow into the next layer",
+          "groups": [
+            "Complete picture formulas and separate scope",
+            "Trace both hidden units and output",
+            "Predict the second-input change",
+            "Check after predicting",
+            "Explain the deciding intermediate value and limits",
+            "Return to the main model[1,1]attempt",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Find a shape or order bug before trusting the output",
+          "groups": [
+            "Complete dimension,order and activation comparisons",
+            "Choose an input that reveals the swapped-hidden bug",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise the forward path with less help",
+          "groups": [
+            "Current task and response",
+            "Supported W2record",
+            "Individual misconception check",
+            "Pictured composition reasoning",
+            "Reserve the independent new network",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Investigate shape,order,zero and information loss",
+          "groups": [
+            "Complete current task and runnable forward pass",
+            "Complete normal,boundary,missing and bug-revealing cases",
+            "Predict,run or trace,and explain",
+            "Keep the evidence ledger",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Explain a stronger case",
+          "groups": [
+            "Explain,repair and extend"
+          ]
+        },
+        {
+          "title": "Keep the layer contract and full trace together",
+          "groups": [
+            "Project artifact and evidence table",
+            "Keep actual evidence and limits",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Check the representation and its limits",
+          "groups": [
+            "Current explanation and response"
+          ]
+        },
+        {
+          "title": "Extra practice · Revisit the complete trace",
+          "groups": [
+            "Complete trace and evidence"
+          ]
+        },
+        {
+          "title": "Try alone: compose a different two-unit network",
+          "groups": [
+            "Complete new independent network",
+            "First attempt and support record",
+            "Use feedback after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The earlier route checklist",
+          "groups": [
+            "Targets,route and first prediction"
+          ]
+        },
+        {
+          "title": "Finish with a complete information path",
+          "groups": [
+            "Retrieve and explain",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict,check and repair",
+          "groups": [
+            "First supported question and optional hint",
+            "Check after the first attempt",
+            "Changed-case question and optional hint",
+            "Check after the changed attempt",
+            "Repair and retain the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture concept journey",
+          "groups": [
+            "01. Composing layers: the case",
+            "02. Follow the deciding steps",
+            "03. Complete each stage before using its output",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the connected mathematical investigation",
+          "groups": [
+            "Target and main teaching plan",
+            "Preparation and prerequisite",
+            "Opening retrieval",
+            "Pictured end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach the source of every intermediate value",
+          "groups": [
+            "Main explanation,complete flow and trace",
+            "Complete separate pictured model and scope",
+            "Trace activated values into the final difference",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Model a step,then remove help",
+          "groups": [
+            "Current completion task and checked reasoning",
+            "Individual misconception check",
+            "Pictured reasoning and changed case",
+            "Accessible support and extension",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the complete supplied investigation",
+          "groups": [
+            "Complete inputs,expected results and limits",
+            "Diagnose the current misconceptions",
+            "Choose accessible support",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the new schema or calculation transfer",
+          "groups": [
+            "Selected independent task and checked answer",
+            "Judge explanation,trace and limits",
+            "Give one usable repair",
+            "W1 Trace the second worked case",
+            "W2 Repair a dimension mismatch",
+            "W3 Use a revealing order check",
+            "W5 Explain information loss",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect,support and revisit the mathematics",
+          "groups": [
+            "Project and next-week bridge",
+            "Delayed return and support record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative planning checklist",
+          "groups": [
+            "Planning,assessment and project reminders"
+          ]
+        },
+        {
+          "title": "Reference · Feedback,labs and repair paths",
+          "groups": [
+            "Feedback and record guidance"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Composing layers: the case",
+            "02. Follow the deciding steps",
+            "03. Complete each stage before using its output",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 8,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Recall · Retrieve before notes",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Individual reasoning check",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Try alone · Selected transfer",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W1 · Explain the current example",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W2 · Trace the calculation",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W3 · Repair a misconception",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Earlier W4 response copy",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W5 · Explain the limitation",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Project · Keep the mathematical evidence",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Project milestone",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict,check and repair",
+          "groups": [
+            "First supported question and optional hint",
+            "Check after the first attempt",
+            "Changed-case question and optional hint",
+            "Check after the changed attempt",
+            "Repair and retain the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Composing layers: the case",
+            "02. Follow the deciding steps",
+            "03. Complete each stage before using its output",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 15,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 15,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-5-week-05-connected-review/START_REVIEW.html",
+  "week_sha256": "bd5f5a5c70aca1f20dd665135d9889af7a8d2bcc5d7208e1d920c1f6e20e3c3b",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

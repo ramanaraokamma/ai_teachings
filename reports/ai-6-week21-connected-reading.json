@@ -1,0 +1,770 @@
+{
+  "lesson": "ai-6/21",
+  "sections_reviewed": 42,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-6/21",
+      "path": "/teacher/0/blocks/17/text",
+      "old": "Two 45-minute sessions. Caching reuses results but needs freshness and access-aware keys. A cached answer must not cross role or corpus-version boundaries. Use the supplied constructed scenarios to make the mechanism inspectable. Collect W4 before sharing solutions. Students should name intermediate evidence and limitations; classroom pacing and learning effectiveness remain unvalidated.",
+      "new": "Use the three-session teaching cycle above, with extra time as needed. Caching reuses results but needs freshness and access-aware keys. A cached answer must not cross role or corpus-version boundaries. Use the supplied constructed scenarios to make the mechanism inspectable. Collect W4 before sharing solutions. Students should name intermediate evidence and limitations; classroom pacing and learning effectiveness remain unvalidated."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/teacher/0/blocks/17/presentation/paragraphs/0",
+      "old": "Two 45-minute sessions. Caching reuses results but needs freshness and access-aware keys. A cached answer must not cross role or corpus-version boundaries.",
+      "new": "Use the three-session teaching cycle above, with extra time as needed. Caching reuses results but needs freshness and access-aware keys. A cached answer must not cross role or corpus-version boundaries."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/sections/3/blocks/5/text",
+      "old": "Prediction: The matching version -5 entry can supply 09:30 under the freshness policy.",
+      "new": "Prediction: The matching version 5 entry can supply 09:30 under the freshness policy."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/sections/3/blocks/5/presentation/paragraphs/0",
+      "old": "Prediction: The matching version -5 entry can supply 09:30 under the freshness policy.",
+      "new": "Prediction: The matching version 5 entry can supply 09:30 under the freshness policy."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/sections/5/blocks/17/text",
+      "old": "Read the labelled picture: Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
+      "new": "Read the labelled picture: Identify the version mismatch in the cached 09:00 answer. What should the first version 5 request return, and what permits a later version 5 cache hit?"
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/sections/5/blocks/17/presentation/paragraphs/0",
+      "old": "Read the labelled picture: Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
+      "new": "Read the labelled picture: Identify the version mismatch in the cached 09:00 answer. What should the first version 5 request return, and what permits a later version 5 cache hit?"
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/sections/7/blocks/11/text",
+      "old": "Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
+      "new": "Identify the version mismatch in the cached 09:00 answer. What should the first version 5 request return, and what permits a later version 5 cache hit?"
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/sections/7/blocks/11/presentation/paragraphs/0",
+      "old": "Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
+      "new": "Identify the version mismatch in the cached 09:00 answer. What should the first version 5 request return, and what permits a later version 5 cache hit?"
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/sections/16/blocks/12/text",
+      "old": "1. The matching version -5 entry can supply 09:30 under the freshness policy.",
+      "new": "1. The matching version 5 entry can supply 09:30 under the freshness policy."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/sections/16/blocks/12/presentation/paragraphs/0",
+      "old": "1. The matching version -5 entry can supply 09:30 under the freshness policy.",
+      "new": "1. The matching version 5 entry can supply 09:30 under the freshness policy."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/sections/16/blocks/17/text",
+      "old": "After your attempt, compare with the supported explanation: The matching version -5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree.",
+      "new": "After your attempt, compare with the supported explanation: The matching version 5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/sections/16/blocks/17/presentation/paragraphs/0",
+      "old": "After your attempt, compare with the supported explanation: The matching version -5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree.",
+      "new": "After your attempt, compare with the supported explanation: The matching version 5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/sections/17/blocks/13/alt",
+      "old": "Original case: Retrieve and cache version 5’s 09:30 under its own key. Changed condition: The next request still uses approved version 5. Expected result: The matching version -5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree.",
+      "new": "Original case: Retrieve and cache version 5’s 09:30 under its own key. Changed condition: The next request still uses approved version 5. Expected result: The matching version 5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/sections/17/blocks/14/text",
+      "old": "Original case: Retrieve and cache version 5’s 09:30 under its own key. Changed condition: The next request still uses approved version 5. Expected result: The matching version -5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree.",
+      "new": "Original case: Retrieve and cache version 5’s 09:30 under its own key. Changed condition: The next request still uses approved version 5. Expected result: The matching version 5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/sections/17/blocks/14/presentation/paragraphs/1",
+      "old": "Expected result: The matching version -5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree.",
+      "new": "Expected result: The matching version 5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/sections/17/blocks/21/alt",
+      "old": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it. Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
+      "new": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it. Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version 5 request return, and what permits a later version 5 cache hit?"
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/sections/17/blocks/22/text",
+      "old": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it. Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
+      "new": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it. Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version 5 request return, and what permits a later version 5 cache hit?"
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/sections/17/blocks/22/presentation/paragraphs/1",
+      "old": "Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
+      "new": "Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version 5 request return, and what permits a later version 5 cache hit?"
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/teacher/1/blocks/28/text",
+      "old": "Prediction: The matching version -5 entry can supply 09:30 under the freshness policy.",
+      "new": "Prediction: The matching version 5 entry can supply 09:30 under the freshness policy."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/teacher/1/blocks/28/presentation/paragraphs/0",
+      "old": "Prediction: The matching version -5 entry can supply 09:30 under the freshness policy.",
+      "new": "Prediction: The matching version 5 entry can supply 09:30 under the freshness policy."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/teacher/2/blocks/12/text",
+      "old": "Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
+      "new": "Identify the version mismatch in the cached 09:00 answer. What should the first version 5 request return, and what permits a later version 5 cache hit?"
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/teacher/2/blocks/12/presentation/paragraphs/0",
+      "old": "Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
+      "new": "Identify the version mismatch in the cached 09:00 answer. What should the first version 5 request return, and what permits a later version 5 cache hit?"
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/teacher/2/blocks/14/text",
+      "old": "The current approved source version is 5. The 09:00 entry belongs to version 4. Retrieve and cache version 5’s 09:30 under its own key. Changed case: The matching version -5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree.",
+      "new": "The current approved source version is 5. The 09:00 entry belongs to version 4. Retrieve and cache version 5’s 09:30 under its own key. Changed case: The matching version 5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/teacher/2/blocks/14/presentation/paragraphs/0",
+      "old": "The current approved source version is 5. The 09:00 entry belongs to version 4. Retrieve and cache version 5’s 09:30 under its own key. Changed case: The matching version -5 entry can supply 09:30 under the freshness policy.",
+      "new": "The current approved source version is 5. The 09:00 entry belongs to version 4. Retrieve and cache version 5’s 09:30 under its own key. Changed case: The matching version 5 entry can supply 09:30 under the freshness policy."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/teacher/2/blocks/15/text",
+      "old": "Changed-case reasoning: The matching version -5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree.",
+      "new": "Changed-case reasoning: The matching version 5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/teacher/2/blocks/15/presentation/paragraphs/0",
+      "old": "Changed-case reasoning: The matching version -5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree.",
+      "new": "Changed-case reasoning: The matching version 5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/teacher/6/blocks/8/text",
+      "old": "Extension: The next request still uses approved version 5. Require a prediction and a reason before comparing. Expected result: The matching version -5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree.",
+      "new": "Extension: The next request still uses approved version 5. Require a prediction and a reason before comparing. Expected result: The matching version 5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/teacher/6/blocks/8/presentation/paragraphs/0",
+      "old": "Extension: The next request still uses approved version 5. Require a prediction and a reason before comparing. Expected result: The matching version -5 entry can supply 09:30 under the freshness policy.",
+      "new": "Extension: The next request still uses approved version 5. Require a prediction and a reason before comparing. Expected result: The matching version 5 entry can supply 09:30 under the freshness policy."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/teacher/8/blocks/17/alt",
+      "old": "Original case: Retrieve and cache version 5’s 09:30 under its own key. Changed condition: The next request still uses approved version 5. Expected result: The matching version -5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree.",
+      "new": "Original case: Retrieve and cache version 5’s 09:30 under its own key. Changed condition: The next request still uses approved version 5. Expected result: The matching version 5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/teacher/8/blocks/18/text",
+      "old": "Original case: Retrieve and cache version 5’s 09:30 under its own key. Changed condition: The next request still uses approved version 5. Expected result: The matching version -5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree.",
+      "new": "Original case: Retrieve and cache version 5’s 09:30 under its own key. Changed condition: The next request still uses approved version 5. Expected result: The matching version 5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/teacher/8/blocks/18/presentation/paragraphs/1",
+      "old": "Expected result: The matching version -5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree.",
+      "new": "Expected result: The matching version 5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/teacher/8/blocks/27/alt",
+      "old": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it. Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
+      "new": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it. Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version 5 request return, and what permits a later version 5 cache hit?"
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/teacher/8/blocks/28/text",
+      "old": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it. Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
+      "new": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it. Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version 5 request return, and what permits a later version 5 cache hit?"
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/teacher/8/blocks/28/presentation/paragraphs/1",
+      "old": "Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
+      "new": "Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version 5 request return, and what permits a later version 5 cache hit?"
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/teacher/8/blocks/30/text",
+      "old": "Teacher prompt: Draw your project trace and justify the deciding step using evidence. Ask learners to describe one label or arrow in ordinary words. Use the adjacent transcript if the image is difficult to see. Supported practice key: The current approved source version is 5. The 09:00 entry belongs to version 4. Retrieve and cache version 5’s 09:30 under its own key. Changed case: The matching version -5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree.",
+      "new": "Teacher prompt: Draw your project trace and justify the deciding step using evidence. Ask learners to describe one label or arrow in ordinary words. Use the adjacent transcript if the image is difficult to see. Supported practice key: The current approved source version is 5. The 09:00 entry belongs to version 4. Retrieve and cache version 5’s 09:30 under its own key. Changed case: The matching version 5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/teacher/8/blocks/30/presentation/paragraphs/2",
+      "old": "Changed case: The matching version -5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree.",
+      "new": "Changed case: The matching version 5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/workbook/11/blocks/3/text",
+      "old": "Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
+      "new": "Identify the version mismatch in the cached 09:00 answer. What should the first version 5 request return, and what permits a later version 5 cache hit?"
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/workbook/11/blocks/3/presentation/paragraphs/0",
+      "old": "Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
+      "new": "Identify the version mismatch in the cached 09:00 answer. What should the first version 5 request return, and what permits a later version 5 cache hit?"
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/workbook/13/blocks/12/text",
+      "old": "1. The matching version -5 entry can supply 09:30 under the freshness policy.",
+      "new": "1. The matching version 5 entry can supply 09:30 under the freshness policy."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/workbook/13/blocks/12/presentation/paragraphs/0",
+      "old": "1. The matching version -5 entry can supply 09:30 under the freshness policy.",
+      "new": "1. The matching version 5 entry can supply 09:30 under the freshness policy."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/workbook/13/blocks/17/text",
+      "old": "After your attempt, compare with the supported explanation: The matching version -5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree.",
+      "new": "After your attempt, compare with the supported explanation: The matching version 5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/workbook/13/blocks/17/presentation/paragraphs/0",
+      "old": "After your attempt, compare with the supported explanation: The matching version -5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree.",
+      "new": "After your attempt, compare with the supported explanation: The matching version 5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/workbook/14/blocks/16/alt",
+      "old": "Original case: Retrieve and cache version 5’s 09:30 under its own key. Changed condition: The next request still uses approved version 5. Expected result: The matching version -5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree.",
+      "new": "Original case: Retrieve and cache version 5’s 09:30 under its own key. Changed condition: The next request still uses approved version 5. Expected result: The matching version 5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/workbook/14/blocks/17/text",
+      "old": "Original case: Retrieve and cache version 5’s 09:30 under its own key. Changed condition: The next request still uses approved version 5. Expected result: The matching version -5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree.",
+      "new": "Original case: Retrieve and cache version 5’s 09:30 under its own key. Changed condition: The next request still uses approved version 5. Expected result: The matching version 5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/workbook/14/blocks/17/presentation/paragraphs/1",
+      "old": "Expected result: The matching version -5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree.",
+      "new": "Expected result: The matching version 5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/workbook/14/blocks/26/alt",
+      "old": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it. Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
+      "new": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it. Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version 5 request return, and what permits a later version 5 cache hit?"
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/workbook/14/blocks/27/text",
+      "old": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it. Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
+      "new": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it. Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version 5 request return, and what permits a later version 5 cache hit?"
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/workbook/14/blocks/27/presentation/paragraphs/1",
+      "old": "Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
+      "new": "Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version 5 request return, and what permits a later version 5 cache hit?"
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/pictorial_case/counterfactual/prediction",
+      "old": "The matching version -5 entry can supply 09:30 under the freshness policy.",
+      "new": "The matching version 5 entry can supply 09:30 under the freshness policy."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/pictorial_case/student_task",
+      "old": "Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
+      "new": "Identify the version mismatch in the cached 09:00 answer. What should the first version 5 request return, and what permits a later version 5 cache hit?"
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/pictorial_case/teacher_answer",
+      "old": "The current approved source version is 5. The 09:00 entry belongs to version 4. Retrieve and cache version 5’s 09:30 under its own key. Changed case: The matching version -5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree.",
+      "new": "The current approved source version is 5. The 09:00 entry belongs to version 4. Retrieve and cache version 5’s 09:30 under its own key. Changed case: The matching version 5 entry can supply 09:30 under the freshness policy. Request and cached source version now agree."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/classroom/visual_question",
+      "old": "Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
+      "new": "Identify the version mismatch in the cached 09:00 answer. What should the first version 5 request return, and what permits a later version 5 cache hit?"
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/graphic_story/3/alt",
+      "old": "Original case: Retrieve and cache version 5’s 09:30 under its own key. Changed condition: The next request still uses approved version 5. Expected result: The matching version -5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree.",
+      "new": "Original case: Retrieve and cache version 5’s 09:30 under its own key. Changed condition: The next request still uses approved version 5. Expected result: The matching version 5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree."
+    },
+    {
+      "week": "ai-6/21",
+      "path": "/graphic_story/5/alt",
+      "old": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it. Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
+      "new": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it. Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version 5 request return, and what permits a later version 5 cache hit?"
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Reuse an answer only while its context still matches",
+          "groups": [
+            "Learning goals",
+            "Retrieve access and retention distinctions",
+            "Prerequisite and starting response",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Separate permission, matching context and freshness",
+          "groups": [
+            "Begin with a saved opening-time note",
+            "Define the mechanism",
+            "Complete access-aware cache contract",
+            "Name supplied and missing evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace a young entry that still must not be served",
+          "groups": [
+            "Original four-part key and strict age rule",
+            "Complete main fixture decision ledger",
+            "State time units and current context",
+            "Explain the visual",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Predict before revealing a matching-version cache hit",
+          "groups": [
+            "Current task and response",
+            "Predict the next approved-version request",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Use service vocabulary precisely",
+          "groups": [
+            "Vocabulary and your explanation"
+          ]
+        },
+        {
+          "title": "Read the old-version miss and the later fresh matching hit",
+          "groups": [
+            "Main query-only cache leak and repair",
+            "Separate opening-time inputs and complete context",
+            "Trace approved version 5 rather than saved version 4",
+            "Predict the next matching-version request",
+            "Check after predicting",
+            "Explain silent-edit limits and first/later requests",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Audit stale information, access leaks and overclaims separately",
+          "groups": [
+            "Core qualification and failure analysis",
+            "Complete context, boundary and publication probes",
+            "Guided repair and explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise one changed condition at a time",
+          "groups": [
+            "Current explanation and guided check",
+            "Supported W2 trace",
+            "Individual scope check",
+            "Picture response",
+            "Reserve the selected version-change case",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run a complete local cache decision investigation",
+          "groups": [
+            "Current query-only leak investigation",
+            "Runnable permission/version/age model",
+            "Expected outcomes and limits",
+            "Evidence ledger, trace instructions and reflection",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Explain a stronger case",
+          "groups": [
+            "Explain,repair and extend"
+          ]
+        },
+        {
+          "title": "Save context versions, timestamps and decision evidence",
+          "groups": [
+            "Project task and artifact",
+            "Actual run or trace and limitations",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Check the service reasoning and its limits",
+          "groups": [
+            "Current explanation and response"
+          ]
+        },
+        {
+          "title": "Extra practice · Revisit the complete trace",
+          "groups": [
+            "Complete trace and evidence"
+          ]
+        },
+        {
+          "title": "Try alone: combine a new TTL with a source-version change",
+          "groups": [
+            "Complete selected independent task",
+            "First attempt and support record",
+            "Feedback after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The earlier route checklist",
+          "groups": [
+            "Targets,route and first prediction"
+          ]
+        },
+        {
+          "title": "Explain why fresh does not always mean reusable",
+          "groups": [
+            "Retrieve and explain",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict,check and repair",
+          "groups": [
+            "First supported question and optional hint",
+            "Check after the first attempt",
+            "Changed-case question and optional hint",
+            "Check after the changed attempt",
+            "Repair and retain the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture concept journey",
+          "groups": [
+            "01. Caching and stale information: the case",
+            "02. Follow the deciding steps",
+            "03. Caching and stale information — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the connected service investigation",
+          "groups": [
+            "Target and main teaching plan",
+            "Preparation and prerequisite",
+            "Opening retrieval",
+            "Pictured end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach cache reuse as three independent requirements",
+          "groups": [
+            "Definitions and complete classroom contract",
+            "Main decision ledger and checked reasoning",
+            "Boundary and publication probes",
+            "Separate opening-time case and fixed-context qualification",
+            "Picture trace and later-hit conditions",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Model a step,then remove help",
+          "groups": [
+            "Current completion task and checked reasoning",
+            "Individual misconception check",
+            "Pictured reasoning and changed case",
+            "Accessible support and extension",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the complete supplied investigation",
+          "groups": [
+            "Complete inputs,expected results and limits",
+            "Diagnose the current misconceptions",
+            "Choose accessible support",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the new service scenario",
+          "groups": [
+            "Selected independent task and checked answer",
+            "Judge explanation,trace and limits",
+            "Give one usable repair",
+            "W1 Explain the mechanism",
+            "W2 Trace the worked case",
+            "W3 Audit the limit",
+            "W5 Design a revealing follow-up",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, support and revisit service design",
+          "groups": [
+            "Project and next-week bridge",
+            "Delayed return and support record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative planning checklist",
+          "groups": [
+            "Planning,assessment and project reminders"
+          ]
+        },
+        {
+          "title": "Reference · Feedback,labs and repair paths",
+          "groups": [
+            "Feedback and record guidance"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Caching and stale information: the case",
+            "02. Follow the deciding steps",
+            "03. Caching and stale information — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 8,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Recall · Retrieve before notes",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Individual reasoning check",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Try alone · Selected transfer",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W1 · Explain the current example",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W2 · Trace the calculation",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W3 · Repair a misconception",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Earlier W4 response copy",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W5 · Explain the limitation",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Project · Keep the service evidence",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Project milestone",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict,check and repair",
+          "groups": [
+            "First supported question and optional hint",
+            "Check after the first attempt",
+            "Changed-case question and optional hint",
+            "Check after the changed attempt",
+            "Repair and retain the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Caching and stale information: the case",
+            "02. Follow the deciding steps",
+            "03. Caching and stale information — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 15,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 15,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-6-week-21-connected-review/START_REVIEW.html",
+  "week_sha256": "e60551c8b579e827e0e26d60301820c2f9b1075c5ce12ca2ec9426879323bd2b",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

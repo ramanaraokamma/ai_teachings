@@ -1,0 +1,463 @@
+{
+  "lesson": "ai-6/3",
+  "sections_reviewed": 42,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-6/3",
+      "path": "/teacher/0/blocks/9/text",
+      "old": "Two 45-minute sessions. Typed contracts define values, required fields and failure outcomes. Runtime input still needs validation even when program annotations exist. Use the supplied constructed scenarios to make the mechanism inspectable. Collect W4 before sharing solutions. Students should name intermediate evidence and limitations; classroom pacing and learning effectiveness remain unvalidated.",
+      "new": "Use the three-session teaching cycle above, with extra time as needed. Typed contracts define values, required fields and failure outcomes. Runtime input still needs validation even when program annotations exist. Use the supplied constructed scenarios to make the mechanism inspectable. Collect W4 before sharing solutions. Students should name intermediate evidence and limitations; classroom pacing and learning effectiveness remain unvalidated."
+    },
+    {
+      "week": "ai-6/3",
+      "path": "/teacher/0/blocks/9/presentation/paragraphs/0",
+      "old": "Two 45-minute sessions. Typed contracts define values, required fields and failure outcomes. Runtime input still needs validation even when program annotations exist.",
+      "new": "Use the three-session teaching cycle above, with extra time as needed. Typed contracts define values, required fields and failure outcomes. Runtime input still needs validation even when program annotations exist."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Check what a record contains before processing it",
+          "groups": [
+            "Learning goals",
+            "Retrieve input-validation boundaries",
+            "Prerequisite and starting response",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Write the schema as a sequence of observable checks",
+          "groups": [
+            "Start with the form analogy",
+            "Define typed contracts and runtime validation",
+            "Complete closed-object schema",
+            "Name supplied and missing evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace a Boolean through the correct gates",
+          "groups": [
+            "Original field rules",
+            "Complete validation flow",
+            "Explain the Boolean subclass trap",
+            "State the contract before tracing",
+            "Explain the visual",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Change the type or value and predict the first failing gate",
+          "groups": [
+            "Current task and response",
+            "Predict the negative-count picture",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Use service vocabulary precisely",
+          "groups": [
+            "Vocabulary and your explanation"
+          ]
+        },
+        {
+          "title": "Separate a type failure from a value-range failure",
+          "groups": [
+            "Main Boolean input and exact-type conclusion",
+            "Keep the trace’s scope",
+            "Separate pictured sample records and full givens",
+            "Trace the integer/string distinction",
+            "Predict the negative integer change",
+            "Check after predicting",
+            "Explain the failing gate and measurement limit",
+            "Reference: original optional local check",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Do not ask a schema to prove more than its contract",
+          "groups": [
+            "Core qualification and failure analysis",
+            "Complete structure-versus-domain cases",
+            "Guided explanation and repair",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise naming the first failed condition",
+          "groups": [
+            "Current explanation and guided scope check",
+            "Supported W2 record",
+            "Individual evidence-limit check",
+            "Lab-sample picture response",
+            "Reserve the mixed independent count set",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run a complete schema audit before any domain operation",
+          "groups": [
+            "Current Boolean-trap investigation",
+            "Complete executable validation and probe audit",
+            "Expected gates, nonempty-ID scope and assessment distinction",
+            "Evidence ledger and reflection",
+            "Reference: original validation snippet",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Explain a stronger case",
+          "groups": [
+            "Explain,repair and extend"
+          ]
+        },
+        {
+          "title": "Save the schema alongside accepted and rejected examples",
+          "groups": [
+            "Project task and artifact",
+            "Actual run or trace and limitations",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Check the service reasoning and its limits",
+          "groups": [
+            "Current explanation and response"
+          ]
+        },
+        {
+          "title": "Extra practice · Revisit the complete trace",
+          "groups": [
+            "Complete trace and evidence"
+          ]
+        },
+        {
+          "title": "Try alone: explain a mixed set of count values",
+          "groups": [
+            "Complete count classification task",
+            "First attempt and support record",
+            "Feedback after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The earlier route checklist",
+          "groups": [
+            "Targets,route and first prediction"
+          ]
+        },
+        {
+          "title": "Finish with a precise gate and an honest limit",
+          "groups": [
+            "Retrieve and explain",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict,check and repair",
+          "groups": [
+            "First supported question and optional hint",
+            "Check after the first attempt",
+            "Changed-case question and optional hint",
+            "Check after the changed attempt",
+            "Repair and retain the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture concept journey",
+          "groups": [
+            "01. Typed contracts and schemas: the case",
+            "02. Follow the deciding steps",
+            "03. Typed contracts and schemas — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the connected service investigation",
+          "groups": [
+            "Target and main teaching plan",
+            "Preparation and prerequisite",
+            "Opening retrieval",
+            "Pictured end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach structure, type, range and domain as distinct checks",
+          "groups": [
+            "Definitions and complete closed-object contract",
+            "Ordered gates and main Boolean reasoning",
+            "Domain limits and additional checks",
+            "Separate pictured sample schema and scope",
+            "Picture trace and negative-count key",
+            "Reference: original optional lab",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Model a step,then remove help",
+          "groups": [
+            "Current completion task and checked reasoning",
+            "Individual misconception check",
+            "Pictured reasoning and changed case",
+            "Accessible support and extension",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the complete supplied investigation",
+          "groups": [
+            "Complete inputs,expected results and limits",
+            "Diagnose the current misconceptions",
+            "Choose accessible support",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the new service scenario",
+          "groups": [
+            "Selected independent task and checked answer",
+            "Judge explanation,trace and limits",
+            "Give one usable repair",
+            "W1 Explain the mechanism",
+            "W2 Trace the worked case",
+            "W3 Audit the limit",
+            "W5 Design a revealing follow-up",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, support and revisit service design",
+          "groups": [
+            "Project and next-week bridge",
+            "Delayed return and support record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative planning checklist",
+          "groups": [
+            "Planning,assessment and project reminders"
+          ]
+        },
+        {
+          "title": "Reference · Feedback,labs and repair paths",
+          "groups": [
+            "Feedback and record guidance"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Typed contracts and schemas: the case",
+            "02. Follow the deciding steps",
+            "03. Typed contracts and schemas — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 8,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Recall · Retrieve before notes",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Individual reasoning check",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Try alone · Selected transfer",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W1 · Explain the current example",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W2 · Trace the calculation",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W3 · Repair a misconception",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Earlier W4 response copy",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W5 · Explain the limitation",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Project · Keep the service evidence",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Project milestone",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict,check and repair",
+          "groups": [
+            "First supported question and optional hint",
+            "Check after the first attempt",
+            "Changed-case question and optional hint",
+            "Check after the changed attempt",
+            "Repair and retain the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Typed contracts and schemas: the case",
+            "02. Follow the deciding steps",
+            "03. Typed contracts and schemas — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 15,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 15,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-6-week-03-connected-review/START_REVIEW.html",
+  "week_sha256": "0b4c91933fa711cf640a9b18edd151a37cae2322d96fc26185c0674f4bc737e5",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

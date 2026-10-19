@@ -1,0 +1,696 @@
+{
+  "lesson": "ai-4/13",
+  "sections_reviewed": 55,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-4/13",
+      "path": "/method/retrieval/2/goal",
+      "old": "Inspect row meaning missing values and repeated records",
+      "new": "Define the population and conditions in an intended-use statement"
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/method/retrieval/2/expected",
+      "old": "One row is intended to represent one indoor practice trip. The source is a teacher-authored fictional export for this lesson, duration uses minutes, and None means unknown rather than zero.",
+      "new": "Compare intended conditions with observed photo counts and distinct source plants. In Coverage v1, A has counts9,0,1,0 and B3,3,3,3 across day/A,day/B,evening/A,evening/B. Copying rows does not fill missing cells; coverage is not measured accuracy and unknown class/species selection remains a limit."
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/teacher/0/blocks/15/text",
+      "old": "Look for: Inspect row meaning missing values and repeated records",
+      "new": "Look for: Define the population and conditions in an intended-use statement"
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/teacher/0/blocks/16/text",
+      "old": "Reference example, not the only acceptable wording: One row is intended to represent one indoor practice trip. The source is a teacher-authored fictional export for this lesson, duration uses minutes, and None means unknown rather than zero.",
+      "new": "Reference example, not the only acceptable wording: Compare intended conditions with observed photo counts and distinct source plants. In Coverage v1, A has counts9,0,1,0 and B3,3,3,3 across day/A,day/B,evening/A,evening/B. Copying rows does not fill missing cells; coverage is not measured accuracy and unknown class/species selection remains a limit."
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/sections/17/blocks/21/text",
+      "old": "Review Sampling and Intended Use (ai-4/7). Goal: Inspect row meaning missing values and repeated records. Short practice: Which collection would address the intended-use gap most directly? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.. Return to this week and explain what you changed.",
+      "new": "Review Sampling and Intended Use (ai-4/7). Goal: Define the population and conditions in an intended-use statement. Short practice: Which collection would address the intended-use gap most directly? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.. Return to this week and explain what you changed."
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/workbook/24/blocks/21/text",
+      "old": "Review Sampling and Intended Use (ai-4/7). Goal: Inspect row meaning missing values and repeated records. Short practice: Which collection would address the intended-use gap most directly? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.. Return to this week and explain what you changed.",
+      "new": "Review Sampling and Intended Use (ai-4/7). Goal: Define the population and conditions in an intended-use statement. Short practice: Which collection would address the intended-use gap most directly? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.. Return to this week and explain what you changed."
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/sections/1/blocks/11/text",
+      "old": "A pipeline connects steps so a new query receives the same preparation as the training examples. This week combines the scale from Week 11 with a one-neighbour classifier. We will fit once, keep the fitted state, and call one prediction function for every raw query.",
+      "new": "A pipeline connects steps so a new query receives the same preparation as the training examples. This week combines the training-only scale introduced in Week 8 with a one-neighbour classifier. We will fit once, keep the fitted state, and call one prediction function for every raw query."
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/sections/1/blocks/11/presentation/paragraphs/0",
+      "old": "A pipeline connects steps so a new query receives the same preparation as the training examples. This week combines the scale from Week 11 with a one-neighbour classifier.",
+      "new": "A pipeline connects steps so a new query receives the same preparation as the training examples. This week combines the training-only scale introduced in Week 8 with a one-neighbour classifier."
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/teacher/1/blocks/20/text",
+      "old": "A pipeline connects steps so a new query receives the same preparation as the training examples. This week combines the scale from Week 11 with a one-neighbour classifier. We will fit once, keep the fitted state, and call one prediction function for every raw query.",
+      "new": "A pipeline connects steps so a new query receives the same preparation as the training examples. This week combines the training-only scale introduced in Week 8 with a one-neighbour classifier. We will fit once, keep the fitted state, and call one prediction function for every raw query."
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/teacher/1/blocks/20/presentation/paragraphs/0",
+      "old": "A pipeline connects steps so a new query receives the same preparation as the training examples. This week combines the scale from Week 11 with a one-neighbour classifier.",
+      "new": "A pipeline connects steps so a new query receives the same preparation as the training examples. This week combines the training-only scale introduced in Week 8 with a one-neighbour classifier."
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/sections/1/blocks/16/text",
+      "old": "Last week the baseline ignored scene features. This week a small fitting algorithm will choose a rule that uses one feature. We supply the rule form: predict blocked when a distance reading is at or below a cutoff, otherwise predict clear. The algorithm will try three cutoffs and keep the one making the fewest training mistakes.",
+      "new": "The majority baseline from Week 10 ignored scene features. This week a small fitting algorithm will choose a rule that uses one feature. We supply the rule form: predict blocked when a distance reading is at or below a cutoff, otherwise predict clear. The algorithm will try three cutoffs and keep the one making the fewest training mistakes."
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/sections/1/blocks/16/presentation/paragraphs/0",
+      "old": "Last week the baseline ignored scene features. This week a small fitting algorithm will choose a rule that uses one feature.",
+      "new": "The majority baseline from Week 10 ignored scene features. This week a small fitting algorithm will choose a rule that uses one feature."
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/teacher/1/blocks/28/text",
+      "old": "Last week the baseline ignored scene features. This week a small fitting algorithm will choose a rule that uses one feature. We supply the rule form: predict blocked when a distance reading is at or below a cutoff, otherwise predict clear. The algorithm will try three cutoffs and keep the one making the fewest training mistakes.",
+      "new": "The majority baseline from Week 10 ignored scene features. This week a small fitting algorithm will choose a rule that uses one feature. We supply the rule form: predict blocked when a distance reading is at or below a cutoff, otherwise predict clear. The algorithm will try three cutoffs and keep the one making the fewest training mistakes."
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/teacher/1/blocks/28/presentation/paragraphs/0",
+      "old": "Last week the baseline ignored scene features. This week a small fitting algorithm will choose a rule that uses one feature.",
+      "new": "The majority baseline from Week 10 ignored scene features. This week a small fitting algorithm will choose a rule that uses one feature."
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/sections/5/blocks/17/text",
+      "old": "The training labels tie at two blocked and two clear. Carry forward Week 7’s baseline tie rule, choose clear. That baseline matches validation rows 2 and 3, also 2/4 or 50 percent. The fitted rule has not improved total accuracy on this set, and the two methods make different mistakes.",
+      "new": "The training labels tie at two blocked and two clear. Carry forward Week 10’s baseline tie rule, choose clear. That baseline matches validation rows 2 and 3, also 2/4 or 50 percent. The fitted rule has not improved total accuracy on this set, and the two methods make different mistakes."
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/sections/5/blocks/17/presentation/paragraphs/0",
+      "old": "The training labels tie at two blocked and two clear. Carry forward Week 7’s baseline tie rule, choose clear. That baseline matches validation rows 2 and 3, also 2/4 or 50 percent.",
+      "new": "The training labels tie at two blocked and two clear. Carry forward Week 10’s baseline tie rule, choose clear. That baseline matches validation rows 2 and 3, also 2/4 or 50 percent."
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/sections/6/blocks/13/text",
+      "old": "Record the source and split, rule form, candidate list, all training error counts, tie policy, selected cutoff and both validation prediction lists. Do not discard a difficult row to improve a score. Next week a decision tree will extend the idea of feature-based decisions, while the need for honest evaluation stays the same.",
+      "new": "Record the source and split, rule form, candidate list, all training error counts, tie policy, selected cutoff and both validation prediction lists. Do not discard a difficult row to improve a score. The decision-tree lesson in Week 11 also used feature-based decisions; next week examines scores and calibration intuition."
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/sections/6/blocks/13/presentation/paragraphs/1",
+      "old": "Next week a decision tree will extend the idea of feature-based decisions, while the need for honest evaluation stays the same.",
+      "new": "The decision-tree lesson in Week 11 also used feature-based decisions; next week examines scores and calibration intuition."
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/sections/7/blocks/15/text",
+      "old": "Changing the scaling, k or feature list creates a new development run to record. Keep a separate final test for the final evaluation. Next week a confusion matrix will show which kinds of label errors the predictions make.",
+      "new": "Changing the scaling, k or feature list creates a new development run to record. Keep a separate final test for the final evaluation. Week 15 will use a confusion matrix to show label-error types; next week examines scores and calibration intuition."
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/sections/7/blocks/15/presentation/paragraphs/0",
+      "old": "Changing the scaling, k or feature list creates a new development run to record. Keep a separate final test for the final evaluation. Next week a confusion matrix will show which kinds of label errors the predictions make.",
+      "new": "Changing the scaling, k or feature list creates a new development run to record. Keep a separate final test for the final evaluation. Week 15 will use a confusion matrix to show label-error types; next week examines scores and calibration intuition."
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Week 13 introduces confusion matrices. Keep the ID-linked reference and prediction pairs from this week. Teacher reference: https://scikit-learn.org/stable/common_pitfalls.html (consistent preprocessing and training-only fitting; reviewed 2026-09-27).",
+      "new": "Next is Week 14: Scores and Calibration Intuition. Keep the ID-linked references, predictions, fitted state and method settings. Confusion matrices follow in Week 15. Primary reference: https://scikit-learn.org/stable/common_pitfalls.html (consistent preprocessing and training-only fitting)."
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied complete investigation for shared practice. Reserve the selected fresh P/Q/R fitted-pipeline task for the individual first attempt before hints or feedback; earlier transfer questions remain additional practice."
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/teacher/2/blocks/6/text",
+      "old": "Keep for an independent attempt: A classifier fits on rows 1–80 and is evaluated on those same rows. Its accuracy is 100%. What additional evidence is needed before claiming generalization?",
+      "new": "Use the earlier transfer question as additional practice. Reserve the selected fresh P/Q/R fitted-pipeline task for the first individual attempt and record support used."
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-4/13",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 8,
+      "sections": [
+        {
+          "title": "Fit once and apply the same pipeline to every raw query",
+          "groups": [
+            "Learning goals",
+            "Recall the fitted scale and baseline",
+            "Optional readiness · Candidate rule search",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Read feature order, units and source roles before fitting",
+          "groups": [
+            "Pipeline idea and fictional source",
+            "Complete three-row training table",
+            "Input and validation assumptions",
+            "Optional extension · Separate cutoff-search source and contract",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Save the training scale and stored examples as one fitted state",
+          "groups": [
+            "Complete fit/scale/predict script",
+            "Trace stored state and the three outputs",
+            "Optional extension · Complete candidate-cutoff search",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare reproducibility with a correct information boundary",
+          "groups": [
+            "Four evaluation conditions",
+            "Keep the claim bounded",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Words for the current experiment",
+          "groups": [
+            "Core vocabulary",
+            "Closer-explanation terms",
+            "Extension vocabulary",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace consistent preparation before nearest-neighbour prediction",
+          "groups": [
+            "Separate unit-conversion facts and scope",
+            "Trace the consistent pipeline",
+            "Predict an unconverted query",
+            "Check after predicting",
+            "Explain the evaluation and reproducibility limits",
+            "Return to the main learned-scale query and swapped-order defect",
+            "Optional cutoff validation comparison",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Find a pipeline record mistaken for a correctness guarantee",
+          "groups": [
+            "Main diagnosis and limits",
+            "Challenge the shortcut",
+            "Optional cutoff-search and training-score limits",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise the saved run with less help",
+          "groups": [
+            "Try the supported pipeline W2",
+            "Record every fitted value, setting and prediction",
+            "Challenge automatic-leak-prevention reasoning",
+            "Explain the picture’s reproduction record",
+            "Reserve the new P/Q/R pipeline task",
+            "Optional search-boundary and search-tie comparisons",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the complete reproducible classifier fixture",
+          "groups": [
+            "Complete V1–V3 comparison table",
+            "Normal, tie, missing, outside-range, order and constant probes",
+            "Predict, fit, run and record",
+            "Keep evidence and actual execution status",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Build a stronger explanation",
+          "groups": [
+            "Thinking ladder",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep a model record that includes its preparation",
+          "groups": [
+            "Project artifact and evidence",
+            "Limits, uncertainty and human decision",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Inspect your evidence",
+          "groups": [
+            "Experiment evidence checklist",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier complete case",
+          "groups": [
+            "Situation and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: fit and reproduce the new P/Q/R run",
+          "groups": [
+            "Complete independent dataset and scope",
+            "First attempt and help record",
+            "Use feedback after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Optional executable lab · Fit and test a threshold classifier",
+          "groups": [
+            "Complete retained lab and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Earlier route checklist",
+          "groups": [
+            "Checklist and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish by naming fitted state, raw input and evaluation evidence",
+          "groups": [
+            "Retrieve and explain",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict, check and repair",
+          "groups": [
+            "First supported question and hint",
+            "Check the first explanation",
+            "Changed-case question and hint",
+            "Check the changed explanation",
+            "Repair and keep the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The six-picture journey",
+          "groups": [
+            "01. Train a Classifier: the case",
+            "02. Follow the deciding steps",
+            "03. Separate search from later scoring",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 4,
+      "sections": [
+        {
+          "title": "Prepare the connected experiment",
+          "groups": [
+            "Goal and main teaching plan",
+            "Materials and prerequisite",
+            "Opening retrieval",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach fit, predict and evaluate as separate operations",
+          "groups": [
+            "Complete main source and feature contract",
+            "Trace saved state and printed outputs",
+            "Trace raw query, state reuse and swapped meanings",
+            "Read separate unit-conversion facts",
+            "Trace consistent units and the changed defect",
+            "Optional cutoff-search contract and keys",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the calculation, then remove help",
+          "groups": [
+            "Current completion task and checked key",
+            "Individual misconception check",
+            "Pictorial question and changed-case reasoning",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts",
+            "Extension teaching cycles"
+          ]
+        },
+        {
+          "title": "Run the complete supplied investigation",
+          "groups": [
+            "Supplied inputs and checked guidance",
+            "Predict, investigate and record",
+            "Keep the experiment ledger",
+            "Diagnose the current misconceptions",
+            "Choose accessible support",
+            "Extension misconceptions",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected experiment transfer",
+          "groups": [
+            "Selected independent task and checked key",
+            "Judge trace, scope and support",
+            "Give one repair action",
+            "W1 Separate fit predict and evaluate",
+            "W2 Trace and score the saved run",
+            "W3 Repair an incomplete run record",
+            "W5 Diagnose pipeline misuse",
+            "Earlier wording, alternatives and picture transcripts",
+            "Extension questions and checked keys"
+          ]
+        },
+        {
+          "title": "Connect, support and revisit the experiment",
+          "groups": [
+            "Project evidence",
+            "Support and selected reassessment",
+            "Delayed return",
+            "Bridge and reflection",
+            "Earlier wording, alternatives and picture transcripts",
+            "Extension support and reassessment"
+          ]
+        },
+        {
+          "title": "Optional threshold lab · Teaching guidance",
+          "groups": [
+            "Complete retained lab guidance"
+          ]
+        },
+        {
+          "title": "Reference · Alternative planning checklist",
+          "groups": [
+            "Planning and assessment reference"
+          ]
+        },
+        {
+          "title": "Reference · Feedback and evidence records",
+          "groups": [
+            "Record and repair",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Train a Classifier: the case",
+            "02. Follow the deciding steps",
+            "03. Separate search from later scoring",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 17,
+      "sections": [
+        {
+          "title": "Recall · Retrieve before notes",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Individual reasoning check",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Try alone · Selected experiment task",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Earlier learning target",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier complete case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Changed case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Project · Keep the experiment evidence",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge your evidence",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier transfer",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W1 · Explain the mechanism",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Trace the current experiment",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Repair the reasoning",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Earlier W4 record",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W5 · Plan the next check",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extension · Searching candidate rules — W1 State the search before running it",
+          "groups": [
+            "Extension question and evidence"
+          ]
+        },
+        {
+          "title": "Extension · Searching candidate rules — W2 Trace the training mistakes",
+          "groups": [
+            "Extension question and evidence"
+          ]
+        },
+        {
+          "title": "Extension · Searching candidate rules — W3 Audit the boundary and comparison",
+          "groups": [
+            "Extension question and evidence"
+          ]
+        },
+        {
+          "title": "Extension · Searching candidate rules — W4 Search and evaluate independently",
+          "groups": [
+            "Extension question and evidence"
+          ]
+        },
+        {
+          "title": "Extension · Searching candidate rules — W5 Limit the claim",
+          "groups": [
+            "Extension question and evidence"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio milestone",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict, check and repair",
+          "groups": [
+            "First supported question and hint",
+            "Check the first explanation",
+            "Changed-case question and hint",
+            "Check the changed explanation",
+            "Repair and keep the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Train a Classifier: the case",
+            "02. Follow the deciding steps",
+            "03. Separate search from later scoring",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 19,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 19,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 26,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 26,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 10,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 10,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-4-week-13-connected-review/START_REVIEW.html",
+  "week_sha256": "4d20481ccfc2ab365fc7b8d43aaf24605c028a1c130d9cfb92f1d597004a347e",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

@@ -1,0 +1,594 @@
+{
+  "lesson": "ai-4/15",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-4/15",
+      "path": "/sections/1/blocks/11/text",
+      "old": "A confusion matrix shows which labels a classifier mixes up. It counts examples after predictions are made; it does not fit or repair the classifier. Week 12 had reference/prediction pairs clear/clear, blocked/blocked, clear/blocked. A labelled table can preserve the type of that error as well as the total score.",
+      "new": "A confusion matrix shows which labels a classifier mixes up. It counts examples after predictions are made; it does not fit or repair the classifier. Week 13 had reference/prediction pairs clear/clear, blocked/blocked, clear/blocked. A labelled table can preserve the type of that error as well as the total score."
+    },
+    {
+      "week": "ai-4/15",
+      "path": "/sections/1/blocks/11/presentation/paragraphs/1",
+      "old": "Week 12 had reference/prediction pairs clear/clear, blocked/blocked, clear/blocked. A labelled table can preserve the type of that error as well as the total score.",
+      "new": "Week 13 had reference/prediction pairs clear/clear, blocked/blocked, clear/blocked. A labelled table can preserve the type of that error as well as the total score."
+    },
+    {
+      "week": "ai-4/15",
+      "path": "/teacher/1/blocks/20/text",
+      "old": "A confusion matrix shows which labels a classifier mixes up. It counts examples after predictions are made; it does not fit or repair the classifier. Week 12 had reference/prediction pairs clear/clear, blocked/blocked, clear/blocked. A labelled table can preserve the type of that error as well as the total score.",
+      "new": "A confusion matrix shows which labels a classifier mixes up. It counts examples after predictions are made; it does not fit or repair the classifier. Week 13 had reference/prediction pairs clear/clear, blocked/blocked, clear/blocked. A labelled table can preserve the type of that error as well as the total score."
+    },
+    {
+      "week": "ai-4/15",
+      "path": "/teacher/1/blocks/20/presentation/paragraphs/1",
+      "old": "Week 12 had reference/prediction pairs clear/clear, blocked/blocked, clear/blocked. A labelled table can preserve the type of that error as well as the total score.",
+      "new": "Week 13 had reference/prediction pairs clear/clear, blocked/blocked, clear/blocked. A labelled table can preserve the type of that error as well as the total score."
+    },
+    {
+      "week": "ai-4/15",
+      "path": "/sections/1/blocks/12/text",
+      "old": "This week uses eight new fictional evaluation records from a frozen classifier. They are not extra predictions from the Week 12 code. Each ID appears once with a reviewed reference and one prediction. The grouped table below lists every ID. Keep reference and prediction paired by ID before counting.",
+      "new": "This week uses eight new fictional evaluation records from a frozen classifier. They are not extra predictions from the Week 13 code. Each ID appears once with a reviewed reference and one prediction. The grouped table below lists every ID. Keep reference and prediction paired by ID before counting."
+    },
+    {
+      "week": "ai-4/15",
+      "path": "/sections/1/blocks/12/presentation/paragraphs/0",
+      "old": "This week uses eight new fictional evaluation records from a frozen classifier. They are not extra predictions from the Week 12 code. Each ID appears once with a reviewed reference and one prediction.",
+      "new": "This week uses eight new fictional evaluation records from a frozen classifier. They are not extra predictions from the Week 13 code. Each ID appears once with a reviewed reference and one prediction."
+    },
+    {
+      "week": "ai-4/15",
+      "path": "/teacher/1/blocks/21/text",
+      "old": "This week uses eight new fictional evaluation records from a frozen classifier. They are not extra predictions from the Week 12 code. Each ID appears once with a reviewed reference and one prediction. The grouped table below lists every ID. Keep reference and prediction paired by ID before counting.",
+      "new": "This week uses eight new fictional evaluation records from a frozen classifier. They are not extra predictions from the Week 13 code. Each ID appears once with a reviewed reference and one prediction. The grouped table below lists every ID. Keep reference and prediction paired by ID before counting."
+    },
+    {
+      "week": "ai-4/15",
+      "path": "/teacher/1/blocks/21/presentation/paragraphs/0",
+      "old": "This week uses eight new fictional evaluation records from a frozen classifier. They are not extra predictions from the Week 12 code. Each ID appears once with a reviewed reference and one prediction.",
+      "new": "This week uses eight new fictional evaluation records from a frozen classifier. They are not extra predictions from the Week 13 code. Each ID appears once with a reviewed reference and one prediction."
+    },
+    {
+      "week": "ai-4/15",
+      "path": "/sections/7/blocks/13/text",
+      "old": "Row totals are 3 reference-clear and 5 reference-blocked. Column totals are 4 predicted-clear and 4 predicted-blocked. All four cells sum to 8. Accuracy is the diagonal total divided by the total: 5/8, or 62.5 percent. The Week 12 three-record matrix was [[1,1],[0,1]] in this same axis order, giving 2/3.",
+      "new": "Row totals are 3 reference-clear and 5 reference-blocked. Column totals are 4 predicted-clear and 4 predicted-blocked. All four cells sum to 8. Accuracy is the diagonal total divided by the total: 5/8, or 62.5 percent. The Week 13 three-record matrix was [[1,1],[0,1]] in this same axis order, giving 2/3."
+    },
+    {
+      "week": "ai-4/15",
+      "path": "/sections/7/blocks/13/presentation/paragraphs/1",
+      "old": "The Week 12 three-record matrix was [[1,1],[0,1]] in this same axis order, giving 2/3.",
+      "new": "The Week 13 three-record matrix was [[1,1],[0,1]] in this same axis order, giving 2/3."
+    },
+    {
+      "week": "ai-4/15",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Week 14 covers accuracy and class imbalance. Carry forward row totals, class definitions and the full confusion matrix. Teacher reference: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html (reference rows, prediction columns and label order; reviewed 2026-09-28).",
+      "new": "Next is Week 16: Accuracy and Imbalance. Carry forward row totals, class definitions and the full confusion matrix. Primary reference: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html (reference rows, prediction columns and declared label order)."
+    },
+    {
+      "week": "ai-4/15",
+      "path": "/teacher/5/blocks/12/text",
+      "old": "Require W4 [[1,2],[1,2]], row totals 3,3, column totals 2,4, TP=2,TN=1,FP=2,FN=1 and accuracy 3/6. Fresh retry: S1 blocked/blocked, S2 blocked/clear, S3 clear/clear, S4 clear/clear, S5 clear/blocked, always reference first. Matrix [[2,1],[1,1]], rows 3,2, columns 3,2, TP=1,TN=2,FP=1,FN=1, accuracy 3/5. Require labelled axes and blocked positive before accepting abbreviations.",
+      "new": "Selected independent counts TP5,FN4,FP2,TN9 give actual-positive/negative rows and predicted-positive/negative columns [[5,4],[2,9]],total20,correct14,accuracy70%. Positive reference count9. The old six-record W4 remains additional practice. Fresh retry TP3,FN2,FP1,TN6 gives [[3,2],[1,6]],total12,correct9,accuracy75%; require both labelled axes and a stated positive definition."
+    },
+    {
+      "week": "ai-4/15",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied complete investigation for shared practice. Reserve the selected fresh TP5/FN4/FP2/TN9 count task for the individual first attempt before hints or feedback; earlier transfer questions remain additional practice."
+    },
+    {
+      "week": "ai-4/15",
+      "path": "/teacher/2/blocks/6/text",
+      "old": "Keep for an independent attempt: Treat fern as positive. Counts are TP=6, FP=2, FN=3 and TN=9. How many examples and how many correct predictions are there?",
+      "new": "Use the earlier transfer question as additional practice. Reserve the selected fresh TP5/FN4/FP2/TN9 count task for the first individual attempt and record support used."
+    },
+    {
+      "week": "ai-4/15",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-4/15",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "What kind of mistake did the classifier make?",
+          "groups": [
+            "Learning goals",
+            "Recall the saved classifier pairs",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Declare the positive class and both axis orders",
+          "groups": [
+            "Matrix purpose and new fictional evaluation source",
+            "Complete eight-record grouped table",
+            "Reference-row and prediction-column contract",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Put each reference/prediction pair in exactly one cell",
+          "groups": [
+            "Complete eight-record counting program",
+            "Trace IDs and assumptions",
+            "Read the labelled count matrix",
+            "Verify diagonal, errors and total",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare two error types that one accuracy total hides",
+          "groups": [
+            "Four evaluation conditions",
+            "Keep the claim bounded",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Words for the current experiment",
+          "groups": [
+            "Core vocabulary",
+            "Closer-explanation terms",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Read the four stories through their labelled cells",
+          "groups": [
+            "Complete pictured facts and axis-order scope",
+            "Trace actual spotted and healthy rows",
+            "Inspect the original labelled matrix",
+            "Predict a reviewed FN-to-TP decision change",
+            "Check after predicting",
+            "Explain limits and total preservation",
+            "Return to corridor V3/V4 error identities",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Find a cell named without its class or axes",
+          "groups": [
+            "Diagnose the main claim",
+            "Check interpretation and evidence limits",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise error types and verify every marginal total",
+          "groups": [
+            "Try W2 with the eight-record source",
+            "Read row/column totals and alternative error pattern",
+            "Challenge positive-means-good reasoning",
+            "Explain the pictured one-record move",
+            "Reserve the independent new counts",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run Matrix Build with all twenty pairs supplied",
+          "groups": [
+            "Complete twenty fictional reference/prediction pairs",
+            "Declare axes and trace all totals",
+            "Normal, axis-order, missing-reference and positive-definition probes",
+            "Count, verify and explain",
+            "Optional complete checked counting program",
+            "Retain evidence and actual execution status",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Build a stronger explanation",
+          "groups": [
+            "Thinking ladder",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep the project’s error stories beside its total score",
+          "groups": [
+            "Project artifact and evidence",
+            "Limits and human decision",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Inspect your evidence",
+          "groups": [
+            "Experiment evidence checklist",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier complete case",
+          "groups": [
+            "Situation and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: build a matrix from fresh error counts",
+          "groups": [
+            "Complete selected counts and scope",
+            "First attempt and support record",
+            "Use feedback after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier route checklist",
+          "groups": [
+            "Checklist and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish with a labelled error and its denominator",
+          "groups": [
+            "Retrieve and explain",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict, check and repair",
+          "groups": [
+            "First supported question and hint",
+            "Check the first explanation",
+            "Changed-case question and hint",
+            "Check the changed explanation",
+            "Repair and keep the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The six-picture journey",
+          "groups": [
+            "01. Confusion Matrix: the case",
+            "02. Follow the deciding steps",
+            "03. Positive means spotted",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the connected experiment",
+          "groups": [
+            "Goal and main teaching plan",
+            "Materials and prerequisite",
+            "Opening retrieval",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach reference first, prediction second, then name the error",
+          "groups": [
+            "Complete eight-record source and conventions",
+            "Trace counting and totals",
+            "Explain corridor V3/V4 and reference quality",
+            "Read separate twenty-leaf facts and original matrix",
+            "Trace labelled cells and the reviewed output move",
+            "Additional supplied-count example",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the calculation, then remove help",
+          "groups": [
+            "Current completion task and checked key",
+            "Individual misconception check",
+            "Pictorial question and changed-case reasoning",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the complete supplied investigation",
+          "groups": [
+            "Supplied inputs and checked guidance",
+            "Predict, investigate and record",
+            "Keep the experiment ledger",
+            "Diagnose the current misconceptions",
+            "Choose accessible support",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected experiment transfer",
+          "groups": [
+            "Selected independent task and checked key",
+            "Judge trace, scope and support",
+            "Give one repair action",
+            "W1 Build the count matrix",
+            "W2 Explain the two error types",
+            "W3 Audit totals and equal accuracy",
+            "W5 Interpret a zero count carefully",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, support and revisit the experiment",
+          "groups": [
+            "Project evidence",
+            "Support and selected reassessment",
+            "Delayed return",
+            "Bridge and reflection",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative planning checklist",
+          "groups": [
+            "Planning and assessment reference"
+          ]
+        },
+        {
+          "title": "Reference · Feedback and evidence records",
+          "groups": [
+            "Record and repair",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Confusion Matrix: the case",
+            "02. Follow the deciding steps",
+            "03. Positive means spotted",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall · Retrieve before notes",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Individual reasoning check",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Try alone · Selected experiment task",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Earlier learning target",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier complete case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Changed case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Project · Keep the experiment evidence",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge your evidence",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier transfer",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W1 · Explain the mechanism",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Trace the current experiment",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Repair the reasoning",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Earlier W4 record",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W5 · Plan the next check",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio milestone",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict, check and repair",
+          "groups": [
+            "First supported question and hint",
+            "Check the first explanation",
+            "Changed-case question and hint",
+            "Check the changed explanation",
+            "Repair and keep the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Confusion Matrix: the case",
+            "02. Follow the deciding steps",
+            "03. Positive means spotted",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-4-week-15-connected-review/START_REVIEW.html",
+  "week_sha256": "e0a55f3d9d344a745f972722dadd980267907451ecbc9234189652a47f5cc21a",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

@@ -1,0 +1,637 @@
+{
+  "lesson": "ai-4/35",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-4/35",
+      "path": "/method/goals/0",
+      "old": "Run a frozen final evaluation with complete accounting",
+      "new": "Train and compare reproducible candidates on fixed development data"
+    },
+    {
+      "week": "ai-4/35",
+      "path": "/classroom/goals/0",
+      "old": "Run a frozen final evaluation with complete accounting",
+      "new": "Train and compare reproducible candidates on fixed development data"
+    },
+    {
+      "week": "ai-4/35",
+      "path": "/sections/0/blocks/1/text",
+      "old": "I can run a frozen final evaluation with complete accounting.",
+      "new": "I can train and compare reproducible candidates on fixed development data."
+    },
+    {
+      "week": "ai-4/35",
+      "path": "/method/goals/1",
+      "old": "Separate error analysis from an untouched-test claim",
+      "new": "Explain every gain and regression before freezing the selected version"
+    },
+    {
+      "week": "ai-4/35",
+      "path": "/classroom/goals/1",
+      "old": "Separate error analysis from an untouched-test claim",
+      "new": "Explain every gain and regression before freezing the selected version"
+    },
+    {
+      "week": "ai-4/35",
+      "path": "/sections/0/blocks/2/text",
+      "old": "I can separate error analysis from an untouched-test claim.",
+      "new": "I can explain every gain and regression before freezing the selected version."
+    },
+    {
+      "week": "ai-4/35",
+      "path": "/method/goals/2",
+      "old": "Document revisions and their evidence status",
+      "new": "Keep final evaluation and any later revision honestly versioned"
+    },
+    {
+      "week": "ai-4/35",
+      "path": "/classroom/goals/2",
+      "old": "Document revisions and their evidence status",
+      "new": "Keep final evaluation and any later revision honestly versioned"
+    },
+    {
+      "week": "ai-4/35",
+      "path": "/sections/0/blocks/3/text",
+      "old": "I can document revisions and their evidence status.",
+      "new": "I can keep final evaluation and any later revision honestly versioned."
+    },
+    {
+      "week": "ai-4/35",
+      "path": "/method/goal",
+      "old": "Run a frozen final evaluation with complete accounting",
+      "new": "Train and compare reproducible candidates on fixed development data"
+    },
+    {
+      "week": "ai-4/35",
+      "path": "/teacher/0/blocks/1/text",
+      "old": "Primary target: Run a frozen final evaluation with complete accounting",
+      "new": "Primary target: Train and compare reproducible candidates on fixed development data"
+    },
+    {
+      "week": "ai-4/35",
+      "path": "/teacher/0/blocks/27/text",
+      "old": "Teach two 45-minute sessions. This week focuses on capstone evaluation and revision. Model the worked example first, collect the new W 4 case independently before feedback, and use the fresh retry to check transfer. Award credit for traceable reasoning and bounded claims, including justified uncertainty.",
+      "new": "Use the complete Week 34 synthetic parcel kit, reproduced in the student program: 40 training,20 validation and12 final feature rows with blank final labels. Compare baseline,V1 width-only and V2 width-plus-height on the same validation rows. Teacher final evaluator is private and used only after inspecting an actual saved freeze record. Other matrices are explicitly separate exercises,not this kit’s outcomes."
+    },
+    {
+      "week": "ai-4/35",
+      "path": "/method/practice/title",
+      "old": "Audit a difference",
+      "new": "Trace the controlled capstone revision"
+    },
+    {
+      "week": "ai-4/35",
+      "path": "/method/practice/prompt",
+      "old": "What does the one-correct-case improvement establish?",
+      "new": "Using the complete parcel kit,explain the fixed learner and the single V1-to-V2 feature change. Reconstruct the validation matrices and all gained/regressed case IDs. Choose using the predeclared rule,then state what must be saved before final labels are released."
+    },
+    {
+      "week": "ai-4/35",
+      "path": "/method/practice/answer",
+      "old": "Teacher explanation: It establishes a difference on these 12 examples under the saved procedure, not reliable improvement for every future population.",
+      "new": "Fixed40 training/20 validation rows,k1,training-only min/range,Manhattan distance and ID tie rule. Only width→width+height changes. Baseline[9,0,11,0]9/20,V1[9,0,7,4]13/20,V2[9,0,3,8]17/20 in TN/FP/FN/TP order. GainsP42/P49/P60/P67,no regressions;remaining missesP24/P56/P64. Choose V2;save code/data versions,features/scales/ties,split IDs,predictions,selection rule and actual freeze/review status. Final score unknown to student until teacher release."
+    },
+    {
+      "week": "ai-4/35",
+      "path": "/method/hinge/prompt",
+      "old": "Use the worked case for Capstone evaluation and revision. Proposed explanation: “A final answer is enough”. Decide whether this explanation is supported. Point to the step or supplied fact that decides; explain your repair if needed.",
+      "new": "V2 is selected using17/20 validation and its three mistakes. Can the same20 rows now be described as an untouched final test for V2? Explain the evidence status."
+    },
+    {
+      "week": "ai-4/35",
+      "path": "/method/hinge/answer",
+      "old": "Ask for the relevant counts, units, procedure or saved record. For this week: Candidate accuracy 9/12=75 percent, precision 2/3, recall 2/4; baseline 8/12 about 66.7 percent, with all four blocked cases missed.",
+      "new": "No. They informed model choice and error analysis;they remain development validation evidence. Freeze V2 and use the reserved final references under the teacher gate."
+    },
+    {
+      "week": "ai-4/35",
+      "path": "/classroom/flow/2/task",
+      "old": "What does the one-correct-case improvement establish?",
+      "new": "Using the complete parcel kit,explain the fixed learner and the single V1-to-V2 feature change. Reconstruct the validation matrices and all gained/regressed case IDs. Choose using the predeclared rule,then state what must be saved before final labels are released."
+    },
+    {
+      "week": "ai-4/35",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied complete investigation for shared practice. Reserve the selected separate12-case frozen matrix for the individual first attempt before hints or feedback; earlier transfer questions remain additional practice."
+    },
+    {
+      "week": "ai-4/35",
+      "path": "/teacher/2/blocks/6/text",
+      "old": "Keep for an independent attempt: A revision raises overall validation accuracy from 80% to 84% but lowers dim-light accuracy from 60% to 40%. How should the improvement claim change?",
+      "new": "Use the earlier transfer question as additional practice. Reserve the selected separate12-case frozen matrix for the first individual attempt and record support used."
+    },
+    {
+      "week": "ai-4/35",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-4/35",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-4/35",
+      "path": "/workbook/1/blocks/0/text",
+      "old": "Use W2: Audit a difference for Capstone evaluation and revision. Record the answer once; the lesson and workbook refer to the same attempt.",
+      "new": "Earlier final-matrix W2 record:retain its saved response as review. Use current W2for the complete kit training,validation and freeze comparison."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Can one planned change help—and what still fails?",
+          "groups": [
+            "Current capstone goals",
+            "Recall reproducibility and source separation",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Start with a hypothesis and a fair comparison",
+          "groups": [
+            "Complete experiment and stage boundaries",
+            "Final-release rule and fictional scope",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Read the complete comparison before the headline",
+          "groups": [
+            "Declared training and comparison contract",
+            "Complete validation results",
+            "Every gain and remaining error",
+            "Separate illustrative final matrix;not the kit result",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare controlled development with an unsupported final claim",
+          "groups": [
+            "Four evaluation conditions",
+            "Keep the claim bounded",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Words for the current experiment",
+          "groups": [
+            "Core vocabulary",
+            "Closer-explanation terms",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "A repair can gain one kind of success and lose another",
+          "groups": [
+            "Separate pictured facts and full arithmetic",
+            "Trace the original error types",
+            "Predict the changed trade-off",
+            "Check after predicting",
+            "Explain evidence reuse and limits",
+            "Freeze and release sequence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Repair three plausible capstone overclaims",
+          "groups": [
+            "Complete claims and repairs",
+            "Explain the remaining limits",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Explain the comparison with less help",
+          "groups": [
+            "Current task and response",
+            "Version later revisions honestly",
+            "Pictured error trade-off question",
+            "Reserve the independent matrix",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the complete fit,compare and freeze investigation",
+          "groups": [
+            "Complete runnable student kit and comparison",
+            "Freeze checklist and release boundary",
+            "Normal,tie,blank-label,constant-feature and target-leakage probes",
+            "Run or trace and retain the actual record",
+            "Keep the experiment ledger",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Build a stronger explanation",
+          "groups": [
+            "Thinking ladder",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Build an inspectable capstone record",
+          "groups": [
+            "Project artifact and complete record",
+            "Scope,human decision and remaining limits",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Inspect your evidence",
+          "groups": [
+            "Experiment evidence checklist",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier complete case",
+          "groups": [
+            "Situation and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: audit a fresh frozen evaluation",
+          "groups": [
+            "Complete selected matrix and axes",
+            "First attempt and support record",
+            "Use feedback after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier route checklist",
+          "groups": [
+            "Checklist and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish with a selected version and a bounded claim",
+          "groups": [
+            "Retrieve and explain",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict, check and repair",
+          "groups": [
+            "First supported question and hint",
+            "Check the first explanation",
+            "Changed-case question and hint",
+            "Check the changed explanation",
+            "Repair and keep the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The six-picture journey",
+          "groups": [
+            "01. Capstone Train, Analyze, Improve: the case",
+            "02. Follow the deciding steps",
+            "03. Candidate, before revision",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the connected experiment",
+          "groups": [
+            "Goal and main teaching plan",
+            "Materials and prerequisite",
+            "Opening retrieval",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts",
+            "Teacher-only final key and evaluator;release after freeze"
+          ]
+        },
+        {
+          "title": "Model the actual kit comparison before any final release",
+          "groups": [
+            "Complete kit contract,validation and errors",
+            "Model final-release discipline",
+            "Separate pictured16-case trade-off",
+            "Separate illustrative12-case final matrix",
+            "Earlier70/80validation illustration",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide a complete comparison,then remove help",
+          "groups": [
+            "Current completion task and key",
+            "Current individual evidence-status check",
+            "Separate pictured error-trade-off reasoning",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the complete supplied investigation",
+          "groups": [
+            "Supplied inputs and checked guidance",
+            "Predict, investigate and record",
+            "Keep the experiment ledger",
+            "Diagnose the current misconceptions",
+            "Choose accessible support",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess comparison reasoning and the fresh frozen matrix",
+          "groups": [
+            "Selected independent task and checked key",
+            "Current W1–W3/W5 keys",
+            "Judge trace,scope and support",
+            "Give one repair action",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, support and revisit the experiment",
+          "groups": [
+            "Project evidence",
+            "Support and selected reassessment",
+            "Delayed return",
+            "Bridge and reflection",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative planning checklist",
+          "groups": [
+            "Planning and assessment reference"
+          ]
+        },
+        {
+          "title": "Reference · Feedback and evidence records",
+          "groups": [
+            "Record and repair",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Capstone Train, Analyze, Improve: the case",
+            "02. Follow the deciding steps",
+            "03. Candidate, before revision",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall · Retrieve before notes",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Individual reasoning check",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Try alone · Selected experiment task",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Earlier learning target",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier complete case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Changed case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Project · Keep the experiment evidence",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge your evidence",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier transfer",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W1 · State the controlled fit",
+          "groups": [
+            "Complete kit reference",
+            "Current task and response",
+            "Review · Earlier matrix task and saved response"
+          ]
+        },
+        {
+          "title": "W2 · Trace the full comparison",
+          "groups": [
+            "Complete kit reference",
+            "Current task and response",
+            "Review · Earlier matrix task and saved response"
+          ]
+        },
+        {
+          "title": "W3 · Repair a test-status claim",
+          "groups": [
+            "Complete kit reference",
+            "Current task and response",
+            "Review · Earlier matrix task and saved response"
+          ]
+        },
+        {
+          "title": "Reference · Earlier W4 record",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W5 · Freeze and plan final reporting",
+          "groups": [
+            "Complete kit reference",
+            "Current task and response",
+            "Review · Earlier matrix task and saved response"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio milestone",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict, check and repair",
+          "groups": [
+            "First supported question and hint",
+            "Check the first explanation",
+            "Changed-case question and hint",
+            "Check the changed explanation",
+            "Repair and keep the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Capstone Train, Analyze, Improve: the case",
+            "02. Follow the deciding steps",
+            "03. Candidate, before revision",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-4-week-35-connected-review/START_REVIEW.html",
+  "week_sha256": "0f9bb4beb95daf75f5482948909265636111ff5aab2e0696d8698b42767e2416",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

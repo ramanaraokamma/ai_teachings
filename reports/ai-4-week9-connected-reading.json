@@ -1,0 +1,678 @@
+{
+  "lesson": "ai-4/9",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-4/9",
+      "path": "/method/goals/0",
+      "old": "Inspect row meaning missing values and repeated records",
+      "new": "Document a dataset’s source purpose row unit and version"
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/classroom/goals/0",
+      "old": "Inspect row meaning missing values and repeated records",
+      "new": "Document a dataset’s source purpose row unit and version"
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/sections/0/blocks/1/text",
+      "old": "I can inspect row meaning missing values and repeated records.",
+      "new": "I can document a dataset’s source purpose row unit and version."
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/method/goals/1",
+      "old": "Document dataset source schema and limitations",
+      "new": "Distinguish supplied card facts from unknown fields and unsupported claims"
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/classroom/goals/1",
+      "old": "Document dataset source schema and limitations",
+      "new": "Distinguish supplied card facts from unknown fields and unsupported claims"
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/sections/0/blocks/2/text",
+      "old": "I can document dataset source schema and limitations.",
+      "new": "I can distinguish supplied card facts from unknown fields and unsupported claims."
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/method/goals/2",
+      "old": "Separate observed quality flags from justified corrections",
+      "new": "Update counts coverage and limitations when a dataset changes"
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/classroom/goals/2",
+      "old": "Separate observed quality flags from justified corrections",
+      "new": "Update counts coverage and limitations when a dataset changes"
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/sections/0/blocks/3/text",
+      "old": "I can separate observed quality flags from justified corrections.",
+      "new": "I can update counts coverage and limitations when a dataset changes."
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/method/goal",
+      "old": "Inspect row meaning missing values and repeated records",
+      "new": "Document a dataset’s source purpose row unit and version"
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/teacher/0/blocks/1/text",
+      "old": "Primary target: Inspect row meaning missing values and repeated records",
+      "new": "Primary target: Document a dataset’s source purpose row unit and version"
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/sections/0/blocks/15/text",
+      "old": "Why is elapsed trip duration in minutes a regression target even when recorded as whole numbers?",
+      "new": "Which source IDs, split assignments and preprocessing-fit boundaries must remain traceable when describing a dataset?"
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/teacher/0/blocks/28/text",
+      "old": "Teach inspection before modelling in two 45-minute sessions. Use fictional data only. Emphasize the unit of observation, provenance, units, unknown values and overlapping audit flags. The dataset card is a concise classroom documentation exercise inspired by datasheets for datasets, not a claim to implement every part of a research framework. Students must distinguish observations from unsupported repairs and from evidence of model fitness.",
+      "new": "Use the three-session route to build a card from complete supplied fictional facts, distinguish unknown fields, and version a condition/count update. Earlier trip-audit material remains review. A card records evidence and questions; it does not certify quality, permission or model performance."
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/teacher/0/blocks/30/text",
+      "old": "It is a numerical quantity whose differences measure time. Whole-number formatting does not turn it into a category.",
+      "new": "Retain original source and group IDs, exact assignments, intended prediction claim, label version and training-only preprocessing fit. A source record can document these without claiming that evaluation has happened."
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/teacher/0/blocks/32/text",
+      "old": "Cards for the five raw rows including both B rows",
+      "new": "Supplied six-plant photo manifest, blank card headings and update record"
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/teacher/0/blocks/34/text",
+      "old": "Blank card headings: purpose source row schema findings changes limits version owner",
+      "new": "Card headings: purpose source row/group counts conditions labels transformations splits limits version owner unresolved questions"
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/method/practice/title",
+      "old": "Interpret the audit counts",
+      "new": "Write and update an evidence-linked card"
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/method/practice/prompt",
+      "old": "Explain each number in 5 4 2 1. How many extra ID occurrences are there, and how many rows belong to a repeated-ID group?",
+      "new": "From Photo practice v1’s complete manifest, fill purpose/source/version, photo and plant counts, known conditions, label status and split status. Mark one field not supplied and one use with no supporting evaluation. Then update the card for v2’s P1d–P6d outdoor additions, preserving the earlier version."
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/method/practice/answer",
+      "old": "The numbers mean 5 raw rows, 4 distinct IDs, 2 missing durations and 1 negative duration. There is 1 extra ID occurrence; 2 rows belong to the repeated-ID group B. These are different counts.",
+      "new": "v1 teacher-created fictional classroom fixture;18photos/6plants/3views each,one tablet,indoor fluorescent. Vocabulary given, per-photo labels/history not supplied. No split assigned or model evaluated. Unknown date/external-reuse permission must not be invented. No demonstrated outdoor use/disease diagnosis. v2 adds6outdoor views of same6plants:24photos/6plants,18indoor/6outdoor; preserve v1 and note unknown added-view device/lighting details."
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/method/hinge/prompt",
+      "old": "Use the worked case for Dataset inspection and cards. Proposed explanation: “A complete card certifies data quality”. Decide whether this explanation is supported. Point to the step or supplied fact that decides; explain your repair if needed.",
+      "new": "A dataset card has every heading filled, but each unknown field was guessed. Does completeness establish that its claims are correct or that a model is ready? Name the repair."
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/method/hinge/answer",
+      "old": "The card records evidence and gaps; its claims still need checking. Documentation does not prove suitability.",
+      "new": "No. Replace unsupported entries with explicit unknowns and questions, cite supplied evidence, retain versions and perform the missing checks; formatting completeness is not validation."
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/classroom/flow/2/task",
+      "old": "Explain each number in 5 4 2 1. How many extra ID occurrences are there, and how many rows belong to a repeated-ID group?",
+      "new": "From Photo practice v1’s complete manifest, fill purpose/source/version, photo and plant counts, known conditions, label status and split status. Mark one field not supplied and one use with no supporting evaluation. Then update the card for v2’s P1d–P6d outdoor additions, preserving the earlier version."
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied complete investigation for shared practice. Reserve the selected20-photo five-plant documentation task for the individual first attempt before hints or feedback; earlier transfer questions remain additional practice."
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/teacher/2/blocks/6/text",
+      "old": "Keep for an independent attempt: A dataset card lists 500 images but omits collection conditions and intended use. Add two essential entries and explain their value.",
+      "new": "Use the earlier transfer question as additional practice. Reserve the selected20-photo five-plant documentation task for the first individual attempt and record support used."
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/teacher/5/blocks/11/text",
+      "old": "Use physical row cards and overlapping circles for flags. Supply blank card headings but no completed findings. Extension: explain how to record an evidenced seconds-to-minutes conversion while preserving the raw value, unit and version, and why a unit guess is not enough.",
+      "new": "Offer blank card headings and the exact source brief; prompt learners to label entries given, unknown or proposed. Extension: require a revision record with old/new counts, unchanged plant IDs and unresolved metadata."
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/teacher/5/blocks/12/text",
+      "old": "Require W4 counts 6,5,2,1,1 in the stated order, the Q overlap, acceptance of zero under this schema, and a card with source, unit, raw version and excluded use. Fresh retry: rows (L,3), (M,None), (N,-2), (N,-2), (O,0). Counts are 5 raw, 4 IDs, 1 missing, 2 negative and 1 extra ID occurrence. The negative and repeated-ID flags overlap on N. Do not infer whether the two N rows describe one event without checking the source.",
+      "new": "Selected independent key:20photos/5plants/4views each,one phone/indoor,growth labels absent. Source creator/date/permission and other unsupplied fields remain unknown; require a proposed target/rule and plant grouping without claiming completed evaluation. Fresh retry:12photos/4objects/3views,one indoor device,labels unknown; require row/group counts, evidence-linked fields, unknowns and an explicitly proposed split."
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Week 5 examines label definitions and disagreement. Carry forward the dataset card, source questions and explicit distinction between unknown and observed values. Teacher reference: https://arxiv.org/abs/1803.09010 (Datasheets for Datasets; reviewed 2026-09-26).",
+      "new": "Next is Week10: Baselines First. Carry forward the versioned card, source groups, label contract and intended use so every baseline result names its data and evaluation context. Research reference: https://arxiv.org/abs/1803.09010 (Datasheets for Datasets)."
+    },
+    {
+      "week": "ai-4/9",
+      "path": "/workbook/1/blocks/0/text",
+      "old": "Use W2: Interpret the audit counts for Dataset inspection and cards. Record the answer once; the lesson and workbook refer to the same attempt.",
+      "new": "Earlier trip-audit completion record: retain its saved response as review. Use current W2 for this week’s dataset-card writing and version update."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "What must a reader know beyond the photo count?",
+          "groups": [
+            "Current card-writing goals",
+            "Retrieve split and source reasoning",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Read a complete source brief before filling card fields",
+          "groups": [
+            "Current purpose and supplied source facts",
+            "Complete eighteen-photo manifest",
+            "Unknown fields and honest status",
+            "Review · Familiar trip-inspection fixture",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Build the card as claim, evidence and status",
+          "groups": [
+            "Complete worked dataset card",
+            "Explain the documentation mechanism",
+            "Review · Earlier trip-audit code and assumptions",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare an attractive photo count with a traceable dataset record",
+          "groups": [
+            "Four evaluation conditions",
+            "Keep the claim bounded",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Words for the current experiment",
+          "groups": [
+            "Core vocabulary",
+            "Closer-explanation terms",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Update the counts and conditions without changing the source identities",
+          "groups": [
+            "Complete pictured facts and v2 update",
+            "Trace source, row units and limits",
+            "Predict six outdoor views of the same plants",
+            "Check after predicting",
+            "Explain remaining gaps",
+            "Review · Earlier trip card and overlap question",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Find card entries that outrun their source",
+          "groups": [
+            "Complete misleading draft and repairs",
+            "Propose one evidence check",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise writing and updating the card with less help",
+          "groups": [
+            "Current card task and response",
+            "Explain updated photo and source counts",
+            "Reserve the independent five-plant card",
+            "Review · Earlier trip-audit practice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run a complete card-writing and update review",
+          "groups": [
+            "Normal, source-boundary, missing-label and changed-version probes",
+            "Write, trace, repair and version",
+            "Retain the evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Build a stronger explanation",
+          "groups": [
+            "Thinking ladder",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep the project card ready for the baseline lesson",
+          "groups": [
+            "Project artifact and evidence",
+            "Limits and human decision",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Inspect your evidence",
+          "groups": [
+            "Experiment evidence checklist",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier complete case",
+          "groups": [
+            "Situation and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: document a fresh twenty-photo dataset",
+          "groups": [
+            "Selected facts and scope",
+            "First attempt and support record",
+            "Use feedback after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier route checklist",
+          "groups": [
+            "Checklist and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish with one supported entry and one open question",
+          "groups": [
+            "Retrieve and explain",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict, check and repair",
+          "groups": [
+            "First supported question and hint",
+            "Check the first explanation",
+            "Changed-case question and hint",
+            "Check the changed explanation",
+            "Repair and keep the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The six-picture journey",
+          "groups": [
+            "01. Dataset Cards: the case",
+            "02. Follow the deciding steps",
+            "03. Turn an observation into a documented action",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the connected experiment",
+          "groups": [
+            "Goal and main teaching plan",
+            "Materials and prerequisite",
+            "Opening retrieval",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Model source-linked entries and explicit unknowns",
+          "groups": [
+            "Complete current worked card",
+            "Pictured facts and exact v2 update",
+            "Trace source, count and documented limits",
+            "Predict the update and source-identity distinction",
+            "Review · Earlier trip-audit card",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide card writing before the independent task",
+          "groups": [
+            "Current completion task and key",
+            "Current misconception check",
+            "Pictured update reasoning",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the complete card-writing and version review",
+          "groups": [
+            "Current fixture and answer guidance",
+            "Predict, document and inspect",
+            "Keep the evidence ledger",
+            "Diagnose current card-writing errors",
+            "Choose support",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected fresh dataset card",
+          "groups": [
+            "Selected task and checked answer",
+            "Current W1–W3/W5 guidance",
+            "Judge evidence and support",
+            "Give one repair action",
+            "Review · Earlier audit questions and keys",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, support and revisit the experiment",
+          "groups": [
+            "Project evidence",
+            "Support and selected reassessment",
+            "Delayed return",
+            "Bridge and reflection",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative planning checklist",
+          "groups": [
+            "Planning and assessment reference"
+          ]
+        },
+        {
+          "title": "Reference · Feedback and evidence records",
+          "groups": [
+            "Record and repair",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Dataset Cards: the case",
+            "02. Follow the deciding steps",
+            "03. Turn an observation into a documented action",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall · Retrieve before notes",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Individual reasoning check",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Try alone · Selected experiment task",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Earlier learning target",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier complete case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Changed case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Project · Keep the experiment evidence",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge your evidence",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Earlier transfer",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W1 · Choose evidence-linked fields",
+          "groups": [
+            "Complete current card facts",
+            "Current task and response",
+            "Review · Earlier audit task and saved response"
+          ]
+        },
+        {
+          "title": "W2 · Write and update the card",
+          "groups": [
+            "Complete current card facts",
+            "Current task and response",
+            "Review · Earlier audit task and saved response"
+          ]
+        },
+        {
+          "title": "W3 · Repair guessed entries",
+          "groups": [
+            "Complete current card facts",
+            "Current task and response",
+            "Review · Earlier audit task and saved response"
+          ]
+        },
+        {
+          "title": "Reference · Earlier W4 record",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W5 · Check a proposed reuse",
+          "groups": [
+            "Complete current card facts",
+            "Current task and response",
+            "Review · Earlier audit task and saved response"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio milestone",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict, check and repair",
+          "groups": [
+            "First supported question and hint",
+            "Check the first explanation",
+            "Changed-case question and hint",
+            "Check the changed explanation",
+            "Repair and keep the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Dataset Cards: the case",
+            "02. Follow the deciding steps",
+            "03. Turn an observation into a documented action",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-4-week-09-connected-review/START_REVIEW.html",
+  "week_sha256": "a9503872b1c92f79797eff82b31a12085d813c6b20522e4c863c2511e39ea619",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

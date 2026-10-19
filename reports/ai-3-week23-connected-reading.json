@@ -1,0 +1,589 @@
+{
+  "lesson": "ai-3/23",
+  "sections_reviewed": 48,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-3/23",
+      "path": "/method/retrieval/0/expected",
+      "old": "None and true, respectively.",
+      "new": "JSON null becomes Python None and Python True serialises as JSON true. Parsing is followed by top-level, field, type and range validation; successful parsing does not prove a source observation true."
+    },
+    {
+      "week": "ai-3/23",
+      "path": "/teacher/0/blocks/9/text",
+      "old": "Reference example, not the only acceptable wording: None and true, respectively.",
+      "new": "Reference example, not the only acceptable wording: JSON null becomes Python None and Python True serialises as JSON true. Parsing is followed by top-level, field, type and range validation; successful parsing does not prove a source observation true."
+    },
+    {
+      "week": "ai-3/23",
+      "path": "/sections/8/blocks/4/text",
+      "old": "Translate five blocks, predict variable values, run or simulate, then test empty-list and missing-field cases.",
+      "new": "Use the complete five-action book-count mapping and supplied cases A–E. Run or trace numeric lists, including empty and boundary cases. For record cards, explain the missing-pages guard separately; do not claim the numeric-list function parses records or validates arbitrary input."
+    },
+    {
+      "week": "ai-3/23",
+      "path": "/teacher/3/blocks/5/text",
+      "old": "Translate five blocks, predict variable values, run or simulate, then test empty-list and missing-field cases.",
+      "new": "Use the complete five-action book-count mapping and supplied cases A–E. Run or trace numeric lists, including empty and boundary cases. For record cards, explain the missing-pages guard separately; do not claim the numeric-list function parses records or validates arbitrary input."
+    },
+    {
+      "week": "ai-3/23",
+      "path": "/teacher/3/blocks/8/text",
+      "old": "Use the concrete case as the shared normal case and the independent question as a second case. Each pair creates a boundary or missing-information case and predicts its result before testing. Keep the expected result separate from an observed mistake.",
+      "new": "Use the supplied investigation for shared practice. Keep predictions and observed paper-trace results separate. Reserve Trace the new sum/reset procedure independently for the individual first attempt before feedback; do not use the reserved case as a paired lab task."
+    },
+    {
+      "week": "ai-3/23",
+      "path": "/teacher/2/blocks/6/text",
+      "old": "Keep for an independent attempt: Trace this Python: score = 2; then if score >= 2: score = score + 3. What is the final value, and what changes if the condition becomes score > 2?",
+      "new": "Use the earlier changed question as optional later practice. Reserve Trace the new sum/reset procedure independently for the first independent attempt before hints or feedback."
+    },
+    {
+      "week": "ai-3/23",
+      "path": "/teacher/4/blocks/3/text",
+      "old": "Independent question",
+      "new": "Additional transfer practice question"
+    },
+    {
+      "week": "ai-3/23",
+      "path": "/teacher/4/blocks/5/text",
+      "old": "Expected independent answer",
+      "new": "Reasoned practice answer"
+    },
+    {
+      "week": "ai-3/23",
+      "path": "/workbook/6/blocks/1/text",
+      "old": "My independent answer and reason",
+      "new": "My practice answer and reason"
+    },
+    {
+      "week": "ai-3/23",
+      "path": "/workbook/10/blocks/1/label",
+      "old": "My independently reasoned answer",
+      "new": "My explanation after practice"
+    },
+    {
+      "week": "ai-3/23",
+      "path": "/sections/11/blocks/1/text",
+      "old": "Explain • Transfer • Test • Defend",
+      "new": "Checklist for explaining this week’s idea"
+    },
+    {
+      "week": "ai-3/23",
+      "path": "/sections/11/blocks/2/text",
+      "old": "Complete this page without copying the worked example. Your reasoning matters more than decoration.",
+      "new": "Use after practice. Trace the new sum/reset procedure independently is the selected independent case."
+    },
+    {
+      "week": "ai-3/23",
+      "path": "/sections/11/blocks/4/text",
+      "old": "CHALLENGE  Translate a block workflow into readable Python.",
+      "new": "EXPLANATION CHECK  Require ordered intermediate state, initialization scope and separation of paper trace from executed output."
+    },
+    {
+      "week": "ai-3/23",
+      "path": "/teacher/5/blocks/12/text",
+      "old": "W4 must give a complete ordered script and explain outputs 21 and 0 using equal groups. Distinguish an independent paper trace from successful use of the editor; record both skills separately. After support, retry with 2 boxes of 9 pencils, then 0 boxes: 18 and 0. Ask for the print line and why it follows the calculation.",
+      "new": "Selected independent task: running totals 2, 6, 15. Resetting total to 0 inside the loop before addition gives 2, 4, 9 and final 9. Require a trace of both placements. Fresh retry: sum 3, 5, 8 gives 3, 8, 16; resetting each time gives 3, 5, 8 and final 8. Keep paper reasoning and actual execution separate; neither procedure trains a model. Earlier packing tasks remain additional practice."
+    },
+    {
+      "week": "ai-3/23",
+      "path": "/teacher/5/blocks/13/text",
+      "old": "Week 2 studies values, variable names and types, including the difference between numeric data and text.",
+      "new": "Next is Week 24: Prototype a Grounded Assistant. Carry forward small readable procedures, explicit inputs and outputs, and separate predictions from actual test evidence."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Can the same procedure survive a change of representation?",
+          "groups": [
+            "Your learning goals",
+            "Recall the calculation and interface",
+            "Your end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Translate the rule before adding syntax",
+          "groups": [
+            "Connect blocks, state and code",
+            "Read the packing warm-up contract",
+            "Run a saved script or trace on paper",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace four ordered packing statements",
+          "groups": [
+            "Map the paper actions to code",
+            "Complete packing program",
+            "Explain assignment and displayed output",
+            "Explain the deciding step",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare a correct procedure with a misplaced statement",
+          "groups": [
+            "Four pictures with a purpose",
+            "Choose a revealing case",
+            "Predict the supplied changed case",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Your quick word guide",
+          "groups": [
+            "Core vocabulary",
+            "Terms for the connected explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace the book counter one decision at a time",
+          "groups": [
+            "Read the complete book-count input",
+            "Trace the labelled decisions",
+            "Connect five block actions to executable code",
+            "Predict replacing 90 with 100",
+            "Check after predicting",
+            "State what this deterministic result does not measure",
+            "Packing warm-up · Prediction versus observation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Find a statement placed at the wrong scope",
+          "groups": [
+            "Repair the reset and boundary shortcuts",
+            "Design a revealing follow-up",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise packing predictions with less help",
+          "groups": [
+            "Complete W2 prediction and observation",
+            "Check assignment versus display",
+            "Explain the pictured changed list",
+            "Keep independent work separate",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Test five complete block-to-code cases",
+          "groups": [
+            "All supplied inputs and expected boundaries",
+            "Translate, predict, run or trace, then explain",
+            "Keep the evidence record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Choose a stronger thinking challenge",
+          "groups": [
+            "Pick your next step",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep the project’s code and evidence together",
+          "groups": [
+            "This week’s contribution",
+            "Retain the checkpoint and human choice",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: check your explanation",
+          "groups": [
+            "Check the evidence and its limit",
+            "Self-check and record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra practice: Trace the accumulator inside the loop",
+          "groups": [
+            "Read the supplied case and question",
+            "Your explanation",
+            "Check after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: explain the fresh sum-and-reset procedure",
+          "groups": [
+            "Independent procedure and scope",
+            "Your first attempt and help record",
+            "Use feedback afterwards",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: original lesson checklist",
+          "groups": [
+            "Targets and evidence",
+            "Keep your route and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: explain order, indentation and the evidence of a run",
+          "groups": [
+            "Explain without notes",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: the six-picture journey",
+          "groups": [
+            "01. Block to Python Bridge: the case",
+            "02. Follow the deciding steps",
+            "03. A calculation from paper to output",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare this connected week",
+          "groups": [
+            "Learning goal and precision",
+            "What to prepare",
+            "Main teaching plan",
+            "Opening retrieval and readiness",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach equivalent actions before syntax details",
+          "groups": [
+            "Set the short-script environment",
+            "Model the packing prediction record",
+            "Read the book-count case",
+            "Trace the same procedure in picture and code",
+            "Predict the strict boundary",
+            "State the deterministic limitation",
+            "Additional practice · Different sum values",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the explanation, then remove help",
+          "groups": [
+            "Main completion prompt",
+            "Expected reasoning and fading help",
+            "Individual misconception check",
+            "Pictorial question and changed-case reasoning",
+            "Keep each learner explaining",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the supplied investigation",
+          "groups": [
+            "Supplied materials and answer guidance",
+            "Run and record",
+            "Keep an inspectable record",
+            "Diagnose the first misunderstanding",
+            "Choose support from the response",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected sum/reset trace",
+          "groups": [
+            "Selected independent question and key",
+            "Judge trace and scope",
+            "Give one repair action",
+            "Packing workbook guidance",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, adapt and return",
+          "groups": [
+            "Project evidence to keep",
+            "Support while preserving the reasoning goal",
+            "Plan the delayed check",
+            "Bridge to next week",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: alternative planning checklist",
+          "groups": [
+            "Preparation and schedule",
+            "Practice and assessment reminders"
+          ]
+        },
+        {
+          "title": "Reference: feedback and records",
+          "groups": [
+            "Keep practice and independent evidence separate",
+            "Repair and portfolio records",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference: teach with the six pictures",
+          "groups": [
+            "01. Block to Python Bridge: the case",
+            "02. Follow the deciding steps",
+            "03. A calculation from paper to output",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 9,
+      "reference_sections": 12,
+      "sections": [
+        {
+          "title": "Recall: reconnect earlier ideas",
+          "groups": [
+            "Retrieve and explain",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Repair the explanation",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W4 · Trace the new sum/reset procedure independently",
+          "groups": [
+            "Read and explain independently",
+            "Keep a fair record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Original learning target",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A complete case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · A changed case",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice · Design a revealing test",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Project · Keep the decision and its evidence",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Finish · Judge the evidence in your work",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Original target response space",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "W1 · Explain the paper-to-code mapping",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Predict then observe packing outputs",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Audit assignment versus display",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Additional practice · Earlier packing transfer",
+          "groups": [
+            "Earlier task and saved response"
+          ]
+        },
+        {
+          "title": "W5 · Design a revealing translation case",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Your evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Use the worked picture",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio record",
+          "groups": [
+            "Use this when helpful"
+          ]
+        },
+        {
+          "title": "Extra practice: pictures, repair and feedback",
+          "groups": [
+            "First supported question",
+            "Check the first explanation",
+            "Changed-case question",
+            "Check the changed case",
+            "Repair and save your work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Block to Python Bridge: the case",
+            "02. Follow the deciding steps",
+            "03. A calculation from paper to output",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 21,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-3-week-23-connected-review/START_REVIEW.html",
+  "week_sha256": "ecb951c599929feb2fef4c5b911b8da6fef3eafcad21f63ba82da999f7fa79f9",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

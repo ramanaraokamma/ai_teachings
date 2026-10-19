@@ -1,0 +1,469 @@
+{
+  "lesson": "python-bridge/8",
+  "sections_reviewed": 42,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "python-bridge/8",
+      "path": "/sections/1/blocks/1/text",
+      "old": "Our input contract requires nonnegative integer counts with used no greater than capacity. The example assumes these conditions; it does not validate them. This week the function prints its result. Week 9 will show how to return a value for later calculations.",
+      "new": "The main remaining-space example assumes nonnegative integer counts with used<=capacity; it does not validate them. Its function prints a result. A short return-value preview below prepares you to read the selected transfer script: return hands a value back to the caller, whose print displays it. Week 9 will develop returned values and local state further."
+    },
+    {
+      "week": "python-bridge/8",
+      "path": "/teacher/1/blocks/1/text",
+      "old": "Our input contract requires nonnegative integer counts with used no greater than capacity. The example assumes these conditions; it does not validate them. This week the function prints its result. Week 9 will show how to return a value for later calculations.",
+      "new": "The main remaining-space example assumes nonnegative integer counts with used<=capacity; it does not validate them. Its function prints a result. A short return-value preview below prepares you to read the selected transfer script: return hands a value back to the caller, whose print displays it. Week 9 will develop returned values and local state further."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "What happens at definition time, and what happens at a call?",
+          "groups": [
+            "Your learning goals",
+            "Recall before notes",
+            "Your end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reuse a written remaining-space procedure",
+          "groups": [
+            "Read the capacity-minus-used task",
+            "State the input assumptions and return preview",
+            "Your first explanation"
+          ]
+        },
+        {
+          "title": "Match definition, body, call and displayed result",
+          "groups": [
+            "Complete printing function and two calls",
+            "Trace arguments to parameters",
+            "Read definition and indentation semantics",
+            "Preview return versus caller print",
+            "Explain the deciding step",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Compare a definition-only file with calls using new arguments",
+          "groups": [
+            "Predict the supported change",
+            "Predict the pictured variant",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The words used in this procedure",
+          "groups": [
+            "Vocabulary and response"
+          ]
+        },
+        {
+          "title": "Trace the same function with reversed arguments",
+          "groups": [
+            "Read complete pictured calls and scope",
+            "Trace definition and two parameter bindings",
+            "Complete two-call demonstration",
+            "Predict removing both calls",
+            "Check after predicting",
+            "State arithmetic and capacity-domain limits",
+            "Reference · Main printing-function events",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Find constants that ignore the function’s arguments",
+          "groups": [
+            "Read the complete faulty body",
+            "Compare actual repeated 8 with expected new inputs",
+            "Distinguish a missing argument from no call",
+            "Repair and choose a regression call",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise calls and parameter binding with less help",
+          "groups": [
+            "Explain the procedure",
+            "Complete W2 call sequence",
+            "Audit definition-runs-body reasoning",
+            "Explain the pictured argument reversal",
+            "Reserve selected transfer work",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Check six complete definition and call cases",
+          "groups": [
+            "All supplied call and failure records",
+            "Complete W2 three-call script",
+            "Predict, run or trace and repair the ignored arguments",
+            "Keep the evidence record",
+            "Reference · Original correct and faulty definitions",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Explain, apply and challenge",
+          "groups": [
+            "Choose a challenge",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep parameter binding and execution order in the portfolio",
+          "groups": [
+            "This week’s contribution",
+            "Project checkpoint and evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Inspect your evidence",
+          "groups": [
+            "Self-check and explanation"
+          ]
+        },
+        {
+          "title": "Extra practice · A complete trace",
+          "groups": [
+            "Explain the input and procedure",
+            "Check the complete trace",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Try alone: trace the selected returned differences",
+          "groups": [
+            "Selected complete task and scope",
+            "Your response and help record",
+            "Use feedback afterwards",
+            "Additional practice · Earlier printing-function transfer",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Earlier route checklist",
+          "groups": [
+            "Checklist and first prediction",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Finish: explain definition, call, binding and output source",
+          "groups": [
+            "Explain without notes",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict, check and repair",
+          "groups": [
+            "First question and hint",
+            "Check the first explanation",
+            "Changed-case question and hint",
+            "Check the changed explanation",
+            "Repair and keep the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The six-picture journey",
+          "groups": [
+            "01. Functions and arguments: the case",
+            "02. Follow the deciding steps",
+            "03. Arguments matched in order",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the connected bridge lesson",
+          "groups": [
+            "Goal and main plan",
+            "Retrieval and prerequisite guidance",
+            "Materials and readiness",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach function events and argument order explicitly",
+          "groups": [
+            "Read remaining-space requirement and assumptions",
+            "Trace call events",
+            "Preview return-to-caller and outer print",
+            "Read the separate arithmetic reversal",
+            "Trace positional bindings",
+            "Predict definition without calls",
+            "State negative-result domain limits",
+            "Additional guided key",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Guide the trace, then fade the help",
+          "groups": [
+            "Main completion task and key",
+            "Individual misconception check",
+            "Pictorial question and changed-case key",
+            "Support and alternative plan",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the complete supplied investigation",
+          "groups": [
+            "Supplied case materials and checked guidance",
+            "Diagnose misconceptions",
+            "Choose accessible support",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the selected bridge transfer task",
+          "groups": [
+            "Selected independent task and checked key",
+            "Judge trace and support",
+            "Give one repair action",
+            "W1 Label the parts",
+            "W2 Follow the execution order",
+            "W3 Repair ignored arguments",
+            "W5 State the input assumption",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep the portfolio, support and delayed check",
+          "groups": [
+            "Project evidence",
+            "Support and selected assessment guidance",
+            "Delayed return",
+            "Bridge to the next topic",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative planning checklist",
+          "groups": [
+            "Planning and assessment reference"
+          ]
+        },
+        {
+          "title": "Reference · Feedback and evidence records",
+          "groups": [
+            "Feedback and repair"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Functions and arguments: the case",
+            "02. Follow the deciding steps",
+            "03. Arguments matched in order",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 8,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Recall · Retrieve before notes",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Individual reasoning check",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Try alone · Selected independent task",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W1 · Explain the procedure",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W2 · Predict, trace and observe",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W3 · Find the first error",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Additional practice · Earlier W4 transfer",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "W5 · State an honest limit",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Project · Keep code and evidence",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Reference · Project portfolio milestone",
+          "groups": [
+            "Task and evidence record"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict, check and repair",
+          "groups": [
+            "First question and hint",
+            "Check the first explanation",
+            "Changed-case question and hint",
+            "Check the changed explanation",
+            "Repair and keep the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Functions and arguments: the case",
+            "02. Follow the deciding steps",
+            "03. Arguments matched in order",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 15,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 15,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/python-bridge-week-08-connected-review/START_REVIEW.html",
+  "week_sha256": "5b8f35d38c7bb4c5bf175bb9406e5360d87293c6d91fbc01ad8445c52e22c569",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

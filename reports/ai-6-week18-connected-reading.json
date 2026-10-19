@@ -1,0 +1,762 @@
+{
+  "lesson": "ai-6/18",
+  "sections_reviewed": 42,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-6/18",
+      "path": "/teacher/0/blocks/18/text",
+      "old": "Two 45-minute sessions. Untrusted input must be treated according to a contract before reaching code, queries or tools. Data that resembles instructions does not acquire execution authority. Use the supplied constructed scenarios to make the mechanism inspectable. Collect W4 before sharing solutions. Students should name intermediate evidence and limitations; classroom pacing and learning effectiveness remain unvalidated.",
+      "new": "Use the three-session teaching cycle above, with extra time as needed. Untrusted input must be treated according to a contract before reaching code, queries or tools. Data that resembles instructions does not acquire execution authority. Use the supplied constructed scenarios to make the mechanism inspectable. Collect W4 before sharing solutions. Students should name intermediate evidence and limitations; classroom pacing and learning effectiveness remain unvalidated."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/teacher/0/blocks/18/presentation/paragraphs/0",
+      "old": "Two 45-minute sessions. Untrusted input must be treated according to a contract before reaching code, queries or tools. Data that resembles instructions does not acquire execution authority.",
+      "new": "Use the three-session teaching cycle above, with extra time as needed. Untrusted input must be treated according to a contract before reaching code, queries or tools. Data that resembles instructions does not acquire execution authority."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/sections/2/blocks/0/text",
+      "old": "For the toy lookup accept room IDs matching one uppercase letter plus one digit. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters.",
+      "new": "For the toy lookup accept room IDs matching one ASCII uppercase letter plus one ASCII digit, with no trimming. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/sections/2/blocks/0/presentation/paragraphs/0",
+      "old": "For the toy lookup accept room IDs matching one uppercase letter plus one digit. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters.",
+      "new": "For the toy lookup accept room IDs matching one ASCII uppercase letter plus one ASCII digit, with no trimming. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/sections/2/blocks/1/rows/0/1",
+      "old": "For the toy lookup accept room IDs matching one uppercase letter plus one digit. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters.",
+      "new": "For the toy lookup accept room IDs matching one ASCII uppercase letter plus one ASCII digit, with no trimming. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/sections/12/blocks/1/rows/0/1",
+      "old": "For the toy lookup accept room IDs matching one uppercase letter plus one digit. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters.",
+      "new": "For the toy lookup accept room IDs matching one ASCII uppercase letter plus one ASCII digit, with no trimming. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/sections/17/blocks/9/alt",
+      "old": "Untrusted input boundaries — evidence trace. Inputs A1 and delete_all() are supplied to room lookup. | For the toy lookup accept room IDs matching one uppercase letter plus one digit. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters. | A1 passes the format; delete_all() fails. Neither is executed as code, including any instruction-shaped string.",
+      "new": "Untrusted input boundaries — evidence trace. Inputs A1 and delete_all() are supplied to room lookup. | For the toy lookup accept room IDs matching one ASCII uppercase letter plus one ASCII digit, with no trimming. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters. | A1 passes the format; delete_all() fails. Neither is executed as code, including any instruction-shaped string."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/sections/17/blocks/10/text",
+      "old": "Untrusted input boundaries — evidence trace. Inputs A1 and delete_all() are supplied to room lookup. | For the toy lookup accept room IDs matching one uppercase letter plus one digit. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters. | A1 passes the format; delete_all() fails. Neither is executed as code, including any instruction-shaped string.",
+      "new": "Untrusted input boundaries — evidence trace. Inputs A1 and delete_all() are supplied to room lookup. | For the toy lookup accept room IDs matching one ASCII uppercase letter plus one ASCII digit, with no trimming. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters. | A1 passes the format; delete_all() fails. Neither is executed as code, including any instruction-shaped string."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/sections/17/blocks/10/presentation/paragraphs/0",
+      "old": "Untrusted input boundaries — evidence trace. Inputs A1 and delete_all() are supplied to room lookup. | For the toy lookup accept room IDs matching one uppercase letter plus one digit.",
+      "new": "Untrusted input boundaries — evidence trace. Inputs A1 and delete_all() are supplied to room lookup. | For the toy lookup accept room IDs matching one ASCII uppercase letter plus one ASCII digit, with no trimming."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/teacher/1/blocks/2/text",
+      "old": "For the toy lookup accept room IDs matching one uppercase letter plus one digit. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters.",
+      "new": "For the toy lookup accept room IDs matching one ASCII uppercase letter plus one ASCII digit, with no trimming. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/teacher/1/blocks/2/presentation/paragraphs/0",
+      "old": "For the toy lookup accept room IDs matching one uppercase letter plus one digit. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters.",
+      "new": "For the toy lookup accept room IDs matching one ASCII uppercase letter plus one ASCII digit, with no trimming. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/teacher/1/blocks/5/rows/0/1",
+      "old": "For the toy lookup accept room IDs matching one uppercase letter plus one digit. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters.",
+      "new": "For the toy lookup accept room IDs matching one ASCII uppercase letter plus one ASCII digit, with no trimming. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/teacher/4/blocks/4/text",
+      "old": "Teacher explanation: Untrusted input must be treated according to a contract before reaching code, queries or tools. Data that resembles instructions does not acquire execution authority. For the toy lookup accept room IDs matching one uppercase letter plus one digit. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters.",
+      "new": "Teacher explanation: Untrusted input must be treated according to a contract before reaching code, queries or tools. Data that resembles instructions does not acquire execution authority. For the toy lookup accept room IDs matching one ASCII uppercase letter plus one ASCII digit, with no trimming. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/teacher/4/blocks/4/presentation/paragraphs/1",
+      "old": "For the toy lookup accept room IDs matching one uppercase letter plus one digit. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters.",
+      "new": "For the toy lookup accept room IDs matching one ASCII uppercase letter plus one ASCII digit, with no trimming. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/teacher/8/blocks/12/alt",
+      "old": "Untrusted input boundaries — evidence trace. Inputs A1 and delete_all() are supplied to room lookup. | For the toy lookup accept room IDs matching one uppercase letter plus one digit. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters. | A1 passes the format; delete_all() fails. Neither is executed as code, including any instruction-shaped string.",
+      "new": "Untrusted input boundaries — evidence trace. Inputs A1 and delete_all() are supplied to room lookup. | For the toy lookup accept room IDs matching one ASCII uppercase letter plus one ASCII digit, with no trimming. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters. | A1 passes the format; delete_all() fails. Neither is executed as code, including any instruction-shaped string."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/teacher/8/blocks/13/text",
+      "old": "Untrusted input boundaries — evidence trace. Inputs A1 and delete_all() are supplied to room lookup. | For the toy lookup accept room IDs matching one uppercase letter plus one digit. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters. | A1 passes the format; delete_all() fails. Neither is executed as code, including any instruction-shaped string.",
+      "new": "Untrusted input boundaries — evidence trace. Inputs A1 and delete_all() are supplied to room lookup. | For the toy lookup accept room IDs matching one ASCII uppercase letter plus one ASCII digit, with no trimming. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters. | A1 passes the format; delete_all() fails. Neither is executed as code, including any instruction-shaped string."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/teacher/8/blocks/13/presentation/paragraphs/0",
+      "old": "Untrusted input boundaries — evidence trace. Inputs A1 and delete_all() are supplied to room lookup. | For the toy lookup accept room IDs matching one uppercase letter plus one digit.",
+      "new": "Untrusted input boundaries — evidence trace. Inputs A1 and delete_all() are supplied to room lookup. | For the toy lookup accept room IDs matching one ASCII uppercase letter plus one ASCII digit, with no trimming."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/workbook/0/blocks/13/text",
+      "old": "For the toy lookup accept room IDs matching one uppercase letter plus one digit. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters.",
+      "new": "For the toy lookup accept room IDs matching one ASCII uppercase letter plus one ASCII digit, with no trimming. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/workbook/0/blocks/13/presentation/paragraphs/0",
+      "old": "For the toy lookup accept room IDs matching one uppercase letter plus one digit. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters.",
+      "new": "For the toy lookup accept room IDs matching one ASCII uppercase letter plus one ASCII digit, with no trimming. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/workbook/14/blocks/11/alt",
+      "old": "Untrusted input boundaries — evidence trace. Inputs A1 and delete_all() are supplied to room lookup. | For the toy lookup accept room IDs matching one uppercase letter plus one digit. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters. | A1 passes the format; delete_all() fails. Neither is executed as code, including any instruction-shaped string.",
+      "new": "Untrusted input boundaries — evidence trace. Inputs A1 and delete_all() are supplied to room lookup. | For the toy lookup accept room IDs matching one ASCII uppercase letter plus one ASCII digit, with no trimming. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters. | A1 passes the format; delete_all() fails. Neither is executed as code, including any instruction-shaped string."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/workbook/14/blocks/12/text",
+      "old": "Untrusted input boundaries — evidence trace. Inputs A1 and delete_all() are supplied to room lookup. | For the toy lookup accept room IDs matching one uppercase letter plus one digit. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters. | A1 passes the format; delete_all() fails. Neither is executed as code, including any instruction-shaped string.",
+      "new": "Untrusted input boundaries — evidence trace. Inputs A1 and delete_all() are supplied to room lookup. | For the toy lookup accept room IDs matching one ASCII uppercase letter plus one ASCII digit, with no trimming. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters. | A1 passes the format; delete_all() fails. Neither is executed as code, including any instruction-shaped string."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/workbook/14/blocks/12/presentation/paragraphs/0",
+      "old": "Untrusted input boundaries — evidence trace. Inputs A1 and delete_all() are supplied to room lookup. | For the toy lookup accept room IDs matching one uppercase letter plus one digit.",
+      "new": "Untrusted input boundaries — evidence trace. Inputs A1 and delete_all() are supplied to room lookup. | For the toy lookup accept room IDs matching one ASCII uppercase letter plus one ASCII digit, with no trimming."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/graphic_story/2/alt",
+      "old": "Untrusted input boundaries — evidence trace. Inputs A1 and delete_all() are supplied to room lookup. | For the toy lookup accept room IDs matching one uppercase letter plus one digit. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters. | A1 passes the format; delete_all() fails. Neither is executed as code, including any instruction-shaped string.",
+      "new": "Untrusted input boundaries — evidence trace. Inputs A1 and delete_all() are supplied to room lookup. | For the toy lookup accept room IDs matching one ASCII uppercase letter plus one ASCII digit, with no trimming. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters. | A1 passes the format; delete_all() fails. Neither is executed as code, including any instruction-shaped string."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/sections/5/blocks/8/text",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/sections/5/blocks/8/presentation/paragraphs/0",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/sections/14/blocks/0/text",
+      "old": "Start with this question: Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming.",
+      "new": "Start with this question: Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/sections/14/blocks/0/presentation/paragraphs/0",
+      "old": "Start with this question: Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming.",
+      "new": "Start with this question: Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/sections/16/blocks/1/text",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/sections/16/blocks/1/presentation/paragraphs/0",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/sections/17/blocks/1/alt",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming. Supplied facts: Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming. Supplied facts: Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/sections/17/blocks/2/text",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming. Supplied facts: Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming. Supplied facts: Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/sections/17/blocks/2/presentation/paragraphs/0",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming. Supplied facts: Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming. Supplied facts: Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/teacher/1/blocks/17/text",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/teacher/1/blocks/17/presentation/paragraphs/0",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/teacher/8/blocks/2/alt",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming. Supplied facts: Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming. Supplied facts: Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/teacher/8/blocks/3/text",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming. Supplied facts: Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming. Supplied facts: Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/teacher/8/blocks/3/presentation/paragraphs/0",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming. Supplied facts: Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming. Supplied facts: Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/workbook/11/blocks/0/text",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/workbook/11/blocks/0/presentation/paragraphs/0",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/workbook/11/reading_intro",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming. Explain the labelled step before checking the changed condition.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming. Explain the labelled step before checking the changed condition."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/workbook/13/blocks/1/text",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/workbook/13/blocks/1/presentation/paragraphs/0",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/workbook/14/blocks/1/alt",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming. Supplied facts: Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming. Supplied facts: Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/workbook/14/blocks/2/text",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming. Supplied facts: Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming. Supplied facts: Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/workbook/14/blocks/2/presentation/paragraphs/0",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming. Supplied facts: Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming. Supplied facts: Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/pictorial_case/scenario",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/classroom/flow/1/task",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/graphic_story/0/alt",
+      "old": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming. Supplied facts: Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself.",
+      "new": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming. Supplied facts: Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/sections/5/blocks/2/text",
+      "old": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly.",
+      "new": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain a policy-compliant diagnostic record of the outcome so a later revision can be compared honestly."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/sections/5/blocks/2/presentation/paragraphs/1",
+      "old": "The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly.",
+      "new": "The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain a policy-compliant diagnostic record of the outcome so a later revision can be compared honestly."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/teacher/1/blocks/11/text",
+      "old": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly.",
+      "new": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain a policy-compliant diagnostic record of the outcome so a later revision can be compared honestly."
+    },
+    {
+      "week": "ai-6/18",
+      "path": "/teacher/1/blocks/11/presentation/paragraphs/1",
+      "old": "The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly.",
+      "new": "The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain a policy-compliant diagnostic record of the outcome so a later revision can be compared honestly."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Keep input data from becoming instructions or permission",
+          "groups": [
+            "Learning goals",
+            "Retrieve trusted evidence and recovery boundaries",
+            "Prerequisite and starting response",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Declare the exact input contract and the separate authority source",
+          "groups": [
+            "Begin with data, shape and access as different concepts",
+            "Define untrusted input boundaries",
+            "Complete main contract and local lookup givens",
+            "Name supplied and missing evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace each gate without treating a string as control",
+          "groups": [
+            "Original exact-room-ID and dictionary-lookup mechanism",
+            "Complete four-path local decision trace",
+            "State the contract before checking",
+            "Explain the visual",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Change case or length while keeping the contract fixed",
+          "groups": [
+            "Current task and response",
+            "Predict the changed lowercase-picture identifier",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Use service vocabulary precisely",
+          "groups": [
+            "Vocabulary and your explanation"
+          ]
+        },
+        {
+          "title": "Compare two exact contracts without mixing their rules",
+          "groups": [
+            "Original main A1/instruction-string inputs and conclusion",
+            "Keep policy-compliant diagnostic evidence",
+            "Separate pictured lowercase rule and complete inputs",
+            "Trace exact case, length and access distinction",
+            "Predict replacing h3 with z0",
+            "Check after predicting",
+            "Explain accepted shape and separate permission gate",
+            "Reference: original main format-only helper",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Test full-match boundaries and the next required gate",
+          "groups": [
+            "Core format-versus-access qualification",
+            "Complete case, Unicode, missing-type and access probes",
+            "Guided explanation and repair",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise the exact failed condition and its consequence",
+          "groups": [
+            "Current explanation and guided scope check",
+            "Supported W2 record",
+            "Individual access-limit check",
+            "Lowercase-picture response",
+            "Reserve the selected new C0 input set",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run a complete shape, authorization and unchanged-data audit",
+          "groups": [
+            "Current A1/instruction-shaped-input investigation",
+            "Complete runnable exact-match and local lookup checks",
+            "Expected gate outcomes, visible whitespace and limits",
+            "Evidence ledger and reflection",
+            "Reference: original format-only snippet",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Explain a stronger case",
+          "groups": [
+            "Explain,repair and extend"
+          ]
+        },
+        {
+          "title": "Save exact input grammar beside scope and lookup assertions",
+          "groups": [
+            "Project task and artifact",
+            "Actual run or trace and limitations",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Check the service reasoning and its limits",
+          "groups": [
+            "Current explanation and response"
+          ]
+        },
+        {
+          "title": "Extra practice · Revisit the complete trace",
+          "groups": [
+            "Complete trace and evidence"
+          ]
+        },
+        {
+          "title": "Try alone: apply the new uppercase C0 input set",
+          "groups": [
+            "Complete selected independent uppercase/no-trim task",
+            "First attempt and support record",
+            "Feedback after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The earlier route checklist",
+          "groups": [
+            "Targets,route and first prediction"
+          ]
+        },
+        {
+          "title": "Finish with a precise contract and a separate authority check",
+          "groups": [
+            "Retrieve and explain",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict,check and repair",
+          "groups": [
+            "First supported question and optional hint",
+            "Check after the first attempt",
+            "Changed-case question and optional hint",
+            "Check after the changed attempt",
+            "Repair and retain the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture concept journey",
+          "groups": [
+            "01. Untrusted input boundaries: the case",
+            "02. Follow the deciding steps",
+            "03. Untrusted input boundaries — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the connected service investigation",
+          "groups": [
+            "Target and main teaching plan",
+            "Preparation and prerequisite",
+            "Opening retrieval",
+            "Pictured end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach exact data contracts without turning validation into authority",
+          "groups": [
+            "Definitions and complete main/local-extension contract",
+            "Four gate paths and checked reasoning",
+            "Whole-input, type, Unicode and access probes",
+            "Separate pictured lowercase inputs and scope",
+            "Picture trace and valid-z0/no-permission key",
+            "Reference: original format-only helper",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Model a step,then remove help",
+          "groups": [
+            "Current completion task and checked reasoning",
+            "Individual misconception check",
+            "Pictured reasoning and changed case",
+            "Accessible support and extension",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the complete supplied investigation",
+          "groups": [
+            "Complete inputs,expected results and limits",
+            "Diagnose the current misconceptions",
+            "Choose accessible support",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the new service scenario",
+          "groups": [
+            "Selected independent task and checked answer",
+            "Judge explanation,trace and limits",
+            "Give one usable repair",
+            "W1 Explain the mechanism",
+            "W2 Trace the worked case",
+            "W3 Audit the limit",
+            "W5 Design a revealing follow-up",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, support and revisit service design",
+          "groups": [
+            "Project and next-week bridge",
+            "Delayed return and support record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative planning checklist",
+          "groups": [
+            "Planning,assessment and project reminders"
+          ]
+        },
+        {
+          "title": "Reference · Feedback,labs and repair paths",
+          "groups": [
+            "Feedback and record guidance"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Untrusted input boundaries: the case",
+            "02. Follow the deciding steps",
+            "03. Untrusted input boundaries — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 8,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Recall · Retrieve before notes",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Individual reasoning check",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Try alone · Selected transfer",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W1 · Explain the current example",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W2 · Trace the calculation",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W3 · Repair a misconception",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Earlier W4 response copy",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W5 · Explain the limitation",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Project · Keep the service evidence",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Project milestone",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict,check and repair",
+          "groups": [
+            "First supported question and optional hint",
+            "Check after the first attempt",
+            "Changed-case question and optional hint",
+            "Check after the changed attempt",
+            "Repair and retain the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Untrusted input boundaries: the case",
+            "02. Follow the deciding steps",
+            "03. Untrusted input boundaries — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 15,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 15,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-6-week-18-connected-review/START_REVIEW.html",
+  "week_sha256": "36889df38ff4c60dced3fed0969f43599361802df0370f0897fe297f8b4c26ef",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

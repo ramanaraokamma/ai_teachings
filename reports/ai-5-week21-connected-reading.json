@@ -1,0 +1,471 @@
+{
+  "lesson": "ai-5/21",
+  "sections_reviewed": 42,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-5/21",
+      "path": "/teacher/1/blocks/7/text",
+      "old": "Guided: only the window starting [0, 0] includes input[0][0]. Its weight is 1, so adding 3 changes that output from 0 to 3. The map becomes [[3, 5], [-1, -1]]. Exit: the declared unpadded stride -1 setup gives 2 by 2, not 3 by 3. A different padding or kernel setup would need documentation. Values are local weighted sums, not probabilities.",
+      "new": "Guided: only the window starting [0, 0] includes input[0][0]. Its weight is 1, so adding 3 changes that output from 0 to 3. The map becomes [[3, 5], [-1, -1]]. Exit: the declared unpadded stride 1 setup gives 2 by 2, not 3 by 3. A different padding or kernel setup would need documentation. Values are local weighted sums, not probabilities."
+    },
+    {
+      "week": "ai-5/21",
+      "path": "/teacher/1/blocks/7/presentation/paragraphs/1",
+      "old": "Exit: the declared unpadded stride -1 setup gives 2 by 2, not 3 by 3. A different padding or kernel setup would need documentation. Values are local weighted sums, not probabilities.",
+      "new": "Exit: the declared unpadded stride 1 setup gives 2 by 2, not 3 by 3. A different padding or kernel setup would need documentation. Values are local weighted sums, not probabilities."
+    },
+    {
+      "week": "ai-5/21",
+      "path": "/teacher/4/blocks/1/text",
+      "old": "Guided: only the window starting [0, 0] includes input[0][0]. Its weight is 1, so adding 3 changes that output from 0 to 3. The map becomes [[3, 5], [-1, -1]]. Exit: the declared unpadded stride -1 setup gives 2 by 2, not 3 by 3. A different padding or kernel setup would need documentation. Values are local weighted sums, not probabilities.",
+      "new": "Guided: only the window starting [0, 0] includes input[0][0]. Its weight is 1, so adding 3 changes that output from 0 to 3. The map becomes [[3, 5], [-1, -1]]. Exit: the declared unpadded stride 1 setup gives 2 by 2, not 3 by 3. A different padding or kernel setup would need documentation. Values are local weighted sums, not probabilities."
+    },
+    {
+      "week": "ai-5/21",
+      "path": "/teacher/4/blocks/1/presentation/paragraphs/1",
+      "old": "Exit: the declared unpadded stride -1 setup gives 2 by 2, not 3 by 3. A different padding or kernel setup would need documentation. Values are local weighted sums, not probabilities.",
+      "new": "Exit: the declared unpadded stride 1 setup gives 2 by 2, not 3 by 3. A different padding or kernel setup would need documentation. Values are local weighted sums, not probabilities."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Which local window produced this output?",
+          "groups": [
+            "Learning goals",
+            "Retrieve the image-axis contract",
+            "Prerequisite and starting response",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Multiply matching entries and add every local product",
+          "groups": [
+            "Complete image, kernel and boundary contract",
+            "All four valid windows and products",
+            "Name the declared fixed-orientation convention",
+            "Name given and missing facts"
+          ]
+        },
+        {
+          "title": "See each window and separate weights from repeated operations",
+          "groups": [
+            "Function scope and input assumptions",
+            "Complete four-window product graphic",
+            "Shapes, parameter slots and operation counts",
+            "Complete runnable fixed-orientation filter",
+            "Connect the highlighted patch to its output coordinate",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Change one declared condition and trace its consequence",
+          "groups": [
+            "Current parameter-versus-product task",
+            "Predict the pictured shared bias",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Use the mathematical words precisely",
+          "groups": [
+            "Vocabulary and your explanation"
+          ]
+        },
+        {
+          "title": "Track one shared bias through every window",
+          "groups": [
+            "Complete pictured arrays and separate scope",
+            "Trace both patch products and the raw map",
+            "Predict the shared bias2addition",
+            "Check after predicting",
+            "Explain orientation changes and recognition limits",
+            "Try the main one-pixel change",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Count legal start positions before using a shape formula",
+          "groups": [
+            "Complete stride, padding and ReLU explanation",
+            "All one-factor shape and value checks",
+            "Try the stride2and zero-border cases",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise local products and shared counts with less help",
+          "groups": [
+            "Current task and response",
+            "Supported W2record",
+            "Individual misconception check",
+            "Pictured fixed-orientation reasoning",
+            "Reserve the independent new image/kernel",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run a complete window and boundary-condition audit",
+          "groups": [
+            "Current count task and original local-filter function",
+            "Complete runnable one-factor probe program",
+            "Full padded map for independent checking",
+            "Normal,one-window,oversized,missing and orientation probes",
+            "Predict,filter,compare and retain raw maps",
+            "Keep the evidence ledger",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Explain a stronger case",
+          "groups": [
+            "Explain,repair and extend"
+          ]
+        },
+        {
+          "title": "Keep the local-operation contract beside the feature map",
+          "groups": [
+            "Project artifact and evidence table",
+            "Actual run/trace and limits",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Check the representation and its limits",
+          "groups": [
+            "Current explanation and response"
+          ]
+        },
+        {
+          "title": "Extra practice · Revisit the complete trace",
+          "groups": [
+            "Complete trace and evidence"
+          ]
+        },
+        {
+          "title": "Try alone: filter a new image with a different kernel",
+          "groups": [
+            "Complete new independent arrays and task",
+            "First attempt and support record",
+            "Use feedback after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The earlier route checklist",
+          "groups": [
+            "Targets,route and first prediction"
+          ]
+        },
+        {
+          "title": "Finish with one local sum and one complete shape contract",
+          "groups": [
+            "Retrieve and explain",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict,check and repair",
+          "groups": [
+            "First supported question and optional hint",
+            "Check after the first attempt",
+            "Changed-case question and optional hint",
+            "Check after the changed attempt",
+            "Repair and retain the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture concept journey",
+          "groups": [
+            "01. Convolution as a local operation: the case",
+            "02. Follow the deciding steps",
+            "03. Image used by both local kernel windows",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the connected mathematical investigation",
+          "groups": [
+            "Target and main teaching plan",
+            "Preparation and prerequisite",
+            "Opening retrieval",
+            "Pictured end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach exact patch arithmetic under a named boundary convention",
+          "groups": [
+            "Main contract, complete counts and guided key",
+            "All four weighted windows and one-factor variants",
+            "Complete separate pictured arrays and scope",
+            "Trace unchanged products under a shared bias addition",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Model a step,then remove help",
+          "groups": [
+            "Current completion task and checked reasoning",
+            "Individual misconception check",
+            "Pictured reasoning and changed case",
+            "Accessible support and extension",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the complete supplied investigation",
+          "groups": [
+            "Complete inputs,expected results and limits",
+            "Diagnose the current misconceptions",
+            "Choose accessible support",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the new schema or calculation transfer",
+          "groups": [
+            "Selected independent task and checked answer",
+            "Judge explanation,trace and limits",
+            "Give one usable repair",
+            "W1 Trace a local sum",
+            "W2 Separate parameters and operations",
+            "W3 Check stride and padding",
+            "W5 Test a convention error",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect,support and revisit the mathematics",
+          "groups": [
+            "Project and next-week bridge",
+            "Delayed return and support record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative planning checklist",
+          "groups": [
+            "Planning,assessment and project reminders"
+          ]
+        },
+        {
+          "title": "Reference · Feedback,labs and repair paths",
+          "groups": [
+            "Feedback and record guidance"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Convolution as a local operation: the case",
+            "02. Follow the deciding steps",
+            "03. Image used by both local kernel windows",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 8,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Recall · Retrieve before notes",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Individual reasoning check",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Try alone · Selected transfer",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W1 · Explain the current example",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W2 · Trace the calculation",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W3 · Repair a misconception",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Earlier W4 response copy",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W5 · Explain the limitation",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Project · Keep the mathematical evidence",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Project milestone",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict,check and repair",
+          "groups": [
+            "First supported question and optional hint",
+            "Check after the first attempt",
+            "Changed-case question and optional hint",
+            "Check after the changed attempt",
+            "Repair and retain the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Convolution as a local operation: the case",
+            "02. Follow the deciding steps",
+            "03. Image used by both local kernel windows",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 15,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 15,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-5-week-21-connected-review/START_REVIEW.html",
+  "week_sha256": "87f2cb59054dc71160342e53d798afdec0f29862dfcd39518ce4a32165e01f41",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

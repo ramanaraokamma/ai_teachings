@@ -17,7 +17,7 @@ try{
  for(const resource of resources)for(const width of[1280,390]){
   const url='https://academy.test/learn/'+role+'/'+level+'/'+week+'?resource='+resource;
   const draftKey=`academy-answer-v1:/learn/student/${level}/${week}:workbook:${level}/${week}/workbook-section-1-block-${firstResponse+1}`;
-  if(resource==='workbook'&&((level==='ai-2'&&[5,15,24].includes(week))||(level==='ai-3'&&[6,11,13,16].includes(week))))await page.addInitScript(key=>localStorage.setItem(key,'Earlier worksheet answer'),`academy-answer-v1:/learn/student/${level}/${week}:workbook:${level}/${week}/workbook-${oldWorksheetSuffix}`);
+  if(resource==='workbook'&&((level==='ai-2'&&[5,15,24].includes(week))||(level==='ai-3'&&[6,11,13,16,25].includes(week))))await page.addInitScript(key=>localStorage.setItem(key,'Earlier worksheet answer'),`academy-answer-v1:/learn/student/${level}/${week}:workbook:${level}/${week}/workbook-${oldWorksheetSuffix}`);
   if(resource==='workbook')await page.addInitScript(key=>{if(!localStorage.getItem(key))localStorage.setItem(key,'A draft from the earlier workbook.');},draftKey);
   if(resource==='lesson'&&level==='ai-2'&&week===5)await page.addInitScript(()=>localStorage.setItem('academy-code-v1:student:ai-2/5:0','# Earlier for-loop draft\nprint(6)'));
   await page.setViewportSize({width,height:950});await page.goto(url,{waitUntil:'networkidle'});
@@ -34,7 +34,7 @@ try{
   }
   if(resource==='workbook'){
    const saved=page.locator('textarea[data-evidence-key="'+draftKey+'"]');await saved.waitFor();assert.ok((await saved.inputValue()).includes('earlier workbook'));
-   if(((level==='ai-2'&&[5,15,24].includes(week))||(level==='ai-3'&&[6,11,13,16].includes(week)))){const old=page.locator(`textarea[data-evidence-key$="workbook-${oldWorksheetSuffix}"]`);assert.equal(await old.inputValue(),'Earlier worksheet answer');assert.ok((await old.locator('xpath=ancestor::details[1]').textContent()).includes(level==='ai-3'?(week===6?'List required output fields':'Explain the weekly mechanism'):week===5?'range(2, 5)':week===15?'Identify the root':'Why does A win'));const last=source.workbook[11].blocks.findLastIndex(b=>b.type==='response');const fresh=page.locator(`textarea[data-evidence-key$="workbook-section-12-added-block-${last+1}"]`);assert.equal(await fresh.inputValue(),'');assert.ok(await fresh.isVisible());}
+   if(((level==='ai-2'&&[5,15,24].includes(week))||(level==='ai-3'&&[6,11,13,16,25].includes(week)))){const old=page.locator(`textarea[data-evidence-key$="workbook-${oldWorksheetSuffix}"]`);assert.equal(await old.inputValue(),'Earlier worksheet answer');assert.ok((await old.locator('xpath=ancestor::details[1]').textContent()).includes(level==='ai-3'?(week===6?'List required output fields':'Explain the weekly mechanism'):week===5?'range(2, 5)':week===15?'Identify the root':'Why does A win'));const last=source.workbook[11].blocks.findLastIndex(b=>b.type==='response');const fresh=page.locator(`textarea[data-evidence-key$="workbook-section-12-added-block-${last+1}"]`);assert.equal(await fresh.inputValue(),'');assert.ok(await fresh.isVisible());}
   }
   if(resource==='lesson'){
    const check=page.locator('#section-6 details').filter({has:page.locator('summary',{hasText:revealTitle})});
@@ -46,7 +46,7 @@ try{
   await page.addScriptTag({path:resolve(process.env.ACADEMY_AXE_PATH||'work/learning-audit/node_modules/axe-core/axe.min.js')});const audit=await page.evaluate(async()=>await window.axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa','best-practice']}}));const violations=audit.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)}));assert.deepEqual(violations,[],resource+' '+width);
   await page.locator('.flow-overview').scrollIntoViewIfNeeded();await page.screenshot({path:out+'/'+resource+'-website-'+width+'.png'});
   await page.evaluate(async()=>{await Promise.all([...document.images].filter(i=>i.complete&&i.naturalWidth).map(i=>i.decode().catch(()=>{})));});
-  if(width===1280)await page.locator('#section-'+(resource==='workbook'?13:resource==='guide'?2:week>=2?6:3)).screenshot({path:out+'/'+resource+'-website-explanation.png',style:'.portal-header{display:none !important}'});
+  if(width===1280)await page.locator('#section-'+(resource==='workbook'?(level==='python-bridge'||['ai-5','ai-6','ai-7'].includes(level)?6:13):resource==='guide'?2:week>=2?6:3)).screenshot({path:out+'/'+resource+'-website-explanation.png',style:'.portal-header{display:none !important}'});
   results.push({role,resource,width,sections:expected,overflow:false,accessibility_violations:violations,draft_keys_preserved:resource==='workbook',print_includes_reference:true});console.log(role,resource,width,'passed');
  }
  await context.close();

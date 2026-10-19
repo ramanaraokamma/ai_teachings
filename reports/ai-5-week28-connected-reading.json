@@ -1,0 +1,554 @@
+{
+  "lesson": "ai-5/28",
+  "sections_reviewed": 42,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-5/28",
+      "path": "/sections/5/blocks/0/caption",
+      "old": "The fitted head is correct on 2 of 2 validation records; the constant -0 baseline is correct on 1 of 2. This tiny constructed comparison is not evidence of general transfer performance.",
+      "new": "The fitted head is correct on 2 of 2 validation records; the constant class 0 baseline is correct on 1 of 2. This tiny constructed comparison is not evidence of general transfer performance."
+    },
+    {
+      "week": "ai-5/28",
+      "path": "/sections/12/blocks/1/caption",
+      "old": "The fitted head is correct on 2 of 2 validation records; the constant -0 baseline is correct on 1 of 2. This tiny constructed comparison is not evidence of general transfer performance.",
+      "new": "The fitted head is correct on 2 of 2 validation records; the constant class 0 baseline is correct on 1 of 2. This tiny constructed comparison is not evidence of general transfer performance."
+    },
+    {
+      "week": "ai-5/28",
+      "path": "/teacher/1/blocks/6/caption",
+      "old": "The fitted head is correct on 2 of 2 validation records; the constant -0 baseline is correct on 1 of 2. This tiny constructed comparison is not evidence of general transfer performance.",
+      "new": "The fitted head is correct on 2 of 2 validation records; the constant class 0 baseline is correct on 1 of 2. This tiny constructed comparison is not evidence of general transfer performance."
+    },
+    {
+      "week": "ai-5/28",
+      "path": "/teacher/1/blocks/10/caption",
+      "old": "The fitted head is correct on 2 of 2 validation records; the constant -0 baseline is correct on 1 of 2. This tiny constructed comparison is not evidence of general transfer performance.",
+      "new": "The fitted head is correct on 2 of 2 validation records; the constant class 0 baseline is correct on 1 of 2. This tiny constructed comparison is not evidence of general transfer performance."
+    },
+    {
+      "week": "ai-5/28",
+      "path": "/teacher/2/blocks/5/text",
+      "old": "Teacher check: Teacher explanation: Training mistake counts are 1, 0 and 1, selecting threshold 5. Validation predictions are 0 and 1, so the head scores 2 of 2. The constant -0 baseline scores 1 of 2. Only T1 through T4 fit the head; validation evaluates the fitted choice.",
+      "new": "Teacher check: Teacher explanation: Training mistake counts are 1, 0 and 1, selecting threshold 5. Validation predictions are 0 and 1, so the head scores 2 of 2. The constant class 0 baseline scores 1 of 2. Only T1 through T4 fit the head; validation evaluates the fitted choice."
+    },
+    {
+      "week": "ai-5/28",
+      "path": "/teacher/2/blocks/5/presentation/paragraphs/0",
+      "old": "Teacher check: Teacher explanation: Training mistake counts are 1, 0 and 1, selecting threshold 5. Validation predictions are 0 and 1, so the head scores 2 of 2. The constant -0 baseline scores 1 of 2.",
+      "new": "Teacher check: Teacher explanation: Training mistake counts are 1, 0 and 1, selecting threshold 5. Validation predictions are 0 and 1, so the head scores 2 of 2. The constant class 0 baseline scores 1 of 2."
+    },
+    {
+      "week": "ai-5/28",
+      "path": "/teacher/4/blocks/7/text",
+      "old": "Teacher explanation: Training mistake counts are 1, 0 and 1, selecting threshold 5. Validation predictions are 0 and 1, so the head scores 2 of 2. The constant -0 baseline scores 1 of 2. Only T1 through T4 fit the head; validation evaluates the fitted choice.",
+      "new": "Teacher explanation: Training mistake counts are 1, 0 and 1, selecting threshold 5. Validation predictions are 0 and 1, so the head scores 2 of 2. The constant class 0 baseline scores 1 of 2. Only T1 through T4 fit the head; validation evaluates the fitted choice."
+    },
+    {
+      "week": "ai-5/28",
+      "path": "/teacher/4/blocks/7/presentation/paragraphs/0",
+      "old": "Teacher explanation: Training mistake counts are 1, 0 and 1, selecting threshold 5. Validation predictions are 0 and 1, so the head scores 2 of 2. The constant -0 baseline scores 1 of 2.",
+      "new": "Teacher explanation: Training mistake counts are 1, 0 and 1, selecting threshold 5. Validation predictions are 0 and 1, so the head scores 2 of 2. The constant class 0 baseline scores 1 of 2."
+    },
+    {
+      "week": "ai-5/28",
+      "path": "/teacher/4/blocks/13/text",
+      "old": "Teacher explanation: Training features are 2, 4, 5 and 7. Mistakes at thresholds 2, 4 and 6 are 2, 1 and 1, so the tie rule selects 4. Validation features are 4 and 2, predictions 1 and 0, scoring 2 of 2. The constant -0 baseline scores 1 of 2. Equality at threshold 4 gives class 1.",
+      "new": "Teacher explanation: Training features are 2, 4, 5 and 7. Mistakes at thresholds 2, 4 and 6 are 2, 1 and 1, so the tie rule selects 4. Validation features are 4 and 2, predictions 1 and 0, scoring 2 of 2. The constant class 0 baseline scores 1 of 2. Equality at threshold 4 gives class 1."
+    },
+    {
+      "week": "ai-5/28",
+      "path": "/teacher/4/blocks/13/presentation/paragraphs/1",
+      "old": "The constant -0 baseline scores 1 of 2. Equality at threshold 4 gives class 1.",
+      "new": "The constant class 0 baseline scores 1 of 2. Equality at threshold 4 gives class 1."
+    },
+    {
+      "week": "ai-5/28",
+      "path": "/teacher/4/blocks/22/text",
+      "old": "Teacher explanation: Training features are 2, 4, 5 and 7. Mistakes at thresholds 2, 4 and 6 are 2, 1 and 1, so the tie rule selects 4. Validation features are 4 and 2, predictions 1 and 0, scoring 2 of 2. The constant -0 baseline scores 1 of 2. Equality at threshold 4 gives class 1.",
+      "new": "Teacher explanation: Training features are 2, 4, 5 and 7. Mistakes at thresholds 2, 4 and 6 are 2, 1 and 1, so the tie rule selects 4. Validation features are 4 and 2, predictions 1 and 0, scoring 2 of 2. The constant class 0 baseline scores 1 of 2. Equality at threshold 4 gives class 1."
+    },
+    {
+      "week": "ai-5/28",
+      "path": "/teacher/4/blocks/22/presentation/paragraphs/1",
+      "old": "The constant -0 baseline scores 1 of 2. Equality at threshold 4 gives class 1.",
+      "new": "The constant class 0 baseline scores 1 of 2. Equality at threshold 4 gives class 1."
+    },
+    {
+      "week": "ai-5/28",
+      "path": "/teacher/6/blocks/4/text",
+      "old": "Reasoned practice answer: Teacher explanation: Training mistake counts are 1, 0 and 1, selecting threshold 5. Validation predictions are 0 and 1, so the head scores 2 of 2. The constant -0 baseline scores 1 of 2. Only T1 through T4 fit the head; validation evaluates the fitted choice.",
+      "new": "Reasoned practice answer: Teacher explanation: Training mistake counts are 1, 0 and 1, selecting threshold 5. Validation predictions are 0 and 1, so the head scores 2 of 2. The constant class 0 baseline scores 1 of 2. Only T1 through T4 fit the head; validation evaluates the fitted choice."
+    },
+    {
+      "week": "ai-5/28",
+      "path": "/teacher/6/blocks/4/presentation/paragraphs/0",
+      "old": "Reasoned practice answer: Teacher explanation: Training mistake counts are 1, 0 and 1, selecting threshold 5. Validation predictions are 0 and 1, so the head scores 2 of 2. The constant -0 baseline scores 1 of 2.",
+      "new": "Reasoned practice answer: Teacher explanation: Training mistake counts are 1, 0 and 1, selecting threshold 5. Validation predictions are 0 and 1, so the head scores 2 of 2. The constant class 0 baseline scores 1 of 2."
+    },
+    {
+      "week": "ai-5/28",
+      "path": "/independent_answer",
+      "old": "Teacher explanation: Training features are 2, 4, 5 and 7. Mistakes at thresholds 2, 4 and 6 are 2, 1 and 1, so the tie rule selects 4. Validation features are 4 and 2, predictions 1 and 0, scoring 2 of 2. The constant -0 baseline scores 1 of 2. Equality at threshold 4 gives class 1.",
+      "new": "Teacher explanation: Training features are 2, 4, 5 and 7. Mistakes at thresholds 2, 4 and 6 are 2, 1 and 1, so the tie rule selects 4. Validation features are 4 and 2, predictions 1 and 0, scoring 2 of 2. The constant class 0 baseline scores 1 of 2. Equality at threshold 4 gives class 1."
+    },
+    {
+      "week": "ai-5/28",
+      "path": "/earlier_independent_answer",
+      "old": "Teacher explanation: Training features are 2, 4, 5 and 7. Mistakes at thresholds 2, 4 and 6 are 2, 1 and 1, so the tie rule selects 4. Validation features are 4 and 2, predictions 1 and 0, scoring 2 of 2. The constant -0 baseline scores 1 of 2. Equality at threshold 4 gives class 1.",
+      "new": "Teacher explanation: Training features are 2, 4, 5 and 7. Mistakes at thresholds 2, 4 and 6 are 2, 1 and 1, so the tie rule selects 4. Validation features are 4 and 2, predictions 1 and 0, scoring 2 of 2. The constant class 0 baseline scores 1 of 2. Equality at threshold 4 gives class 1."
+    },
+    {
+      "week": "ai-5/28",
+      "path": "/method/practice/answer",
+      "old": "Teacher explanation: Training mistake counts are 1, 0 and 1, selecting threshold 5. Validation predictions are 0 and 1, so the head scores 2 of 2. The constant -0 baseline scores 1 of 2. Only T1 through T4 fit the head; validation evaluates the fitted choice.",
+      "new": "Teacher explanation: Training mistake counts are 1, 0 and 1, selecting threshold 5. Validation predictions are 0 and 1, so the head scores 2 of 2. The constant class 0 baseline scores 1 of 2. Only T1 through T4 fit the head; validation evaluates the fitted choice."
+    },
+    {
+      "week": "ai-5/28",
+      "path": "/method/independent/answer",
+      "old": "Teacher explanation: Training features are 2, 4, 5 and 7. Mistakes at thresholds 2, 4 and 6 are 2, 1 and 1, so the tie rule selects 4. Validation features are 4 and 2, predictions 1 and 0, scoring 2 of 2. The constant -0 baseline scores 1 of 2. Equality at threshold 4 gives class 1.",
+      "new": "Teacher explanation: Training features are 2, 4, 5 and 7. Mistakes at thresholds 2, 4 and 6 are 2, 1 and 1, so the tie rule selects 4. Validation features are 4 and 2, predictions 1 and 0, scoring 2 of 2. The constant class 0 baseline scores 1 of 2. Equality at threshold 4 gives class 1."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Reuse a representation, fit a new decision rule",
+          "groups": [
+            "Learning goals",
+            "Retrieve representation and comparison",
+            "Prerequisite and response",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Separate the frozen extractor from the fitted head",
+          "groups": [
+            "Transfer learning and the transparent stand-in",
+            "Follow input → feature → prediction",
+            "Interpret the feature and record missing facts"
+          ]
+        },
+        {
+          "title": "Fit the threshold using four training records",
+          "groups": [
+            "Complete training inputs and fitting rule",
+            "Trace every training feature and prediction",
+            "Training tie rule and baseline rule",
+            "Run the complete fit and validation audit",
+            "Explain each visual step",
+            "Reference: original compact fitting code",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Change one input while keeping fitted parameters fixed",
+          "groups": [
+            "Current task and response",
+            "Predict the changed picture",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Use the mathematical words precisely",
+          "groups": [
+            "Vocabulary and your explanation"
+          ]
+        },
+        {
+          "title": "Validate the fitted head, then interpret a separate picture",
+          "groups": [
+            "Main validation results and evidence limits",
+            "Try the equality case before checking",
+            "Separate pictured extractor and complete givens",
+            "Trace the pictured fitting and inference",
+            "Predict the changed query",
+            "Check after predicting",
+            "Explain what was fitted and what remains unknown",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Check whether the frozen representation keeps the needed distinction",
+          "groups": [
+            "Reason about a changed target",
+            "Complete collision and explicitly supplied repair",
+            "Try the misconception check",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise fitting, scoring and diagnosing separately",
+          "groups": [
+            "Current practice and response",
+            "Supported W2 record",
+            "Misconception check",
+            "Picture reasoning",
+            "Reserve the new independent extractor",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Keep a complete fit-and-compare evidence record",
+          "groups": [
+            "Current investigation and original procedure",
+            "Expected outputs, input checks and honest limits",
+            "Evidence ledger and retained explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Explain a stronger case",
+          "groups": [
+            "Explain,repair and extend"
+          ]
+        },
+        {
+          "title": "Save the extractor and head as separate project artifacts",
+          "groups": [
+            "Project task and artifact",
+            "Actual run or trace and limits",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Check the representation and its limits",
+          "groups": [
+            "Current explanation and response"
+          ]
+        },
+        {
+          "title": "Extra practice · Revisit the complete trace",
+          "groups": [
+            "Complete trace and evidence"
+          ]
+        },
+        {
+          "title": "Try alone: fit a head on a different frozen extractor",
+          "groups": [
+            "Complete independent inputs and task",
+            "First attempt and support record",
+            "Use feedback after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The earlier route checklist",
+          "groups": [
+            "Targets,route and first prediction"
+          ]
+        },
+        {
+          "title": "Explain what was reused, fitted and actually measured",
+          "groups": [
+            "Retrieve and explain",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict,check and repair",
+          "groups": [
+            "First supported question and optional hint",
+            "Check after the first attempt",
+            "Changed-case question and optional hint",
+            "Check after the changed attempt",
+            "Repair and retain the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture concept journey",
+          "groups": [
+            "01. Transfer learning: the case",
+            "02. Follow the deciding steps",
+            "03. Freeze the fitted head before validation",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the connected mathematical investigation",
+          "groups": [
+            "Target and main teaching plan",
+            "Preparation and prerequisite",
+            "Opening retrieval",
+            "Pictured end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach the frozen/fitted boundary with checked examples",
+          "groups": [
+            "Definitions, supplied extractor and complete training trace",
+            "Same-row validation and equality key",
+            "Representation collision and supplied repair",
+            "Separate picture givens and interpretation",
+            "Picture trace and changed-query key",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Model a step,then remove help",
+          "groups": [
+            "Current completion task and checked reasoning",
+            "Individual misconception check",
+            "Pictured reasoning and changed case",
+            "Accessible support and extension",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the complete supplied investigation",
+          "groups": [
+            "Complete inputs,expected results and limits",
+            "Diagnose the current misconceptions",
+            "Choose accessible support",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the new schema or calculation transfer",
+          "groups": [
+            "Selected independent task and checked answer",
+            "Judge explanation,trace and limits",
+            "Give one usable repair",
+            "W1 Trace the reused pipeline",
+            "W2 Fit and compare",
+            "W3 Diagnose a lost distinction",
+            "W5 Plan credible evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect,support and revisit the mathematics",
+          "groups": [
+            "Project and next-week bridge",
+            "Delayed return and support record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative planning checklist",
+          "groups": [
+            "Planning,assessment and project reminders"
+          ]
+        },
+        {
+          "title": "Reference · Feedback,labs and repair paths",
+          "groups": [
+            "Feedback and record guidance"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Transfer learning: the case",
+            "02. Follow the deciding steps",
+            "03. Freeze the fitted head before validation",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 8,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Recall · Retrieve before notes",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Individual reasoning check",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Try alone · Selected transfer",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W1 · Explain the current example",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W2 · Trace the calculation",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W3 · Repair a misconception",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Earlier W4 response copy",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W5 · Explain the limitation",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Project · Keep the mathematical evidence",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Project milestone",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict,check and repair",
+          "groups": [
+            "First supported question and optional hint",
+            "Check after the first attempt",
+            "Changed-case question and optional hint",
+            "Check after the changed attempt",
+            "Repair and retain the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Transfer learning: the case",
+            "02. Follow the deciding steps",
+            "03. Freeze the fitted head before validation",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 15,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 15,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-5-week-28-connected-review/START_REVIEW.html",
+  "week_sha256": "da6d7d837ee8c20056a8644693ecf7f61f082dc8d06dad42cd26bc37cce7d036",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}

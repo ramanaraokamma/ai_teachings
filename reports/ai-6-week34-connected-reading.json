@@ -1,0 +1,668 @@
+{
+  "lesson": "ai-6/34",
+  "sections_reviewed": 42,
+  "original_blocks_preserved": true,
+  "wording_corrections": [
+    {
+      "week": "ai-6/34",
+      "path": "/teacher/0/blocks/17/text",
+      "old": "Two 45-minute sessions. Capstone failure testing checks denied roles, missing evidence, invalid input, timeouts and stale data. Each expected outcome is written before the run. Use the supplied constructed scenarios to make the mechanism inspectable. Collect W4 before sharing solutions. Students should name intermediate evidence and limitations; classroom pacing and learning effectiveness remain unvalidated.",
+      "new": "Use the three-session teaching cycle above, with extra time as needed. Capstone failure testing checks denied roles, missing evidence, invalid input, timeouts and stale data. Each expected outcome is written before the run. Use the supplied constructed scenarios to make the mechanism inspectable. Collect W4 before sharing solutions. Students should name intermediate evidence and limitations; classroom pacing and learning effectiveness remain unvalidated."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/teacher/0/blocks/17/presentation/paragraphs/0",
+      "old": "Two 45-minute sessions. Capstone failure testing checks denied roles, missing evidence, invalid input, timeouts and stale data. Each expected outcome is written before the run.",
+      "new": "Use the three-session teaching cycle above, with extra time as needed. Capstone failure testing checks denied roles, missing evidence, invalid input, timeouts and stale data. Each expected outcome is written before the run."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/sections/2/blocks/1/rows/0/0",
+      "old": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur.",
+      "new": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/sections/3/blocks/1/text",
+      "old": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur. Show the intermediate steps and give the conclusion with its scope.",
+      "new": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur. Show the intermediate steps and give the conclusion with its scope."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/sections/3/blocks/1/presentation/paragraphs/0",
+      "old": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur.",
+      "new": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/sections/5/blocks/0/text",
+      "old": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur.",
+      "new": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/sections/5/blocks/0/presentation/paragraphs/0",
+      "old": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur.",
+      "new": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/sections/8/blocks/1/text",
+      "old": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur. Show the intermediate steps and give the conclusion with its scope.",
+      "new": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur. Show the intermediate steps and give the conclusion with its scope."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/sections/8/blocks/1/presentation/paragraphs/0",
+      "old": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur.",
+      "new": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/sections/12/blocks/1/rows/0/0",
+      "old": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur.",
+      "new": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/sections/17/blocks/9/alt",
+      "old": "Capstone failure testing — evidence trace. Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur. | Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace. Preserve failed fixtures for regression checks. | All four meet their expected condition if responses and traces agree. Denial/review are successful contract outcomes, not automatic test failures.",
+      "new": "Capstone failure testing — evidence trace. Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur. | Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace. Preserve failed fixtures for regression checks. | All four meet their expected condition if responses and traces agree. Denial/review are successful contract outcomes, not automatic test failures."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/sections/17/blocks/10/text",
+      "old": "Capstone failure testing — evidence trace. Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur. | Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace. Preserve failed fixtures for regression checks. | All four meet their expected condition if responses and traces agree. Denial/review are successful contract outcomes, not automatic test failures.",
+      "new": "Capstone failure testing — evidence trace. Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur. | Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace. Preserve failed fixtures for regression checks. | All four meet their expected condition if responses and traces agree. Denial/review are successful contract outcomes, not automatic test failures."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/sections/17/blocks/10/presentation/paragraphs/1",
+      "old": "Two deny, one reviews, one supports; no restricted reads occur. | Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace.",
+      "new": "One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur. | Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/teacher/1/blocks/5/rows/0/0",
+      "old": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur.",
+      "new": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/teacher/1/blocks/9/text",
+      "old": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur.",
+      "new": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/teacher/1/blocks/9/presentation/paragraphs/0",
+      "old": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur.",
+      "new": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/teacher/2/blocks/4/text",
+      "old": "Completion task: Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur. Show the intermediate steps and give the conclusion with its scope.",
+      "new": "Completion task: Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur. Show the intermediate steps and give the conclusion with its scope."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/teacher/2/blocks/4/presentation/paragraphs/0",
+      "old": "Completion task: Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur.",
+      "new": "Completion task: Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/teacher/4/blocks/6/text",
+      "old": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur. Show the intermediate steps and give the conclusion with its scope.",
+      "new": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur. Show the intermediate steps and give the conclusion with its scope."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/teacher/4/blocks/6/presentation/paragraphs/0",
+      "old": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur.",
+      "new": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/teacher/6/blocks/3/text",
+      "old": "Before class, solve the supported practice: Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur. Show the intermediate steps and give the conclusion with its scope.",
+      "new": "Before class, solve the supported practice: Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur. Show the intermediate steps and give the conclusion with its scope."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/teacher/6/blocks/3/presentation/paragraphs/0",
+      "old": "Before class, solve the supported practice: Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur.",
+      "new": "Before class, solve the supported practice: Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/teacher/8/blocks/12/alt",
+      "old": "Capstone failure testing — evidence trace. Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur. | Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace. Preserve failed fixtures for regression checks. | All four meet their expected condition if responses and traces agree. Denial/review are successful contract outcomes, not automatic test failures.",
+      "new": "Capstone failure testing — evidence trace. Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur. | Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace. Preserve failed fixtures for regression checks. | All four meet their expected condition if responses and traces agree. Denial/review are successful contract outcomes, not automatic test failures."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/teacher/8/blocks/13/text",
+      "old": "Capstone failure testing — evidence trace. Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur. | Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace. Preserve failed fixtures for regression checks. | All four meet their expected condition if responses and traces agree. Denial/review are successful contract outcomes, not automatic test failures.",
+      "new": "Capstone failure testing — evidence trace. Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur. | Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace. Preserve failed fixtures for regression checks. | All four meet their expected condition if responses and traces agree. Denial/review are successful contract outcomes, not automatic test failures."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/teacher/8/blocks/13/presentation/paragraphs/1",
+      "old": "Two deny, one reviews, one supports; no restricted reads occur. | Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace.",
+      "new": "One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur. | Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/workbook/5/blocks/0/text",
+      "old": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur. Show the intermediate steps and give the conclusion with its scope.",
+      "new": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur. Show the intermediate steps and give the conclusion with its scope."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/workbook/5/blocks/0/presentation/paragraphs/0",
+      "old": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur.",
+      "new": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/workbook/14/blocks/11/alt",
+      "old": "Capstone failure testing — evidence trace. Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur. | Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace. Preserve failed fixtures for regression checks. | All four meet their expected condition if responses and traces agree. Denial/review are successful contract outcomes, not automatic test failures.",
+      "new": "Capstone failure testing — evidence trace. Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur. | Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace. Preserve failed fixtures for regression checks. | All four meet their expected condition if responses and traces agree. Denial/review are successful contract outcomes, not automatic test failures."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/workbook/14/blocks/12/text",
+      "old": "Capstone failure testing — evidence trace. Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur. | Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace. Preserve failed fixtures for regression checks. | All four meet their expected condition if responses and traces agree. Denial/review are successful contract outcomes, not automatic test failures.",
+      "new": "Capstone failure testing — evidence trace. Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur. | Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace. Preserve failed fixtures for regression checks. | All four meet their expected condition if responses and traces agree. Denial/review are successful contract outcomes, not automatic test failures."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/workbook/14/blocks/12/presentation/paragraphs/1",
+      "old": "Two deny, one reviews, one supports; no restricted reads occur. | Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace.",
+      "new": "One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur. | Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/method/practice/prompt",
+      "old": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur. Show the intermediate steps and give the conclusion with its scope.",
+      "new": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur. Show the intermediate steps and give the conclusion with its scope."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/classroom/flow/2/task",
+      "old": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur. Show the intermediate steps and give the conclusion with its scope.",
+      "new": "Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur. Show the intermediate steps and give the conclusion with its scope."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/graphic_story/2/alt",
+      "old": "Capstone failure testing — evidence trace. Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur. | Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace. Preserve failed fixtures for regression checks. | All four meet their expected condition if responses and traces agree. Denial/review are successful contract outcomes, not automatic test failures.",
+      "new": "Capstone failure testing — evidence trace. Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur. | Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace. Preserve failed fixtures for regression checks. | All four meet their expected condition if responses and traces agree. Denial/review are successful contract outcomes, not automatic test failures."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/sections/5/blocks/2/text",
+      "old": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly.",
+      "new": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain only authorized, minimized fictional test evidence without secret values or unnecessary private content so a later revision can be compared honestly."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/sections/5/blocks/2/presentation/paragraphs/1",
+      "old": "The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly.",
+      "new": "The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain only authorized, minimized fictional test evidence without secret values or unnecessary private content so a later revision can be compared honestly."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/teacher/1/blocks/11/text",
+      "old": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly.",
+      "new": "Compare the intermediate evidence with the final statement. Explain why each number or decision follows from the stated inputs. The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain only authorized, minimized fictional test evidence without secret values or unnecessary private content so a later revision can be compared honestly."
+    },
+    {
+      "week": "ai-6/34",
+      "path": "/teacher/1/blocks/11/presentation/paragraphs/1",
+      "old": "The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain the raw record so a later revision can be compared honestly.",
+      "new": "The conclusion belongs to this scenario and procedure; changing the inputs, evaluation population or authority can change what it establishes. Retain only authorized, minimized fictional test evidence without secret values or unnecessary private content so a later revision can be compared honestly."
+    }
+  ],
+  "roles": {
+    "sections": {
+      "main_sections": 11,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Write the expected response and forbidden calls before testing",
+          "groups": [
+            "Learning goals",
+            "Retrieve capstone output states and denied lookups",
+            "Prerequisite and starting response",
+            "End goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Define success for each expected failure response",
+          "groups": [
+            "Begin with successful rejection and review",
+            "Define capstone failure testing",
+            "Complete fixture and expectation contract",
+            "Name supplied and missing evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Trace the four-case response-and-call matrix",
+          "groups": [
+            "Original failure-matrix procedure",
+            "Complete status, claim and trace expectations",
+            "State what has not been covered",
+            "Explain the visual",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Predict drafting failure with and without approved evidence",
+          "groups": [
+            "Current task and response",
+            "Predict retrieval unavailable too",
+            "Check after predicting",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Use service vocabulary precisely",
+          "groups": [
+            "Vocabulary and your explanation"
+          ]
+        },
+        {
+          "title": "Read the evidence-dependent fallback as a separate allowed path",
+          "groups": [
+            "Main four expected outcomes and checked assessment",
+            "Separate F4 evidence and fallback authorization",
+            "Trace retrieval, injected drafting failure and checked template",
+            "Predict retrieval failure too",
+            "Check after predicting",
+            "Explain component coverage and missing evidence",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Audit response, claim and trace as separate requirements",
+          "groups": [
+            "Core failure-testing qualification and analysis",
+            "Complete fallback, access and coverage probes",
+            "Guided repair and explanation",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Practise deriving an expected result before the run",
+          "groups": [
+            "Current explanation and guided check",
+            "Supported W2 trace",
+            "Individual scope check",
+            "Picture response",
+            "Reserve the selected six-case gate assessment",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the complete expectation matrix and failed-trace counterexample",
+          "groups": [
+            "Current four-case failure investigation",
+            "Runnable baseline, bad-order probe and component fallback",
+            "Expected results and coverage limits",
+            "Evidence ledger and reflection",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Extra challenge · Explain a stronger case",
+          "groups": [
+            "Explain,repair and extend"
+          ]
+        },
+        {
+          "title": "Save predeclared expectations, actual traces and retained failures",
+          "groups": [
+            "Project task and artifact",
+            "Actual local run or paper trace and limitations",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Check the service reasoning and its limits",
+          "groups": [
+            "Current explanation and response"
+          ]
+        },
+        {
+          "title": "Extra practice · Revisit the complete trace",
+          "groups": [
+            "Complete trace and evidence"
+          ]
+        },
+        {
+          "title": "Try alone: a six-case rate with one mandatory access failure",
+          "groups": [
+            "Complete selected independent task",
+            "First attempt and support record",
+            "Feedback after trying",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · The earlier route checklist",
+          "groups": [
+            "Targets,route and first prediction"
+          ]
+        },
+        {
+          "title": "Explain why a denial can pass and why another denial fails",
+          "groups": [
+            "Retrieve and explain",
+            "Plan a changed-case return"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict,check and repair",
+          "groups": [
+            "First supported question and optional hint",
+            "Check after the first attempt",
+            "Changed-case question and optional hint",
+            "Check after the changed attempt",
+            "Repair and retain the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture concept journey",
+          "groups": [
+            "01. Capstone failure testing: the case",
+            "02. Follow the deciding steps",
+            "03. Capstone failure testing — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "teacher": {
+      "main_sections": 6,
+      "reference_sections": 3,
+      "sections": [
+        {
+          "title": "Prepare the connected service investigation",
+          "groups": [
+            "Target and main teaching plan",
+            "Preparation and prerequisite",
+            "Opening retrieval",
+            "Pictured end goal",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Teach expected outcomes and exact forbidden-call checks",
+          "groups": [
+            "Definitions and complete fictional test contract",
+            "Main expectation matrix and checked reasoning",
+            "Access, fallback and coverage probes",
+            "Separate F4 drafting/retrieval failure scope",
+            "Picture trace and unavailable-evidence key",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Model a step,then remove help",
+          "groups": [
+            "Current completion task and checked reasoning",
+            "Individual misconception check",
+            "Pictured reasoning and changed case",
+            "Accessible support and extension",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Run the complete supplied investigation",
+          "groups": [
+            "Complete inputs,expected results and limits",
+            "Diagnose the current misconceptions",
+            "Choose accessible support",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Assess the new service scenario",
+          "groups": [
+            "Selected independent task and checked answer",
+            "Judge explanation,trace and limits",
+            "Give one usable repair",
+            "W1 Explain the mechanism",
+            "W2 Trace the worked case",
+            "W3 Audit the limit",
+            "W5 Design a revealing follow-up",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Connect, support and revisit service design",
+          "groups": [
+            "Project and next-week bridge",
+            "Delayed return and support record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Alternative planning checklist",
+          "groups": [
+            "Planning,assessment and project reminders"
+          ]
+        },
+        {
+          "title": "Reference · Feedback,labs and repair paths",
+          "groups": [
+            "Feedback and record guidance"
+          ]
+        },
+        {
+          "title": "Reference · Teach with the six pictures",
+          "groups": [
+            "01. Capstone failure testing: the case",
+            "02. Follow the deciding steps",
+            "03. Capstone failure testing — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    },
+    "workbook": {
+      "main_sections": 8,
+      "reference_sections": 7,
+      "sections": [
+        {
+          "title": "Recall · Retrieve before notes",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Supported W2 record",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Individual reasoning check",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Try alone · Selected transfer",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W1 · Explain the current example",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W2 · Trace the calculation",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W3 · Repair a misconception",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Earlier W4 response copy",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "W5 · Explain the limitation",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Project · Keep the service evidence",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Feedback · Repair and return",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Pictured case",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Reference · Project milestone",
+          "groups": [
+            "Complete task and evidence"
+          ]
+        },
+        {
+          "title": "Extra practice · Predict,check and repair",
+          "groups": [
+            "First supported question and optional hint",
+            "Check after the first attempt",
+            "Changed-case question and optional hint",
+            "Check after the changed attempt",
+            "Repair and retain the record",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        },
+        {
+          "title": "Reference · Six-picture response sheets",
+          "groups": [
+            "01. Capstone failure testing: the case",
+            "02. Follow the deciding steps",
+            "03. Capstone failure testing — evidence trace",
+            "04. Change one thing. Trace what follows.",
+            "05. Connect the explanation to its limit",
+            "06. Make the idea visible in your project",
+            "Earlier wording, alternatives and picture transcripts"
+          ]
+        }
+      ]
+    }
+  },
+  "browser_validation": {
+    "checks": [
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 1280,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "lesson",
+        "width": 390,
+        "sections": 18,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 1280,
+        "sections": 15,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "student",
+        "resource": "workbook",
+        "width": 390,
+        "sections": 15,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": true,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 1280,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      },
+      {
+        "role": "teacher",
+        "resource": "guide",
+        "width": 390,
+        "sections": 9,
+        "overflow": false,
+        "accessibility_violations": [],
+        "draft_keys_preserved": false,
+        "print_includes_reference": true
+      }
+    ],
+    "accessibility_audits": 6,
+    "errors": []
+  },
+  "preservation_note": "Original block and response positions retained; exact wording corrections are recorded separately.",
+  "review_entry": "outputs/ai-6-week-34-connected-review/START_REVIEW.html",
+  "week_sha256": "80566650d5546ba5e27f215ea5cc3885750a562ac4db397a090b754787c470e6",
+  "validation": {
+    "offline_desktop_and_phone": true,
+    "source_preservation": true,
+    "word_pdf_text_and_images": true,
+    "access_and_lesson_checks": 276
+  }
+}
