@@ -1789,4 +1789,14 @@ if weeks['ai-7/30']['sections'][0].get('reading_flow'):
   else:raise AssertionError('Invalid string/boundary input accepted')
  assert (R/'assets/ai-7-30-method-boundary.png').exists()
  checks.append({'week':'ai-7/30','verified':'exact no-trimming ASCII length labels,inclusive/strict pine boundary,explicit whitespace probe and input guards without missing-AI-artifact or learned/ecological claims'})
+if weeks['ai-7/33']['sections'][0].get('reading_flow'):
+ w=weeks['ai-7/33'];code=next(b['text'] for b in w['sections'][8]['blocks'] if b.get('title')=='Complete distinct MAE-MSE fixture and saved-score disagreement audit');ns=run(code)
+ assert ns['fixture']['errors']==[0,2] and ns['fixture']['MAE']==1 and ns['fixture']['MSE']==2
+ assert ns['picture']['original_correct']==5 and ns['picture']['rerun_correct']==4 and ns['picture']['disputed_case']=='Q3'
+ for predictions,targets in [([],[]),([1],[1,2]),([True],[1])]:
+  try:ns['error_metrics'](predictions,targets)
+  except ValueError:pass
+  else:raise AssertionError('Invalid exact metric fixture accepted')
+ assert (R/'assets/ai-7-33-scoring-disagreement.png').exists()
+ checks.append({'week':'ai-7/33','verified':'explicitly distinct MAE-one/MSE-two fixture,metric contract and supplied Q3 dispute without adjudicated-score,actual independent reproduction or new-data replication claims'})
 (R/'reports/connected-python-checks.json').write_text(json.dumps({'checks':checks,'errors':[]},indent=2)+'\n');print(len(checks),'authored Python weeks verified in fresh execution namespaces.')

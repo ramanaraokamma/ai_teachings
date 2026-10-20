@@ -31,7 +31,7 @@
   ],
   "explanation": "A focused change makes the claim about what caused the error testable: the equality comparison rule caused this specific failure. Regression tests check surrounding behavior that should remain unchanged. A tie case and reversed input order are necessary because a correct boundary does not ensure deterministic selection. Log the old failure and revised replay separately.",
   "counterfactual": {
-    "change": "An alternative patch simply increases the limit to 101.",
+    "change": "An alternative patch uses pages <= 101 instead of the required pages <= 100.",
     "prediction": "C is wrongly admitted as well as A.",
     "reason": "Changing the maximum alters the contract instead of repairing its comparison."
   },

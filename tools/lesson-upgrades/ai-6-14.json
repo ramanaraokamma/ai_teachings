@@ -4,7 +4,7 @@
   "outcome": "Explain planning and action selection using the deciding step in this fictional service.",
   "scenario": "Plan around missing evidence. A bot must answer a tower-height question using approved cards only.",
   "given": [
-    "Search finds no height card. Allowed actions: search, clarify, return unsupported. Unapproved web access is excluded."
+    "Search finds no height card. Allowed actions: search, clarify, return unsupported, or answer from an approved card when its supporting record is present. Unapproved web access is excluded."
   ],
   "steps": [
     {

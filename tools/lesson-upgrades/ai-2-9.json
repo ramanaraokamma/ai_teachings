@@ -36,7 +36,7 @@
     "reason": "The subject description stayed mystery; only the irrelevant logo changed."
   },
   "student_task": "Does this one pair prove the classifier always ignores subject? Explain a narrower claim.",
-  "teacher_answer": "No. It shows one topic-fixed prediction changed with logo in this case; additional balanced comparisons are needed to characterise behavior.",
+  "teacher_answer": "No. In the explicitly hypothetical changed case, one topic-fixed prediction changes with logo, supporting sensitivity on that pair. In the base case no new outputs have been supplied, so the designed test alone establishes no observed sensitivity. Neither case proves that the classifier always ignores subject.",
   "project_evidence": "Test recommender features for shortcuts, keeping relevant subject information separate from superficial catalogue styling.",
   "limits": "Controlled observations support specific sensitivity claims; they do not reveal every internal feature a learned model uses.",
   "review_note": "Individually reviewed fictional topic example; arithmetic and declared policies checked. This is supported practice, not the reserved independent assessment."

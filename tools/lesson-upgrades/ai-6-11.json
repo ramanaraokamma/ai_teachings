@@ -25,12 +25,12 @@
   ],
   "explanation": "An objective needs a measurement window, denominator and success definition. An honest refusal can be success under an agreed contract.",
   "counterfactual": {
-    "change": "Repair one failed request into a success in this window.",
+    "change": "Counterfactual: change one failed outcome to a success in a separate copy of this 100-request window.",
     "prediction": "98 successes and 2 failures meet the stated window target.",
-    "reason": "One recorded outcome changes while the denominator stays 100."
+    "reason": "The counterfactual copy changes one outcome while its denominator stays 100; preserve the original 97-success/3-failure window."
   },
   "student_task": "Calculate the maximum allowed failures among 100 requests. Does 97 successes and 3 failures meet the target, and what changes after one failure becomes a success?",
-  "teacher_answer": "Use the same predeclared correctness and timing criteria. The target permits at most 2 failures in 100 requests. Three failures misses the target by one request. Changed case: 98 successes and 2 failures meet the stated window target. One recorded outcome changes while the denominator stays 100.",
+  "teacher_answer": "Use the same predeclared correctness and timing criteria. The target permits at most 2 failures in 100 requests. Three failures misses the target by one request. Changed case: 98 successes and 2 failures meet the stated window target. The counterfactual copy changes one outcome while its denominator stays 100; preserve the original 97-success/3-failure window.",
   "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
   "limits": "Meeting one window does not guarantee the next; monitor repeated windows and distinguish failure types.",
   "review_note": "Individually authored fictional practice, distinct from the reserved independent case. These stipulated records illustrate reasoning; no real service execution or learner outcome is claimed.",

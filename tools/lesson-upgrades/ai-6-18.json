@@ -2,7 +2,7 @@
   "week": "ai-6/18",
   "title": "Untrusted input boundaries",
   "outcome": "Explain untrusted input boundaries using the deciding step in this fictional service.",
-  "scenario": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming.",
+  "scenario": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming.",
   "given": [
     "Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself."
   ],

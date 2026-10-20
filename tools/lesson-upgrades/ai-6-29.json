@@ -25,11 +25,11 @@
   ],
   "explanation": "A fair performance experiment holds the workload and measurement procedure fixed. Faster is not automatically preferable under a budget.",
   "counterfactual": {
-    "change": "Require at most 2 cost units per case.",
+    "change": "Require at most 2 cost units per case on average.",
     "prediction": "A meets the budget; B does not.",
     "reason": "The mandatory resource condition changes the decision."
   },
-  "student_task": "Calculate per-case seconds and cost units for A and B. Which meets a budget of at most 2 cost units per case, and what speed trade-off does that choice make?",
+  "student_task": "Calculate per-case seconds and cost units for A and B. Which meets a budget of at most 2 cost units per case on average, and what speed trade-off does that choice make?",
   "teacher_answer": "A averages 3 seconds; B averages 2 seconds per case. A averages 2 units; B averages 3 units per case. B saves one second but costs one extra unit per case. Changed case: A meets the budget; B does not. The mandatory resource condition changes the decision.",
   "project_evidence": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it.",
   "limits": "Means hide variation; disclose workload, repeated runs and slow-case results before generalising.",

@@ -99,3 +99,10 @@ See [the complete programme formatting report](reports/PROGRAMME_FORMATTING.md) 
 ## Complete weekly verification
 
 Three review agents and the parent reviewed all 264 lessons across 12,086 sections, corrected substantive rules and five stale engineering assessment keys, and refreshed affected illustrations and teaching editions. See [the complete review and validation record](reports/WEEKLY_REVIEW.md) and [every week’s record](reports/weekly-review.json).
+
+
+## Complete weekly presentation review
+
+All 264 lessons are now reviewed as complete student lessons, teacher guides and standalone workbooks across 12,086 sections. The review preserves original content and saved-response positions while improving headings, worked explanations, graphics, practice and teacher keys. All 792 Word and 792 PDF teaching downloads are verified; 297 supported Python examples execute in the bundled runtime.
+
+See the [completion record](reports/CONNECTED_READING_COMPLETION.md) and [final validation](reports/connected-programme-final-validation.json). The repository review navigator is `outputs/connected-reading-review/START_HERE.html`; the refreshed complete offline edition is `outputs/ai-academy-complete-programme/`. These checks do not establish classroom learning outcomes.

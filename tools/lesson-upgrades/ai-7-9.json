@@ -29,7 +29,7 @@
     "prediction": "Flag object-level leakage for this new-plant target.",
     "reason": "Evaluation now includes a plant already represented during training."
   },
-  "student_task": "Count independent plants and photo views. Construct the stated group-correct split, then explain why placing a P1 view in evaluation creates leakage for the new-plant goal.",
+  "student_task": "Count distinct plant units and photo views, and state the independence assumption. Construct the stated group-correct split, then explain why placing a P1 view in evaluation creates leakage for the new-plant goal.",
   "teacher_answer": "Four plants, not twelve independent plants, generated the observations. Assign whole plant IDs to training or evaluation. Train on P1,P2 and evaluate on P3,P4: six photos per split. Changed case: Flag object-level leakage for this new-plant target. Evaluation now includes a plant already represented during training.",
   "project_evidence": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it.",
   "limits": "Four plants offer little population coverage; even a group-correct split may be too small for broad conclusions.",

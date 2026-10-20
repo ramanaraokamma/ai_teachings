@@ -5829,7 +5829,7 @@
           "asset": "academy-story-ai-2-36-01",
           "number": 1,
           "title": "Capstone Expo: the case",
-          "alt": "A fictional team presents its transparent book recommender on a reserved catalogue. Supplied facts: Request maximum 120 pages; score=2×interest+illustrated, where illustrated is 1 for True and 0 for False; tie by ID. A pages120 interest3 True; B pages100 interest4 False; C pages121 interest5 True; D pages90 interest\"4\" True. Numeric fields require exact integers.",
+          "alt": "A fictional team presents its transparent book recommender on a supplied practice catalogue. Supplied facts: Request maximum 120 pages; score=2×interest+illustrated, where illustrated is 1 for True and 0 for False; tie by ID. A pages120 interest3 True; B pages100 interest4 False; C pages121 interest5 True; D pages90 interest\"4\" True. Numeric fields require exact integers.",
           "width": 1200,
           "height": 752,
           "source": [
@@ -5879,9 +5879,9 @@
           "asset": "academy-story-ai-2-36-05",
           "number": 5,
           "title": "Connect the explanation to its limit",
-          "alt": "A presentation should let someone rebuild the result from the stated contract. A’s equality is accepted; D is not silently converted; C’s high preference score cannot override the page requirement. Reversing rows must preserve B because it has the unique highest eligible score. Keep the reserved case distinct from practice demonstrations. Limit: A defensible algorithmic trace does not prove B will be liked or that classroom learning improved.",
+          "alt": "A presentation should let someone rebuild the result from the stated contract. A’s equality is accepted; D is not silently converted; C’s high preference score cannot override the page requirement. Reversing rows must preserve B because it has the unique highest eligible score. This pictured case is supported practice; keep the separately named independent activity task for a first attempt before feedback. Limit: A defensible algorithmic trace does not prove B will be liked or that classroom learning improved.",
           "width": 1200,
-          "height": 620,
+          "height": 643,
           "source": [
             "pictorial_case.explanation",
             "pictorial_case.limits"
@@ -12768,7 +12768,7 @@
           "asset": "academy-story-ai-5-12-05",
           "number": 5,
           "title": "Connect the explanation to its limit",
-          "alt": "Only the output weight v is being fitted in this toy network; the hidden ReLU is fixed. The training input gives hidden value three. Squared-error slope points v from zero towards one, and this specially chosen rate reaches one in a single update. Zero loss on one training pair is exact fitting of that pair, not evidence about other inputs. Limit: A zero loss on one example is memorised fit to that example, not proof of a generally useful image classifier.",
+          "alt": "Only the output weight v is being fitted in this toy network; the hidden ReLU is fixed. The training input gives hidden value three. Squared-error slope points v from zero towards one, and this specially chosen rate reaches one in a single update. Zero loss on one training pair is exact fitting of that pair, not evidence about other inputs. Limit: Zero loss on one example is an exact fit to that recorded example. It does not by itself establish memorisation or a generally useful image classifier.",
           "width": 1200,
           "height": 620,
           "source": [
@@ -15625,9 +15625,9 @@
           "asset": "academy-story-ai-6-11-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: Three failures misses the target by one request. Changed condition: Repair one failed request into a success in this window. Expected result: 98 successes and 2 failures meet the stated window target. Reason: One recorded outcome changes while the denominator stays 100.",
+          "alt": "Original case: Three failures misses the target by one request. Changed condition: Counterfactual: change one failed outcome to a success in a separate copy of this 100-request window. Expected result: 98 successes and 2 failures meet the stated window target. Reason: The counterfactual copy changes one outcome while its denominator stays 100; preserve the original 97-success/3-failure window.",
           "width": 1200,
-          "height": 662,
+          "height": 698,
           "source": [
             "pictorial_case.steps[-1]",
             "pictorial_case.counterfactual"
@@ -15834,7 +15834,7 @@
           "asset": "academy-story-ai-6-14-01",
           "number": 1,
           "title": "Planning and action selection: the case",
-          "alt": "Plan around missing evidence. A bot must answer a tower-height question using approved cards only. Supplied facts: Search finds no height card. Allowed actions: search, clarify, return unsupported. Unapproved web access is excluded.",
+          "alt": "Plan around missing evidence. A bot must answer a tower-height question using approved cards only. Supplied facts: Search finds no height card. Allowed actions: search, clarify, return unsupported, or answer from an approved card when its supporting record is present. Unapproved web access is excluded.",
           "width": 1200,
           "height": 620,
           "source": [
@@ -16023,9 +16023,9 @@
           "asset": "academy-story-ai-6-16-03",
           "number": 3,
           "title": "Timeouts retries and cancellation — evidence trace",
-          "alt": "Timeouts retries and cancellation — evidence trace. Three attempts each time out after 4 seconds with gaps 1 and 2. A fourth is proposed. | Retry only declared transient failures. Use at most three attempts with waiting gaps 1 and 2 seconds; each attempt may run at most 4 seconds. Worst-case elapsed bound excluding overhead is 3*4+1+2=15 seconds. | Budget is exhausted after 15 seconds under the model; reject fourth attempt. A late side-effect result must still be reconciled.",
+          "alt": "Timeouts retries and cancellation — evidence trace. Three attempts each time out after 4 seconds with gaps 1 and 2. A fourth is proposed. | Retry only declared transient failures. Use at most three attempts with waiting gaps 1 and 2 seconds; the caller waits at most 4 seconds for each attempt under the enforced local timeout model. Worst-case elapsed bound excluding overhead is 3*4+1+2=15 seconds. | Budget is exhausted after 15 seconds under the model; reject fourth attempt. A late side-effect result must still be reconciled.",
           "width": 1200,
-          "height": 688,
+          "height": 754,
           "source": [
             "sections.diagram:Timeouts retries and cancellation — evidence trace"
           ],
@@ -16162,7 +16162,7 @@
           "asset": "academy-story-ai-6-18-01",
           "number": 1,
           "title": "Untrusted input boundaries: the case",
-          "alt": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one digit, with no trimming. Supplied facts: Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself.",
+          "alt": "Check shape before permission. A toy tool accepts exactly one ASCII lowercase letter followed by one ASCII digit, with no trimming. Supplied facts: Inputs h3, H3, h30 and \"h3 \". Shape acceptance never grants access by itself.",
           "width": 1200,
           "height": 620,
           "source": [
@@ -16187,9 +16187,9 @@
           "asset": "academy-story-ai-6-18-03",
           "number": 3,
           "title": "Untrusted input boundaries — evidence trace",
-          "alt": "Untrusted input boundaries — evidence trace. Inputs A1 and delete_all() are supplied to room lookup. | For the toy lookup accept room IDs matching one uppercase letter plus one digit. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters. | A1 passes the format; delete_all() fails. Neither is executed as code, including any instruction-shaped string.",
+          "alt": "Untrusted input boundaries — evidence trace. Inputs A1 and delete_all() are supplied to room lookup. | For the toy lookup accept room IDs matching one ASCII uppercase letter plus one ASCII digit, with no trimming. Perform exact dictionary lookup; never evaluate user strings as code. Reject invalid length or characters. | A1 passes the format; delete_all() fails. Neither is executed as code, including any instruction-shaped string.",
           "width": 1200,
-          "height": 655,
+          "height": 688,
           "source": [
             "sections.diagram:Untrusted input boundaries — evidence trace"
           ],
@@ -16446,7 +16446,7 @@
           "asset": "academy-story-ai-6-21-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: Retrieve and cache version 5’s 09:30 under its own key. Changed condition: The next request still uses approved version 5. Expected result: The matching version -5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree.",
+          "alt": "Original case: Retrieve and cache version 5’s 09:30 under its own key. Changed condition: The next request still uses approved version 5. Expected result: The matching version 5 entry can supply 09:30 under the freshness policy. Reason: Request and cached source version now agree.",
           "width": 1200,
           "height": 662,
           "source": [
@@ -16472,7 +16472,7 @@
           "asset": "academy-story-ai-6-21-06",
           "number": 6,
           "title": "Make the idea visible in your project",
-          "alt": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it. Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version -5 request return, and what permits a later version -5 cache hit?",
+          "alt": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it. Draw your input, deciding step, result and limit. Supported question: Identify the version mismatch in the cached 09:00 answer. What should the first version 5 request return, and what permits a later version 5 cache hit?",
           "width": 1200,
           "height": 772,
           "source": [
@@ -16844,7 +16844,7 @@
           "asset": "academy-story-ai-6-26-03",
           "number": 3,
           "title": "Incident investigation — evidence trace",
-          "alt": "Incident investigation — evidence trace. At09:00 corpus updates; 09:05 stale cache response; 09:06 cache disabled. Team says model weights changed, but weight version is unchanged. | Record timestamps, versions, requests, authorised actions and outcomes with minimised logs. Separate immediate containment from diagnosis. Compare candidate explanations against evidence. | Weight-change claim is contradicted by the version record. Stale cache is a supported candidate explanation; preserve timeline and test it with controlled reproduction.",
+          "alt": "Incident investigation — evidence trace. At 09:00 corpus updates; 09:05 stale cache response; 09:06 cache disabled. Team says model weights changed, but weight version is unchanged. | Record timestamps, versions, requests, authorised actions and outcomes with minimised logs. Separate immediate containment from diagnosis. Compare candidate explanations against evidence. | Weight-change claim is contradicted by the version record. Stale cache is a supported candidate explanation; preserve timeline and test it with controlled reproduction.",
           "width": 1200,
           "height": 655,
           "source": [
@@ -17102,7 +17102,7 @@
           "asset": "academy-story-ai-6-29-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: B saves one second but costs one extra unit per case. Changed condition: Require at most 2 cost units per case. Expected result: A meets the budget; B does not. Reason: The mandatory resource condition changes the decision.",
+          "alt": "Original case: B saves one second but costs one extra unit per case. Changed condition: Require at most 2 cost units per case on average. Expected result: A meets the budget; B does not. Reason: The mandatory resource condition changes the decision.",
           "width": 1200,
           "height": 662,
           "source": [
@@ -17128,7 +17128,7 @@
           "asset": "academy-story-ai-6-29-06",
           "number": 6,
           "title": "Make the idea visible in your project",
-          "alt": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it. Draw your input, deciding step, result and limit. Supported question: Calculate per-case seconds and cost units for A and B. Which meets a budget of at most 2 cost units per case, and what speed trade-off does that choice make?",
+          "alt": "For the Grounded Learning Service, retain an annotated trace and the changed-case result. Name the contract or evidence that makes the deciding step valid, so another team can review it. Draw your input, deciding step, result and limit. Supported question: Calculate per-case seconds and cost units for A and B. Which meets a budget of at most 2 cost units per case on average, and what speed trade-off does that choice make?",
           "width": 1200,
           "height": 772,
           "source": [
@@ -17500,9 +17500,9 @@
           "asset": "academy-story-ai-6-34-03",
           "number": 3,
           "title": "Capstone failure testing — evidence trace",
-          "alt": "Capstone failure testing — evidence trace. Four cases: malformed request, student teacher-guide request, missing register, valid current record. Two deny, one reviews, one supports; no restricted reads occur. | Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace. Preserve failed fixtures for regression checks. | All four meet their expected condition if responses and traces agree. Denial/review are successful contract outcomes, not automatic test failures.",
+          "alt": "Capstone failure testing — evidence trace. Four cases: malformed request, student teacher-guide request, missing register, valid current record. One rejects invalid input, one denies access, one reviews and one supports; no restricted reads occur. | Use a failure matrix linking condition to expected response and forbidden calls. Test both visible result and operation trace. Preserve failed fixtures for regression checks. | All four meet their expected condition if responses and traces agree. Denial/review are successful contract outcomes, not automatic test failures.",
           "width": 1200,
-          "height": 622,
+          "height": 688,
           "source": [
             "sections.diagram:Capstone failure testing — evidence trace"
           ],
@@ -17746,7 +17746,7 @@
           "asset": "academy-story-ai-7-1-03",
           "number": 3,
           "title": "A question that evidence can answer — evidence trace",
-          "alt": "A question that evidence can answer — evidence trace. Proposal says prove AI is useful; available records are retrieval results for five room queries. | For fictional classroom retrieval, ask whether method B returns more relevant records than lexical baseline A on a reserved judged query set at cutoff3. Define eligible corpus and relevance rules before running. | Narrow to relevant retrieval at a declared cutoff on those queries. The supplied records cannot answer universal usefulness or deployment impact.",
+          "alt": "A question that evidence can answer — evidence trace. Proposal says prove AI is useful; available records are retrieval results for five room queries. | For fictional classroom retrieval, ask whether method B returns more relevant records than lexical baseline A on a reserved judged query set at cutoff 3. Define eligible corpus and relevance rules before running. | Narrow to relevant retrieval at a declared cutoff on those queries. The supplied records cannot answer universal usefulness or deployment impact.",
           "width": 1200,
           "height": 688,
           "source": [
@@ -17910,7 +17910,7 @@
           "asset": "academy-story-ai-7-3-03",
           "number": 3,
           "title": "Finding primary research — evidence trace",
-          "alt": "Finding primary research — evidence trace. A blog says experiment had100 cases; original methods say40 and supplementary version says60 after revision. | Record title, authors, version, date, identifier and access location. Distinguish paper, code, data and commentary. Verify that a quoted claim belongs to the cited version. | Track versions and use the correct original record for the claim. The blog is secondary; the two original versions must not be merged silently.",
+          "alt": "Finding primary research — evidence trace. A blog says experiment had 100 cases; original methods say 40 and supplementary version says 60 after revision. | Record title, authors, version, date, identifier and access location. Distinguish paper, code, data and commentary. Verify that a quoted claim belongs to the cited version. | Track versions and use the correct original record for the claim. The blog is secondary; the two original versions must not be merged silently.",
           "width": 1200,
           "height": 622,
           "source": [
@@ -18049,7 +18049,7 @@
           "asset": "academy-story-ai-7-5-01",
           "number": 1,
           "title": "Replication and reproduction: the case",
-          "alt": "Same records versus new experiment. A team first reruns a supplied analysis, then collects new records with the same protocol. Supplied facts: Original recorded labels: [1,0,1,1]. Analysis counts correct cases. New independent set: [1,1,0,0]. Binary entries mean 1=correct and 0=incorrect.",
+          "alt": "Same records versus new experiment. A team first reruns a supplied analysis, then collects new records with the same protocol. Supplied facts: Original recorded correctness flags: [1,0,1,1]. Analysis counts correct cases. New independent set: [1,1,0,0]. Binary entries mean 1=correct and 0=incorrect.",
           "width": 1200,
           "height": 620,
           "source": [
@@ -18238,7 +18238,7 @@
           "asset": "academy-story-ai-7-7-03",
           "number": 3,
           "title": "Hypotheses and measurable outcomes — evidence trace",
-          "alt": "Hypotheses and measurable outcomes — evidence trace. After seeing faster responses, the team changes its primary claim from support improvement to speed improvement. | Toy hypothesis:method B improves supported-answer rate over baseline A on a reserved paired set. Define support rubric and failure treatment; record secondary outcomes separately. | Report the change as exploratory/post-result revision. Preserve the original support hypothesis; do not present speed as the prespecified primary outcome.",
+          "alt": "Hypotheses and measurable outcomes — evidence trace. After seeing faster responses, the team changes its primary claim from support improvement to speed improvement. | Toy hypothesis: method B improves supported-answer rate over baseline A on a reserved paired set. Define support rubric and failure treatment; record secondary outcomes separately. | Report the change as exploratory/post-result revision. Preserve the original support hypothesis; do not present speed as the prespecified primary outcome.",
           "width": 1200,
           "height": 655,
           "source": [
@@ -18345,7 +18345,7 @@
           "asset": "academy-story-ai-7-8-05",
           "number": 5,
           "title": "Connect the explanation to its limit",
-          "alt": "A baseline anchors the claim of improvement. Fair comparison keeps information access, cases and scoring aligned while allowing the declared method difference. Limit: Eight cases do not establish a stable advantage or statistical significance.",
+          "alt": "A baseline anchors the claim of improvement. Fair comparison keeps information access, cases and scoring aligned while allowing the declared method difference. Limit: These eight-case aggregate results alone establish neither a stable advantage nor a reported statistical-significance result.",
           "width": 1200,
           "height": 620,
           "source": [
@@ -18440,9 +18440,9 @@
           "asset": "academy-story-ai-7-9-06",
           "number": 6,
           "title": "Make the idea visible in your project",
-          "alt": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it. Draw your input, deciding step, result and limit. Supported question: Count independent plants and photo views. Construct the stated group-correct split, then explain why placing a P1 view in evaluation creates leakage for the new-plant goal.",
+          "alt": "For the Reproducible AI Research Study, retain an annotated worked trace and the changed-case reasoning. Connect the claim to its records, units and assumptions so another investigator can challenge or reproduce it. Draw your input, deciding step, result and limit. Supported question: Count distinct plant units and photo views, and state the independence assumption. Construct the stated group-correct split, then explain why placing a P1 view in evaluation creates leakage for the new-plant goal.",
           "width": 1200,
-          "height": 805,
+          "height": 837,
           "source": [
             "pictorial_case.project_evidence",
             "pictorial_case.student_task"
@@ -19387,7 +19387,7 @@
           "asset": "academy-story-ai-7-21-03",
           "number": 3,
           "title": "Predefining an analysis plan — evidence trace",
-          "alt": "Predefining an analysis plan — evidence trace. Plan includes all20 cases. After results, the team removes four failed cases because they make the graph look worse. | Declare primary metric, eligible cases, missing handling, baseline, test assumptions and reporting. Timestamp/version the plan; label later choices exploratory. | The exclusion is outcome-informed and violates the plan. If the other 16 cases all passed, report the original 16/20; otherwise use the actual pass count out of 20, and label any revised analysis with reasons rather than hiding failures.",
+          "alt": "Predefining an analysis plan — evidence trace. Plan includes all 20 cases. After results, the team removes four failed cases because they make the graph look worse. | Declare primary metric, eligible cases, missing handling, baseline, test assumptions and reporting. Timestamp/version the plan; label later choices exploratory. | The exclusion is outcome-informed and violates the plan. If the other 16 cases all passed, report the original 16/20; otherwise use the actual pass count out of 20, and label any revised analysis with reasons rather than hiding failures.",
           "width": 1200,
           "height": 721,
           "source": [
@@ -20465,7 +20465,7 @@
           "asset": "academy-story-ai-7-34-04",
           "number": 4,
           "title": "Change one thing. Trace what follows.",
-          "alt": "Original case: Do not claim outdoor robustness or ten independent plants. Changed condition: The abstract calls the study a test on ten independent plants. Expected result: Correct it to five plants with two views each. Reason: The source-object count, not the photo count, defines the independent plants.",
+          "alt": "Original case: Do not claim outdoor robustness or ten independent plants. Changed condition: The abstract calls the study a test on ten independent plants. Expected result: Correct it to five plants with two views each. Reason: Five source plants have two views each; independence requires a justified sampling design.",
           "width": 1200,
           "height": 662,
           "source": [
@@ -20535,7 +20535,7 @@
           "asset": "academy-story-ai-7-35-03",
           "number": 3,
           "title": "Presentation and challenge session — evidence trace",
-          "alt": "Presentation and challenge session — evidence trace. A presenter shows one perfect output after a20-case study with14 passes. | Use a short sequence:question, design, primary result, failure, limitation, next question. Answer unfamiliar challenges by locating evidence or stating it is missing. | The demonstration is one example; study rate70%. Present aggregate and failures and do not call the best output representative without evidence.",
+          "alt": "Presentation and challenge session — evidence trace. A presenter shows one perfect output after a 20-case study with 14 passes. | Use a short sequence:question, design, primary result, failure, limitation, next question. Answer unfamiliar challenges by locating evidence or stating it is missing. | The demonstration is one example; study rate 70%. Present aggregate and failures and do not call the best output representative without evidence.",
           "width": 1200,
           "height": 655,
           "source": [

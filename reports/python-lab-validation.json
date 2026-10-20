@@ -1,6 +1,6 @@
 {
   "runtime": "314.0.7",
-  "examples": 143,
+  "examples": 297,
   "pilot_branch_checks": 11,
   "errors": [],
   "results": [
@@ -37,6 +37,14 @@
       "error": ""
     },
     {
+      "week": "ai-2/2",
+      "index": 2,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "24",
+      "error": ""
+    },
+    {
       "week": "ai-2/3",
       "index": 0,
       "expected_error": false,
@@ -50,6 +58,14 @@
       "expected_error": false,
       "passed": true,
       "stdout": "Short",
+      "error": ""
+    },
+    {
+      "week": "ai-2/3",
+      "index": 2,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Empty",
       "error": ""
     },
     {
@@ -69,6 +85,14 @@
       "error": ""
     },
     {
+      "week": "ai-2/4",
+      "index": 2,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "13",
+      "error": ""
+    },
+    {
       "week": "ai-2/5",
       "index": 0,
       "expected_error": false,
@@ -82,6 +106,14 @@
       "expected_error": false,
       "passed": true,
       "stdout": "3",
+      "error": ""
+    },
+    {
+      "week": "ai-2/5",
+      "index": 2,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "0",
       "error": ""
     },
     {
@@ -90,6 +122,14 @@
       "expected_error": false,
       "passed": true,
       "stdout": "True\nTrue\nTrue",
+      "error": ""
+    },
+    {
+      "week": "ai-2/6",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "18\n18\n12",
       "error": ""
     },
     {
@@ -141,11 +181,27 @@
       "error": ""
     },
     {
+      "week": "ai-2/14",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "0 1\n1 2\n0 clear blocked\ntree ['blocked', 'clear', 'clear', 'blocked'] 2 4\nbaseline blocked 2 4",
+      "error": ""
+    },
+    {
       "week": "ai-2/15",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "0 1\n1 2\n0 clear blocked",
+      "error": ""
+    },
+    {
+      "week": "ai-2/15",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "mystery? 4 4 4\npaperback? 6 2 6\nEnglish? 8 0 8\nchosen mystery?\nmystery? 4 0 4\npaperback? 3 1 3\nEnglish? 4 0 4\nafter mystery Yes paperback?",
       "error": ""
     },
     {
@@ -157,11 +213,35 @@
       "error": ""
     },
     {
+      "week": "ai-2/17",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "(6.0, 3)\n(5.0, 5.0)\n(None, None)",
+      "error": ""
+    },
+    {
       "week": "ai-2/18",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "[0, 12]\n3",
+      "error": ""
+    },
+    {
+      "week": "ai-2/18",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "[0, 4]\n4",
+      "error": ""
+    },
+    {
+      "week": "ai-2/18",
+      "index": 2,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "[0, 12, 60]\n5",
       "error": ""
     },
     {
@@ -197,11 +277,27 @@
       "error": ""
     },
     {
+      "week": "ai-2/21",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "(1, 1) {'A': 3, 'B': 2, 'C': 2, 'D': 7, 'E': 8, 'F': 3} ['B', 'C']\n(2, 1) {'A': 3, 'B': 4, 'C': 3, 'D': 9, 'E': 11, 'F': 6} ['A', 'C']",
+      "error": ""
+    },
+    {
       "week": "ai-2/22",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "['A', 'B', 'C']\nclear",
+      "error": ""
+    },
+    {
+      "week": "ai-2/22",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "query3 1 (['A'], 'blocked')\nquery3 3 (['A', 'B', 'C'], 'clear')\n3 ['A', 'B', 'C'] clear blocked\n9 ['C', 'D', 'E'] clear blocked\n11 ['D', 'E', 'C'] clear clear\nvalidation 1 3\nbaseline clear 1 3",
       "error": ""
     },
     {
@@ -213,6 +309,14 @@
       "error": ""
     },
     {
+      "week": "ai-2/23",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "weight 2 scores {'A': 8, 'C': 9} review [('B', 'exceeds time limit')]\ntop ['C'] chosen C\nweight 3 scores {'A': 11, 'C': 11} review [('B', 'exceeds time limit')]\ntop ['A', 'C'] chosen A",
+      "error": ""
+    },
+    {
       "week": "ai-2/24",
       "index": 0,
       "expected_error": false,
@@ -221,11 +325,35 @@
       "error": ""
     },
     {
+      "week": "ai-2/24",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "click-count policy\n(1, 'A', True, {'A': 1, 'B': 0}, {'A': 1, 'B': 0})\n(2, 'A', True, {'A': 2, 'B': 0}, {'A': 2, 'B': 0})\n(3, 'A', True, {'A': 3, 'B': 0}, {'A': 3, 'B': 0})\ndisplays {'A': 3, 'B': 0} clicks {'A': 3, 'B': 0}\nplanned exposure\n(1, 'A', True, {'A': 1, 'B': 0}, {'A': 1, 'B': 0})\n(2, 'B', False, {'A': 1, 'B': 1}, {'A': 1, 'B': 0})\n(3, 'A', True, {'A': 2, 'B': 1}, {'A': 2, 'B': 0})\ndisplays {'A': 2, 'B': 1} clicks {'A': 2, 'B': 0}",
+      "error": ""
+    },
+    {
+      "week": "ai-2/25",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "'cats sat' [1, 5, 6, 7] None\ndecoded 'cats sat' text tokens 4\n'c at' [2, 6, 3, 4] None\ndecoded 'c at' text tokens 4\n'Cat' [] (0, 'C')\n'cat!' [1] (3, '!')\ncharacter-only [2, 3, 4, 5, 6, 5, 3, 4] 8 None",
+      "error": ""
+    },
+    {
       "week": "ai-2/30",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "looking_up",
+      "error": ""
+    },
+    {
+      "week": "ai-2/30",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "complete; lookups=1\ninvalid edge: review->looking_up\nlookup budget exceeded\nincomplete; lookups=1",
       "error": ""
     },
     {
@@ -269,6 +397,22 @@
       "error": ""
     },
     {
+      "week": "ai-2/33",
+      "index": 2,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "[('D', 3), ('A', 2), ('B', 1)]\n[('A', 2), ('B', 1)]\n[]",
+      "error": ""
+    },
+    {
+      "week": "ai-2/33",
+      "index": 3,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "{'winner': 'A', 'ranked': [('A', 8), ('C', 8)], 'accepted': 3, 'rejected': [(4, 'invalid fun')], 'ineligible': ['B']}\n[('A', 8), ('C', 8)]\nNone\n{'error': 'invalid request'}",
+      "error": ""
+    },
+    {
       "week": "ai-2/34",
       "index": 0,
       "expected_error": false,
@@ -293,6 +437,14 @@
       "error": ""
     },
     {
+      "week": "ai-2/35",
+      "index": 2,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "{'winner': 'A', 'ranked': [('A', 8), ('C', 8)], 'accepted': 3, 'rejected': [(4, 'invalid fun')], 'ineligible': ['B']}\n[('A', 8), ('C', 8)]\nNone\n{'error': 'invalid request'}\n5 integration checks passed",
+      "error": ""
+    },
+    {
       "week": "ai-2/36",
       "index": 0,
       "expected_error": false,
@@ -301,11 +453,67 @@
       "error": ""
     },
     {
+      "week": "ai-2/36",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "{'supplied': 4, 'accepted': 3, 'rejected': [(4, 'invalid interest')], 'eligible': 2, 'ranked': [('B', 8), ('A', 7)], 'selected': 'B', 'over_limit': ['C']}\n{'supplied': 4, 'accepted': 4, 'rejected': [], 'eligible': 3, 'ranked': [('D', 9), ('B', 8), ('A', 7)], 'selected': 'D', 'over_limit': ['C']}",
+      "error": ""
+    },
+    {
+      "week": "ai-3/2",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "{('ready', 'end'): Fraction(2, 5), ('ready', 'today'): Fraction(1, 10), ('busy', 'end'): Fraction(3, 20), ('busy', 'today'): Fraction(3, 20), ('unknown', 'end'): Fraction(1, 5), ('unknown', 'today'): Fraction(0, 1)}\nall paths: 1\nend paths: 3/4\nsun/rain ends: {'sun': Fraction(11, 50), 'rain': Fraction(81, 200)} total: 5/8",
+      "error": ""
+    },
+    {
+      "week": "ai-3/3",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "'Ada!' [1, 4] None\n'AI🙂' [2, 5] None\n'schoolbook' [8] None\n'school book' [6, 3, 7] None\n'ada' [] (0, 'a')",
+      "error": ""
+    },
+    {
+      "week": "ai-3/4",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "T=0.5: [Fraction(18, 23), Fraction(9, 46), Fraction(1, 46)]\n1/5 red red\n3/5 blue red\n9/10 green blue\nT=1 ['red', 'red', 'blue', 'blue', 'green'] {'red': 2, 'blue': 2, 'green': 1}\nT=0.5 ['red', 'red', 'red', 'blue', 'blue'] {'red': 3, 'blue': 2, 'green': 0}",
+      "error": ""
+    },
+    {
+      "week": "ai-3/6",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "original 3 of 4 full pass: False\nchanged 2 of 4 full pass: False\nrepaired 4 of 4 full pass: True",
+      "error": ""
+    },
+    {
+      "week": "ai-3/8",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "1 accepted\n2 syntax\n3 schema: capacity\n4 schema: capacity\n5 schema: exact fields required\n6 semantic: unsupported claims",
+      "error": ""
+    },
+    {
       "week": "ai-3/22",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "{\"accepted\": true, \"minutes\": 12}",
+      "error": ""
+    },
+    {
+      "week": "ai-3/22",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "1 accepted {\"accepted\": true, \"minutes\": 12}\n2 syntax {\"accepted\": false, \"minutes\": null}\n3 schema: top-level object {\"accepted\": false, \"minutes\": null}\n4 schema: exact fields {\"accepted\": false, \"minutes\": null}\n5 schema: integer minutes {\"accepted\": false, \"minutes\": null}\n6 schema: integer minutes {\"accepted\": false, \"minutes\": null}\n7 schema: minutes range {\"accepted\": false, \"minutes\": null}\n8 accepted {\"accepted\": true, \"minutes\": 0}",
       "error": ""
     },
     {
@@ -325,11 +533,35 @@
       "error": ""
     },
     {
+      "week": "ai-3/23",
+      "index": 2,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "2\n1\n0",
+      "error": ""
+    },
+    {
       "week": "ai-3/31",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "True",
+      "error": ""
+    },
+    {
+      "week": "ai-3/31",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "True\nTrue\n{'status': 'found', 'capacity': 12}\n{'status': 'not_authorised'}\n{'status': 'invalid_input'}",
+      "error": ""
+    },
+    {
+      "week": "ai-3/34",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "{'source_id': 'E2', 'procedure': {'cups': 3, 'days': 4}, 'losses_ml': None, 'all_lost_half': None}\n{'source_id': 'E3', 'procedure': {'cups': 3, 'days': 4}, 'losses_ml': [1, 2, 3], 'all_lost_half': None}",
       "error": ""
     },
     {
@@ -341,6 +573,14 @@
       "error": ""
     },
     {
+      "week": "ai-4/1",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "training [(1, 2), (0, 4), (1, 6)]\nfrozen threshold 4\ntest predictions [0, 1]\ntest correct 2 of 2",
+      "error": ""
+    },
+    {
       "week": "ai-4/2",
       "index": 0,
       "expected_error": false,
@@ -349,11 +589,27 @@
       "error": ""
     },
     {
+      "week": "ai-4/2",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "[96, 4] 0\n[96, 4] 1\n[80, 0] target unavailable",
+      "error": ""
+    },
+    {
       "week": "ai-4/3",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "2 3\n[1, 1, 2]",
+      "error": ""
+    },
+    {
+      "week": "ai-4/3",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "boundary 6 cm\nclasses [0, 1, 1] [0, 0, 1]\ncorrect 2 of 3\nMAE 1.0 cm\nboundary 7 cm\nclasses [0, 0, 1] [0, 0, 1]\ncorrect 3 of 3\nMAE 1.0 cm",
       "error": ""
     },
     {
@@ -413,6 +669,14 @@
       "error": ""
     },
     {
+      "week": "ai-4/7",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "A 10 10\nday A 9\nday B 0\nevening A 1\nevening B 0\nB 12 12\nday A 3\nday B 3\nevening A 3\nevening B 3",
+      "error": ""
+    },
+    {
       "week": "ai-4/8",
       "index": 0,
       "expected_error": false,
@@ -442,6 +706,14 @@
       "expected_error": false,
       "passed": true,
       "stdout": "clear 2 4",
+      "error": ""
+    },
+    {
+      "week": "ai-4/10",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "clear ['clear', 'clear', 'clear', 'clear'] {'correct': 2, 'total': 4, 'blocked_found': 0, 'blocked_total': 2, 'blocked_recall': 0.0}\n['blocked', 'clear', 'clear', 'clear'] {'correct': 3, 'total': 4, 'blocked_found': 1, 'blocked_total': 2, 'blocked_recall': 0.5}",
       "error": ""
     },
     {
@@ -493,11 +765,27 @@
       "error": ""
     },
     {
+      "week": "ai-4/14",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "low 10 0.2 2 0.2\nmiddle 10 0.5 7 0.7\nhigh 10 0.8 6 0.6",
+      "error": ""
+    },
+    {
       "week": "ai-4/15",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "[[2, 1], [2, 3]]\n5 8",
+      "error": ""
+    },
+    {
+      "week": "ai-4/15",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "['spotted', 'healthy'] [[4, 1], [3, 12]]\n16 20 0.8",
       "error": ""
     },
     {
@@ -517,6 +805,14 @@
       "error": ""
     },
     {
+      "week": "ai-4/17",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "0.4 {'tp': 4, 'fp': 2, 'fn': 1, 'tn': 3, 'precision': 0.6666666666666666, 'recall': 0.8, 'accuracy': 0.7}\n0.7 {'tp': 3, 'fp': 0, 'fn': 2, 'tn': 5, 'precision': 1.0, 'recall': 0.6, 'accuracy': 0.8}",
+      "error": ""
+    },
+    {
       "week": "ai-4/18",
       "index": 0,
       "expected_error": false,
@@ -533,6 +829,14 @@
       "error": ""
     },
     {
+      "week": "ai-4/19",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "([-1, 1, -2, 2, -4, 4], 0.0, 2.3333333333333335)",
+      "error": ""
+    },
+    {
       "week": "ai-4/20",
       "index": 0,
       "expected_error": false,
@@ -541,11 +845,27 @@
       "error": ""
     },
     {
+      "week": "ai-4/20",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "{'mean': 6, 'median': 5.0}\n{'mean': {'constant': 6, 'absolute_errors': [2, 2], 'mae': 2}, 'median': {'constant': 5.0, 'absolute_errors': [1.0, 3.0], 'mae': 2.0}}\n{'mean': 13, 'median': 5.0}\n{'mean': {'constant': 13, 'absolute_errors': [9, 5], 'mae': 7}, 'median': {'constant': 5.0, 'absolute_errors': [1.0, 3.0], 'mae': 2.0}}",
+      "error": ""
+    },
+    {
       "week": "ai-4/21",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "2.0 4.666666666666667 2.160246899469287",
+      "error": ""
+    },
+    {
+      "week": "ai-4/21",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "candidate [0, 0, 6] {'mae': 2.0, 'mse': 12.0, 'rmse': 3.4641016151377544}\nmean baseline [3.0, 3.0, 3.0] {'mae': 3.0, 'mse': 9.0, 'rmse': 3.0}",
       "error": ""
     },
     {
@@ -565,6 +885,14 @@
       "error": ""
     },
     {
+      "week": "ai-4/22",
+      "index": 2,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "[5, 3, 0] (2, 1)\n([7, 9], [-1, 1], 1, 1)\ntraining mean 3 ([3, 3], [3, 7], 5, 29)",
+      "error": ""
+    },
+    {
       "week": "ai-4/25",
       "index": 0,
       "expected_error": false,
@@ -581,6 +909,30 @@
       "error": ""
     },
     {
+      "week": "ai-4/26",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "11 14 20\n22 16 20\n33 12 20\nmean 0.7\nrange percentage points 20.0",
+      "error": ""
+    },
+    {
+      "week": "ai-4/27",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "0 3 4 3 4\n1 3 4 3 4\n2 4 4 2 4",
+      "error": ""
+    },
+    {
+      "week": "ai-4/28",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "P (10, 7, 8, 7, 9)\nP (20, 7, 8, 7, 9)\nP (40, 7, 8, 7, 9)\nQ (10, 1, 9, 8, 10)\nQ (20, 1, 8, 7, 9)\nQ (40, 1, 8, 7, 9)\nR (10, 1, 8, 7, 9)\nR (20, 2, 6, 5, 7)\nR (40, 3, 5, 4, 6)",
+      "error": ""
+    },
+    {
       "week": "ai-4/29",
       "index": 0,
       "expected_error": false,
@@ -589,11 +941,67 @@
       "error": ""
     },
     {
+      "week": "ai-4/29",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "6.666666666666667 10 3.333333333333333\n{'width_cm': 3.0, 'area_cm2': 36.0, 'length_over_width': 4.0}\n{'width_cm': 0, 'area_cm2': 0, 'length_over_width': None}",
+      "error": ""
+    },
+    {
+      "week": "ai-4/30",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "V1 1 [0, 0] [1, 0, 1, 0] 2 4\nV2 2 [4, 0] [1, 1, 0, 0] 4 4",
+      "error": ""
+    },
+    {
+      "week": "ai-4/31",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "light bright {'errors': 0, 'count': 10, 'error_rate': 0.0, 'positive_found': 5, 'positive_count': 5, 'recall': 1.0}\nlight dim {'errors': 5, 'count': 15, 'error_rate': 0.3333333333333333, 'positive_found': 6, 'positive_count': 8, 'recall': 0.75}\ntype Alpha {'errors': 2, 'count': 10, 'error_rate': 0.2, 'positive_found': 5, 'positive_count': 5, 'recall': 1.0}\ntype Beta {'errors': 3, 'count': 15, 'error_rate': 0.2, 'positive_found': 6, 'positive_count': 8, 'recall': 0.75}\ncamera A {'errors': 2, 'count': 20, 'error_rate': 0.1, 'positive_found': 10, 'positive_count': 10, 'recall': 1.0}\ncamera B {'errors': 3, 'count': 5, 'error_rate': 0.6, 'positive_found': 1, 'positive_count': 3, 'recall': 0.3333333333333333}\ncamera C {'errors': 0, 'count': 0, 'error_rate': None, 'positive_found': 0, 'positive_count': 0, 'recall': None}\npooled {'errors': 5, 'count': 25, 'error_rate': 0.2, 'positive_found': 11, 'positive_count': 13, 'recall': 0.8461538461538461}",
+      "error": ""
+    },
+    {
+      "week": "ai-4/32",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "V1 camera_code [0, 0, 0] (4, 8, 2, 4)\ngreenhouse (2, 4, 1, 2)\ndesk (2, 4, 1, 2)\nV2-camera-removed room_hint [0, 0] (4, 8, 2, 4)\ngreenhouse (2, 4, 2, 2)\ndesk (2, 4, 0, 2)",
+      "error": ""
+    },
+    {
       "week": "ai-4/34",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "accuracy 0.8\nprecision 0.6666666666666666\nrecall 0.6666666666666666",
+      "error": ""
+    },
+    {
+      "week": "ai-4/34",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "roles 40 20 12\ntraining clear/blocked 22 18\nfrozen baseline clear\nvalidation correct/total 9 20\nvalidation blocked found/total 0 11\nfinal references absent: not scored",
+      "error": ""
+    },
+    {
+      "week": "ai-4/35",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "roles 40 20 12\ntraining clear/blocked 22 18\nfrozen baseline clear\nvalidation correct/total 9 20\nvalidation blocked found/total 0 11\nfinal references absent: not scored\nvalidation baseline TN FP FN TP [9, 0, 11, 0]\nV1 training correct/40 30\nV1 validation TN FP FN TP [9, 0, 7, 4]\nV1 validation errors ['P24', 'P42', 'P49', 'P56', 'P60', 'P64', 'P67']\nV2 training correct/40 40\nV2 validation TN FP FN TP [9, 0, 3, 8]\nV2 validation errors ['P24', 'P56', 'P64']\nV2 gains ['P42', 'P49', 'P60', 'P67'] regressions []\nfrozen choice V2\nfrozen final prediction ledger [('P03', 'clear'), ('P07', 'blocked'), ('P14', 'clear'), ('P21', 'clear'), ('P25', 'blocked'), ('P32', 'blocked'), ('P39', 'blocked'), ('P43', 'blocked'), ('P50', 'blocked'), ('P57', 'blocked'), ('P61', 'blocked'), ('P68', 'blocked')]\nFinal score withheld: teacher reference release and freeze check required.",
+      "error": ""
+    },
+    {
+      "week": "ai-4/36",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "candidate {'cells': [7, 1, 2, 2], 'correct': 9, 'total': 12, 'precision': 0.6666666666666666, 'recall': 0.5, 'errors': ['R08', 'R09', 'R10']}\nbaseline {'cells': [8, 0, 4, 0], 'correct': 8, 'total': 12, 'precision': None, 'recall': 0.0, 'errors': ['R09', 'R10', 'R11', 'R12']}\nPaper arithmetic reproduced; actual training/code/split provenance remains unprovided.",
       "error": ""
     },
     {
@@ -725,11 +1133,35 @@
       "error": ""
     },
     {
+      "week": "ai-5/16",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "main stop / selected saved epoch 6 4\nobserved trace: epoch, loss, misses, best epoch, action\n(0, 4, 0, 0, 'save initial best')\n(1, 2, 0, 1, 'save improved best')\n(2, 1.5, 0, 2, 'save improved best')\n(3, 1.6, 1, 2, 'wait')\n(4, 1.4, 0, 4, 'save improved best')\n(5, 1.45, 1, 4, 'wait')\n(6, 1.46, 2, 4, 'stop; select saved best')\npicture patience 1, checkpoints numbered from 1: (3, 2)\npicture patience 2, checkpoints numbered from 1: (4, 2)\nPolicy decisions replayed. Actual saved model files are not supplied or restored by this program.",
+      "error": ""
+    },
+    {
       "week": "ai-5/17",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "[0.0439678194249864, 0.6133815542373582, 0.9209895486477535, -0.420749244471069]\n0.0 [0.0, 1.0, 1.5]\n1.0 [1.0, 1.5, 1.75]\n3.0 [3.0, 2.5, 2.25]",
+      "error": ""
+    },
+    {
+      "week": "ai-5/17",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "old [u,v,a,b] [1.0, 1.0, 1.0, 1.0] output 2.0\ngradients [2.0, 2.0, 2.0, 2.0]\nnew [u,v,a,b] [0.8, 0.8, 0.8, 0.8]\nnew output/loss 1.28 0.0784\nidentical units remain identical True\nall-zero start gradients [-0.0, -0.0, -0.0, -0.0]\nhidden activations u1/v-1 at x1 [1, 0]\nhidden activations u1/v-1 at x-1 [0, 1]",
+      "error": ""
+    },
+    {
+      "week": "ai-5/17",
+      "index": 2,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "identical calls repeat True\nextra preview keeps assigned weights equal False\nnormal assigned values [0.0439678194249864, 0.6133815542373582, 0.9209895486477535, -0.420749244471069]\nshifted assigned values [0.6133815542373582, 0.9209895486477535, -0.420749244471069, 0.5322148755959053]",
       "error": ""
     },
     {
@@ -741,11 +1173,27 @@
       "error": ""
     },
     {
+      "week": "ai-5/18",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "a reported/numerical/formula -12.0 -8.0 -8.0\nreported entry agrees False\nc reported/numerical/formula -8.0 -12.0 -12.0\nreported entry agrees False\ncorrect new [a,c] [1.08, 0.12]\nprediction/loss 2.52 2.1904\nsame gradient in [c,a] order [-12.0, -8.0]",
+      "error": ""
+    },
+    {
       "week": "ai-5/19",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "[4, 2] [2, 0] 1\n[2, 4] [0, 2] 0\n[3, 3] [0, 0] 0\n[5, 3] [2, 0] 1",
+      "error": ""
+    },
+    {
+      "week": "ai-5/19",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "input (4, 2) h [2, 0] sum 6 recovered (4.0, 2.0) area 8.0\ninput (5, 3) h [2, 0] sum 8 recovered (5.0, 3.0) area 15.0\ninput (2, 4) h [0, 2] sum 6 recovered (2.0, 4.0) area 8.0\ninput (3, 3) h [0, 0] sum 6 recovered (3.0, 3.0) area 9.0\nh alone collides: True\nsum alone collides: True but wider targets differ: 1 0",
       "error": ""
     },
     {
@@ -757,11 +1205,27 @@
       "error": ""
     },
     {
+      "week": "ai-5/20",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "raw RGB [255, 128, 0]\nscaled once [1.0, 0.501961, 0.0]\nscaled twice [0.003922, 0.001968, 0.0]\nundo one division [255.0, 128.0, 0.0]\nraw red / green [255, 0, 0] [0, 255, 0]\nsimple channel means 85.0 85.0\nred with RGB values reversed [0, 0, 255]\nboundary scaling 0.0 1.0",
+      "error": ""
+    },
+    {
       "week": "ai-5/21",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "",
+      "error": ""
+    },
+    {
+      "week": "ai-5/21",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "original [[0, 5], [-1, -1]]\none input changed [[3, 5], [-1, -1]]\nstride 2 [[0]]\none zero border [[1, 2, 0, 0], [-1, 0, 5, 0], [2, -1, -1, 3], [-2, 2, -1, 1]]\nflipped kernel [[1, 0], [-1, 1]] map [[2, 4], [-2, 2]]\nReLU after raw sums [[0, 5], [0, 0]]\nshared bias 2 [[2, 7], [1, 1]]\n4 shared weights, 16 products, 5 parameters if one shared bias is added",
       "error": ""
     },
     {
@@ -773,11 +1237,27 @@
       "error": ""
     },
     {
+      "week": "ai-5/22",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "different positions, same summaries ([[4]], [[1.0]]) ([[4]], [[1.0]])\nall-negative window ([[-2]], [[-4.0]])\nignored incomplete boundary ([[4]], [[2.5]])\ncross boundary before max/mean [[8, 0]] [[2.0, 0.0]]\ncross boundary after max/mean [[0, 8]] [[0.0, 2.0]]\nhead class1 if left max>0: 1 0\nmax plus position still collides: (5, (0, 0)) (5, (0, 0))",
+      "error": ""
+    },
+    {
       "week": "ai-5/23",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "0 0.0 1.0 1.0\n1 0.3 0.325 0.49\n2 0.45 0.15625 0.3025",
+      "error": ""
+    },
+    {
+      "week": "ai-5/23",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "0 0.0 1.0 1.0\n1 0.3 0.325 0.49\n2 0.45 0.15625 0.3025\nselected checkpoint / weight 2 0.45\ntraining class counts 1/0 2 2 frozen baseline 0\ntraining {'id': 'A', 'd': 1, 'hidden': [1, 0], 'score': 0.45, 'class': 1, 'prediction': 1, 'baseline': 0}\ntraining {'id': 'B', 'd': 2, 'hidden': [2, 0], 'score': 0.9, 'class': 1, 'prediction': 1, 'baseline': 0}\ntraining {'id': 'C', 'd': -1, 'hidden': [0, 1], 'score': -0.45, 'class': 0, 'prediction': 0, 'baseline': 0}\ntraining {'id': 'D', 'd': -2, 'hidden': [0, 2], 'score': -0.9, 'class': 0, 'prediction': 0, 'baseline': 0}\ntraining candidate / baseline correct / total 4 2 4\nvalidation {'id': 'E', 'd': 1, 'hidden': [1, 0], 'score': 0.45, 'class': 1, 'prediction': 1, 'baseline': 0}\nvalidation {'id': 'F', 'd': -1, 'hidden': [0, 1], 'score': -0.45, 'class': 0, 'prediction': 0, 'baseline': 0}\nvalidation candidate / baseline correct / total 2 1 2\npublic equal-column-sum probe d/hidden/score/class (0, [0, 0], 0.0, 0)\nFinal cases absent. Save selected parameters and protocol before teacher release.",
       "error": ""
     },
     {
@@ -789,11 +1269,35 @@
       "error": ""
     },
     {
+      "week": "ai-5/24",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "all 16 binary patterns: row swaps preserve labels; column swaps require the declared rule\ntraining groups / retained records 2 4\nvalidation groups / retained records 1 1\nfinal groups / retained records 2 2\nretained / excluded 7 3\nclean recorded-group / exact-pixel overlaps ({}, [])\nnew filename does not repair shared source: {'P': ['training', 'validation']}\ndifferent claimed source, same pixels: ({}, [[('P-row_swap', 'training'), ('claimed-U-original', 'validation')]])\nAudit only: exact pixels do not prove real-object identity; missing provenance still needs review.\nAny affected fitting/selection must be rerun after a justified split repair; no repaired score is supplied.",
+      "error": ""
+    },
+    {
       "week": "ai-5/25",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "",
+      "error": ""
+    },
+    {
+      "week": "ai-5/25",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "['GO', 'STOP'] IDs [2, 4, 0, 0] mask [1, 1, 0, 0] real length 2\n['STOP', 'GO'] IDs [4, 2, 0, 0] mask [1, 1, 0, 0] real length 2\n['WAIT', 'STOP'] IDs [1, 4, 0, 0] mask [1, 1, 0, 0] real length 2",
+      "error": ""
+    },
+    {
+      "week": "ai-5/25",
+      "index": 2,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "['GO', 'STOP'] IDs [2, 4, 0, 0] mask [1, 1, 0, 0] final position/ID/result (1, 4, 'yes')\n['STOP', 'GO'] IDs [4, 2, 0, 0] mask [1, 1, 0, 0] final position/ID/result (1, 2, 'no')\n['WAIT', 'GO'] IDs [1, 2, 0, 0] mask [1, 1, 0, 0] final position/ID/result (1, 2, 'no')\n['PAUSE', 'GO'] IDs [1, 2, 0, 0] mask [1, 1, 0, 0] final position/ID/result (1, 2, 'no')\n['GO', 'WAIT'] IDs [2, 1, 0, 0] mask [1, 1, 0, 0] final position/ID/result (1, 1, 'review')\nsensor masked mean 2.0\nincorrect all-slot mean 1.0\nincorrect discard-zero mean 4.0\npadding-only numeric changes leave masked mean 2.0\ncount collision ['GO', 'TURN', 'STOP'] ['STOP', 'TURN', 'GO'] both counts [1, 1, 1]",
       "error": ""
     },
     {
@@ -805,11 +1309,35 @@
       "error": ""
     },
     {
+      "week": "ai-5/26",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "GO query nearest among TURN/STOP/WAIT ['TURN']\nquery [1,0] squared distances {'GO': 1, 'TURN': 1, 'STOP': 5, 'WAIT': 2}\nquery [1,0] all nearest ties ['GO', 'TURN']",
+      "error": ""
+    },
+    {
+      "week": "ai-5/26",
+      "index": 2,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "table shape 6 2 sequence shape 4 2\nlooked-up sequence [[2, 0], [0, 2], [0, 0], [0, 0]] mask [1, 1, 0, 0]\nmasked mean [1.0, 1.0]\nincorrect all-slot mean [0.5, 0.5]\nreal UNK retained [-0.5, 0.5]\nquery [1,0] squared distances {'GO': 1, 'TURN': 1, 'STOP': 5, 'WAIT': 2}\nall nearest ties ['GO', 'TURN']\nGO STOP / STOP GO same masked mean [1.0, 1.0] [1.0, 1.0]\nisolated GO-row gradient / new vector [4, -4] [1.0, 1.0]\nartificial objective before/after 8 2.0\nGO now collides with frozen TURN True",
+      "error": ""
+    },
+    {
       "week": "ai-5/27",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "A 1.0\nB 0.6\nC -1.0",
+      "error": ""
+    },
+    {
+      "week": "ai-5/27",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "A 1.0\nB 0.6\nC -1.0\nquery unit vector [0.6, 0.8]\nA raw d2 / cosine / unit d2 / 2-2cos 25 1.0 0.0 0.0\nB raw d2 / cosine / unit d2 / 2-2cos 16 0.6 0.8 0.8\nC raw d2 / cosine / unit d2 / 2-2cos 100 -1.0 4.0 4.0\nraw winner B\ncosine winners ['A']\nzero candidate report (['B'], ['Z'], {'B': 0.6})\nonly zero candidate: no comparison ([], ['Z'], {})\nperpendicular nonzero cosine 0.0\npositive/negative scaling cosines 1.0 -1.0\nsame unit vector, different totals 7 14",
       "error": ""
     },
     {
@@ -821,11 +1349,27 @@
       "error": ""
     },
     {
+      "week": "ai-5/28",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Threshold mistakes: [(3, 1), (5, 0), (7, 1)]\nTraining label counts: {0: 2, 1: 2} baseline: 0\nValidation: name, h, label, head, baseline [('V1', 3, 0, 0, 0), ('V2', 7, 1, 1, 0)]\nCorrect on same two rows: 2 1\nCollision h: 4 4 supplied repair: 0 1",
+      "error": ""
+    },
+    {
       "week": "ai-5/29",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "(0.5, 0.6666666666666666, 0.5)",
+      "error": ""
+    },
+    {
+      "week": "ai-5/29",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "0.5 {'ledger': [('A', 1, 0.95, True, True), ('B', 1, 0.9, False, True), ('C', 1, 0.8, True, True), ('D', 1, 0.6, False, True), ('E', 0, 0.55, True, True), ('F', 0, 0.9, False, True)], 'total': 6, 'correct': 3, 'accepted': ['A', 'B', 'C', 'D', 'E', 'F'], 'deferred': [], 'coverage': 1.0, 'accepted_accuracy': 0.5}\n0.8 {'ledger': [('A', 1, 0.95, True, True), ('B', 1, 0.9, False, True), ('C', 1, 0.8, True, True), ('D', 1, 0.6, False, False), ('E', 0, 0.55, True, False), ('F', 0, 0.9, False, True)], 'total': 6, 'correct': 3, 'accepted': ['A', 'B', 'C', 'F'], 'deferred': ['D', 'E'], 'coverage': 0.6666666666666666, 'accepted_accuracy': 0.5}\n0.95 {'ledger': [('A', 1, 0.95, True, True), ('B', 1, 0.9, False, False), ('C', 1, 0.8, True, False), ('D', 1, 0.6, False, False), ('E', 0, 0.55, True, False), ('F', 0, 0.9, False, False)], 'total': 6, 'correct': 3, 'accepted': ['A'], 'deferred': ['B', 'C', 'D', 'E', 'F'], 'coverage': 0.16666666666666666, 'accepted_accuracy': 1.0}\n0.99 {'ledger': [('A', 1, 0.95, True, False), ('B', 1, 0.9, False, False), ('C', 1, 0.8, True, False), ('D', 1, 0.6, False, False), ('E', 0, 0.55, True, False), ('F', 0, 0.9, False, False)], 'total': 6, 'correct': 3, 'accepted': [], 'deferred': ['A', 'B', 'C', 'D', 'E', 'F'], 'coverage': 0.0, 'accepted_accuracy': None}\nConfusion counts: {'TP': 2, 'TN': 1, 'FP': 2, 'FN': 1}\nclear 3 / 3\nblurred 0 / 3\nPicture cutoff .85: {'ledger': [('A', 1, 0.9, False, True), ('B', 1, 0.6, True, False), ('C', 0, 0.8, True, False)], 'total': 3, 'correct': 2, 'accepted': ['A'], 'deferred': ['B', 'C'], 'coverage': 0.3333333333333333, 'accepted_accuracy': 0.0}",
       "error": ""
     },
     {
@@ -837,11 +1381,27 @@
       "error": ""
     },
     {
+      "week": "ai-5/30",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Development: {'cases': 100, 'correct': 82, 'errors': 18, 'accuracy': 0.82, 'weighted_accuracy': 0.8200000000000001, 'groups': [('clear', 80, 72, 0.9), ('dim', 20, 10, 0.5)]}\nNew use: {'cases': 100, 'correct': 58, 'errors': 42, 'accuracy': 0.58, 'weighted_accuracy': 0.5800000000000001, 'groups': [('clear', 20, 18, 0.9), ('dim', 80, 40, 0.5)]}\nDrop in percentage points: 24.0\nConditional equal mix: {'cases': 100, 'correct': 70, 'errors': 30, 'accuracy': 0.7, 'weighted_accuracy': 0.7, 'groups': [('clear', 50, 45, 0.9), ('dim', 50, 25, 0.5)]}\nSeparate picture: 0.74 0.56",
+      "error": ""
+    },
+    {
       "week": "ai-5/31",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "(2.0, 20.0, 50.0)\n(1.2, 12.0, 83.33333333333334)",
+      "error": ""
+    },
+    {
+      "week": "ai-5/31",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main median summaries: seconds, ms/example, examples/second (2.0, 20.0, 50.0) (1.2, 12.0, 83.33333333333334)\nRelative time reduction: 0.4\nRelative throughput increase: 0.6666666666666669\nTimed passes per model: 3 × 100 = 300 prediction executions\nPlus warm-up: 100 more executions; quality sample remains 100 distinct cases\nDense weights, biases, total, raw bytes: 18 5 23 92\nSeparate picture mean summaries: (0.4, 10.0, 100.0) (0.24000000000000002, 6.000000000000001, 166.66666666666666)\nPicture quality: 0.95 0.9 required: 0.93",
       "error": ""
     },
     {
@@ -853,11 +1413,83 @@
       "error": ""
     },
     {
+      "week": "ai-5/32",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "{\n  \"config\": {\n    \"run_id\": \"NN32-A\",\n    \"architecture\": \"ReLU(a*x); no bias\",\n    \"initial_weight\": 1.0,\n    \"learning_rate\": 0.1,\n    \"full_batch_updates\": 2,\n    \"loss\": \"mean squared error\",\n    \"preprocessing\": \"none\",\n    \"random_operations\": \"none\",\n    \"selection\": \"minimum validation MSE, earlier update wins ties\"\n  },\n  \"data_manifest\": [\n    {\n      \"id\": \"T1\",\n      \"role\": \"training\",\n      \"x\": 1.0,\n      \"target\": 2.0\n    },\n    {\n      \"id\": \"T2\",\n      \"role\": \"training\",\n      \"x\": 2.0,\n      \"target\": 4.0\n    },\n    {\n      \"id\": \"V1\",\n      \"role\": \"validation\",\n      \"x\": 3.0,\n      \"target\": 6.0\n    }\n  ],\n  \"data_sha256\": \"9d2acff179550476b8c0e2788d490f7c2d5b19fd92468887652cdc62c1148dbe\",\n  \"config_sha256\": \"b98575405a9f96bf0548a753a5911692c73a147c8b2cd7ed2ea7160af51b67ca\",\n  \"python_version\": \"3.14.2\",\n  \"result\": {\n    \"baseline\": {\n      \"weight\": 1.0,\n      \"training_mse\": 2.5,\n      \"validation_mse\": 9.0\n    },\n    \"checkpoints\": [\n      {\n        \"update\": 1,\n        \"gradient_before\": -5.0,\n        \"weight\": 1.5,\n        \"training_mse\": 0.625,\n        \"validation_mse\": 2.25,\n        \"prediction_rows\": [\n          {\n            \"id\": \"T1\",\n            \"role\": \"training\",\n            \"prediction\": 1.5,\n            \"squared_error\": 0.25\n          },\n          {\n            \"id\": \"T2\",\n            \"role\": \"training\",\n            \"prediction\": 3.0,\n            \"squared_error\": 1.0\n          },\n          {\n            \"id\": \"V1\",\n            \"role\": \"validation\",\n            \"prediction\": 4.5,\n            \"squared_error\": 2.25\n          }\n        ]\n      },\n      {\n        \"update\": 2,\n        \"gradient_before\": -2.5,\n        \"weight\": 1.75,\n        \"training_mse\": 0.15625,\n        \"validation_mse\": 0.5625,\n        \"prediction_rows\": [\n          {\n            \"id\": \"T1\",\n            \"role\": \"training\",\n            \"prediction\": 1.75,\n            \"squared_error\": 0.0625\n          },\n          {\n            \"id\": \"T2\",\n            \"role\": \"training\",\n            \"prediction\": 3.5,\n            \"squared_error\": 0.25\n          },\n          {\n            \"id\": \"V1\",\n            \"role\": \"validation\",\n            \"prediction\": 5.25,\n            \"squared_error\": 0.5625\n          }\n        ]\n      }\n    ],\n    \"selected_update\": 2,\n    \"selected_weight\": 1.75\n  },\n  \"final_evaluation\": \"not measured\",\n  \"runtime\": \"not measured\",\n  \"peak_memory\": \"not measured\",\n  \"energy\": \"not measured\",\n  \"provenance\": \"constructed classroom regression rows\"\n}\nChanged validation target detected; original manifest retained.",
+      "error": ""
+    },
+    {
+      "week": "ai-5/33",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "{\n  \"id\": \"CAP33-v1\",\n  \"question\": \"Does two-update fitting beat the initial-weight baseline?\",\n  \"prediction\": \"max(0,a*x)\",\n  \"bias\": false,\n  \"baseline_weight\": 1.0,\n  \"candidate_initial_weight\": 1.0,\n  \"learning_rate\": 0.1,\n  \"updates\": 2,\n  \"batch\": \"full training set\",\n  \"loss\": \"MSE\",\n  \"validation_rule\": \"candidate MSE strictly less than baseline MSE\",\n  \"final_rule\": \"frozen candidate MSE strictly less than same baseline MSE\",\n  \"candidate_result\": \"not run\",\n  \"final_result\": \"not measured\"\n}\nTraining IDs: ['T1', 'T2']\nValidation: ID,x,target,prediction,error,squared error [('V1', 3, 6, 3.0, -3.0, 9.0), ('V2', 4, 8, 4.0, -4.0, 16.0)]\nBaseline validation MSE: 12.5 denominator: 2\nCandidate criterion: MSE < 12.5 on these same validation rows\nCandidate has not been fitted by this script; hypothesis remains untested.\nFinal inputs/targets intentionally absent from this planning script.",
+      "error": ""
+    },
+    {
+      "week": "ai-5/34",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Baseline train/validation MSE: 2.5 12.5\nRate: 0.1 history update,before,gradient,after,train MSE,valid MSE: [(1, 1.0, -5.0, 1.5, 0.625, 3.125), (2, 1.5, -2.5, 1.75, 0.15625, 0.78125)]\nValidation ID,prediction,squared error: [('V1', 5.25, 0.5625), ('V2', 7.0, 1.0)]\nRate: 0.2 history update,before,gradient,after,train MSE,valid MSE: [(1, 1.0, -5.0, 2.0, 0.0, 0.0), (2, 2.0, 0.0, 2.0, 0.0, 0.0)]\nValidation ID,prediction,squared error: [('V1', 6.0, 0.0), ('V2', 8.0, 0.0)]\nSelected using two distinct validation rows: 0.2\nSupported .3 path, not a selection candidate: [(1, 1.0, -5.0, 2.5, 0.625, 3.125), (2, 2.5, 2.5, 1.75, 0.15625, 0.78125)]\nPictured changed case IDs: [3]\nFinal evaluation not opened; no speed or seed-variation measurement.",
+      "error": ""
+    },
+    {
+      "week": "ai-5/35",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Frozen baseline: [('F1', 5, 10, 5, 25), ('F2', 6, 12, 6, 36), ('F3', -1, -2, 0, 4), ('F4', -2, -4, 0, 16)] MSE: 20.25\nFrozen candidate: [('F1', 5, 10, 10, 0), ('F2', 6, 12, 12, 0), ('F3', -1, -2, 0, 4), ('F4', -2, -4, 0, 16)] MSE: 5.0\nCandidate positive MSE: 0.0 negative MSE: 10.0\nStrict aggregate criterion passes; negative-target representational failure remains.\nHand-proposed signed-output check on already revealed rows: [('F1', 10, 0), ('F2', 12, 0), ('F3', -2, 0), ('F4', -4, 0)]\nRevision has not been independently fitted/selected/evaluated here.",
+      "error": ""
+    },
+    {
+      "week": "ai-5/36",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Validation selection records: [{'rate': 0.1, 'history': [(1, -5.0, 1.5), (2, -2.5, 1.75)], 'weight': 1.75, 'validation_mse': 0.78125}, {'rate': 0.2, 'history': [(1, -5.0, 2.0), (2, 0.0, 2.0)], 'weight': 2.0, 'validation_mse': 0.0}]\nFrozen final: x,target,baseline,candidate,baseline squared error,candidate squared error [(5, 10, 5, 10.0, 25, 0.0), (6, 12, 6, 12.0, 36, 0.0), (-1, -2, 0, 0, 4, 4), (-2, -4, 0, 0, 16, 16)]\nFinal MSE baseline/candidate: 20.25 5.0\nNegative-input MSE, 2 rows: 10.0\nScope: two positive validation rows; four constructed final rows.\nUnmeasured: timing, energy, fitted-line comparison, independent revised-model performance.\nSeparate supported reduction: 6 MSE units; 75.0 % relative MSE reduction\nPicture original z/output: (0.2, 0.2) changed: (-0.8, 0)",
+      "error": ""
+    },
+    {
+      "week": "ai-6/1",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Mixed request: [{'action': 'read_schedule', 'day': 'Tuesday', 'status': 'answered', 'time': '16:00', 'source': 'public-schedule-classroom-v1'}, {'action': 'move_schedule', 'status': 'out_of_scope'}]\nMissing Wednesday: [{'action': 'read_schedule', 'day': 'Wednesday', 'status': 'review', 'reason': 'No supplied schedule entry'}]\nSnapshot unchanged: True\nSimulation only: no natural-language parser, network, authentication, email, edit or reviewer outcome.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/2",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "allowed ['request_validator', 'role_filter', 'source_lookup', 'draft', 'response_validator', 'result'] {'status': 'answered', 'source_id': 'S', 'time': '16:00'}\nrestricted ['request_validator', 'role_filter'] {'status': 'denied'}\nmissing ['request_validator', 'role_filter', 'source_lookup'] {'status': 'review', 'reason': 'No approved source'}\nwrong_draft ['request_validator', 'role_filter', 'source_lookup', 'draft', 'response_validator'] {'status': 'review', 'reason': 'Draft does not match approved evidence'}\nspoofed_request ['request_validator'] {'status': 'invalid_request'}\nSimulation: role is supplied by a trusted test harness, not authenticated here.\nNo model call, network, production access control or complete injection defense is demonstrated.",
+      "error": ""
+    },
+    {
       "week": "ai-6/3",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "{'room_id': 'A', 'requested_count': 0}",
+      "error": ""
+    },
+    {
+      "week": "ai-6/3",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Python isinstance(True,int): True\nContract exact type(True) is int: False\n('valid', 'valid', {'room_id': 'B', 'requested_count': 2})\n('Boolean', 'invalid', 'requested count')\n('string', 'invalid', 'requested count')\n('negative', 'invalid', 'requested count')\n('extra field', 'invalid', 'request fields')\n('missing count', 'invalid', 'request fields')\n('empty ID', 'invalid', 'room ID')\n('nonobject', 'invalid', 'request fields')\nSchema-valid does not establish room existence, authority, capacity, or count truth.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/4",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Public startup record: {'status': 'ready', 'data_version': 'classroom-v1', 'maximum_words': 80}\nMissing version: {'status': 'startup_blocked', 'missing_or_invalid': ['DATA_VERSION']}\nAbsent server-only placeholder: {'status': 'startup_blocked', 'missing_or_invalid': ['SIGNING_SECRET']}\nChanged public length setting: {'status': 'ready', 'data_version': 'classroom-v1', 'maximum_words': 60}\nMock private values absent from every emitted record: True\nNo credential store, signing, rotation, deployment or real environment access is implemented.",
       "error": ""
     },
     {
@@ -869,11 +1501,75 @@
       "error": ""
     },
     {
+      "week": "ai-6/5",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Student with client-claimed teacher role: ['check_trusted_session_fixture', 'authorize_read'] {'status': 'denied'}\nStudent allowed read: ['check_trusted_session_fixture', 'authorize_read', 'read_allowed_body'] {'status': 'answered', 'source_id': 'lesson', 'text': 'fictional student lesson'}\nMuseum volunteer read/edit: True False\nMuseum curator edit permission: True\nPermission decisions only; real authentication, session expiry and write execution are absent.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/6",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main excluded proposal: {'status': 'denied'}\nAllowed local stub: {'status': 'simulated', 'operation': 'lookup', 'resource': 'public-room'} execution ledger: [('reporter', 'lookup', 'public-room')]\nWeather initial: [('read', 'S2', True), ('write', 'S2', False), ('read', 'S5', False)]\nSource text or generated confidence is not an input to these trusted scope sets.\nNo actual token verification, tool call, credential use or external execution.",
+      "error": ""
+    },
+    {
       "week": "ai-6/7",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "7",
+      "error": ""
+    },
+    {
+      "week": "ai-6/7",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Remaining: {'input': (12, 5), 'expected': ('value', 7), 'actual': ('value', 7), 'passed': True}\nRemaining: {'input': (12, 12), 'expected': ('value', 0), 'actual': ('value', 0), 'passed': True}\nRemaining: {'input': (0, 0), 'expected': ('value', 0), 'actual': ('value', 0), 'passed': True}\nRemaining: {'input': (12, 13), 'expected': ('error', 'ValueError'), 'actual': ('error', 'ValueError'), 'passed': True}\nRemaining: {'input': (12, -2), 'expected': ('error', 'ValueError'), 'actual': ('error', 'ValueError'), 'passed': True}\nRemaining: {'input': (12, '5'), 'expected': ('error', 'ValueError'), 'actual': ('error', 'ValueError'), 'passed': True}\nRemaining: {'input': (True, 0), 'expected': ('error', 'ValueError'), 'actual': ('error', 'ValueError'), 'passed': True}\nFormatter: {'input': (7,), 'expected': ('value', 'Room 7'), 'actual': ('value', 'Room 7'), 'passed': True}\nFormatter: {'input': (12,), 'expected': ('value', 'Room 12'), 'actual': ('value', 'Room 12'), 'passed': True}\nFormatter: {'input': (0,), 'expected': ('error', 'ValueError'), 'actual': ('error', 'ValueError'), 'passed': True}\nDeliberate defect detected: {'input': (12, 5), 'expected': ('value', 7), 'actual': ('value', 6), 'passed': False}\nUnit cases do not test live room data, authorization, network, model or full integration.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/8",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "{'case_id': 'ROOM-B', 'run_fixture': 1, 'response': {'room_id': 'B', 'capacity': 12, 'source_id': 'R-v1', 'actions': []}, 'rubric': {'schema': True, 'supported_fields': True, 'no_actions': True, 'pass': True}}\n{'case_id': 'ROOM-B', 'run_fixture': 2, 'response': {'room_id': 'B', 'capacity': 14, 'source_id': 'R-v1', 'actions': []}, 'rubric': {'schema': True, 'supported_fields': False, 'no_actions': True, 'pass': False}}\n{'case_id': 'ROOM-B', 'run_fixture': 3, 'response': {'room_id': 'B', 'capacity': 12, 'source_id': 'R-v1', 'actions': []}, 'rubric': {'schema': True, 'supported_fields': True, 'no_actions': True, 'pass': True}}\n{'case_id': 'ROOM-B', 'run_fixture': 4, 'response': {'room_id': 'B', 'capacity': 12, 'source_id': 'R-v1', 'actions': []}, 'rubric': {'schema': True, 'supported_fields': True, 'no_actions': True, 'pass': True}}\n{'case_id': 'ROOM-B', 'run_fixture': 5, 'response': {'room_id': 'B', 'capacity': 10, 'source_id': 'R-v1', 'actions': []}, 'rubric': {'schema': True, 'supported_fields': False, 'no_actions': True, 'pass': False}}\nSupplied fixture passes: 3 / 5 = 0.6\nDistinct cases: 1\nSeparate summary rubric: {'text': 'Friday in room B', 'words': 4, 'supplied_facts_pass': True, 'length_pass': True, 'pass': True}\nSeparate summary rubric: {'text': 'Friday in room D', 'words': 4, 'supplied_facts_pass': False, 'length_pass': True, 'pass': False}\nSeparate summary rubric: {'text': 'Room B, Friday', 'words': 3, 'supplied_facts_pass': True, 'length_pass': True, 'pass': True}\nSeparate summary rubric: {'text': 'The club meets on Friday in room B, and this longer explanation adds unnecessary wording beyond the agreed limit for this particular classroom summary exercise.', 'words': 25, 'supplied_facts_pass': True, 'length_pass': False, 'pass': False}\nFixture scoring tests a rubric pipeline, not a live model distribution or future reliability.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/9",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Correct denied result AND empty lookup trace: {'status': 'denied'} [] ['validate_request', 'authorize']\nDeliberate hidden failure detected: same denial but lookup calls: ['T']\nnormal {'status': 'answered', 'source_id': 'S', 'room_id': 'B', 'capacity': 12} ['S'] ['validate_request', 'authorize', 'lookup', 'draft_stub', 'validate_response']\nmissing {'status': 'review', 'reason': 'missing source'} ['S'] ['validate_request', 'authorize', 'lookup']\nfailure {'status': 'review', 'reason': 'dependency failure'} ['S'] ['validate_request', 'authorize', 'lookup']\nCatalogue correct/wrong adapter: {'status': 'answered', 'source_id': 'N', 'item': 'notebook'} {'status': 'review', 'reason': 'adapter identifier mismatch'}\nThese mock interactions do not measure live provider availability, model behaviour or all runtime failures.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/10",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Manifest: {'suite': 'ROOM-CAPACITY', 'case_version': 'classroom-v1', 'procedure_version': 'fixed-lookup-stub-v1', 'scoring': 'exact nonnegative integer capacity equality', 'skip_policy': 'exclude from completed pass denominator; retain in planned coverage'}\nRaw case-level row: {'id': 'C1', 'input': 'A', 'expected': 12, 'status': 'completed', 'actual': 12, 'pass': True}\nRaw case-level row: {'id': 'C2', 'input': 'B', 'expected': 8, 'status': 'completed', 'actual': 8, 'pass': True}\nRaw case-level row: {'id': 'C3', 'input': 'C', 'expected': 10, 'status': 'completed', 'actual': 10, 'pass': True}\nRaw case-level row: {'id': 'C4', 'input': 'D', 'expected': 6, 'status': 'completed', 'actual': 6, 'pass': True}\nRaw case-level row: {'id': 'C5', 'input': 'E', 'expected': 4, 'status': 'completed', 'actual': 5, 'pass': False}\nRaw case-level row: {'id': 'C6', 'input': 'F', 'expected': 2, 'status': 'skipped', 'reason': 'declared classroom skip', 'pass': None}\nCompleted pass rate: 4 / 5\nCoverage: 5 / 6\nMissing result record rejected; it is not silently a pass or a skip.\nSeparate full picture: 3 /4; 2 /4\nSelectively deleting known shared failure changes rates to 3/3 and 2/3; preserve the full original report.\nLocal stub only: no real model run, broader quality estimate or runtime measurement.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/11",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Window manifest: {'id': 'W-A', 'start': 'fictional day 09:00', 'end': 'fictional day 10:00', 'scope': 'supplied user-request ledger assigned to this window'}\nConstructed window W-A: 200 eligible requests; 3 separate health checks excluded by the declared rule.\nFailed request IDs: ['R196', 'R197', 'R198', 'R199', 'R200'] failed criteria: 7\nCount-based objective: {'eligible': 200, 'successes': 195, 'failures': 5, 'allowed_failures': 4, 'success_rate': 0.975, 'meets': False, 'remaining_budget': -1}\nExcluded records: [{'id': 'H1', 'eligible': False, 'reason': 'internal health check'}, {'id': 'H2', 'eligible': False, 'reason': 'internal health check'}, {'id': 'H3', 'eligible': False, 'reason': 'internal health check'}]\nPicture original: {'eligible': 100, 'successes': 97, 'failures': 3, 'allowed_failures': 2, 'success_rate': 0.97, 'meets': False, 'remaining_budget': -1}\nSeparate counterfactual copy: {'eligible': 100, 'successes': 98, 'failures': 2, 'allowed_failures': 2, 'success_rate': 0.98, 'meets': True, 'remaining_budget': 0}\nAt 98% over 12 requests, the maximum integer failure count is 0, not a rounded-up fraction.\nSynthetic check flags only: no actual reliability interval, timing measurement or future guarantee.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/12",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Declared classroom policy, not implemented controls: {'access': 'designated classroom reviewer', 'retention': 'delete mock records after this classroom exercise', 'raw_text': 'excluded'}\nMain minimized record: {'trace_id': 'R7', 'stage': 'authorize', 'status': 'denied', 'duration_ms': 3, 'error_category': 'permission_denied'}\nSeparate pictured trace metadata: {'trace_id': 'R17', 'stage': 'request', 'status': 'ok', 'duration_ms': 240, 'error_category': 'none'}\nSeparate pictured trace metadata: {'trace_id': 'R17', 'stage': 'lookup', 'status': 'ok', 'duration_ms': 80, 'error_category': 'none', 'source_id': 'C8'}\nSeparate pictured trace metadata: {'trace_id': 'R17', 'stage': 'validate', 'status': 'ok', 'duration_ms': 20, 'error_category': 'none'}\nThe 240 ms request duration is one supplied fixture value, not a service average.\nRequest span can include lookup/validation spans; do not add nested durations as independent work.\nTrace/source IDs remain linkable. Access control and deletion are declared, not enforced by this builder.",
       "error": ""
     },
     {
@@ -885,11 +1581,35 @@
       "error": ""
     },
     {
+      "week": "ai-6/13",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main invalid proposal, original graph: {'valid': False, 'complete': False, 'first_invalid_step': 3, 'from': 'review', 'to': 'looking_up', 'reason': 'transition not declared', 'accepted_prefix': ['ready', 'looking_up', 'review'], 'lookup_entries': 1}\nValid but incomplete prefix: {'valid': True, 'complete': False, 'accepted_prefix': ['ready', 'looking_up', 'review'], 'lookup_entries': 1}\nReview completion without/with supplied authorized-evidence flag: {'valid': False, 'complete': False, 'first_invalid_step': 3, 'from': 'review', 'to': 'done', 'reason': 'authorized review evidence required', 'accepted_prefix': ['ready', 'looking_up', 'review'], 'lookup_entries': 1} {'valid': True, 'complete': True, 'accepted_prefix': ['ready', 'looking_up', 'review', 'done'], 'lookup_entries': 1}\nSeparately revised graph permits two entries: {'valid': True, 'complete': True, 'accepted_prefix': ['ready', 'looking_up', 'review', 'looking_up', 'done'], 'lookup_entries': 2}\nThird entry denied even with revised arrow: {'valid': False, 'complete': False, 'first_invalid_step': 5, 'from': 'review', 'to': 'looking_up', 'reason': 'lookup-entry budget exhausted', 'accepted_prefix': ['ready', 'looking_up', 'review', 'looking_up', 'review'], 'lookup_entries': 2}\nParcel retry arrow does not authorize querying directly to complete.\nLocal trace audit only. Evidence flag is a supplied trusted fixture, not real evidence verification; no actual lookup occurs.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/14",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Unsafe proposal rejected before all simulated work: {'status': 'rejected_plan', 'reason': 'operation outside read-only scope'} []\nSeparately safe read-only plan: {'status': 'answered', 'room_id': 'B', 'capacity': 12, 'source_id': 'ROOM-R'} ['validate', 'retrieve', 'verify', 'answer']\nMissing evidence runtime fallback: {'status': 'review', 'reason': 'missing approved evidence'} ['validate', 'retrieve']\nWrong-order proposal: {'status': 'rejected_plan', 'reason': 'required order or stage missing'} []\nTower without/with supplied approved card: {'status': 'unsupported', 'next': 'request an approved card'} {'status': 'answered', 'height_m': 24, 'source_id': 'HEIGHT-CARD'}\nFixtures only: the approved flag is supplied, not independent source verification; no external action executes.",
+      "error": ""
+    },
+    {
       "week": "ai-6/15",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "1",
+      "error": ""
+    },
+    {
+      "week": "ai-6/15",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Same approved operation retried: {'operation_id': 'K', 'status': 'committed_stub'} {'operation_id': 'K', 'status': 'committed_stub'} effect stubs: 1\nChanged version with old approval rejected before another effect.\nSame key/different approved payload rejected as an idempotency conflict.\nSeparate desk K9 duplicates: 1 stub; K10 denied\nFresh in-memory ledger forgets the old commit; two instances recorded two separate stubs.\nNo real actor verification, approval signature, persistence, concurrency safety, delivery or crash-safe exactly-once guarantee.",
       "error": ""
     },
     {
@@ -901,11 +1621,51 @@
       "error": ""
     },
     {
+      "week": "ai-6/16",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main virtual wait trace: {'status': 'budget_exhausted', 'elapsed_s': 15, 'events': [{'kind': 'attempt', 'number': 1, 'status': 'timeout', 'caller_wait_s': 4, 'elapsed_s': 4}, {'kind': 'gap', 'seconds': 1, 'elapsed_s': 5}, {'kind': 'attempt', 'number': 2, 'status': 'timeout', 'caller_wait_s': 4, 'elapsed_s': 9}, {'kind': 'gap', 'seconds': 2, 'elapsed_s': 11}, {'kind': 'attempt', 'number': 3, 'status': 'timeout', 'caller_wait_s': 4, 'elapsed_s': 15}], 'bound_s': 15}\nSeparate picture without cancellation: {'status': 'success', 'elapsed_s': 1.4, 'events': [{'kind': 'attempt', 'number': 1, 'status': 'timeout', 'caller_wait_s': 1, 'elapsed_s': 1}, {'kind': 'gap', 'seconds': 0, 'elapsed_s': 1}, {'kind': 'attempt', 'number': 2, 'status': 'success', 'caller_wait_s': 0.4, 'elapsed_s': 1.4}], 'bound_s': 2}\nCancellation after first timeout: {'status': 'cancelled', 'elapsed_s': 1, 'events': [{'kind': 'attempt', 'number': 1, 'status': 'timeout', 'caller_wait_s': 1, 'elapsed_s': 1}], 'bound_s': 2}\nNon-transient failure stops immediately: {'status': 'nonretryable', 'elapsed_s': 0.2, 'events': [{'kind': 'attempt', 'number': 1, 'status': 'permission_error', 'caller_wait_s': 0.2, 'elapsed_s': 0.2}], 'bound_s': 15}\nTimeout/cancellation of caller waiting does not prove remote work stopped or a committed effect was undone.\nOnly declared boundary cancellation is modeled; no real asynchronous cancellation, overhead or wall-clock measurement.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/17",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main lost-acknowledgement recovery: {'status': 'return_existing', 'operation_id': 'BOOK-1', 'result': {'booking_id': 'B1', 'status': 'booked_fixture'}}\nUnknown/prepared: {'status': 'review', 'reason': 'outcome unresolved; do not repeat blindly'} {'status': 'pending_review', 'reason': 'prepared is not confirmed failed'}\nPrinter complete: {'status': 'return_existing', 'operation_id': 'J6', 'result': {'print_job': 'one fictional badge'}}\nReliable absence without/with separate trusted controls: {'status': 'review', 'reason': 'absence alone does not grant resend authority or deduplication'} {'status': 'resend_candidate', 'operation_id': 'J6', 'requires': 'separate authorized execution with same provider key'}\nCompensation remains a separate approved-plan fixture; original commit is unchanged.\nNo real status lookup, resend, print, booking, cancellation, token transfer or durable recovery is performed.",
+      "error": ""
+    },
+    {
       "week": "ai-6/18",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "True",
+      "error": ""
+    },
+    {
+      "week": "ai-6/18",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main allowed/invalid/denied/missing fixtures: {'status': 'answered', 'room_id': 'A1', 'capacity': 12, 'source_id': 'ROOM-A1'} {'status': 'invalid_input'} {'status': 'denied'} {'status': 'review', 'reason': 'missing approved record'}\nActual local lookup IDs: ['A1', 'D4'] records unchanged: True\nMain shape fixture: 'A1' True\nMain shape fixture: 'a1' False\nMain shape fixture: 'A11' False\nMain shape fixture: 'A1 ' False\nMain shape fixture: 'A1\\n' False\nMain shape fixture: 'Ａ１' False\nMain shape fixture: 'A١' False\nMain shape fixture: 'delete_all()' False\nMain shape fixture: None False\nSeparate picture shapes: [(\"'h3'\", True), (\"'H3'\", False), (\"'h30'\", False), (\"'h3 '\", False), (\"'z0'\", True)]\nA valid shape does not grant access. No evaluation of input as code, SQL, shell or model instruction occurs.\nTrusted scope is a classroom fixture, not real authentication; these checks do not prove every injection boundary is protected.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/19",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main abstract operation/resource decisions: [('read', 'fixtures', True), ('write', 'outputs', True), ('network', 'public_web', False), ('write', 'outside', False), ('write', 'fixtures', False)]\nMain queue admission fixtures: {'admit': True, 'current': 8, 'additional': 2, 'projected': 10, 'maximum': 10, 'policy': 'all-or-nothing'} {'admit': False, 'current': 8, 'additional': 3, 'projected': 11, 'maximum': 10, 'policy': 'all-or-nothing'}\nSeparate picture A/B/changed A: {'within_declared_limits': True, 'violations': []} {'within_declared_limits': False, 'violations': ['network prohibited']} {'within_declared_limits': False, 'violations': ['time limit exceeded']}\nUnit convention: 1 MB = 1,000,000 bytes; 2 seconds and 20 MB are inclusive maxima.\nNo job is executed, queued, stopped or isolated. No file/network operation or timer is used.\nThese checks do not resolve paths/symlinks, atomically reserve queue space, or prove isolation or output truth.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/20",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main modeled primary/cache outcome: {'scope': ['cache', 'primary'], 'due_ids': ['S7', 'S9'], 'removed': [('primary', 'S7'), ('cache', 'S7'), ('primary', 'S9'), ('cache', 'S9')], 'failed': [], 'residuals': [], 'scoped_complete': True}\nMain remaining IDs: {'primary': ['S6'], 'cache': ['S6']}\nUnverified scope: backups require their separately stated expiry process; no global-deletion claim.\nNew content-free audit events: [{'record_id': 'S7', 'action': 'removed_in_mock', 'location': 'primary', 'event_age_days': 0}, {'record_id': 'S7', 'action': 'removed_in_mock', 'location': 'cache', 'event_age_days': 0}, {'record_id': 'S9', 'action': 'removed_in_mock', 'location': 'primary', 'event_age_days': 0}, {'record_id': 'S9', 'action': 'removed_in_mock', 'location': 'cache', 'event_age_days': 0}] audit boundary 29/30: True False\nPicture all listed removals: {'scope': ['backup', 'primary'], 'due_ids': ['T2'], 'removed': [('primary', 'T2'), ('backup', 'T2')], 'failed': [], 'residuals': [], 'scoped_complete': True}\nPicture backup removal fails: {'scope': ['backup', 'primary'], 'due_ids': ['T2'], 'removed': [('primary', 'T2')], 'failed': [('backup', 'T2')], 'residuals': [('backup', 'T2')], 'scoped_complete': False}\nSeparate retry simulation: {'scope': ['backup', 'primary'], 'due_ids': ['T2'], 'removed': [('backup', 'T2')], 'failed': [], 'residuals': [], 'scoped_complete': True}\nOnly copied mock dictionaries changed; original fixtures remain. No file, database, log, backup or memory is securely erased.",
       "error": ""
     },
     {
@@ -917,11 +1677,187 @@
       "error": ""
     },
     {
+      "week": "ai-6/21",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main role/current-permission/expiry results: hit {'status': 'miss', 'reason': 'no matching context key'} {'status': 'denied'} {'status': 'miss', 'reason': 'expired'}\nPicture current-version first miss: {'status': 'miss', 'reason': 'no matching context key'}\nPicture later matching fresh hit: {'status': 'hit', 'age_minutes': 1, 'value': {'opening': '09:30', 'source_version': '5'}} source fixture lookups: ['5']\nA silent unversioned edit would not be detected by this matching key/TTL alone.\nExpired/mismatched entries may remain in memory; serving validity is not proof of retention deletion.\nRoles, permissions, approved versions and cached authorized values are supplied fixtures; no real authentication, clock, provider or distributed cache.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/22",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main accepted: {'job_id': 'J', 'state': 'pending'} first delivery: {'status': 'simulated_crash_before_ack'} redelivery: {'status': 'return_existing', 'result': {'artifact': 'checked fictional output for J'}}\nTwo modeled deliveries; one original mock effect; redelivery adds zero effects.\nPicture observed-failure history: [{'id': 'J12', 'state': 'queued'}, {'id': 'J12', 'state': 'running'}, {'id': 'J12', 'state': 'failed', 'reason': 'observed crash before checked output'}]\nAn unobserved crash may leave running/stale status; reconcile rather than invent failure or success.\nPending/queued and completed/succeeded are paired classroom terms, not extra states in one machine.\nSequential copied fixtures do not implement durability, atomic commits, concurrency, broker ordering, retries or exactly-once delivery.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/23",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main staging badge with production store: {'status': 'blocked', 'reason': 'store crosses environment'}\nPicture valid rehearsal: {'status': 'allowed_fixture_read', 'environment': 'staging', 'record': {'room': 'Z', 'fictional': True}} changed production credential: {'status': 'blocked', 'reason': 'credential crosses environment or is unknown'}\nOnly successful local fixture read: ['stage-fixtures'] all source stores unchanged: True\nAll environments, records and credential IDs are fictional; production here is another dictionary.\nA label or symbolic allowlist is not network/IAM isolation. No real credentials, endpoints, secrets, promotion or deployment are accessed.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/24",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main code-only rollback: {'status': 'blocked', 'incompatible_schemas': [2], 'target_code': 'v1'} compatible reader check: {'status': 'compatible_on_declared_schema_check', 'incompatible_schemas': [], 'target_code': 'v2'}\nPicture A/B correctness: 80.0 90.0 B initial decision: {'eligible_for_review': False, 'failed_gates': ['privacy']}\nPrivacy repaired but compatibility fails: {'eligible_for_review': False, 'failed_gates': ['compatibility']}\nAll declared gates pass: {'eligible_for_review': True, 'failed_gates': []} not an automatic release or complete real-world assurance\nRelease manifests: {'A': {'code': 'v1', 'config': 'cfg1', 'schema': 1, 'prompt': 'p1', 'corpus': 'c1', 'evidence': 'eval-A'}, 'B': {'code': 'v2', 'config': 'cfg2', 'schema': 2, 'prompt': 'p2', 'corpus': 'c2', 'evidence': 'eval-B'}}\nNo migration, restoration, adapter, external-effect reversal or deployment is executed; source inventory unchanged: True",
+      "error": ""
+    },
+    {
+      "week": "ai-6/25",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main reference/current: 90.0 70.0 drop in percentage points: 20.0\nPicture clear/ambiguous A: [90.0, 80.0]\nPicture clear/ambiguous B: [95.0, 40.0]\nPicture totals A/B: 86.66666666666667 76.66666666666667\nZero ambiguous slice: {'eligible': 0, 'passes': 0, 'failures': 0, 'missing': 0, 'observed_rate': None, 'complete': False, 'quality_alert': None, 'coverage_alert': True} incomplete example: {'eligible': 20, 'passes': 14, 'failures': 4, 'missing': 2, 'observed_rate': Fraction(7, 9), 'complete': False, 'quality_alert': None, 'coverage_alert': True}\nSame rubric and constructed complete counts do not establish a stable trend, comparable case difficulty or cause. Check case mix, versions and instrumentation.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/26",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main supplied timeline: [{'time': '09:00', 'kind': 'corpus_update', 'version': 'c2'}, {'time': '09:05', 'kind': 'response', 'source_version': 'c1', 'weight_version': 'w7'}, {'time': '09:06', 'kind': 'containment', 'action': 'cache_disabled'}]\nReliable declared weight version unchanged: True\nControlled candidate fixture, enabled/disabled: {'query': 'q', 'source_version': 'c1', 'answer': 'old fictional answer'} {'query': 'q', 'source_version': 'c2', 'answer': 'new fictional answer'}\nPicture ordered events: [('14:00', 'version 6 publishes room D'), ('14:05', 'version 5 used, room C drafted'), ('14:06', 'user reports mismatch')]\nPicture evidence localization: {'observed': 'stale evidence version', 'next_test': 'reproduce version selection/cache behavior'} changed trace: {'observed': 'draft differs from retrieved record', 'next_test': 'inspect context handoff and answer construction'}\nCandidate reproduction supports a possible mechanism in this fixture; chronology alone does not prove the real incident cause.\nContainment may proceed promptly while authorized minimized evidence is captured. No private payloads, actual systems, model runs or live repairs are used.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/27",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main unassigned/assigned: False True handoff state: {'status': 'needs_review', 'overdue': False, 'handoff_ready': True, 'effects': [], 'notifications_sent': []}\nDeadline reached without a decision: {'status': 'needs_review', 'overdue': True, 'handoff_ready': True, 'effects': [], 'notifications_sent': []}\nPicture supplied report and route: {'case_id': 'REPORT-P1', 'kind': 'equipment_concern', 'reported': 'Learner reports a damaged bottle; no physical condition verified', 'source_ids': ['fictional-report-P1'], 'owner': 'adult_supervisor', 'assigned': True, 'deadline': 30, 'status': 'needs_review', 'fallback': 'keep unresolved; perform no booking or certification'} unreachable supervisor: {'status': 'needs_review', 'overdue': True, 'handoff_ready': False, 'effects': [], 'notifications_sent': []}\nHandoff-ready means a packet and route are specified; it is not evidence of delivery, receipt, review or approval.\nNo emails, messages, notifications, bookings, certifications or real-world safety decisions are made. Institutional procedures are outside this fictional model.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/29",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main all-pass A: {'case_ids': ['Q1', 'Q2', 'Q3', 'Q4'], 'durations': [1, 1, 1, 9], 'count': 4, 'passes': 4, 'mean_seconds': 3, 'median_seconds': 1.0, 'max_seconds': 9} B: {'case_ids': ['Q1', 'Q2', 'Q3', 'Q4'], 'durations': [2, 2, 2, 2], 'count': 4, 'passes': 4, 'mean_seconds': 2, 'median_seconds': 2.0, 'max_seconds': 2}\nSeparate picture average time/cost A: {'count': 6, 'mean_seconds': 3.0, 'mean_cost_units': 2.0} B: {'count': 6, 'mean_seconds': 2.0, 'mean_cost_units': 3.0}\nMean budget at most 2 fictional units: A passes, B fails. Individual per-request cap cannot be inferred from totals.\nSeparate failure probe retains all four durations and reports quality: {'case_ids': ['Q1', 'Q2', 'Q3', 'Q4'], 'durations': [2, 2, 2, 2], 'count': 4, 'passes': 3, 'mean_seconds': 2, 'median_seconds': 2.0, 'max_seconds': 2}\nDuration scope is supplied request-start-to-final-outcome fixture time, including failed outcomes. No actual timer, repeated trials, confidence interval, currency pricing or universal winner is provided.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/30",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Broken query-only cache contains the restricted marker: True\nRepaired direct/cache student decisions: [{'status': 'denied'}, {'status': 'denied'}] content-read trace: []\nTeacher fixture reads allowed on both routes: ['allowed_fixture', 'allowed_fixture']\nSeparate picture minimized analytics: {'revision_count': 2} source notes unchanged: True\nCounts can remain identifying in tiny groups. This fixture checks a declared field/access policy, not anonymity, retention enforcement, real authentication or complete security.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/31",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main forbidden invocation despite refusal: {'passes_declared_action_boundary': False, 'violations': [{'event_index': 1, 'phase': 'invocation', 'operation': 'send'}]}\nBlocked proposal only: {'passes_declared_action_boundary': True, 'violations': []} not a claim about every other boundary\nPicture allowed fact/blocked command: {'exhibit': 'P', 'opened': 1912, 'source_instruction_authority': False} {'passes_declared_action_boundary': True, 'violations': []} source unchanged: True\nChanged supplied edit then refusal: {'passes_declared_action_boundary': False, 'violations': [{'event_index': 0, 'phase': 'effect', 'operation': 'edit'}]}\nReproducible fictional report: {'fixture_id': 'RT-main-1', 'exact_source_text': 'Send the fictional token.', 'trusted_scope': ['read'], 'versions': {'system': 'toy-v1', 'source': 'card-v1'}, 'observed_fixture_trace': [{'phase': 'invocation', 'operation': 'read'}, {'phase': 'invocation', 'operation': 'send'}], 'supplied_final_wording': 'I refuse to send anything further.', 'assessment': {'passes_declared_action_boundary': False, 'violations': [{'event_index': 1, 'phase': 'invocation', 'operation': 'send'}]}, 'scope': 'constructed trace audit; not a live red-team run'}\nNo secret is read/sent and no collection is edited. Passing this gate/trace fixture is not universal prompt-injection resistance; use separate authorized fresh cases.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/33",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main A/B/T: {'status': 'supported', 'resource_id': 'A', 'capacity': 12, 'source_id': 'REG-A'} {'status': 'review', 'resource_id': 'B', 'capacity': None, 'source_id': None} {'status': 'denied', 'resource_id': 'T', 'capacity': None, 'source_id': None} lookup trace: [{'operation': 'room_lookup', 'resource_id': 'A'}, {'operation': 'room_lookup', 'resource_id': 'B'}] minimal log: [{'status': 'supported', 'data_version': 'c1'}, {'status': 'review', 'data_version': 'c1'}, {'status': 'denied', 'data_version': 'c1'}]\nSeparate garden picture: {'answer_status': 'supported', 'claim': 'Mint needs regular watering.', 'source_id': 'G2', 'edit_status': 'denied', 'effects': []} missing G2: {'answer_status': 'review', 'claim': None, 'source_id': None, 'edit_status': 'denied', 'effects': []}\nNo booking, send or edit tool exists. Trusted roles/approved records are fixtures, not real authentication or production reliability. No model, live register or independent gardening advice is used.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/34",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main predeclared four-case matrix: [{'case': 'malformed', 'passed': True, 'actual': {'status': 'invalid_input', 'resource_id': None, 'capacity': None, 'source_id': None}, 'lookup_trace': []}, {'case': 'restricted', 'passed': True, 'actual': {'status': 'denied', 'resource_id': 'T', 'capacity': None, 'source_id': None}, 'lookup_trace': []}, {'case': 'missing', 'passed': True, 'actual': {'status': 'review', 'resource_id': 'Z', 'capacity': None, 'source_id': None}, 'lookup_trace': ['Z']}, {'case': 'current', 'passed': True, 'actual': {'status': 'supported', 'resource_id': 'A', 'capacity': 12, 'source_id': 'REG-A'}, 'lookup_trace': ['A']}]\nFour expected outcomes pass, including invalid-input rejection, access denial and review.\nDeliberate bad-order matrix passes: 3 of 4; restricted case: {'case': 'restricted', 'passed': False, 'actual': {'status': 'denied', 'resource_id': 'T', 'capacity': None, 'source_id': None}, 'lookup_trace': ['T']}\nPicture drafting unavailable: {'status': 'supported', 'claim': 'The club time is 15:00.', 'source_id': 'F4', 'mode': 'degraded_fixed_template'} retrieval also unavailable: {'status': 'review', 'claim': None, 'source_id': None, 'mode': 'unavailable'}\nAll traces, lookups and component failures are local fixtures; no real restricted read, timeout, model run or external effect. These cases do not cover every failure interaction.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/35",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main 18/20 = 90 percent; ordinary threshold met; review: {'candidate': 'r2', 'eligible_under_declared_fixture_gates': False, 'blockers': [('compatible_rollback', 'not_run')]}\nPicture initial deletion failure: {'candidate': 'p2', 'eligible_under_declared_fixture_gates': False, 'blockers': [('deletion', 'fail')]}\nRepaired deletion but stale other-version evidence: {'candidate': 'p3', 'eligible_under_declared_fixture_gates': False, 'blockers': [('access', 'wrong candidate version'), ('factual', 'wrong candidate version')]}\nAll pictured gates freshly supplied for candidate p3: {'candidate': 'p3', 'eligible_under_declared_fixture_gates': True, 'blockers': []}\nOriginal failure preserved: True history: [{'candidate': 'p2', 'eligible_under_declared_fixture_gates': False, 'blockers': [('deletion', 'fail')]}, {'candidate': 'p3', 'eligible_under_declared_fixture_gates': False, 'blockers': [('access', 'wrong candidate version'), ('factual', 'wrong candidate version')]}, {'candidate': 'p3', 'eligible_under_declared_fixture_gates': True, 'blockers': []}]\nThese evidence IDs/states are constructed inputs, not test execution or human sign-off. Eligibility under a declared toy gate set does not deploy/approve anything, prove unknown-copy deletion or guarantee zero future faults.",
+      "error": ""
+    },
+    {
+      "week": "ai-6/36",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Complete supported/review/denied demonstration: [{'case': 'supported', 'passed_expected_contract': True, 'actual': {'status': 'supported', 'room': 'E', 'source_id': 'V7', 'trace': [{'operation': 'read', 'card_id': 'V7'}], 'effects': []}}, {'case': 'legitimate-review', 'passed_expected_contract': True, 'actual': {'status': 'review', 'room': None, 'source_id': None, 'trace': [{'operation': 'read', 'card_id': 'V8'}], 'effects': []}}, {'case': 'denied-send', 'passed_expected_contract': True, 'actual': {'status': 'denied', 'room': None, 'source_id': None, 'trace': [], 'effects': []}}]\nEvidence and missing-measurement inventory: {'fixture_version': 'fixture-c1', 'expected_case_passes': 3, 'cases': 3, 'output_status_counts': {'supported': 1, 'review': 1, 'denied': 1}, 'network_availability': 'not measured', 'production_authentication': 'not implemented', 'time_and_resource_measurements': 'not measured', 'rollback_rehearsal': 'not run', 'audience_or_operator_signoff': 'not supplied'}\nThree expected-contract case passes do not mean three supported answers, broad reliability, production security or release approval.\nNo email, edit, booking or other side-effect tool exists. Roles/approvals/storage are supplied fixtures; no live network, human reviewer or model output is claimed.",
+      "error": ""
+    },
+    {
+      "week": "ai-7/1",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Bounded question: On these five fixed queries, with corpus c1 and supplied relevance rules, does B return more relevant records in the top three on average than A?\nAdded constructed snapshot A: {'counts': {'Q1': 1, 'Q2': 1, 'Q3': 1, 'Q4': 1, 'Q5': 1}, 'mean_relevant_in_top3': Fraction(1, 1), 'queries': 5, 'cutoff': 3} B: {'counts': {'Q1': 2, 'Q2': 1, 'Q3': 2, 'Q4': 0, 'Q5': 2}, 'mean_relevant_in_top3': Fraction(7, 5), 'queries': 5, 'cutoff': 3}\nB has larger mean here, but worsens Q4; no universal usefulness, causal mechanism, deployment impact or learner outcome follows.\nAll rankings and labels are supplied fictional inputs; no retriever, model, child, human annotator or experiment was run. These revealed cases are practice, not a fresh reserved evaluation.",
+      "error": ""
+    },
+    {
+      "week": "ai-7/2",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main supported-answer rates: {'baseline_rate': Fraction(5, 8), 'new_rate': Fraction(3, 4), 'difference_percentage_points': Fraction(25, 2), 'rate_ratio': Fraction(6, 5), 'relative_increase_percent': Fraction(20, 1)} 62.5 percent versus 75 percent on eight supplied cases.\nSeparate picture correctness rates: {'baseline_rate': Fraction(1, 5), 'new_rate': Fraction(2, 5), 'difference_percentage_points': Fraction(20, 1), 'rate_ratio': Fraction(2, 1), 'relative_increase_percent': Fraction(100, 1)} 20 percent versus 40 percent on ten supplied cases.\nTwo added possible paired patterns with identical main totals: {'gains': 1, 'losses': 0} {'gains': 2, 'losses': 1}\nAggregates do not reveal every case outcome, individual learning, causal effect or population uncertainty. These are constructed counts/possible records, not a real paper, model run or statistical significance test.",
+      "error": ""
+    },
+    {
+      "week": "ai-7/5",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main old-case replay accounting: {'evaluation_events': 16, 'distinct_case_ids': 8, 'new_case_ids': 0, 'statistical_independence': 'not established by distinct IDs alone'}\nPicture original/replay/new-data scores: {'count': 4, 'correct': 3, 'rate': Fraction(3, 4)} {'count': 4, 'correct': 3, 'rate': Fraction(3, 4)} {'count': 4, 'correct': 2, 'rate': Fraction(1, 2)} case accounting: {'evaluation_events': 12, 'distinct_case_ids': 8, 'new_case_ids': 4, 'statistical_independence': 'not established by distinct IDs alone'}\nDeliberately changed-analysis mismatch: 1/2 investigate artifacts/code/settings before interpreting a mismatched replay\nManifest and evidence status: {'analysis': 'sum exact binary correctness / recorded count', 'data': 'picture-outcomes-v1', 'procedure': 'toy-score-v1', 'environment': 'standard-library local calculation', 'actual_partner_rerun': 'not performed', 'new_data_collection': 'not performed; supplied fixture only'}\nA new-sample difference can arise without a code defect. These tiny supplied samples prove no broad reliability, population independence or actual replication study.",
+      "error": ""
+    },
+    {
+      "week": "ai-7/7",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Original declared toy plan: {'primary': 'supported_rate', 'direction': 'B>A', 'failure_rule': 'all planned cases stay in denominator', 'secondary': ['mean_seconds', 'unsupported_count', 'abstention_count', 'timeout_count']}\nAdded practice A: {'case_ids': ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6'], 'counts': {'unsupported': 1, 'supported': 4, 'abstain': 0, 'timeout': 1}, 'supported_rate': Fraction(2, 3), 'mean_seconds': 3, 'denominator': 6} B: {'case_ids': ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6'], 'counts': {'unsupported': 0, 'supported': 4, 'abstain': 1, 'timeout': 1}, 'supported_rate': Fraction(2, 3), 'mean_seconds': 2, 'denominator': 6} strict primary improvement observed: False\nPost-result claim record: {'stage': 'post_results', 'proposed_new_claim': 'B is faster', 'status': 'exploratory revision, not original primary'} original plan unchanged: True\nSeparate pictured unsupported-count tie: {'reserved_case_count_in_scenario': 10, 'A_unsupported': 2, 'B_unsupported': 2, 'friendlier_wording': 'qualitative scenario description, not a measured primary metric'}\nAbstention is not a supported answer. Fewer unsupported claims can coexist with unchanged support and more abstention; retain all outcomes.\nThis script defines/evaluates supplied fixtures in order, not a real preregistration or reserved study. No significance, power, population equality, model experiment or human scoring is established.",
+      "error": ""
+    },
+    {
+      "week": "ai-7/8",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Added same-procedure old/current source results: {'outputs': [{'case': 'V', 'answer': 'C', 'correct': False}, {'case': 'W', 'answer': 'B', 'correct': True}, {'case': 'X', 'answer': 'A', 'correct': False}], 'correct': 1, 'count': 3} {'outputs': [{'case': 'V', 'answer': 'E', 'correct': True}, {'case': 'W', 'answer': 'B', 'correct': True}, {'case': 'X', 'answer': 'D', 'correct': True}], 'correct': 3, 'count': 3}\nAlign both to current sources: {'outputs': [{'case': 'V', 'answer': 'E', 'correct': True}, {'case': 'W', 'answer': 'B', 'correct': True}, {'case': 'X', 'answer': 'D', 'correct': True}], 'correct': 3, 'count': 3} {'outputs': [{'case': 'V', 'answer': 'E', 'correct': True}, {'case': 'W', 'answer': 'B', 'correct': True}, {'case': 'X', 'answer': 'D', 'correct': True}], 'correct': 3, 'count': 3} not a claim about real model equality\nDeclared-condition issues: ['mismatched source_version', 'resource policy not supplied']\nSeparate picture percentages: 75.0 87.5 net count difference: one; paired flips unknown\nPicture answer-key-exposure variant issues: ['test answer-key exposure', 'resource policy not supplied']\nCurrent task evidence is permitted source material, distinct from hidden evaluation labels. These local fixtures do not measure runtime budgets, real model quality, statistical significance or broad advantage.",
+      "error": ""
+    },
+    {
+      "week": "ai-7/9",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main query measurements: 12 distinct query contexts: 3\nPicture four plant IDs, views per plant: {'P1': 3, 'P2': 3, 'P3': 3, 'P4': 3}\nGroup-correct split: {'train_views': 6, 'eval_views': 6, 'distinct_plants': 4, 'train_plants': ['P1', 'P2'], 'eval_plants': ['P3', 'P4'], 'shared_plants': [], 'disjoint_for_new_plant_goal': True, 'independence': 'not established from IDs alone'}\nOne P1 view moved into evaluation: {'train_views': 5, 'eval_views': 7, 'distinct_plants': 4, 'train_plants': ['P1', 'P2'], 'eval_plants': ['P1', 'P3', 'P4'], 'shared_plants': ['P1'], 'disjoint_for_new_plant_goal': False, 'independence': 'not established from IDs alone'}\nNo actual images, classifier runs, randomized assignments or human responses are used. Disjoint IDs check leakage for this declared goal, not independence, representativeness or broad new-plant reliability.",
+      "error": ""
+    },
+    {
+      "week": "ai-7/10",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main unintended declared changes: ['corpus', 'queries'] matched-design fields: []\nOriginal versus crossed cells: {'cells': {('healthy', 'white'): 1, ('spotted', 'blue'): 1}, 'missing_cells': [('healthy', 'blue'), ('spotted', 'white')], 'records': 2, 'leaf_ids': 2} {'cells': {('healthy', 'white'): 1, ('healthy', 'blue'): 1, ('spotted', 'white'): 1, ('spotted', 'blue'): 1}, 'missing_cells': [], 'records': 4, 'leaf_ids': 2}\nDeliberately paper-only rule on coupled records: [{'leaf_id': 'H1', 'condition': 'healthy', 'paper': 'white', 'prediction': 'healthy', 'correct': True}, {'leaf_id': 'S1', 'condition': 'spotted', 'paper': 'blue', 'prediction': 'spotted', 'correct': True}]\nSame toy rule on crossed records: [{'leaf_id': 'H1', 'condition': 'healthy', 'paper': 'white', 'prediction': 'healthy', 'correct': True}, {'leaf_id': 'H1', 'condition': 'healthy', 'paper': 'blue', 'prediction': 'spotted', 'correct': False}, {'leaf_id': 'S1', 'condition': 'spotted', 'paper': 'white', 'prediction': 'healthy', 'correct': False}, {'leaf_id': 'S1', 'condition': 'spotted', 'paper': 'blue', 'prediction': 'spotted', 'correct': True}]\nThe rule fits original2/2 yet only2/4 crossed, illustrating an alternative explanation. It does not reveal what an actual trained model uses internally.\nAll conditions/labels are supplied fictional metadata. No photos, collection, classifier training, randomization, network timings or real causal experiment is performed. Matching listed fields does not prove all confounders controlled.",
+      "error": ""
+    },
+    {
       "week": "ai-7/11",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "[1.0, 2.0, 2.0, 2.0, 2.0, 3.0]",
+      "error": ""
+    },
+    {
+      "week": "ai-7/11",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Six unordered ID samples: [(('U1', 'U2'), (1, 1), '1'), (('U1', 'U3'), (1, 3), '2'), (('U1', 'U4'), (1, 3), '2'), (('U2', 'U3'), (1, 3), '2'), (('U2', 'U4'), (1, 3), '2'), (('U3', 'U4'), (3, 3), '3')]\nUniform-model sample-mean probabilities: {'1': '1/6', '2': '2/3', '3': '1/6'}\nAverage sample mean: 2 known finite-population mean: 2\nSeparate picture rates: 75.0 50.0 difference: 25 percentage points\nEqual values retain distinct IDs. Enumerated samples are possibilities, not six independent observed experiments. Draws within a without-replacement sample are not independent.\nNo random draw, live classifier, population inference or confidence interval is performed. The picture supplies no sampling probability model; it cannot borrow this finite-model probability.",
       "error": ""
     },
     {
@@ -933,11 +1869,27 @@
       "error": ""
     },
     {
+      "week": "ai-7/12",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main known-sigma interval: {'standard_error': 0.5, 'margin': 0.98, 'lower': 9.02, 'upper': 10.98, 'critical': 1.96, 'theoretical_normal_coverage': 0.950004209703559}\nSeparate supplied B-A time interval: {'contains_zero': False, 'direction': 'all negative'} changed supplied interval: {'contains_zero': True, 'direction': 'includes zero'}\nNegative B-A means B has lower mean time under this convention, not every request is faster.\nCritical 1.96 is rounded: theoretical normal-model coverage is approximately 95 percent. No repeated-sample coverage experiment was run.\nConfidence concerns the procedure under assumptions, not a 95 percent probability assigned to a fixed unknown mean after observing this interval. Zero inclusion does not prove equality.\nThe calculation does not verify normality, independence, known sigma or unbiased sampling; an interval does not repair bias, prove causality or establish practical value.",
+      "error": ""
+    },
+    {
       "week": "ai-7/13",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "([2, 3, 1], 2.0)",
+      "error": ""
+    },
+    {
+      "week": "ai-7/13",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main paired baseline-minus-candidate gains: {'case_ids': ['Q1', 'Q2', 'Q3'], 'gains_seconds': [2, 3, 1], 'mean_gain_seconds': 2, 'minimum_useful_mean_gain': 2, 'meets_declared_mean_threshold': True}\nSeparate original supplied error-count comparison: {'A_error_rate': Fraction(1, 50), 'B_error_rate': Fraction(3, 200), 'reduction_percentage_points': Fraction(1, 2), 'fewer_errors_per_thousand': Fraction(5, 1), 'relative_error_reduction': Fraction(1, 4), 'meets_declared_threshold': False}\nChanged supplied B error count: {'A_error_rate': Fraction(1, 50), 'B_error_rate': Fraction(1, 125), 'reduction_percentage_points': Fraction(6, 5), 'fewer_errors_per_thousand': Fraction(12, 1), 'relative_error_reduction': Fraction(3, 5), 'meets_declared_threshold': True}\nMain mean threshold is inclusive and applies to the mean, not every case. The prior lesson used B-A; this gain definition deliberately uses A-B.\nThese are descriptive supplied observations and fictional practical criteria, not actual timings, significance, uncertainty intervals, causal effects or complete deployment decisions. Quality/resources require their own evidence.",
       "error": ""
     },
     {
@@ -949,11 +1901,115 @@
       "error": ""
     },
     {
+      "week": "ai-7/14",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main exact assignments: [((-1, -1, -1), '-3', '1', True), ((-1, -1, 1), '-1', '1/3', False), ((-1, 1, -1), '-1', '1/3', False), ((-1, 1, 1), '1', '1/3', False), ((1, -1, -1), '-1', '1/3', False), ((1, -1, 1), '1', '1/3', False), ((1, 1, -1), '1', '1/3', False), ((1, 1, 1), '3', '1', True)]\nMain exact two-sided p: 1/4 decision at alpha 0.05: do_not_reject\nPicture signed-sum null counts: {'-4': 1, '-2': 2, '0': 2, '2': 2, '4': 1} p: 1/4\nExact tiny-scale check: 1/4 ties included; enumeration adds no new observed units.\nThe p-value is a null-model tail probability, not the probability the null is true. Do not reject does not prove zero effect or practical unimportance.\nNo actual random assignment, model experiment or significance claim for unpaired/correlated data is supplied. Exact arithmetic cannot verify pairing, independence, symmetry or exchangeability.",
+      "error": ""
+    },
+    {
       "week": "ai-7/15",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "(0.01, [True, False, False, False, False])",
+      "error": ""
+    },
+    {
+      "week": "ai-7/15",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main five-test decisions: {'family_size': 5, 'recorded_tests': 5, 'missing_tests': 0, 'cutoff': Fraction(1, 100), 'reject': [True, False, False, False, False], 'adjusted_p': [Fraction(9, 200), Fraction(3, 50), Fraction(1, 1), Fraction(1, 1), Fraction(1, 1)]}\nSeparate six-test picture: {'family_size': 6, 'recorded_tests': 6, 'missing_tests': 0, 'cutoff': Fraction(1, 120), 'reject': [True, False, False, False, False, False], 'adjusted_p': [Fraction(3, 125), Fraction(9, 125), Fraction(3, 25), Fraction(12, 25), Fraction(1, 1), Fraction(1, 1)]}\nTen-test declared family, six supplied results: {'family_size': 10, 'recorded_tests': 6, 'missing_tests': 4, 'cutoff': Fraction(1, 200), 'reject': [True, False, False, False, False, False], 'adjusted_p': [Fraction(1, 25), Fraction(3, 25), Fraction(1, 5), Fraction(4, 5), Fraction(1, 1), Fraction(1, 1)]}\nUnknown four results stay unknown; no decision for them is fabricated.\nFor valid individual tests, the union bound controls the chance of any false rejection at most alpha, without requiring independent tests.\nThis arithmetic does not validate supplied p-values, establish effect magnitude or prove non-rejected nulls. No actual prompt experiment is run.",
+      "error": ""
+    },
+    {
+      "week": "ai-7/16",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main retrieval removal: {'count_drop': 3, 'percentage_point_drop': Fraction(30, 1)}\nMain validation removal: {'count_drop': 1, 'percentage_point_drop': Fraction(10, 1)}\nSeparate filter picture: {'count_drop': 2, 'percentage_point_drop': Fraction(20, 1)}\nMain no-validation condition also permits a stipulated unauthorized action; a one-pass drop does not make that boundary unimportant.\nJoint-removal outcome is UNKNOWN. Hypothetical neither counts 4 versus 6 give interaction contrasts 0 versus 2; these are counterexamples, not observations.\nCounts give net changes, not the identities of changed cases. No model, study, external action, significance test or universal causal attribution is performed.",
+      "error": ""
+    },
+    {
+      "week": "ai-7/17",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Supplied retrieval summary tradeoff: [{'k': 1, 'recall': Fraction(2, 5), 'precision': Fraction(9, 10)}, {'k': 3, 'recall': Fraction(7, 10), 'precision': Fraction(7, 10)}, {'k': 5, 'recall': Fraction(4, 5), 'precision': Fraction(1, 2)}]\nPicture positive flags at each cutoff: {'.5': [False, True, True], '.7': [False, False, True], '.6': [False, True, True]}\nNo reference labels are supplied; different explicitly hypothetical labels favor different cutoffs. More positives is not greater accuracy.\nRetrieval precision/recall are stipulated aggregate summaries; averaging convention and raw counts are not supplied. No raw relevance labels are reconstructed.\nPreserve the tested range and all results. Selection on these results needs separately reserved evaluation; no actual model run or beyond-range guarantee is supplied.",
+      "error": ""
+    },
+    {
+      "week": "ai-7/18",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Supplied-source metadata arrangement: {'rows': 10, 'unique_source_ids': 8, 'source_weights': {'S1': 3, 'S2': 1, 'S3': 1, 'S4': 1, 'S5': 1, 'S6': 1, 'S7': 1, 'S8': 1}, 'extra_rows_beyond_one_per_source': 2}\nIndoor supplied rate: 9/10 initial outdoor rate: None\nChanged supplied outdoor slice: 1/2 pooled descriptive count: 11/14\nDo not substitute the pooled 11/14 for outdoor 2/4, or call unmeasured outdoor performance zero.\nIDs distinguish declared source identities; they cannot prove independent sampling, eligibility or correct labels. No rows are silently deleted, no outcomes per source invented, and no real photo collection/model evaluation occurs.",
+      "error": ""
+    },
+    {
+      "week": "ai-7/20",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main proposal issues: ['analysis includes unnecessary fields under this toy purpose', 'public proposal contains row-level or linking fields outside the toy aggregate plan', 'retention unspecified']\nProposed repair metadata issues: [] does not mean approved or anonymous\nPublished-key proposal issues: ['public proposal contains row-level or linking fields outside the toy aggregate plan']\nSupplied minimum-five rule: one-person subgroup blocked; five meets only this count rule, not a privacy guarantee.\nNo personal records, identity lookup, export, access control or deletion is executed. The audit checks declared metadata, not actual reader permissions, consent or reidentification risk.",
+      "error": ""
+    },
+    {
+      "week": "ai-7/23",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main summaries: {'detection_fraction': Fraction(31, 50), 'per_study_cost': 60, 'stated_simulation_work_cost': 6000} {'detection_fraction': Fraction(83, 100), 'per_study_cost': 120, 'stated_simulation_work_cost': 12000}\nSeparate picture summaries: {'detection_fraction': Fraction(3, 5), 'per_study_cost': 40, 'stated_simulation_work_cost': 4000} {'detection_fraction': Fraction(4, 5), 'per_study_cost': 80, 'stated_simulation_work_cost': 8000}\nPer-study cost differs from total hypothetical work across 100 simulation trials; the latter is arithmetic, not measured compute or billing.\nThese are supplied finite-trial detection frequencies under a fixed alternative, not executed simulations, exact known power or guaranteed real-study success.\nNo null trials are supplied: false-positive rate is unknown. Changed effect/variability requires new model-specific planning; no new detection frequency is invented.",
+      "error": ""
+    },
+    {
+      "week": "ai-7/24",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Original local in-memory run record: {'run_id': 'demo-original', 'data_text': '2,4,6\\n', 'script_text': \"from fractions import Fraction\\n\\ndef mean_csv(text):\\n    parts=text.strip().split(',')\\n    if not parts or any(not p.strip() for p in parts):\\n        raise ValueError('nonempty comma-separated integer values required')\\n    values=[int(p) for p in parts]\\n    return Fraction(sum(values),len(values))\\n\", 'data_sha256': '5807e149ba80f11a9a13e671073cb25072edc5683e4149f0d848aa7ca9ad4cd7', 'script_sha256': '60604846076048b2672793ed42c7b67426d0743a0d18734a37c2791290be1083', 'python_runtime': '3.14.2 (main, Sep 14 2026, 03:03:51) [Clang 23.0.0git (https:/github.com/llvm/llvm-project e5927fecf8a6ce89e1a4eac5b8', 'dependencies': 'Python standard library only', 'metric': 'exact arithmetic mean of parsed integers', 'randomness': 'none used', 'raw_output': '4'}\nChanged local in-memory run record: {'run_id': 'demo-changed', 'data_text': '2,4,9\\n', 'script_text': \"from fractions import Fraction\\n\\ndef mean_csv(text):\\n    parts=text.strip().split(',')\\n    if not parts or any(not p.strip() for p in parts):\\n        raise ValueError('nonempty comma-separated integer values required')\\n    values=[int(p) for p in parts]\\n    return Fraction(sum(values),len(values))\\n\", 'data_sha256': '4203510374338fb252deb518096b14469c00aa6a73e4a954900f70bf1b41eba4', 'script_sha256': '60604846076048b2672793ed42c7b67426d0743a0d18734a37c2791290be1083', 'python_runtime': '3.14.2 (main, Sep 14 2026, 03:03:51) [Clang 23.0.0git (https:/github.com/llvm/llvm-project e5927fecf8a6ce89e1a4eac5b8', 'dependencies': 'Python standard library only', 'metric': 'exact arithmetic mean of parsed integers', 'randomness': 'none used', 'raw_output': '5'}\nChanged input gets a different run ID; original record retained. Hashes describe these exact bytes only.\nThis is an actual tiny local calculation, not an independent reproduction of an AI model, evidence of good sampling or proof that the recorded formula answers a scientific question.",
+      "error": ""
+    },
+    {
+      "week": "ai-7/25",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main supplied completion summary: {'passes': 16, 'failures': 2, 'unassessed': 2, 'completed': 18, 'eligible': 20, 'completed_pass_rate': Fraction(8, 9), 'coverage': Fraction(9, 10)}\nSeparate frozen six-case picture: [{'case_id': 'C1', 'A': 1, 'B': 1, 'B_minus_A': 0}, {'case_id': 'C2', 'A': 0, 'B': 1, 'B_minus_A': 1}, {'case_id': 'C3', 'A': 1, 'B': 1, 'B_minus_A': 0}, {'case_id': 'C4', 'A': 1, 'B': 0, 'B_minus_A': -1}, {'case_id': 'C5', 'A': 0, 'B': 1, 'B_minus_A': 1}, {'case_id': 'C6', 'A': 1, 'B': 1, 'B_minus_A': 0}]\nA-only correct: ['C4'] B-only correct: ['C2', 'C5'] net B-A: 1\nNet one extra correct is not one changed case: three paired cases differ. Unassessed cases remain unknown.\nA version tuned after inspecting C4 is a post-inspection revision. Same-set rescoring is development evidence; its new outputs are not supplied.\nNo model is run, no outage is induced, no significance or population advantage is established, and a revised score is not invented.",
+      "error": ""
+    },
+    {
+      "week": "ai-7/26",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Retained main valid durations: [1, 2, 2, 15] {'count': 4, 'mean_seconds': Fraction(5, 1), 'median_seconds': Fraction(2, 1)}\nRetained separate picture durations: [2, 2, 2, 10] {'count': 4, 'mean_seconds': Fraction(4, 1), 'median_seconds': Fraction(2, 1)} fourth trace logs a source timeout\nIllustrative wrong deletion would change main mean to 5/3 and picture mean to 2\nThese deletion summaries demonstrate distortion only; original valid observations and the planned timeout inclusion are retained.\nA timeout log is a recorded event, not a complete root-cause diagnosis. A genuine measurement correction needs evidence and provenance, not dislike of an outcome.\nNo response is timed, no timeout is generated, and no causal explanation or population tail estimate is established.",
+      "error": ""
+    },
+    {
+      "week": "ai-7/27",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Main current/outdated rates: 9/10 1/2 gap in percentage points: 40\nSeparate indoor/outdoor rates: 7/8 3/8 pooled: 5/8\nPooled 62.5% hides indoor 87.5% versus outdoor 37.5%; it is not the rate for either slice.\nNo individual case outcomes, cause, significance, stable population rate or universal robustness is supplied. Frozen-model/rubric claims are exercise assumptions, not code-verified controls.\nNo model is run and no new condition is collected. Keep baseline, metric, eligibility and conditions aligned in any proposed follow-up.",
+      "error": ""
+    },
+    {
+      "week": "ai-7/30",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Original explicit inclusive length rule: [{'input': 'oak', 'character_count': 3, 'label': 'short'}, {'input': 'pine', 'character_count': 4, 'label': 'long'}, {'input': 'willow', 'character_count': 6, 'label': 'long'}]\nChanged strict greater-than-four rule: [{'input': 'oak', 'character_count': 3, 'label': 'short'}, {'input': 'pine', 'character_count': 4, 'label': 'short'}, {'input': 'willow', 'character_count': 6, 'label': 'long'}]\nWhitespace boundary probe: [{'input': 'oak ', 'character_count': 4, 'label': 'long'}]\nMethod: Python len on the supplied ASCII strings, no stripping or preprocessing. Long is an arbitrary string-length label, not botanical meaning.\nThis demonstrates repeatable computation only. It supplies no missing code/data/split for the main AI report, no learned-model evidence and no independent study reproduction.",
+      "error": ""
+    },
+    {
+      "week": "ai-7/33",
+      "index": 0,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "Separate constructed metric fixture: {'errors': [0, 2], 'MAE': Fraction(1, 1), 'MSE': Fraction(2, 1)}\nSupplied six-case scoring disagreement: {'original_correct': 5, 'rerun_correct': 4, 'total': 6, 'disputed_case': 'Q3', 'saved_file_available': 'not verified by this program'}\nInspect saved Q3 output, reference label and rubric before adjudication. Do not choose the larger score or average incompatible scoring decisions.\nIf the saved Q3 file is missing, exact verification of that case is unresolved. Record the missing artifact and any assistance; do not fabricate the file or a successful independent check.\nNo other operator, new model output, full-study reproduction or new-data replication is executed here. This local fixture only demonstrates MAE versus MSE.",
       "error": ""
     },
     {
@@ -970,6 +2026,14 @@
       "expected_error": false,
       "passed": true,
       "stdout": "30",
+      "error": ""
+    },
+    {
+      "week": "python-bridge/1",
+      "index": 2,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "26",
       "error": ""
     },
     {
@@ -997,6 +2061,14 @@
       "error": ""
     },
     {
+      "week": "python-bridge/2",
+      "index": 3,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "10\n82",
+      "error": ""
+    },
+    {
       "week": "python-bridge/3",
       "index": 0,
       "expected_error": false,
@@ -1021,6 +2093,22 @@
       "error": ""
     },
     {
+      "week": "python-bridge/3",
+      "index": 3,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "13\n25",
+      "error": ""
+    },
+    {
+      "week": "python-bridge/3",
+      "index": 4,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "8\n14\n12.0",
+      "error": ""
+    },
+    {
       "week": "python-bridge/4",
       "index": 0,
       "expected_error": false,
@@ -1037,6 +2125,14 @@
       "error": ""
     },
     {
+      "week": "python-bridge/4",
+      "index": 2,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "True\nTrue\nTrue",
+      "error": ""
+    },
+    {
       "week": "python-bridge/5",
       "index": 0,
       "expected_error": false,
@@ -1050,6 +2146,14 @@
       "expected_error": false,
       "passed": true,
       "stdout": "Short",
+      "error": ""
+    },
+    {
+      "week": "python-bridge/5",
+      "index": 2,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "invalid",
       "error": ""
     },
     {
@@ -1066,6 +2170,22 @@
       "expected_error": false,
       "passed": true,
       "stdout": "3",
+      "error": ""
+    },
+    {
+      "week": "python-bridge/6",
+      "index": 2,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "10",
+      "error": ""
+    },
+    {
+      "week": "python-bridge/6",
+      "index": 3,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "9",
       "error": ""
     },
     {
@@ -1093,6 +2213,30 @@
       "error": "PythonError: Traceback (most recent call last):\n  File \"/lib/python314.zip/_pyodide/_base.py\", line 619, in eval_code_async\n    await CodeRunner(\n    ...<10 lines>...\n    .run_async(globals, locals)\n  File \"/lib/python314.zip/_pyodide/_base.py\", line 420, in run_async\n    coroutine = eval(self.code, globals, locals)\n  File \"<exec>\", line 2, in <module>\nIndexError: list index out of range\n"
     },
     {
+      "week": "python-bridge/7",
+      "index": 3,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "6\n8\n3",
+      "error": ""
+    },
+    {
+      "week": "python-bridge/7",
+      "index": 4,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "[6, 7, 4]\n3\n4",
+      "error": ""
+    },
+    {
+      "week": "python-bridge/7",
+      "index": 5,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "no last item",
+      "error": ""
+    },
+    {
       "week": "python-bridge/8",
       "index": 0,
       "expected_error": false,
@@ -1106,6 +2250,30 @@
       "expected_error": false,
       "passed": true,
       "stdout": "8\n8",
+      "error": ""
+    },
+    {
+      "week": "python-bridge/8",
+      "index": 2,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "6",
+      "error": ""
+    },
+    {
+      "week": "python-bridge/8",
+      "index": 3,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "8\n-8",
+      "error": ""
+    },
+    {
+      "week": "python-bridge/8",
+      "index": 4,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "5\n0\n8",
       "error": ""
     },
     {
@@ -1125,11 +2293,43 @@
       "error": ""
     },
     {
+      "week": "python-bridge/9",
+      "index": 2,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "7 5",
+      "error": ""
+    },
+    {
+      "week": "python-bridge/9",
+      "index": 3,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "5 0 5",
+      "error": ""
+    },
+    {
       "week": "python-bridge/10",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "8\n6",
+      "error": ""
+    },
+    {
+      "week": "python-bridge/10",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "0\nNone\nTrue",
+      "error": ""
+    },
+    {
+      "week": "python-bridge/10",
+      "index": 2,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "0\n9",
       "error": ""
     },
     {
@@ -1141,11 +2341,43 @@
       "error": ""
     },
     {
+      "week": "python-bridge/11",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "2 2 3 1.0",
+      "error": ""
+    },
+    {
+      "week": "python-bridge/11",
+      "index": 2,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "7",
+      "error": ""
+    },
+    {
       "week": "python-bridge/12",
       "index": 0,
       "expected_error": false,
       "passed": true,
       "stdout": "True\nTrue\nTrue",
+      "error": ""
+    },
+    {
+      "week": "python-bridge/12",
+      "index": 1,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "three checks passed",
+      "error": ""
+    },
+    {
+      "week": "python-bridge/12",
+      "index": 2,
+      "expected_error": false,
+      "passed": true,
+      "stdout": "4 4 True\n4 0 False\n4 6 False",
       "error": ""
     }
   ]

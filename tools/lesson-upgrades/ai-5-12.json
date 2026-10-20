@@ -33,6 +33,6 @@
   "student_task": "Which parameter changed, and which part was not trained? Point to the relevant step in the picture, then write the changed result and the rule or evidence that supports it.",
   "teacher_answer": "Only output weight v changed. The fixed ReLU hidden function h=ReLU(x) retained its declared computation. Changed-case check: First gradient=-36; v becomes 2; prediction 6 and loss 0. The hidden value remains 3, but the target residual and required output weight double.",
   "project_evidence": "For your Image-pattern Network Investigation, save the input, procedure, observed result and limitation of this check. Label this worked example as practice; use a different, previously unreviewed case when checking independent understanding.",
-  "limits": "A zero loss on one example is memorised fit to that example, not proof of a generally useful image classifier.",
+  "limits": "Zero loss on one example is an exact fit to that recorded example. It does not by itself establish memorisation or a generally useful image classifier.",
   "review_note": "Reviewed Training a small network against the assigned lesson pack and its reserved independent case. Added a different explicit worked scenario, an auditable trace and a changed-input check; preserved the original curriculum and assessment boundary. Root peer review added the topic-specific conceptual explanation and checked arithmetic and notation."
 }
