@@ -1,7 +1,7 @@
 import "server-only";
 import type {ReadingPresentation,ReadingFlow} from "./reading-format";
 
-import academyData from "./academy-data.json";
+import academyData from "./academy-index.json";
 
 export type AcademyRole = "student" | "teacher";
 
@@ -64,4 +64,21 @@ export function learningKind(week: number): string {
   if (week <= 24) return "Evaluate";
   if (week <= 30) return "Design";
   return "Capstone";
+}
+
+// Called only after the page has checked the user's session. No lesson content is public JSON.
+export async function loadWeekContent(week: Week): Promise<Week> {
+  const { env } = await import("cloudflare:workers");
+  const { resourceKey } = await import("./resource-key");
+  const id = (week as Week & {contentId:string}).contentId;
+  if (!/^[a-f0-9]{64}$/.test(id)) throw new Error("Invalid lesson asset reference");
+  const assets = (env as unknown as {ASSETS:{fetch(request:Request):Promise<Response>}}).ASSETS;
+  const response = await assets.fetch(new Request(`https://academy.internal/lesson-blobs/${id}.bin`));
+  if (!response.ok) throw new Error("Lesson content unavailable");
+  const bytes = new Uint8Array(await response.arrayBuffer());
+  const key = await crypto.subtle.importKey("raw",Uint8Array.from(atob(resourceKey),c=>c.charCodeAt(0)),"AES-GCM",false,["decrypt"]);
+  const plain = await crypto.subtle.decrypt({name:"AES-GCM",iv:bytes.slice(0,12),additionalData:new TextEncoder().encode(id)},key,bytes.slice(12));
+  const content = JSON.parse(new TextDecoder().decode(plain)) as Week;
+  if(content.number!==week.number) throw new Error("Lesson content mismatch");
+  return content;
 }

@@ -7,7 +7,7 @@ import { PortalHeader } from "@/components/portal-header";
 import { PrintResource } from "@/components/print-resource";
 import { Badge } from "@/components/ui/badge";
 import { requireAccess } from "@/lib/access";
-import { getLevel, getWeek, titleWithoutWeek, type AcademyRole } from "@/lib/academy";
+import { getLevel, getWeek, loadWeekContent, titleWithoutWeek, type AcademyRole } from "@/lib/academy";
 
 import { classroom } from "@/lib/classroom";
 import { LessonRoute } from "@/components/lesson-route";
@@ -28,9 +28,10 @@ export default async function WeekPage({ params, searchParams }: { params: Promi
   if (rawRole !== "student" && rawRole !== "teacher") notFound();
   const role = rawRole as AcademyRole;
   const level = getLevel(levelSlug);
-  const week = level ? getWeek(level, weekParam) : undefined;
+  let week = level ? getWeek(level, weekParam) : undefined;
   if (!level || !week) notFound();
   const sessionRole = await requireAccess(role);
+  week = await loadWeekContent(week);
   const allowedResources: Resource[] = role === "teacher" ? ["guide", "lesson", "workbook"] : ["lesson", "workbook"];
   const requested = query.resource as Resource | undefined;
   const resource = requested && allowedResources.includes(requested) ? requested : allowedResources[0];

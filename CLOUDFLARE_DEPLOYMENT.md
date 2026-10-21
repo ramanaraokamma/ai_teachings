@@ -14,8 +14,15 @@ To import a newly rebuilt offline edition, run `node scripts/import-complete-pro
 
 These settings remain compatible with the complete programme:
 
-- Build: `node scripts/verify-curriculum.mjs --decrypt && npm ci && npm run build`
+- Build: `node scripts/verify-curriculum.mjs --decrypt && npm run build`
 - Deploy: `npx wrangler deploy --config dist/server/wrangler.json --name ai-teachings`
 - Version: `npx wrangler versions upload --config dist/server/wrangler.json --name ai-teachings`
 
 The validator now checks all 264 lessons and role-specific Word/PDF downloads. Its `--decrypt` option authenticates every encrypted resource and checks the resulting file signatures. The former 144-week renderer check is replaced by complete-programme checks.
+
+
+Weekly lesson text is generated as encrypted static assets during `npm run build`.
+The Worker bundles only the navigation index and decrypts one requested week through
+the ASSETS binding after session authorization. Keep `scripts/prepare-lesson-assets.mjs`
+in both build paths; importing `academy-data.json` into runtime code exceeds Worker limits.
+Cloudflare already installs dependencies before its configured build command.

@@ -13,7 +13,7 @@ const results=[];
 const testEnv={STUDENT_PASSCODE:'student1234',TEACHER_PASSCODE:'teacher1234',ACADEMY_SESSION_SECRET:secret,
   ASSETS:{fetch:async request=>{
     const path=new URL(request.url).pathname;
-    if(!/^\/curriculum-blobs\/[a-f0-9]{64}\.bin$/.test(path))return new Response('Not found',{status:404});
+    if(!/^\/(?:curriculum|lesson)-blobs\/[a-f0-9]{64}\.bin$/.test(path))return new Response('Not found',{status:404});
     try{return new Response(await readFile(join(root,'public',path)));}catch{return new Response('Not found',{status:404});}
   }},
 };

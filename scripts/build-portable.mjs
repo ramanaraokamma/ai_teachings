@@ -7,5 +7,6 @@ const run=(command,args,timeout=180000)=>{
  if(result.status!==0)process.exit(result.status??1);
 };
 run(process.execPath,['scripts/verify-curriculum.mjs']);
+run(process.execPath,['scripts/prepare-lesson-assets.mjs']);
 run(`${root}node_modules/.bin/vinext`,['build']);
 run(process.execPath,['scripts/protect-static-assets.mjs']);
