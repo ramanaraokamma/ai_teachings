@@ -26,3 +26,18 @@ The Worker bundles only the navigation index and decrypts one requested week thr
 the ASSETS binding after session authorization. Keep `scripts/prepare-lesson-assets.mjs`
 in both build paths; importing `academy-data.json` into runtime code exceeds Worker limits.
 Cloudflare already installs dependencies before its configured build command.
+
+## Identify the source of a Cloudflare build
+
+Current builds print `AI Academy build: externalized-lessons-v1; commit=<SHA>`,
+then `Prepared 264 encrypted weekly lesson assets`, and finally a Worker size preflight.
+If any of these messages is missing, inspect the build's commit, repository, branch,
+and root directory before retrying. Retrying an old build does not select the latest commit.
+The repository is `ramanaraokamma/ai_teachings`, production branch `main`, root directory
+the repository root. A diagnostic build command is:
+
+```sh
+git rev-parse HEAD && node scripts/verify-build-source.mjs && node scripts/verify-curriculum.mjs --decrypt && npm run build
+```
+
+A missing `verify-build-source.mjs` means the checked-out source predates this guard.

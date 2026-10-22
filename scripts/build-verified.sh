@@ -22,6 +22,7 @@ if [[ ! -x "${vinext}" ]]; then
   exit 69
 fi
 
+node "${script_dir}/verify-build-source.mjs"
 echo "Running bounded vinext build..."
 node "${script_dir}/verify-curriculum.mjs"
 node "${script_dir}/prepare-lesson-assets.mjs"
