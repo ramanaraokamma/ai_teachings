@@ -32,3 +32,8 @@ async function codeBytes(dir){let total=0;for(const entry of await readdir(dir,{
 const bytes=await codeBytes(new URL('../dist/server/',import.meta.url));
 if(bytes>60*1024*1024)throw new Error(`Worker code is ${(bytes/1024/1024).toFixed(2)} MiB; exceeds the 60 MiB build safety budget. Move curriculum data into assets.`);
 console.log(`Worker code size preflight: ${(bytes/1024/1024).toFixed(2)} MiB; 264 encrypted weekly assets verified.`);
+
+// Videos stream from private R2; fail before deployment if anyone bundles a master.
+const {verifyVideoAssets}=await import("./verify-video-assets.mjs");
+await verifyVideoAssets(new URL("../dist/client/",import.meta.url));
+if(process.env.ACADEMY_VIDEO_BUCKET&&!config.r2_buckets?.some(b=>b.binding==="LESSON_VIDEOS"&&b.bucket_name===process.env.ACADEMY_VIDEO_BUCKET))throw new Error("Video R2 binding was omitted from the deployment config");

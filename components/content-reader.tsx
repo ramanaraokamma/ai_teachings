@@ -1,3 +1,4 @@
+import {VideoSectionLink} from "@/components/video-section-link";
 import { AlertTriangle, BookMarked, CheckCircle2, Lightbulb, MessageCircleQuestion, PencilLine } from "lucide-react";
 
 import { FormattedReading } from "@/components/formatted-reading";
@@ -80,7 +81,7 @@ function PageBlocks({ page, responsePrefix }: { page: LessonPage; responsePrefix
   return <>{grouped.map((block, index) => <Block key={index} block={block} storageKey={`${responsePrefix || "resource"}-section-${page.number}-block-${index}`} />)}{explanation >= 0 && <PredictExplain storageKey={`${responsePrefix || "resource"}-prediction-${page.number}`}>{page.blocks.slice(explanation, end >= 0 ? end : undefined).map((block, index) => <Block key={index} block={block} storageKey={`${responsePrefix || "resource"}-section-${page.number}-explanation-${index}`} />)}</PredictExplain>}{end >= 0 && page.blocks.slice(end).map((block,index)=><Block key={`after-${index}`} block={block} storageKey={`${responsePrefix || "resource"}-section-${page.number}-block-${end+index}`}/>)}</>;
 }
 
-export function ContentReader({ pages, workbookBlocks, responsePrefix }: { pages?: LessonPage[]; workbookBlocks?: ContentBlock[]; responsePrefix?:string }) {
+export function ContentReader({ pages, workbookBlocks, responsePrefix, videoSections }: { pages?: LessonPage[]; workbookBlocks?: ContentBlock[]; responsePrefix?:string; videoSections?:Record<number,number> }) {
   const sections = pages ?? [{ number: 1, label: "WORKBOOK PRACTICE", blocks: workbookBlocks ?? [] }];
   const overview=sections[0]?.flow?.overview;
   const ordered=overview?overview.order.map(number=>sections.find(p=>p.number===number)!).filter(Boolean):sections;
@@ -88,6 +89,7 @@ export function ContentReader({ pages, workbookBlocks, responsePrefix }: { pages
   const article=(page:LessonPage)=><article className={`lesson-section ${page.flow?"flow-section":""}`} id={`section-${page.number}`} key={page.number}>
     <div className="section-kicker"><Badge variant="outline">{page.flow?(page.flow.optional?"Reference & extra practice":"Main lesson"): `Section ${page.number}`}</Badge><span>{page.flow?`Section ${page.number}`:page.label}</span></div>
     <h2 className="reading-section-title">{page.flow?.title||page.label}</h2>
+    {videoSections?.[page.number]!==undefined&&<VideoSectionLink start={videoSections[page.number]}/>}
     {(page.flow?.purpose||page.intro)&&<p className="reading-section-intro">{page.flow?.purpose||page.intro}</p>}
     <div className="section-blocks"><PageBlocks page={page} responsePrefix={responsePrefix} /></div>
   </article>;

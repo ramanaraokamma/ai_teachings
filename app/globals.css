@@ -518,3 +518,33 @@ svg { stroke-width: 1.8; }
 .reading-edition .content-heading{font-size:1.4rem;line-height:1.4;font-weight:750;color:#173e54;margin:1.65rem 0 .9rem}.reading-edition .content-subheading{font-size:1.15rem;line-height:1.45;font-weight:750;color:#173e54;margin:1.5rem 0 .8rem}.reading-section-intro{max-width:72ch;padding:1rem 1.2rem;border-left:3px solid #829eae;background:#f4f7fa;color:#405a6b;margin:0 0 1.6rem;line-height:1.75}.reading-context{font-size:.95em;padding:.65rem;border-left:2px solid #829eae;background:white}
 
 .reading-checklist ul{list-style:disc;padding-left:1.6rem}.reading-checklist li{padding:.35rem 0}.reading-check{border-left:3px solid #086c68;padding-left:1rem}
+
+/* A short, evidence-based end-of-lesson reflection. */
+.learning-checkpoint{max-width:100%;border-top:4px solid #086c68}
+.checkpoint-eyebrow{font-size:.8rem;font-weight:750;letter-spacing:.04em;color:#08605e}
+.checkpoint-route{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;list-style:decimal;padding-left:1.5rem;margin:1.5rem 0}
+.checkpoint-route li{padding:.75rem .9rem;background:#edf7f3;border-radius:.65rem;line-height:1.7}
+.checkpoint-route strong{color:#173e54}.checkpoint-route p{margin:.5rem 0}
+.checkpoint-notes{border:1px solid #bfd2df;border-radius:.65rem;margin:1rem 0}
+.checkpoint-notes summary{padding:1rem;cursor:pointer;font-weight:700;color:#173e54}
+.checkpoint-notes summary:focus-visible{outline:3px solid #28668d;outline-offset:3px}
+.checkpoint-notes-body{padding:0 1rem 1rem}.checkpoint-next li{margin:.6rem 0;line-height:1.7}
+.checkpoint-next ul{list-style:disc;padding-left:1.5rem}.checkpoint-note{font-size:.9rem;color:#405a6b}
+@media(max-width:800px){.checkpoint-route{grid-template-columns:1fr;gap:.65rem}}
+@media print{.checkpoint-route{grid-template-columns:1fr}.checkpoint-notes:not([open]){display:none}.checkpoint-route li{break-inside:avoid}}
+
+/* Week-specific video: media stays in private R2, never in the Worker bundle. */
+.week-video{scroll-margin-top:1.5rem;max-width:1100px;margin:1.5rem auto;padding:clamp(1rem,3vw,2rem)}
+.week-video-eyebrow{text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:#176b65;font-size:.8rem}
+.week-video-meta,.week-video-note{color:#475569;font-size:.9rem}.week-video video{display:block;width:100%;aspect-ratio:16/9;background:#153644;border-radius:12px;margin:1rem 0}
+.week-video-start,.week-video-notice{padding:1.25rem;border:1px solid #b9d4d0;border-radius:12px;background:#eff8f6}
+.week-video-start button{background:#12645e;color:white;padding:.8rem 1.2rem;border:0;border-radius:9px;font-weight:700;cursor:pointer}
+.week-video button:focus-visible,.week-video a:focus-visible{outline:3px solid #12766e;outline-offset:4px}
+.week-video-chapters{margin:1rem 0}.week-video-chapters summary{font-weight:700;cursor:pointer}.week-video-chapters ol{padding-left:1.4rem}
+.week-video-chapters li{margin:.8rem 0}.week-video-chapters button{display:block;text-align:left;background:none;border:0;color:#075e58;font:inherit;cursor:pointer;text-decoration:underline}.week-video-chapters button span{font-variant-numeric:tabular-nums;font-weight:700}
+.week-video-chapters li a{font-size:.9rem}.week-video-downloads{display:flex;flex-wrap:wrap;gap:1rem}.week-video a{color:#075e58;text-decoration:underline}.week-video-note{margin-top:1rem}
+@media print{.week-video{display:none!important}}
+.section-video-link{display:inline-block;margin:0 0 .8rem;color:#075e58;text-decoration:underline;font-size:.9rem;font-weight:600}
+@media print{.section-video-link{display:none!important}}
+.week-youtube-player{width:100%;aspect-ratio:16/9;min-height:200px;background:#153644;border-radius:12px;overflow:hidden;margin:1rem 0}
+.week-youtube-frame{display:block;width:100%;height:100%;min-height:200px;border:0}

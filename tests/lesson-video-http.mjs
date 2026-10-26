@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import {serveVideoAsset,parseByteRange} from '../lib/video-http.ts';
+const data=new TextEncoder().encode('0123456789abcdef'),calls=[];
+const asset={key:'academy-videos/test/lesson.mp4',bytes:16,mime:'video/mp4',filename:'ai-1-week-1.mp4'};
+const bucket={async head(key){calls.push(['head',key]);return {size:data.length,httpEtag:'"immutable"',uploaded:new Date('2026-10-25T00:00:00Z')};},async get(key,options){calls.push(['get',key,options]);const b=options?.range?data.slice(options.range.offset,options.range.offset+options.range.length):data;return {size:16,httpEtag:'"immutable"',uploaded:new Date(),body:new ReadableStream({start(c){c.enqueue(b);c.close();}})};}};
+const req=(headers={},method='GET')=>new Request('https://academy.test/video',{method,headers});
+let r=await serveVideoAsset(req(),bucket,asset);assert.equal(r.status,200);assert.equal(await r.text(),'0123456789abcdef');assert.equal(r.headers.get('cache-control'),'private, no-store');assert.equal(r.headers.get('vary'),'Cookie');
+r=await serveVideoAsset(req({Range:'bytes=3-6'}),bucket,asset);assert.equal(r.status,206);assert.equal(await r.text(),'3456');assert.equal(r.headers.get('content-range'),'bytes 3-6/16');assert.equal(r.headers.get('content-length'),'4');assert.deepEqual(calls.at(-1)[2],{range:{offset:3,length:4}});
+r=await serveVideoAsset(req({Range:'bytes=-4'}),bucket,asset);assert.equal(await r.text(),'cdef');
+r=await serveVideoAsset(req({Range:'bytes=14-100'}),bucket,asset);assert.equal(await r.text(),'ef');
+for(const value of ['bytes=16-','bytes=7-2','bytes=0-1,5-6','bytes=-0','bytes=','items=1-3','bytes=90071992547409930-']){r=await serveVideoAsset(req({Range:value}),bucket,asset);assert.equal(r.status,416,value);assert.equal(r.headers.get('content-range'),'bytes */16');}
+const gets=calls.filter(x=>x[0]==='get').length;r=await serveVideoAsset(req({Range:'bytes=2-3'},'HEAD'),bucket,asset);assert.equal(r.status,200);assert.equal(r.headers.get('content-length'),'16');assert.equal(await r.text(),'');assert.equal(calls.filter(x=>x[0]==='get').length,gets);
+r=await serveVideoAsset(req({'If-None-Match':'"immutable"'}),bucket,asset);assert.equal(r.status,304);
+r=await serveVideoAsset(req({Range:'bytes=2-3','If-Range':'"different"'}),bucket,asset);assert.equal(r.status,200);
+r=await serveVideoAsset(req({Range:'bytes=2-3','If-Range':'"immutable"'}),bucket,asset);assert.equal(r.status,206);
+assert.equal((await serveVideoAsset(req(),undefined,asset)).status,503);
+assert.equal((await serveVideoAsset(req(),{...bucket,head:async()=>null},asset)).status,404);
+assert.equal((await serveVideoAsset(req(),{...bucket,head:async()=>({size:3})},asset)).status,503);
+assert.deepEqual(parseByteRange('bytes=0-',16),{offset:0,length:16});
+console.log('Video streaming: full body, exact/open/suffix/clamped ranges, 416, If-Range, 304, HEAD without reads, private headers, missing storage and size verification passed.');

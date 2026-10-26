@@ -1,3 +1,5 @@
+import {LessonVideoPlayer} from "@/components/lesson-video";
+import {getLessonVideo,getYouTubeVideoID} from "@/lib/lesson-videos";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, BookOpen, ClipboardCheck, GraduationCap, Image as ImageIcon, Lightbulb } from "lucide-react";
 import { notFound } from "next/navigation";
@@ -17,6 +19,7 @@ import { PrerequisiteRepair } from "@/components/prerequisite-repair";
 import { PythonLab } from "@/components/python-lab";
 import { FormativePractice } from "@/components/formative-practice";
 import { PortfolioTools } from "@/components/portfolio-tools";
+import { LearningCheckpoint } from "@/components/learning-checkpoint";
 import { LearningProgress } from "@/components/learning-progress";
 
 export const dynamic = "force-dynamic";
@@ -40,6 +43,10 @@ export default async function WeekPage({ params, searchParams }: { params: Promi
   const tools=(learningData as Record<string,LearningTools>)[`${level.slug}/${week.number}`];
   const preparation=week.teacher.pages.find(page=>page.label==="Prepare, teach and assess")?.number || 1;
   const visualSection=(resource === "guide" ? week.teacher.pages : week.student.pages).find(page=>page.label==="Visual concept journey")?.number;
+  const lessonVideo=getLessonVideo(level.slug,week.number);
+  const youtubeId=getYouTubeVideoID(level.slug,week.number);
+  const videoConfigured=Boolean(youtubeId);
+  const videoSections=lessonVideo&&videoConfigured?Object.fromEntries([...lessonVideo.chapters].reverse().flatMap(c=>c.studentSections.map(n=>[n,c.start]))):undefined;
   const previous = week.number > 1 ? week.number - 1 : null;
   const next = week.number < level.weeks.length ? week.number + 1 : null;
   return (
@@ -56,6 +63,7 @@ export default async function WeekPage({ params, searchParams }: { params: Promi
           {role === "teacher" && <Link className={resource === "guide" ? "active" : ""} href="?resource=guide"><ClipboardCheck aria-hidden="true" /><span>Teacher guide<small>{connected?`${week.teacher.pages.filter(p=>!p.flow?.optional).length} main sections + references`:`${week.teacher.pages.length} sections`}</small></span></Link>}
           <Link className={resource === "lesson" ? "active" : ""} href="?resource=lesson"><BookOpen aria-hidden="true" /><span>Student lesson<small>{connected?`${week.student.pages.filter(p=>!p.flow?.optional).length} main sections + references`:`${week.student.pages.length} sections`}</small></span></Link>
           <Link className={resource === "workbook" ? "active" : ""} href="?resource=workbook"><GraduationCap aria-hidden="true" /><span>Workbook practice<small>Weekly mission</small></span></Link>
+          {lessonVideo&&<Link href={resource==="workbook"?"?resource=lesson#week-video":"#week-video"}><BookOpen aria-hidden="true"/><span>Lesson video<small>Watch with chapters and captions</small></span></Link>}
         </nav>
         <div className="resource-actions">
           <a className="resource-action" href={resource === "guide" ? week.teacher.download : resource === "workbook" ? week.workbook.download : week.student.download}>Download this week’s {resource === "workbook" ? "workbook" : resource === "guide" ? "teacher guide" : "student lesson"} (.docx)</a>
@@ -68,12 +76,14 @@ export default async function WeekPage({ params, searchParams }: { params: Promi
       {!connected && resource === "lesson" && <FormativePractice week={`${level.slug}/${week.number}`} role={role} scenario={tools.scenario} questions={tools.questions} repairs={tools.repairs} />}
       {resource === "lesson" && tools.labs.length > 0 && <PythonLab week={`${level.slug}/${week.number}`} role={role} labs={tools.labs} />}
       {!connected && resource === "lesson" && <PrerequisiteRepair repairs={tools.repairs} role={role} week={`${level.slug}/${week.number}`} />}
+      {lessonVideo&&resource!=="workbook"&&<LessonVideoPlayer key={`${level.slug}/${week.number}`} level={level.slug} week={week.number} title={lessonVideo.title} seconds={lessonVideo.seconds} bytes={lessonVideo.assets.video.bytes} chapters={lessonVideo.chapters} teacher={role==="teacher"} resource={resource} configured={videoConfigured} youtubeId={youtubeId}/>}
       <section className="lesson-reader-shell">
         {resource === "guide" && <ContentReader pages={week.teacher.pages} responsePrefix={`${level.slug}/${week.number}/guide`} />}
-        {resource === "lesson" && <ContentReader pages={week.student.pages} responsePrefix={`${level.slug}/${week.number}/lesson`} />}
+        {resource === "lesson" && <ContentReader pages={week.student.pages} videoSections={videoSections} responsePrefix={`${level.slug}/${week.number}/lesson`} />}
         {resource === "workbook" && <ContentReader pages={week.workbook.pages} workbookBlocks={week.workbook.blocks} responsePrefix={`${level.slug}/${week.number}/workbook`} />}
       </section>
       {connected && resource === "lesson" && <section data-connected-reading><details className="flow-reference"><summary>Optional interactive practice and repair</summary><div className="flow-reference-body"><FormativePractice week={`${level.slug}/${week.number}`} role={role} scenario={tools.scenario} questions={tools.questions} repairs={tools.repairs} /><PrerequisiteRepair repairs={tools.repairs} role={role} week={`${level.slug}/${week.number}`} /></div></details></section>}
+      {resource !== "workbook" && <LearningCheckpoint week={`${level.slug}/${week.number}`} title={titleWithoutWeek(week.student.title)} teacher={resource === "guide"} workedExample={(resource === "guide" ? week.teacher.pages : week.student.pages).find(page=>/worked example/i.test(page.label))?.number} />}
       <PortfolioTools role={role} week={`${level.slug}/${week.number}`} titles={{[`${level.slug}/${week.number}`]:{title:titleWithoutWeek(week.student.title),project:classroom.weeks[`${level.slug}/${week.number}`].project}}} />
       <LearningProgress id={`${level.slug}/${week.number}`} role={role} />
       <nav className="week-pagination" aria-label="Adjacent weeks">

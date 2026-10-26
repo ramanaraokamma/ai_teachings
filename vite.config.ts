@@ -26,14 +26,10 @@ const localBindingConfig = {
         },
       ]
     : [],
-  r2_buckets: r2
-    ? [
-        {
-          binding: r2,
-          bucket_name: "site-creator-r2",
-        },
-      ]
-    : [],
+  r2_buckets: [
+    ...(r2 ? [{binding:r2,bucket_name:"site-creator-r2"}] : []),
+    ...(process.env.ACADEMY_VIDEO_BUCKET ? [{binding:"LESSON_VIDEOS",bucket_name:process.env.ACADEMY_VIDEO_BUCKET}] : []),
+  ],
 };
 
 export default defineConfig(async () => {

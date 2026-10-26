@@ -45,3 +45,9 @@ next-env.d.ts
 
 # Rebuilt from academy-data.json before each production build
 /public/lesson-blobs/
+
+# Video masters belong in R2 / a separate media LFS archive, never the website repo.
+*.mp4
+*.mov
+*.mkv
+**/__pycache__/

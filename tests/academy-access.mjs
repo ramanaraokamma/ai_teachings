@@ -49,6 +49,9 @@ try {
     assert.ok(html.includes('Your lesson route'));assert.ok(html.includes('Project milestone:'));assert.ok(html.includes('Finish and return'));
    }
    assert.ok(html.includes('Draft saved in this browser'));
+   assert.ok(html.includes('What can you explain now?'));
+   assert.ok(html.includes('learning-checkpoint-title'));
+   assert.ok(html.includes('This reflection is practice, not a grade.'));
   });
  }
  await check('Python placement check and bridge continuation',async()=>{
