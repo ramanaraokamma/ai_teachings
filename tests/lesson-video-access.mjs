@@ -34,4 +34,4 @@ for(const [id,video] of Object.entries(catalogue))for(const role of ['student','
  pages++;
 }
 assert.ok(!(await (await request('/learn/student/ai-3/1','student')).text()).includes('id="week-video"'));
-console.log(`${pages} student/teacher week pages verified; all 72 weeks map correctly, with 10 YouTube videos enabled and 62 pending. Signed-in streaming, captions, HEAD, signed-out denial before storage reads, unknown assets and missing-storage responses passed.`);
+console.log(`${pages} student/teacher week pages verified; all 72 weeks map correctly, with ${Object.values(youtube).filter(Boolean).length} YouTube videos enabled and ${Object.values(youtube).filter(id=>!id).length} pending. Signed-in streaming, captions, HEAD, signed-out denial before storage reads, unknown assets and missing-storage responses passed.`);

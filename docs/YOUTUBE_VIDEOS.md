@@ -1,6 +1,6 @@
 # YouTube lesson links
 
-The active website uses YouTube Unlisted videos. AI-1 Weeks 1–10 have links; AI-1 Weeks 11–36 and all 36 AI-2 weeks are pending. AI-3 remains paused. The R2 publishing tools are retained as an optional alternative; they are not needed for these embeds.
+The active website uses YouTube Unlisted videos. All 36 AI-1 weeks and all 36 AI-2 weeks have YouTube links configured. AI-3 remains paused. The R2 publishing tools are retained as an optional alternative; they are not needed for these embeds.
 
 ## Import more links
 
